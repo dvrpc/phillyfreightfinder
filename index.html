@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="description" content="">
+        <meta name="author" content="Michael Ruane, Delaware Valley Regional Planning Commission, Office of Freight and Aviation Planning">
+        <title>PhillyFreightFinder 3.1.2 |  DVRPC</title>
+        <link href='lib/pff-icons.css' rel='stylesheet'/>
+        <link href="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="lib/core/dyna.css">
+        <link href="lib/assets/typeahead.js/typeahead.js-bootstrap.css" rel="stylesheet" type="text/css">
+        <link href='lib/style.css' rel='stylesheet'/>
+
+        <style>
+       
+        #loading {
+                position: absolute;
+                width: 220px;
+                height: 19px;
+                top: 50%;
+                left: 50%;
+                margin: -10px 0 0 -110px;
+                z-index: 1028;
+            }
+        .omodal{
+            position: absolute;
+            width: 220px;
+            height: 19px;
+            top: 50%;
+            left: 50%;
+            margin: -10px 0 0 -110px;
+            z-index: 1028;
+            display: none;
+            overflow: hidden;
+            outline: 0px none;
+        }
+
+        @media screen and (min-width: 768px) {
+                .modal-dialog {
+                    width:730px!important;
+                }
+            }
+            @media (max-width: 1360px){
+                .search-container{
+                    width:250px;
+                }
+            }
+            @media (max-width: 1270px) {
+                .navbar .navbar-brand {
+                    font-size: 18px;
+                    float: left;
+                }
+                .leaflet-control-attribution {
+                    display: none;
+                }
+                
+            }
+            @media (max-width: 1200px) {
+               .search-container {
+                    width: 200px;
+                }
+            }
+            @media (max-width: 1100px) {
+                .dvrpc-pff {
+                    width: 260px;
+                    overflow: hidden;
+                    margin-bottom:-20px;
+                }
+
+            }
+            @media (max-width: 1024px) {
+               .search-container {
+                    width: 150px;
+                }
+
+            }
+            @media (max-width: 855px){
+                .dvrpc-logo{display:none;}
+            }
+            @media (max-width: 768px){
+                .search-container {
+                    width: 100%;
+                }
+                .logo-container{
+                    padding:0px;
+                }
+                .navbar-nav .open .dropdown-menu{
+                    background-color:#fff;
+                }
+                #infobox_ {
+                    right:10px;
+                }
+            }
+            @media (max-width: 376px){
+                .infowrap{
+                    padding:20px;
+                    height:auto;
+                }
+                #infobox_ {
+                    display:none;
+                }
+            }
+            /* Print Handling */
+            @media print {
+                .navbar, .toggle, #sidebar {
+                    display: none !important;
+                }
+            }
+        </style> 
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.2/html5shiv.js"></script>
+            <script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.2.0/respond.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+        <div class="navbar navbar-inverse navbar-fixed-top pffheader">
+        <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            <div class="navbar-brand">
+                <div class="dvrpc-logo"><img src='lib/images/header_dvrpc.png' height='50'/></div>
+                <div class="dvrpc-pff"><img src='lib/images/header_pff.png' height='50'/></div>
+            </div>
+        </div>
+        <div id="navbar-links" class="navbar-collapse collapse">
+            <form id='nav_search' class="navbar-form navbar-right " >
+                    <div class="input-group search-container mapUI" style="display:none;">
+                        <input id="searchbox" type="text" class="form-control" placeholder="Search by facility/place name">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+                    </div>
+            </form>
+            <ul id='landing' class="nav navbar-nav">
+                <li><a href="#home" class='landingLink' data-tab='home' data-toggle="collapse" data-target=".navbar-collapse.in"><i class="glyphicon glyphicon-home"></i>&nbsp;&nbsp;Home</a></li>
+                <li><a href="#region" class='landingLink' data-tab='docs' data-toggle="collapse" data-target=".navbar-collapse.in"><i class="glyphicon glyphicon-book"></i>&nbsp;&nbsp;Our Region</a></li>
+                <li class="dropdown">
+                        <a id="AboutDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-question-sign"></i>&nbsp;&nbsp;About <b class="caret"></b></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="#planning" class='landingLink' data-tab='PhillyFreightFinder' data-toggle="collapse" data-target=".navbar-collapse.in"><i class="glyphicon glyphicon-map-marker"></i>&nbsp;&nbsp;Freight Planning</a></li>
+                                <li><a href="#data" class='landingLink' data-tab='data' data-toggle="collapse" data-target=".navbar-collapse.in"><i class="glyphicon glyphicon-cloud-download"></i>&nbsp;&nbsp;Our Data</a></li>
+                            </ul>
+                </li>
+                <li id='maplink' class='landingUI'><a href="#map" data-tab='map' data-toggle="collapse" data-target=".navbar-collapse.in"><i class="glyphicon glyphicon-map-marker"></i>&nbsp;&nbsp;View Map</a></li>
+            </ul>
+           
+        </div><!--/.navbar-collapse -->
+    </div>
+    <!--landing pages-->
+        <div id='pFFlanding' class='landing fade in landtab-content landingUI'>
+            
+            <!--home tab-->
+                <div id ='home' class='tab-pane active in landing-content'style='color:#333333;'>
+                    <div class='center-block col-md-10' style='float:none;'>
+                        <h3>Welcome to <i>PhillyFreightFinder, </i>the freight mapping and data platform for the Delaware Valley!</h3> 
+                    </div>
+                    <div class='center-block col-md-10' style='float:none;'>
+                        <div class='col-md-7'>
+                            <p><i>PhillyFreightFinder</i> is a dynamic, web-based mapping application that pinpoints freight facilities and freight activity in the Philadelphia-Camden-Trenton region. In addition, this tool also highlights how the various freight system components intertwine and complement one another.</p>
+                            <p><i>PhillyFreightFinder</i> contains 20 individual layers and over 350 features of infrastructure and facilities that are organized into seven categories. These elements form the core of the region’s extraordinary freight network and services that link the region to the global economy.</p>
+                            <p><i>PhillyFreightFinder </i>is fully customizable, giving you-the user, the ability to easily control both the extent of the mapping window and the combination of layers to be displayed.</p>
+                        </div> 
+                        <div class='col-md-5'>
+                            <ul class='landingButtons'>
+                                <li><a href='#' class='' data-tab='region'><i class="PFFicon-group lbIcon"></i><div class='lbLabels'>Our Region<br/><span class='btnSub'>Learn about the DVRPC region and view county-level freight statistics</span></div></a></li>
+                                <li><a href='#' class='' data-tab='planning'><i class="PFFicon-compass lbIcon"></i><div class='lbLabels'>Freight Planning<br/><span class='btnSub'>Learn more about DVRPC and our freight planning program</span></div></a></li>
+                                <li><a href='#' class='' data-tab='data'><i class="PFFicon-stack lbIcon"></i><div class='lbLabels'>Our Data<br/><span class='btnSub'>View our data sources and download the data behind PhillyFreightFinder</span></div></a></li> 
+                            </ul>
+                        </div>
+                    </div>
+                    <div class='clearfix'></div>
+                    <div class='col-md-12 hpbanner'>    
+                        <div class='center-block col-md-10' style='float:none;'>
+                            <h4>Start exploring freight in our region!</h4>
+                            <p>You can search by facility or place name by using the search dialog or browse the region with the map viewer.
+                                <div id='homewidget' class='col-md-5'>
+                                    <div class="input-group search-container" style='color:#000000;padding-top:6px;width:90%;'>
+                                        <input id="searchhome" type="text" class="form-control" placeholder="Search by facility or place name">
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+                                    </div>
+                                </div>
+                                <div class='col-md-1'>
+                                    <p style='line-height:55px;'><i>or</i></p>
+                                </div>
+                                <div class='col-md-5'>
+                                    <button type="button" id='mapView' class="btn btn-default navbar-btn">Explore in Map Viewer</button>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+                <!--region tab-->
+                <div id ='region' class='tab-pane landing-content' style='color:#333333;'>
+                    <div class='center-block col-md-10 ' style='float:none;'>
+                        <h3>The Delaware Valley Region</h3> 
+                    </div>
+                    <div class='center-block col-md-10 ' style='float:none;'>
+                        <div class='col-md-7 col-lg-6'>
+                            <p>The PhillyFreightFinder application covers Bucks, Chester, Delaware, Montgomery and Philadelphia counties in Pennsylvania, and Burlington, Camden, Gloucester and Mercer counties in New Jersey.</p>
+                            <p>This region contains an impressive freight transportation network consisting of highways, rail lines, ports, airports, and pipelines. There are also many related support facilities such as warehouses, manufacturing sites, rail yards, and truck stops.</p>
+                            <p>The Delaware Valley is strategically positioned in the middle of the densest population center in the United States. Over 100 million people live within a 500-mile radius of Philadelphia, representing a vast consumer base and making the region ideally situated as a manufacturing and distribution hub.</p>
+                        </div> 
+                        <div class='col-md-5 col-lg-6'>
+                            <a onClick="showRegional()"><div id='regionLink' data-toggle="tooltip" title="View regional data" ><i class="PFFicon-group" style="font-size:16px;color:white;"></i></div></a>
+                            <div id='map2'data-toggle="tooltip" title="Select County to View Data">
+                                <div id='countyname' class='hidden'></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='clearfix'></div>
+                    <div class='col-md-12 hpbanner' style='padding-bottom:20px;'> 
+                        <div class='center-block col-md-10' style='float:none;'>
+                            <div id='dataContainer'>
+                                    <h3 id=''>DVRPC Region</h3>
+                                    <div class='col-md-6'>
+                                        <div class='row'>
+                                            <div class='col-md-4 center'><img src='lib/images/trkHighway.png' width='90'/><div class='dlabel white'><strong>Trucking/Highway</strong><br/>Statistics</div></div>
+                                            <div class='col-md-4 center'><div class='ddata'>352</div><div class='dlabel'>miles<br/><strong>interstate routes</strong></div></div>
+                                            <div class='col-md-4 center'><div class='ddata'>1.0k</div><div class='dlabel'>miles<br/><strong>national highway</strong></div></div>
+                                        </div>
+                                        <div class='row'> 
+                                            <div class='col-md-4 center'><div class='ddata'>11</div><div class='dlabel'><strong>NHS<br/>connectors</strong></div></div>
+                                            <div class='col-md-4 center'><div class='ddata'>106</div><div  class='dlabel'><strong>interstate<br/>highway interchanges</strong></div></div>
+                                            <div class='col-md-4 center'><div class='ddata'>9.8m</div><div class='dlabel'><strong>daily<br/>truck miles</strong></div></div>
+                                        </div>
+                                        <div class='divider'></div>
+                                        <div class='row'>
+                                            <div class='col-md-4 center'><img src='lib/images/frRail.png' width='90'/><div class='dlabel white'><strong>Freight Rail</strong><br/>Statistics</div></div>
+                                            <div class='col-md-4 center'><div class='ddata'>689</div><div class='dlabel'>miles<br/><strong>freight trackage</strong></div></div>
+                                            <div class='col-md-4 center'><div class='ddata'>32</div><div class='dlabel'><strong>yards and<br/>intermodal terminals</strong></div></div>
+                                        </div>
+                                        <div class='divider'></div>
+                                        <div class='row'>
+                                            <div class='col-md-4 center'><img src='lib/images/pMAritime.png' width='90'/><div class='dlabel white'><strong>Port &#38; Maritime</strong><br/>Statistics</div></div>
+                                            <div class='col-md-4 center'><div class='ddata'>31</div><div class='dlabel'><strong>port<br/>terminals</strong></div></div>
+                                            <div class='col-md-4 center'><div class='ddata'>1.7k</div><div class='dlabel'><strong>annual<br/>ship calls</strong></div></div>
+                                        </div>
+                                        <div class='divider'></div>
+                                        <div class='row'>
+                                            <div class='col-md-4 center'><img src='lib/images/fCenters.png' width='90'/><div class='dlabel white'><strong>Freight Center</strong><br/>Statistics</div></div>
+                                            <div class='col-md-4 center'><div class='ddata'>43</div><div class='dlabel'>unique<br/><strong>freight centers</strong></div></div>
+                                            <div class='col-md-4 center'><div class='ddata'>43.8k</div><div class='dlabel'>acres<br/><strong>freight centers</strong></div></div>
+                                        </div>
+                                    </div>
+                                    <div class='col-md-5 center'>
+                                        <h4>Total Shipments by Mode [2010]</h4>
+                                        <div id="containerTon" style="height:185px;width:350px;margin-bottom:-15px;display: block;margin-left:auto;margin-right:auto;"></div>
+                                        <div class='divider'></div>
+                                        <div style='padding-bottom:10px;'><span class='legend' style='border-color:#8dd3c7'>Truck</span>&nbsp;&nbsp;&nbsp;
+                                        <span class='legend' style='border-color:#ffffb3'>Rail</span>&nbsp;&nbsp;&nbsp;
+                                        <span class='legend' style='border-color:#bebada'>Water</span>&nbsp;&nbsp;&nbsp;
+                                        <span class='legend' style='border-color:#fb8072'>Air/Air + Truck</span><br/><br/>
+                                        <span class='legend' style='border-color:#80b1d3'>Multiple Modes</span>&nbsp;&nbsp;&nbsp;
+                                        <span class='legend' style='border-color:#fdb462'>Pipeline</span>&nbsp;&nbsp;&nbsp;
+                                        <span class='legend' style='border-color:#b3de69'>Other</span>&nbsp;</div>
+                                        <div class='divider'></div>
+                                        <div id="containerValue" style="height:185px;width:350px;margin-top:-15px;display: block;margin-left:auto;margin-right:auto;"></div>
+                                        <div class='col-md-10 col-md-offset-1'><p style='line-height:8px;'><span style="font-size:10px;color:#BBE6FA;">Source: US Department of Transportation, Federal Highway Administration, Office of Freight Management and Operations, Freight Analysis Framework Version 3</span></p></div>
+                                    </div>
+                                    
+                            </div> 
+                            <div id='dataCounty' class='hidden'>
+                                    <h3 id='ctyDataName'></h3>
+                                    <div class='col-md-6'>
+                                        <div class='row'>
+                                            <div class='col-md-4 center'><img src='lib/images/trkHighway.png' width='90'/><div class='dlabel white'><strong>Trucking/Highway</strong><br/>Statistics</div></div>
+                                            <div class='col-md-4 center'><div id='data-1' class='ddata'></div><div class='dlabel'>miles<br/><strong>interstate routes</strong></div></div>
+                                            <div class='col-md-4 center'><div id='data-2' class='ddata'></div><div class='dlabel'>miles<br/><strong>national highway</strong></div></div>
+                                        </div>
+                                        <div class='row'> 
+                                            <div class='col-md-4 center'><div id='data-3' class='ddata'></div><div class='dlabel'><strong>NHS<br/>connectors</strong></div></div>
+                                            <div class='col-md-4 center'><div id='data-4' class='ddata'></div><div  class='dlabel'><strong>interstate<br/>highway interchanges</strong></div></div>
+                                            <div class='col-md-4 center'><div id='data-5' class='ddata'></div><div class='dlabel'><strong>daily<br/>truck miles</strong></div></div>
+                                        </div>
+                                        <div class='divider'></div>
+                                        <div class='row'>
+                                            <div class='col-md-4 center'><img src='lib/images/frRail.png' width='90'/><div class='dlabel white'><strong>Freight Rail</strong><br/>Statistics</div></div>
+                                            <div class='col-md-4 center'><div id='data-6' class='ddata'></div><div class='dlabel'>miles<br/><strong>freight trackage</strong></div></div>
+                                            <div class='col-md-4 center'><div id='data-7' class='ddata'></div><div class='dlabel'><strong>yards and<br/>intermodal terminals</strong></div></div>
+                                        </div>
+                                        <div class='divider'></div>
+                                        <div class='row'>
+                                            <div class='col-md-4 center'><img src='lib/images/pMAritime.png' width='90'/><div class='dlabel white'><strong>Port &#38; Maritime</strong><br/>Statistics</div></div>
+                                            <div class='col-md-4 center'><div id='data-8' class='ddata'></div><div class='dlabel'><strong>port<br/>terminals</strong></div></div>
+                                            <div class='col-md-4 center'><div id='data-9' class='ddata'></div><div class='dlabel'><strong>annual<br/>ship calls</strong></div></div>
+                                        </div>
+                                        <div class='divider'></div>
+                                        <div class='row'>
+                                            <div class='col-md-4 center'><img src='lib/images/fCenters.png' width='90'/><div class='dlabel white'><strong>Freight Center</strong><br/>Statistics</div></div>
+                                            <div class='col-md-4 center'><div id='data-10' class='ddata'></div><div class='dlabel'>unique<br/><strong>freight centers</strong></div></div>
+                                            <div class='col-md-4 center'><div id='data-11' class='ddata'></div><div class='dlabel'>acres<br/><strong>freight centers</strong></div></div>
+                                        </div>
+                                    </div>
+                                    <div class='col-md-6'>
+                                        <div class="row"><div class='col-md-6 center'><a href="#" onClick='mapView()'><button class="btn btn-primary" ><i class="PFFicon-map"></i>&nbsp;&nbsp;Browse by Map</button></a></div><div class='col-md-6 center' id="countyBtn"></div></div>
+                                        <div class='divider'></div>
+                                        <div id="ctySlideshow"></div>
+                                    </div>
+                                    
+                                    
+                                    
+                            </div> 
+                        </div>
+                    </div>
+                </div>
+                <!--planning tab-->
+                <div id ='planning' class='tab-pane landing-content' style='color:#333333;'>
+                    <div class='center-block col-md-10 ' style='float:none;'>
+                        <h3>Freight Planning at DVRPC</h3> 
+                         <div class='col-md-7 col-lg-7'>
+                            <p><i>PhillyFreightFinder</i> is the product of DVRPC’s continuing, comprehensive freight planning program. This program enables carriers and shippers to participate in the metropolitan planning process and identifies freight transportation trends and needs in the region.</p>
+                            <p><i>PhillyFreightFinder</i> represents a true public-private partnership made possible by the members and friends of DVRPC’s freight advisory committee, the <a href="http://www.dvrpc.org/Freight/DVGMTF.htm">Delaware Valley Goods Movement Task Force</a>. The Task Force’s Data Subcommittee has provided active oversight and guidance in designing and preparing the application.</p>
+                            <p>To learn more about the DVRPC's freight planning activities and freight advisory committee, please visit the <a href="http://www.dvrpc.org/Freight/">freight page of the DVRPC website</a>.</p>
+                            <p><i>PhillyFreightFinder </i>represents a highly collaborative undertaking made possible by the members and friends of the Delaware Valley Goods Movement Task Force. The Task Force is guided by three subcommittees: Planning, Shippers, and Data. The <i>PhillyFreightFinder</i> effort falls under the purview of the Data Subcommittee and represents a true <i>public-private partnership</i>.</p>
+                            
+                        </div> 
+                        <div class='col-md-5 col-lg-5'>
+                            <!--<div id=' '>
+                                <div><img src="/lib/images/dvrpc_logoOfficial.png" title="DVRPC"></div>
+                            </div>-->
+                            <div>
+                                <h4>DVRPC Freight Planning Staff Mission Statement</h4>
+                                <p>The DVRPC Freight Planning staff is dedicated to creating and sustaining a dynamic and service-oriented freight planning program in a culture of excellence as defined by integrity, passion, discipline, and personal and professional development.</p>
+                                <h4>Contact our Staff</h4>
+                                    <b>Ted Dahlburg</b><br/>
+                                    <em>Manager, Office of Freight and Aviation Planning</em><br/>
+                                    <p>Phone: 215.238.2844  |  Email: <a href="mailto:tdahlburg@dvrpc.org" data-toggle="tooltip" title="Email Ted">tdahlburg@dvrpc.org</a></p>
+                                    <b>Michael Ruane</b><br/>
+                                    <em>Freight Planner, Office of Freight and Aviation Planning</em><br/>
+                                    <p>Phone: 215.238.2888  |  Email: <a href="mailto:mruane@dvrpc.org" data-toggle="tooltip" title="Email Michael">mruane@dvrpc.org</a></p>
+                            </div>
+                        </div>
+                    </div>
+                     <div class='clearfix'></div>
+                    <div class='col-md-12 hpbanner'>
+                        <div class='center-block col-md-10' style='float:none;'>
+                        <h4>Recent Freight Studies</h4>
+                            <div class='col-md-6 col-lg-6'>
+                                <ul class="recentProjs" >
+                                    <li><a href="http://www.dvrpc.org/asp/pubs/publicationabstract.asp?pub_id=11012" target="_blank"><b>Darby Borough Grade Crossing Study Phase 1</b><br/><span class="dateSub">Date Published: June 2013</span></a></li>
+                                    <li><a href="http://www.dvrpc.org/asp/pubs/publicationabstract.asp?pub_id=11011" target="_blank"><b>The Delaware Valley Freight Center Inventory: Taking Stock of a Vital Regional Asset</b><br/><span class="dateSub">Date Published: June 2012</span></a></li>
+                                    <li><a href="http://www.dvrpc.org/asp/pubs/publicationabstract.asp?pub_id=09057" target="_blank"><b>Delaware Valley Truck Parking Study</b><br/><span class="dateSub">Date Published: May 2011</span></a></li>
+                                    <li><a href="http://www.dvrpc.org/asp/pubs/publicationabstract.asp?pub_id=MIT019" target="_blank"><b>Municipal Implementation Tool #19 - Freight Transportation</b><br/><span class="dateSub">Date Published: November 2010</span></a></li>
+                                </ul>
+                            </div>
+                            <div class='col-md-6 col-lg-6'>
+                                <ul class="recentProjs" style="padding-bottom:15px;">
+                                    <li><a href="http://www.dvrpc.org/asp/pubs/publicationabstract.asp?pub_id=09064" target="_blank"><b>Freight Flows and Forecasts in the Philadelphia CSA</b><br/><span class="dateSub">Date Published: August 2010</span></a></li>
+                                    <li><a href="http://www.dvrpc.org/asp/pubs/publicationabstract.asp?pub_id=09058" target="_blank"><b>DVRPC Long-Range Vision for Freight</b><br/><span class="dateSub">Date Published: May 2010</span></a></li>
+                                    <li><a href="http://www.dvrpc.org/asp/pubs/publicationabstract.asp?pub_id=07024" target="_blank"><b>National Highway System Connectors to Freight Facilities in the Delaware Valley Region</b><br/><span class="dateSub">Date Published: January 2007</span></a></li>
+                                    <li><a href="http://www.dvrpc.org/asp/pubs/publicationabstract.asp?pub_id=06007" target="_blank"><b>Delaware County Highway-Railroad Grade Crossing Study</b><br/><span class="dateSub">Date Published: October 2006</span></a></li>
+                                    <!--<li><a href="http://www.dvrpc.org/asp/pubs/publicationabstract.asp?pub_id=05005" target="_blank"><b>Truck and Bus Travel in the Delaware Valley Region</b><br/><span class="dateSub">Date Published: May 2011</span></a></li>
+                                    <li><a href="http://www.dvrpc.org/asp/pubs/publicationabstract.asp?pub_id=99012" target="_blank"><b>Delaware Valley Rail Freight Plan</b><br/><span class="dateSub">Date Published: May 2011</span></a></li>
+                                    <li><a href="http://www.dvrpc.org/asp/pubs/publicationabstract.asp?pub_id=98025" target="_blank"><b>Proceedings, National Freight Summit</b><br/><span class="dateSub">Date Published: May 2011</span></a></li>-->
+                                </ul> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id ='data' class='tab-pane landing-content' style='color:#333333;'>
+                    <div class='center-block col-md-10 ' style='float:none;'>
+                        <h3>About our data</h3> 
+                        <div class='col-md-6 col-lg-6'>
+                        <p><i>PhillyFreightFinder</i> was created primarily as a platform for data. This framework is intended to improve the access to freight facility data throughout the region in order to improve planning, economic development, and public awareness around freight in the Delaware Valley.</p>
+                        <p>Our data sets have been developed through years of planning studies in the region. In addition, regional private sector and public partners have contributed valuable data related to the appropriate nomenclature of facilities and have evaluated our datasets to further refine the accuracy of <i>PhillyFreightFinder</i>. These partners have also been instrumental in sharing activity data that helps our regional partners to better understand priorities across the Delaware Valley.</p>
+                        <p>In the coming months we hope to make the data found in <i>PhillyFreightFinder</i> accessible for download and use in other projects. If you are interested in accessing the raw datasets please contact Michael Ruane, Transportation Planner at 215.588.8226 or by email <a href="mailto:mruane@dvrpc.org">mruane@dvrpc.org</a>.</p><br/>
+                        <p><b>PLEASE NOTE:</b><br/>
+                        The contents and information contained in this application will be updated on a regular basis as new information is available. However, at any one point in time, some data may not reflect the most current conditions. At the present time, this mapping tool only contains infrastructure and facilities within the official DVRPC region.</p>
+                        <p>The format and information on this map may be updated or changed at any time. This map does not expand the liability of DVRPC, state, local, and other agencies beyond existing law.</p>
+                        </div>
+                    </div>
+                </div>         
+                       
+        </div>
+        
+    <!--Map and Sidebar-->
+       <div class="row ocontent mapUI" id="container">
+            <div class="col-sm-4 col-lg-3" id="sidebar">
+				
+                <div class="tab-content" style="padding-top: 10px;">
+                        <!--ADD LAYER CONTROL GROUPS HERE -->
+                        <!---Layer Group 1-->
+                        <div class="panel-group">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                   <a href="modals/truck.html" data-toggle="modal" data-target="#truckModal" ><div class="PFFicon-info legicon truckinfo" data-toggle="tooltip" data-placement="bottom"  title="Learn about these layers"> </div></a>
+                                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion_" href="#Trucking-layers">
+                                        <div class="panellink truckinfo" data-toggle="tooltip" data-placement="bottom"  title="View/hide layers in group">
+                                            <span>Trucking/highways</span>
+                                        </div>
+                                    </a>
+                                    <div class="checked_all togglebox"><div id="" class="chkicon glyphicon glyphicon-check"> </div></div>
+                                </div> 
+                                <div id="Trucking-layers" class="panel-collapse collapse">
+                                    <div class="panel-body" style="padding: 0;">
+                                            <input type="hidden" class="Chkd" value="false" /> 
+                                        <div class="checkbox" data-toggle="tooltip" title="Click to toggle layer">
+                                            <input type="checkbox" name="LayerCont" id="freeway" class="layer" z-index="8" checked>
+                                            <label class="freeway" for="freeway">Highway</label>
+                                        </div>
+                                        <div class="checkbox" data-toggle="tooltip" title="Click to toggle layer">
+                                            <input type="checkbox" name="LayerCont" id="nhsgroup" class="layer" z-index="15" checked>
+                                            <label class="NHSconn" for="nhsgroup">NHS Connector</label>
+                                        </div>
+                                        <div class="checkbox" data-toggle="tooltip" title="Click to toggle layer">
+                                            <input type="checkbox" name="LayerCont" id="trkparkgroup" class="layer" z-index="16" checked>
+                                            <label class="trckpark" for="trkparkgroup">Truck Parking</label>
+                                        </div>
+                                        <div class="checkbox last" data-toggle="tooltip" title="Click to toggle layer">
+                                            <input type="checkbox" name="LayerCont" id="hwyrivcrossing" class="layer" z-index="5" checked>
+                                            <label class="hwybrdg" for="hwyrivcrossing">Highway River Crossing</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!---Layer Group 2-->
+                       <div class="panel-group">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <a href="modals/rail.html" data-toggle="modal" data-target="#railModal" ><div class="PFFicon-info legicon railinfo" data-toggle="tooltip" title="Learn about these layers"> </div></a>
+                                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion_" href="#Rail-layers">
+                                        <div class="panellink railinfo" data-toggle="tooltip" title="View/hide layers in group">
+                                            <span>Freight Rail</span>
+                                        </div>
+                                    </a>
+                                    <div class="checked_all togglebox" ><div id="" class="chkicon glyphicon glyphicon-check"></div></div>
+                                </div> 
+                                <div id="Rail-layers" class="panel-collapse collapse">
+                                    <div class="panel-body" style="padding: 0;">
+                                        <input type="hidden" class="Chkd" value="false" /> 
+                                        <div class="checkbox" data-toggle="tooltip" title="Click to toggle layer">
+                                            <input type="checkbox" name="LayerCont" id="railines" class="layer" z-index="9" checked>
+                                            <label class="raillin" for="railines">Rail Line</label>
+                                        </div>
+                                        <div class="checkbox" data-toggle="tooltip" title="Click to toggle layer">
+                                            <input type="checkbox" name="LayerCont" id="railyardgroup" class="layer" z-index="5" checked>
+                                            <label class="railyrd" for="railyardgroup">Rail Yard</label>
+                                        </div>
+                                        <div class="checkbox" data-toggle="tooltip" title="Click to toggle layer">
+                                            <input type="checkbox" name="LayerCont" id="intermodalgroup" class="layer" z-index="4" checked>
+                                            <label class="intermod" for="intermodalgroup">Intermodal Rail Yard</label>
+                                        </div>
+                                        <div class="checkbox" data-toggle="tooltip" title="Click to toggle layer">
+                                            <input type="checkbox" name="LayerCont" id="gradexing" class="layer" z-index="14" checked>
+                                            <label class="gradex" for="gradexing">Class I Grade Crossing</label>
+                                        </div>
+                                        <div class="checkbox last" data-toggle="tooltip" title="Click to toggle layer">
+                                            <input type="checkbox" name="LayerCont" id="railbridge" class="layer" z-index="13" checked>
+                                            <label class="railbrdg" for="railbridge">Rail River Crossing</label>
+                                        </div>
+                                    
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Ports/waterways-->
+                        <div class="panel-group">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <a href="modals/port.html" data-toggle="modal" data-target="#portModal" ><div class="PFFicon-info legicon portinfo" data-toggle="tooltip" title="Learn about these layers"> </div></a>
+                                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion_" href="#port-layers">
+                                        <div class="panellink portinfo" data-toggle="tooltip" title="View/hide layers in group">
+                                            <span>Ports/waterways</span>
+                                        </div>
+                                    </a>
+                                    <div class="checked_all togglebox" ><div id="" class="chkicon glyphicon glyphicon-check"></div></div>
+                                </div> 
+                                <div id="port-layers" class="panel-collapse collapse">
+                                    <div class="panel-body" style="padding: 0;">
+                                        <input type="hidden" class="Chkd" value="false" /> 
+                                        <div class="checkbox" data-toggle="tooltip" title="Click to toggle layer">
+                                            <input type="checkbox" name="LayerCont" id="river" class="layer" z-index="4" checked>
+                                            <label class="riveric" for="river">Navigable River</label>
+                                        </div>
+                                        <div class="checkbox" data-toggle="tooltip" title="Click to toggle layer">
+                                            <input type="checkbox" name="LayerCont" id="portGroup" class="layer" z-index="5" checked>
+                                            <label class="portic" for="portGroup">Port Terminal</label>
+                                        </div>
+                                        <div class="checkbox last" data-toggle="tooltip" title="Click to toggle layer">
+                                            <input type="checkbox" name="LayerCont" id="anchorageGroup" class="layer" z-index="6" checked>
+                                            <label class="anchic" for="anchorageGroup">Anchorage</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Airports-->
+                        <div class="panel-group">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <a href="modals/air.html" data-toggle="modal" data-target="#airModal" ><div class="PFFicon-info legicon airinfo" data-toggle="tooltip" title="Learn about these layers"> </div></a>
+                                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion_" href="#Air-layers">
+                                        <div class="panellink airinfo" data-toggle="tooltip" title="View/hide layers in group">
+                                            <span>Airports</span>
+                                        </div>
+                                    </a>
+                                    <div class="checked_all togglebox" ><div id="" class="chkicon glyphicon glyphicon-check"></div></div>
+                                </div> 
+                                <div id="Air-layers" class="panel-collapse collapse">
+                                    <div class="panel-body" style="padding: 0px;">
+                                        <input type="hidden" class="Chkd" value="false" />
+                                        <div class="checkbox" data-toggle="tooltip" title="Click to toggle layer">
+                                            <input type="checkbox" name="LayerCont" id="commGroup" class="layer" z-index="4" checked>
+                                            <label class="commic" for="commGroup">Commercial</label>
+                                        </div>
+                                        <div class="checkbox" data-toggle="tooltip" title="Click to toggle layer">
+                                            <input type="checkbox" name="LayerCont" id="relGroup" class="layer" z-index="4" checked>
+                                            <label class="relic" for="relGroup">Reliever</label>
+                                        </div>
+                                        <div class="checkbox last" data-toggle="tooltip" title="Click to toggle layer">
+                                            <input type="checkbox" name="LayerCont" id="heliport" class="layer" z-index="4" checked>
+                                            <label class="helic" for="heliport">Heliport</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--FreightCenters-->
+                        <div class="panel-group">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <a href="modals/fcenters.html" data-toggle="modal" data-target="#fcModal" ><div class="PFFicon-info legicon fcinfo" data-toggle="tooltip" title="Learn about these layers"> </div></a>
+                                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion_" href="#FC-layers">
+                                        <div class="panellink fcinfo" data-toggle="tooltip" title="View/hide layers in group">
+                                            <span>Freight Centers</span>
+                                        </div>
+                                    </a>
+                                    <div class="checked_all togglebox" ><div id="" class="chkicon glyphicon glyphicon-check"></div></div>
+                                </div> 
+                                <div id="FC-layers" class="panel-collapse collapse">
+                                    <div class="panel-body" style="padding: 0px;">
+                                        <input type="hidden" class="Chkd" value="false" />
+                                        <div class="checkbox" data-toggle="tooltip" title="Click to toggle layer">
+                                            <input type="checkbox" name="LayerCont" id="FCmegagroup" class="layer" z-index="1" checked>
+                                            <label class="megic" for="FCmegagroup">Mega Center</label>
+                                        </div>
+                                        <div class="checkbox" data-toggle="tooltip" title="Click to toggle layer">
+                                            <input type="checkbox" name="LayerCont" id="FCmajorgroup" class="layer" z-index="2" checked>
+                                            <label class="majic" for="FCmajorgroup">Major Center</label>
+                                        </div>
+                                        <div class="checkbox last" data-toggle="tooltip" title="Click to toggle layer">
+                                            <input type="checkbox" name="LayerCont" id="FCintergroup" class="layer" z-index="3" checked>
+                                            <label class="interic" for="FCintergroup">Intermediate Center</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Energy Utilities-->
+                        <div class="panel-group">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <a href="modals/pipe.html" data-toggle="modal" data-target="#pipeModal" ><div class="PFFicon-info legicon energyinfo" data-toggle="tooltip" title="Learn about these layers"> </div></a>
+                                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion_" href="#energy-layers">
+                                        <div class="panellink energyinfo" data-toggle="tooltip" title="View/hide layers in group">
+                                            <span>Energy & Utilities</span>
+                                        </div>
+                                    </a>
+                                    <div class="checked_all togglebox" ><div id="" class="chkicon glyphicon glyphicon-check"></div></div>
+                                </div> 
+                                <div id="energy-layers" class="panel-collapse collapse">
+                                    <div class="panel-body" style="padding: 0px;">
+                                        <input type="hidden" class="Chkd" value="true" />
+                                        <div class="checkbox last" data-toggle="tooltip" title="Click to toggle layer">
+                                            <input type="checkbox" name="LayerCont" id="pipelines" class="layer" z-index="10">
+                                            <label id="pipelabel" class="pipeic" for="pipelines">Pipeline <span id='pipehidden' style='color:#bbbbbb;'></span></label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Community-->
+                        <div class="panel-group">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <a href="modals/community.html" data-toggle="modal" data-target="#commModal" ><div class="PFFicon-info legicon communityinfo" data-toggle="tooltip" title="Learn about these layers"> </div></a>
+                                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion_" href="#community-layers">
+                                        <div class="panellink communityinfo" data-toggle="tooltip" title="View/hide layers in group">
+                                            <span>Community</span>
+                                        </div>
+                                    </a>
+                                    <div class="checked_all togglebox" ><div id="" class="chkicon glyphicon glyphicon-check"></div></div>
+                                </div> 
+                                <div id="community-layers" class="panel-collapse collapse">
+                                    <div class="panel-body" style="padding: 0px;">
+                                        <input type="hidden" class="Chkd" value="false" />
+                                        <div class="checkbox last" data-toggle="tooltip" title="Click to toggle layer">
+                                            <input type="checkbox" name="LayerCont" id="fgneighbor" class="layer" z-index="1" checked>
+                                            <label class="fgnic" for="fgneighbor">Freight as a Good Neighbor</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </div><!--Siderbar Close-->
+            <!---Map Pane -->
+            <div class="col-sm-8 col-lg-9 mapUI" id="mapDIV" >
+                <div id="loading" style="display: block;">
+                    <div class="loading-indicator">
+                        <div class="progress progress-striped active">
+                            <div class="progress-bar progress-bar-info" style="width: 100%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!--end Map and Sidebar-->
+        <!--Footer container-->
+        <div class="navbar-fixed-bottom pff_footer">
+            <div style='height:34px;'>
+               <div id="MapFooter" class="mapUI" style="display:none;"> 
+                    <button id="toggle" type="button" class="footer_btn" data-toggle="tooltip" title="Toggle Sidebar" style="height: 34px; padding: 5px 10px; margin-right: 10px;width:36px;"><i id="toggleIcon" class="PFFicon-chevron-left"></i></button>
+                    <button id="contact" type="button" class="footer_btn" data-toggle="tooltip" title="Contact Us" style="height: 34px; padding: 5px 10px; margin-right: 10px;" onclick="$('#contactModal').modal('show'); return false;"><i id="contactIcon" class="PFFicon-envelope-alt"></i>&nbsp;&nbsp;Submit Feedback</button>
+                    <div class='footernav'>                </div>
+                    <div id='infobox_' class=''>
+                        <a href='#'><span id='togbtn' class='PFFicon-minus2 hide'></span></a><div id='iconography'></div><div id='infoheader' class='ihholder'><p>Click feature to view details</p></div>
+                        
+                            <div class='infowrap'>
+                                <div id='info'></div>
+                                <div id='featureName'></div>
+                            </div>
+                            
+                        </div> 
+                </div>
+                <div id="LandingFooter" class="center landingUI">
+                    <!--<a id="" href="#" onclick="$('#contactModal').modal('show'); return false;" type="button" data-toggle="tooltip" title="Contact DVRPC" style="height: 34px; padding: 5px 10px; margin-right: 10px;float:left;"><i id="contactIcon" class="PFFicon-envelope-alt"></i>&nbsp;&nbsp;Contact Us</a>-->
+                    <p class="dkgrey" style="font-size:10px;margin-top:5px;line-height: 12px;"><strong><i class="PFFicon-group"></i>&nbsp;Delaware Valley Regional Planning Commission</strong><br/>190 N Independence Mall West, 8th Floor&nbsp;&nbsp;|&nbsp;&nbsp;Philadelphia, PA 19106</p>
+                </div>            
+            </div>
+        </div> 
+        <div class="navbar-fixed-bottom" style='height:6px;background-color:#312867;'></div> 
+        <!--contact modal-->
+        <div class="modal fade" id="contactModal"><form>
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">Submit Feedback</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Please submit your comments, questions, etc. about PhillyFreightFinder below.  Your interest in this freight mapping and data platform for the Delaware Valley is greatly appreciated.</p>
+                        <form id="contact-form">
+                            <fieldset>
+                                <div class="form-group">
+                                    <label for="name">Name:</label>
+                                    <input type="text" class="form-control" id="name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email:</label>
+                                    <input type="text" class="form-control" id="email">
+                                </div>
+                                <div class="form-group">
+                                    <label for="report">Report: </label>
+                                    <select id="report" class="form-control"><option selected value="">Select One</option>
+                                                    <option value="Comment">Comment</option>
+                                                    <option value="Question">Question</option>
+                                                    <option value="Data Correction">Data Correction</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="comment">Comment:</label>
+                                    <textarea class="form-control" rows="3" id="comment"></textarea>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary pull-right">Submit</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </form></div><!-- /.modal -->
+         <!-- Trucking Modal Window -->
+        <div class="modal fade" id="truckModal"></div>
+        <!-- Rail Modal Window-->
+        <div class="modal fade" id="railModal"></div>
+        <!-- Port Modal Window-->
+        <div class="modal fade" id="portModal"></div>
+        <!-- Air Modal Window-->
+        <div class="modal fade" id="airModal"></div>
+        <!-- FC Modal Window-->
+        <div class="modal fade" id="fcModal"></div>
+        <!-- Pipes Modal Window-->
+        <div class="modal fade" id="pipeModal"></div>
+        <!-- Community Modal Window-->
+        <div class="modal fade" id="commModal"></div>
+        <!--Mobile InfoWindow Modal-->
+        <div class="modal fade" id="mobileInfo_modal">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div id="mobileMdHeader" class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" onClick='resetHighlight()'><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <div id="mobileheader"></div>
+              </div>
+              <div class='infowrap'>
+                <div id='mobileinfo'></div>
+                <div id='mobilefeatureName'></div>
+                </div>
+            </div><!-- /.modal-content -->
+          </div><!-- /.modal-dialog -->
+        </div><!-- /.modal --> 
+
+
+
+        <!-- Layer Group 1 Modal Window -->
+        <div class="modal fade" id="modal_1"></div>
+        <!-- Layer Group 2 Modal Window-->
+        <div class="modal fade" id="modal_2"></div>
+        <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+        <script type="text/javascript" src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+        <script src="lib/jquery.bxslider.min.js"></script>
+        <script src="http://code.highcharts.com/highcharts.js"></script>
+        <script type="text/javascript" src="lib/core/dyna-icons.js"></script>
+        <script type="text/javascript" src="lib/assets/typeahead.min.js"></script>
+        <script type="text/javascript" src="lib/assets/numeral.min.js"></script> 
+        <!--<script type="text/javascript" src="lib/assets/jquery-1.10.2.min.js"></script>
+        <script type="text/javascript" src="lib/assets/leaflet.js"></script>-->
+        <!--<script src="lib/assets/jquery.nicescroll.min.js"></script>-->
+        <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery.address/1.6/jquery.address.min.js"></script>   
+        <!--<script type="text/javascript" src="lib/assets/bootstrap.min.js"></script>
+        <script type="text/javascript" src="lib/assets/jquery.address.min.js"></script>-->
+        <script type="text/javascript" src="lib/actions.js"></script><!--core application functions -->
+        <script type="text/javascript" src="lib/map.js"></script><!--customized mapping functions to load data -->
+        <script type="text/javascript" src="lib/core.js"></script><!--core application functions -->
+        
+
+
+
+
+        <script type="text/javascript">
+           //submit contact form- required fields: email, staffEmail, subject, body
+              $('#contactModal form').submit(function(e) {
+                var form = this;
+
+                $(form).find('[type=submit]').prop('disabled',true);
+                e.preventDefault();
+                var params = {
+                  email:$(form).find('#email').val(),
+                  staffEmail:'mruane@dvrpc.org',
+                  subject:'PhillyFreightFinder Feedback',
+                  body: 'Thank you for sending us your feedback. A summary of your comments are provided below and you will be contacted shortly.',
+                  Name: $(form).find('#name').val(),
+                  Report:$(form).find('#report').val(),
+                  Message:$(form).find('#comment').val()
+                };
+                $(form).find('.modal-body').prepend($('<div/>').addClass('alert alert-warning').text('We were unable to submit your feedback successfully. Please email this information to: ').hide()).prepend($('<div/>').addClass('alert alert-success').text("Thank your for your feedback! You will receive a confirmation email and someone will contact you shortly.").hide());
+                $(form).get(0).reset();
+
+                $.ajax('http://www.dvrpc.org/asp/email/send.aspx', {type: 'POST', data: params}).done(function() {
+                  $(form).find('[type=submit]').prop('disabled',false);
+
+
+
+
+
+                  $(form).find('.alert-success').slideDown();
+                }).fail(function() {
+                  var arr = [];
+                  for (var i in params) {
+                    if ($.inArray(i, ['email','staffEmail','subject','body']) == -1)
+                      arr.push(i+': '+params[i]);
+                  }
+                  $(form).find('.alert-warning').append($('<a>').addClass('alert-link').attr('href','mailto:'+params['staffEmail']+'?subject='+params['subject']+'&body='+params['body'] +'%0D%0A%0D%0A'+ arr.join('%0D%0A')).text(params['staffEmail'])).slideDown();
+
+                });
+
+                return false;
+              });
+              $('#contactModal').on('hide.bs.modal', function() {
+                $(this).find('.alert').remove();
+                $(this).find('form').get(0).reset();
+              });
+        
+
+
+
+
+        $(document).ready(function() {
+    
+    /*Highcharts.setOptions({
+        chart: {
+                type: 'pie',
+                backgroundColor: '#396AB2'
+
+            },
+        title: {
+                verticalAlign: 'middle',
+                align: 'center',
+                floating: true,
+                useHTML: true
+            },
+        yAxis: {
+                title: {
+                    text: ''
+                }
+            },
+        credits: {
+                enabled: false
+            },
+        plotOptions: {
+                pie: {
+                    shadow: false,
+                    dataLabels: {
+                        enabled: false},
+                    borderColor: '#335e9f',
+                    borderWidth: 0,
+                    colors: ['#8dd3c7','#ffffb3','#bebada','#fb8072','#80b1d3','#fdb462','#b3de69'],
+                }
+            },
+        series: [{ 
+                size: '230%',
+                innerSize: '130%'
+            }]
+
+    });
+    
+    // Create the chart
+    var ValueChart = {
+            chart: {
+                type: 'pie',
+                backgroundColor: '#396AB2',
+                renderTo: 'containerValue'
+            },
+            
+            title: {
+                verticalAlign: 'middle',
+                align: 'center',
+                floating: true,
+                useHTML: true,
+                text: '<div style="text-align:center;line-height: 0.8;"><span class="chartPrefix">by</span><br><span class="chartLabel">VALUE</span></div>',
+                y: 55
+            },
+             yAxis: {
+                title: {
+                    text: ''
+                }
+            },
+            credits: {
+                enabled: false
+            },
+            tooltip: {
+                formatter: function() {
+                    return '<b>' + this.key + '</b><br/><b>$'+ this.y + '</b> billion<br/>'+ Math.round(this.percentage*100)/100 +'%';
+                }
+            },
+            plotOptions: {
+                pie: {
+                    shadow: false,
+                    dataLabels: {
+                        enabled: false},
+                    borderColor: '#335e9f',
+                    borderWidth: 0,
+                    colors: ['#8dd3c7','#ffffb3','#bebada','#fb8072','#80b1d3','#fdb462','#b3de69'],,
+                    center: ['50%', '120%'],
+                    colors: ['#8dd3c7','#ffffb3','#bebada','#fb8072','#80b1d3','#fdb462','#b3de69'],
+                    startAngle: -90,
+                    endAngle: 90
+
+                }
+            },
+            series: [{
+                id: 'Values',
+                name: 'Value', 
+                size: '230%',
+                innerSize: '130%', 
+                data: []
+            }]
+    };
+
+    $.getJSON('data/value.json', function(data) {
+            var data1 = data.value,
+                dataLen = data1.length,
+                Labels = ["Truck", "Rail", "Water", "Air/Air + Truck","Multiple Modes", "Pipeline", "Other and Unknown"],
+                mapData = [];
+            for (i = 0; i < dataLen; i++){
+                if (data1[i].County === 'DVRPC'){
+                var ValData = [data1[i].Truck, data1[i].Rail, data1[i].Water, data1[i].AAT, data1[i].MM, data1[i].Pipeline, data1[i].Other]
+                }
+            }
+            for (var i = 0; i < ValData.length; i++){
+                mapData.push({
+                    name: Labels[i],
+                    y: ValData[i]})
+            }
+
+            ValueChart.series[0].data = mapData;
+            var chart = new Highcharts.Chart(ValueChart);
+
+        });*/
+
+});
+        
+        </script>
+<!--Google Analytics
+        <script type="text/javascript">var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));</script><script type="text/javascript">try {var pageTracker = _gat._getTracker("UA-9825778-1");pageTracker._trackPageview();} catch(err) {}</script>
+        
+        -->
+    </body>
+</html>
