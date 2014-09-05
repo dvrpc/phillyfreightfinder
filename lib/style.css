@@ -39,7 +39,7 @@ body, .landing, #sidebar {
 .infowrap, #infoheader, .footer_btn, .footernav, .ofooter, .navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form, .navbar-inverse {
     border-color: #ddd;
 }
-.navbar-inverse .navbar-toggle:hover, .navbar-inverse .navbar-toggle:focus, .navbar-inverse .navbar-nav>li>a:hover, .footer_btn:hover {
+.footer_btn:hover {
     background-color: #DDD;
     border-color:#DDD;
 }
@@ -48,6 +48,10 @@ body, .landing, #sidebar {
 }
 .navbar-inverse .navbar-toggle, .navbar-inverse .navbar-nav>.open>a,.navbar-inverse .navbar-nav>.open>a:hover,.navbar-inverse .navbar-nav>.open>a:focus, .navbar-nav>li>a, .navbar-nav>li>.dropdown{
     background-color: #567FBC;
+}
+
+.navbar-inverse .navbar-toggle:hover, .navbar-inverse .navbar-toggle:focus, .navbar-inverse .navbar-nav>li>a:hover{
+    border-color:#312867;
 }
 .navbar-inverse .navbar-toggle, .navbar-nav > li > .dropdown-menu {
     border-color:#E9E9E9;
@@ -64,12 +68,12 @@ a, .footer_btn, .chkicon {
 .navbar-inverse .navbar-toggle .icon-bar{
     background-color: #428bca !important;
 }
-a:hover,  .footer_btn:hover {
+a:hover, .footer_btn:hover {
     color: #312867 !important;
     text-decoration: none;
 }
 .navbar-inverse .navbar-nav>li>a:hover{
-    color: #312867 !important;
+    color: #fff !important;
     text-decoration: none;
 }
 
