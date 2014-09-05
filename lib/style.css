@@ -4,16 +4,16 @@ html,body,#sidebar,#container {
 }
 body {
     padding-top: 50px;
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-family: 'Open Sans', sans-serif;
     overflow-y: hidden;
 }
 p {
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-family: 'Open Sans', sans-serif;
 }
 h1,h2,h3,h4,h5,h6 {
 
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-weight: 500;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
     line-height: 1.1;
     color: #396ab2;
 }
