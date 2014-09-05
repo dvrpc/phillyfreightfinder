@@ -55,14 +55,21 @@ body, .landing, #sidebar {
 #indactorInfo .nav-tabs>li.active>a{
     border-bottom-color: #428bca !important;
 }
-a, .navbar-inverse .navbar-nav>li>a, .footer_btn, .chkicon {
+a, .footer_btn, .chkicon {
     color: #396ab2 !important;
+}
+.navbar-inverse .navbar-nav>li>a{
+    color:#BBE6FA !important;
 }
 .navbar-inverse .navbar-toggle .icon-bar{
     background-color: #428bca !important;
 }
-a:hover, .navbar-inverse .navbar-nav>li>a:hover, .footer_btn:hover {
-    color: #5876A2 !important;
+a:hover,  .footer_btn:hover {
+    color: #312867 !important;
+    text-decoration: none;
+}
+.navbar-inverse .navbar-nav>li>a:hover{
+    color: #312867 !important;
     text-decoration: none;
 }
 
