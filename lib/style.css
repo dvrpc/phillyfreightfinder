@@ -43,8 +43,11 @@ body, .landing, #sidebar {
     background-color: #DDD;
     border-color:#DDD;
 }
-.footer_btn, #infoheader, .navbar-inverse .navbar-toggle, .navbar-inverse .navbar-nav>.open>a,.navbar-inverse .navbar-nav>.open>a:hover,.navbar-inverse .navbar-nav>.open>a:focus, .navbar-nav>li>a, .navbar-nav>li>.dropdown  {
+.footer_btn, #infoheader {
   background-color: #E9E9E9;  
+}
+.navbar-inverse .navbar-toggle, .navbar-inverse .navbar-nav>.open>a,.navbar-inverse .navbar-nav>.open>a:hover,.navbar-inverse .navbar-nav>.open>a:focus, .navbar-nav>li>a, .navbar-nav>li>.dropdown{
+    background-color: #567FBC;
 }
 .navbar-inverse .navbar-toggle, .navbar-nav > li > .dropdown-menu {
     border-color:#E9E9E9;
@@ -474,6 +477,9 @@ input[type=checkbox]:checked + label, input[type=checkbox]:checked + label > div
 
 .tooltip.right .tooltip-arrow {
     border-right-color: #212C3C;
+}
+#landing{
+    margin-left: 10px;
 }
 .landing {
     z-index: 1029;
