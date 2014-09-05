@@ -107,7 +107,7 @@ a:hover, .navbar-inverse .navbar-nav>li>a:hover, .footer_btn:hover {
     padding: 0px 30px 0px 10px;
 }
 .navbar-inverse .navbar-nav>li>a {
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-family: 'Open Sans', sans-serif;
 }
 .navbar-nav>li>a, .navbar-nav>li>.dropdown {
     margin: 6px 4px;
@@ -180,9 +180,6 @@ a:hover, .navbar-inverse .navbar-nav>li>a:hover, .footer_btn:hover {
     height: 34px;
     line-height: 34px;
     text-align: center;
-}
-.navbar-collapse.in {
-    overflow-y: hidden;
 }
 
 
