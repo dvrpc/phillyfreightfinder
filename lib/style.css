@@ -485,6 +485,11 @@ input[type=checkbox]:checked + label, input[type=checkbox]:checked + label > div
     top: 50px;
     padding-bottom: 20px;
 }
+.landing-content{
+    color: #636363;
+    display: block;
+    padding-top: 10px;
+}
 .landtab-content > .tab-pane {
     display: none;
 }
