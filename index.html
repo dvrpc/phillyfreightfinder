@@ -715,15 +715,9 @@
           </div><!-- /.modal-dialog -->
         </div><!-- /.modal --> 
 
-
-
-        <!-- Layer Group 1 Modal Window -->
-        <div class="modal fade" id="modal_1"></div>
-        <!-- Layer Group 2 Modal Window-->
-        <div class="modal fade" id="modal_2"></div>
         <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
         <script type="text/javascript" src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
-        <script src="lib/assets/jquery.bxslider.min.js"></script>
+        <script src="//cdn.jsdelivr.net/bxslider/4.1.1/jquery.bxslider.min.js"></script>
         <script src="http://code.highcharts.com/highcharts.js"></script>
         <script type="text/javascript" src="lib/core/dyna-icons.js"></script>
         <script type="text/javascript" src="lib/assets/typeahead.min.js"></script>
@@ -786,126 +780,7 @@
                 $(this).find('.alert').remove();
                 $(this).find('form').get(0).reset();
               });
-        
-
-
-
-
-        $(document).ready(function() {
-    
-    /*Highcharts.setOptions({
-        chart: {
-                type: 'pie',
-                backgroundColor: '#396AB2'
-
-            },
-        title: {
-                verticalAlign: 'middle',
-                align: 'center',
-                floating: true,
-                useHTML: true
-            },
-        yAxis: {
-                title: {
-                    text: ''
-                }
-            },
-        credits: {
-                enabled: false
-            },
-        plotOptions: {
-                pie: {
-                    shadow: false,
-                    dataLabels: {
-                        enabled: false},
-                    borderColor: '#335e9f',
-                    borderWidth: 0,
-                    colors: ['#8dd3c7','#ffffb3','#bebada','#fb8072','#80b1d3','#fdb462','#b3de69'],
-                }
-            },
-        series: [{ 
-                size: '230%',
-                innerSize: '130%'
-            }]
-
-    });
-    
-    // Create the chart
-    var ValueChart = {
-            chart: {
-                type: 'pie',
-                backgroundColor: '#396AB2',
-                renderTo: 'containerValue'
-            },
-            
-            title: {
-                verticalAlign: 'middle',
-                align: 'center',
-                floating: true,
-                useHTML: true,
-                text: '<div style="text-align:center;line-height: 0.8;"><span class="chartPrefix">by</span><br><span class="chartLabel">VALUE</span></div>',
-                y: 55
-            },
-             yAxis: {
-                title: {
-                    text: ''
-                }
-            },
-            credits: {
-                enabled: false
-            },
-            tooltip: {
-                formatter: function() {
-                    return '<b>' + this.key + '</b><br/><b>$'+ this.y + '</b> billion<br/>'+ Math.round(this.percentage*100)/100 +'%';
-                }
-            },
-            plotOptions: {
-                pie: {
-                    shadow: false,
-                    dataLabels: {
-                        enabled: false},
-                    borderColor: '#335e9f',
-                    borderWidth: 0,
-                    colors: ['#8dd3c7','#ffffb3','#bebada','#fb8072','#80b1d3','#fdb462','#b3de69'],,
-                    center: ['50%', '120%'],
-                    colors: ['#8dd3c7','#ffffb3','#bebada','#fb8072','#80b1d3','#fdb462','#b3de69'],
-                    startAngle: -90,
-                    endAngle: 90
-
-                }
-            },
-            series: [{
-                id: 'Values',
-                name: 'Value', 
-                size: '230%',
-                innerSize: '130%', 
-                data: []
-            }]
-    };
-
-    $.getJSON('data/value.json', function(data) {
-            var data1 = data.value,
-                dataLen = data1.length,
-                Labels = ["Truck", "Rail", "Water", "Air/Air + Truck","Multiple Modes", "Pipeline", "Other and Unknown"],
-                mapData = [];
-            for (i = 0; i < dataLen; i++){
-                if (data1[i].County === 'DVRPC'){
-                var ValData = [data1[i].Truck, data1[i].Rail, data1[i].Water, data1[i].AAT, data1[i].MM, data1[i].Pipeline, data1[i].Other]
-                }
-            }
-            for (var i = 0; i < ValData.length; i++){
-                mapData.push({
-                    name: Labels[i],
-                    y: ValData[i]})
-            }
-
-            ValueChart.series[0].data = mapData;
-            var chart = new Highcharts.Chart(ValueChart);
-
-        });*/
-
-});
-        
+ 
         </script>
 <!--Google Analytics
         <script type="text/javascript">var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));</script><script type="text/javascript">try {var pageTracker = _gat._getTracker("UA-9825778-1");pageTracker._trackPageview();} catch(err) {}</script>

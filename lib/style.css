@@ -11,10 +11,11 @@ p {
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 h1,h2,h3,h4,h5,h6 {
+
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: 500;
     line-height: 1.1;
-    color: inherit;
+    color: #396ab2;
 }
 label {
     font-weight: 400;
