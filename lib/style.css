@@ -51,7 +51,7 @@ body, .landing, #sidebar {
 }
 
 .navbar-inverse .navbar-toggle:hover, .navbar-inverse .navbar-toggle:focus, .navbar-inverse .navbar-nav>li>a:hover{
-    background-color: #312867;
+    background-color: #355095;
     border-color:#312867;
 }
 .navbar-inverse .navbar-toggle, .navbar-nav > li > .dropdown-menu {
