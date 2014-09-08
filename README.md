@@ -1,4 +1,4 @@
 PhillyFreightFinder
 ===================
 
-[Demo page](http://www.dvrpcfreight.github.io/dynamic-icons)
+[Demo page](http://dvrpcfreight.github.io/dynamic-icons/)
