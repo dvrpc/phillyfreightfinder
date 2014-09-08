@@ -10,12 +10,16 @@ body {
 p {
     font-family: 'Open Sans', sans-serif;
 }
+h1{
+    color: #312867;
+}
+h2,h3,h4,h5,h6{
+    color: #396ab2;
+}
 h1,h2,h3,h4,h5,h6 {
-
     font-family: 'Open Sans', sans-serif;
     font-weight: 600;
     line-height: 1.1;
-    color: #396ab2;
 }
 .hpbanner h2, .hpbanner h3, .hpbanner h4 {
     color: #fff!important;
@@ -54,7 +58,10 @@ body, .landing, #sidebar {
     background-color: #355095;
     border-color:#312867;
 }
-.navbar-inverse .navbar-toggle, .navbar-nav > li > .dropdown-menu {
+.navbar-inverse .navbar-toggle{
+    border-size:0px;
+}
+.navbar-nav > li > .dropdown-menu {
     border-color:#E9E9E9;
 }
 #indactorInfo .nav-tabs>li.active>a{
@@ -67,7 +74,7 @@ a, .footer_btn, .chkicon {
     color:#BBE6FA !important;
 }
 .navbar-inverse .navbar-toggle .icon-bar{
-    background-color: #428bca !important;
+    background-color: #fff !important;
 }
 a:hover, .footer_btn:hover {
     color: #312867 !important;
