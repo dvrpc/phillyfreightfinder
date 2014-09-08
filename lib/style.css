@@ -10,10 +10,10 @@ body {
 p {
     font-family: 'Open Sans', sans-serif;
 }
-h1{
+h1, h2{
     color: #312867;
 }
-h2,h3,h4,h5,h6{
+h3,h4,h5,h6{
     color: #396ab2;
 }
 h1,h2,h3,h4,h5,h6 {
