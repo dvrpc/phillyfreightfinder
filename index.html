@@ -972,33 +972,21 @@
                         <div class="panel-group legend">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                   <a href="modals/truck.html" data-toggle="modal" data-target="#truckModal" ><div class="PFFicon-info legicon truckinfo" > </div></a>
+                                   <a href="modals/truck.html" data-toggle="modal" data-target="#truckModal" ><div class="panelinfo legicon truckinfo" > </div></a>
                                     <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion_" href="#Trucking-layers">
                                         <div class="panellink truckinfo">
                                             <span>Trucking/highways</span>
                                         </div>
                                     </a>
-                                    <div class="checked_all togglebox"><div id="" class="chkicon glyphicon glyphicon-check"> </div></div>
+                                    <a class="checked_all togglebox"></a>
                                 </div> 
                                 <div id="Trucking-layers" class="panel-collapse collapse">
-                                    <div class="panel-body" style="padding: 0;">
-                                            <input type="hidden" class="Chkd" value="false" /> 
-                                        <div class="checkbox" data-toggle="tooltip" title="Click to toggle layer">
-                                            <input type="checkbox" name="LayerCont" id="freeway" class="layer" z-index="8" checked>
-                                            <label class="freeway" for="freeway">Highway</label>
-                                        </div>
-                                        <div class="checkbox" data-toggle="tooltip" title="Click to toggle layer">
-                                            <input type="checkbox" name="LayerCont" id="nhsgroup" class="layer" z-index="15" checked>
-                                            <label class="NHSconn" for="nhsgroup">NHS Connector</label>
-                                        </div>
-                                        <div class="checkbox" data-toggle="tooltip" title="Click to toggle layer">
-                                            <input type="checkbox" name="LayerCont" id="trkparkgroup" class="layer" z-index="16" checked>
-                                            <label class="trckpark" for="trkparkgroup">Truck Parking</label>
-                                        </div>
-                                        <div class="checkbox last" data-toggle="tooltip" title="Click to toggle layer">
-                                            <input type="checkbox" name="LayerCont" id="hwyrivcrossing" class="layer" z-index="5" checked>
-                                            <label class="hwybrdg" for="hwyrivcrossing">Highway River Crossing</label>
-                                        </div>
+                                    <div class="panel-body legPanel" style="padding: 0;">
+                                            <input type="checkbox" name="LayerCont" id="freeway" class="layer dyna" z-index="8" >
+                                            <input type="checkbox" name="LayerCont" id="nhsgroup" class="layer dyna" z-index="15" >
+                                            <input type="checkbox" name="LayerCont" id="trkparkgroup" class="layer dyna" z-index="16" >
+                                            <input type="checkbox" name="LayerCont" id="hwyrivcrossing" class="layer dyna" z-index="5" >
+                                          
                                     </div>
                                 </div>
                             </div>
@@ -1007,37 +995,31 @@
                        <div class="panel-group legend">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    <a href="../modals/rail.html" data-toggle="modal" data-target="#railModal" ><div class="PFFicon-info legicon railinfo"> </div></a>
+                                    <a href="../modals/rail.html" data-toggle="modal" data-target="#railModal" ><div class="panelinfo legicon railinfo"> </div></a>
                                     <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion_" href="#Rail-layers">
                                         <div class="panellink railinfo">
                                             <span>Freight Rail</span>
                                         </div>
                                     </a>
-                                    <div class="checked_all togglebox" ><div id="" class="chkicon glyphicon glyphicon-check"></div></div>
+                                    <a class="checked_all togglebox"></a>
                                 </div> 
                                 <div id="Rail-layers" class="panel-collapse collapse">
-                                    <div class="panel-body" style="padding: 0;">
-                                        <input type="hidden" class="Chkd" value="false" /> 
-                                        <div class="checkbox" data-toggle="tooltip" title="Click to toggle layer">
-                                            <input type="checkbox" name="LayerCont" id="railines" class="layer" z-index="9" checked>
-                                            <label class="raillin" for="railines">Rail Line</label>
-                                        </div>
-                                        <div class="checkbox" data-toggle="tooltip" title="Click to toggle layer">
-                                            <input type="checkbox" name="LayerCont" id="railyardgroup" class="layer" z-index="5" checked>
-                                            <label class="railyrd" for="railyardgroup">Rail Yard</label>
-                                        </div>
-                                        <div class="checkbox" data-toggle="tooltip" title="Click to toggle layer">
-                                            <input type="checkbox" name="LayerCont" id="intermodalgroup" class="layer" z-index="4" checked>
-                                            <label class="intermod" for="intermodalgroup">Intermodal Rail Yard</label>
-                                        </div>
-                                        <div class="checkbox" data-toggle="tooltip" title="Click to toggle layer">
-                                            <input type="checkbox" name="LayerCont" id="gradexing" class="layer" z-index="14" checked>
-                                            <label class="gradex" for="gradexing">Class I Grade Crossing</label>
-                                        </div>
-                                        <div class="checkbox last" data-toggle="tooltip" title="Click to toggle layer">
-                                            <input type="checkbox" name="LayerCont" id="railbridge" class="layer" z-index="13" checked>
-                                            <label class="railbrdg" for="railbridge">Rail River Crossing</label>
-                                        </div>
+                                    <div class="panel-body legPanel" style="padding: 0;">
+                                        
+                                            <input type="checkbox" name="LayerCont" id="railines" class="layer dyna" z-index="9" >
+                                       
+                                      
+                                            <input type="checkbox" name="LayerCont" id="railyardgroup" class="layer dyna" z-index="5" >
+                          
+                                        
+                                            <input type="checkbox" name="LayerCont" id="intermodalgroup" class="layer dyna" z-index="4" >
+ 
+                                       
+                                            <input type="checkbox" name="LayerCont" id="gradexing" class="layer dyna" z-index="14" >
+           
+                                        
+                                            <input type="checkbox" name="LayerCont" id="railbridge" class="layer dyna" z-index="13" >
+                              
                                     
                                     </div>
                                 </div>
@@ -1047,29 +1029,23 @@
                         <div class="panel-group legend">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    <a href="modals/port.html" data-toggle="modal" data-target="#portModal" ><div class="PFFicon-info legicon portinfo"> </div></a>
+                                    <a href="modals/port.html" data-toggle="modal" data-target="#portModal" ><div class="panelinfo legicon portinfo"> </div></a>
                                     <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion_" href="#port-layers">
                                         <div class="panellink portinfo">
                                             <span>Ports/waterways</span>
                                         </div>
                                     </a>
-                                    <div class="checked_all togglebox" ><div id="" class="chkicon glyphicon glyphicon-check"></div></div>
+                                    <a class="checked_all togglebox"></a>
                                 </div> 
                                 <div id="port-layers" class="panel-collapse collapse">
-                                    <div class="panel-body" style="padding: 0;">
-                                        <input type="hidden" class="Chkd" value="false" /> 
-                                        <div class="checkbox" data-toggle="tooltip" title="Click to toggle layer">
-                                            <input type="checkbox" name="LayerCont" id="river" class="layer" z-index="4" checked>
-                                            <label class="riveric" for="river">Navigable River</label>
-                                        </div>
-                                        <div class="checkbox" data-toggle="tooltip" title="Click to toggle layer">
-                                            <input type="checkbox" name="LayerCont" id="portGroup" class="layer" z-index="5" checked>
-                                            <label class="portic" for="portGroup">Port Terminal</label>
-                                        </div>
-                                        <div class="checkbox last" data-toggle="tooltip" title="Click to toggle layer">
-                                            <input type="checkbox" name="LayerCont" id="anchorageGroup" class="layer" z-index="6" checked>
-                                            <label class="anchic" for="anchorageGroup">Anchorage</label>
-                                        </div>
+                                    <div class="panel-body legPanel" style="padding: 0;">
+                                        <input type="checkbox" name="LayerCont" id="river" class="layer dyna" z-index="4" >
+                                   
+                                        <input type="checkbox" name="LayerCont" id="portGroup" class="layer dyna" z-index="5" >
+     
+                                       <input type="checkbox" name="LayerCont" id="anchorageGroup" class="layer dyna" z-index="6" >
+
+                                       
                                     </div>
                                 </div>
                             </div>
@@ -1078,29 +1054,23 @@
                         <div class="panel-group legend">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    <a href="modals/air.html" data-toggle="modal" data-target="#airModal" ><div class="PFFicon-info legicon airinfo"> </div></a>
+                                    <a href="modals/air.html" data-toggle="modal" data-target="#airModal" ><div class="panelinfo legicon airinfo"> </div></a>
                                     <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion_" href="#Air-layers">
                                         <div class="panellink airinfo">
                                             <span>Airports</span>
                                         </div>
                                     </a>
-                                    <div class="checked_all togglebox" ><div id="" class="chkicon glyphicon glyphicon-check"></div></div>
+                                    <a class="checked_all togglebox"></a>
                                 </div> 
                                 <div id="Air-layers" class="panel-collapse collapse">
-                                    <div class="panel-body" style="padding: 0px;">
-                                        <input type="hidden" class="Chkd" value="false" />
-                                        <div class="checkbox" data-toggle="tooltip" title="Click to toggle layer">
-                                            <input type="checkbox" name="LayerCont" id="commGroup" class="layer" z-index="4" checked>
-                                            <label class="commic" for="commGroup">Commercial</label>
-                                        </div>
-                                        <div class="checkbox" data-toggle="tooltip" title="Click to toggle layer">
-                                            <input type="checkbox" name="LayerCont" id="relGroup" class="layer" z-index="4" checked>
-                                            <label class="relic" for="relGroup">Reliever</label>
-                                        </div>
-                                        <div class="checkbox last" data-toggle="tooltip" title="Click to toggle layer">
-                                            <input type="checkbox" name="LayerCont" id="heliport" class="layer" z-index="4" checked>
-                                            <label class="helic" for="heliport">Heliport</label>
-                                        </div>
+                                    <div class="panel-body legPanel" style="padding: 0px;">
+                                        <input type="checkbox" name="LayerCont" id="commGroup" class="layer dyna" z-index="4" >
+ 
+                                        <input type="checkbox" name="LayerCont" id="relGroup" class="layer dyna" z-index="4" >
+
+                                        <input type="checkbox" name="LayerCont" id="heliport" class="layer dyna" z-index="4" >
+
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -1109,29 +1079,23 @@
                         <div class="panel-group legend">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    <a href="modals/fcenters.html" data-toggle="modal" data-target="#fcModal" ><div class="PFFicon-info legicon fcinfo"> </div></a>
+                                    <a href="modals/fcenters.html" data-toggle="modal" data-target="#fcModal" ><div class="panelinfo legicon fcinfo"> </div></a>
                                     <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion_" href="#FC-layers">
                                         <div class="panellink fcinfo">
                                             <span>Freight Centers</span>
                                         </div>
                                     </a>
-                                    <div class="checked_all togglebox" ><div id="" class="chkicon glyphicon glyphicon-check"></div></div>
+                                    <a class="checked_all togglebox"></a>
                                 </div> 
                                 <div id="FC-layers" class="panel-collapse collapse">
-                                    <div class="panel-body" style="padding: 0px;">
-                                        <input type="hidden" class="Chkd" value="false" />
-                                        <div class="checkbox" data-toggle="tooltip" title="Click to toggle layer">
-                                            <input type="checkbox" name="LayerCont" id="FCmegagroup" class="layer" z-index="1" checked>
-                                            <label class="megic" for="FCmegagroup">Mega Center</label>
-                                        </div>
-                                        <div class="checkbox" data-toggle="tooltip" title="Click to toggle layer">
-                                            <input type="checkbox" name="LayerCont" id="FCmajorgroup" class="layer" z-index="2" checked>
-                                            <label class="majic" for="FCmajorgroup">Major Center</label>
-                                        </div>
-                                        <div class="checkbox last" data-toggle="tooltip" title="Click to toggle layer">
-                                            <input type="checkbox" name="LayerCont" id="FCintergroup" class="layer" z-index="3" checked>
-                                            <label class="interic" for="FCintergroup">Intermediate Center</label>
-                                        </div>
+                                    <div class="panel-body legPanel" style="padding: 0px;">
+                                        <input type="checkbox" name="LayerCont" id="FCmegagroup" class="layer dyna" z-index="1" >
+
+                                        <input type="checkbox" name="LayerCont" id="FCmajorgroup" class="layer dyna" z-index="2" >
+
+                                        <input type="checkbox" name="LayerCont" id="FCintergroup" class="layer dyna" z-index="3" >
+
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -1140,21 +1104,18 @@
                         <div class="panel-group legend">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    <a href="http://dvrpcfreight.github.io/phillyfreightfinder/modals/pipe.html" data-toggle="modal" data-target="#pipeModal" ><div class="PFFicon-info legicon energyinfo" > </div></a>
+                                    <a href="http://dvrpcfreight.github.io/phillyfreightfinder/modals/pipe.html" data-toggle="modal" data-target="#pipeModal" ><div class="panelinfo legicon energyinfo" > </div></a>
                                     <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion_" href="#energy-layers">
                                         <div class="panellink energyinfo">
                                             <span>Energy & Utilities</span>
                                         </div>
                                     </a>
-                                    <div class="checked_all togglebox" ><div id="" class="chkicon glyphicon glyphicon-check"></div></div>
+                                    <a class="checked_all togglebox"></a>
                                 </div> 
                                 <div id="energy-layers" class="panel-collapse collapse">
-                                    <div class="panel-body" style="padding: 0px;">
-                                        <input type="hidden" class="Chkd" value="true" />
-                                        <div class="checkbox last" data-toggle="tooltip" title="Click to toggle layer">
-                                            <input type="checkbox" name="LayerCont" id="pipelines" class="layer" z-index="10">
-                                            <label id="pipelabel" class="pipeic" for="pipelines">Pipeline <span id='pipehidden' style='color:#bbbbbb;'></span></label>
-                                        </div>
+                                    <div class="panel-body legPanel" style="padding: 0px;">
+                                       <input type="checkbox" name="LayerCont" id="pipelines" class="layer dyna" z-index="10">
+                                       
                                     </div>
                                 </div>
                             </div>
@@ -1163,21 +1124,18 @@
                         <div class="panel-group legend">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    <a href="modals/community.html" data-toggle="modal" data-target="#commModal" ><div class="PFFicon-info legicon communityinfo"> </div></a>
+                                    <a href="modals/community.html" data-toggle="modal" data-target="#commModal" ><div class="panelinfo legicon communityinfo"> </div></a>
                                     <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion_" href="#community-layers">
                                         <div class="panellink communityinfo">
                                             <span>Community</span>
                                         </div>
                                     </a>
-                                    <div class="checked_all togglebox" ><div id="" class="chkicon glyphicon glyphicon-check"></div></div>
+                                    <a class="checked_all togglebox"></a>
                                 </div> 
                                 <div id="community-layers" class="panel-collapse collapse">
-                                    <div class="panel-body" style="padding: 0px;">
-                                        <input type="hidden" class="Chkd" value="false" />
-                                        <div class="checkbox last" data-toggle="tooltip" title="Click to toggle layer">
-                                            <input type="checkbox" name="LayerCont" id="fgneighbor" class="layer" z-index="1" checked>
-                                            <label class="fgnic" for="fgneighbor">Freight as a Good Neighbor</label>
-                                        </div>
+                                    <div class="panel-body legPanel" style="padding: 0px;">
+                                        <input type="checkbox" name="LayerCont" id="fgneighbor" class="layer dyna" z-index="1" >
+                                        
                                     </div>
                                 </div>
                             </div>
