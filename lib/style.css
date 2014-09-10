@@ -257,7 +257,7 @@ a:hover, .footer_btn:hover {
     width: 30px;
     height: 31px;
     border-left: 1px solid rgb(228, 228, 228);
-    text-align: center;
+    padding-left:7px;
     line-height: 31px;
     float: left;
     font-weight: bold;
@@ -324,7 +324,7 @@ input[type=checkbox]:checked + label, input[type=checkbox]:checked + label > div
 /*-- Preset Info Window Styles --*/
 /*-- Advanced Edit Only -------*/
 #infobox_ {
-    position: fixed;
+    position: absolute;
     bottom: 0;
     right: 20px;
     height: 34px;
@@ -820,7 +820,12 @@ ul.bxslider{
     -webkit-padding-start: 0px;
     -webkit-margin-before: 0px;}
 
-    
+.dataTabPanel{
+            padding: 10px !important;
+            font-weight: 600;
+            font-size: 20px;
+        }
+
 /*PFF Landing Page Styles */
             .pfflanding{z-index: 1029;
                 display: block;
