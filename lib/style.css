@@ -1235,7 +1235,7 @@ Version: 1.0
 
 /* Marker setup */
 .awesome-marker {
-  background: url('images/markers-soft.png') no-repeat 0 0;
+  background: url('core/images/markers-soft.png') no-repeat 0 0;
   width: 35px;
   height: 46px;
   position:absolute;
@@ -1246,7 +1246,7 @@ Version: 1.0
 }
 
 .circle-md {
-  background: url('images/open-freight_crc-md.png') no-repeat 0 0;
+  background: url('core/images/open-freight_crc-md.png') no-repeat 0 0;
   width: 32px;
   height: 32px;
   position:absolute;
@@ -1256,7 +1256,7 @@ Version: 1.0
   text-align: center;
 }
 .circle-sm {
-  background: url('images/open-freight_crc-sm.png') no-repeat 0 0;
+  background: url('core/images/open-freight_crc-sm.png') no-repeat 0 0;
   width: 28px;
   height: 28px;
   position:absolute;
@@ -1266,7 +1266,7 @@ Version: 1.0
   text-align: center;
 }
 .circle-cm {
-  background: url('images/open-freight_cm.png') no-repeat 0 0;
+  background: url('core/images/open-freight_cm.png') no-repeat 0 0;
   width: 28px;
   height: 36px;
   position:absolute;
@@ -1277,7 +1277,7 @@ Version: 1.0
 }
 
 .crc-md {
-  background: url('images/dyna_crc-md.png') no-repeat 0 0;
+  background: url('core/images/dyna_crc-md.png') no-repeat 0 0;
   width: 32px;
   height: 32px;
   position:absolute;
@@ -1287,7 +1287,7 @@ Version: 1.0
   text-align: center;
 }
 .crc-sm {
-  background: url('images/dyna_crc-sm.png') no-repeat 0 0;
+  background: url('core/images/dyna_crc-sm.png') no-repeat 0 0;
   width: 28px;
   height: 28px;
   position:absolute;
@@ -1297,7 +1297,7 @@ Version: 1.0
   text-align: center;
 }
 .crc-cm {
-  background: url('images/dyna_crc-cm.png') no-repeat 0 0;
+  background: url('core/images/dyna_crc-cm.png') no-repeat 0 0;
   width: 28px;
   height: 36px;
   position:absolute;
@@ -1307,22 +1307,22 @@ Version: 1.0
   text-align: center;
 }
 .awesome-marker-shadow {
-  background: url('images/markers-shadow.png') no-repeat 0 0;
+  background: url('core/images/markers-shadow.png') no-repeat 0 0;
   width: 36px;
   height: 16px;
 }
 .circle-md-shadow {
-  background: url('images/circle-md-shadow.png') no-repeat 0 0;
+  background: url('core/images/circle-md-shadow.png') no-repeat 0 0;
   width: 34px;
   height: 34px;
 }
 .circle-sm-shadow {
-  background: url('images/circle-sm-shadow.png') no-repeat 0 0;
+  background: url('core/images/circle-sm-shadow.png') no-repeat 0 0;
   width: 34px;
   height: 34px;
 }
 .circle-cm-shadow {
-  background: url('images/markers-shadow.png') no-repeat 0 0;
+  background: url('core/images/markers-shadow.png') no-repeat 0 0;
   width: 36px;
   height: 16px;
 }
@@ -1330,11 +1330,11 @@ Version: 1.0
 @media (min--moz-device-pixel-ratio: 1.5),(-o-min-device-pixel-ratio: 3/2),
 (-webkit-min-device-pixel-ratio: 1.5),(min-device-pixel-ratio: 1.5),(min-resolution: 1.5dppx) {
  .awesome-marker {
-  background-image: url('images/markers-soft@2x.png');
+  background-image: url('core/images/markers-soft@2x.png');
   background-size: 720px 46px;
  }
  .awesome-marker-shadow {
-  background-image: url('images/markers-shadow@2x.png');
+  background-image: url('core/images/markers-shadow@2x.png');
   background-size: 35px 16px;
  }
 }
