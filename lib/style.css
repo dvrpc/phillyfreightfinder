@@ -349,7 +349,7 @@ input[type=checkbox]:checked + label, input[type=checkbox]:checked + label > div
     -moz-border-radius: 5px 5px 0 0;
 }
 .infowrap {
-    height: 390px;
+    height: 600px;
     border-width: 1px;
     border-left-style: solid;
     border-right-style: solid;
