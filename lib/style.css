@@ -1213,3 +1213,399 @@ label.fgnic {background: url('images/flat/community.png') no-repeat;}
 .airinfo{color:#216937;}
 .energyinfo{color:#EFD315;}
 .communityinfo{color:#54C4C8;}
+
+
+/*-----------------------------------------------*/
+/*------------   Dynamic Icons Styles  ----------*/
+/*-----------------------------------------------*/
+
+
+/*
+Open Freight Application Dynamic Icon Set
+Author: Michael Ruane, DVRPC
+Version: 1.0.0
+
+//////////////////////////////////////////
+Build based  on Awesome Marker 
+-----------------------------------------
+Author: L. Voogdt
+License: MIT
+Version: 1.0
+*/
+
+/* Marker setup */
+.awesome-marker {
+  background: url('images/markers-soft.png') no-repeat 0 0;
+  width: 35px;
+  height: 46px;
+  position:absolute;
+  left:0;
+  top:0;
+  display: block;
+  text-align: center;
+}
+
+.circle-md {
+  background: url('images/open-freight_crc-md.png') no-repeat 0 0;
+  width: 32px;
+  height: 32px;
+  position:absolute;
+  left:0;
+  top:0;
+  display: block;
+  text-align: center;
+}
+.circle-sm {
+  background: url('images/open-freight_crc-sm.png') no-repeat 0 0;
+  width: 28px;
+  height: 28px;
+  position:absolute;
+  left:0;
+  top:0;
+  display: block;
+  text-align: center;
+}
+.circle-cm {
+  background: url('images/open-freight_cm.png') no-repeat 0 0;
+  width: 28px;
+  height: 36px;
+  position:absolute;
+  left:0;
+  top:0;
+  display: block;
+  text-align: center;
+}
+
+.crc-md {
+  background: url('images/dyna_crc-md.png') no-repeat 0 0;
+  width: 32px;
+  height: 32px;
+  position:absolute;
+  left:0;
+  top:0;
+  display: block;
+  text-align: center;
+}
+.crc-sm {
+  background: url('images/dyna_crc-sm.png') no-repeat 0 0;
+  width: 28px;
+  height: 28px;
+  position:absolute;
+  left:0;
+  top:0;
+  display: block;
+  text-align: center;
+}
+.crc-cm {
+  background: url('images/dyna_crc-cm.png') no-repeat 0 0;
+  width: 28px;
+  height: 36px;
+  position:absolute;
+  left:0;
+  top:0;
+  display: block;
+  text-align: center;
+}
+.awesome-marker-shadow {
+  background: url('images/markers-shadow.png') no-repeat 0 0;
+  width: 36px;
+  height: 16px;
+}
+.circle-md-shadow {
+  background: url('images/circle-md-shadow.png') no-repeat 0 0;
+  width: 34px;
+  height: 34px;
+}
+.circle-sm-shadow {
+  background: url('images/circle-sm-shadow.png') no-repeat 0 0;
+  width: 34px;
+  height: 34px;
+}
+.circle-cm-shadow {
+  background: url('images/markers-shadow.png') no-repeat 0 0;
+  width: 36px;
+  height: 16px;
+}
+/* Retina displays */
+@media (min--moz-device-pixel-ratio: 1.5),(-o-min-device-pixel-ratio: 3/2),
+(-webkit-min-device-pixel-ratio: 1.5),(min-device-pixel-ratio: 1.5),(min-resolution: 1.5dppx) {
+ .awesome-marker {
+  background-image: url('images/markers-soft@2x.png');
+  background-size: 720px 46px;
+ }
+ .awesome-marker-shadow {
+  background-image: url('images/markers-shadow@2x.png');
+  background-size: 35px 16px;
+ }
+}
+
+.awesome-marker i {
+  color: #333;
+  margin-top: 6px;
+  display: inline-block;
+  font-size: 23px;
+}
+
+.circle-md  i {
+  color: #333;
+  margin-top: 5px;
+  display: inline-block;
+  font-size: 24px;
+
+}
+.circle-sm  i {
+  color: #333;
+  margin-top: 4px;
+  display: inline-block;
+  font-size: 20px;
+
+}
+.circle-cm  i {
+  color: #333;
+  margin-top: 4px;
+  display: inline-block;
+  font-size: 20px;
+
+}
+
+.circle-md  .icon-white, .circle-sm  .icon-white, .circle-cm .icon-white{
+  color: #fff;
+}
+
+.awesome-marker .icon-white {
+  color: #fff;
+}
+
+/* Colors */
+.open-freight-icon-purple {
+  background-position: -1px 0;
+}
+.open-freight-icon-gold {
+  background-position: -35px 0;
+}
+.open-freight-icon-blue {
+  background-position: -69px 0;
+}
+.open-freight-icon-yellow {
+  background-position: -103px 0;
+}
+.open-freight-icon-red {
+  background-position: -137px 0;
+}
+.open-freight-icon-orange {
+  background-position: -171px 0;
+}
+.open-freight-icon-peach {
+  background-position: -205px 0;
+}
+.open-freight-icon-teal {
+  background-position: -239px 0;
+}
+.open-freight-icon-ltgreen {
+  background-position: -273px 0;
+}
+.open-freight-icon-green {
+  background-position: -307px 0;
+}
+.open-freight-icon-forest {
+  background-position: -341px 0;
+}
+
+.awesome-marker-icon-red {
+  background-position: 0 0;
+}
+
+.awesome-marker-icon-darkred {
+  background-position: -180px 0;
+}
+
+.awesome-marker-icon-lightred {
+  background-position: -360px 0;
+}
+
+.awesome-marker-icon-orange {
+  background-position: -36px 0;
+}
+
+.awesome-marker-icon-beige {
+  background-position: -396px 0;
+}
+
+.awesome-marker-icon-green {
+  background-position: -72px 0;
+}
+
+.awesome-marker-icon-darkgreen {
+  background-position: -252px 0;
+}
+
+.awesome-marker-icon-lightgreen {
+  background-position: -432px 0;
+}
+
+.awesome-marker-icon-blue {
+  background-position: -108px 0;
+}
+
+.awesome-marker-icon-darkblue {
+  background-position: -216px 0;
+}
+
+.awesome-marker-icon-lightblue {
+  background-position: -468px 0;
+}
+
+.awesome-marker-icon-purple {
+  background-position: -144px 0;
+}
+
+.awesome-marker-icon-darkpurple {
+  background-position: -288px 0;
+}
+
+.awesome-marker-icon-pink {
+  background-position: -504px 0;
+}
+
+.awesome-marker-icon-cadetblue {
+  background-position: -324px 0;
+}
+
+.awesome-marker-icon-white {
+  background-position: -574px 0;
+}
+
+.awesome-marker-icon-gray {
+  background-position: -648px 0;
+}
+
+.awesome-marker-icon-lightgray {
+  background-position: -612px 0;
+}
+
+.awesome-marker-icon-black {
+  background-position: -682px 0;
+}
+
+/*
+Legend and Info Window Support
+*/
+.circle-md.legend-icon, .circle-cm.legend-icon, .circle-sm.legend-icon {
+    left: 16px !important;
+}
+.circle-md.legend-icon {
+    top: 6px !important;
+}
+.circle-md.legend-icon  i {
+  color: #333;
+  margin-top: 5px;
+  display: inline-block;
+  font-size: 22px;
+
+}
+.circle-cm.legend-icon{
+    top: 5px !important;
+}
+.circle-sm.legend-icon{
+    top: 8px !important;
+}
+
+#iconography.dynico {
+    font-size: 26px;
+    color: #fff;
+    padding: 5px;
+}
+.markerBox.cm{
+    width: 38px;
+    height: 44px;
+    border-style: solid;
+    border-width: 4px;
+    z-index: -200;
+    margin-top: -32px;
+    margin-left: -4px;
+}
+.markerBox.sm{
+    width: 36px;
+    height: 36px;
+    border-style: solid;
+    border-width: 4px;
+    z-index: -200;
+    margin-top: -31px;
+    margin-left: -3px;
+}
+.markerBox.md{
+    width: 40px;
+    height: 40px;
+    border-style: solid;
+    border-width: 4px;
+    z-index: -200;
+    margin-top: -35px;
+    margin-left: -3px;
+}
+#selectedIcon{
+    z-index:2000!important;
+}
+.purple, .teal, .blue, .gold,.yellow,.red,.orange,.peach,.ltgreen{
+  color:#fff!important;
+}
+.purple{
+  background-color:#884C9E!important;
+}
+.teal{
+ background-color:#54C4C8!important;
+}
+.blue{
+ background-color:#1C75BC!important;
+}
+.gold{
+ background-color:#FBA919!important;
+}
+.yellow{
+ background-color:#EFD315!important;
+}
+.red{
+ background-color:#C1332B!important;
+}
+.orange{
+ background-color:#F26122!important;
+}
+.peach{
+ background-color:#F9AB90!important;
+}
+.ltgreen{
+ background-color:#B0D39B!important;
+}
+/* Dyna marker Set */
+.dyna-mark-icon-purple {
+  background-position: -1px 0;
+}
+.dyna-mark-icon-orange {
+  background-position: -35px 0;
+}
+.dyna-mark-icon-blue {
+  background-position: -69px 0;
+}
+.dyna-mark-icon-green {
+  background-position: -103px 0;
+}
+.dyna-mark-icon-red {
+  background-position: -137px 0;
+}
+.dyna-mark-icon-ltred {
+  background-position: -171px 0;
+}
+.dyna-mark-icon-pink {
+  background-position: -205px 0;
+}
+.dyna-mark-icon-ltblue {
+  background-position: -239px 0;
+}
+.dyna-mark-icon-ltgreen {
+  background-position: -273px 0;
+}
+.dyna-mark-icon-grey {
+  background-position: -307px 0;
+}
+.dyna-mark-icon-black {
+  background-position: -341px 0;
+}
