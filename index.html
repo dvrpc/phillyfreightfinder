@@ -374,15 +374,16 @@
                 </div>
                 <div id ='data' class='tab-pane landing-content' style='color:#333333;'>
                     <div class='center-block col-md-10 ' style='float:none;'>
-                        <h3>About our data</h3> 
+                        <h3>Our Data</h3> 
                         <div class='col-md-6 col-lg-6'>
                         <p><i>PhillyFreightFinder</i> was created primarily as a platform for data. This framework is intended to improve the access to freight facility data throughout the region in order to improve planning, economic development, and public awareness around freight in the Delaware Valley.</p>
                         <p>Our data sets have been developed through years of planning studies in the region. In addition, regional private sector and public partners have contributed valuable data related to the appropriate nomenclature of facilities and have evaluated our datasets to further refine the accuracy of <i>PhillyFreightFinder</i>. These partners have also been instrumental in sharing activity data that helps our regional partners to better understand priorities across the Delaware Valley.</p>
-                        <p>Below you will find details about each of our data layers and links to download the current data available in PhillyFreightFinder. If you require additional information about the raw datasets please contact Michael Ruane, Transportation Planner at 215.588.8226 or by email <a href="mailto:mruane@dvrpc.org">mruane@dvrpc.org</a>.</p><br/></div>
+                        <p>Below you will find details about each of our data layers and links to download the current data available in PhillyFreightFinder.</p><br/></div>
                         <div class='col-md-6 col-lg-6'>
                             <div class="well well-sm"><p><b>PLEASE NOTE:</b><br/>
                             The contents and information contained in this application will be updated on a regular basis as new information is available. However, at any one point in time, some data may not reflect the most current conditions. At the present time, this mapping tool only contains infrastructure and facilities within the official DVRPC region.</p>
                             <p>The format and information on this map may be updated or changed at any time. This map does not expand the liability of DVRPC, state, local, and other agencies beyond existing law.</p></div>
+                            <p>If you require additional information about the raw datasets please contact Michael Ruane, Transportation Planner at 215.588.8226 or by email <a href="mailto:mruane@dvrpc.org">mruane@dvrpc.org</a>.</p>
                         </div>
                         <div class='clearfix'></div>
                         <div class='col-md-12 '>
@@ -544,7 +545,7 @@
                                                     <td>Average Annual Daily Truck Traffic (AADTT)</td>
                                                     <td>--</td>
                                                     <td>--</td>
-                                                    <td>0--</td>
+                                                    <td>--</td>
                                                 </tr>
                                                 <tr>
                                                     <td>Truck share of AADT</td>
@@ -690,7 +691,9 @@
                                         </div>
                                         <div class="well well-sm"> 
                                         <h4>Class I Grade Crossings</h4>Last update: 05-2014
-                                        <p>The DVRPC Class I Grade Crossing data set is an extraction of the NATIONAL DATA SET NAME with details related to the regional freight system. This data set includes only those grade crossings that exist on Class I mainlines in the Delaware Valley.</p>
+                                        <p>The DVRPC Class I Grade Crossing data set is an extraction of the U.S. DOT National Highway-Rail Crossing Inventory with details related to the regional freight system. This data set includes only those grade crossings that exist on Class I mainlines in the Delaware Valley.</p>
+                                        </div>
+                                        <div class="well well-sm">
                                         <h4>Railroad River Crossing</h4>Last update: 05-2014
                                         <p>The DVRPC Railroad River Crossing data layer was developed to identify key bridges in the region that span major rivers and can be considered crucial to interstate commerce. These bridge were mapped as point features identifying the center point location of the facility. Additional inputs were on the facilities was based on Department of Transportation and rail carrier data.</p>
                                         <table class="table table-striped">
@@ -1283,7 +1286,7 @@
         <script type="text/javascript" src="lib/assets/numeral.min.js"></script> 
         <!--<script type="text/javascript" src="lib/assets/jquery-1.10.2.min.js"></script>
         <script type="text/javascript" src="lib/assets/leaflet.js"></script>-->
-        <!--<script src="lib/assets/jquery.nicescroll.min.js"></script>-->
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.5.1/jquery.nicescroll.min.js"></script>
         <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>  
         <!--<script type="text/javascript" src="lib/assets/bootstrap.min.js"></script>
         <script type="text/javascript" src="lib/assets/jquery.address.min.js"></script>-->
@@ -1338,6 +1341,12 @@
                 $(this).find('.alert').remove();
                 $(this).find('form').get(0).reset();
               });
+
+              $(document).ready(
+                function() {  
+                  $("#pFFlanding").niceScroll();
+                }
+              );
  
         </script>
 <!--Google Analytics
