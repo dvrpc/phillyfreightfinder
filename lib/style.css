@@ -227,6 +227,7 @@ a:hover, .footer_btn:hover {
     padding: 0 !important;
 }
 .panellink {
+    height: 31px;
     margin-left: 45px;
     margin-right: 35px;
     padding: 3px 15px 4px 0;
