@@ -3,6 +3,7 @@ html,body,#sidebar,#container {
     margin: 0;
 }
 body {
+    font-size: 13px;
     padding-top: 50px;
     font-family: 'Open Sans', sans-serif;
     overflow-y: hidden;
@@ -83,6 +84,13 @@ a:hover, .footer_btn:hover {
 .navbar-inverse .navbar-nav>li>a:hover{
     color: #fff !important;
     text-decoration: none;
+}
+.left{
+    display:inline-block;
+}
+.right{
+    display:inline-block; 
+    float:right;
 }
 
 
