@@ -92,6 +92,16 @@ a:hover, .footer_btn:hover {
     display:inline-block; 
     float:right;
 }
+.dlLink{
+    display: inline;
+    background-color: #fff;
+    border: #e3e3e3 1px solid;
+    padding: 3px 5px;
+    border-radius: 5px;
+}
+.dlLink:hover{
+    background-color:#e5e5e5;
+}
 
 
 /*--------------------------------------------------------*/
