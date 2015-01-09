@@ -1643,3 +1643,11 @@ Legend and Info Window Support
 .dyna-mark-icon-black {
   background-position: -341px 0;
 }
+
+
+
+/*Remove soon*/
+img.searchico{
+    width:20px;
+    height: 20px;
+}
