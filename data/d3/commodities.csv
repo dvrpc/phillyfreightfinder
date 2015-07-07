@@ -1,0 +1,182 @@
+dir,typ,region,Region Name,name,ton,value
+in,ton,bucks,"Bucks County, PA",Broken Stone or Riprap,6676989.308,60044118.69
+in,ton,bucks,"Bucks County, PA",Warehouse & Distribution Center,1855161.132,2076861492
+in,ton,bucks,"Bucks County, PA",Rail Intermodal Drayage from Ramp,1333113.04,5638643015
+in,ton,bucks,"Bucks County, PA","Cosmetics,perfumes, Etc.",635747.6219,2581279474
+in,ton,bucks,"Bucks County, PA",Concrete Products,550082.487,76578313.21
+in,ton,bucks,"Bucks County, PA",Primary Iron or Steel Products,531340.3295,816429621.7
+in,ton,bucks,"Bucks County, PA","Ready-mix Concrete, Wet",410366.1604,28299165
+in,ton,bucks,"Bucks County, PA",Rail Intermodal Drayage to Ramp,404475.0856,1710800674
+in,ton,bucks,"Bucks County, PA",Fak Shipments,307400,1556332065
+in,ton,bucks,"Bucks County, PA",Asphalt Paving Blocks or Mix,242736.0281,22695142.8
+in,ton,bucks,"Bucks County, PA","Dimension Stone,quarry",222488.5383,40916434.05
+in,ton,burlington,"Burlington County, NJ",Warehouse & Distribution Center,1930107.876,2160764702
+in,ton,burlington,"Burlington County, NJ",Gravel or Sand,735086.9439,5690157.485
+in,ton,burlington,"Burlington County, NJ",Soft Drinks or Mineral Water,572765.1317,347787659.7
+in,ton,burlington,"Burlington County, NJ",Flat Glass,373302.9446,77527830.19
+in,ton,burlington,"Burlington County, NJ",Processed Milk,362628.3734,321257166
+in,ton,burlington,"Burlington County, NJ","Ready-mix Concrete, Wet",269145.1736,18560458.3
+in,ton,burlington,"Burlington County, NJ",Misc Electrical Industrial Equipment,245809.3704,1817999026
+in,ton,burlington,"Burlington County, NJ",Concrete Products,198154.2426,27614117.8
+in,ton,burlington,"Burlington County, NJ","Misc Food Preparations, Nec",162490.1841,192092731
+in,ton,burlington,"Burlington County, NJ","Canned Fruits,vegetables, Etc.",146715.6514,118086573.2
+in,ton,camden,"Camden County, NJ",Warehouse & Distribution Center,2956306.558,3309598899
+in,ton,camden,"Camden County, NJ",Gravel or Sand,1553343.183,12025070.97
+in,ton,camden,"Camden County, NJ",Petroleum Refining Products,986733.8616,901423334.5
+in,ton,camden,"Camden County, NJ",Primary Iron or Steel Products,224811.2633,324477323.9
+in,ton,camden,"Camden County, NJ",Paper Waste or Scrap,218956.8494,45945474.39
+in,ton,camden,"Camden County, NJ",Textile Scrap or Sweepings,214420.051,46245168.15
+in,ton,camden,"Camden County, NJ",Gypsum Products,208826.4844,43200030.32
+in,ton,camden,"Camden County, NJ",Misc Waste or Scrap,194241.2827,45560604.96
+in,ton,camden,"Camden County, NJ",Concrete Products,189761.8036,26429571.39
+in,ton,camden,"Camden County, NJ",Soft Drinks or Mineral Water,176590.4338,107347813.6
+in,ton,chester,"Chester County, PA",Warehouse & Distribution Center,3338230.108,3737164110
+in,ton,chester,"Chester County, PA",Broken Stone or Riprap,2272690.424,20441661.11
+in,ton,chester,"Chester County, PA",Concrete Products,454363.3648,63259553.79
+in,ton,chester,"Chester County, PA",Primary Iron or Steel Products,435111.768,632365312
+in,ton,chester,"Chester County, PA",Fertilizers,372523.6948,123393720.9
+in,ton,chester,"Chester County, PA",Grain,344936.325,45301245.59
+in,ton,chester,"Chester County, PA",Dairy Farm Products,203406.5228,175099520
+in,ton,chester,"Chester County, PA",Asphalt Coatings or Felt,151336.427,45705226.91
+in,ton,chester,"Chester County, PA","Ready-mix Concrete, Wet",136215.1187,9393499.495
+in,ton,chester,"Chester County, PA",Misc. Field Crops,127379.6603,69484377.45
+in,ton,delaware,"Delaware County, PA",Petroleum Refining Products,18906952.65,17274041765
+in,ton,delaware,"Delaware County, PA","Liquefied Gases, Coal or Petroleum",1444968.398,1181616497
+in,ton,delaware,"Delaware County, PA",Warehouse & Distribution Center,635450.2949,711389553.1
+in,ton,delaware,"Delaware County, PA","Crude Prod Of Coal,gas,petroleum",496022.1542,411994450.3
+in,ton,delaware,"Delaware County, PA",Plastic Mater or Synth Fibres,487917.6708,1059294390
+in,ton,delaware,"Delaware County, PA",Processed Milk,464106.1947,410789622.8
+in,ton,delaware,"Delaware County, PA",Asphalt Paving Blocks or Mix,355346.6683,33231227.15
+in,ton,delaware,"Delaware County, PA",Paper,321368.8434,608805920.8
+in,ton,delaware,"Delaware County, PA",Motor Vehicles,287699.6333,2631592629
+in,ton,delaware,"Delaware County, PA",Tropical Fruits,219066.5717,359528047.3
+in,ton,gloucester,"Gloucester County, NJ",Petroleum Refining Products,41549960.24,38065533009
+in,ton,gloucester,"Gloucester County, NJ","Liquefied Gases, Coal or Petroleum",1862342.616,1534839259
+in,ton,gloucester,"Gloucester County, NJ",Asphalt Paving Blocks or Mix,1709984.783,160035711.1
+in,ton,gloucester,"Gloucester County, NJ",Warehouse & Distribution Center,486765.57,544936318.2
+in,ton,gloucester,"Gloucester County, NJ",Gravel or Sand,385629.1342,2984646.639
+in,ton,gloucester,"Gloucester County, NJ","Ready-mix Concrete, Wet",204893.4417,14129609.46
+in,ton,gloucester,"Gloucester County, NJ",Concrete Products,186987.4587,26156236.37
+in,ton,gloucester,"Gloucester County, NJ",Misc Coal or Petroleum Products,183890.3897,162840293.6
+in,ton,gloucester,"Gloucester County, NJ","Misc Food Preparations, Nec",179240.5225,211371019.9
+in,ton,gloucester,"Gloucester County, NJ",Cut Stone or Stone Products,177867.0483,24810954.79
+in,ton,mercer,"Mercer County, NJ",Warehouse & Distribution Center,2620833.806,2934035598
+in,ton,mercer,"Mercer County, NJ","Ready-mix Concrete, Wet",332694.9204,22942896.86
+in,ton,mercer,"Mercer County, NJ",Broken Stone or Riprap,304793.2699,2741594.889
+in,ton,mercer,"Mercer County, NJ",Fertilizers,296151.3786,97866684.7
+in,ton,mercer,"Mercer County, NJ",Concrete Products,265442.2751,36991601.58
+in,ton,mercer,"Mercer County, NJ",Processed Milk,146770.2396,129912084.4
+in,ton,mercer,"Mercer County, NJ",Paper Waste or Scrap,101831.3043,21367088.76
+in,ton,mercer,"Mercer County, NJ",Textile Scrap or Sweepings,100026.9435,21572941.19
+in,ton,mercer,"Mercer County, NJ",Bread or Other Bakery Prod,97920.89236,238689908.4
+in,ton,mercer,"Mercer County, NJ",Metal Scrap or Tailings,75144.77207,22258889.66
+in,ton,montgomery,"Montgomery County, PA",Broken Stone or Riprap,6610285.745,59441405.49
+in,ton,montgomery,"Montgomery County, PA",Warehouse & Distribution Center,2392809.562,2678761404
+in,ton,montgomery,"Montgomery County, PA",Petroleum Refining Products,1544807.484,1411263245
+in,ton,montgomery,"Montgomery County, PA",Processed Milk,1022896.613,905340829.3
+in,ton,montgomery,"Montgomery County, PA",Concrete Products,645976.8018,89936410.61
+in,ton,montgomery,"Montgomery County, PA",Gravel or Sand,386027.8585,2985760.067
+in,ton,montgomery,"Montgomery County, PA",Primary Iron or Steel Products,343596.0464,476570244.5
+in,ton,montgomery,"Montgomery County, PA",Asphalt Paving Blocks or Mix,308401.5899,28834691.78
+in,ton,montgomery,"Montgomery County, PA",Drugs,257645.2349,4807129850
+in,ton,montgomery,"Montgomery County, PA","Ready-mix Concrete, Wet",253288.9296,17466999.7
+in,ton,philadelphia,"Philadelphia County, PA",Petroleum Refining Products,8873879.733,8086784160
+in,ton,philadelphia,"Philadelphia County, PA",Warehouse & Distribution Center,2366384.665,2649178609
+in,ton,philadelphia,"Philadelphia County, PA",Soft Drinks or Mineral Water,1897252.161,1145856632
+in,ton,philadelphia,"Philadelphia County, PA",Cyclic Intermediates or Dyes,1673302.997,1703272706
+in,ton,philadelphia,"Philadelphia County, PA",Rail Intermodal Drayage from Ramp,1520530.743,6431360295
+in,ton,philadelphia,"Philadelphia County, PA",Misc Industrial Organic Chemicals,1399225.737,1413323507
+in,ton,philadelphia,"Philadelphia County, PA",Primary Iron or Steel Products,991063.0577,1352022992
+in,ton,philadelphia,"Philadelphia County, PA","Misc Nonmetallic Minerals, Nec",924856.9928,34301003.73
+in,ton,philadelphia,"Philadelphia County, PA",Chem or Fertilizer Mineri Crude,898951.7772,58689798.87
+in,ton,philadelphia,"Philadelphia County, PA","Liquefied Gases, Coal or Petroleum",858418.8012,703860881.1
+in,val,bucks,"Bucks County, PA",Rail Intermodal Drayage from Ramp,1333113.04,5638643015
+in,val,bucks,"Bucks County, PA","Cosmetics,perfumes, Etc.",635747.6219,2581279474
+in,val,bucks,"Bucks County, PA",Warehouse & Distribution Center,1855161.132,2076861492
+in,val,bucks,"Bucks County, PA",Rail Intermodal Drayage to Ramp,404475.0856,1710800674
+in,val,bucks,"Bucks County, PA",Fak Shipments,307400,1556332065
+in,val,bucks,"Bucks County, PA",Primary Iron or Steel Products,531340.3295,816429621.7
+in,val,bucks,"Bucks County, PA",Drugs,34964.48632,654232154
+in,val,bucks,"Bucks County, PA",Misc Plastic Products,154552.9096,520760339.7
+in,val,bucks,"Bucks County, PA",Motor Vehicle Parts or Accessories,28589.71696,247346496.8
+in,val,bucks,"Bucks County, PA","Bolts, Nuts, Screws, Etc.",53402.02854,243134930.9
+in,val,burlington,"Burlington County, NJ",Warehouse & Distribution Center,1930107.876,2160764702
+in,val,burlington,"Burlington County, NJ",Misc Electrical Industrial Equipment,245809.3704,1817999026
+in,val,burlington,"Burlington County, NJ",Soft Drinks or Mineral Water,572765.1317,347787659.7
+in,val,burlington,"Burlington County, NJ",Processed Milk,362628.3734,321257166
+in,val,burlington,"Burlington County, NJ",Ships or Boats,11106.36575,195770893.6
+in,val,burlington,"Burlington County, NJ","Misc Food Preparations, Nec",162490.1841,192092731
+in,val,burlington,"Burlington County, NJ",Signs or Advertising Displays,47481.37282,177730515.5
+in,val,burlington,"Burlington County, NJ",Electrical Equipment,771.8618221,173301466.2
+in,val,burlington,"Burlington County, NJ",Misc Printed Matter,33086.42474,169508218.8
+in,val,burlington,"Burlington County, NJ",Misc Plastic Products,47273.31363,157011881.8
+in,val,camden,"Camden County, NJ",Warehouse & Distribution Center,2956306.558,3309598899
+in,val,camden,"Camden County, NJ",Petroleum Refining Products,986733.8616,901423334.5
+in,val,camden,"Camden County, NJ",Drugs,36912.47236,673909280.8
+in,val,camden,"Camden County, NJ",Primary Iron or Steel Products,224811.2633,324477323.9
+in,val,camden,"Camden County, NJ",Radio or Tv Transmitting Equipment,3197.128853,285502138.1
+in,val,camden,"Camden County, NJ",Aluminum or Alloy Basic Shapes,117127.1795,253400701.5
+in,val,camden,"Camden County, NJ",Misc Printed Matter,47245.86302,242065399.4
+in,val,camden,"Camden County, NJ","Biscuits, Crackers or Pretzles",93168.99675,214285658.3
+in,val,camden,"Camden County, NJ","Containers or Boxes,paper",102568.2338,181856809.2
+in,val,camden,"Camden County, NJ",Phonograph Records,6425.555881,171702582.2
+in,val,chester,"Chester County, PA",Warehouse & Distribution Center,3338230.108,3737164110
+in,val,chester,"Chester County, PA",Primary Iron or Steel Products,435111.768,632365312
+in,val,chester,"Chester County, PA",Drugs,24181.14883,442245645.4
+in,val,chester,"Chester County, PA",Motor Vehicle Parts or Accessories,40377.96735,350950522
+in,val,chester,"Chester County, PA",Misc Electrical Industrial Equipment,30442.09372,230671344
+in,val,chester,"Chester County, PA",Bread or Other Bakery Prod,93412.47597,227696044.6
+in,val,chester,"Chester County, PA",Misc Plastic Products,62380.27274,214137931.4
+in,val,chester,"Chester County, PA",Misc Nonferrous Basic Shapes,65154.40687,175780109.5
+in,val,chester,"Chester County, PA",Dairy Farm Products,203406.5228,175099520
+in,val,chester,"Chester County, PA",Misc Printed Matter,29952.90849,153018956.3
+in,val,delaware,"Delaware County, PA",Petroleum Refining Products,18906952.65,17274041765
+in,val,delaware,"Delaware County, PA",Electrical Equipment,19888.36944,4465415292
+in,val,delaware,"Delaware County, PA",Motor Vehicles,287699.6333,2631592629
+in,val,delaware,"Delaware County, PA",Misc Manufacturing Products,2584.250402,1582313415
+in,val,delaware,"Delaware County, PA",Drugs,24302.17972,1455838663
+in,val,delaware,"Delaware County, PA","Liquefied Gases, Coal or Petroleum",1444968.398,1181616497
+in,val,delaware,"Delaware County, PA",Plastic Mater or Synth Fibres,487917.6708,1059294390
+in,val,delaware,"Delaware County, PA",Transportation Equipment,4136.95474,941001985.2
+in,val,delaware,"Delaware County, PA",Warehouse & Distribution Center,635450.2949,711389553.1
+in,val,delaware,"Delaware County, PA",Paper,321368.8434,608805920.8
+in,val,gloucester,"Gloucester County, NJ",Petroleum Refining Products,41549960.24,38065533009
+in,val,gloucester,"Gloucester County, NJ","Liquefied Gases, Coal or Petroleum",1862342.616,1534839259
+in,val,gloucester,"Gloucester County, NJ",Warehouse & Distribution Center,486765.57,544936318.2
+in,val,gloucester,"Gloucester County, NJ",Bread or Other Bakery Prod,122603.117,298853132.3
+in,val,gloucester,"Gloucester County, NJ","Misc Food Preparations, Nec",179240.5225,211371019.9
+in,val,gloucester,"Gloucester County, NJ",Plastic Mater or Synth Fibres,101427.3255,210253910
+in,val,gloucester,"Gloucester County, NJ",Drugs,10359.6414,188952834.5
+in,val,gloucester,"Gloucester County, NJ",Misc Coal or Petroleum Products,183890.3897,162840293.6
+in,val,gloucester,"Gloucester County, NJ",Asphalt Paving Blocks or Mix,1709984.783,160035711.1
+in,val,gloucester,"Gloucester County, NJ",Misc Plastic Products,39511.29612,135766823.9
+in,val,mercer,"Mercer County, NJ",Warehouse & Distribution Center,2620833.806,2934035598
+in,val,mercer,"Mercer County, NJ",Drugs,21961.53137,401217239.5
+in,val,mercer,"Mercer County, NJ",Refrigeration Machinery,37222.91121,376397439.1
+in,val,mercer,"Mercer County, NJ",Bread or Other Bakery Prod,97920.89236,238689908.4
+in,val,mercer,"Mercer County, NJ","Cosmetics,perfumes, Etc.",52187.88031,212937668.3
+in,val,mercer,"Mercer County, NJ",Solid State Semiconducts,6314.741154,193534401.2
+in,val,mercer,"Mercer County, NJ",Misc Printed Matter,37308.6701,191157050.6
+in,val,mercer,"Mercer County, NJ",Processed Milk,146770.2396,129912084.4
+in,val,mercer,"Mercer County, NJ","Steam Engines, Turbines, Etc.",11709.22899,117496126.3
+in,val,mercer,"Mercer County, NJ",Misc Fabricated Products,13057.55935,98773067.6
+in,val,montgomery,"Montgomery County, PA",Drugs,257645.2349,4807129850
+in,val,montgomery,"Montgomery County, PA",Warehouse & Distribution Center,2392809.562,2678761404
+in,val,montgomery,"Montgomery County, PA",Petroleum Refining Products,1544807.484,1411263245
+in,val,montgomery,"Montgomery County, PA",Cigars,75755.83558,1201603785
+in,val,montgomery,"Montgomery County, PA",Processed Milk,1022896.613,905340829.3
+in,val,montgomery,"Montgomery County, PA",Chewing or Smoking Tobacco,39316.81258,623296917.2
+in,val,montgomery,"Montgomery County, PA",Misc Plastic Products,145041.3818,483876859.3
+in,val,montgomery,"Montgomery County, PA",Primary Iron or Steel Products,343596.0464,476570244.5
+in,val,montgomery,"Montgomery County, PA","Bolts, Nuts, Screws, Etc.",95349.41693,431869973.1
+in,val,montgomery,"Montgomery County, PA","Meat, Fresh or Chilled",121757.0684,388807736.3
+in,val,philadelphia,"Philadelphia County, PA",Petroleum Refining Products,8873879.733,8086784160
+in,val,philadelphia,"Philadelphia County, PA",Rail Intermodal Drayage from Ramp,1520530.743,6431360295
+in,val,philadelphia,"Philadelphia County, PA",Rail Intermodal Drayage to Ramp,816157.247,3452084922
+in,val,philadelphia,"Philadelphia County, PA",Warehouse & Distribution Center,2366384.665,2649178609
+in,val,philadelphia,"Philadelphia County, PA",Cyclic Intermediates or Dyes,1673302.997,1703272706
+in,val,philadelphia,"Philadelphia County, PA",Misc Industrial Organic Chemicals,1399225.737,1413323507
+in,val,philadelphia,"Philadelphia County, PA",Primary Iron or Steel Products,991063.0577,1352022992
+in,val,philadelphia,"Philadelphia County, PA",Fak Shipments,243374.9063,1229694725
+in,val,philadelphia,"Philadelphia County, PA",Soft Drinks or Mineral Water,1897252.161,1145856632
+in,val,philadelphia,"Philadelphia County, PA",Motor Vehicle Parts or Accessories,128166.434,1120033365
