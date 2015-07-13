@@ -14,6 +14,7 @@
         <link href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="https://dvrpcfreight.github.io/dynamic-icons/dyna.css">
         <link href="lib/assets/typeahead.min.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" media="all" href="lib/tipsy.css"/>
         <link href='lib/style.css' rel='stylesheet'/>
 
         <style>
@@ -404,85 +405,88 @@
                 <div id ='domestic-trade' class='tab-pane landing-content' style='color:#333333;'>
                     <div class='page-title center-block col-lg-12'>
                         <div class='center-block col-lg-10 col-sm-12' style='float:none;'>
-                            <h3>Domestic Trade Patterns</h3>
+                            <h3>Domestic Trade Patterns <span class="subHeader">for </span>
+                                <div class="btn-group tradeBtn">
+                                  <button data-toggle="dropdown" id="tradeCounty"class="btn btn-default dropdown-toggle">Bucks County<span class="caret"></span></button>
+                                    <ul class="dropdown-menu">
+                                      <li><input type="radio" id="bucks" name="county" value="42017" checked><label for="bucks">Bucks County</label></li>
+                                      <li><input type="radio" id="burlington" name="county" value="34005"><label for="burlington">Burlington County</label></li>
+                                      <li><input type="radio" id="camden" name="county" value="34007"><label for="camden">Camden County</label></li>
+                                      <li><input type="radio" id="chester" name="county" value="42029"><label for="chester">Chester County</label></li>
+                                      <li><input type="radio" id="delaware" name="county" value="42045"><label for="delaware">Delaware County</label></li>
+                                      <li><input type="radio" id="gloucester" name="county" value="34015"><label for="gloucester">Gloucester County</label></li>
+                                      <li><input type="radio" id="mercer" name="county" value="34021"><label for="mercer">Mercer County</label></li>
+                                      <li><input type="radio" id="montgomery" name="county" value="42091"><label for="montgomery">Montgomery County</label></li>
+                                      <li><input type="radio" id="philadelphia" name="county" value="42101"><label for="philadelphia">Philadelphia County</label></li>
+                                    </ul>
+                                </div><span id="countySelect"></span></h3>
                         </div> 
                     </div>
+                    <div class="col-lg-12">
                         <div class='center-block col-lg-10 col-sm-12' style='float:none;'>
-                              <div id="content" class="col-lg-12">
-                                <div id="counties">
-                                    <div id="countySelect" class="btn-group" data-toggle="buttons">
-                                        <label for="bucks" class="flowBtn btn btn-sm btn-primary active">
-                                            <input type="radio" id="bucks" name="county" value="42017" checked="checked"/><span>Bucks County</span>
-                                        </label>
-                                        <label for="burlington" class="flowBtn btn btn-sm btn-primary">
-                                            <input type="radio" id="burlington" name="county" value="34005" /><span>Burlington County</span></label>
-                                        <label for="camden" class="flowBtn btn btn-sm btn-primary">
-                                            <input type="radio" id="camden" name="county" value="34007" /><span>Camden County</span></label>
-                                        <label for="chester" class="flowBtn btn btn-sm btn-primary">
-                                            <input type="radio" id="chester" name="county" value="42029" /><span>Chester County</span></label>
-                                        <label for="delaware" class="flowBtn btn btn-sm btn-primary">
-                                            <input type="radio" id="delaware" name="county" value="42045" /><span>Delaware County</span></label>
-                                        <label for="glouc" class="flowBtn btn btn-sm btn-primary">
-                                            <input type="radio" id="glouc" name="county" value="34015" /><span>Gloucester County</span></label>
-                                        <label for="mercer" class="flowBtn btn btn-sm btn-primary">
-                                            <input type="radio" id="mercer" name="county" value="34021" /><span>Mercer County</span></label>
-                                        <label for="mont" class="flowBtn btn btn-sm btn-primary">
-                                            <input type="radio" id="mont" name="county" value="42091" /><span>Montgomery County</span></label>
-                                        <label for="county_phila" class="flowBtn btn btn-sm btn-primary">
-                                            <input type="radio" id="county_phila" name="county" value="42101" /><span>Philadelphia County</span></label>
-                                    </div>
-                                </div>
-                                <div style="float:left;">
-                                    <div id="countySelect" class="btn-group" data-toggle="buttons">
-                                        <label class="btn btn-sm btn-primary disabled">View by:</label>
-                                        <label for="value" class="flowBtn btn btn-sm btn-primary active">
-                                            <input type="radio" id="tons" name="measure" value="ton" checked/><span>Volume</span></label>
-                                        <label for="vasl" class="flowBtn btn btn-sm btn-primary">
-                                            <input type="radio" id="val" name="measure" value="val" /><span>Value</span></label>
-                                    </div>
-                                </div>
-                                <div style="float:left;">
-                                    <div id="controls">
-                                        <div id="dir" class="btn-group" data-toggle="buttons">
-                                            <label for="dir_in" class="flowBtn btn btn-sm btn-primary active">
-                                                <input type="radio" id="dir_in" name="dir" value="in" checked="checked"/><span>Inbound Shipments</span></label>
-                                            <label for="dir_out" class="flowBtn btn btn-sm btn-primary">
-                                                <input type="radio" id="dir_out" name="dir" value="out" /><span>Outbound Shipments</span>
-                                            </label>
+                              <div id="content">
+                                <div id="topPartners">
+                                    <div class="panel panel-primary">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title" id="topPartnerTitle">Top Trading Partners</h4>
+                                        </div>
+                                        <div class="panel-body">
+                                            <ul id="comm1">
+                                            </ul>
                                         </div>
                                     </div>
                                 </div>
-                                <div id="modes">
-                                    <div id="countySelect" class="btn-group" data-toggle="buttons">
-                                        <label for="all" class="flowBtn btn btn-sm btn-primary active">
-                                            <input type="radio" id="all" name="mode" value="all" checked="checked"/><span>All</span></label>
-                                        <label for="truck" class="flowBtn btn btn-sm btn-primary">
-                                            <input type="radio" id="truck" name="mode" value="truck" /><span>Truck</span></label>
-                                        <label for="rail" class="flowBtn btn btn-sm btn-primary">
-                                            <input type="radio" id="rail" name="mode" value="rail" /><span>Rail</span></label>
-                                        <label for="water" class="flowBtn btn btn-sm btn-primary">
-                                            <input type="radio" id="water" name="mode" value="water" /><span>Water</span></label>
-                                        <label for="air" class="flowBtn btn btn-sm btn-primary">
-                                            <input type="radio" id="air" name="mode" value="air" /><span>Air</span></label>
+                                <div id="tradeFilters">
+                                    <div style="float:left;">
+                                        <div id="countySelect" class="btn-group" data-toggle="buttons">
+                                            <label class="btn btn-sm btn-primary disabled">View by:</label>
+                                            <label for="value" class="flowBtn btn btn-sm btn-primary active">
+                                                <input type="radio" id="tons" name="measure" value="ton" checked/><span>Volume</span></label>
+                                            <label for="vasl" class="flowBtn btn btn-sm btn-primary">
+                                                <input type="radio" id="val" name="measure" value="val" /><span>Value</span></label>
+                                        </div>
+                                    </div>
+                                    <div style="float:left;">
+                                        <div id="controls">
+                                            <div id="dir" class="btn-group" data-toggle="buttons">
+                                                <label for="dir_in" class="flowBtn btn btn-sm btn-primary active">
+                                                    <input type="radio" id="dir_in" name="dir" value="in" checked="checked"/><span>Inbound Shipments</span></label>
+                                                <label for="dir_out" class="flowBtn btn btn-sm btn-primary">
+                                                    <input type="radio" id="dir_out" name="dir" value="out" /><span>Outbound Shipments</span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="modes">
+                                        <div id="countySelect" class="btn-group" data-toggle="buttons">
+                                            <label for="all" class="flowBtn btn btn-sm btn-primary active">
+                                                <input type="radio" id="all" name="mode" value="all" checked="checked"/><span>All</span></label>
+                                            <label for="truck" class="flowBtn btn btn-sm btn-primary">
+                                                <input type="radio" id="truck" name="mode" value="truck" /><span>Truck</span></label>
+                                            <label for="rail" class="flowBtn btn btn-sm btn-primary">
+                                                <input type="radio" id="rail" name="mode" value="rail" /><span>Rail</span></label>
+                                            <label for="water" class="flowBtn btn btn-sm btn-primary">
+                                                <input type="radio" id="water" name="mode" value="water" /><span>Water</span></label>
+                                            <label for="air" class="flowBtn btn btn-sm btn-primary">
+                                                <input type="radio" id="air" name="mode" value="air" /><span>Air</span></label>
+                                        </div>
                                     </div>
                                 </div>
-
-                                <div id="dir_tooltip" class="tooltip">
-                                    <p class="text"></p>
-                                    <div class="tri"></div>
-                                </div>
+                                
                             </div>
                         </div>
-                        <div class="row col-md-12">
+                        
+                        <div class='clearfix'></div>
+                        <div class='center-block col-lg-10 col-sm-12' style='float:none;'>
                             <h3>Traded Commodities</h3>
                             <p class="commodityHeader">Top 10 <span id="commDir" class="selectable">Inbound</span> Commodities by <span id="commMeasure" class="selectable">Volume</span></p> 
                             <div id="commodities" class="col-md-4">
-                                <div id="comm1" class="commBox">
+                                <div id="comm3" class="commBox">
                                 </div>
                             </div>
                         </div>
-                     <div class='clearfix'></div>
-                    
+                     
+                    </div>
                 </div>
                 <!--data tab-->
                 <div id ='data' class='tab-pane landing-content' style='color:#333333;'>
@@ -1416,19 +1420,23 @@
         <script type="text/javascript" src="lib/assets/leaflet.js"></script>-->
         <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.5.1/jquery.nicescroll.min.js"></script>
         <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>  
+        <!--d3 dependencies-->
         <script src="lib/assets/d3_2.7.0/d3.min.js"></script>
         <script src="lib/assets/d3_2.7.0/d3compat.min.js"></script>
         <script src="lib/assets/d3_2.7.0/d3.geo.min.js"></script>
         <script src="lib/assets/d3_2.7.0/d3.csv.min.js"></script>
         <script src="lib/assets/circle_packer_movers.js"></script>
         <script src="lib/assets/tipsy.js"></script>
+        
+
         <!--<script type="text/javascript" src="lib/assets/bootstrap.min.js"></script>
         <script type="text/javascript" src="lib/assets/jquery.address.min.js"></script>-->
         <script type="text/javascript" src="lib/actions.js"></script><!--core application functions -->
         <script type="text/javascript" src="lib/map.js"></script><!--customized mapping functions to load data -->
         <script type="text/javascript" src="lib/core/core.js"></script><!--core application functions -->
 
-        <script type="text/javascript" src="lib/domestic_trade.js"></script><!--core application functions -->
+        <!--widget add-ons-->
+        <script type="text/javascript" src="lib/domestic_trade.js"></script><!--domestic trade application functions -->
 
 
 

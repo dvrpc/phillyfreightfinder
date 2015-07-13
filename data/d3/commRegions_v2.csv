@@ -1,5 +1,4 @@
 id,db_name,familiar_name,state,lon,lat
-0,Puerto Rico,Puerto Rico,PA,-94.9421375,48.18620457
 1,"Aberdeen, SD","Aberdeen, SD",PA,-100.2318614,45.43670651
 2,"Abilene, TX","Abilene, TX",PA,-100.1379834,32.77385707
 3,"Albany, GA","Albany, GA",PA,-83.75789247,31.36418164
@@ -179,9 +178,6 @@ id,db_name,familiar_name,state,lon,lat
 177,"Wenatchee, WA","Wenatchee, WA",PA,-119.7047174,47.86372035
 178,"Wichita Falls, TX","Wichita Falls, TX",PA,-99.58300741,34.07752663
 179,"Wichita-Winfield, KS","Wichita-Winfield, KS",PA,-98.81813396,37.80624916
-241,Yukon,Yukon,PA,-135.5045797,63.63215911
-242,Northwest Territories,Northwest Territories,PA,-118.9955771,66.35829408
-243,Nunavut,Nunavut,PA,-88.87258893,71.03934503
 34005,"Philadelphia-Camden-Vineland, PA-NJ-DE-MD","Burlington County, NJ",PA,-74.66994161,39.87852606
 34007,"Philadelphia-Camden-Vineland, PA-NJ-DE-MD","Camden County, NJ",PA,-74.96346624,39.79446628
 34015,"Philadelphia-Camden-Vineland, PA-NJ-DE-MD","Gloucester County, NJ",PA,-75.14893139,39.71263853
