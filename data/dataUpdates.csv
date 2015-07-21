@@ -1,0 +1,15 @@
+id,name,date,filename
+01,Highways,04-2013,highways
+02,NHS Connectors,07-2012,nhs_connectors
+03,Truck Parking,04-2013,truck_parking
+04,Highway River Crossing,04-2013,hwy_river_crossing
+05,Freight Rail Lines,08-2014,
+06,Rail Yards,05-2014,
+07,Intermodal Rail Yards,05-2014,
+08,Class 1 Crossings,05-2014,
+09,Railroad River Crossings,05-2014,
+10,Navigable River,05-2014,
+11,Anchorages,05-2014,
+12,Port Terminals,05-2014,
+13,Airports,05-2014,
+14,Freight Centers,05-2014,
