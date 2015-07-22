@@ -1,0 +1,248 @@
+<html>
+ <head>
+  <title>PhillyFreightFinder County Profile</title>
+  <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+  <!--<link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" type="text/css">-->
+  <style>
+  body{color:#353535;}
+  h1,h2,h3,h4,h5{font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 500;
+    line-height: 1.1;
+    color: #396ab2;}
+    p {font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size:12px;}
+    h2{font-size:16px;}
+    #header{
+        background-color:#396ab2;
+        height:60px;
+        width:auto;
+        overflow:hidden;
+        margin-bottom:20px;
+    }
+    .dvrpc-logo{display:inline-block;
+                }
+    .dvrpc-pff{display:inline-block;
+                }
+    .table>thead>tr>th {
+        vertical-align: bottom;
+        border-bottom: 2px solid #ddd;
+        text-align: left;
+    }
+    .table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td, .table>tbody>tr>td, .table>tfoot>tr>td {
+        padding: 5px;
+        padding-right: 20px;
+        line-height: 1.428571429;
+        vertical-align: top;
+        border-top: 1px solid #ddd;
+    }
+    .table>tbody>tr>td.right{
+        padding-right:5px!important;
+        text-align:right;
+    }
+    .table>caption+thead>tr:first-child>th, .table>colgroup+thead>tr:first-child>th, .table>thead:first-child>tr:first-child>th, .table>caption+thead>tr:first-child>td, .table>colgroup+thead>tr:first-child>td, .table>thead:first-child>tr:first-child>td {
+        border-top: 0;
+    }
+    .table-striped>tbody>tr:nth-child(odd)>td, .table-striped>tbody>tr:nth-child(odd)>th {
+        background-color: #f9f9f9;
+    }
+    table {
+        font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+        font-size:12px;
+        border-collapse: collapse;
+        border-spacing: 0;
+        min-width:300px;
+        max-width:350px;
+        }
+    p.breakhere {page-break-before: always}
+    .ctyPhoto{width:300px;}
+  </style>
+  <script>
+        var urlParams;
+            (window.onpopstate = function () {
+                var match,
+                    pl     = /\+/g,  // Regex for replacing addition symbol with a space
+                    search = /([^&=]+)=?([^&]*)/g,
+                    decode = function (s) { return decodeURIComponent(s.replace(pl, " ")); },
+                    query  = window.location.search.substring(1);
+
+                urlParams = {};
+                while (match = search.exec(query))
+                   urlParams[decode(match[1])] = decode(match[2]);
+            })();  
+        var name= urlParams["name"];
+        var data1 = urlParams["1"];
+        var data2 = urlParams["2"];
+        var data3 = urlParams["3"];
+        var data4 = urlParams["4"];
+        var data5 = urlParams["5"];
+        var data6 = urlParams["6"];
+        var data7 = urlParams["7"];
+        var data8 = urlParams["8"];
+        var data9 = urlParams["9"];
+        var data10 = urlParams["10"];
+        var data11 = urlParams["11"];
+        var data12 = urlParams["12"];
+        var data13 = urlParams["13"];
+        var data14 = urlParams["14"];
+        var data15 = urlParams["15"];
+        //var data7 = urlParams["7"];
+        var FacTable = "<tr><td>Interstate Highway Routes</td><td class='right'>"+ data1 +" miles</td></tr>"
+                  +"<tr><td>Other National Highway Routes</td><td class='right'>"+ data2 +" miles</td></tr>"
+                  +"<tr><td>NHS Freight Connectors</td><td class='right'>"+ data9 +"</td></tr>"
+                  +"<tr><td>Interstate Highway Interchanges</td><td class='right'>"+ data10 +"</td></tr>"
+                  +"<tr><td>Freight Rail Trackage</td><td class='right'>"+ data4 +" miles</td></tr>"
+                  +"<tr><td>Rail and Intermodal Yards</td><td class='right'>"+ data11 +"</td></tr>"
+                  +"<tr><td>Port Terminals</td><td class='right'>"+ data5 +"</td></tr>"
+                  +"<tr><td>Mega Freight Centers</td><td class='right'>"+ data6 +"</td></tr>"
+                  +"<tr><td>Major Freight Centers</td><td class='right'>"+ data7 +"</td></tr>"
+                  +"<tr><td>Intermediate Freight Centers</td><td class='right'>"+ data8 +"</td></tr>"
+                  +"<tr><td>Freight Center Acreage</td><td class='right'>"+ data12 +" acres</td></tr>";
+        var Activity = "<tr><td>Light-Truck Miles Traveled Daily</td><td class='right'>"+ data13 +"k</td></tr>"
+                  +"<tr><td>Heavy-Truck Miles Traveled Daily</td><td class='right'>"+ data14 +"k</td></tr>"
+                  +"<tr><td>Annual Ship Calls</td><td class='right'>"+ data15 +" ships</td></tr>";
+
+        $(document).ready(function() {
+          $('#CountyName').html(''+ name +' County');
+          $('#FFItable').html(''+ FacTable +'');
+          $('#ActTable').html(''+ Activity +'');
+          $('#CtyName').html(''+ name +'');
+          $('#ctyImage').html('<img src="lib/images/county/'+ name +'.png" height="270"/>')
+        });
+    </script>
+ </head>
+ <body>
+    
+    <div id="pagecontent" style="width:auto;max-width:700px;">
+        <div id="header"><img src='lib/images/county/printHeader.png' height='60'/></div>
+        <div id="ctyImage" style="width:300px;float:left;padding:0px 30px 20px 0;display:block;"></div>
+        <div><h1 id="CountyName"></h1>
+            <p style="margin-top:-15px;color:#646464;"><b>County Freight Profile</b></p>
+            <p>This data profile provides an introductory overview of freight activity in <span id="CtyName"></span> County. The movement of freight is an ever-growing feature of the local and county landscape that directly ties into economic development, environmental, land use, and transportation concerns. The data provided in this <b><i>PhillyFreightFinder</i> County Profile</b> was sourced from various national, regional and local datasets and through studies conducted by the Delaware Valley Regional Planning Commission. </p>
+        </div>
+        <div style="clear:both;display:block;width:auto;height:2px;border-bottom:1px solid #396ab2;">&nbsp;</div>
+        <div style="float:left;padding-right:45px;">
+            <h2>Freight Facility Inventory</h2>
+            <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>Facility Type</th>
+                    <th>Quantity</th>
+                  </tr>
+                </thead>
+                <tbody id="FFItable">
+                  
+                </tbody>
+              </table>
+              <p style="font-size:9px;">Source: 2013 DVRPC</p>
+        </div>
+        <div stlye="">
+            <h2>Facility Activity Indicators</h2>
+            <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>Activity Indicator</th>
+                    <th>Quantity</th>
+                  </tr>
+                </thead>
+                <tbody id="ActTable">
+                  
+                </tbody>
+              </table>
+              <p style="font-size:9px;">Source: DVRPC and Maritime Exchange</p>
+              <h2></h2>
+              <div id="ctyPhoto"></div>
+              <script>
+                    var photo = Math.floor(Math.random() * 8) + 1;
+                    $('#ctyPhoto').html('<img class="ctyPhoto" src="lib/images/county/'+ name +'/'+ photo +'.jpg" />');
+              </script>
+              <!--<h2>Freight Related Transportation Output</h2>
+                <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th>Activity Sector</th>
+                        <th>Output($$$)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Water</td>
+                        <td class="right">1,404,512</td>
+                      </tr>
+                      <tr>
+                        <td>Roadway</td>
+                        <td class="right">512,982,472</td>
+                      </tr>
+                      <tr>
+                        <td>Rail</td>
+                        <td class="right">11,058,108</td>
+                      </tr>
+                      <tr>
+                        <td>Courier</td>
+                        <td class="right">346,912,532</td>
+                      </tr>
+                      <tr>
+                        <td>Pipeline</td>
+                        <td class="right">74,291,956</td>
+                      </tr>
+                      <tr>
+                        <td>Warehousing</td>
+                        <td class="right">48,177,239</td>
+                      </tr>
+                      <tr>
+                        <td><b>Total</b></td>
+                        <td class="right">994,826,819</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <p style="font-size:9px;">Source: Global Insight's US Business Demographic Service</p>-->
+                  <!--<h2>Freight Related Transportation Output</h2>
+                    <table class="table table-striped">
+                        <thead>
+                          <tr>
+                            <th>Activity Sector</th>
+                            <th>Output($$$)</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>Water</td>
+                            <td class="right">1,404,512</td>
+                          </tr>
+                          <tr>
+                            <td>Roadway</td>
+                            <td class="right">512,982,472</td>
+                          </tr>
+                          <tr>
+                            <td>Rail</td>
+                            <td class="right">11,058,108</td>
+                          </tr>
+                          <tr>
+                            <td>Courier</td>
+                            <td class="right">346,912,532</td>
+                          </tr>
+                          <tr>
+                            <td>Pipeline</td>
+                            <td class="right">74,291,956</td>
+                          </tr>
+                          <tr>
+                            <td>Warehousing</td>
+                            <td class="right">48,177,239</td>
+                          </tr>
+                          <tr>
+                            <td><b>Total</b></td>
+                            <td class="right">994,826,819</td>
+                          </tr>
+                        </tbody>
+                      </table>-->
+        </div>
+        <div style="clear:both;display:block;width:auto;height:2px;border-bottom:1px solid #396ab2;">&nbsp;</div>
+        <p style="font-size:10px;text-align:center;">For more information about freight activity in the Delaware Valley and for a comprehensive look at the facilities in the county and region you can visit the PhillyFreightFinder application at www.dvrpc.org/webmaps/PhillyFreightFinder.<br/><br/><b>Delaware Valley Regional Planning Commission</b> 190 N Independence Mall West, 8th Floor, Philadelphia, PA 19106-1520<br/>www.dvrpc.org&nbsp;&nbsp;|&nbsp;&nbsp;215.592.1800</p>
+
+        <!--page break-->
+        <p class="breakhere"></p>
+        <!--end page break-->
+
+    </div>
+
+ </body>
+</html>
