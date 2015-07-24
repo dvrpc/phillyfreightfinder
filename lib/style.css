@@ -1882,17 +1882,17 @@ p#subtitle {
   margin-left: 5px;
 }
 #tradeCounty{
-    color:#312867;
-  font-size: 24px;
-  padding: 0px 5px;
-  margin-top: -2px;
-  background: none;
-  font-weight:600;
-  border:0px;
-  border-bottom: 3px solid #312867; 
+    color: #312867;
+    font-size: 24px;
+    padding: 0px 15px;
+    margin-top: -2px;
+    font-weight: 600;
+    border: 1px dotted;
+    border-bottom: 3px solid #312867;
+    background-color: #EFEFEF; 
 }
 #tradeCounty:hover{
-    background-color:#efefef;
+    background-color:#f7f7f7;
 }
 #tradeCounty:focus{
      -webkit-box-shadow: none; 
