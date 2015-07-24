@@ -1,17 +1,14 @@
 stcc,name
 100,Farm products
-110,Field crops
 112,Raw cotton
 113,Grain
 114,"Oil from kernels, nuts or seeds"
 115,Field seeds
 119,Misc. field crops
-120,Fresh fruits or tree nuts
 121,Citrus fruits
 122,Deciduous fruits
 123,Tropical fruits
 129,Misc. fresh fruits or tree nuts
-130,Fresh vegetables
 131,"Bulbs, roots or tubers"
 133,Leafy fresh vegetables
 134,Dry ripe vegetable seeds
@@ -19,89 +16,41 @@ stcc,name
 140,Livestock or livestock products
 141,Livestock
 142,Dairy products
-143,Animal fibers
-150,Poultry or poultry products
 151,Live poultry
 152,Poultry eggs
-190,Misc. farm products
 191,Horticultural specialties
 192,Animal specialties
 199,"Farm products, n.e.c."
-800,Forest products
-840,Crude barks or gums
 842,Crude barks or gums
-860,Misc. forest products
 861,Misc. forest products
 900,Fresh fish or marine products
-910,Fresh fish or marine products
 912,Fresh fish or whale products
 913,Marine products
-980,Fish hatcheries
-989,Fish hatcheries
-1000,Metallic ores
-1010,Iron ores
 1011,Iron ores
-1020,Copper ores
 1021,Copper ores
-1030,Lead or zinc ores
-1031,Lead ores
-1032,Zinc ores
-1033,Lead and zinc ores combined
-1040,Gold or silver ores
 1041,Gold ore
-1042,Silver ore
-1050,Bauxite or other alum ores
 1051,Bauxite or other alum ores
-1060,Manganese ores
 1061,Manganese ores
-1070,Tungsten ores
 1071,Tungsten ores
-1080,Chromium ores
 1081,Chromium ores
-1090,Misc. metal ores
 1092,Misc. metal ores
-1100,Coal
-1110,Anthracite
 1111,Anthracite
-1120,Bituminous coal or lignite
 1121,Bituminous coal
-1122,Lignite
-1300,Crude petroleum or natural gas
-1310,Crude petroleum or natural gas
 1311,Crude petroleum
-1312,Natural gas
-1320,Natural gasoline
-1321,Natural gasoline
 1400,Nonmetallic minerals
-1410,"Dimension stone, quarry"
 1411,"Dimension stone,quarry"
-1420,Broken stone or riprap
 1421,Broken stone or riprap
-1440,Gravel or sand
 1441,Gravel or sand
-1450,Clay ceramic or refrac minerals
 1451,Clay ceramic or refrac minerals
-1470,Chemical or fertilizer minerals
 1471,Crude chemical or fertilizer minerals
-1490,Misc. nonmetallic minerals
 1491,"Misc. nonmetallic minerals, n.e.c."
 1492,Water
 1900,Ordnance or accessories
-1910,"Guns, howitzers, mortars, etc."
 1911,"Guns, howitzers, mortars, etc."
-1920,"Ammo, over 30mm"
-1925,Guided missiles or space vehicle
 1929,"Ammo or related parts, n.e.c."
-1930,Tracked combat vehicle or parts
 1931,Tracked combat vehicle or parts
-1940,Military fire control equipment
-1941,Military fire control equipment
-1950,"Small arms, 30mm or less"
 1951,"Small arms, 30mm or less"
-1960,"Small arms ammo, 30mm or less"
 1961,"Small arms ammo, 30mm or less"
-1990,Misc. ordnance or accessories
-1991,Misc. ordnance or accessories
 2000,Food or kindred products
 2010,"Meat or poultry, fresh or chilled"
 2011,"Meat, fresh or chilled"
@@ -111,13 +60,11 @@ stcc,name
 2015,"Dressed poultry, fresh"
 2016,"Dressed poultry, frozen"
 2017,Processed poultry or eggs
-2020,Dairy products
 2021,Creamery butter
 2023,"Condensed, evaporated or dry milk"
 2024,Ice cream or related frozen desserts
 2025,Cheese or special dairy products
 2026,Processed milk
-2030,Canned or preserved food
 2031,Canned or cured sea foods
 2032,Canned specialties
 2033,"Canned fruits, vegetables, etc."
@@ -127,7 +74,6 @@ stcc,name
 2037,"Frozen fruits, vegetables or juice"
 2038,Frozen specialties
 2039,"Canned or preserved food, mixed"
-2040,Grain mill products
 2041,Flour or other grain mill products
 2042,Prepared or canned feed
 2043,Cereal preparations
@@ -135,22 +81,17 @@ stcc,name
 2045,Blended or prepared flour
 2046,Wet corn milling or milo
 2047,"Dog, cat or other pet food, n.e.c."
-2050,Bakery products
 2051,Bread or other bakery products
 2052,"Biscuits, crackers or pretzles"
-2060,"Sugar, beet or cane"
 2061,Sugar mill product or by-products
 2062,"Sugar, refined, cane or beet"
-2070,Confectionery or related products
 2071,Candy or other confectionery
-2080,Beverages or flavor extracts
 2082,Malt liquors
 2083,Malt
 2084,"Wine, brandy or brandy spirit"
 2085,Distilled or blended liquors
 2086,Soft drinks or mineral water
 2087,Misc. flavoring extracts
-2090,Misc. food preparations
 2091,Cottonseed oil or by-products
 2092,Soybean oil or by-products
 2093,Nut or vegetable oils or by-products
@@ -160,36 +101,22 @@ stcc,name
 2097,"Ice, natural or manufactured"
 2098,"Macaroni, spaghetti, etc."
 2099,"Misc. food preparations, n.e.c."
-2100,Tobacco products
-2110,Cigarettes
 2111,Cigarettes
-2120,Cigars
 2121,Cigars
-2130,Chewing or smoking tobacco
 2131,Chewing or smoking tobacco
-2140,Stemmed or redried tobacco
 2141,Stemmed or redried tobacco
 2200,Textile mill products
-2210,Cotton broad-woven fabrics
 2211,Cotton broad-woven fabrics
-2217,Cotton broad-woven fabrics
-2220,Man-made or silk woven fiber
 2221,Man-made or glass woven fiber
 2222,Silk-woven fabrics
-2230,Wool broad-woven fabrics
 2231,Wool broad-woven fabrics
-2240,Narrow fabrics
 2241,Narrow fabrics
-2250,Knit fabrics
 2251,Knit fabrics
-2270,Floor coverings
 2271,"Woven carpets, mats or rugs"
 2272,"Tufted carpets, rugs or mats"
 2279,"Carpets, mats or rugs, nec"
-2280,Thread or yarn
 2281,Yarn
 2284,Thread
-2290,Misc. textile goods
 2291,Felt goods
 2292,Lace goods
 2293,"Paddings, upholstery fill, etc."
@@ -199,24 +126,17 @@ stcc,name
 2297,Wool or mohair
 2298,Cordage or twine
 2299,"Textile goods, n.e.c."
-2300,Apparel or related products
-2310,Mens or boys clothing
 2311,Mens or boys clothing
-2330,Womens or childrens clothing
 2331,Womens or childrens clothing
-2350,"Caps, hats or millinery"
 2351,Millinery
 2352,Caps or hats or hat bodies
-2370,Fur goods
 2371,Fur goods
-2380,Misc. apparel or accessories
 2381,"Gloves, mittens or linings"
 2384,Robes or dressing gowns
 2385,Raincoats or other rain wear
 2386,Leather clothing
 2387,Apparel belts
 2389,"Apparel, n.e.c."
-2390,Misc. finished textile goods
 2391,Curtains or draperies
 2392,Textile house furnishings
 2393,Textile bags
@@ -225,20 +145,15 @@ stcc,name
 2396,Apparel findings
 2399,Misc. fabricated textile products
 2400,Lumber or wood products
-2410,Primary forest materials
 2411,Primary forest materials
-2420,Sawmill or planing mill products
 2421,Lumber or dimension stock
 2429,Misc. sawmill or planing mill
-2430,Millwork or prefabricated wood products
 2431,Millwork or cabinetwork
 2432,Plywood or veneer
 2433,Prefabricated wood buildings
 2434,"Kitchen cabinets, wood"
 2439,"Structural wood products, n.e.c."
-2440,Wooden containers
 2441,Wood containers or box shooks
-2490,Miscellaneous wood products
 2491,Treated wood products
 2492,Rattan or bamboo ware
 2493,Lasts or related products
@@ -249,7 +164,6 @@ stcc,name
 2498,"Wood products, n.e.c."
 2499,Misc. wood products
 2500,Furniture or fixtures
-2510,Household or office furniture
 2511,"Benches, chairs, stools"
 2512,Tables or desks
 2513,"Sofas, couches, etc."
@@ -259,24 +173,15 @@ stcc,name
 2517,Cabinets or cases
 2518,Childrens furniture
 2519,"Household or office furniture, n.e.c."
-2530,Public building or related furniture
 2531,Public building or related furniture
-2540,"Lockers, partitions or shelves"
 2541,"Wood lockers, partitions, etc."
 2542,"Metal lockers, partitions, etc."
-2550,Pallets
-2551,Pallets
-2590,Misc. furniture or fixtures
 2591,"Venetian blinds, shades, etc."
 2599,"Furniture or fixtures, n.e.c."
 2600,"Pulp, paper or allied products"
-2610,Pulp or pulp mill products
 2611,Pulp or pulp mill products
-2620,Paper
 2621,Paper
-2630,"Fiber, paper or pulpboard"
 2631,"Fiber, paper or pulpboard"
-2640,Converted paper or pulpboard products
 2642,Envelopes
 2643,Paper bags
 2644,Wallpaper
@@ -284,32 +189,21 @@ stcc,name
 2646,Pressed or molded pulp goods
 2647,Sanitary paper products
 2649,Misc. converted paper products
-2650,"Containers or boxes, paper"
 2651,"Containers or boxes, paper"
 2654,Sanitary food containers
 2655,"Fibre cans, drums or tubes"
-2660,Paper or building board
 2661,Paper or building board
 2700,Printed matter
-2710,Newspapers
 2711,Newspapers
-2720,Periodicals
 2721,Periodicals
-2730,Books
 2731,Books
-2740,Misc. printed matter
 2741,Misc. printed matter
-2760,Manifold business forms
 2761,Manifold business forms
-2770,"Greeting cards, seals, etc."
 2771,"Greeting cards, seals, etc."
-2780,"Blankbook, loose leaf binder"
 2781,"Blankbook, loose leaf binder"
-2790,Svc indus for print trades
 2791,Svc indus for print trades
 2800,Chemicals or allied products
 2810,Industrial chemicals
-2811,"Industrial, inorganic, or organic chemicals"
 2812,Potassium or sodium compound
 2813,Industrial gases
 2814,"Crude prod of coal, gas, petroleum"
@@ -317,93 +211,58 @@ stcc,name
 2816,Inorganic pigments
 2818,Misc. industrial organic chemicals
 2819,Misc. industrial organic chemicals
-2820,Plastic matter or synthetic fibers
 2821,Plastic matter or synthetic fibers
-2830,Drugs
 2831,Drugs
-2840,Soap or other detergents
 2841,Soap or other detergents
 2842,Specialty cleaning preparations
 2843,Surface active agents
 2844,"Cosmetics, perfumes, etc."
-2850,"Paints, lacquers, etc."
 2851,"Paints, lacquers, etc."
-2860,Gum or wood chemicals
 2861,Gum or wood chemicals
-2870,Agricultural chemicals
 2871,Fertilizers
 2879,Misc. agricultural chemicals
-2890,Misc. chemical products
 2891,Adhesives
 2892,Explosives
 2893,Printing ink
 2899,"Chemical preparations, n.e.c."
-2900,Petroleum or coal products
-2910,Products of petroleum refining
 2911,Petroleum refining products
 2912,"Liquefied gases, coal or petroleum"
-2950,Paving or roofing materials
 2951,Asphalt paving blocks or mix
 2952,Asphalt coatings 
-2990,Misc. coal or petroleum products
 2991,Misc. coal or petroleum products
 3000,Rubber or misc. plastics
-3010,Tires or inner tubes
 3011,Tires or inner tubes
-3020,Rubber or plastic footwear
 3021,Rubber or plastic footwear
-3030,Reclaimed rubber
 3031,Reclaimed rubber
-3040,Rub or plastic hose or belting
 3041,Rub or plastic hose or belting
-3060,Misc. fabricated products
 3061,Misc. fabricated products
-3070,Misc. plastic products
 3071,Misc. plastic products
 3072,Misc. plastic products
-3100,Leather or leather products
-3110,Leather
 3111,"Leather, finished or tanned"
-3120,Industrial leather belting
 3121,Industrial leather belting
-3130,Boot or shoe cut stock
 3131,Boot or shoe cut stock
-3140,Leather footwear
 3141,Leather footwear
 3142,Leather house slippers
-3150,Leather gloves or mittens
 3151,Leather gloves or mittens
-3160,Leather luggage or handbags
 3161,Leather luggage or handbags
-3190,"Leather goods, n.e.c."
 3199,"Leather goods, n.e.c."
-3200,"Clay, concrete, glass or stone"
-3210,Flat glass
 3211,Flat glass
-3213,Laminated safety glass
-3220,"Glassware, pressed or blown"
 3221,Glass containers
 3229,"Misc. glassware, blown or pressed"
-3240,Portland cement
 3241,Portland cement
-3250,Structural clay products
 3251,Clay brick or tile
 3253,Ceramic floor or wall tile
 3255,Refractories
 3259,Misc. structural clay products
-3260,Pottery or related products
 3261,Vitreous china plumbing fixtures
 3262,Vitreous china kitchen articles
 3264,Porcelain electric supplies
 3269,Misc. pottery products
-3270,"Concrete, gypsum, or plaster"
 3271,Concrete products
 3273,"Ready-mix concrete, wet"
 3274,Lime or lime plaster
 3275,Gypsum products
-3280,Cut stone or stone products
 3281,Cut stone or stone products
-3290,"Abrasives, asbestos products, etc."
 3291,Abrasive products
 3292,Asbestos products
 3293,Gaskets or packing
@@ -411,74 +270,55 @@ stcc,name
 3296,Mineral wool
 3299,Misc. nonmetallic minerals
 3300,Primary metal products
-3310,Steel mill products
 3311,Blast furnace or coke oven products
 3312,Primary iron or steel products
 3313,Electrometallurgical products
 3315,"Steel wire, nails or spikes"
-3316,Cold finishing of steel shapes
-3320,Iron or steel forgings
 3321,Iron or steel castings
-3330,Nonferrous primary smelter products
 3331,Primary copper smelter products
 3332,Primary lead smelter products
 3333,Primary zinc smelter products
 3334,Primary aluminum smelter products
 3339,Misc prim nonferr smelter products
-3350,Nonferrous metal basic shapes
 3351,Copper or alloy basic shapes
 3352,Aluminum or alloy basic shapes
 3356,Misc. nonferrous basic shapes
 3357,Nonferrous wire
-3360,Nonferrous metal castings
 3361,Aluminum or alloy castings
 3362,Copper or alloy castings
 3369,Misc. nonferrous castings
-3390,Misc. primary metal products
 3391,Iron or steel forgings
 3392,Nonferrous metal forgings
 3399,"Primary metal products, n.e.c."
 3400,Fabricated metal products
-3410,Metal cans
 3411,Metal cans
-3420,"Cutlery, hand tools or hardware"
 3421,"Cutlery, not electrical"
 3423,Edge or hand tools
 3425,Hand saws or saw blades
 3428,Builders or cabinet hardware
 3429,Misc hardware
-3430,Plumbing or heating fixtures
 3431,Metal sanitary ware
 3432,Plumbing fixtures
 3433,"Heating equipment, not electrical"
-3440,Fabricated structural metal products
 3441,Fabricated structural metal products
 3442,"Metal doors, sash, etc."
 3443,Fabricated plate products
 3444,Sheet metal products
 3446,Architectural metal work
 3449,Misc. metal work
-3450,"Bolts, nuts, screws, etc."
 3452,"Bolts, nuts, screws, etc."
-3460,Metal stampings
 3461,Metal stampings
-3480,Misc. fabricated wire products
 3481,Misc. fabricated wire products
-3490,Misc. fabricated metal products
 3491,Metal shipping containers
 3492,Metal safes or vaults
 3493,Steel springs
 3494,Valves or pipe fittings
 3499,"Fabricated metal products, n.e.c."
 3500,Machinery
-3510,Engines or turbines
 3511,"Steam engines, turbines, etc."
 3519,Misc. internal combustion engines
-3520,Farm machinery or equipment
 3522,Farm machinery or equipment
-3523,Farm machinery or equipment
 3524,Lawn or garden equipment
-3530,Constr machinery or equipment
 3531,Constr machinery or equipment
 3532,Mining machinery or parts
 3533,Oil field machinery or equipment
@@ -486,52 +326,43 @@ stcc,name
 3535,Conveyors or parts
 3536,"Hoists, industrial cranes, etc."
 3537,"Industrial trucks, etc."
-3540,Metalworking machinery
 3541,"Machine tools, metal cutting"
 3542,"Machine tools, metal forming"
 3544,"Special dies, tools, jigs, etc."
 3545,Machine tool accessories
 3548,Metalworking machinery
-3550,Special industry machinery
 3551,Food production machinery
 3552,Textile machinery or parts
 3553,Woodworking machinery
 3554,Paper industries machinery
 3555,Printing trades machinery
 3559,Misc special industry machinery
-3560,General industrial machinery
 3561,Industrial pumps
 3562,Ball or roller bearings
 3564,Ventilating equipment
 3566,Mech power transmission equipment
 3567,Industrial process furnaces
 3569,Misc. general industrial
-3570,Office or computing machinery
 3572,Typewriters or parts
 3573,Electronic data proc equipment
 3574,Accounting or calculating equipment
 3576,Scales or balances
 3579,Misc. office machines
-3580,Service industry machines
 3581,Automatic merchandising machines
 3582,Commercial laundry equipment
 3585,Refrigeration machinery
 3589,Misc. service industry machinery
-3590,Misc. machinery or parts
 3592,"Carburetors, pistons, etc."
 3599,Misc machinery or parts
 3600,Electrical equipment
-3610,Electric trans or distributors
 3611,Electric measuring instrmts
 3612,Electrical transformers
 3613,Switchgear or switchboards
-3620,Industrial electrical equipment
 3621,Motors or generators
 3622,Industrial controls or parts
 3623,Welding apparatus
 3624,Carbon prod for electric uses
 3629,Misc. electrical industrial equipment
-3630,Household appliances
 3631,Household cooking equipment
 3632,Household refrigerators
 3633,Household laundry equipment
@@ -539,225 +370,88 @@ stcc,name
 3635,Household vacuum cleaners
 3636,Sewing machines or parts
 3639,Misc. household appliances
-3640,Electric lighting or wire equipment
 3641,Electric lamps
 3642,Lighting fixtures
 3643,Current carrying wiring equipment
 3644,Noncurrent wiring devices
-3650,Radio or TV receiving sets
 3651,Radio or TV receiving sets
 3652,Phonograph records
-3660,Communication equipment
 3661,Telephone or telegraph equipment
 3662,Radio or TV transmitting equipment
-3670,Electronic components
 3671,Electronic tubes
 3674,Solid state semiconducts
 3679,Misc. electronic components
-3690,Misc. electrical machinery
 3691,Storage batteries or plates
 3692,Primary batteries
 3693,X-ray equipment
 3694,Elec equipment for internal combustion engine
 3699,"Electrical equipment, n.e.c."
 3700,Transportation equipment
-3710,Motor vehicle or equipment
 3711,Motor vehicles
-3712,Passenger motor car bodies
 3713,Motor bus or truck bodies
 3714,Motor vehicle parts or accessories
 3715,Truck trailers
-3720,Aircraft or parts
-3721,Aircraft
 3722,Aircraft or missile engines
 3723,Aircraft propellers or parts
 3729,Misc. aircraft parts
-3730,Ships or boats
 3732,Ships or boats
-3740,Railroad equipment
 3741,Locomotives or parts
 3742,Railroad cars
-3750,"Motorcycles, bicycles or parts"
 3751,"Motorcycles, bicycles or parts"
-3760,Missile or space vehicle parts
 3769,Missile or space vehicle parts
-3790,Misc transportation equipment
 3791,Trailer coaches
 3799,"Transportation equipment, n.e.c."
-3800,"Instrum, photo equipment, optical eq"
-3810,"Engineering, lab or scientific equipment"
+3800,"Instruments, watches, or clocks"
 3811,"Engineering, lab or scientific equipment"
-3820,Measuring or controlling equipment
 3821,Mech measuring or control equipment
 3822,Automatic temperature controls
-3830,Optical instruments or lenses
 3831,Optical instruments or lenses
-3840,Medical or dental instruments
 3841,Surgical or medical instruments
 3842,Orthopedic or prosthetic supplies
 3843,Dental equipment or supplies
-3850,Ophthalmic or opticians goods
 3851,Ophthalmic or opticians goods
-3860,Photographic equipment or supplies
 3861,Photographic equipment or supplies
-3870,"Watches, clocks, etc."
 3871,"Watches, clocks, etc."
 3900,Misc. manufacturing products
-3910,"Jewelry, silverware, etc."
 3911,"Jewelry, precious metal, etc."
 3914,Silverware or plated ware
-3930,Musical instruments or parts
 3931,Musical instruments or parts
-3940,"Toys, amusement, athletic equipment"
 3941,Games or toys
 3942,Dolls or stuffed toys
 3943,"Childrens vehic or parts, n.e.c."
 3949,Sporting or athletic goods
-3950,Office or art materials
 3951,Pens or parts
 3952,"Pencils, crayons, or artists materials"
 3953,Marking devices
 3955,Carbon paper or inked ribbons
-3960,Costume jewelry or novelties
 3961,Costume jewelry or novelties
-3962,"Feathers, plumes, etc."
 3963,Buttons
 3964,Apparel fasteners
-3990,Misc. manufactured products
 3991,"Brooms, brushes, etc."
 3992,Linoleum or other coverings
 3993,Signs or advertising displays
 3994,Morticians goods
 3996,Matches
-3997,"Furs, dressed or dyed"
 3999,"Manufactured products, n.e.c."
-4000,Waste or scrap materials
-4010,Ashes
 4011,Ashes
-4020,Waste or scrap
 4021,Metal scrap or tailings
 4022,Textile scrap or sweepings
-4023,Wood scrap or waste
 4024,Paper waste or scrap
 4025,Chemical or petroleum waste
-4026,Rubber or plastic scrap
-4027,"Stone, clay or glass scrap"
-4028,Leather waste or scrap
 4029,Misc. waste or scrap
-4100,Misc. freight shipments
-4110,Misc. freight shipments
 4111,Misc. freight shipments
-4120,Special commodities
 4121,Special commodities
-4192,Special commodities
-4200,Shipping containers
-4210,Shipping containers
 4211,Shipping containers
-4220,Semi-trailers returned empty
 4221,Semi-trailers returned empty
-4230,"Empty equipment, reverse route"
 4231,"Empty equipment, reverse route"
-4300,Mail or contract traffic
-4310,Mail and express traffic
 4311,Mail and express traffic
-4320,Other contract traffic
-4321,Other contract traffic
-4400,Freight forwarder traffic
-4410,Freight forwarder traffic
 4411,Freight forwarder traffic
-4500,Shipper association traffic
-4510,Shipper association traffic
 4511,Shipper association traffic
-4600,Misc. mixed shipments
-4610,Freight-all-kinds shipments
 4611,Freight-all-kinds shipments
-4620,"Mixed shipments, multi-stcc"
 4621,"Mixed shipments, multi-stcc"
-4700,Small packaged freight shipments
-4710,Small packaged freight shipments
 4711,Small packaged freight shipments
-4804,Waste nonflammable compressed gases
-4805,Waste flammable compressed gases
-4807,Waste flammable liquids
-4808,Waste flammable liquids
-4809,Waste flammable liquids
-4810,"Waste flammable liquids, misc."
-4812,Flammable liquids
-4813,Waste combustible liquids
-4814,Combustible liquids
-4815,Waste combustible liquids
-4816,Waste flammable solids
-4817,Waste flammable solids
-4818,Waste oxidizing materials
-4820,Waste poisonous liquids
-4821,"Waste poison b, organic"
-4823,Waste poisonous materials
-4825,Waste etiologic agents
-4829,Waste radioactive materials
-4830,Waste corrosive materials
-4831,Waste corrosive materials
-4832,Waste corrosive materials
-4835,Waste corrosive materials
-4836,Waste corrosive materials
-4845,"Waste other regulated materials, Group C"
-4850,"Freight all kinds, hazardous wastes"
-4860,Waste other regulated materials Group E
-4861,Waste miscellaneous hazardous materials
-4862,Waste misc hazardous materials
-4863,Waste miscellaneous hazardous materials
-4866,Waste miscellaneous hazardous materials
-4870,"Hazardous waste, n.o.s."
-4875,Waste stream other regulated
-4900,Hazardous materials
-4901,Ammunition & Class A explosives
-4902,Class B explosives
-4903,Class C explosives
-4904,Non flammable compressed gases
-4905,Flammable compressed gases
-4906,Flammable liquids
-4907,Flammable liquids
-4908,Flammable liquids
-4909,Flammable liquids
-4910,Flammable liquids
-4912,Combustible liquids
-4913,Combustible liquids
-4914,Combustible liquids
-4915,Combustible liquids
-4916,Combustible solids
-4917,Flammable solids
-4918,Oxidizing materials
-4919,Organic peroxides
-4920,Poisons A
-4921,"Poisons B, organic"
-4923,"Poisons B, inorganic"
-4925,Irritating materials - etiologic agts
-4926,Radioactive materials
-4927,"Radioactive materials, fissile cl iii"
-4928,"Radioactive materials, fissile cl ii"
-4929,"Radioactive materials, fissile cl i"
-4930,Corrosive materials
-4931,Corrosive materials
-4932,Corrosive materials
-4933,Corrosive materials
-4934,Corrosive materials
-4935,Corrosive materials
-4936,Corrosive materials
-4940,Other regulated materials group a
-4941,Other regulated materials group a
-4944,Other regulated materials group b
-4945,Other regulated material
-4950,Mixed loads
-4960,Division 9 environmentally hazardous
-4961,Other regulated materials group e
-4962,Other regulated materials group e
-4963,Other regulated materials group e
-4966,Other regulated materials group e
-5000,Secondary traffic
 5010,Warehouse & distribution center
-5020,Rail intermodal drayage
 5021,Rail intermodal drayage to ramp
 5022,Rail intermodal drayage from ramp
-5030,Air freight drayage
 5031,Air freight drayage to airport
 5032,Air freight drayage from airport
-6000,Unclassified
