@@ -506,23 +506,221 @@
                                     </div>
                                 </div>
                             </div> 
-
-                            <!--
-                            <div id="topCommodities" >
+                        </div>
+                     
+                    </div>
+                </div>
+                <!--maritime indicators tab-->
+                <div id ='maritime-indicators' class='tab-pane landing-content' style='color:#333333;'>
+                    <div class='page-title center-block col-lg-12'>
+                        <div class='center-block col-lg-10 col-sm-12' style='float:none;'>
+                            <h3>Maritime Indicators&nbsp;&nbsp;<span class="subHeader">select a year: </span>
+                                <div class="btn-group tradeBtn">
+                                  <button data-toggle="dropdown" id="mi-year-select" class="btn btn-default dropdown-toggle">2014 <span class="caret"></span></button>
+                                    <ul id="maritime-year-dropdown" class="dropdown-menu">
+                                      <li><input type="radio" id="m2014" name="county" value="2014" checked><label for="m2014">2014</label></li>
+                                      
+                                    </ul>
+                                </div><span id="countySelect"></span></h3>
+                        </div> 
+                    </div>
+                    <div class="col-lg-12">
+                        <div id='mi-upper'>
+                            <!-- Data panel for marine terminal activity -->
+                            <div id="mi-terminal-activity" class="col-lg-7 col-lg-offset-1  col-sm-8 col-sm-offset-0">
                                 <div class="panel panel-primary">
                                     <div class="panel-heading">
-                                        <h4 class="panel-title" id="topPartnerTitle">Top <span id="commDir" class="selectable">Inbound</span> Commodities by <span id="commMeasure" class="selectable">Volume</span></h4>
+                                        <h4 class="panel-title"><span class="mi-activity-year">2014</span> vessel activity by terminal</h4>
                                     </div>
                                     <div class="panel-body">
-                                        <ul id="commList1" class="col-lg-6">
-                                        </ul>
-                                        <ul id="commList2" class="col-lg-6">
-                                        </ul>
+                                         <!-- Data panel for the map -->
+                                         <!-- Vessel activity legend -->
+                                         <div id="mi-vessel-legend" class="panel panel-primary">
+                                            <div class="panel-body">
+                                                <strong>facility type</strong>
+                                                <div class="mi-legend-row"><div class="mi-legend-swatch mi-bulk"></div>bulk terminal</div>
+                                                <div class="mi-legend-row"><div class="mi-legend-swatch mi-general"></div>general cargo terminal</div>
+                                                <strong>annual ship calls</strong>
+                                                <div class="mi-legend-row"><div class="mi-legend-swatch mi-gray"></div><span id="mi-vessel-min">50</span></div>
+                                                <div class="mi-legend-row"><div class="mi-legend-swatch-large mi-gray"></div><span id="mi-vessel-max">444</span></div>
+                                            </div>
+                                         </div>
+                                         <!-- Vessel activity panel -->
+                                         <div id="mi-vessel-indicator-panel" class="panel panel-primary">
+                                            <div class="panel-body">
+                                                <div id="mi-vessel-title">All DVRPC Terminals</div>
+                                                <div class="row">
+                                                    <div class="col-lg-6 col-xs-6 mi-right-full">
+                                                        <!-- indactor value -->
+                                                        <div id="mi-foreign-value" class="mi-right">$10 B</div>
+                                                        <div class="mi-value-text mi-right">total foreign trade</div>
+                                                    </div>
+                                                    <div class="col-lg-6 col-xs-6">
+                                                        <div class="row">
+                                                            <div class="col-lg-4 col-md-4 col-sm-3 col-xs-4">
+                                                                <div id="mi-vessel-icon" class="mi-foreign-icon mi-icons">
+                                                                    <i class="glyphicon glyphicon-circle-arrow-down"></i>
+                                                                </div>
+                                                            </div>
+                                                            <div class="mi-indicator-text">
+                                                                <div id="mi-vessel-percent" class="mi-percent">-7%</div>
+                                                                <div class="mi-indicator">
+                                                                    <span id="mi-vessel-indicator">decrease</span> over<br/>
+                                                                    previous year
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                         </div>
+                                    </div>
+                                </div>                             
+                            </div>
+                            <!-- Data panel for annual activity indicators -->
+                            <div id="mi-annual-activity" class="col-lg-3 col-sm-4">
+                                <div class="panel panel-primary">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title"><span class="mi-activity-year">2014</span> Annual Indicators</h4>
+                                    </div>
+                                    <div id="mi-trade-panel" class="panel-body">
+                                        <div id="mi-trade-upper">
+                                            <div class="mi-upper-rank">
+                                                <div class="row">
+                                                    <div class="col-lg-3 col-lg-offset-2 col-sm-2 col-sm-offset-2 col-xs-3 col-xs-offset-2 ">
+                                                        <div id="mi-rank-icon" class="mi-icons mi-center">
+                                                            <i class="glyphicon glyphicon-circle-arrow-up"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-7 col-sm-8 col-xs-7">
+                                                        <div class="row">
+                                                            <div class="col-lg-3 col-xs-3">
+                                                                <span id="mi-rank-value">15</span>
+                                                            </div>
+                                                            <span class="mi-rank-text">nation rank <br/>by port volume</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="mi-upper-total">
+                                                <div class="row">
+                                                    <div class="col-lg-3 col-lg-offset-2 col-sm-2 col-sm-offset-2 col-xs-3 col-xs-offset-2 ">
+                                                        <div id="mi-total-icon" class="mi-icons mi-center">
+                                                            <i class="glyphicon glyphicon-circle-arrow-up"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-7 col-sm-8 col-xs-7">
+                                                        <div id="mi-rank-value">2,304 k</div>
+                                                        <div class="mi-total-text">total trade in tons</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="mi-upper-highlight-row">
+                                                <span id="mi-regional">25%</span> regional <span class="mi-growth">growth</span> vs. <span id="mi-national">22%</span> national <span class="mi-growth">growth</span>
+                                            </div>
+                                            <div class="mi-primary">
+                                                <span>Foreign Trade Only</span>
+                                            </div>
+                                            <div class="mi-trade-value-row">
+                                                <div class="row">
+                                                    <div class="col-lg-6 col-xs-6 mi-right-full">
+                                                        <!-- indactor value -->
+                                                        <div id="mi-foreign-value" class="mi-right">$10 B</div>
+                                                        <div class="mi-value-text mi-right">total foreign trade</div>
+                                                    </div>
+                                                    <div class="col-lg-6 col-xs-6">
+                                                        <div class="row">
+                                                            <div class="col-lg-4 col-md-4 col-sm-3 col-xs-5">
+                                                                <div id="mi-foreign-icon" class="mi-foreign-icon mi-icons">
+                                                                    <i class="glyphicon glyphicon-circle-arrow-down"></i>
+                                                                </div>
+                                                            </div>
+                                                            <div class="mi-indicator-text">
+                                                                <div id="mi-foreign-percent" class="mi-percent">-7%</div>
+                                                                <div class="mi-indicator">
+                                                                    <span id="mi-foreign-indicator">decrease</span> over<br/>
+                                                                    previous year
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="mi-trade-lower">
+                                            <div id="mi-exports" class="col-lg-6 col-sm-6 col-xs-6 center-block">
+                                                <div id="mi-export-graph">percent graph</div>
+                                                <div class="mi-indicator-graph-labels">exports by volume</div>
+                                                <div>
+                                                    <div class="row">
+                                                        <div class="col-lg-4 col-md-4 col-sm-3 col-xs-5">
+                                                            <div id="mi-export-icon" class="mi-icons">
+                                                                <i class="glyphicon glyphicon-circle-arrow-up"></i>
+                                                            </div>
+                                                        </div>
+                                                        <div class="mi-indicator-text ">
+                                                            <div id="mi-export-percent" class="mi-percent">-7%</div>
+                                                            <div class="mi-indicator">
+                                                                <span id="mi-export-indicator">decrease</span> over<br/>
+                                                                previous year
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="mi-containerized" class="col-lg-6 col-sm-6 col-xs-6 center-block">
+                                                <div id="mi-container-graph">percent graph</div>
+                                                <div class="mi-indicator-graph-labels">containerized cargo</div>
+                                                <div>
+                                                    <div class="row">
+                                                        <div class="col-lg-4 col-md-4 col-sm-3 col-xs-5">
+                                                            <div id="mi-container-icon" class="mi-icons">
+                                                                <i class="glyphicon glyphicon-circle-arrow-down"></i>
+                                                            </div>
+                                                        </div>
+                                                        <div class="mi-indicator-text">
+                                                            <div id="mi-container-percent" class="mi-percent">-7%</div>
+                                                            <div class="mi-indicator">
+                                                                <span id="mi-container-indicator">decrease</span> over<br/>
+                                                                previous year
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>                             
+                            </div>
+                        </div>
+                        
+                        <div class='clearfix'></div>
+                        <div class='center-block col-lg-10 col-sm-12' style='float:none;'>
+                            <div id="mi-all-trade-panel" class="panel panel-primary">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title" id="topPartnerTitle">Maritime Activity over time</h4>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="mi-subtitle">Trade type by volume <span id="mi-trade-date-min">2003</span> - <span id="mi-trade-date-max">2014</span></div>
+                                    <div class="row">
+                                        <div class="col-lg-9 col-md-9 col-sm-8 col-xs-9">
+                                            <svg id="maritimeTradeChart"></svg>
+                                        </div>
+                                        <div class="col-lg-3 col-md-3 col-sm-4 col-xs-3">
+                                            <div id="mi-trade-legend-title">Trade volume legend</div>
+                                            <div class="mi-trade-legend-row"><div class="mi-trade-swatch dkblue-bg"></div>domestic shipments</div>
+                                            <div class="mi-trade-legend-row"><div class="mi-trade-swatch blue-bg"></div>export shipments</div>
+                                            <div class="mi-trade-legend-row"><div class="mi-trade-swatch ltblue-bg"></div>import shipments</div>
+                                            <div class="mi-trade-legend-row"><div class="mi-trade-line"></div>containerized cargo</div>
+                                            <div id="mi-trade-legend-info">
+                                                <i class="glyphicon glyphicon-info-sign"></i>
+                                            </div>
+                                            <div id="mi-info-text">mouse over graph to view<br/>detailed values by year</div>
+
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            -->
-                            
+                            </div> 
                         </div>
                      
                     </div>
