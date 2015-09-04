@@ -2648,6 +2648,10 @@ inverse .navbar-nav .open > .dropdown-menu > .dropdown-submenu.open > a:before {
 .dkblue-bg{background-color: #312B6A;}
 .blue-bg{background-color: #396AB2;}
 .ltblue-bg{background-color: #7CA0D5;}
+.overlay {
+    fill: none;
+    pointer-events: all;
+}
 
 @media (max-width: 992px) { 
     .mi-icons{
