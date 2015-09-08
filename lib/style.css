@@ -2652,6 +2652,41 @@ inverse .navbar-nav .open > .dropdown-menu > .dropdown-submenu.open > a:before {
     fill: none;
     pointer-events: all;
 }
+.mi-data-window {
+  background: #fff;
+  color: #333;
+  display: none;
+  font-size: 11px;
+  left: 350px;
+  padding: 8px;
+  position: absolute;
+  line-height: 18px;
+  text-align: left;
+  top: 30px;
+  width: 170px;
+  z-index: 10;
+  pointer-events:none;
+}
+
+.mouseLine, .circle, .mi-data-window {
+   /* transition: all 0.1s;*/
+}
+.mi-dw-title{
+    font-weight:600;
+    font-size: 12px;
+}
+
+.mi-data-swatch{
+    float: left;
+    height: 12px;
+    width: 12px;
+    border-radius: 12px;
+    margin-right: 8px;
+    margin-top: 3px;
+}
+.mi-dw-domestic, .mi-dw-import, .mi-dw-export, .mi-dw-container{
+    font-weight:800;
+}
 
 @media (max-width: 992px) { 
     .mi-icons{
