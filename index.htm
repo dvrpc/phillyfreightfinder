@@ -10,8 +10,15 @@
         <title>PhillyFreightFinder 3.1.2 |  DVRPC</title>
         <link href='lib/pfficons.css' rel='stylesheet'/>
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,800' rel='stylesheet' type='text/css'>
+    <!--
         <link href="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" type="text/css">
         <link href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" rel="stylesheet" type="text/css">
+    -->
+
+        <!--locals for offline development -->    
+        <link href="lib/locals/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="lib/locals/leaflet.css" rel="stylesheet" type="text/css">
+
         <link rel="stylesheet" href="https://dvrpcfreight.github.io/dynamic-icons/dyna.css">
         <link href="lib/assets/typeahead.min.css" rel="stylesheet" type="text/css">
         <link rel="stylesheet" media="all" href="lib/tipsy.css"/>
@@ -703,14 +710,14 @@
                                 <div class="panel-body">
                                     <div class="mi-subtitle">Trade type by volume <span id="mi-trade-date-min">2003</span> - <span id="mi-trade-date-max">2014</span></div>
                                     <div class="row">
-                                        <div class="col-lg-9 col-md-9 col-sm-8 col-xs-9">
+                                        <div id="maritimeChartWrapper" class="col-lg-9 col-md-9 col-sm-8 col-xs-9">
                                             <div id="maritimeTradeChart"></div>
                                         </div>
                                         <div class="col-lg-3 col-md-3 col-sm-4 col-xs-3">
                                             <div id="mi-trade-legend-title">Trade volume legend</div>
                                             <div class="mi-trade-legend-row"><div class="mi-trade-swatch dkblue-bg"></div>domestic shipments</div>
-                                            <div class="mi-trade-legend-row"><div class="mi-trade-swatch blue-bg"></div>export shipments</div>
-                                            <div class="mi-trade-legend-row"><div class="mi-trade-swatch ltblue-bg"></div>import shipments</div>
+                                            <div class="mi-trade-legend-row"><div class="mi-trade-swatch blue-bg"></div>import shipments</div>
+                                            <div class="mi-trade-legend-row"><div class="mi-trade-swatch ltblue-bg"></div>export shipments</div>
                                             <div class="mi-trade-legend-row"><div class="mi-trade-line"></div>containerized cargo</div>
                                             <div id="mi-trade-legend-info">
                                                 <i class="glyphicon glyphicon-info-sign"></i>
@@ -1646,17 +1653,29 @@
           </div><!-- /.modal-dialog -->
         </div><!-- /.modal --> 
 
+        <!-- locals for offline dev -->
+        <script type="text/javascript" src="lib/locals/jquery-1.10.2.min.js"></script>
+        <script type="text/javascript" src="lib/locals/leaflet.js"></script>
+        <script type="text/javascript" src="lib/locals/jquery.bxslider.min.js"></script>
+        <script type="text/javascript" src="lib/locals/highcharts.js"></script>
+<!--
         <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
         <script type="text/javascript" src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
         <script type="text/javascript" src="http://cdn.jsdelivr.net/bxslider/4.1.1/jquery.bxslider.min.js"></script>
         <script type="text/javascript" src="http://cdn.jsdelivr.net/highcharts/4.0.3/highcharts.js"></script>
+-->        
         <script type="text/javascript" src="lib/core/dyna-icons.js"></script>
         <script type="text/javascript" src="lib/assets/typeahead.min.js"></script>
         <script type="text/javascript" src="lib/assets/numeral.min.js"></script> 
-        <!--<script type="text/javascript" src="lib/assets/jquery-1.10.2.min.js"></script>
-        <script type="text/javascript" src="lib/assets/leaflet.js"></script>-->
+    
+        <!--locals for offline dev -->
+        <script type="text/javascript" src="lib/locals/jquery.nicescroll.js"></script>
+        <script type="text/javascript" src="lib/locals/bootstrap.min.js"></script>
+        
+<!--
         <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.5.1/jquery.nicescroll.min.js"></script>
         <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>  
+-->
         <!--d3 dependencies-->
         <script src="lib/assets/d3_2.7.0/d3.min.js"></script>
         <script src="lib/assets/d3_2.7.0/d3compat.min.js"></script>
