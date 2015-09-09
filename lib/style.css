@@ -2513,7 +2513,7 @@ inverse .navbar-nav .open > .dropdown-menu > .dropdown-submenu.open > a:before {
     margin-top: 0px;
     margin-bottom: -5px;
 }
-#mi-rank-value, #mi-foreign-value{
+#mi-rank-value,#mi-total-trade-value, #mi-foreign-value{
     font-size:33px;
     color:#312B6A;
     font-weight:800;  
@@ -2648,6 +2648,7 @@ inverse .navbar-nav .open > .dropdown-menu > .dropdown-submenu.open > a:before {
 .dkblue-bg{background-color: #312B6A;}
 .blue-bg{background-color: #396AB2;}
 .ltblue-bg{background-color: #7CA0D5;}
+.orange-bg{background-color: #EAA51B;}
 .overlay {
     fill: none;
     pointer-events: all;
@@ -2684,7 +2685,7 @@ inverse .navbar-nav .open > .dropdown-menu > .dropdown-submenu.open > a:before {
     margin-right: 8px;
     margin-top: 3px;
 }
-.mi-dw-domestic, .mi-dw-import, .mi-dw-export, .mi-dw-container{
+.mi-dw-domestic, .mi-dw-import, .mi-dw-export, .mi-dw-containers{
     font-weight:800;
 }
 
