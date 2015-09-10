@@ -1872,6 +1872,7 @@ p#subtitle {
 
 .subHeader{
     font-size: 16px;
+    font-weight: 200;
     margin-left: 10px;
 }
 .tradeBtn{
@@ -1881,7 +1882,7 @@ p#subtitle {
 #tradeCounty .caret{
   margin-left: 5px;
 }
-#tradeCounty{
+#tradeCounty, #mi-year-select{
     color: #312867;
     font-size: 24px;
     padding: 0px 15px;
@@ -2409,3 +2410,338 @@ inverse .navbar-nav .open > .dropdown-menu > .dropdown-submenu.open > a:before {
   font: 10px sans-serif;
   text-anchor: end;
 }*/
+
+/***************************************
+/  Maritime Indicator Styles
+/***************************************/
+#mi-terminal-activity > .panel{
+    background-color:#efefef;
+}
+#mi-upper .panel-body{
+    height:430px;
+}
+#mi-trade-panel{
+    padding:0px;
+}
+#mi-trade-upper{
+    height:233px;
+}
+#mi-trade-lower > div{
+    height:197px;
+    border-top: 1px solid #396AB2;
+}
+#mi-trade-lower > :first-child{
+    border-right: 1px solid #396AB2;   
+}
+#mi-export-graph, #mi-container-graph{
+    height:108px;
+}
+.mi-indicator-graph-labels{
+    height:26px;
+    text-align: center;
+    background-color:#ddd;
+    font-size:12px;
+    margin: 0 -15px;
+    line-height: 26px;
+}
+.mi-percent{
+    color: #333;
+    font-size:20px;
+    font-weight: 800;
+    margin-top:3px;
+}
+.mi-indicator{
+    font-size: 11px;
+    line-height: 11px;
+    margin-right:-12px;
+}
+.mi-icons{
+    text-align: right;
+    margin-right: -10px;
+    margin-top: 3px;
+    font-size: 31px;
+    line-height:49px;
+}
+.mi-icons > .glyphicon-circle-arrow-up{
+    color:#6CB545;
+}
+.mi-icons > .glyphicon-circle-arrow-right{
+    color:#EDCF23;
+}
+.mi-icons > .glyphicon-circle-arrow-down{
+    color:#DB583A;
+}
+.mi-indicator-text{
+    float:left;
+    margin-left:5px;
+}
+.mi-upper-rank{
+    height:52px;
+    border-bottom:1px solid #DDDDDD;
+}
+.mi-upper-total{
+    height:62px;
+}
+.mi-upper-highlight-row{
+    height:28px;
+    line-height:28px;
+    background-color: #DDD;
+    text-align: center;
+    font-size:11px;
+}
+#mi-regional, #mi-national{
+    font-weight:800;
+}
+.mi-growth{
+    display:inline;
+}
+.mi-primary{
+    height:28px;
+    background-color: #396AB2;
+}
+.mi-primary span{
+    padding-left: 15px;
+    line-height: 28px;
+    font-weight: 600;
+    color:#fff;
+}
+.mi-center{
+    text-align:center!important;
+}
+#mi-rank-icon{
+    line-height: 55px;
+    margin-top: 0px;
+    margin-bottom: -5px;
+}
+#mi-rank-value,#mi-total-trade-value, #mi-foreign-value, #mi-export-label, #mi-container-label{
+    font-size:33px;
+    color:#312B6A;
+    font-weight:800;  
+    margin-top: -2px;
+}
+#mi-foreign-value{
+    margin-top: -3px;
+    margin-bottom:1px;
+}
+#mi-total-icon{
+    line-height:62px;
+    margin-top:0px;
+}
+.mi-rank-text{
+    margin-left: 15px;
+    margin-top: 8px;
+    font-size: 13px;
+    line-height: 15px;
+    float: left;
+}
+.mi-total-text, .mi-value-text{
+    margin-top:-8px;
+}
+.mi-right{
+    text-align:right;
+}
+.mi-right-full{
+    padding-right:0px;
+}
+#mi-vessel-legend{
+    width:220px;
+    height:142px;
+    font-size:11px;
+}
+#mi-vessel-legend .panel-body{
+    padding:8px 12px;
+}
+#mi-vessel-indicator-panel{
+    width:275px;
+    height:83px;
+    float:right;
+    margin-top:159px;
+}
+#mi-vessel-indicator-panel .panel-body{
+    padding:0px;
+}
+#mi-vessel-title{
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    height:20px;
+    font-size:12px;
+    line-height:20px;
+    padding-left:8px;
+    color: #fff;
+    background-color: #396ab2;
+}
+.mi-legend-swatch{
+    float:left;
+    height:14px;
+    width:14px;
+    border-radius:14px;
+    margin-right:8px;
+}
+.mi-legend-swatch-large{
+    float:left;
+    height:28px;
+    width:28px;
+    border-radius:28px;
+    margin-right:8px;
+    margin-left: -6px;
+}
+.mi-bulk{
+    background-color: #DE6A35;
+}
+.mi-general{
+    background-color: #3172B8;
+}
+.mi-gray{
+    background-color: #ccc;
+}
+.mi-legend-row{
+    padding-bottom: 8px;
+    padding-top:1px;
+    line-height: 13px
+}
+#mi-all-trade-panel .panel-body{
+    height:248px;
+}
+.mi-subtitle{
+    font-weight:800;
+    color:#312B6A;
+}
+.mi-trade-legend-row{
+    margin-bottom: 5px;
+    line-height: 22px;
+    height: 24px;
+}
+.mi-trade-swatch{
+    float:left;
+    height:24px;
+    width:24px;
+    margin-right:8px;
+}
+.mi-trade-line{
+    float:left;
+    width:24px;
+    height:14px;
+    border-bottom:4px solid #EAA51B;
+    margin-right:8px;
+}
+#mi-trade-legend-title{
+    font-weight: 600;
+    margin-bottom:10px;
+}
+#mi-trade-legend-info{
+    width:32px;
+    float:left;
+}
+#mi-trade-legend-info i{
+    font-size: 24px;
+    color: #bcbcbc;
+}
+#mi-info-text{
+    font-size: 11px;
+    line-height: 13px;
+    margin-top: -1px;
+    color: #bcbcbc;
+}
+#maritimeTradeChart{
+
+}
+.dkblue-bg{background-color: #312B6A;}
+.blue-bg{background-color: #396AB2;}
+.ltblue-bg{background-color: #7CA0D5;}
+.orange-bg{background-color: #EAA51B;}
+.overlay {
+    fill: none;
+    pointer-events: all;
+}
+.mi-data-window {
+  background: #fff;
+  color: #333;
+  display: none;
+  font-size: 11px;
+  left: 350px;
+  padding: 8px;
+  position: absolute;
+  line-height: 18px;
+  text-align: left;
+  top: 30px;
+  width: 170px;
+  z-index: 10;
+  pointer-events:none;
+}
+
+.mouseLine, .circle, .mi-data-window {
+   /* transition: all 0.1s;*/
+}
+.mi-dw-title{
+    font-weight:600;
+    font-size: 12px;
+}
+
+.mi-data-swatch{
+    float: left;
+    height: 12px;
+    width: 12px;
+    border-radius: 12px;
+    margin-right: 8px;
+    margin-top: 3px;
+}
+.mi-dw-domestic, .mi-dw-import, .mi-dw-export, .mi-dw-containers{
+    font-weight:800;
+}
+#mi-export-label, #mi-container-label{
+  font-size: 24px;
+  position: absolute;
+  text-align: center;
+  z-index: 10;
+  pointer-events:none;
+  margin-top:0;
+  left:0;
+  width:100%;
+  top:0;
+}
+
+@media (max-width: 992px) { 
+    .mi-icons{
+        text-align: left;
+        margin-left:-10px;
+        font-size:24px;
+        line-height:39px;
+    }
+    .mi-foreign-icon{
+        margin-left: -5px;
+    }
+    .mi-indicator-graph-labels {
+        font-size:11px;
+    }
+    .mi-growth{
+        display:none;
+    }
+}
+@media (min-width: 768px) and (max-width: 786px) {
+    .mi-value-text{
+        font-size:12px;
+    }
+
+}
+@media (max-width: 768px){
+    .mi-icons{
+        text-align: right;
+        font-size:30px;
+        line-height:49px;
+    }
+    .mi-indicator-graph-labels {
+        font-size:12px;
+    }
+    .mi-indicator-text{
+        margin-left:10px;
+    }
+    .mi-growth{
+        display:inline;
+    }
+    
+}
+@media (min-width: 1200px){
+    .mi-indicator-text{
+        margin-left:10px;
+    }
+}
