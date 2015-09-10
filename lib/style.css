@@ -2513,7 +2513,7 @@ inverse .navbar-nav .open > .dropdown-menu > .dropdown-submenu.open > a:before {
     margin-top: 0px;
     margin-bottom: -5px;
 }
-#mi-rank-value,#mi-total-trade-value, #mi-foreign-value{
+#mi-rank-value,#mi-total-trade-value, #mi-foreign-value, #mi-export-label, #mi-container-label{
     font-size:33px;
     color:#312B6A;
     font-weight:800;  
@@ -2687,6 +2687,17 @@ inverse .navbar-nav .open > .dropdown-menu > .dropdown-submenu.open > a:before {
 }
 .mi-dw-domestic, .mi-dw-import, .mi-dw-export, .mi-dw-containers{
     font-weight:800;
+}
+#mi-export-label, #mi-container-label{
+  font-size: 24px;
+  position: absolute;
+  text-align: center;
+  z-index: 10;
+  pointer-events:none;
+  margin-top:0;
+  left:0;
+  width:100%;
+  top:0;
 }
 
 @media (max-width: 992px) { 
