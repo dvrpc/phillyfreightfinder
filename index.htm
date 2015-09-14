@@ -15,10 +15,10 @@
         <link href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" rel="stylesheet" type="text/css">
     
 
-        <!--locals for offline development    
+        <!--locals for offline development  
         <link href="lib/locals/bootstrap.min.css" rel="stylesheet" type="text/css">
         <link href="lib/locals/leaflet.css" rel="stylesheet" type="text/css">
---> 
+  --> 
         <link rel="stylesheet" href="https://dvrpcfreight.github.io/dynamic-icons/dyna.css">
         <link href="lib/assets/typeahead.min.css" rel="stylesheet" type="text/css">
         <link rel="stylesheet" media="all" href="lib/tipsy.css"/>
@@ -591,9 +591,9 @@
                                     </div>
                                     <div id="mi-trade-panel" class="panel-body">
                                         <div id="mi-trade-upper">
-                                            <div class="mi-upper-rank">
+                                            <div class="mi-upper-rank mi-bottom-divider">
                                                 <div class="row">
-                                                    <div class="col-lg-3 col-lg-offset-2 col-sm-2 col-sm-offset-2 col-xs-3 col-xs-offset-2 ">
+                                                    <div class="col-lg-4 col-lg-offset-1 col-sm-3 col-sm-offset-1 col-xs-4 col-xs-offset-1 ">
                                                         <div id="mi-rank-icon" class="mi-icons mi-center">
                                                             <i class="glyphicon glyphicon-circle-arrow-up"></i>
                                                         </div>
@@ -603,7 +603,7 @@
                                                             <div class="col-lg-2 col-xs-2">
                                                                 <span id="mi-rank-value">0</span>
                                                             </div>
-                                                            <span class="mi-rank-text">nation rank <br/>by port volume</span>
+                                                            <span class="mi-rank-text">regional port <br/>rank by volume</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -611,7 +611,7 @@
                                         
                                             <div class="mi-upper-total">
                                                 <div class="row">
-                                                    <div class="col-lg-3 col-lg-offset-2 col-sm-2 col-sm-offset-2 col-xs-3 col-xs-offset-2 ">
+                                                    <div class="col-lg-4 col-lg-offset-1 col-sm-3 col-sm-offset-1 col-xs-4 col-xs-offset-1 ">
                                                         <div id="mi-total-icon" class="mi-icons mi-center">
                                                             <i class="glyphicon glyphicon-circle-arrow-up"></i>
                                                         </div>
@@ -622,15 +622,16 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="mi-upper-highlight-row">
-                                                <span id="mi-regional">0.0%</span> regional <span class="mi-growth">change</span> vs. <span id="mi-national">0.0%</span> national <span class="mi-growth">change</span>
+                                            <div class="mi-upper-highlight-row mi-bottom-divider">
+                                                <span id="mi-regional" class="mi-percent">0.0%</span> regional <span class="mi-growth">change</span> vs. <span id="mi-national" class="mi-percent">0.0%</span> national <span class="mi-growth">change</span>
                                             </div>
-                                            <div class="mi-primary">
+                                            <!--<div class="mi-primary">
                                                 <span>Foreign Trade Only</span>
-                                            </div>
-                                            <div class="mi-trade-value-row">
+                                            </div>-->
+                                            <!--foreign trade value indicator -->
+                                            <div class="mi-upper-total">
                                                 <div class="row">
-                                                    <div class="col-lg-3 col-lg-offset-2 col-sm-2 col-sm-offset-2 col-xs-3 col-xs-offset-2 ">
+                                                    <div class="col-lg-4 col-lg-offset-1 col-sm-3 col-sm-offset-1 col-xs-4 col-xs-offset-1  ">
                                                         <div id="mi-foreign-icon" class="mi-icons mi-center">
                                                             <i class="glyphicon glyphicon-circle-arrow-up"></i>
                                                         </div>
@@ -641,11 +642,48 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="mi-upper-highlight-row">
-                                                <span id="mi-foreign-percent">0.0%</span> regional <span class="mi-growth">change</span> vs. <span id="mi-foreign-national">0.0%</span> national <span class="mi-growth">change</span>
+                                            <div class="mi-upper-highlight-row mi-bottom-divider">
+                                                <span id="mi-foreign-percent" class="mi-percent">0.0%</span> regional <span class="mi-growth">change</span> vs. <span id="mi-foreign-national" class="mi-percent">0.0%</span> national <span class="mi-growth">change</span>
                                             </div>
+                                            <!--export tonnage indicator -->
+                                            <div class="mi-upper-total">
+                                                <div class="row">
+                                                    <div class="col-lg-4 col-lg-offset-1 col-sm-3 col-sm-offset-1 col-xs-4 col-xs-offset-1 ">
+                                                        <div id="mi-export-icon" class="mi-icons mi-center">
+                                                            <i class="glyphicon glyphicon-circle-arrow-up"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-7 col-sm-8 col-xs-7">
+                                                        <div id="mi-export-value">00 M</div>
+                                                        <div class="mi-total-text">martime exports in tons</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="mi-upper-highlight-row mi-bottom-divider">
+                                                <span id="mi-export-change" class="mi-percent">0.0%</span> regional <span class="mi-growth">change</span> vs. <span id="mi-export-national" class="mi-percent">0.0%</span> national <span class="mi-growth">change</span>
+                                            </div>
+                                            <!-- export as share of foreign trade -->
+                                            
+                                                <div class="" style="height:108px">
+                                                    <div class="row">
+                                                        <div class="col-lg-6 col-sm-6 col-xs-6 center-block">
+                                                            <div id="mi-export-graph" >
+                                                                
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6 col-sm-6 col-xs-6">
+                                                            <div id="mi-export-percent">00 %</div>
+                                                            <span class="mi-rank-text">export share of <br/>foreign trade volume</span>
+                                                            
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                          
                                             
                                         </div>
+                                        <!-- 
+            OLD EXPORT GRAPHS TO REMOVE
+
                                         <div id="mi-trade-lower">
                                             <div id="mi-exports" class="col-lg-6 col-sm-6 col-xs-6 center-block">
                                                 <div id="mi-export-graph"></div>
@@ -687,7 +725,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div>-->
                                     </div>
                                 </div>                             
                             </div>
@@ -1655,15 +1693,15 @@
         <script type="text/javascript" src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
         <script type="text/javascript" src="http://cdn.jsdelivr.net/bxslider/4.1.1/jquery.bxslider.min.js"></script>
         <script type="text/javascript" src="http://cdn.jsdelivr.net/highcharts/4.0.3/highcharts.js"></script>
-       
+      
         <script type="text/javascript" src="lib/core/dyna-icons.js"></script>
         <script type="text/javascript" src="lib/assets/typeahead.min.js"></script>
         <script type="text/javascript" src="lib/assets/numeral.min.js"></script> 
     
-        <!--locals for offline dev 
+        <!--locals for offline dev   
         <script type="text/javascript" src="lib/locals/jquery.nicescroll.js"></script>
         <script type="text/javascript" src="lib/locals/bootstrap.min.js"></script>
-        -->
+       -->
 
         <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.5.1/jquery.nicescroll.min.js"></script>
         <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>  

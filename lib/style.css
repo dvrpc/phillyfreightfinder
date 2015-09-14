@@ -2445,10 +2445,7 @@ inverse .navbar-nav .open > .dropdown-menu > .dropdown-submenu.open > a:before {
     line-height: 26px;
 }
 .mi-percent{
-    color: #333;
-    font-size:20px;
     font-weight: 800;
-    margin-top:3px;
 }
 .mi-indicator{
     font-size: 11px;
@@ -2458,9 +2455,9 @@ inverse .navbar-nav .open > .dropdown-menu > .dropdown-submenu.open > a:before {
 .mi-icons{
     text-align: right;
     margin-right: -10px;
-    margin-top: 3px;
+    /* margin-top: 3px; */
     font-size: 31px;
-    line-height:49px;
+    line-height:62px;
 }
 .mi-icons > .glyphicon-circle-arrow-up{
     color:#6CB545;
@@ -2485,7 +2482,7 @@ inverse .navbar-nav .open > .dropdown-menu > .dropdown-submenu.open > a:before {
 .mi-upper-highlight-row{
     height:28px;
     line-height:28px;
-    background-color: #DDD;
+    background-color: #efefef;
     text-align: center;
     font-size:11px;
 }
@@ -2513,7 +2510,7 @@ inverse .navbar-nav .open > .dropdown-menu > .dropdown-submenu.open > a:before {
     margin-top: 0px;
     margin-bottom: -5px;
 }
-#mi-rank-value,#mi-total-trade-value, #mi-foreign-value, #mi-export-label, #mi-container-label{
+#mi-export-percent, #mi-rank-value,#mi-total-trade-value, #mi-foreign-value, #mi-export-label, #mi-container-label, #mi-export-value{
     font-size:33px;
     color:#312B6A;
     font-weight:800;  
@@ -2533,6 +2530,9 @@ inverse .navbar-nav .open > .dropdown-menu > .dropdown-submenu.open > a:before {
     font-size: 13px;
     line-height: 15px;
     float: left;
+}
+.mi-bottom-divider{
+    border-bottom: 1px solid #396ab2;
 }
 .mi-total-text, .mi-value-text{
     margin-top:-8px;
@@ -2701,12 +2701,12 @@ inverse .navbar-nav .open > .dropdown-menu > .dropdown-submenu.open > a:before {
 }
 
 @media (max-width: 992px) { 
-    .mi-icons{
+    /*.mi-icons{
         text-align: left;
         margin-left:-10px;
         font-size:24px;
         line-height:39px;
-    }
+    }*/
     .mi-foreign-icon{
         margin-left: -5px;
     }
@@ -2724,11 +2724,11 @@ inverse .navbar-nav .open > .dropdown-menu > .dropdown-submenu.open > a:before {
 
 }
 @media (max-width: 768px){
-    .mi-icons{
+    /*.mi-icons{
         text-align: right;
         font-size:30px;
         line-height:49px;
-    }
+    }*/
     .mi-indicator-graph-labels {
         font-size:12px;
     }
