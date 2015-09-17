@@ -2716,7 +2716,7 @@ inverse .navbar-nav .open > .dropdown-menu > .dropdown-submenu.open > a:before {
 }
 #mi-export-overlay{
     display:none;
-    background: url('images/mi_export_overlay.png') no-repeat;
+    background: url('../images/mi_export_overlay.png') no-repeat;
     position: absolute;
     float:left;
     top: 10px;
