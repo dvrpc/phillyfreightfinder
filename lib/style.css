@@ -31,6 +31,9 @@ label {
 h1{
     font-size:24px;
 }
+.right_align{
+    float:right;
+}
 
 
 
@@ -1679,11 +1682,19 @@ span.selectable{
 }
 
 .flowBtn[disabled] {
-      opacity: 1.0!important;
+      opacity: 1.0;
 }
 .flowBtn.btn-primary.active[disabled]{
     background-color: #35478A!important;
     border-color: #35478A!important;
+}
+
+.indicator-navigation.flowBtn[disabled] {
+    cursor: not-allowed;
+    filter: alpha(opacity=65);
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    opacity: .65;
 }
 
 #ie_content {
@@ -2779,6 +2790,14 @@ inverse .navbar-nav .open > .dropdown-menu > .dropdown-submenu.open > a:before {
 .mi-port-label{
     font-size:11px;
 }
+.indicator-navigation {
+    color: #312867;
+    /*border: 1px dotted #312867;*/
+    background-color: #EFEFEF;
+}
+
+
+
 
 #hp-map-wrapper{
     margin-top:-19px;
