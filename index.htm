@@ -13,7 +13,6 @@
     
         <link href="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" type="text/css">
         <link href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" rel="stylesheet" type="text/css">
-    
 
         <!--locals for offline development  
         <link href="lib/locals/bootstrap.min.css" rel="stylesheet" type="text/css">
@@ -143,49 +142,51 @@
     </head>
 
     <body>
-        <div class="navbar navbar-inverse navbar-fixed-top pffheader">
-        <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-            <div class="navbar-brand">
-                <a href="http://www.dvrpc.org/freight/" target="_blank"><div class="dvrpc-logo"><img src='lib/images/header_dvrpc.png' height='50'/></div></a>
-                <a href="#"><div class="dvrpc-pff"><img src='lib/images/header_pff.png' height='50'/></div></a>
+        <header class="navbar navbar-inverse navbar-fixed-top pffheader">
+            <!-- Header logos and mobile menu button -->
+            <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                <div class="navbar-brand">
+                    <a href="http://www.dvrpc.org/freight/" title="DVRPC Website" target="_blank" class="dvrpc-logo"><img src='lib/images/header_dvrpc.png' alt="DVRPC logo" height='50'/></a>
+                    <a href="#" class="dvrpc-pff" title="PFF homepage"><img src='lib/images/header_pff.png' height='50' alt="PFF logo"/></a>
+                </div>
             </div>
-        </div>
-        <div id="navbar-links" class="navbar-collapse collapse">
-            <form id='nav_search' class="navbar-form navbar-right " >
-                    <div class="input-group search-container mapUI" style="display:none;">
-                        <input id="searchbox" type="text" class="form-control" placeholder="Search by facility/place name">
-                        <span class="input-group-addon"><i class="dynico dynico-search"></i></span>
-                    </div>
-            </form>
-            <!-- Menu Items -->
-            <ul id='landing' class="nav navbar-nav">
-                <li><a href="#home" class='landingLink' data-tab='home' data-toggle="collapse" data-target=".navbar-collapse.in"><i class="dynico dynico-home"></i>&nbsp;&nbsp;Home</a></li>
-                <li><a href="#region" class='landingLink' data-tab='docs' data-toggle="collapse" data-target=".navbar-collapse.in"><i class="dynico dynico-dvrpc"></i>&nbsp;&nbsp;Our Region</a></li>
-                <li class="dropdown">
-                        <a id="AboutDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"><i class="dynico dynico-compass"></i>&nbsp;&nbsp;About <b class="caret"></b></a>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="#planning" class='landingLink' data-tab='PhillyFreightFinder' data-toggle="collapse" data-target=".navbar-collapse.in"><i class="dynico dynico-compass"></i>&nbsp;&nbsp;Freight Planning</a></li>
-                                <li><a href="#data" class='landingLink' data-tab='data' data-toggle="collapse" data-target=".navbar-collapse.in"><i class="dynico dynico-layers"></i>&nbsp;&nbsp;Our Data</a></li>
-                                <li><a href="#domestic-trade" class='landingLink' data-tab='data' data-toggle="collapse" data-target=".navbar-collapse.in"><i class="dynico dynico-layers"></i>&nbsp;&nbsp;Domestic Trade Patterns</a></li>
-                            </ul>
-                </li>
-                <li id='maplink' class='landingUI'><a href="#map" data-tab='map' data-toggle="collapse" data-target=".navbar-collapse.in"><i class="dynico dynico-map"></i>&nbsp;&nbsp;View Map</a></li>
-            </ul>
-           
-        </div><!--/.navbar-collapse -->
-    </div>
-    <!--landing pages-->
-        <div id='pFFlanding' class='landing fade in landtab-content landingUI'>
+            <!-- Navigation links .navbar-collapse-->
+            <div id="navbar-links" class="navbar-collapse collapse">
+                <form id='nav_search' class="navbar-form navbar-right " >
+                        <div class="input-group search-container mapUI" style="display:none;">
+                            <input id="searchbox" type="text" class="form-control" placeholder="Search by facility/place name">
+                            <span class="input-group-addon"><i class="dynico dynico-search"></i></span>
+                        </div>
+                </form>
+                <!-- Menu Items -->
+                <ul id='landing' class="nav navbar-nav">
+                    <li><a href="#home" class='landingLink' data-tab='home' data-toggle="collapse" data-target=".navbar-collapse.in"><i class="dynico dynico-home"></i>&nbsp;&nbsp;Home</a></li>
+                    <li><a href="#region" class='landingLink' data-tab='docs' data-toggle="collapse" data-target=".navbar-collapse.in"><i class="dynico dynico-dvrpc"></i>&nbsp;&nbsp;Our Region</a></li>
+                    <li class="dropdown">
+                            <a id="AboutDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"><i class="dynico dynico-compass"></i>&nbsp;&nbsp;About <b class="caret"></b></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="#planning" class='landingLink' data-tab='PhillyFreightFinder' data-toggle="collapse" data-target=".navbar-collapse.in"><i class="dynico dynico-compass"></i>&nbsp;&nbsp;Freight Planning</a></li>
+                                    <li><a href="#data" class='landingLink' data-tab='data' data-toggle="collapse" data-target=".navbar-collapse.in"><i class="dynico dynico-layers"></i>&nbsp;&nbsp;Our Data</a></li>
+                                    <li><a href="#domestic-trade" class='landingLink' data-tab='domestic-trade' data-toggle="collapse" data-target=".navbar-collapse.in"><i class="dynico dynico-layers"></i>&nbsp;&nbsp;Domestic Trade Patterns</a></li>
+                                    <li><a href="#maritime-indicators" class='landingLink' data-tab='maritime-indicators' data-toggle="collapse" data-target=".navbar-collapse.in"><i class="dynico dynico-layers"></i>&nbsp;&nbsp;Maritime Indicators</a></li>
+                                </ul>
+                    </li>
+                    <li id='maplink' class='landingUI'><a href="#map" data-tab='map' data-toggle="collapse" data-target=".navbar-collapse.in"><i class="dynico dynico-map"></i>&nbsp;&nbsp;View Map</a></li>
+                </ul>
+            </div><!--/.navbar-collapse -->
+        </header>
+    <!-- Core pages (non-map) -->
+        <section id='pFFlanding' class='landing fade in landtab-content landingUI'>
             
             <!--home tab-->
-                <div id ='home' class='tab-pane active in landing-content'style='color:#333333;'>
+                <section id ='home' class='tab-pane active in landing-content'>
                     <div class='center-block col-lg-9 col-md-10' style='float:none;'>
-                        <h3>Welcome to <i>PhillyFreightFinder, </i>the freight mapping and data platform for the Delaware Valley!</h3> 
+                        <h1>Welcome to <i>PhillyFreightFinder, </i>the freight mapping and data platform for the Delaware Valley!</h1> 
                     </div>
                     <div class='center-block col-lg-9 col-md-10' style='float:none;'>
                         <!--<div class='col-md-6'>
@@ -232,12 +233,12 @@
                            <a href="#map"> <img style="width: 100%;max-width: 1100px;margin: 20px auto;border-radius: 10px;"src="lib/images/homeMap.png"/></a>
                         </div>
                     </div>
-                </div>
+                </section>
                 <!--region tab-->
-                <div id ='region' class='tab-pane landing-content' style='color:#333333;'>
+                <section id ='region' class='tab-pane landing-content'>
                     <div class='page-title center-block col-lg-12'>
                         <div class='center-block col-lg-10 col-sm-12' style='float:none;'>
-                            <h3>The Delaware Valley Region</h3> 
+                            <h1>The Delaware Valley Region</h1> 
                         </div>
                     </div>
                     <div class='center-block col-lg-10 col-sm-12 ' style='float:none;'>
@@ -348,12 +349,13 @@
                             </div> 
                         </div>
                     </div>
-                </div>
+                </section>
+
                 <!--planning tab-->
-                <div id ='planning' class='tab-pane landing-content' style='color:#333333;'>
+                <section id ='planning' class='tab-pane landing-content'>
                     <div class='page-title center-block col-lg-12'>
                         <div class='center-block col-lg-10 col-sm-12' style='float:none;'>
-                            <h3>Freight Planning at DVRPC</h3>
+                            <h1>Freight Planning at DVRPC</h1>
                         </div> 
                     </div>
                         <div class='center-block col-lg-10 col-sm-12' style='float:none;'>
@@ -407,21 +409,25 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </section>
 
                 <!--domestic trade tab-->
-                <div id ='domestic-trade' class='tab-pane landing-content' style='color:#333333;'>
-                    
-                </div>
+                <section id ='domestic-trade' class='tab-pane landing-content load_data'>
+                </section>
+
                 <!--maritime indicators tab-->
-                <div id ='maritime-indicators' class='tab-pane landing-content' style='color:#333333;'>
-                    
-                </div>
+                <section id ='maritime-indicators' class='tab-pane landing-content load_data'>    
+                </section>
+
+                <!--highway performance tab-->
+                <section id ='highway-performance' class='tab-pane landing-content load_data'>    
+                </section>
+                
                 <!--data tab-->
-                <div id ='data' class='tab-pane landing-content' style='color:#333333;'>
+                <section id ='data' class='tab-pane landing-content'>
                     <div class='page-title center-block col-lg-12'>
                         <div class='center-block col-lg-10 col-sm-12' style='float:none;'>
-                            <h3>Our Data</h3>
+                            <h1>Our Data</h1>
                         </div>
                     </div>
                     <div class='center-block col-lg-10 col-sm-12' style='float:none;'>
@@ -1020,9 +1026,9 @@
                         
                         </div>
                     </div>
-                </div>         
+                </section>         
                        
-        </div>
+        </section>
         
     <!--Map and Sidebar-->
        <div class="row ocontent mapUI" id="container">
@@ -1240,6 +1246,7 @@
             </div>
         </div> 
         <div class="navbar-fixed-bottom" style='height:6px;background-color:#312867;'></div> 
+        
         <!--contact modal-->
         <div class="modal fade" id="contactModal"><form>
             <div class="modal-dialog">
@@ -1338,25 +1345,39 @@
           </div><!-- /.modal-dialog -->
         </div><!-- /.modal --> 
 
-        <!-- locals for offline dev 
+
+        <!-- prep external loaded elements -->
+
+        <!-- locals for offline dev
         <script type="text/javascript" src="lib/locals/jquery-1.10.2.min.js"></script>
         <script type="text/javascript" src="lib/locals/leaflet.js"></script>
         <script type="text/javascript" src="lib/locals/jquery.bxslider.min.js"></script>
         <script type="text/javascript" src="lib/locals/highcharts.js"></script>
--->
+--> 
+
         <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
         <script type="text/javascript" src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
         <script type="text/javascript" src="http://cdn.jsdelivr.net/bxslider/4.1.1/jquery.bxslider.min.js"></script>
         <script type="text/javascript" src="http://cdn.jsdelivr.net/highcharts/4.0.3/highcharts.js"></script>
-      
+   
+        
+        <script type="text/javascript">
+            // prep data tabs for loading of external resources
+            var tab_status = {};
+            $('.load_data').each(function(){
+                var data_id = this.getAttribute('id');                
+                tab_status[data_id]= false;
+            });
+        </script>
+
         <script type="text/javascript" src="lib/core/dyna-icons.js"></script>
         <script type="text/javascript" src="lib/assets/typeahead.min.js"></script>
         <script type="text/javascript" src="lib/assets/numeral.min.js"></script> 
     
-<!--locals for offline dev   
+<!--locals for offline dev 
         <script type="text/javascript" src="lib/locals/jquery.nicescroll.js"></script>
         <script type="text/javascript" src="lib/locals/bootstrap.min.js"></script>
-       -->
+ -->        
 
         <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.5.1/jquery.nicescroll.min.js"></script>
         <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>  
@@ -1368,8 +1389,8 @@
         <script src="lib/assets/circle_packer_movers.js"></script>
         <script src="lib/assets/tipsy.js"></script>
         
-
-        <!--<script type="text/javascript" src="lib/assets/bootstrap.min.js"></script>
+<!--
+        <script type="text/javascript" src="lib/assets/bootstrap.min.js"></script>
         <script type="text/javascript" src="lib/assets/jquery.address.min.js"></script>-->
         <script type="text/javascript" src="lib/actions.js"></script><!--core application functions -->
         <script type="text/javascript" src="lib/map.js"></script><!--customized mapping functions to load data -->
