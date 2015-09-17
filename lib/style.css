@@ -31,6 +31,9 @@ label {
 h1{
     font-size:24px;
 }
+.right_align{
+    float:right;
+}
 
 
 
@@ -2779,6 +2782,14 @@ inverse .navbar-nav .open > .dropdown-menu > .dropdown-submenu.open > a:before {
 .mi-port-label{
     font-size:11px;
 }
+.indicator-navigation {
+    color: #312867;
+    /*border: 1px dotted #312867;*/
+    background-color: #EFEFEF;
+}
+
+
+
 
 #hp-map-wrapper{
     margin-top:-19px;
