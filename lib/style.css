@@ -28,6 +28,9 @@ h1,h2,h3,h4,h5,h6 {
 label {
     font-weight: 400;
 }
+h1{
+    font-size:24px;
+}
 
 
 
@@ -121,7 +124,7 @@ a:hover, .footer_btn:hover {
     background-color: #efefef;
     background-image: url(images/p5.png);
 }
-.page-title h3{
+.page-title h1{
     margin-top:0px;
 }
 
@@ -1962,7 +1965,7 @@ p#subtitle {
 
 
 
-#states path {
+.states_outline{
     stroke: #B9B9B9;
     stroke-width: 1px;
     fill: #F7F7F7;
@@ -2445,10 +2448,7 @@ inverse .navbar-nav .open > .dropdown-menu > .dropdown-submenu.open > a:before {
     line-height: 26px;
 }
 .mi-percent{
-    color: #333;
-    font-size:20px;
     font-weight: 800;
-    margin-top:3px;
 }
 .mi-indicator{
     font-size: 11px;
@@ -2458,9 +2458,9 @@ inverse .navbar-nav .open > .dropdown-menu > .dropdown-submenu.open > a:before {
 .mi-icons{
     text-align: right;
     margin-right: -10px;
-    margin-top: 3px;
+    /* margin-top: 3px; */
     font-size: 31px;
-    line-height:49px;
+    line-height:62px;
 }
 .mi-icons > .glyphicon-circle-arrow-up{
     color:#6CB545;
@@ -2485,7 +2485,7 @@ inverse .navbar-nav .open > .dropdown-menu > .dropdown-submenu.open > a:before {
 .mi-upper-highlight-row{
     height:28px;
     line-height:28px;
-    background-color: #DDD;
+    background-color: #efefef;
     text-align: center;
     font-size:11px;
 }
@@ -2513,11 +2513,18 @@ inverse .navbar-nav .open > .dropdown-menu > .dropdown-submenu.open > a:before {
     margin-top: 0px;
     margin-bottom: -5px;
 }
-#mi-rank-value,#mi-total-trade-value, #mi-foreign-value, #mi-export-label, #mi-container-label{
+#mi-export-percent, #mi-rank-value,#mi-total-trade-value, #mi-foreign-value, #mi-export-label, #mi-container-label, #mi-export-value{
     font-size:33px;
     color:#312B6A;
     font-weight:800;  
     margin-top: -2px;
+}
+#mi-vessel-count{
+    font-size:33px;
+    color:#312B6A;
+    font-weight:800;  
+    margin-top: -2px;  
+    text-align: right; 
 }
 #mi-foreign-value{
     margin-top: -3px;
@@ -2534,6 +2541,9 @@ inverse .navbar-nav .open > .dropdown-menu > .dropdown-submenu.open > a:before {
     line-height: 15px;
     float: left;
 }
+.mi-bottom-divider{
+    border-bottom: 1px solid #396ab2;
+}
 .mi-total-text, .mi-value-text{
     margin-top:-8px;
 }
@@ -2543,10 +2553,16 @@ inverse .navbar-nav .open > .dropdown-menu > .dropdown-submenu.open > a:before {
 .mi-right-full{
     padding-right:0px;
 }
+#mi-vessel-percent{
+    font-size: 20px;
+}
 #mi-vessel-legend{
-    width:220px;
-    height:142px;
-    font-size:11px;
+    width: 220px;
+    height: 142px;
+    font-size: 11px;
+    right: 0;
+    margin-top: 265px;
+    position: absolute;
 }
 #mi-vessel-legend .panel-body{
     padding:8px 12px;
@@ -2554,8 +2570,7 @@ inverse .navbar-nav .open > .dropdown-menu > .dropdown-submenu.open > a:before {
 #mi-vessel-indicator-panel{
     width:275px;
     height:83px;
-    float:right;
-    margin-top:159px;
+    float:left;
 }
 #mi-vessel-indicator-panel .panel-body{
     padding:0px;
@@ -2699,14 +2714,84 @@ inverse .navbar-nav .open > .dropdown-menu > .dropdown-submenu.open > a:before {
   width:100%;
   top:0;
 }
+#mi-export-overlay{
+    display:none;
+    background: url('images/mi_export_overlay.png') no-repeat;
+    position: absolute;
+    float:left;
+    top: 10px;
+    left: 15px;
+    width: 195px;
+    height: 87px;
+}
+
+#mi-export-percent{
+    display:none;
+    position: absolute;
+    text-align: center;
+    width: 80px;
+    top: 33px;
+    left: 105px;
+    font-size: 31px;
+}
+#mi-export-info-label{
+    display:none;
+    position:absolute;
+    top:25px;
+    left:190px;
+}
+#mi-port-diagram{
+    margin-top: -15px;
+    margin-left: -15px;
+}
+#mi-port-diagram-overlays{
+    position:absolute;
+    top:50px;
+    left:30px;
+    right:30px;
+    pointer-events: none;
+
+}
+
+#river path{
+    fill: #CCCCCC;
+}
+
+.port.mi-bulk-terminal circle {
+    fill: #DE6A35;
+}
+.port.mi-general-terminal circle {
+    fill: #3172B8;
+}
+.port.mi-no-activity.mi-bulk-terminal circle {
+    fill: #efefef;
+    stroke: #DE6A35;
+    stroke-width: 2px;
+}
+.port.mi-no-activity.mi-general-terminal circle {
+    fill: #efefef;
+    stroke: #3172B8;
+    stroke-width: 2px;
+}
+.port circle {
+    fill: #848484;
+}
+.mi-port-label{
+    font-size:11px;
+}
+
+#hp-map-wrapper{
+    margin-top:-19px;
+    height:525px;
+    background-color:#cdcdcd;
+}
+#hp_filter_left{
+    float:left;
+    margin-top:20px;
+}
 
 @media (max-width: 992px) { 
-    .mi-icons{
-        text-align: left;
-        margin-left:-10px;
-        font-size:24px;
-        line-height:39px;
-    }
+
     .mi-foreign-icon{
         margin-left: -5px;
     }
@@ -2717,18 +2802,22 @@ inverse .navbar-nav .open > .dropdown-menu > .dropdown-submenu.open > a:before {
         display:none;
     }
 }
+@media (min-width: 768px) and (max-width: 800px) {
+    .mi-right-stats{
+        margin-left:-10px;
+        margin-right:-10px;
+    }
+    .mi-right-stats > div{
+        margin-right: -10px;
+    }
+}
 @media (min-width: 768px) and (max-width: 786px) {
     .mi-value-text{
         font-size:12px;
     }
-
 }
 @media (max-width: 768px){
-    .mi-icons{
-        text-align: right;
-        font-size:30px;
-        line-height:49px;
-    }
+
     .mi-indicator-graph-labels {
         font-size:12px;
     }
@@ -2738,6 +2827,7 @@ inverse .navbar-nav .open > .dropdown-menu > .dropdown-submenu.open > a:before {
     .mi-growth{
         display:inline;
     }
+
     
 }
 @media (min-width: 1200px){
