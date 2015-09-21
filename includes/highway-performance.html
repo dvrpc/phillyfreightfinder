@@ -1,22 +1,53 @@
 <div class='page-title center-block col-lg-12'>
     <div class='center-block col-lg-10 col-sm-12' style='float:none;'>
-        <h1>Highway Performance</h1>
+        <h1>Highway Performance&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="hp_metric_wrapper">[Truck <span id="hp_metric">Average Speed</span>]</span></h1>
     </div> 
 </div>
 <div id="hp-map-wrapper" class="col-lg-12">
     <!-- map content loads here -->    
 </div>
+<div class='clearfix'></div>
 <!-- filter content -->
 <div class='center-block col-lg-10 col-sm-12' style='float:none;'>
-    <div id="hp_filter_left">
-        <div id="hp_select" class="btn-group" data-toggle="buttons">
-            <label for="t_speed" id="radio_t_speed" class="btn btn-sm btn-primary active">
-                <input type="radio" id="t_speed" name="hp_measure" value="ton" >Speed</label>
-            <label for="t_tti" id="radio_t_tti" class="btn btn-sm btn-primary">
-                <input type="radio" id="t_tti" name="hp_measure" value="val">Travel Time Index</label>
-            <label for="t_pti" id="radio_t_pti" class="btn btn-sm btn-primary">
-                <input type="radio" id="t_pti" name="hp_measure" value="val">Planning Time Index</label>
+    <div class="row">
+        <div class="col-lg-6 hp_filter">
+            <div class="hp_label">Select performance measure:</div>
+            <div id="hp_select" class="btn-group" data-toggle="buttons">
+                <label for="t_speed" id="radio_t_speed" class="btn btn-sm btn-primary active">
+                    <input type="radio" id="t_speed" name="hp_measure" value="Speed" >Average Speed</label>
+                <label for="t_tti" id="radio_t_tti" class="btn btn-sm btn-primary">
+                    <input type="radio" id="t_tti" name="hp_measure" value="TTI">Travel Time Index</label>
+                <label for="t_pti" id="radio_t_pti" class="btn btn-sm btn-primary">
+                    <input type="radio" id="t_pti" name="hp_measure" value="PTI">Planning Time Index</label>
+            </div>
+            
         </div>
-        <div class="filterLabel">Select performance measure:</div>
+        <div class="col-lg-6 hp_filter">
+            <div class="hp_label">Select time period:</div>
+            <div class="row">
+                <div class="col-lg-2 col-sm-2">
+                    <button id="hp_play" class="btn btn-sm btn-primary hp_play" ><i class="glyphicon glyphicon-play"></i></button>
+                </div>
+                <div class="col-lg-10 col-sm-10">
+                    <div id="hp_timing_slider">
+                        <!--slider control loads here-->
+                    </div>
+                </div>
+                    <!--hidden timing inputs for layer control -->
+                    <div id="hp_timing_select" style="display:none;" class="btn-group" data-toggle="buttons">
+                            <input type="radio" id="hp_0" name="timing_input" value="0" checked="checked"/>
+                            <input type="radio" id="hp_5" name="timing_input" value="5"/>
+                            <input type="radio" id="hp_7" name="timing_input" value="7"/>
+                            <input type="radio" id="hp_9" name="timing_input" value="9"/>
+                            <input type="radio" id="hp_11" name="timing_input" value="11"/>
+                            <input type="radio" id="hp_13" name="timing_input" value="13"/>
+                            <input type="radio" id="hp_15" name="timing_input" value="15"/>
+                            <input type="radio" id="hp_17" name="timing_input" value="17"/>
+                            <input type="radio" id="hp_19" name="timing_input" value="19"/>
+                    </div>
+            </div>
+            
+        </div>
     </div>
+    
 </div>

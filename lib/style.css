@@ -2803,12 +2803,50 @@ inverse .navbar-nav .open > .dropdown-menu > .dropdown-submenu.open > a:before {
     margin-top:-19px;
     height:525px;
     background-color:#cdcdcd;
+    border-bottom: 2px solid #312867;
 }
-#hp_filter_left{
-    float:left;
-    margin-top:20px;
+.hp_label{
+    font-size:12px;
 }
+.hp_filter{
+   
+    margin-top:10px;
+}
+#hp_timing_slider{
+    margin-top:5px;
+}
+.noUi-horizontal {
+    height: 10px!important;
+}
+.noUi-connect {
+    background-color: #396AB2!important;
+}
+.noUi-horizontal .noUi-handle {
 
+    width: 19px!important;
+    height: 19px!important;
+        top: -6px!important;
+        left: -9px!important;
+}
+.noUi-handle {
+    border-color: #D3D3D3!important;
+    background-color: #396AB2!important;
+    box-shadow:inset 0 0 3px rgba(51,51,51,.45)!important;
+    border-radius:28px!important;
+
+}
+.noUi-handle:after, .noUi-handle:before {
+    display:none!important;
+}
+.noUi-marker-horizontal.noUi-marker-large {
+    height: 10px!important;
+}
+.noUi-pips-horizontal {
+    padding: 5px 0!important;
+}
+.noUi-value-horizontal {
+    padding-top: 12px!important;
+}
 @media (max-width: 992px) { 
 
     .mi-foreign-icon{
