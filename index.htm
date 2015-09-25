@@ -15,14 +15,16 @@
         <link href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" rel="stylesheet" type="text/css">
         <!--<link rel="stylesheet" href="lib/assets/nouislider.min.css" type="text/css" />
         locals for offline development  
-        <link href="lib/locals/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        
         <link href="lib/locals/leaflet.css" rel="stylesheet" type="text/css">
         <link href="lib/assets/typeahead.min.css" rel="stylesheet" type="text/css">
         <link rel="stylesheet" media="all" href="lib/tipsy.css"/>
         <link href='lib/style.css' rel='stylesheet'/>
   --> 
         <link rel="stylesheet" href="https://dvrpcfreight.github.io/dynamic-icons/dyna.css">
-        <link href='lib/pff_style.min.css' rel='stylesheet'/>
+        <link href='lib/pff_style.min.css' rel='stylesheet' type="text/css"/>
+       <!-- <link rel="stylesheet" type="text/css" media="print" href="style.css">-->
 
         <style>
        
@@ -128,11 +130,7 @@
                 }
             }
             /* Print Handling */
-            @media print {
-                .navbar, .toggle, #sidebar {
-                    display: none !important;
-                }
-            }
+            
         
         </style> 
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -151,7 +149,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                <div class="navbar-brand">
+                <div class="navbar-brand ">
                     <a href="http://www.dvrpc.org/freight/" title="DVRPC Website" target="_blank" class="dvrpc-logo"><img src='lib/images/header_dvrpc.png' alt="DVRPC logo" height='50'/></a>
                     <a href="#" class="dvrpc-pff" title="PFF homepage"><img src='lib/images/header_pff.png' height='50' alt="PFF logo"/></a>
                 </div>
@@ -1225,7 +1223,7 @@
             <input type="hidden" id="mapLoad" value="false" />
         </div><!--end Map and Sidebar-->
         <!--Footer container-->
-        <div class="navbar-fixed-bottom pff_footer">
+        <footer class="navbar-fixed-bottom pff_footer">
             <div style='height:34px;'>
                <div id="MapFooter" class="mapUI" style="display:none;"> 
                     <button id="toggle" type="button" class="footer_btn" data-toggle="tooltip" title="Toggle Sidebar" style="height: 34px; padding: 5px 10px; margin-right: 10px;width:36px;"><i id="toggleIcon" class="PFFicon-chevron-left"></i></button>
@@ -1246,7 +1244,7 @@
                     <p class="dkgrey" style="font-size:10px;margin-top:5px;line-height: 12px;"><strong><i class="dynico dynico-dvrpc"></i>&nbsp;Delaware Valley Regional Planning Commission</strong><br/>190 N Independence Mall West, 8th Floor&nbsp;&nbsp;|&nbsp;&nbsp;Philadelphia, PA 19106</p>
                 </div>            
             </div>
-        </div> 
+        </footer> 
         <div class="navbar-fixed-bottom" style='height:6px;background-color:#312867;'></div> 
         
         <!--contact modal-->
