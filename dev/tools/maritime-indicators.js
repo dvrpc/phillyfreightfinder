@@ -1,1 +1,886 @@
-$(function(){console.log("maritime indicators loaded");var a,b,c=sm.packer(),d='<i class="glyphicon glyphicon-circle-arrow-up"></i>',e='<i class="glyphicon glyphicon-circle-arrow-right"></i>',f='<i class="glyphicon glyphicon-circle-arrow-down"></i>';d3.csv("data/d3/port_diagram.csv",function(g){d3.csv("data/d3/port_activity.csv",function(h){d3.json("data/d3/river_diagram.json",function(i){function j(a,b){for(var c=0;c<a.length;c++){var d=a[c],e=u([d.lon,d.lat]),f=d3.select("#ports").append("g").attr("transform","translate("+Math.round(e[0])+","+Math.round(e[1])+")").attr("r",b).attr("id","port_"+d.port_link).attr("class",function(){return"b"===d.port_typ?"port mi-bulk-terminal":"port mi-general-terminal"});f.append("circle").attr("r",b),f.append("text").attr("class","mi-port-label").attr("text-anchor",function(){return"l"===d.dir?"end":"start"}).attr("x",function(){return"l"===d.dir?-18:18}).attr("y",0).attr("dy",".35em").text(d.port_name).call(k,100).attr("transform","rotate(65)")}var g=d3.selectAll(".mi-two-line");g.each(function(){var a=d3.select(this.parentNode);a.select("tspan.mi-child").attr("dy","-.25em")})}function k(a,b){a.each(function(){for(var a,c=d3.select(this),d=c.text().split(/\s+/).reverse(),e=[],f=c.attr("x"),g=c.attr("y"),h=.35,i=c.text(null).append("tspan").attr("class","mi-child").attr("x",f).attr("y",g).attr("dy",h+"em");a=d.pop();)e.push(a),i.text(e.join(" ")),i.node().getComputedTextLength()>b&&(e.pop(),i.text(e.join(" ")),e=[a],i=c.append("tspan").classed("mi-child",!1).attr("class","mi-two-line").attr("x",f).attr("y",g).attr("dy",".65em").text(a))})}function l(a){for(var b=[],c=[],g=[],i=0,j=0,k=0;k<h.length;k++){var l=h[k];b.push(parseInt(l.calls))}for(var c=d3.min(b),g=d3.max(b),o=d3.scale.pow().exponent(.8).domain([c,g]).range([5,19]),k=0;k<h.length;k++){var p,l=h[k],q=0;if(p=o(parseInt(l.calls)),parseInt(l.year)===a&&l.calls>0){i=Number(i)+Number(l.calls);var r=d3.select("#port_"+l.link_id);r.attr("r",p).classed({"mi-no-activity":!1}).select("circle").transition().duration(500).attr("r",p).attr("i",q).attr("val",l.calls).attr("name",m(l.link_id)),q++}else if(parseInt(l.year)===a){var r=d3.select("#port_"+l.link_id);r.attr("r",4).classed({"mi-no-activity":!0}).select("circle").transition().duration(500).attr("r",4).attr("val",l.calls).attr("name",m(l.link_id))}parseInt(l.year)===a-1&&(j=Number(j)+Number(l.calls))}for(var k=0;k<h.length;k++){var l=h[k];if(parseInt(l.year)===a-1){var r=d3.select("#port_"+l.link_id);r.select("circle").attr("prev",l.calls)}}$("svg circle").unbind("mouseenter mouseleave"),$("#mi-vessel-count").html(numeral(i).format("0,0"));var s=(i-j)/j*100;$("#mi-vessel-percent").html(s.toFixed(0)+"%"),s>5?$("#mi-vessel-icon").html(d):-5>s?$("#mi-vessel-icon").html(f):$("#mi-vessel-icon").html(e),n(),d3.selectAll(".port circle").on("mouseover",null),d3.selectAll(".port circle").on("mouseout",null),d3.selectAll(".port circle").on("mouseover",function(a){d3.select(this).classed("active",!0);var b=this.getAttribute("val"),c=this.getAttribute("prev"),g=this.getAttribute("name"),h=(b-c)/c*100;$("#mi-vessel-count").html(numeral(b).format("0,0")),$("#mi-vessel-percent").html(h.toFixed(0)+"%"),$("#mi-vessel-title").html(g),h>5?$("#mi-vessel-icon").html(d):-5>h?$("#mi-vessel-icon").html(f):$("#mi-vessel-icon").html(e)}).on("mouseout",function(a){d3.select(this).classed("active",!1),$("#mi-vessel-count").html(numeral(i).format("0,0")),$("#mi-vessel-percent").html(s.toFixed(0)+"%"),$("#mi-vessel-title").html("All DVRPC Terminals"),s>5?$("#mi-vessel-icon").html(d):-5>s?$("#mi-vessel-icon").html(f):$("#mi-vessel-icon").html(e)})}function m(a){for(var b=0;b<g.length;b++){var c=g[b];if(c.port_link===a)return c.port_name}}function n(){var a=d3.selectAll("#ports .port")[0];c.elements(a).start()}function o(a){var b=1e-6*a+" M";return b}function p(a){var b=.001*a+" k";return b}var q=$("#mi-port-diagram-wrapper").width()+40,r=$("#mi-port-diagram-wrapper").height()+30,s=d3.select("#mi-port-diagram").append("svg").attr("width",q).attr("height",r).attr("id","port_map"),t=s.append("g").attr("width",q).attr("height",r).attr("id","river");s.append("g").attr("width",q).attr("height",r).attr("id","ports");var u=d3.geo.mercator().scale(1).translate([0,0]).precision(0).rotate([0,-10,0]),v=d3.geo.path().projection(u),w=v.bounds(i),x=1.12/Math.max((w[1][0]-w[0][0])/q,(w[1][1]-w[0][1])/r),y=[(q-200-x*(w[1][0]+w[0][0]))/2,(r-90-x*(w[1][1]+w[0][1]))/2];u.scale(x).translate(y),t.selectAll("path").data(i.features).enter().append("path").attr("d",v);console.log("maritime indicators parsed"),j(g,3);var z={top:20,right:55,bottom:30,left:60},A=$("#maritimeChartWrapper").width(),B=A-z.left-z.right,C=200-z.top-z.bottom,D=d3.time.format("%Y").parse,E=d3.bisector(function(a){return a.year}).right,F=d3.time.scale().range([0,B]),G=d3.scale.linear().rangeRound([C,0]),H=d3.scale.linear().rangeRound([C,0]),I=d3.layout.stack().offset("zero").values(function(a){return a.values}).x(function(a){return F(a.label)}).y(function(a){return a.value}),J=d3.svg.area().interpolate("cardinal").x(function(a){return F(a.label)}).y0(function(a){return G(a.y0)}).y1(function(a){return G(a.y0+a.y)}),K=d3.scale.ordinal().range(["#7ca0d5","#396ab2","#312A6A"]),L=d3.select("#maritimeTradeChart").append("svg").attr("width",B+z.left+z.right).attr("height",C+z.top+z.bottom).append("g").attr("transform","translate("+z.left+","+z.top+")");d3.csv("data/d3/maritimeIndicators.csv",function(c){function g(){var a=F.invert(d3.mouse(this)[0]);if(a.getMonth()>5)var b=a.getFullYear()+1;else var b=a.getFullYear();var d=E(c,b,1),e=c[d-1].year,f=c[d].year,g=b-e>f-b?[f,d-1]:[e,d-2];P.transition().duration(50).attr("transform",function(a){var b,c=q[0].values[g[1]].value,d=q[1].values[g[1]].value,f=q[2].values[g[1]].value;switch(a.name){case"swt_import":b=a.values[g[1]].value+c;break;case"domestic":b=a.values[g[1]].value+d+c;break;default:b=a.values[g[1]].value}return $(".mi-dw-year").html(e),$(".mi-dw-domestic").html((1e-6*f).toFixed(2)),$(".mi-dw-import").html((1e-6*d).toFixed(2)),$(".mi-dw-export").html((1e-6*c).toFixed(2)),"translate("+F(D(g[0]))+","+G(b)+")"}),Q.transition().duration(50).attr("transform",function(a){return $(".mi-dw-containers").html((.001*s[g[1]].value).toFixed(0)),"translate("+F(D(g[0]))+","+H(s[g[1]].value)+")"}),O.transition().duration(50).attr("x1",F(D(g[0]))).attr("x2",F(D(g[0]))),F(D(g[0]))>B/2?R.transition().duration(50).style("left",F(D(g[0]))-115+"px"):R.transition().duration(50).style("left",F(D(g[0]))+95+"px")}function h(a,b){return 0>a&&0>b?a>b?-(b-a):a-b:0>a&&b>0?-(b-a):a>b?a-b:b-a}function i(a){return"change"}var j="year",k=new Date,m=k.getFullYear(),n=["swt_export","swt_import","domestic"];K.domain(n);var q=[],r={},s=[];n.forEach(function(a){r[a]={name:a,values:[]},q.push(r[a])});var t=d3.max(c,function(a){return a.year});a=t-1,$("#mi-year-select").html(a+' <span class="caret"></span>');for(var u=2003;t>=u;u++)$("#maritime-year-dropdown").append('<li><input type="radio" id="m'+u+'" class="miYear" name="miYear" value="'+u+'"><label for="m'+u+'">'+u+"</label></li>");$("#m"+(t-1)).prop("checked",!0),c.map(function(a){a.year!=m-1&&a.year>2002&&(n.map(function(b){r[b].values.push({label:D(a[j]),value:+a[b]})}),s.push({year:D(a.year),value:+a.cont_teu}))});var v=d3.min(q,function(a){return d3.min(a.values,function(a){return a.label})}),w=d3.max(q,function(a){return d3.max(a.values,function(a){return a.label})});$("#mi-trade-date-min").html(v.getFullYear()),$("#mi-trade-date-max").html(w.getFullYear()),F.domain([v,w]),I(q),G.domain([0,d3.max(q,function(a){return d3.max(a.values,function(a){return a.y0+a.y})})]),H.domain([0,d3.max(s,function(a){return Math.max(a.value)})]);var x=L.selectAll(".series").data(q).enter().append("g").attr("class","series");x.append("path").attr("class","streamPath").attr("d",function(a){return J(a.values)}).style("fill",function(a){return K(a.name)}).style("stroke","white");var y=d3.svg.line().interpolate("cardinal").x(function(a){return F(a.year)}).y(function(a){return H(a.value)});L.append("path").attr("d",y(s)).attr("stroke","#EAA51B").attr("fill","none").attr("stroke-width",2);var z=d3.svg.axis().scale(F).orient("bottom"),A=d3.svg.axis().scale(G).ticks(5).tickFormat(o).orient("left"),M=d3.svg.axis().scale(H).tickFormat(p).ticks(6).orient("right");L.append("g").attr("class","x axis").attr("transform","translate(0,"+C+")").call(z),L.append("g").attr("class","y axis").call(A).append("text").attr("y",-55).attr("dy",".71em").attr("x",-C/2).attr("transform","rotate(-90)").style("text-anchor","middle").text("tons of trade"),L.append("g").attr("class","y0 axis").attr("transform","translate("+B+",0)").call(M).append("text").attr("y",45).attr("dy",".71em").attr("x",-C/2).attr("transform","rotate(-90)").style("text-anchor","middle").text("TEUs of containerized cargo");var N=L.append("g").attr("class","focus").style("display","none").attr("x1",100).attr("x2",100),O=N.append("line").attr("class","mouseLine").attr("stroke-dasharray","2,2").attr("stroke-linecap","round").style("stroke","#efefef").style("stroke-width","1px").attr("x1",10).attr("x2",10).attr("y1",0).attr("y2",C),P=N.selectAll(".circle").data(q).enter().append("circle").attr("class","circle").attr("r",6).attr("fill",function(a){return K(a.name)}).attr("stroke","#fff").attr("transform",function(a){return"translate(0,"+G(a.values[0].y)+")"}),Q=N.selectAll(".containerCircle").data(s).enter().append("circle").attr("class","containerCircle").attr("r",6).attr("fill","#EAA51B").attr("stroke","#fff"),R=d3.select("#maritimeTradeChart").append("div").attr("class","mi-data-window panel panel-primary");R.append("div").html('<div class="mi-dw-title">Trade for <span class="mi-dw-year">2014</span></div><div class=""><div class="mi-data-swatch dkblue-bg"></div> Domestic: <span class="right_align"><span class="mi-dw-domestic">xxx</span> M tons</span></div><div class=""><div class="mi-data-swatch blue-bg"></div>Imports: <span class="right_align"><span class="mi-dw-import">xxx</span> M tons</span></div><div class=""><div class="mi-data-swatch ltblue-bg"></div>Exports: <span class="right_align"><span class="mi-dw-export">xxx</span> M tons</span></div><div class="mi-data-swatch orange-bg"></div>Containers: <span class="right_align"><span class="mi-dw-containers">xxx</span> k TEUs</span></div>'),L.append("svg:rect").attr("class","overlay").attr("width",B).attr("height",C).on("mouseover",function(){N.style("display",null),R.style("display","block")}).on("mouseout",function(){N.style("display","none"),R.style("display","none")}).on("mousemove",g),b=function(a){$("#mi-export-graph").html(""),$("#mi-container-graph").html(""),$(".mi-activity-year").html(a);var b=a-2002;if(""!==c[b].port_rank)var g=c[b].port_rank,j=c[b-1].port_rank,k=g-j,l=parseInt(c[b].swt_import)+parseInt(c[b].swt_export)+parseInt(c[b].domestic),m=numeral(1e-6*l).format("0,0.0")+" M",n=parseInt(c[b-1].swt_import)+parseInt(c[b-1].swt_export)+parseInt(c[b-1].domestic),o=((l-n)/n*100).toFixed(1),p=((parseInt(c[b].nation_tot)-parseInt(c[b-1].nation_tot))/parseInt(c[b-1].nation_tot)*100).toFixed(1),q=h(o,p),r=c[b].foreign_val,s="$"+numeral(1e-9*r).format("0,0")+" B",t=c[b-1].foreign_val,u=(r-t)/t*100,v=(c[b].us_foreign-c[b-1].us_foreign)/c[b-1].us_foreign*100,w=h(u,v),x=parseInt(c[b].swt_export)/(parseInt(c[b].swt_export)+parseInt(c[b].swt_import))*100,y=[x,100-x],z=(parseInt(c[b-1].swt_export)/(parseInt(c[b-1].swt_export)+parseInt(c[b-1].swt_import))*100,(parseInt(c[b].swt_export)-parseInt(c[b-1].swt_export))/parseInt(c[b-1].swt_export)*100),A=(parseInt(c[b].us_export)-parseInt(c[b-1].us_export))/parseInt(c[b-1].us_export)*100,B=1e-6*parseInt(c[b].swt_export),C=h(z,A),D=parseInt(c[b].swt_cont_tons)/(parseInt(c[b].swt_export)+parseInt(c[b].swt_import))*100,E=[D,100-D],F=parseInt(c[b-1].swt_cont_tons)/(parseInt(c[b-1].swt_export)+parseInt(c[b-1].swt_import))*100,G=(D-F)/F*100;$("#mi-rank-value").html(g),0>k?$("#mi-rank-icon").html(d):k>0?$("#mi-rank-icon").html(f):$("#mi-rank-icon").html(e),$("#mi-regional").html(o+"%"),$("#mi-national").html(p+"%"),$("#mi-total-trade-value").html(m),-5>q?$("#mi-total-icon").html(f):q>5?$("#mi-total-icon").html(d):$("#mi-total-icon").html(e),$("#mi-foreign-value").html(s),$("#mi-foreign-percent").html(u.toFixed(1)+"%"),$("#mi-foreign-national").html(v.toFixed(1)+"%"),w>5?$("#mi-foreign-icon").html(d):-5>w?$("#mi-foreign-icon").html(f):$("#mi-foreign-icon").html(e);var H=67,I=$("#mi-export-graph").width(),J=33.5,K=15,L=(.05*I).toFixed(0);if(I>280){$("#mi-export-percent").css("left",Number(103)+Number(L)+"px"),$("#mi-export-overlay").css("background",'url("images/mi_export_overlay.png") no-repeat;').css("left",Number(15)+Number(L)+"px"),$("#mi-export-info-label").css("left",Number(190)+Number(L)+"px");var M=d3.scale.ordinal().range(["#EAA51B","#fff"]),N=M.domain(y),O=(M.domain(E),d3.select("#mi-export-graph").append("svg").attr("width",I).attr("height",108).append("g").attr("transform","translate("+(Number(46)+Number(L))+",54)")),P=(d3.select("#mi-container-graph").append("svg").attr("width",I).attr("height",108).append("g").attr("transform","translate("+I/2+",54)"),d3.svg.arc().outerRadius(J).startAngle(function(a){return a.startAngle+Math.PI}).endAngle(function(a){return a.endAngle+Math.PI})),Q=(d3.svg.arc().innerRadius(J-K).outerRadius(J).startAngle(function(a){return Math.PI-a.startAngle}).endAngle(function(a){return Math.PI-a.endAngle}),d3.layout.pie().value(function(a,b){return a}).sort(null));O.selectAll("path").data(Q(y)).enter().append("path").attr("d",P).attr("fill",function(a,b){return N(a.value)}),d3.select("#mi-export-graph").append("div").attr("id","mi-export-label").style("top",H/2-12+"px")}else $("#mi-export-percent").css("left",Number(28)+Number(.5*L)+"px"),$("#mi-export-overlay").css("background",'url("lib/images/mi_export_overlay-sm.png") no-repeat').css("left",Number(20)+Number(.5*L)+"px"),$("#mi-export-info-label").css("left",Number(120)+Number(.45*L)+"px");I>280&&300>I&&($("#mi-export-percent").css("left","103px"),$("#mi-export-overlay").css("left","15px"),$("#mi-export-info-label").css("left","180px"),$("#mi-export-graph").css("transform","translate(-15px,0)")),$("#mi-export-percent").css("display","block"),$("#mi-export-overlay").css("display","block"),$("#mi-export-info-label").css("display","block"),$("#mi-export-change").html(z.toFixed(1)+"%"),$("#mi-export-percent").html(x.toFixed(0)+"%"),$("#mi-export-national").html(A.toFixed(1)+"%"),$("#mi-export-value").html(B.toFixed(1)+" M"),$("#mi-export-indicator").html(i(z)),C>5?$("#mi-export-icon").html(d):-5>C?$("#mi-export-icon").html(f):$("#mi-export-icon").html(e),$("#mi-container-percent").html(G.toFixed(0)+"%"),$("#mi-container-indicator").html(i(G)),G>3?$("#mi-container-icon").html(d):-3>G?$("#mi-container-icon").html(f):$("#mi-container-icon").html(e)},b(a),l(a);var S=a;$("#maritime-year-dropdown").on("change","input",function(){S=parseInt($(this).val());var a=document.getElementById("m"+(S-1));b(S),l(S),a?w?($("#mi-year-prev").prop("disabled",!1),$("#mi-year-next").prop("disabled",!1)):$("#mi-year-next").prop("disabled",!0):$("#mi-year-prev").prop("disabled",!0)}),$("#mi-year-prev").on("click",function(){var a=$("#m"+(S-1));a.trigger("click")}),$("#mi-year-next").on("click",function(){var a=$("#m"+(S+1));a.trigger("click")}),$(".btn").mouseup(function(){$(this).blur()})})})})})});
+$(function() {
+    console.log('maritime indicators loaded');
+    var miYear, updateTradePanel, sizePorts;
+    var packer = sm.packer();
+    var ind_up = '<i class="glyphicon glyphicon-circle-arrow-up"></i>',
+        ind_even = '<i class="glyphicon glyphicon-circle-arrow-right"></i>',
+        ind_down = '<i class="glyphicon glyphicon-circle-arrow-down"></i>';
+
+    
+
+    // ********************************************
+    // Open data sets
+
+    d3.csv('data/d3/port_diagram.csv', function(port_points) {
+        d3.csv('data/d3/port_activity.csv', function(port_data) {
+            d3.json("data/d3/river_diagram.json", function(json) {
+                //build the port diagram
+                var port_dia_width = $('#mi-port-diagram-wrapper').width() + 40,
+                    port_dia_height = $('#mi-port-diagram-wrapper').height() + 30;
+
+                var port_svg = d3.select('#mi-port-diagram').append('svg')
+                    .attr('width', port_dia_width)
+                    .attr('height', port_dia_height)
+                    .attr('id', 'port_map');
+
+                var river = port_svg.append('g')
+                    .attr('width', port_dia_width)
+                    .attr('height', port_dia_height)
+                    .attr('id', 'river');
+
+                port_svg.append('g')
+                    .attr('width', port_dia_width)
+                    .attr('height', port_dia_height)
+                    .attr('id', 'ports');
+                // draw river outline
+                var dia_projection = d3.geo.mercator().scale(1).translate([0, 0]).precision(0).rotate([0, -10, 0]);
+
+                var river_path = d3.geo.path().projection(dia_projection);
+                var bounds = river_path.bounds(json);
+
+                var scale = 1.12 / Math.max((bounds[1][0] - bounds[0][0]) / (port_dia_width), ((bounds[1][1] - bounds[0][1]) / port_dia_height));
+
+                var transl = [(port_dia_width - 200 - scale * (bounds[1][0] + bounds[0][0])) / 2, (port_dia_height - 90 - scale * (bounds[1][1] + bounds[0][1])) / 2];
+
+                dia_projection.scale(scale).translate(transl);
+
+                river.selectAll("path")
+                    .data(json.features)
+                    .enter().append("path")
+                    .attr("d", river_path);
+
+                var portCount, prevPortCount, portCallChange;
+
+                // ***********************************************************/
+                // add port circles to port diagram
+
+                function addPortCircles(a, r) {
+                    for (var i = 0; i < a.length; i++) {
+                        var port = a[i];
+
+
+                        var xy = dia_projection([port.lon, port.lat]);
+
+                        var element = d3.select('#ports').append('g')
+                            .attr('transform', 'translate(' + Math.round(xy[0]) + ',' + Math.round(xy[1]) + ')')
+                            .attr('r', r)
+                            .attr('id', 'port_' + port.port_link)
+                            .attr('class', function(){
+                                if(port.port_typ === 'b'){
+                                   return 'port mi-bulk-terminal'; 
+                                }else{
+                                    return 'port mi-general-terminal';
+                                } 
+                            });
+
+                        element.append('circle')
+                            .attr('r', r);
+
+                        element.append("text")
+                            .attr("class","mi-port-label")
+                            .attr("text-anchor", function(){
+                                return (port.dir === 'l') ? "end" : "start";
+                            })
+                            .attr("x", function(){
+                                return ((port.dir === 'l') ? -18 : 18);
+                            })
+                            .attr("y",0)
+                            .attr("dy", ".35em")
+                            .text(port.port_name)
+                            .call(wrap, 100)
+                            .attr("transform", "rotate(65)" );
+                    }
+
+                    var tspanItems = d3.selectAll(".mi-two-line");
+                    tspanItems.each(function(){
+                        var parent = d3.select(this.parentNode);
+                        parent.select('tspan.mi-child')
+                            .attr("dy", "-.25em");
+                        
+                        
+
+                    });
+                }
+
+
+                function wrap(text, width) {
+                    text.each(function () {
+                        var text = d3.select(this),
+                            words = text.text().split(/\s+/).reverse(),
+                            word,
+                            line = [],
+                            lineNumber = 0,
+                            lineHeight = 0.9, // ems
+                            x = text.attr("x"),
+                            y = text.attr("y"),
+                            dy = 0.35, //parseFloat(text.attr("dy")),
+                            tspan = text.text(null)
+                                        .append("tspan")
+                                        .attr("class","mi-child")
+                                        .attr("x", x)
+                                        .attr("y", y)
+                                        .attr("dy", dy + "em");
+                        while (word = words.pop()) {
+                            line.push(word);
+                            tspan.text(line.join(" "));
+                            if (tspan.node().getComputedTextLength() > width) {
+                                line.pop();
+                                tspan.text(line.join(" "));
+                                line = [word];
+                                tspan = text.append("tspan")
+                                            .classed("mi-child", false)
+                                            .attr("class", "mi-two-line")
+                                            .attr("x", x)
+                                            .attr("y", y)
+                                            .attr("dy", ".65em")
+                                            .text(word);
+                            }
+                        }
+                    });
+                }
+                console.log('maritime indicators parsed');
+                addPortCircles(port_points, 3);
+
+                // *********************************************
+                // size port circles based on ship calls
+
+                function sizePorts(count_year) {
+                    var scaleRange = [],
+                        minSize = [],
+                        maxSize = [],
+                        tc = 0,
+                        pc = 0, pLabel;
+                    for (var i = 0; i < port_data.length; i++) {
+                        var d = port_data[i];
+                        //if(parseInt(d.year) === count_year){
+                        scaleRange.push(parseInt(d.calls));
+                        //}
+                    }
+
+                    var minSize = d3.min(scaleRange),
+                        maxSize = d3.max(scaleRange),
+                        portScale = d3.scale.pow()
+                        .exponent(0.8)
+                        .domain([minSize, maxSize])
+                        .range([5, 19]);
+                            
+
+                    // loop through data and size metros related to primary
+                    for (var i = 0; i < port_data.length; i++) {
+                        var d = port_data[i],
+                            r, j = 0;
+
+                        //identify measurement of moves 
+                        r = portScale(parseInt(d.calls));
+
+                        if (parseInt(d.year) === count_year && d.calls > 0) {
+                            tc = Number(tc) + Number(d.calls); 
+                            var elem = d3.select('#port_' + d.link_id);
+                            elem.attr('r', r)
+                                .classed({'mi-no-activity':false})
+                                .select('circle')
+                                .transition()
+                                .duration(500)
+                                .attr('r', r)
+                                .attr('i', j)
+                                .attr('val', d.calls)
+                                .attr('name', portname(d.link_id));
+                            j++
+                        }else if (parseInt(d.year) === count_year){
+                            var elem = d3.select('#port_' + d.link_id);
+                            elem.attr('r', 4)
+                                .classed({'mi-no-activity':true})
+                                .select('circle')
+                                .transition()
+                                .duration(500)
+                                .attr('r', 4)
+                                .attr('val', d.calls)
+                                .attr('name', portname(d.link_id));
+                        }
+
+                        if (parseInt(d.year) === (count_year - 1)) {
+                            pc = Number(pc) + Number(d.calls); 
+                        }
+                    }
+
+                    for (var i = 0; i < port_data.length; i++) {
+                        var d = port_data[i];
+                        if(parseInt(d.year) === (count_year - 1)){
+                            var elem = d3.select('#port_' + d.link_id);
+                            elem.select('circle').attr('prev', d.calls);
+                        }
+                    }
+
+                    $("svg circle").unbind('mouseenter mouseleave');
+
+                    $('#mi-vessel-count').html(numeral(tc).format('0,0'));
+                    var totalCallChange = ((tc - pc) / pc)*100;
+                    $('#mi-vessel-percent').html((totalCallChange).toFixed(0) + '%');
+                    if (totalCallChange > 5) {
+                        $('#mi-vessel-icon').html(ind_up);
+                    } else if (totalCallChange < -5) {
+                        $('#mi-vessel-icon').html(ind_down);
+                    } else {
+                        $('#mi-vessel-icon').html(ind_even);
+                    }    
+
+                    packPorts(); //run packer on resized ports
+                    
+                    d3.selectAll('.port circle').on('mouseover', null);
+                    d3.selectAll('.port circle').on('mouseout', null);
+                    d3.selectAll('.port circle')
+                        .on('mouseover', function(e) {
+                            d3.select(this).classed("active", true);
+                            var a = this.getAttribute('val'), p = this.getAttribute('prev'), n = this.getAttribute('name');
+                            var portCallChange = ((a - p) / p)*100;
+                            $('#mi-vessel-count').html(numeral(a).format('0,0')); 
+                            $('#mi-vessel-percent').html((portCallChange).toFixed(0) + '%');
+                            $('#mi-vessel-title').html(n);
+                            if (portCallChange > 5) {
+                                $('#mi-vessel-icon').html(ind_up);
+                            } else if (portCallChange < -5) {
+                                $('#mi-vessel-icon').html(ind_down);
+                            } else {
+                                $('#mi-vessel-icon').html(ind_even);
+                            }
+                            
+                        })
+                        .on('mouseout', function(e) {
+                            d3.select(this).classed("active", false);//.style("stroke-width", 0);   
+                            $('#mi-vessel-count').html(numeral(tc).format('0,0'));   
+                            $('#mi-vessel-percent').html((totalCallChange).toFixed(0) + '%'); 
+                            $('#mi-vessel-title').html('All DVRPC Terminals');
+                            if (totalCallChange > 5) {
+                                $('#mi-vessel-icon').html(ind_up);
+                            } else if (totalCallChange < -5) {
+                                $('#mi-vessel-icon').html(ind_down);
+                            } else {
+                                $('#mi-vessel-icon').html(ind_even);
+                            }    
+                        });
+                    
+                }
+
+                function portname(id){
+                    for (var i = 0; i < port_points.length; i++) {
+                        var dn = port_points[i];
+                        if(dn.port_link === id){
+                            return dn.port_name;
+                        }
+                    }
+                }
+
+                
+
+                function packPorts() {
+                    var elements = d3.selectAll('#ports .port')[0];
+                    packer.elements(elements).start();
+                }
+
+                //configure maritime trade chart presets
+                var margin = {
+                        top: 20,
+                        right: 55,
+                        bottom: 30,
+                        left: 60
+                    },
+                    chartW = $('#maritimeChartWrapper').width(),
+                    width = chartW - margin.left - margin.right,
+                    height = 200 - margin.top - margin.bottom;
+
+                var parseDate = d3.time.format("%Y").parse;
+
+                var bisectDate = d3.bisector(function(d) {
+                    return d.year;
+                }).right;
+
+                //define scales: x, y-left, y-right
+                var x = d3.time.scale()
+                    .range([0, width]);
+
+                var y = d3.scale.linear()
+                    .rangeRound([height, 0]);
+
+                var y0 = d3.scale.linear()
+                    .rangeRound([height, 0]);
+
+                var stack = d3.layout.stack()
+                    .offset("zero")
+                    .values(function(d) {
+                        return d.values;
+                    })
+                    .x(function(d) {
+                        return x(d.label);
+                    })
+                    .y(function(d) {
+                        return d.value;
+                    });
+
+                var area = d3.svg.area()
+                    .interpolate("cardinal")
+                    .x(function(d) {
+                        return x(d.label);
+                    })
+                    .y0(function(d) {
+                        return y(d.y0);
+                    })
+                    .y1(function(d) {
+                        return y(d.y0 + d.y);
+                    });
+
+                var color = d3.scale.ordinal()
+                    .range(["#7ca0d5", "#396ab2", "#312A6A"]);
+
+                var svg = d3.select("#maritimeTradeChart").append("svg")
+                    .attr("width", width + margin.left + margin.right)
+                    .attr("height", height + margin.top + margin.bottom)
+                    .append("g")
+                    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+                // *******************************************
+                // maritime trade chart functions
+                function formatYvalues(n) {
+                    var value = n * 0.000001 + ' M';
+                    return value;
+                }
+
+                function formatY0values(n) {
+                    var value = n * 0.001 + ' k';
+                    return value;
+                }
+
+                // ****************************************
+                // load maritime trade chart data and build chart
+
+                d3.csv("data/d3/maritimeIndicators.csv", function(data) {
+                    var labelVar = 'year';
+
+                    var l = new Date();
+                    var thisYear = l.getFullYear();
+
+                    var varNames = ['swt_export', 'swt_import', 'domestic'];
+
+                    color.domain(varNames);
+
+                    var seriesArr = [],
+                        series = {},
+                        containers = [];
+
+                    varNames.forEach(function(name) {
+                        series[name] = {
+                            name: name,
+                            values: []
+                        };
+                        seriesArr.push(series[name]);
+                    });
+
+                    var maxDataYear = d3.max(data, function(d) {
+                        return d.year;
+                    });
+                    miYear = maxDataYear - 1;
+                    $('#mi-year-select').html(miYear + ' <span class="caret"></span>');
+                    for (var i = 2003; i <= maxDataYear; i++) {
+                        $('#maritime-year-dropdown').append('<li><input type="radio" id="m' + i + '" class="miYear" name="miYear" value="' + i + '"><label for="m' + i + '">' + i + '</label></li>');
+                    }
+                    $('#m' + (maxDataYear - 1)).prop('checked', true);
+
+                    data.map(function(d) {
+                        if (d.year != thisYear - 1 && d.year > 2002) {
+                            varNames.map(function(name) {
+                                series[name].values.push({
+                                    label: parseDate(d[labelVar]),
+                                    value: +d[name]
+                                });
+                            });
+                            //prep y0 data [containers]
+                            containers.push({
+                                year: parseDate(d.year),
+                                value: +d.cont_teu
+                            });
+                        }
+                    });
+
+
+                    //define min and max years
+                    var minYear = d3.min(seriesArr, function(d) {
+                            return d3.min(d.values, function(d) {
+                                return d.label;
+                            });
+                        }),
+                        maxYear = d3.max(seriesArr, function(d) {
+                            return d3.max(d.values, function(d) {
+                                return d.label;
+                            });
+                        });
+
+                    //push to label
+                    $('#mi-trade-date-min').html(minYear.getFullYear());
+                    $('#mi-trade-date-max').html(maxYear.getFullYear());
+
+                    x.domain([minYear, maxYear]);
+
+                    stack(seriesArr);
+
+                    y.domain([0, d3.max(seriesArr, function(c) {
+                        return d3.max(c.values, function(d) {
+                            return d.y0 + d.y;
+                        });
+                    })]);
+
+                    y0.domain([0, d3.max(containers, function(d) {
+                        return Math.max(d.value);
+                    })]);
+
+                    var selection = svg.selectAll(".series")
+                        .data(seriesArr)
+                        .enter().append("g")
+                        .attr("class", "series");
+
+                    selection.append("path")
+                        .attr("class", "streamPath")
+                        .attr("d", function(d) {
+                            return area(d.values);
+                        })
+                        .style("fill", function(d) {
+                            return color(d.name);
+                        })
+                        .style("stroke", "white");
+
+                    var line = d3.svg.line()
+                        .interpolate("cardinal")
+                        .x(function(d) {
+                            return x(d.year);
+                        })
+                        .y(function(d) {
+                            return y0(d.value);
+                        });
+
+                    svg.append("path")
+                        .attr("d", line(containers))
+                        .attr("stroke", "#EAA51B")
+                        .attr("fill", "none")
+                        .attr("stroke-width", 2);
+
+                    var xAxis = d3.svg.axis()
+                        .scale(x)
+                        .orient("bottom");
+
+                    var yAxis = d3.svg.axis()
+                        .scale(y)
+                        .ticks(5)
+                        .tickFormat(formatYvalues)
+                        .orient("left");
+
+                    var yAxisRight = d3.svg.axis()
+                        .scale(y0)
+                        .tickFormat(formatY0values)
+                        .ticks(6)
+                        .orient("right");
+
+                    svg.append("g")
+                        .attr("class", "x axis")
+                        .attr("transform", "translate(0," + height + ")")
+                        .call(xAxis);
+
+                    svg.append("g")
+                        .attr("class", "y axis")
+                        .call(yAxis)
+                        .append("text")
+                        .attr("y", -55)
+                        .attr("dy", '.71em')
+                        .attr("x", -height / 2)
+                        .attr("transform", "rotate(-90)")
+                        .style("text-anchor", "middle")
+                        .text("tons of trade");
+
+                    svg.append("g")
+                        .attr("class", "y0 axis")
+                        .attr("transform", "translate(" + width + ",0)")
+                        .call(yAxisRight)
+                        .append("text")
+                        .attr("y", 45)
+                        .attr("dy", ".71em")
+                        .attr("x", -height / 2)
+                        .attr("transform", "rotate(-90)")
+                        .style("text-anchor", "middle")
+                        .text("TEUs of containerized cargo");
+
+                    var focus = svg.append('g')
+                        .attr('class', 'focus')
+                        .style('display', 'none')
+                        .attr("x1", 100).attr("x2", 100);
+
+                    //hover line to track mouse position
+                    var mouseLine = focus.append("line")
+                        .attr("class", "mouseLine")
+                        .attr("stroke-dasharray", "2,2")
+                        .attr("stroke-linecap", "round")
+                        .style("stroke", "#efefef")
+                        .style("stroke-width", "1px")
+                        .attr("x1", 10).attr("x2", 10)
+                        .attr("y1", 0).attr("y2", height);
+
+                    //trade data point circles for mouseover
+                    var circles = focus.selectAll('.circle')
+                        .data(seriesArr)
+                        .enter()
+                        .append('circle')
+                        .attr('class', 'circle')
+                        .attr('r', 6)
+                        .attr('fill', function(d) {
+                            return color(d.name);
+                        })
+                        .attr('stroke', '#fff')
+                        .attr('transform', function(d) {
+                            return 'translate(0,' + y(d.values[0].y) + ')';
+                        });
+
+                    //container data point circles for mouseover
+                    var contCircles = focus.selectAll('.containerCircle')
+                        .data(containers)
+                        .enter()
+                        .append('circle')
+                        .attr('class', 'containerCircle')
+                        .attr('r', 6)
+                        .attr('fill', '#EAA51B')
+                        .attr('stroke', '#fff');
+
+                    //create tooltip and tooltip elements
+                    var dataWindow = d3.select('#maritimeTradeChart')
+                        .append("div")
+                        .attr("class", "mi-data-window panel panel-primary");
+
+                    dataWindow.append('div')
+                        .html('<div class="mi-dw-title">Trade for <span class="mi-dw-year">2014</span></div><div class=""><div class="mi-data-swatch dkblue-bg"></div> Domestic: <span class="right_align"><span class="mi-dw-domestic">xxx</span> M tons</span></div><div class=""><div class="mi-data-swatch blue-bg"></div>Imports: <span class="right_align"><span class="mi-dw-import">xxx</span> M tons</span></div><div class=""><div class="mi-data-swatch ltblue-bg"></div>Exports: <span class="right_align"><span class="mi-dw-export">xxx</span> M tons</span></div><div class="mi-data-swatch orange-bg"></div>Containers: <span class="right_align"><span class="mi-dw-containers">xxx</span> k TEUs</span></div>');
+
+                    //create overlay to read mouseevents
+                    svg.append('svg:rect')
+                        .attr('class', 'overlay')
+                        .attr('width', width)
+                        .attr('height', height)
+                        .on('mouseover', function() {
+                            focus.style('display', null);
+                            dataWindow.style('display', 'block');
+                        })
+                        .on('mouseout', function() {
+                            focus.style('display', 'none');
+                            dataWindow.style('display', 'none');
+                        })
+                        .on('mousemove', mousemove);
+
+                    function mousemove() {
+                        //identify current mouseover position and move circles
+                        var x0 = x.invert(d3.mouse(this)[0]);
+                        if (x0.getMonth() > 5) {
+                            var dd0 = x0.getFullYear() + 1;
+                        } else {
+                            var dd0 = x0.getFullYear();
+                        }
+                        var i = bisectDate(data, dd0, 1),
+                            d0 = data[i - 1].year,
+                            d1 = data[i].year,
+                            c = dd0 - d0 > d1 - dd0 ? [d1, i - 1] : [d0, i - 2]; //adjust i to reflect drop of 2002 from data
+
+                        circles.transition()
+                            .duration(50)
+                            .attr('transform', function(d) {
+                                var yV,
+                                    exp_val = seriesArr[0].values[c[1]].value,
+                                    imp_val = seriesArr[1].values[c[1]].value,
+                                    dom_val = seriesArr[2].values[c[1]].value;
+                                switch (d.name) {
+                                    case 'swt_import':
+                                        yV = d.values[c[1]].value + exp_val;
+                                        break;
+                                    case 'domestic':
+                                        yV = d.values[c[1]].value + imp_val + exp_val;
+                                        break;
+                                    default:
+                                        yV = d.values[c[1]].value;
+                                }
+                                //push values to div and then update position
+                                $('.mi-dw-year').html(d0);
+                                $('.mi-dw-domestic').html((dom_val * 0.000001).toFixed(2));
+                                $('.mi-dw-import').html((imp_val * 0.000001).toFixed(2));
+                                $('.mi-dw-export').html((exp_val * 0.000001).toFixed(2));
+                                return 'translate(' + x(parseDate(c[0])) + ',' + y(yV) + ')';
+                            });
+
+                        contCircles.transition()
+                            .duration(50)
+                            .attr('transform', function(d) {
+                                $('.mi-dw-containers').html((containers[c[1]].value * 0.001).toFixed(0));
+                                return 'translate(' + x(parseDate(c[0])) + ',' + y0(containers[c[1]].value) + ')';
+                            });
+
+                        //create tracking for hover line
+                        mouseLine.transition()
+                            .duration(50)
+                            .attr("x1", x(parseDate(c[0]))).attr("x2", x(parseDate(c[0])));
+                        if (x(parseDate(c[0])) > width / 2) {
+                            dataWindow.transition()
+                                .duration(50)
+                                .style('left', (x(parseDate(c[0])) - 115) + 'px');
+                        } else {
+                            dataWindow.transition()
+                                .duration(50)
+                                .style('left', (x(parseDate(c[0])) + 95) + 'px');
+                        }
+                    }
+
+                    //********************************************************
+                    //  Controls for side panel data based on year of input
+                    //
+                    //********************************************************
+
+                    
+
+                    function calcDifference(val1, val2) {
+                        if (val1 < 0 && val2 < 0) {
+                            return (val1 > val2) ? -(val2 - val1) : val1 - val2;
+                        } else if (val1 < 0 && val2 > 0) {
+                            return -(val2 - val1);
+                        } else {
+                            return (val1 > val2) ? val1 - val2 : val2 - val1;
+                        }
+                    }
+
+                    function calcChange(value) {
+                        return (value > 0) ? 'change' : 'change';
+                    }
+                    updateTradePanel = function(mYear) {
+                        $('#mi-export-graph').html('');
+                        $('#mi-container-graph').html('');
+                        $('.mi-activity-year').html(mYear);
+                        var yr = mYear - 2002;
+                        if (data[yr].port_rank !== "") {
+                            //port rank indicator calculations
+                            var portRank = data[yr].port_rank,
+                                prevRank = data[yr - 1].port_rank,
+                                portChange = portRank - prevRank,
+                                //trade indicator calculations
+                                totalTrade = parseInt(data[yr].swt_import) + parseInt(data[yr].swt_export) + parseInt(data[yr].domestic),
+                                totalTradefm = numeral((totalTrade) * 0.000001).format('0,0.0') + ' M',
+                                prevTrade = parseInt(data[yr - 1].swt_import) + parseInt(data[yr - 1].swt_export) + parseInt(data[yr - 1].domestic),
+                                regionalTradeChange = (((totalTrade - prevTrade) / prevTrade) * 100).toFixed(1),
+                                nationalTradeChange = (((parseInt(data[yr].nation_tot) - parseInt(data[yr - 1].nation_tot)) / parseInt(data[yr - 1].nation_tot)) * 100).toFixed(1),
+                                tradeComparison = calcDifference(regionalTradeChange, nationalTradeChange),
+                                //foreign trade indicator calculations
+                                foreignTrade = data[yr].foreign_val,
+                                foreignTradefm = '$' + numeral((foreignTrade * 0.000000001)).format('0,0') + ' B',
+                                prevForeign = data[yr - 1].foreign_val,
+                                foreignChange = ((foreignTrade - prevForeign) / prevForeign) * 100,
+                                usForeignChange = ((data[yr].us_foreign - data[yr - 1].us_foreign) / data[yr - 1].us_foreign) * 100,
+                                foreignComparison = calcDifference(foreignChange, usForeignChange),
+                                //export indicators
+                                exportPercent = (parseInt(data[yr].swt_export) / (parseInt(data[yr].swt_export) + parseInt(data[yr].swt_import))) * 100,
+                                exportArray = [exportPercent, 100 - exportPercent],
+                                prevExport = (parseInt(data[yr - 1].swt_export) / (parseInt(data[yr - 1].swt_export) + parseInt(data[yr - 1].swt_import))) * 100,
+                                exportChange = ((parseInt(data[yr].swt_export) - parseInt(data[yr - 1].swt_export)) / parseInt(data[yr - 1].swt_export)) * 100,
+                                usExportChange = ((parseInt(data[yr].us_export) - parseInt(data[yr - 1].us_export)) / parseInt(data[yr - 1].us_export)) * 100,
+                                exportTons = parseInt(data[yr].swt_export) * 0.000001,
+                                exportComparison = calcDifference(exportChange, usExportChange),
+
+                                //export indicators
+                                containerPercent = (parseInt(data[yr].swt_cont_tons) / (parseInt(data[yr].swt_export) + parseInt(data[yr].swt_import))) * 100,
+                                containerArray = [containerPercent, 100 - containerPercent],
+                                prevContainer = (parseInt(data[yr - 1].swt_cont_tons) / (parseInt(data[yr - 1].swt_export) + parseInt(data[yr - 1].swt_import))) * 100,
+                                containerChange = ((containerPercent - prevContainer) / prevContainer) * 100;
+                        }
+
+
+                        //update port rank indicators
+                        $('#mi-rank-value').html(portRank);
+                        if (portChange < 0) {
+                            $('#mi-rank-icon').html(ind_up);
+                        } else if (portChange > 0) {
+                            $('#mi-rank-icon').html(ind_down);
+                        } else {
+                            $('#mi-rank-icon').html(ind_even);
+                        }
+
+                        //update total trade indicators
+                        $('#mi-regional').html(regionalTradeChange + '%');
+                        $('#mi-national').html(nationalTradeChange + '%');
+                        $('#mi-total-trade-value').html(totalTradefm);
+                        if (tradeComparison < -5) {
+                            $('#mi-total-icon').html(ind_down);
+                        } else if (tradeComparison > 5) {
+                            $('#mi-total-icon').html(ind_up);
+                        } else {
+                            $('#mi-total-icon').html(ind_even);
+                        }
+
+                        //update foreign trade indicators
+                        $('#mi-foreign-value').html(foreignTradefm);
+                        $('#mi-foreign-percent').html((foreignChange).toFixed(1) + '%');
+                        $('#mi-foreign-national').html((usForeignChange).toFixed(1) + '%');
+                        if (foreignComparison > 5) {
+                            $('#mi-foreign-icon').html(ind_up);
+                        } else if (foreignComparison < -5) {
+                            $('#mi-foreign-icon').html(ind_down);
+                        } else {
+                            $('#mi-foreign-icon').html(ind_even);
+                        }
+
+                        //build pie charts
+                        var pieHeight = 67,
+                            pieWidth = $('#mi-export-graph').width(),
+                            radius = 67 / 2,
+                            //radius = Math.min(pieHeight, pieWidth) / 2,
+                            donutWidth = 15,
+                            tp = (pieWidth *0.05).toFixed(0);
+
+                        if(pieWidth > 280) {
+                            $('#mi-export-percent').css('left', Number(103) + Number(tp) +'px');
+                            $('#mi-export-overlay').css('background', 'url("images/mi_export_overlay.png") no-repeat;').css('left', Number(15) + Number(tp) +'px');
+                            $('#mi-export-info-label').css('left', Number(190) + Number(tp) +'px');
+
+                            var donutColor = d3.scale.ordinal()
+                                .range(['#EAA51B', '#fff']);
+
+                            var exportDonutColor = donutColor.domain(exportArray);
+                            var containerDonutColor = donutColor.domain(containerArray);
+
+                            var exportDonut = d3.select('#mi-export-graph')
+                                .append('svg')
+                                .attr('width', pieWidth)
+                                .attr('height', 108)
+                                .append('g')
+                                .attr('transform', 'translate('+ (Number(46) + Number(tp)) +',' + (108 / 2) + ')');
+
+                            var containerDonut = d3.select('#mi-container-graph')
+                                .append('svg')
+                                .attr('width', pieWidth)
+                                .attr('height', 108)
+                                .append('g')
+                                .attr('transform', 'translate(' + (pieWidth / 2) + ',' + (108 / 2) + ')');
+
+                            var leftArc = d3.svg.arc()
+                                .outerRadius(radius)
+                                .startAngle(function(d) {
+                                    return d.startAngle + Math.PI;
+                                })
+                                .endAngle(function(d) {
+                                    return d.endAngle + Math.PI;
+                                });
+
+                            var rightArc = d3.svg.arc()
+                                .innerRadius(radius - donutWidth)
+                                .outerRadius(radius)
+                                .startAngle(function(d) {
+                                    return Math.PI - d.startAngle;
+                                })
+                                .endAngle(function(d) {
+                                    return Math.PI - d.endAngle;
+                                });
+
+                            var pie = d3.layout.pie()
+                                .value(function(d, i) {
+                                    return d;
+                                })
+                                .sort(null);
+
+                            var exportPath = exportDonut.selectAll('path')
+                                .data(pie(exportArray))
+                                .enter()
+                                .append('path')
+                                .attr('d', leftArc)
+                                .attr('fill', function(d, i) {
+                                    return exportDonutColor(d.value);
+                                })
+
+                            var exportLabel = d3.select('#mi-export-graph')
+                                .append('div')
+                                .attr('id', 'mi-export-label')
+                                .style('top', (pieHeight / 2) - 12 + 'px');
+                            
+                        } else {
+                            $('#mi-export-percent').css('left', Number(28) + Number(tp *0.5) +'px');
+                            $('#mi-export-overlay').css('background', 'url("lib/images/mi_export_overlay-sm.png") no-repeat').css('left', Number(20) + Number(tp *.5) +'px');
+                            $('#mi-export-info-label').css('left', Number(120) + Number(tp *0.45) +'px');
+                            
+                        }
+                        if(pieWidth > 280 && pieWidth < 300){
+                            $('#mi-export-percent').css('left', '103px');
+                            $('#mi-export-overlay').css('left', '15px');
+                            $('#mi-export-info-label').css('left', '180px');
+                            $('#mi-export-graph').css('transform', 'translate(-15px,0)');
+                        }
+                        
+                        $('#mi-export-percent').css('display', 'block');
+                        $('#mi-export-overlay').css('display', 'block');
+                        $('#mi-export-info-label').css('display', 'block');
+
+                        //update export indicators
+                        $('#mi-export-change').html((exportChange).toFixed(1) + '%');
+                        $('#mi-export-percent').html(exportPercent.toFixed(0) + '%');
+                        $('#mi-export-national').html((usExportChange).toFixed(1) + '%');
+                        $('#mi-export-value').html(exportTons.toFixed(1) + ' M');
+                        $('#mi-export-indicator').html(calcChange(exportChange));
+                        if (exportComparison > 5) {
+                            $('#mi-export-icon').html(ind_up);
+                        } else if (exportComparison < -5) {
+                            $('#mi-export-icon').html(ind_down);
+                        } else {
+                            $('#mi-export-icon').html(ind_even);
+                        }
+
+                        //update export indicators
+                        $('#mi-container-percent').html((containerChange).toFixed(0) + '%');
+                        $('#mi-container-indicator').html(calcChange(containerChange));
+                        if (containerChange > 3) {
+                            $('#mi-container-icon').html(ind_up);
+                        } else if (containerChange < -3) {
+                            $('#mi-container-icon').html(ind_down);
+                        } else {
+                            $('#mi-container-icon').html(ind_even);
+                        }
+
+
+                    }
+
+                    //load data once on document ready
+                    updateTradePanel(miYear);
+                    sizePorts(miYear);
+
+                    var newYear = miYear;
+                    $('#maritime-year-dropdown').on('change', 'input', function() {
+                        newYear = parseInt($(this).val());
+                        var minYear = document.getElementById("m"+ (newYear - 1));
+                        updateTradePanel(newYear);
+                        sizePorts(newYear);
+                        if(!minYear){
+                            $('#mi-year-prev').prop('disabled', true);
+                        }else if(!maxYear){
+                            $('#mi-year-next').prop('disabled', true);
+                        }else{
+                            $('#mi-year-prev').prop('disabled', false);
+                            $('#mi-year-next').prop('disabled', false);
+                        }
+                    });
+
+                    $('#mi-year-prev').on('click', function() {
+                        var changeSelect = $("#m"+ (newYear - 1));
+                        changeSelect.trigger('click'); 
+                                             
+                    });
+                    $('#mi-year-next').on('click', function() {
+                        var changeSelect = $("#m"+ (newYear + 1));
+                        changeSelect.trigger('click'); 
+                                             
+                    });
+                    $(".btn").mouseup(function(){
+                        $(this).blur();
+                    });
+
+
+
+                });
+            });
+        });
+    });
+
+
+
+});

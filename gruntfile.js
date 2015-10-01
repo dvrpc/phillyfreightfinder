@@ -37,6 +37,15 @@ module.exports = function(grunt){
 		    d3: {
 		        src: 'lib/d3.build.js',
 		        dest: 'lib/d3.build.min.js'
+		    },
+		    tools: {
+		    	files: [{
+		    		expand:true,
+		    		cwd: 'dev/tools/',
+		    		src:['**/*.js'],
+		    		dest: 'lib/tools/',
+		    		ext: '.js'
+		    	}]
 		    }
 		},
 
@@ -60,29 +69,39 @@ module.exports = function(grunt){
 		},
 
 		copy: {
+				
+				corefonts: {
+					expand: true,
+					cwd: 'dev/core/fonts/',
+					dest: 'lib/fonts/',
+					src: '**'
+				},
 				lib: {
 					expand: true,
 					cwd: 'lib/',
 					src: ['**'],
-					dest: 'html/lib/'
+					dest: './html/lib/'
 					
 				},
 				includes: {
 					expand: true,
 					cwd: 'includes/',
-					dest: 'html/includes/',
+					dest: './html/includes/',
 					src: ['**']
 				},
 				data: {
 					expand: true,
 					cwd: 'data/',
-					dest: 'html/data/',
+					dest: './html/data/',
 					src: ['**']
 				},
 				index: {
 					src: ['index.htm'],
-					dest: 'html/'
+					dest: './html/'
 				}
+				
+
+			
 		},
 
 		jshint: {
@@ -118,6 +137,20 @@ module.exports = function(grunt){
 						src: ['**/*.jpg'],
 						dest: 'lib/images/',
 						ext: '.jpg'	
+					}
+				]
+			},
+			gif:{
+				options:{
+					interlaced:true
+				},
+				files:[
+					{
+						expand: true,
+						cwd: 'dev/images/',
+						src: ['**/*.gif'],
+						dest: 'lib/images/',
+						ext: '.gif'	
 					}
 				]
 			}
