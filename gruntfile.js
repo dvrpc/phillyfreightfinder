@@ -111,6 +111,17 @@ module.exports = function(grunt){
 			tools : ['lib/tools/*.js']
 		},
 
+		watch: {
+			toolscripts: {
+      			files: ['dev/tools/*.js'],
+      			tasks: ['uglify:tools']
+      		},
+      		cssUpdate: {
+      			files: ['dev/css/*.css'],
+      			tasks: ['cssmin']
+      		}
+		},
+
 		imagemin:{
 			png:{
 				options:{

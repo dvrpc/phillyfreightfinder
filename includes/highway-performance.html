@@ -3,78 +3,84 @@
         <h1>Highway Performance&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="hp_metric_wrapper">[Truck <span id="hp_metric">Travel Time Index</span>]</span></h1>
     </div> 
 </div>
-<div id="hp-map-wrapper" class="col-lg-12">
-    <!-- map content loads here -->    
+<div class="page_loader" style="display:none;">
+        <span class="glyphicon glyphicon-refresh glyphicon-spin"></span><br/>
+        <span>Loading...</span>
 </div>
-<div class='clearfix'></div>
-<!-- filter content -->
-<div class='center-block col-lg-10 col-sm-12' style='float:none;'>
-    <div class="row">
-        <div class="col-lg-5 hp_filter">
-            <div class="hp_label">Select performance measure:</div>
-            <div id="hp_select" class="btn-group" data-toggle="buttons">
-                <label for="t_tti" id="radio_t_tti" class="btn btn-sm btn-primary active">
-                    <input type="radio" id="t_tti" name="hp_measure" value="TTI">Travel Time Index</label>
-                <label for="t_speed" id="radio_t_speed" class="btn btn-sm btn-primary ">
-                    <input type="radio" id="t_speed" name="hp_measure" value="Speed" >Average Speed</label>
-                <!--
-                <label for="t_pti" id="radio_t_pti" class="btn btn-sm btn-primary">
-                    <input type="radio" id="t_pti" name="hp_measure" value="PTI">Planning Time Index</label>
-                -->
-            </div>
-
-            <div class="hp_label">Data legend:</div>
-            <div id="hp_legend_TTI" class="hp_legend_wrapper">
-                <div class="hp_label">Travel Time Index Value</div>
-                <div class="hp_legend hp_z">no data</div>
-                <div class="hp_legend hp_k">&gt; 3.0</div>
-                <div class="hp_legend hp_r">2.0 - 3.0</div>
-                <div class="hp_legend hp_o">1.5 - 2.0</div>
-                <div class="hp_legend hp_a">1.1 - 1.5</div>
-                <div class="hp_legend hp_g">&lt; 1.1</div>
-            </div>
-            <div id="hp_legend_Speed" class="hp_legend_wrapper hidden">
-                <div class="hp_label">Average Speed (MPH)</div>
-                <div class="hp_legend hp_z">no data</div>
-                <div class="hp_legend hp_k">&lt; 10</div>
-                <div class="hp_legend hp_r">10 - 20</div>
-                <div class="hp_legend hp_o">20 - 30</div>
-                <div class="hp_legend hp_a">30 - 40</div>
-                <div class="hp_legend hp_y">40 - 50</div>
-                <div class="hp_legend hp_c">50 - 60</div>
-                <div class="hp_legend hp_g">&gt; 60</div>
-            </div>
-            
-        </div>
-        <div class="col-lg-7 hp_filter">
-            <div class="hp_label">Select time period:</div>
-           
-                
-                    <button id="hp_play" class="btn btn-sm btn-primary hp_play" ><i class="glyphicon glyphicon-play"></i>&nbsp;&nbsp;Play</button>
-                    <div id="hp_tabbing" class="btn-group hp_tab">
-                        <button id="hp_prev" class="btn btn-sm btn-primary hp_prev" ><i class="glyphicon glyphicon-chevron-left"></i></button>
-                        <button id="hp_next" class="btn btn-sm btn-primary hp_next" ><i class="glyphicon glyphicon-chevron-right"></i></button>
-                    </div>
-                
-                    <div id="hp_timing_slider">
-                        <!--slider control loads here-->
-                    </div>
-                
-                    <!--hidden timing inputs for layer control -->
-                    <div id="hp_timing_select" style="display:none;" class="btn-group" data-toggle="buttons">
-                            <input type="radio" id="hp_0" name="timing_input" value="0" checked="checked"/>
-                            <input type="radio" id="hp_5" name="timing_input" value="5"/>
-                            <input type="radio" id="hp_7" name="timing_input" value="7"/>
-                            <input type="radio" id="hp_9" name="timing_input" value="9"/>
-                            <input type="radio" id="hp_11" name="timing_input" value="11"/>
-                            <input type="radio" id="hp_13" name="timing_input" value="13"/>
-                            <input type="radio" id="hp_15" name="timing_input" value="15"/>
-                            <input type="radio" id="hp_17" name="timing_input" value="17"/>
-                            <input type="radio" id="hp_19" name="timing_input" value="19"/>
-                    </div>
-            
-            
-        </div>
+<div class="tool-content-hp" >
+    <div id="hp-map-wrapper" class="col-lg-12" >
+        
+        <!-- map content loads here -->    
     </div>
-    
+    <div class='clearfix'></div>
+    <!-- filter content -->
+    <div class='center-block col-lg-10 col-sm-12' style='float:none;'>
+        <div class="row">
+            <div class="col-lg-5 hp_filter">
+                <div class="hp_label">Select performance measure:</div>
+                <div id="hp_select" class="btn-group" data-toggle="buttons">
+                    <label for="t_tti" id="radio_t_tti" class="btn btn-sm btn-primary active">
+                        <input type="radio" id="t_tti" name="hp_measure" value="TTI">Travel Time Index</label>
+                    <label for="t_speed" id="radio_t_speed" class="btn btn-sm btn-primary ">
+                        <input type="radio" id="t_speed" name="hp_measure" value="Speed" >Average Speed</label>
+                    <!--
+                    <label for="t_pti" id="radio_t_pti" class="btn btn-sm btn-primary">
+                        <input type="radio" id="t_pti" name="hp_measure" value="PTI">Planning Time Index</label>
+                    -->
+                </div>
+
+                <div class="hp_label">Data legend:</div>
+                <div id="hp_legend_TTI" class="hp_legend_wrapper">
+                    <div class="hp_label">Travel Time Index Value</div>
+                    <div class="hp_legend hp_z">no data</div>
+                    <div class="hp_legend hp_g">&lt; 1.1</div>
+                    <div class="hp_legend hp_a">1.1 - 1.5</div>
+                    <div class="hp_legend hp_o">1.5 - 2.0</div>
+                    <div class="hp_legend hp_r">2.0 - 3.0</div>
+                    <div class="hp_legend hp_k">&gt; 3.0</div>
+                </div>
+                <div id="hp_legend_Speed" class="hp_legend_wrapper hidden">
+                    <div class="hp_label">Average Speed (MPH)</div>
+                    <div class="hp_legend hp_z">no data</div>
+                    <div class="hp_legend hp_k">&lt; 10</div>
+                    <div class="hp_legend hp_r">10 - 20</div>
+                    <div class="hp_legend hp_o">20 - 30</div>
+                    <div class="hp_legend hp_a">30 - 40</div>
+                    <div class="hp_legend hp_y">40 - 50</div>
+                    <div class="hp_legend hp_c">50 - 60</div>
+                    <div class="hp_legend hp_g">&gt; 60</div>
+                </div>
+                
+            </div>
+            <div class="col-lg-7 hp_filter">
+                <div class="hp_label">Select time period:</div>
+               
+                    
+                        <button id="hp_play" class="btn btn-sm btn-primary hp_play" ><i class="glyphicon glyphicon-play"></i>&nbsp;&nbsp;Play</button>
+                        <div id="hp_tabbing" class="btn-group hp_tab">
+                            <button id="hp_prev" class="btn btn-sm btn-primary hp_prev" ><i class="glyphicon glyphicon-chevron-left"></i></button>
+                            <button id="hp_next" class="btn btn-sm btn-primary hp_next" ><i class="glyphicon glyphicon-chevron-right"></i></button>
+                        </div>
+                    
+                        <div id="hp_timing_slider">
+                            <!--slider control loads here-->
+                        </div>
+                    
+                        <!--hidden timing inputs for layer control -->
+                        <div id="hp_timing_select" style="display:none;" class="btn-group" data-toggle="buttons">
+                                <input type="radio" id="hp_0" name="timing_input" value="0" checked="checked"/>
+                                <input type="radio" id="hp_5" name="timing_input" value="5"/>
+                                <input type="radio" id="hp_7" name="timing_input" value="7"/>
+                                <input type="radio" id="hp_9" name="timing_input" value="9"/>
+                                <input type="radio" id="hp_11" name="timing_input" value="11"/>
+                                <input type="radio" id="hp_13" name="timing_input" value="13"/>
+                                <input type="radio" id="hp_15" name="timing_input" value="15"/>
+                                <input type="radio" id="hp_17" name="timing_input" value="17"/>
+                                <input type="radio" id="hp_19" name="timing_input" value="19"/>
+                        </div>
+                
+                
+            </div>
+        </div>   
+    </div>
 </div>

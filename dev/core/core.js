@@ -118,11 +118,12 @@ $(window).bind('hashchange', function() {
     	$('.mapUI').fadeOut('fast', 'easeOutQuad' , function (){
             $('.landingUI').fadeIn('fast', 'easeInQuad' );
             countymap.invalidateSize();
-            if(tab_status[tab_id] === false){
+            
+        });
+        if(tab_status[tab_id] === false){
                 $('#'+ tab_id).load('includes/'+ tab_id + '.html', loadScript(tab_id));
                 tab_status[tab_id] = true;
             }
-        });
         $('.landtab-content > .tab-pane').hide();
         $("#pFFlanding").animate({ scrollTop: 0 }, 50);
         $('#' + tab_id).show();

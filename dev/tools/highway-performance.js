@@ -7,12 +7,15 @@ var hp_timing = {'0': '_0_5', '5': '_5_7','7': '_7_9','9': '_9_11','11': '_11_13
 
 var time_slider; 
 
+var hp_map_height = $(window).height() - 335;
+$('#hp-map-wrapper').css('height', hp_map_height + 'px' );
 
 function buildSlider(){
 	//build the timing slider
 	
 	
 	time_slider = document.getElementById('hp_timing_slider');
+
 
 	noUiSlider.create(time_slider, {
 		start: [0, 5],
@@ -106,6 +109,7 @@ function buildSlider(){
 		 //clearInterval(foo);
 	});
 $(function() {
+	
 	
 	
 	// load esri leaflet source and build map

@@ -7,6 +7,8 @@ var hp_timing = {'0': '_0_5', '5': '_5_7','7': '_7_9','9': '_9_11','11': '_11_13
 
 var time_slider; 
 
+var hp_map_height = $('#pFFlanding').width() - 165;
+
 
 function buildSlider(){
 	//build the timing slider
@@ -211,6 +213,7 @@ function buildSlider(){
 
 $(function() {
 	
+	$('#hp-map-wrapper').attr('height', hp_map_height + 'px' );
 	
 	// load esri leaflet source and build map
 	$.getScript('//cdn.jsdelivr.net/leaflet.esri/1.0.0/esri-leaflet.js', build_hp_map);

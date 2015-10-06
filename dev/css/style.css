@@ -1101,6 +1101,42 @@ ul.bxslider{
               /*background-image: url(data:image/gif;base64,R0lGODlhGAAYAOZGAHp6eoWFhX9/f3t7e4KCgtvb2319faSkpJSUlMTExOzs7JiYmO/v79DQ0KWlpdXV1ZeXl8LCwq2trZWVldTU1KysrJOTk8HBwbS0tLW1tZ2dnaOjo5ubm9nZ2aurq+bm5oCAgMPDw+vr6+np6ZKSkomJicXFxYuLi9zc3Lm5ub+/v+Dg4J6enszMzMDAwN3d3djY2Pr6+oODg46OjqCgoHx8fJGRkaqqqr29vaampqenp7a2to+Pj7Ozs7u7u9HR0aKioqmpqX5+fs7OzsfHx66urv///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAEAAEYALAAAAAAYABgAQAf/gEaCg0YMERskBAQkGxeEhCoAkhOPlR8GkpmOApmdICwUBSednQKDDwMALo89nBwTnQMPggSkKYQvFC2knQSDJqm8ACWCIwsAAyaVRh0ByAs1HBYGzpkBHY8VABDLRigQP4MemRVGCJk83UYwIMIWB7xCDUYQAJjCkgeF1fgW84IpMAVgsKwIJ2ECJKgTpMDDQV4CKojoFiKVBhQrVhSIkUADqQERCClw5qNSNSJGMuSwNtEIJwNDuiko9mBHJlPwJN1Y+KEErwO1MmHohgEfgXOdZuAQBERSEHwAEEQQNkFBgws0oAIIYUSCVh0HZKhwMCqTQkEFguGjMCgDsgKVFwrw62QjwTEAAeAuNJLAAQJFCBwk6BYIADs=);
             */
             }
+            .glyphicon-spin {
+                -webkit-animation: spin 1500ms infinite linear;
+                animation: spin 1500ms infinite linear;
+            }
+            @-webkit-keyframes spin {
+                0% {
+                    -webkit-transform: rotate(0deg);
+                    transform: rotate(0deg);
+                }
+                100% {
+                    -webkit-transform: rotate(359deg);
+                    transform: rotate(359deg);
+                }
+            }
+            @keyframes spin {
+                0% {
+                    -webkit-transform: rotate(0deg);
+                    transform: rotate(0deg);
+                }
+                100% {
+                    -webkit-transform: rotate(359deg);
+                    transform: rotate(359deg);
+                }
+            }
+            .page_loader{
+                    position: absolute;
+                    width: 100%;
+                    padding-top: 150px;
+                    text-align: center;
+                    color: #999;
+                    font-size: 22px;
+                    z-index: 3500;
+            }
+            .page_loader i{
+                font-size:30px;
+            }
 
             /*--------------------------------------------------------*/
 /*--------  Custom Styles for Layers  --------------------*/
@@ -1821,13 +1857,18 @@ p#subtitle {
 }
 
 .domestic-trade-map{
-    min-height:519px;
+    min-height:430px;
 }
-
+.dt-chart-panel{
+    height: 380px;
+}
+.dt-chart-row{
+    margin-top:-30px;
+}
 
 #topPartners .panel-body, #topCommodities .panel-body{
     padding:0px;
-    min-height:200px;
+    min-height:380px;
 }
 
 #topCommodities{
@@ -1850,8 +1891,6 @@ p#subtitle {
     margin: -11px 5px -10px;
 }
 #topPartners{
-    position: absolute;
-    width: 300px;
     -webkit-transition: all 1s ease-in-out;
     -moz-transition: all 1s ease-in-out;
     -o-transition: all 1s ease-in-out;
@@ -1865,13 +1904,13 @@ p#subtitle {
     border-radius: 0px!important;
     border-width: 1px 0px 0px 0px;
 }
-
+#tradeList li.list-group-item:hover{
+    background-color:#efefef;
+}
 
 
 #tradeFilters{
-    margin-left: 325px;
-    position: absolute;
-    width: 900px;
+    height: 40px;
 }
 
 #tradeFilters .btn-group{
@@ -1973,6 +2012,11 @@ p#subtitle {
     fill: #EA955B!important;
     z-index:-1;
 }
+.metro.sel_related circle.list_circle{
+    stroke: #312867;
+    stroke-width: 2px;
+    z-index:-1;
+}
 
 
 
@@ -2012,8 +2056,7 @@ label.sel.dir_out span {
 
 
 #tradeMap{
-    margin-left: 215px;
-    margin-top: 15px;
+   margin-top: -20px;
 }
 
 
@@ -2391,11 +2434,6 @@ inverse .navbar-nav .open > .dropdown-menu > .dropdown-submenu.open > a:before {
 }
 }
 
-#topCommoditiesChart{
-    padding:0px;
-    margin-top:-30px;
-
-}
 #commChart g {
     shape-rendering: crispEdges;
 }
@@ -2802,7 +2840,7 @@ inverse .navbar-nav .open > .dropdown-menu > .dropdown-submenu.open > a:before {
 #hp-map-wrapper{
     margin-top:-19px;
     height:525px;
-    background-color:#cdcdcd;
+    background-color:#efefef;
     border-bottom: 2px solid #312867;
 }
 .hp_label{
