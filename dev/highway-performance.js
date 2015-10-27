@@ -1,3 +1,4 @@
+$(function() {
 //$('head').append('<link rel="stylesheet" href="lib/assets/nouislider.min.css" type="text/css" />');
 $.getScript('lib/assets/nouislider.min.js', buildSlider);
 
@@ -208,10 +209,6 @@ function buildSlider(){
 	    		rebuild_hp_layers();}
 
         });
-
-
-
-$(function() {
 	
 	$('#hp-map-wrapper').attr('height', hp_map_height + 'px' );
 	
