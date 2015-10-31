@@ -18,6 +18,16 @@ easeInQuad: function (x, t, b, c, d) {
     }
 });
 
+$.fn.capitalize = function () {
+    $.each(this, function () {
+        var caps = this.value;
+        caps = caps.charAt(0).toUpperCase() + caps.slice(1);
+        this.value = caps;
+    });
+    return this;
+};
+
+
 //stop button from remaining selected
 
 
@@ -85,19 +95,18 @@ $(function() {
   // Javascript to enable link to tab
   var url = document.location.toString();
   if (url.match('#')) {
-    var tab_id = url.split('#')[1];
+    var full_hash = url.split('#')[1].split('/');
+    var tab_id = full_hash[0];
     var prev_tab = url.split('#')[1];
     if (tab_id != 'map' && tab_id !== undefined) {
         $('#' + tab_id).show(); 
         countymap.invalidateSize();  
         if(tab_status[tab_id] === false){
             $('#'+ tab_id).load('includes/'+ tab_id + '.html', loadScript(tab_id));
-            tab_status[tab_id] = true;
-            
+            tab_status[tab_id] = true; 
         }
     }else {
-       
-       setMap();
+        setMap();
    }
   }else {
     $('#home').show();
@@ -109,7 +118,9 @@ $(function() {
 });
         
 function getLocationHash () {
-  return window.location.hash.substring(1);
+  var hashLocation = window.location.hash.substring(1),
+    locations = hashLocation.split('/');
+  return locations[0];
 }
 //create navigation of content based on hash changes for self contained app
 $(window).bind('hashchange', function() {
@@ -118,7 +129,6 @@ $(window).bind('hashchange', function() {
     	$('.mapUI').fadeOut('fast', 'easeOutQuad' , function (){
             $('.landingUI').fadeIn('fast', 'easeInQuad' );
             countymap.invalidateSize();
-            
         });
         if(tab_status[tab_id] === false){
                 $('#'+ tab_id).load('includes/'+ tab_id + '.html', loadScript(tab_id));

@@ -548,6 +548,9 @@ input[type=checkbox]:checked + label, input[type=checkbox]:checked + label > div
 }
 #landing{
     margin-left: 10px;
+    position: absolute;
+    right: 0;
+    padding-right: 40px;
 }
 .landing {
     z-index: 1029;
@@ -2938,6 +2941,173 @@ inverse .navbar-nav .open > .dropdown-menu > .dropdown-submenu.open > a:before {
 .noUi-pips {
     color:#636363;
 }
+
+/***************************************
+/  County Profile Styles
+/***************************************/
+#c-title-wrapper{
+    max-width: 570px;
+    display: inline-block;
+}
+#c-region-nav{
+    display:inline-block;
+    position: absolute;
+    top: -5px; 
+    right: 15px;
+}
+#c-steps, #c-steps li{
+    display:inline-block;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+#c-steps li a{
+    display: inline-block;
+   /* width: 121px;*/
+    height: 40px;
+    position: relative;
+    text-align: center;
+    /*overflow:hidden;*/    
+}
+#c-tab{
+    color:#636363;
+    border-left: 2px solid;
+    padding-left: 10px;
+    margin-left: 25px;
+    font-weight: 200;
+    text-transform: capitalize;
+}
+.c-step-item{
+    width: 121px;
+}
+.c-step-item, .c-step-nav {
+    opacity: 1;
+    z-index: 1;
+    transition: width 500ms ease-in-out,opacity 500ms ease-in-out;
+}
+.c-step-nav{
+    width: 20px;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    /*width: 60px;*/
+    height: 20px;
+    padding: 0;
+    margin: 0;
+   /* webkit-transform: translate(50%, 0);
+    -ms-transform: translate(50%, 0);
+    transform: translate(50%, 0);*/
+
+}
+.c-step-nav circle{
+    fill:#312867;
+    transition: all 350ms linear; 
+}
+.c-step-nav circle.c-active-circle{
+    stroke-width:1;
+    fill:#efefef;
+    stroke:#312867;
+}
+.c-ripple circle.c-step-ripple{
+    fill:none;
+    stroke:#312867;
+    /*transform:translate(25%, 25%);*/
+    transition:stroke-opacity 335ms ease-out, r 350ms linear; 
+}
+.c-line{
+    stroke: #312867;
+    stroke-width:1;
+}
+svg.c-ripple{
+    display: block;
+    position: absolute;
+    /* top: 1px; */
+    left: 50%;
+    width: 40px;
+    height: 40px;
+    /* border-radius: 50%; */
+    z-index: -1;
+    transform: translate(-25%,-25%);
+}
+.c-step-line{
+    border-top: solid 1px #312867;
+    width: 242px;
+    position: absolute;
+    top: 10px;
+    /* right: 80px; */
+    webkit-transform: translate(81%,0);
+    -ms-transform: translate(81%,0);
+    transform: translate(81%,0);
+}
+.c-step-name{
+    color:#312867;
+    display: block;
+    position: absolute;
+    top: 6px;
+    left: 10px;
+    width: 100%;
+    padding: 14px 0 0;
+    font-size: .975em;
+    text-transform: lowercase;
+    transition: all 600ms ease-in-out;
+}
+svg .county_outlines{
+    stroke-linejoin: round;
+    stroke-linecap: round;
+    fill-rule: evenodd;
+    stroke: rgb(239, 239, 239);
+    stroke-opacity: 1;
+    stroke-width: 2px;
+    fill: rgb(57, 106, 178);
+    fill-opacity: 1;
+    transition: fill-opacity 400ms ease-in-out;
+}
+svg .county_outlines:hover{
+    cursor: pointer;
+    /*stroke: #e57b32;*/ 
+    stroke-width: 5px;
+    fill-opacity: 0.8;  
+}
+.c-county-label {
+    font-size: .85em;
+    fill:#ffffff;
+    text-anchor: middle;
+    cursor: none;
+    pointer-events: none;
+    paint-order: stroke;
+    stroke: #396AB2;
+    stroke-width: 5px;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.highlight-block{
+    border-left: 3px solid;
+    padding-left: 8px;
+    margin: 20px 0;
+    font-weight: 600;
+    font-size: 1.35em;
+    color: #396AB2;
+}
+#c-county-prompt{
+    position: absolute;
+    top: 10px;
+    left: 50px;
+    right: 50px;
+    background-color: #312867; 
+    padding: 10px;
+    border: 3px solid #fff;
+    text-align: center;
+    border-radius: 5px;
+    font-weight: 800;
+    color: #fff;
+    transition: background-color 250ms ease-in-out;
+}
+
+
 @media (max-width: 992px) { 
 
     .mi-foreign-icon{

@@ -1,11 +1,187 @@
 <div class='page-title center-block col-lg-12'>
     <div class='center-block col-lg-10 col-md-12' style='float:none;'>
-        <h1><span id="c-name">DVRPC Region</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span id="c-tab">Overview</span>
-            <!--<div class="btn-group" style="float:right;">
-                <button id="dt-county-prev" class="btn btn-default indicator-navigation flowBtn"><i class="glyphicon glyphicon-chevron-left"></i></button>
-                <button id="dt-county-next" class="btn btn-default indicator-navigation flowBtn"><i class="glyphicon glyphicon-chevron-right"></i> </button>
-            </div>-->
-            </h1>
+        <div id='c-title-wrapper'>
+    		<h1><span id="c-name">DVRPC Region</span><span id="c-divider"></span><span id="c-tab">Overview</span></h1>
+		</div>
+        <div id='c-region-nav'>
+        	<ul id='c-steps'>
+        		<li>
+        			<a href='#' class='c-step-item c-step-current' data-target='c-region'>
+        				<svg class='c-ripple'><circle cx="20" cy="20" r="8" stroke-width="0" class="c-step-ripple"></circle></svg>
+        				<svg class="c-step-nav">
+        					<circle cx="10" cy="10" r="8" class="c-active-circle"></circle>
+							<circle cx="10" cy="10" r="3" class="c-step-active">
+							</circle>
+						</svg>
+						
+						<div class='c-step-name'>Overview</div>
+        			</a>
+        		</li>
+        		<li>
+        			<a href='#' class='c-step-item' data-target='c-network'>
+        				<svg class='c-ripple'><circle cx="20" cy="20" r="6" stroke-width="0" class="c-step-ripple"></circle></svg>
+        				<svg class="c-step-nav">
+							<circle cx="10" cy="10" r="5" class="c-active-circle"></circle>
+							<circle cx="10" cy="10" r="6" class="c-step-active">
+							</circle>
+						</svg>
+						<div class='c-step-name'>Network</div>
+        			</a>
+        		</li>
+        		<li>
+        			<a href='#' class='c-step-item' data-target='c-freight-centers'>
+        				<svg class='c-ripple'><circle cx="20" cy="20" r="6" stroke-width="0" class="c-step-ripple"></circle></svg>
+        				<svg class="c-step-nav">
+	        				<circle cx="10" cy="10" r="5" class="c-active-circle"></circle>
+							<circle cx="10" cy="10" r="6" class="c-step-active">
+							</circle>
+						</svg>
+						<div class='c-step-name'>Freight Centers</div>
+        			</a>
+        		</li>
+        		<li>
+        			<a href='#' class='c-step-item' data-target='c-domestic-trade'>
+        				<svg class='c-ripple'><circle cx="20" cy="20" r="6" stroke-width="0" class="c-step-ripple"></circle></svg>
+        				<svg class="c-step-nav">
+	        				<circle cx="10" cy="10" r="5" class="c-active-circle"></circle>
+							<circle cx="10" cy="10" r="6" class="c-step-active">
+							</circle>
+						</svg>
+						<div class='c-step-name'>Trade Patterns</div>
+        			</a>
+        		</li>
+        	</ul>
+        	<div class='c-step-line'></div>
+        </div>
     </div> 
+</div><!--close the header -->
+
+<!-- regional overview template -->
+<div id="c-region" class="col-lg-12 tool-content-dt c-region-tab">
+	<div class='center-block col-lg-10 col-sm-12 ' style='float:none;'>
+		<div class="row">
+	        <div class='col-sm-5 col-md-6'>
+	            <p>The Delaware Valley region consists of nine counties: Bucks, Chester, Delaware, Montgomery and Philadelphia in Pennsylvania, and Burlington, Camden, Gloucester and Mercer in New Jersey.</p>
+	            <p class="highlight-block">This region contains an impressive freight transportation network consisting of highways, rail lines, ports, airports, and pipelines. These key linkages unite an expansive list of facilities including warehouses, manufacturing sites, rail yards, and truck stops.</p>
+	            <p>Strategically positioned in the middle of the densest population center in the United States; over 100 million people live within a 500-mile radius of Philadelphia, representing a vast consumer base and making the region ideally situated as a manufacturing and distribution hub.</p>
+	            <p>Explore the </p>
+	        </div> 
+	        <div id="c-map-wrapper" class='col-sm-7 col-md-6'>
+	        	<div id="c-county-map" class="region-county-map">
+                </div>
+                <div id="c-county-prompt" style="display:none;"><i class="glyphicon glyphicon-triangle-bottom"></i>&nbsp;&nbsp;&nbsp;&nbsp;Select a county to proceed&nbsp;&nbsp;&nbsp;&nbsp;<i class="glyphicon glyphicon-triangle-bottom"></i></div>
+	        </div>
+	    </div>
+    </div>
 </div>
-<div class='row region-nav col-lg-12'></div>
+
+<!-- network content template -->
+<div id="c-network" class="col-lg-12 tool-content-dt c-region-tab" style="display: none;">
+	<p>Network</p>
+</div>
+
+<!-- freight center template -->
+<div id="c-freight-centers" class="col-lg-12 tool-content-dt c-region-tab" style="display: none;">
+	<p>Freight Centers</p>
+</div>
+
+<!-- trade patterns template-->
+<div id="c-domestic-trade" class=" col-lg-12 tool-content-dt c-region-tab" style="display: none;">
+    <div class='center-block col-lg-10 col-md-12' style='float:none;'>
+          <div class="row"> 
+            <div id="topPartners" class="col-md-4 col-sm-12">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h4 class="panel-title" id="topPartnerTitle">Top Trading Partners</h4>
+                    </div>
+                    <div class="panel-body">
+                        <ul id="tradeList">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8 col-sm-12">
+                <div id="tradeFilters">
+                    <div style="float:left;">
+                        <div id="countySelect" class="btn-group" data-toggle="buttons">
+                            <label for="tons" id="radio_ton" class="flowBtn btn btn-sm btn-primary active">
+                                <input type="radio" id="tons" name="measure" value="ton" >Volume</label>
+                            <label for="val" id="radio_val" class="flowBtn btn btn-sm btn-primary">
+                                <input type="radio" id="val" name="measure" value="val">Value</label>
+                        </div>
+                        <div class="filterLabel">Measured by:</div>
+                    </div>
+                    <div style="float:left;">
+                        <div id="controls">
+                            <div id="dir" class="btn-group" data-toggle="buttons">
+                                <label for="dir_in" id="radio_in" class="flowBtn btn btn-sm btn-primary active">
+                                    <input type="radio" id="dir_in" name="dir" value="in" ><span>Inbound</span></label>
+                                <label for="dir_out" id="radio_out" class="flowBtn btn btn-sm btn-primary">
+                                    <input type="radio" id="dir_out" name="dir" value="out" ><span>Outbound</span>
+                                </label>
+                            </div>
+                            <div class="filterLabel">Shipment direction:</div>
+                        </div>
+                    </div>
+                    <div id="modes">
+                        <div id="countySelect" class="btn-group" data-toggle="buttons">
+                            <label for="all" class="flowBtn btn btn-sm btn-primary active">
+                                <input type="radio" id="all" name="mode" value="all" checked="checked"/><span>All</span></label>
+                            <label for="truck" class="flowBtn btn btn-sm btn-primary">
+                                <input type="radio" id="truck" name="mode" value="truck" /><span>Truck</span></label>
+                            <label for="rail" class="flowBtn btn btn-sm btn-primary">
+                                <input type="radio" id="rail" name="mode" value="rail" /><span>Rail</span></label>
+                            <label for="water" class="flowBtn btn btn-sm btn-primary">
+                                <input type="radio" id="water" name="mode" value="water" /><span>Water</span></label>
+                            <label for="air" class="flowBtn btn btn-sm btn-primary">
+                                <input type="radio" id="air" name="mode" value="air" /><span>Air</span></label>
+                        </div>
+                        <div class="filterLabel">Mode of transportation:</div>
+                    </div>
+                </div>
+                <div id="content" class="domestic-trade-map">
+                </div>
+            </div>
+        
+    </div>
+    
+    <!--<div class='clearfix'></div> style='float:none;'-->
+    <div class='row dt-chart-row' >
+        <div id="topCommoditiesChart" class="col-md-7 col-sm-12">
+            <div class="panel panel-primary dt-chart-panel">
+                <div class="panel-heading">
+                    <h4 class="panel-title" id="topPartnerTitle">Top 
+                        <div class="btn-group tradeBtn trade-commodity">
+                              <button data-toggle="dropdown" id="tradeDirection" class="btn btn-default dropdown-toggle">Inbound <span class="caret"></span></button>
+                                <ul class="dropdown-menu">
+                                  <li><input type="radio" id="comm-in" name="tradeDirection" value="in" checked><label for="comm-in">Inbound</label></li>
+                                  <li><input type="radio" id="comm-out" name="tradeDirection" value="out"><label for="comm-out">Outbound</label></li>
+                                </ul>
+                        </div> 
+                        Commodities by 
+                        <div class="btn-group tradeBtn trade-commodity">
+                              <button data-toggle="dropdown" id="tradeMeasure" class="btn btn-default dropdown-toggle">Volume <span class="caret"></span></button>
+                                <ul class="dropdown-menu">
+                                  <li><input type="radio" id="comm-ton" name="tradeMeasure" value="ton" checked><label for="comm-ton">Volume</label></li>
+                                  <li><input type="radio" id="comm-val" name="tradeMeasure" value="val"><label for="comm-val">Value</label></li>
+                                </ul>
+                        </div></h4>
+                </div>
+                <div class="panel-body">
+                    <svg id="commChart"></svg>
+                </div>
+            </div>
+        </div> 
+        <div id="modalSplitChart" class="col-md-5 col-sm-12">
+            <div class="panel panel-primary dt-chart-panel">
+                <div class="panel-heading">
+                    <h4 class="panel-title" id="topPartnerTitle">Total Shipments by Mode in Tons</h4>
+                </div>
+                <div class="panel-body">
+                    <svg id=""></svg>
+                </div>
+            </div>
+        </div>
+    </div>
+ 
+</div>

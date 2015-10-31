@@ -1,4 +1,5 @@
 $(function() {
+	'use strict';
 //$('head').append('<link rel="stylesheet" href="lib/assets/nouislider.min.css" type="text/css" />');
 $.getScript('lib/assets/nouislider.min.js', buildSlider);
 
@@ -10,9 +11,9 @@ var time_slider;
 
 var hp_map_height = $('#pFFlanding').width() - 165;
 
-
+ 
 function buildSlider(){
-	//build the timing slider
+	//build the timing slider 
 	
 	
 	time_slider = document.getElementById('hp_timing_slider');
