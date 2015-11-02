@@ -23,8 +23,9 @@ function load_region(){
 	
 	// calculate the size of the title header
 	var navigaiton_width = ($('#c-region-title').width() - 450)/5;
+		line_width = ((navigaiton_width / 2) * 3) + 18;
 	$('.c-step-item').css('width', navigaiton_width+'px');
-	$('.c-step-line').css('width', navigaiton_width*2+'px');
+	$('.c-step-line').css('width', navigaiton_width*2+'px').css('transform','translate('+ line_width +'px, 0)');
 	
 	
 
