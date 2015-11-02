@@ -11,12 +11,21 @@ $(function() {
 		county = 'none', 
 		target = 'network',
 		dt_width = $('#content').width(), 
-		singleComm, bLabel, commItem, circle_scaler, offset, county_data,
+		singleComm, bLabel, commItem, circle_scaler, offset, county_data, explorer,
 		projection = d3.geo.albersUsa().scale(900).translate([dt_width, 430 / 2]);
 		
 	var tabs = {'region':'Overview','network':'Network','freight_centers':'Freight Centers','domestic_trade':'Domestic Trade Patterns'},
+		inverse_tabs = {'Network':'network','Freight Centers':'freight_centers','Domestic Trade':'domestic_trade'},
 		countyCodes = {'bucks':42017,'burlington':34005,'camden':34007,'gloucester':34015,'mercer':34021,'chester':42029,'delaware':42045,'montgomery':42091,'philadelphia':42101};
 	
+	// calculate the size of the title header
+	var navigaiton_width = ($('#c-region-title').width() - 450)/5;
+	$('.c-step-item').css('width', navigaiton_width+'px');
+	$('.c-step-line').css('width', navigaiton_width*2+'px');
+	
+	
+
+
 	//******************************
 	// launch initial page
 	var url = document.location.toString();
@@ -25,9 +34,15 @@ $(function() {
 			if(hash_load.length > 1){
 				region_navigation(hash_load);
 			}else{
+				$('#c-region').fadeIn();
+				$('#c-name').html('DVRPC Region');
+				$('#c-tab').html('Overview');
+				explorer = $('#c-explore-emphasis').width();
+				$('#c-explore-emphasis').css('width',explorer+'px');
 				buildCountyMap();
+				$('#c-explorer-block').fadeOut('slow');
 			}   
-		}
+		} 
 	function buildCountyMap(){
 		var ct_width = $('#c-map-wrapper').width(),
 			ct_height = 420 ;
@@ -85,14 +100,36 @@ $(function() {
 				      .attr("transform", function(d) { return "translate(" + cty_path.centroid(d) + ")"; })
 				      .text(function(d) { return d.properties.NAME;} );
 			});
+			
 		}
 	}
-
+	function build_side_nav(tg){
+		switch (tg){
+			case 'region': 
+				$('.c-nav').hide();
+				break;
+			case 'network':
+				$('.c-nav-left').hide();
+				$('.c-nav-right').show();
+				$('#c-nav-right-label').html('Freight Centers');
+				break;
+			case 'freight_centers':
+				$('.c-nav-left').show();
+				$('.c-nav-right').show();
+				$('#c-nav-left-label').html('Network');
+				$('#c-nav-right-label').html('Domestic Trade');
+				break;
+			case 'domestic_trade':
+				$('.c-nav-left').show();
+				$('.c-nav-right').hide();
+				$('#c-nav-left-label').html('Freight Centers');
+				break;
+		} 
+	}
 	function region_navigation(hash_elem){
 		county = (hash_elem.length > 1) ? hash_elem[1] : 'none';
 		target = (hash_elem.length > 1) ? hash_elem[2] : 'region';
 		currCty = countyCodes[county];
-		//$('#content').empty().html('');
 		var el = $('#c-steps li a[data-target="c-'+target+'"] ');
 		$('.c-step-current').find('svg.c-step-nav circle:first').attr('r', 5);
 		$('.c-step-current').find('svg.c-step-nav circle:nth-child(2)').attr('r',6);
@@ -101,17 +138,21 @@ $(function() {
 		el.find('svg.c-step-nav circle:first').attr('r', 8);
 		el.find('svg.c-step-nav circle:nth-child(2)').attr('r',3);
 		$('.c-region-tab').hide();
-		$('#c-'+target).show();
+		$('#c-'+target).show(); 
 		$('#c-name').html(capitalizeFirstLetter(county)+' County');
 		$('#c-tab').html(tabs[target]);
+		build_side_nav(target);
 		if(target === 'region'){
+			explorer = $('#c-explore-emphasis').width();
+			$('#c-explore-emphasis').css('width',explorer+'px');
 			dt_width = $('#content').width();
 			buildCountyMap();
 			target = 'network'; 
 			county = 'none';
 			$('#c-name').html('DVRPC Region');
+
 		}else if(target === 'domestic_trade'){
-			$('#loading_panel').show();
+			$('.loading_panel').show();
 			load_trade_data();
 		}
 	}
@@ -140,6 +181,21 @@ $(function() {
 			if(target === 'region') {window.location.hash = 'region';}
 			else{window.location.hash = 'region/'+county+'/'+target;}
 		}	
+	});
+
+	//slider style navigation
+	$(document.body).on('click', '.c-nav',function(){
+		var tname = $(this).find('span').text();
+		target = inverse_tabs[tname];
+		window.location.hash = 'region/'+county+'/'+target;	
+	});
+	
+	//explorer panel effects
+	$(document.body).on('mouseover', '#c-explore-emphasis',function(){
+		$('#c-explore-emphasis').css('width', explorer+100+'px');	
+	});
+	$(document.body).on('mouseout', '#c-explore-emphasis',function(){
+		$('#c-explore-emphasis').css('width', explorer+'px');	
 	});
  
 	//**************************************************************
@@ -287,7 +343,7 @@ $(function() {
 			addCirclesToMap(metrosCombined, 3);
 
 			sizeMetros(currCty, currDir);
-			$('#loading_panel').fadeOut();
+			$('.loading_panel').fadeOut('slow');
 			sizing = false;
 		}else{
 			$('#metros').empty();
@@ -302,7 +358,7 @@ $(function() {
 			$('#comm-ton').prop('checked',true);
 			$('#tradeMeasure').html('Volume <span class=\'caret\'></span>');
 			$('#comm-'+ measure).prop('checked',true);
-			$('#loading_panel').fadeOut();
+			$('.loading_panel').fadeOut('slow');
 		}
 	}					
 		

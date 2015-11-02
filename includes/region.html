@@ -1,7 +1,7 @@
 <div class='page-title center-block col-lg-12'>
-    <div class='center-block col-lg-10 col-md-12' style='float:none;'>
+    <div id="c-region-title" class='center-block col-lg-10 col-md-12' style='float:none;'>
         <div id='c-title-wrapper'>
-    		<h1><span id="c-name">DVRPC Region</span><span id="c-divider"></span><span id="c-tab">Overview</span></h1>
+    		<h1><span id="c-name"> </span><span id="c-divider"></span><span id="c-tab"> </span></h1>
 		</div>
         <div id='c-region-nav'>
         	<ul id='c-steps'>
@@ -57,14 +57,19 @@
 </div><!--close the header -->
 
 <!-- regional overview template -->
-<div id="c-region" class="col-lg-12 tool-content-dt c-region-tab">
+<div id="c-region" class="col-lg-12 tool-content-dt c-region-tab" style="display: none;">
 	<div class='center-block col-lg-10 col-sm-12 ' style='float:none;'>
 		<div class="row">
 	        <div class='col-sm-5 col-md-6'>
 	            <p>The Delaware Valley region consists of nine counties: Bucks, Chester, Delaware, Montgomery and Philadelphia in Pennsylvania, and Burlington, Camden, Gloucester and Mercer in New Jersey.</p>
 	            <p class="highlight-block">This region contains an impressive freight transportation network consisting of highways, rail lines, ports, airports, and pipelines. These key linkages unite an expansive list of facilities including warehouses, manufacturing sites, rail yards, and truck stops.</p>
 	            <p>Strategically positioned in the middle of the densest population center in the United States; over 100 million people live within a 500-mile radius of Philadelphia, representing a vast consumer base and making the region ideally situated as a manufacturing and distribution hub.</p>
-	            <p>Explore the </p>
+	            <div id="c-explore-emphasis">
+                    <img src="../lib/images/emphasis_panel_left.png" alt="Link Panel" height="111" width="55" style="float:left;">
+                    <div id="c-emphasis-text">Explore freight facilties and<br/>activity by county<br/><span>(select a county of interest)</div>
+                    <img src="../lib/images/emphasis_panel_right.png" alt="Link Panel" height="111" width="55" style="float:right;">
+                </div>
+                <div id="c-explorer-block"></div>
 	        </div> 
 	        <div id="c-map-wrapper" class='col-sm-7 col-md-6'>
 	        	<div id="c-county-map" class="region-county-map">
@@ -73,16 +78,21 @@
 	        </div>
 	    </div>
     </div>
+    
 </div>
 
 <!-- network content template -->
 <div id="c-network" class="col-lg-12 tool-content-dt c-region-tab" style="display: none;">
-	<p>Network</p>
+	<div class='center-block col-lg-10 col-md-12' style='float:none;'>
+        <p>Network</p>
+    </div>
 </div>
 
 <!-- freight center template -->
 <div id="c-freight_centers" class="col-lg-12 tool-content-dt c-region-tab" style="display: none;">
-	<p>Freight Centers</p>
+    <div class='center-block col-lg-10 col-md-12' style='float:none;'>
+    	<p>Freight Centers</p>
+    </div>
 </div>
 
 <!-- trade patterns template-->
@@ -94,9 +104,27 @@
                     <div class="panel-heading">
                         <h4 class="panel-title" id="topPartnerTitle">Top Trading Partners</h4>
                     </div>
-                    <div class="panel-body">
+                    <div class="panel-body load-panel">
                         <ul id="tradeList">
                         </ul>
+                        <div class="loading_panel" style="display:none;">
+                            <div class="spin-item">
+                                <div class="item-inner">
+                                    <div class="item-loader-container">
+                                        <div class="la-ball-spin-clockwise la-2x">
+                                            <div></div>
+                                            <div></div>
+                                            <div></div>
+                                            <div></div>
+                                            <div></div>
+                                            <div></div>
+                                            <div></div>
+                                            <div></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -140,48 +168,86 @@
                     </div>
                 </div>
                 <div id="content" class="domestic-trade-map">
+                	<div class="loading_panel map-gray" style="display:none;">
+				    	<div class="spin-item">
+                            <div class="item-inner">
+                                <div class="item-loader-container">
+                                    <div class="la-ball-spin-clockwise la-2x">
+                                        <div></div>
+                                        <div></div>
+                                        <div></div>
+                                        <div></div>
+                                        <div></div>
+                                        <div></div>
+                                        <div></div>
+                                        <div></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+				    </div>
                 </div>
             </div>
         
-    </div>
-    
-    <!--<div class='clearfix'></div> style='float:none;'-->
-    <div class='row dt-chart-row' >
-        <div id="topCommoditiesChart" class="col-md-7 col-sm-12">
-            <div class="panel panel-primary dt-chart-panel">
-                <div class="panel-heading">
-                    <h4 class="panel-title" id="topPartnerTitle">Top 
-                        <div class="btn-group tradeBtn trade-commodity">
-                              <button data-toggle="dropdown" id="tradeDirection" class="btn btn-default dropdown-toggle">Inbound <span class="caret"></span></button>
-                                <ul class="dropdown-menu">
-                                  <li><input type="radio" id="comm-in" name="tradeDirection" value="in" checked><label for="comm-in">Inbound</label></li>
-                                  <li><input type="radio" id="comm-out" name="tradeDirection" value="out"><label for="comm-out">Outbound</label></li>
-                                </ul>
-                        </div> 
-                        Commodities by 
-                        <div class="btn-group tradeBtn trade-commodity">
-                              <button data-toggle="dropdown" id="tradeMeasure" class="btn btn-default dropdown-toggle">Volume <span class="caret"></span></button>
-                                <ul class="dropdown-menu">
-                                  <li><input type="radio" id="comm-ton" name="tradeMeasure" value="ton" checked><label for="comm-ton">Volume</label></li>
-                                  <li><input type="radio" id="comm-val" name="tradeMeasure" value="val"><label for="comm-val">Value</label></li>
-                                </ul>
-                        </div></h4>
-                </div>
-                <div class="panel-body">
-                    <svg id="commChart"></svg>
-                </div>
-            </div>
-        </div> 
-        <div id="modalSplitChart" class="col-md-5 col-sm-12">
-            <div class="panel panel-primary dt-chart-panel">
-                <div class="panel-heading">
-                    <h4 class="panel-title" id="topPartnerTitle">Total Shipments by Mode in Tons</h4>
-                </div>
-                <div class="panel-body">
-                    <svg id=""></svg>
-                </div>
-            </div>
         </div>
+    
+        <!--<div class='clearfix'></div> style='float:none;'-->
+        <div class='row dt-chart-row' >
+            <div id="topCommoditiesChart" class="col-md-7 col-sm-12">
+                <div class="panel panel-primary dt-chart-panel">
+                    <div class="panel-heading">
+                        <h4 class="panel-title" id="topPartnerTitle">Top 
+                            <div class="btn-group tradeBtn trade-commodity">
+                                  <button data-toggle="dropdown" id="tradeDirection" class="btn btn-default dropdown-toggle">Inbound <span class="caret"></span></button>
+                                    <ul class="dropdown-menu">
+                                      <li><input type="radio" id="comm-in" name="tradeDirection" value="in" checked><label for="comm-in">Inbound</label></li>
+                                      <li><input type="radio" id="comm-out" name="tradeDirection" value="out"><label for="comm-out">Outbound</label></li>
+                                    </ul>
+                            </div> 
+                            Commodities by 
+                            <div class="btn-group tradeBtn trade-commodity">
+                                  <button data-toggle="dropdown" id="tradeMeasure" class="btn btn-default dropdown-toggle">Volume <span class="caret"></span></button>
+                                    <ul class="dropdown-menu">
+                                      <li><input type="radio" id="comm-ton" name="tradeMeasure" value="ton" checked><label for="comm-ton">Volume</label></li>
+                                      <li><input type="radio" id="comm-val" name="tradeMeasure" value="val"><label for="comm-val">Value</label></li>
+                                    </ul>
+                            </div></h4>
+                    </div>
+                    <div class="panel-body load-panel" >
+                        <svg id="commChart"></svg>
+                       	<div class="loading_panel" style="display:none;">
+    				    	<div class="spin-item">
+                                <div class="item-inner">
+                                    <div class="item-loader-container">
+                                        <div class="la-ball-spin-clockwise la-2x">
+                                            <div></div>
+                                            <div></div>
+                                            <div></div>
+                                            <div></div>
+                                            <div></div>
+                                            <div></div>
+                                            <div></div>
+                                            <div></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+    				    </div>
+                    </div>
+                </div>
+            </div> 
+            <div id="modalSplitChart" class="col-md-5 col-sm-12">
+                <div class="panel panel-primary dt-chart-panel">
+                    <div class="panel-heading">
+                        <h4 class="panel-title" id="topPartnerTitle">Total Shipments by Mode in Tons</h4>
+                    </div>
+                    <div class="panel-body">
+                        <svg id=""></svg>
+                    </div>
+                </div>
+            </div>
+        </div>    
     </div>
-    <div id="loading_panel" style="display:none;"></div>
 </div>
+<div class="c-nav-left c-nav" style="display:none;"><i class="glyphicon glyphicon-chevron-left"></i><div><span id="c-nav-left-label"></span></div></div>
+<div class="c-nav-right c-nav" style="display:none;"><i class="glyphicon glyphicon-chevron-right"></i><div><span id="c-nav-right-label"></span></div></div>
