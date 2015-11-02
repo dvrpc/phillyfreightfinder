@@ -4,6 +4,20 @@ module.exports = function(grunt){
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
 
+        postcss: {
+		  options: {
+		    map: true,
+		    processors: [
+		      require('autoprefixer')({browsers: ['> 5%']})
+		    ]
+		  },
+		  dist: {
+		    src: 'dev/css/style.css',
+		    dest: 'dev/css/style_auto.css'
+		  }
+		},
+
+
         concat: {  
         	options: {
         		separator: ';\n'

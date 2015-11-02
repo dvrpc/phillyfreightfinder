@@ -118,7 +118,7 @@ a:hover, .footer_btn:hover {
 .dlLink:hover{
     background-color:#e5e5e5;
 }
-.page-title{
+.page-title{ 
     float: none;
     padding-top:18px;
     margin-bottom:20px;
@@ -3011,27 +3011,32 @@ inverse .navbar-nav .open > .dropdown-menu > .dropdown-submenu.open > a:before {
     fill:#efefef;
     stroke:#312867;
 }
-.c-ripple circle.c-step-ripple{
+.c-ripple{
+    pointer-events:all;
+}
+circle.c-step-ripple{
+    stroke-opacity:1;
     fill:none;
     stroke:#312867;
-    /*transform:translate(25%, 25%);*/
-    transition:stroke-opacity 335ms ease-out, r 350ms linear; 
+    transition:stroke-opacity 335ms ease-out, transform 350ms linear;
+        -moz-transition:stroke-opacity 335ms ease-out, transform 350ms linear;
+        -webkit-transition:stroke-opacity 335ms ease-out, transform 350ms linear;
 }
 .c-line{
     stroke: #312867;
     stroke-width:1;
 }
+path{pointer-events:all;}
 svg.c-ripple{
     display: block;
     position: absolute;
-    /* top: 1px; */
     left: 50%;
     width: 40px;
     height: 40px;
-    /* border-radius: 50%; */
     z-index: -1;
     transform: translate(-25%,-25%);
 }
+
 .c-step-line{
     border-top: solid 1px #312867;
     width: 242px;
@@ -3054,7 +3059,8 @@ svg.c-ripple{
     text-transform: lowercase;
     transition: all 600ms ease-in-out;
 }
-svg .county_outlines{
+path.county_outlines{
+    cursor: pointer;
     stroke-linejoin: round;
     stroke-linecap: round;
     fill-rule: evenodd;
@@ -3063,14 +3069,13 @@ svg .county_outlines{
     stroke-width: 2px;
     fill: rgb(57, 106, 178);
     fill-opacity: 1;
-    transition: fill-opacity 400ms ease-in-out;
+    /*transition: fill-opacity 250ms ease-in-out;*/
 }
-svg .county_outlines:hover{
+/*path.county_outlines:hover{
     cursor: pointer;
-    /*stroke: #e57b32;*/ 
     stroke-width: 5px;
     fill-opacity: 0.8;  
-}
+}*/
 .c-county-label {
     font-size: .85em;
     fill:#ffffff;

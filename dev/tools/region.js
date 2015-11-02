@@ -84,7 +84,13 @@ function load_region(){
 					.attr('class','county_outlines')
 					.on("mouseover",function(){
 					  	var sel = d3.select(this);
+					  	sel.transition().duration(250).style('fill-opacity','0.8');
+					  	sel.style('stroke-width','5px');
 					  	sel.moveToFront();
+					}) 
+					.on("mouseleave",function(){
+					  	var sel = d3.select(this);
+					  	sel.transition().delay(5).style('stroke-width','2px').style('fill-opacity','1');
 					}) 
 					.on('click', function(){
 						$('#c-county-prompt').hide();
@@ -213,7 +219,7 @@ function load_region(){
 	           window.clearInterval(intervalID);
 	       }
 	    }, delay);
-	}
+	} 
 	function prompt_color(){
 		if($('#c-county-prompt').hasClass('c-light')){
 			$('#c-county-prompt').css('background-color','#312867').toggleClass('c-light');
@@ -228,16 +234,21 @@ function load_region(){
 
 	//*****************************************************
 	// ripple effects on the navigation
-	$('#c-steps li a svg').bind('mouseover', function(){
-		ripple_effect($(this).parent().find('svg.c-ripple'));
+	$('#c-steps li a svg').bind('mouseenter', function(){
+		ripple_effect($(this).parent().find('svg.c-ripple').attr('id'));
 	});
 
 	function ripple_effect(ripple){
+		var sel = d3.select('#'+ripple).select('circle');		
 		function resetripple(){
-			ripple.find('circle').attr('r', 8).attr('stroke-width', 0).attr('stroke-opacity',1);
+			sel.style('stroke-width','0px');
+		  	sel.transition().duration(1).attr('r',8);
+		  	sel.style('stroke-opacity',1);
 		}
 		setTimeout(resetripple, 351);
-		ripple.find('circle').attr('r', 20).attr('stroke-width', 1).attr('stroke-opacity', 0);
+		sel.style('stroke-width','1px');
+	  	sel.transition().duration(348).attr('r',20);
+	  	sel.style('stroke-opacity',0);
 	}
 	
 	function capitalizeFirstLetter(string) {
