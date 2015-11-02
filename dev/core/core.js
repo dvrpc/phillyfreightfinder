@@ -146,6 +146,16 @@ $(window).bind('hashchange', function() {
     
 });
 
+//ensure load sequence occurs after dom is fully rendered
+function executeOnLoad(node, func) {
+        var locate_node = document.getElementById(node);
+       if(locate_node !== null) {
+            func();
+       } else {
+            setTimeout(function() { executeOnLoad(node, func); }, 100);
+       }
+    }
+
 //change sidebar based on screen size if screen resized
 $(window).resize(function () {
     $(".tt-dropdown-menu").css("max-height", $("#container").height() - $(".navbar").height() - 20);

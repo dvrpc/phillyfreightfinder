@@ -1,5 +1,8 @@
 $(function() {
-	
+	//hack to fix the load sequence of rendered HTML
+	executeOnLoad("c-region-nav", load_region);
+
+function load_region(){	
 	//****************************
 	// preset variables
 	var packer = sm.packer();
@@ -901,4 +904,6 @@ $(function() {
 			rebuildpage();
 		});
 	
+
+} 
 });
