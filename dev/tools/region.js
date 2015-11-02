@@ -62,6 +62,10 @@ function load_region(){
 						.attr('width', ct_width)
 						.attr('height', ct_height)
 						.attr('id', 'counties');
+				var county_labels_outlines = svg.append('g')
+						.attr('width', ct_width)
+						.attr('height', ct_height)
+						.attr('id', 'cty_labels_outlines');
 				var county_labels = svg.append('g')
 						.attr('width', ct_width)
 						.attr('height', ct_height)
@@ -87,21 +91,26 @@ function load_region(){
 					  	var sel = d3.select(this);
 					  	sel.transition().duration(250).style('fill-opacity','0.8');
 					  	sel.style('stroke-width','5px');
-					  	sel.moveToFront();
+					  	//sel.moveToFront();
 					}) 
-					.on("mouseleave",function(){
+					.on("mouseout",function(){
 					  	var sel = d3.select(this);
 					  	sel.transition().delay(5).style('stroke-width','2px').style('fill-opacity','1');
-					}) 
+					})
 					.on('click', function(){
 						$('#c-county-prompt').hide();
 						var county_str = d3.select(this).attr('id').split('-');
 						county = county_str[1];
 						currCty = countyCodes[county];
 						window.location.hash = 'region/'+county+'/'+target; 
-						
-						//$('#c-steps li a[data-target='+target+'] ').trigger('click');
 					});
+				var labeloutline = county_labels_outlines.selectAll("text")
+				    .data(county5k.features)
+				    .enter()
+				    .append("text")
+				      .attr("class", "c-county-label-outline")
+				      .attr("transform", function(d) { return "translate(" + cty_path.centroid(d) + ")"; })
+				      .text(function(d) { return d.properties.NAME;} );
 				var label = county_labels.selectAll("text")
 				    .data(county5k.features)
 				    .enter()

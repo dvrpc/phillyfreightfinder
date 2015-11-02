@@ -3080,6 +3080,19 @@ path.county_outlines{
     font-size: .85em;
     fill:#ffffff;
     text-anchor: middle;
+    stroke-width:0px;
+    cursor: none;
+    pointer-events: none;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+.c-county-label-outline {
+    font-size: .85em;
+    stroke: #396AB2;
+    stroke-width: 5px;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    text-anchor: middle;
     cursor: none;
     pointer-events: none;
     paint-order: stroke;
