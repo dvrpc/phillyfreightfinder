@@ -68,7 +68,7 @@
 	            <p>Strategically positioned in the middle of the densest population center in the United States; over 100 million people live within a 500-mile radius of Philadelphia, representing a vast consumer base and making the region ideally situated as a manufacturing and distribution hub.</p>
 	            <div id="c-explore-emphasis">
                     <img src="../lib/images/emphasis_panel_left.png" alt="Link Panel" height="111" width="55" style="float:left;">
-                    <div id="c-emphasis-text">Explore freight facilties and<br/>activity by county<br/><span>(select a county of interest)</div>
+                    <div id="c-emphasis-text">Explore freight facilties and<br/>activity by county<br/><span>(select a county of interest)</span></div>
                     <img src="../lib/images/emphasis_panel_right.png" alt="Link Panel" height="111" width="55" style="float:right;">
                 </div>
                 <div id="c-explorer-block"></div>
@@ -80,7 +80,61 @@
 	        </div>
 	    </div>
     </div>
-    
+    <div class='row'>
+        <div class='col-md-12 hpbanner' style='padding-bottom:20px;'> 
+            <div class='center-block col-lg-10 col-sm-12' style='float:none;'>
+                <div id='dataContainer'>
+                        <div class='col-md-5 center'>
+                            <h4>Regional Freight Shipments by Mode [2010]</h4>
+                            <div id="containerTon" style="height:185px;width:350px;margin-bottom:-15px;display: block;margin-left:auto;margin-right:auto;"></div>
+                            <div class='divider'></div>
+                            <div style='padding-bottom:10px;'><span class='ctylegend' style='border-color:#8dd3c7'>Truck</span>&nbsp;&nbsp;&nbsp;
+                            <span class='ctylegend' style='border-color:#ffffb3'>Rail</span>&nbsp;&nbsp;&nbsp;
+                            <span class='ctylegend' style='border-color:#bebada'>Water</span>&nbsp;&nbsp;&nbsp;
+                            <span class='ctylegend' style='border-color:#fb8072'>Air/Air + Truck</span><br/><br/>
+                            <span class='ctylegend' style='border-color:#80b1d3'>Multiple Modes</span>&nbsp;&nbsp;&nbsp;
+                            <span class='ctylegend' style='border-color:#fdb462'>Pipeline</span>&nbsp;&nbsp;&nbsp;
+                            <span class='ctylegend' style='border-color:#b3de69'>Other</span>&nbsp;</div>
+                            <div class='divider'></div>
+                            <div id="containerValue" style="height:185px;width:350px;margin-top:-15px;display: block;margin-left:auto;margin-right:auto;"></div>
+                            <div class='col-md-10 col-md-offset-1'><p style='line-height:8px;'><span style="font-size:10px;color:#BBE6FA;">Source: US Department of Transportation, Federal Highway Administration, Office of Freight Management and Operations, Freight Analysis Framework Version 3</span></p></div>
+                        </div>
+                        <div class='col-md-6'>
+                            <div class='row'>
+                                <div class='col-md-4 center'><img src='lib/images/trkHighway.png' width='90'/><div class='dlabel white'><strong>Trucking/Highway</strong><br/>Statistics</div></div>
+                                <div class='col-md-4 center'><div class='ddata'>352</div><div class='dlabel'>miles<br/><strong>interstate routes</strong></div></div>
+                                <div class='col-md-4 center'><div class='ddata'>1.0k</div><div class='dlabel'>miles<br/><strong>national highway</strong></div></div>
+                            </div>
+                            <div class='row'> 
+                                <div class='col-md-4 center'><div class='ddata'>11</div><div class='dlabel'><strong>NHS<br/>connectors</strong></div></div>
+                                <div class='col-md-4 center'><div class='ddata'>106</div><div  class='dlabel'><strong>interstate<br/>highway interchanges</strong></div></div>
+                                <div class='col-md-4 center'><div class='ddata'>9.8m</div><div class='dlabel'><strong>daily<br/>truck miles</strong></div></div>
+                            </div>
+                            <div class='divider'></div>
+                            <div class='row'>
+                                <div class='col-md-4 center'><img src='lib/images/frRail.png' width='90'/><div class='dlabel white'><strong>Freight Rail</strong><br/>Statistics</div></div>
+                                <div class='col-md-4 center'><div class='ddata'>689</div><div class='dlabel'>miles<br/><strong>freight trackage</strong></div></div>
+                                <div class='col-md-4 center'><div class='ddata'>32</div><div class='dlabel'><strong>yards and<br/>intermodal terminals</strong></div></div>
+                            </div>
+                            <div class='divider'></div>
+                            <div class='row'>
+                                <div class='col-md-4 center'><img src='lib/images/pMAritime.png' width='90'/><div class='dlabel white'><strong>Port &#38; Maritime</strong><br/>Statistics</div></div>
+                                <div class='col-md-4 center'><div class='ddata'>31</div><div class='dlabel'><strong>port<br/>terminals</strong></div></div>
+                                <div class='col-md-4 center'><div class='ddata'>1.7k</div><div class='dlabel'><strong>annual<br/>ship calls</strong></div></div>
+                            </div>
+                            <div class='divider'></div>
+                            <div class='row'>
+                                <div class='col-md-4 center'><img src='lib/images/fCenters.png' width='90'/><div class='dlabel white'><strong>Freight Center</strong><br/>Statistics</div></div>
+                                <div class='col-md-4 center'><div class='ddata'>43</div><div class='dlabel'>unique<br/><strong>freight centers</strong></div></div>
+                                <div class='col-md-4 center'><div class='ddata'>43.8k</div><div class='dlabel'>acres<br/><strong>freight centers</strong></div></div>
+                            </div>
+                        </div>
+                        
+                        
+                </div> 
+            </div>
+        </div>
+    </div>
 </div>
 
 <!-- network content template -->
@@ -110,22 +164,7 @@
                         <ul id="tradeList">
                         </ul>
                         <div class="loading_panel" style="display:none;">
-                            <div class="spin-item">
-                                <div class="item-inner">
-                                    <div class="item-loader-container">
-                                        <div class="la-ball-spin-clockwise la-2x">
-                                            <div></div>
-                                            <div></div>
-                                            <div></div>
-                                            <div></div>
-                                            <div></div>
-                                            <div></div>
-                                            <div></div>
-                                            <div></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -171,22 +210,7 @@
                 </div>
                 <div id="content" class="domestic-trade-map">
                 	<div class="loading_panel map-gray" style="display:none;">
-				    	<div class="spin-item">
-                            <div class="item-inner">
-                                <div class="item-loader-container">
-                                    <div class="la-ball-spin-clockwise la-2x">
-                                        <div></div>
-                                        <div></div>
-                                        <div></div>
-                                        <div></div>
-                                        <div></div>
-                                        <div></div>
-                                        <div></div>
-                                        <div></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+				    	
 				    </div>
                 </div>
             </div>
@@ -218,22 +242,7 @@
                     <div class="panel-body load-panel" >
                         <svg id="commChart"></svg>
                        	<div class="loading_panel" style="display:none;">
-    				    	<div class="spin-item">
-                                <div class="item-inner">
-                                    <div class="item-loader-container">
-                                        <div class="la-ball-spin-clockwise la-2x">
-                                            <div></div>
-                                            <div></div>
-                                            <div></div>
-                                            <div></div>
-                                            <div></div>
-                                            <div></div>
-                                            <div></div>
-                                            <div></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+    				    	
     				    </div>
                     </div>
                 </div>

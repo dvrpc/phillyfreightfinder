@@ -2,11 +2,11 @@ $(function() {
 	//hack to fix the load sequence of rendered HTML
 	executeOnLoad("c-region-nav", load_region);
 
-function load_region(){	
+function load_region(){
 	//****************************
 	// preset variables
 	var packer = sm.packer();
-			
+
 	var currDir = 'in',
 		measure = 'ton', 
 		mode = 'all',
@@ -22,12 +22,12 @@ function load_region(){
 		countyCodes = {'bucks':42017,'burlington':34005,'camden':34007,'gloucester':34015,'mercer':34021,'chester':42029,'delaware':42045,'montgomery':42091,'philadelphia':42101};
 	
 	// calculate the size of the title header
+	$('.loading_panel').html('').html('<div class="spin-item"><div class="item-inner"><div class="item-loader-container"><div class="la-ball-spin-clockwise la-2x"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div></div></div>');
+
 	var navigaiton_width = ($('#c-region-title').width() - 450)/5;
 		line_width = ((navigaiton_width / 2) * 3) + 18;
 	$('.c-step-item').css('width', navigaiton_width+'px');
 	$('.c-step-line').css('width', navigaiton_width*2+'px').css('transform','translate('+ line_width +'px, 0)');
-	
-	
 
 
 	//******************************
@@ -169,6 +169,7 @@ function load_region(){
 			target = 'network'; 
 			county = 'none';
 			$('#c-name').html('DVRPC Region');
+			$('#c-explorer-block').fadeOut('slow');
 
 		}else if(target === 'domestic_trade'){
 			$('.loading_panel').show();
@@ -320,9 +321,6 @@ function load_region(){
 				.attr('height', 430)
 				.attr('id', 'temp');
 
-			/*var projection = d3.geo.albersUsa().scale(900).translate([dt_width, 430 / 2]),
-				offset;
-			*/	
 			var path = d3.geo.path()
 				.projection(projection); 
 
@@ -625,7 +623,6 @@ function load_region(){
 			currDir = $(this).val();
 			var dirName = ((currDir==='in') ? 'Inbound' : 'Outbound');
 			sizeMetros(currCty, currDir);
-			//if(sizing === false) {sizeMetros(currCty, currDir);}else{console.log('already sizing');}
 			$('#comm-'+ currDir).prop('checked',true);
 			$('#tradeDirection').html(dirName+ ' <span class=\'caret\'></span>');
 		});
@@ -635,7 +632,6 @@ function load_region(){
 			
 			measure = $(this).val();
 			var measureName = ((measure==='ton') ? 'Volume' : 'Value');
-			//if(sizing === false) {sizeMetros(currCty, currDir, 'measure');}else{console.log('already sizing');}
 			sizeMetros(currCty, currDir, 'measure');
 			$('#comm-'+ measure).prop('checked',true);
 			$('#tradeMeasure').html(measureName+ ' <span class=\'caret\'></span>');
@@ -644,7 +640,6 @@ function load_region(){
 		$('input[name=\'mode\']').change(function() {
 			mode = $(this).val();
 			sizeMetros(currCty, currDir, 'measure');
-			//if(sizing === false) {sizeMetros(currCty, currDir, 'measure');}else{console.log('already sizing');}
 		});
 		
 		$('input[name=\'tradeMeasure\']').change(function() {
@@ -814,7 +809,6 @@ function load_region(){
 			var q;
 			for (q = 0; q < sortedRegions.length; q++) {
 				var t = sortedRegions[q], r, ttLabel, num, formatNum;
-					//r = scale(Math.sqrt(d.val / Math.PI));
 				//identify measurement of moves	
 				if(measure === 'ton'){
 					r = scale(t.ton);
