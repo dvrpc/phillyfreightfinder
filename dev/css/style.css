@@ -933,15 +933,18 @@ ul.bxslider{
                 z-index: 2000;
                 font-size: 1.2em;
                 font-weight: bold;}
-            .ddata{
-                font-size: 45px;
-                font-weight: bold;
-                margin-bottom: -15px;
+            .ddata{ 
+                margin-top: 18px;
+                font-size: 32px;
+                font-weight: 800;
+                margin-bottom: -10px;
+                color:#396AB2;
+                transition: all 200ms ease-in-out;
             }
             .dlabel{
-                color:#BBE6FA;
+                color:#676363;
                 text-transform: uppercase;
-                font-weight: lighter;
+                font-weight: 400;
                 line-height: 14px;
             }
             
@@ -3237,6 +3240,79 @@ path.county_outlines{
 .map-gray{
     top:-10px;
     background-color: rgba(239,239,239, 0.64);
+}
+
+#c-region-network-map{
+    width: 100%;
+    height: auto;
+    border: 1px solid #396AB2;
+    border-right-width: 6px;
+    transition:all 200ms ease-out;
+}
+#rail_stat_icon{
+    display:block;
+    margin:auto;
+}
+svg.c-stat-icon{
+    transition: all 300ms ease-out;
+}
+svg.c-stat-icon .st0{
+    fill: #7CA0D5;
+    transition: all 200ms ease-in-out;
+}
+.c-stat-icon:hover .st0{
+    fill: #396AB2;
+}
+.c-stat-title{
+    font-weight: 800;
+    color: #396AB2;
+    text-transform: uppercase;
+}
+.c-data{
+    min-height:105px;
+}
+.c-data:hover .ddata{
+    color: #7CA0D5;
+}
+.c-stat-sub{
+    color: #396AB2;
+    display: block;
+    font-size: .9em;
+    margin-top: -5px;
+    text-transform: uppercase;
+    font-weight: 400;
+}
+.stat-block{
+    border-left: 6px solid;
+    border-bottom: 1px solid;
+    padding-left: 8px;
+    margin: 20px 0;
+    font-weight: 600;
+    font-size: 1em;
+    border-color: #312867;
+}
+.stat-rail{
+    border-color:#FAA819;
+}
+.stat-maritime{
+    border-color:#396AB2;
+}
+.stat-centers{
+    border-color:#98A6C6;
+}
+.stat-title{
+    border-color:#396AB2;
+}
+.stat-map{
+    top: -10px;
+    background-color: rgba(239,239,239,1);
+}
+#c-region-network-loading{
+    width:100%;
+    position:absolute;
+    top:0;
+    border: 1px solid #396AB2;
+    border-right-width: 6px;
 }
 
 /* spinners */

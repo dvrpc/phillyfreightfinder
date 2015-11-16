@@ -1360,7 +1360,7 @@
         <script type="text/javascript" src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
         <script type="text/javascript" src="http://cdn.jsdelivr.net/bxslider/4.1.1/jquery.bxslider.min.js"></script>
         <script type="text/javascript" src="http://cdn.jsdelivr.net/highcharts/4.0.3/highcharts.js"></script>
-        <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.5.1/jquery.nicescroll.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.6.0/jquery.nicescroll.min.js"></script>
         <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
         
         <script type="text/javascript">
@@ -1424,15 +1424,17 @@
                 $(this).find('form').get(0).reset();
               });
 
-              $(document).ready(
+             $(document).ready(
                 function() {  
-                  $("#pFFlanding").niceScroll();
-                  $('.homeslider').bxSlider({
-                  mode: 'vertical',
-                  slideMargin: 5
-                });
+                    $("#pFFlanding").niceScroll({
+                        touchbehavior: true,
+                        preventmultitouchscrolling: false 
+                    });
+                    $('.homeslider').bxSlider({
+                        mode: 'vertical',
+                        slideMargin: 5
+                    });
                 }
-
               );
 
               

@@ -21,6 +21,21 @@ function load_region(){
 		inverse_tabs = {'Network':'network','Freight Centers':'freight_centers','Domestic Trade':'domestic_trade'},
 		countyCodes = {'bucks':42017,'burlington':34005,'camden':34007,'gloucester':34015,'mercer':34021,'chester':42029,'delaware':42045,'montgomery':42091,'philadelphia':42101};
 	
+	var stat_data = ['IntRouteMi', 'NatHwyMile', 'NHS', 'interch', 'freightRai', 'yards', 'portTermin', 'ShipCalls', 'centers', 'centerEmp', 'truckStop'];
+
+	var county_desc = { 
+		'bucks' : 'Widely known for its idyllic open spaces, pristine streams and rivers, and attractive communities, Bucks County, Pennsylvania also boasts one of the Philadelphia region’s most comprehensive and sophisticated ranges of freight facilities and services. This collective freight network forms a true asset that produces well-paying jobs for county residents, critical tax ratables for boroughs and townships, and an immutable anchor for current and future land development.',
+		'burlington' : 'Burlington County, New Jersey, is a powerhouse of freight activity with large doses of personal touches. The County is strategically located within the Northeastern United States megalopolis and that makes it an ideal logistics platform for Trenton, Philadelphia, North Jersey, and even New York City. At the same time, the County retains an unmistakable familial quality that springs from the steadfast commitment of key individuals and successive generations to promoting economic development and prosperity.',
+		'camden' : 'Bountiful in freight facilities and services, Camden County, New Jersey offers a wealth of supply chain solutions. Using strategic public-private partnerships and investments, the County has successfully re-loaded its arsenal of multi-modal freight capabilities. An earnest desire to speak the language of the customer and a watchful eye on major trade developments such as the Panama Canal expansion further accentuate the County’s global outlook and integrative spirit.',
+		'chester' : 'In Chester County, Pennsylvania, freight delivers, freight flourishes, and freight votes. Illustrations and paintings by the Wyeth family and Horace Pippin have popularized naturalistic, halcyon images of the County. Yet, there also exists a crystal clear reality to an alternative perspective and depiction of the County: one where products of substance and fortitude originate, freight facilities and services thrive, and economic development and sustainable transportation planning principles are shrewdly combined through the County’s award winning <i>Landscapes2</i> initiative.',
+		'delaware' : 'In unrelenting fashion, freight activity in Delaware County, Pennsylvania pulses with vigor and precision. Air, highway, marine, and rail freight facilities operate in a state of perpetual motion throughout the County.  Buoyed by a fully integrated transportation network, the harmonious co-mingling of freight and passenger traffic of all kinds is a daily spectacle.',
+		'gloucester' : 'Agile and formidable—these are the hallmarks of freight activity and freight facilities in Gloucester County, New Jersey.  While worldwide distribution patterns are unpredictable and subject to rapid change, Gloucester County businesses, logistics practices, and transportation facilities exhibit a remarkable ability to evolve and flourish.  With companies like Sony, Home Depot, and Mullica Hill Cold Storage calling Gloucester County home, the County has moved well beyond its agricultural underpinnings and developed an elaborate industrial core and multi-modal freight network.',
+		'mercer' : 'At the center of it all, Mercer County, New Jersey is a pivotal, forceful springboard for freight shipments. Its logistical prowess is forever memorialized by the marque <i>TRENTON MAKES THE WORLD TAKES</i> bridge minutes from the New Jersey State House. Today, Mercer County’s freight activity resonates in new and varied forms that capitalize on distinct locational advantages and direct access to some of the world’s most modern transportation facilities and networks.',
+		'montgomery' : 'An economic juggernaut, Montgomery County, Pennsylvania’s prosperity and prestige are enabled by a masterful freight network. Fabled logistics successes fueled a young nation’s army at Valley Forge, a massive steel mill in Conshohocken, and, more recently, a glamorous mega-mall at King of Prussia. Now punctuated by some of the nation’s most affluent communities and most recognized businesses, Montgomery County provides a textbook example of the inexorable link between readily available freight transportation facilities and services and economic vibrancy.',
+		'philadelphia' : 'Like powerful Internet networking tools, Philadelphia, Pennsylvania’s freight system affords rapid, productive, and global connections. Once known as the <i>Workshop of the World</i>, Philadelphia now serves as the calling card of the Delaware Valley region’s impressive freight assets. For even the casual observer, the City’s prominence in international commerce is abundantly evident: mammoth container cranes, multi-cultural company logos, and non-stop daily pick-up and delivery patterns dot the landscape.'
+		
+	};
+	
 	// calculate the size of the title header
 	$('.loading_panel').html('').html('<div class="spin-item"><div class="item-inner"><div class="item-loader-container"><div class="la-ball-spin-clockwise la-2x"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div></div></div>');
 
@@ -46,13 +61,14 @@ function load_region(){
 				buildCountyMap();
 				$('#c-explorer-block').fadeOut('slow');
 			}   
-		} 
+		}
+
 	function buildCountyMap(){
 		var ct_width = $('#c-map-wrapper').width(),
 			ct_height = 420 ;
 		if ($('#c-region-map').length === 0) {
-			d3.json('data/county5k.js', function(county5k) {
-				county_data = county5k;
+			d3.json('data/county_10k.js', function(county5k) {
+				//county_data = county5k;
 				var svg = d3.select('#c-county-map').append('svg')
 					.attr('width', ct_width)
 					.attr('height', ct_height)
@@ -122,6 +138,7 @@ function load_region(){
 			
 		}
 	}
+
 	function build_side_nav(tg){
 		switch (tg){
 			case 'region': 
@@ -144,6 +161,32 @@ function load_region(){
 				$('#c-nav-left-label').html('Freight Centers');
 				break;
 		} 
+	}
+
+
+
+	function load_network(){ 
+		$('#c-county-desc').html(county_desc[county]);
+		$('#c-region-network-map').attr('src', 'lib/images/county/'+county+'_map.png').attr('alt', capitalizeFirstLetter(county)+' County Map');
+		if(typeof county_data === 'undefined'){
+			d3.csv('data/county_network.csv', function(data) {
+				county_data = data;
+				populateNetwork();
+			});
+		}else{ populateNetwork(); }
+		
+	}
+	function populateNetwork(){
+		for(var i=0; i<county_data.length; i++) {
+            if (county_data[i].NAME === capitalizeFirstLetter(county)) {
+                var cdata = county_data[i];
+                if(parseInt(cdata.portTermin) === 0){$('#c-stat-maritime').hide();}else{$('#c-stat-maritime').show();}
+                for(var j=0; j<stat_data.length; j++) {
+                	$('.c-data-'+stat_data[j]).html(cdata[stat_data[j]]);
+                }
+            }
+        }
+        $('.loading_panel').delay(500).fadeOut('slow');
 	}
 	function region_navigation(hash_elem){
 		county = (hash_elem.length > 1) ? hash_elem[1] : 'none';
@@ -174,6 +217,9 @@ function load_region(){
 		}else if(target === 'domestic_trade'){
 			$('.loading_panel').show();
 			load_trade_data();
+		}else if(target === 'network'){
+			$('.loading_panel').show();
+			load_network();
 		}
 	}
 
@@ -914,11 +960,6 @@ function load_region(){
 			if ($('#tradeMap').length === 0) {buildMap();}
 			loadCommodities(currCty, measure, currDir, mode);
 		}
-
-		$(window).bind('resize', function () { 
-			rebuildpage();
-		});
-	
 
 } 
 });
