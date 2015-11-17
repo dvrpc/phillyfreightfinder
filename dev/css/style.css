@@ -70,7 +70,12 @@ body, .landing, #sidebar {
 .navbar-inverse .navbar-toggle{
     border-size:0px;
 }*/
-
+.navbar-inverse .navbar-toggle:focus, .navbar-inverse .navbar-toggle:hover {
+    background-color: #312867;
+}
+.navbar-inverse .navbar-toggle {
+    border-color: #312867;
+}
 .navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:focus, .navbar-inverse .navbar-nav>.open>a:hover{
     background-color:#396ab2;
 }
@@ -115,14 +120,12 @@ a:hover, .footer_btn:hover {
     background-color: #fff;
     border: #e3e3e3 1px solid;
     padding: 3px 5px;
-    border-radius: 5px;
 }
 .dlLink{
     display: inline;
     background-color: #fff;
     border: #e3e3e3 1px solid;
     padding: 3px 5px;
-    border-radius: 5px;
 }
 .dlLink:hover{
     background-color:#e5e5e5;
@@ -140,7 +143,10 @@ a:hover, .footer_btn:hover {
     margin-top:0px;
 }
 
-
+/*-- Remove all border radii --- */
+.input-group-addon, .panel-group .panel, .form-control, .panel, .panel-heading, .btn, .btn-group-sm>.btn, .btn-sm, .dropdown-menu{
+    border-radius:0px;
+}
 
 
 /*--------------------------------------------------------*/
@@ -240,7 +246,7 @@ a:hover, .footer_btn:hover {
 .tt-dropdown-menu {
     background-color: #FFF;
     border: 1px solid rgba(0,0,0,0.2);
-    border-radius: 4px 4px 4px 4px;
+    border-radius: 0px;
     box-shadow: 0 5px 10px rgba(0,0,0,0.2);
     margin-top: 4px;
     padding: 4px 0;
@@ -254,7 +260,7 @@ a:hover, .footer_btn:hover {
     padding: 3px 10px;
 }
 .tt-suggestion.tt-cursor {
-    background-color: #0097CF;
+    background-color: #396ab2;
     color: #FFF;
     cursor: pointer;
 }
@@ -414,16 +420,17 @@ input[type=checkbox]:checked + label, input[type=checkbox]:checked + label > div
 }
 #infobox_.active {
     bottom: 250px;
-    border-top-left-radius: 5px;
+    /*border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     -webkit-border-radius: 5px 5px 0 0;
     -moz-border-radius: 5px 5px 0 0;
+    */
 }
 #infobox_.active #infoheader {
-    border-top-left-radius: 5px;
+    /*border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     -webkit-border-radius: 5px 5px 0 0;
-    -moz-border-radius: 5px 5px 0 0;
+    -moz-border-radius: 5px 5px 0 0;*/
 }
 .infowrap {
     height: 600px;
@@ -1031,33 +1038,6 @@ ul.bxslider{
             .ctylegend{
                 border-bottom:8px solid #fff;padding-bottom:4px;}
 
-            /*Landing Buttons*/
-            .landingButtons{list-style: none;
-                max-width:380px;}
-            .landingButtons>li>a {
-                display: block;
-                border: 1px solid #396ab2;
-                color:#396ab2;
-                border-radius: 10px;
-                padding: 10px;
-                margin-bottom:15px;
-            } 
-            .landingButtons>li>a:hover {
-                border-color:white;
-                color:white!important;
-                background-color:#396ab2;
-                text-decoration:none;
-            }
-            .lbLabels {font-size: 1.5em;
-                line-height: 18px;
-                font-weight: bold;} 
-            .lbIcon {font-size: 45px;
-                float: left;
-                margin-top: 5px;
-                margin-right: 15px;}  
-            .btnSub {font-size: 12px;
-                line-height: 12px;
-                font-weight: 100;} 
 
             /*Project List styles*/
             .recentProjs{
@@ -2659,8 +2639,6 @@ inverse .navbar-nav .open > .dropdown-menu > .dropdown-submenu.open > a:before {
     padding:0px;
 }
 #mi-vessel-title{
-    border-top-left-radius: 3px;
-    border-top-right-radius: 3px;
     height:20px;
     font-size:12px;
     line-height:20px;
@@ -3150,7 +3128,7 @@ path.county_outlines{
     padding: 10px;
     border: 3px solid #fff;
     text-align: center;
-    border-radius: 5px;
+    border-radius: 0px;
     font-weight: 800;
     color: #fff;
     transition: background-color 250ms ease-in-out;
@@ -3879,12 +3857,19 @@ svg.c-stat-icon .st0{
     #landing{
         float:left;
         width:100%;
+        margin-left: 0px;
     }
     .navbar-nav>li>.dropdown, .navbar-nav>li>a{
         border-bottom:1px solid #fff;
     }
-    .navbar-nav>li>.dropdown:hover, .navbar-nav>li>a:hover{
-        border-bottom:1px;
+    .navbar-nav>li>.dropdown:hover, .navbar-nav>li>a:hover, .nav .open>a, .nav .open>a:focus, .nav .open>a:hover{
+        border-bottom:1px solid #312867;
+    }
+    .navbar-inverse .navbar-nav .open .dropdown-menu>li>a{
+        color:#312867;
+    }
+    .navbar-inverse .navbar-nav .open .dropdown-menu>li>a:hover{
+        color:#333;
     }
     .mi-indicator-graph-labels {
         font-size:12px;
