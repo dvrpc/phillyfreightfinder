@@ -139,42 +139,51 @@
     <body>
         <header class="navbar navbar-inverse navbar-fixed-top pffheader">
             <!-- Header logos and mobile menu button -->
-            <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                <div class="navbar-brand ">
-                    <a href="http://www.dvrpc.org/freight/" title="DVRPC Website" target="_blank" class="dvrpc-logo"><img src='lib/images/header_dvrpc.png' alt="DVRPC logo" height='50'/></a>
-                    <a href="#" class="dvrpc-pff" title="PFF homepage"><img src='lib/images/header_pff.png' height='50' alt="PFF logo"/></a>
+            <div class="col-md-1 brand-leader hidden-xs hidden-sm hidden-md"></div>
+            <div class="col-sm-12 col-md-12 col-lg-10 brand-left-offset" >
+                <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    <div class="navbar-brand ">
+                        <a href="http://www.dvrpc.org/freight/" title="DVRPC Website" target="_blank" class="dvrpc-logo"><img src='lib/images/header_dvrpc.png' alt="DVRPC logo" height='50'/></a>
+                        <a href="#" class="dvrpc-pff" title="PFF homepage"><img src='lib/images/header_pff.png' height='50' alt="PFF logo"/></a>
+                    </div>
                 </div>
-            </div>
-            <!-- Navigation links .navbar-collapse-->
-            <div id="navbar-links" class="navbar-collapse collapse">
-                <form id='nav_search' class="navbar-form navbar-right " >
-                        <div class="input-group search-container mapUI" style="display:none;">
-                            <input id="searchbox" type="text" class="form-control" placeholder="Search by facility/place name">
-                            <span class="input-group-addon"><i class="dynico dynico-search"></i></span>
-                        </div>
-                </form>
-                <!-- Menu Items -->
-                <ul id='landing' class="nav navbar-nav">
-                    <li><a href="#home" class='landingLink' data-tab='home' data-toggle="collapse" data-target=".navbar-collapse.in"><i class="dynico dynico-home"></i>&nbsp;&nbsp;Home</a></li>
-                    <li><a href="#region" class='landingLink' data-tab='docs' data-toggle="collapse" data-target=".navbar-collapse.in"><i class="dynico dynico-dvrpc"></i>&nbsp;&nbsp;Our Region</a></li>
-                    <li class="dropdown">
-                            <a id="AboutDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"><i class="dynico dynico-compass"></i>&nbsp;&nbsp;About <b class="caret"></b></a>
+            
+                <!-- Navigation links .navbar-collapse-->
+                <div id="navbar-links" class="navbar-collapse collapse">
+                    <form id='nav_search' class="navbar-form navbar-right " >
+                            <div class="input-group search-container mapUI" style="display:none;">
+                                <input id="searchbox" type="text" class="form-control" placeholder="Search by facility/place name">
+                                <span class="input-group-addon"><i class="dynico dynico-search"></i></span>
+                            </div>
+                    </form>
+                    <!-- Menu Items -->
+                    <ul id='landing' class="nav navbar-nav">
+                        <li><a href="#home" class='landingLink' data-tab='home' data-toggle="collapse" data-target=".navbar-collapse.in"><i class="dynico dynico-home"></i>&nbsp;&nbsp;Home</a></li>
+                        <li class="dropdown">
+                            <a id="ToolsDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"><i class="dynico dynico-dvrpc"></i>&nbsp;&nbsp;Tools <b class="caret"></b></a>
                                 <ul class="dropdown-menu" role="menu">
-                                    <li><a href="#planning" class='landingLink' data-tab='PhillyFreightFinder' data-toggle="collapse" data-target=".navbar-collapse.in"><i class="dynico dynico-compass"></i>&nbsp;&nbsp;Freight Planning</a></li>
-                                    <li><a href="#data" class='landingLink' data-tab='data' data-toggle="collapse" data-target=".navbar-collapse.in"><i class="dynico dynico-layers"></i>&nbsp;&nbsp;Our Data</a></li>
-                                    <li><a href="#domestic-trade" class='landingLink' data-tab='domestic-trade' data-toggle="collapse" data-target=".navbar-collapse.in"><i class="dynico dynico-layers"></i>&nbsp;&nbsp;Domestic Trade Patterns</a></li>
+                                    <li><a href="#region" class='landingLink' data-tab='domestic-trade' data-toggle="collapse" data-target=".navbar-collapse.in"><i class="dynico dynico-dvrpc"></i>&nbsp;&nbsp;County Profile Tool</a></li>
                                     <li><a href="#maritime-indicators" class='landingLink' data-tab='maritime-indicators' data-toggle="collapse" data-target=".navbar-collapse.in"><i class="dynico dynico-layers"></i>&nbsp;&nbsp;Maritime Indicators</a></li>
                                     <li><a href="#highway-performance" class='landingLink' data-tab='highway-performance' data-toggle="collapse" data-target=".navbar-collapse.in"><i class="dynico dynico-layers"></i>&nbsp;&nbsp;Highway Performance</a></li>
                                 </ul>
-                    </li>
-                    <li id='maplink' class='landingUI'><a href="#map" data-tab='map' data-toggle="collapse" data-target=".navbar-collapse.in"><i class="dynico dynico-map"></i>&nbsp;&nbsp;View Map</a></li>
-                </ul>
-            </div><!--/.navbar-collapse -->
+                        </li>
+                        <li class="dropdown">
+                                <a id="AboutDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"><i class="dynico dynico-compass"></i>&nbsp;&nbsp;About <b class="caret"></b></a>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li><a href="#planning" class='landingLink' data-tab='PhillyFreightFinder' data-toggle="collapse" data-target=".navbar-collapse.in"><i class="dynico dynico-compass"></i>&nbsp;&nbsp;Freight Planning</a></li>
+                                        <li><a href="#data" class='landingLink' data-tab='data' data-toggle="collapse" data-target=".navbar-collapse.in"><i class="dynico dynico-layers"></i>&nbsp;&nbsp;Our Data</a></li>
+                                        
+                                    </ul>
+                        </li>
+                        <li id='maplink' class='landingUI'><a href="#map" data-tab='map' data-toggle="collapse" data-target=".navbar-collapse.in"><i class="dynico dynico-map"></i>&nbsp;&nbsp;View Map</a></li>
+                    </ul>
+                </div><!--/.navbar-collapse -->
+            </div>
         </header>
     <!-- Core pages (non-map) -->
         <section id='pFFlanding' class='landing fade in landtab-content landingUI'>

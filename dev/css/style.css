@@ -59,7 +59,7 @@ body, .landing, #sidebar {
 .footer_btn, #infoheader {
   background-color: #E9E9E9;  
 }
-.navbar-inverse .navbar-toggle, .navbar-inverse .navbar-nav>.open>a,.navbar-inverse .navbar-nav>.open>a:hover,.navbar-inverse .navbar-nav>.open>a:focus, .navbar-nav>li>a, .navbar-nav>li>.dropdown{
+/*.navbar-inverse .navbar-toggle, .navbar-inverse .navbar-nav>.open>a,.navbar-inverse .navbar-nav>.open>a:hover,.navbar-inverse .navbar-nav>.open>a:focus, .navbar-nav>li>a, .navbar-nav>li>.dropdown{
     background-color: #567FBC;
 }
 
@@ -69,28 +69,35 @@ body, .landing, #sidebar {
 }
 .navbar-inverse .navbar-toggle{
     border-size:0px;
+}*/
+
+.navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:focus, .navbar-inverse .navbar-nav>.open>a:hover{
+    background-color:#396ab2;
 }
 .navbar-nav > li > .dropdown-menu {
     border-color:#E9E9E9;
 }
 #indactorInfo .nav-tabs>li.active>a{
-    border-bottom-color: #428bca !important;
+    border-bottom-color: #428bca ;
+}
+.nav .open>a, .nav .open>a:focus, .nav .open>a:hover{
+    border-bottom: 3px solid #312867;
 }
 a, .footer_btn, .chkicon {
-    color: #396ab2 !important;
+    color: #396ab2 ;
 }
 .navbar-inverse .navbar-nav>li>a{
-    color:#BBE6FA !important;
+    color:#fff;
 }
 .navbar-inverse .navbar-toggle .icon-bar{
     background-color: #fff !important;
 }
 a:hover, .footer_btn:hover {
-    color: #312867 !important;
+    color: #312867 ;
     text-decoration: none;
 }
 .navbar-inverse .navbar-nav>li>a:hover{
-    color: #fff !important;
+    color: #BBE6FA;
     text-decoration: none;
 }
 .left{
@@ -144,10 +151,20 @@ a:hover, .footer_btn:hover {
     background-color: #396ab2!important;
 
 }
+.brand-leader{
+    background-color: #312867;
+    height: 54px;
+    
+}
+.brand-left-offset{
+    margin-left: -15px;
+    margin-right: -15px;
+}
 .navbar-fixed-top{border-top: 7px solid #312867!important;
-            border-bottom: 7px solid #312867!important;}
+            border-bottom: 1px solid #312867!important;}
 /*.pffcontent{padding-top:14px!important;padding-bottom:40px!important;}*/
 .navbar .navbar-brand {
+    height:54px;
     background-color: #ffffff;
     filter: progid:DXImageTransform.Microsoft.gradient(GradientType = 1, startColorstr = '#312867', endColorstr = '#396ab2');
     /*INNER ELEMENTS MUST NOT BREAK THIS ELEMENTS BOUNDARIES*/
@@ -182,15 +199,20 @@ a:hover, .footer_btn:hover {
     font-family: 'Open Sans', sans-serif;
 }
 .navbar-nav>li>a, .navbar-nav>li>.dropdown {
-    margin: 6px 4px;
-    padding: 9px 10px;
-    border-radius: 5px;
+    margin: 6px 10px;
+    padding: 10px 5px 3px;
+    font-size: 1.05em;
+    transition: all 250ms ease-in-out;
+    border-bottom: 3px solid #396ab2;
+}
+.navbar-nav>li>.dropdown:hover, .navbar-nav>li>a:hover{
+    border-bottom: 3px solid #312867;
+    color:#BBE6FA;
 }
 .navbar-nav > li > .dropdown-menu {
     margin-top: -7px;
     margin-left:4px;
-    border-top-left-radius: 0px;
-    border-top-right-radius: 0px;
+    border-radius: 0px;
 }
 .navbar-inverse .navbar-nav>.open>a,.navbar-inverse .navbar-nav>.open>a:hover,.navbar-inverse .navbar-nav>.open>a:focus {
     color: #fff;
@@ -200,7 +222,11 @@ a:hover, .footer_btn:hover {
 .navbar-collapse.in {
     overflow-y: hidden;
 }
+.dropdown-menu>li>a {
 
+    color: #312867;
+
+}
 
 /*--------------------------------------------------------*/
 /*--------  Typeahead Search Styles  ---------------------*/
@@ -549,10 +575,8 @@ input[type=checkbox]:checked + label, input[type=checkbox]:checked + label > div
     border-right-color: #212C3C;
 }
 #landing{
-    margin-left: 10px;
-    position: absolute;
-    right: 0;
-    padding-right: 40px;
+    position: relative;
+    float:right;
 }
 .landing {
     z-index: 1029;
@@ -3852,7 +3876,16 @@ svg.c-stat-icon .st0{
     }
 }
 @media (max-width: 768px){
-
+    #landing{
+        float:left;
+        width:100%;
+    }
+    .navbar-nav>li>.dropdown, .navbar-nav>li>a{
+        border-bottom:1px solid #fff;
+    }
+    .navbar-nav>li>.dropdown:hover, .navbar-nav>li>a:hover{
+        border-bottom:1px;
+    }
     .mi-indicator-graph-labels {
         font-size:12px;
     }
