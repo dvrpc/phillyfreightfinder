@@ -11,9 +11,7 @@ body {
 p {
     font-family: 'Open Sans', sans-serif;
 }
-h1, h2{
-    color: #312867;
-}
+
 h3,h4,h5,h6{
     color: #312867;
 }
@@ -21,6 +19,10 @@ h1,h2,h3,h4,h5,h6 {
     font-family: 'Open Sans', sans-serif;
     font-weight: 600;
     line-height: 1.1;
+}
+h1, h2{
+    color: #312867;
+    font-weight: 800;
 }
 .hpbanner h2, .hpbanner h3, .hpbanner h4 {
     color: #fff!important;
@@ -3313,6 +3315,49 @@ svg.c-stat-icon .st0{
     top:0;
     border: 1px solid #396AB2;
     border-right-width: 6px;
+}
+.homepage-data-overlay{
+    position:absolute;
+    right:0;
+    bottom:0;
+}
+.homepage-title{
+    float: none;
+    padding-top: 38px;
+    margin-bottom: 20px; 
+    border-bottom: 1px solid #ddd;
+    background: url(images/header_bg.png) no-repeat center 60% no-repeat; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height:450px;
+    background-color: #312867;
+}
+.homepage-title h1{
+    font-size: 24px;
+    color: #fff;
+    font-weight: 600;
+    background-color: rgba(49, 40, 103, 0.65);
+    padding: 5px 20px;
+    border-left: 5px solid;
+    display:inline;
+}
+.hp-block-text{
+    background-color: rgba(49,40,103,.65);
+    border-left: 2px solid #fff;
+    padding: 10px 25px 5px 25px;
+    margin: 20px;
+    color: #fff;
+    font-size: 1.2em;
+}
+.hp-action-button{
+    padding: 15px;
+    text-align: center;
+    color: #fff;
+    font-size: 1.2em;
+    font-weight: 200;
+    background-color: #E57B32;
 }
 
 /* spinners */
