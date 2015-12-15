@@ -4,7 +4,7 @@ module.exports = function(grunt){
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
 
-        postcss: {
+       /* postcss: {
 		  options: {
 		    map: true,
 		    processors: [
@@ -16,7 +16,7 @@ module.exports = function(grunt){
 		    dest: 'dev/css/style_auto.css'
 		  }
 		},
-
+*/
 
         concat: {  
         	options: {
