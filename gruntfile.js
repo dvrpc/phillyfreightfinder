@@ -71,6 +71,7 @@ module.exports = function(grunt){
 			         	'dev/css/typeahead.min.css',
 			         	'dev/css/pfficons.css',
 			         	'dev/css/tipsy.css',
+			         	'dev/vendor/flexslider.css',
 			         	'dev/css/nouislider.min.css',
 			         	'dev/css/style.css'
 			         ]

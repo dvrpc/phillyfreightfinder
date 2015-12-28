@@ -3286,6 +3286,10 @@ svg.c-stat-icon .st0{
     text-transform: uppercase;
     font-weight: 400;
 }
+#c-county-desc{
+    font-size:1.1em;
+    transition: all 300ms ease-out;
+}
 .stat-block{
     border-left: 6px solid;
     border-bottom: 1px solid;
@@ -3318,6 +3322,32 @@ svg.c-stat-icon .st0{
     border: 1px solid #396AB2;
     border-right-width: 6px;
 }
+#cty-pic-slider{
+    border: 1px solid #396AB2;
+}
+#cty-pic-carousel{
+    border-width:0;
+    background:none;
+}
+#cty-pic-carousel img {
+    display: block;
+    opacity: .7;
+    cursor: pointer;
+}
+#cty-pic-carousel img:hover {
+    opacity: 1;   
+}
+#cty-pic-carousel .flex-active-slide img {
+    opacity: 1;
+    cursor: default;
+}
+.flexslider .flex-direction-nav a,
+.flexslider .flex-direction-nav a {
+    display: block; /* I added this line */
+    color:#fff;
+}
+.flex-direction-nav .flex-next { right: 0 !important; margin-right: 10px; opacity:.6; }
+.flex-direction-nav .flex-prev { left: 0 !important; margin-left: 10px; opacity:.6;}
 .homepage-data-overlay{
     position:absolute;
     right:0;

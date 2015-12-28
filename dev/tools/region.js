@@ -14,7 +14,8 @@ function load_region(){
 		county = 'none', 
 		target = 'network',
 		dt_width = $('#content').width(), 
-		singleComm, bLabel, commItem, circle_scaler, offset, county_data, explorer,
+		singleComm, bLabel, commItem, circle_scaler, offset, county_data, explorer, county_ref,
+		numText = {0:'zero',1:'one',2:'two',3:'three',4:'four',5:'five',6:'six',7:'seven'},
 		projection = d3.geo.albersUsa().scale(900).translate([dt_width, 430 / 2]);
 		
 	var tabs = {'region':'Overview','network':'Network','freight_centers':'Freight Centers','domestic_trade':'Domestic Trade Patterns'},
@@ -164,8 +165,10 @@ function load_region(){
 	}
 
 
-
-	function load_network(){ 
+ 
+	function load_network(){
+		var desc_offset = $('#cty-pic-slider').width()/1.38 - 60;
+        if($(window).width() >= 992){$('#c-county-desc').animate({ 'min-height' : desc_offset }, 500);}
 		$('#c-county-desc').html(county_desc[county]);
 		$('#c-region-network-map').attr('src', 'lib/images/county/'+county+'_map.png').attr('alt', capitalizeFirstLetter(county)+' County Map');
 		if(typeof county_data === 'undefined'){
@@ -179,14 +182,45 @@ function load_region(){
 	function populateNetwork(){
 		for(var i=0; i<county_data.length; i++) {
             if (county_data[i].NAME === capitalizeFirstLetter(county)) {
-                var cdata = county_data[i];
+                var cdata = county_data[i],
+                	county_ref = i;
                 if(parseInt(cdata.portTermin) === 0){$('#c-stat-maritime').hide();}else{$('#c-stat-maritime').show();}
                 for(var j=0; j<stat_data.length; j++) {
                 	$('.c-data-'+stat_data[j]).html(cdata[stat_data[j]]);
                 }
+                $('.c-image-caption').html(cdata.zero);
+                $('#cty-pic-slider').removeData("flexslider");
+                $('#cty-pic-carousel').removeData("flexslider");
+                $('.c-slides').html('');
+                for(var w=1; w < 8; w++){
+	            	$('.c-slides').append('<li><img src="lib/images/county/small/'+ cdata.NAME +'/'+ w +'.jpg" /></li>');
+                }
+                
             }
         }
+        
         $('.loading_panel').delay(500).fadeOut('slow');
+        $('#cty-pic-slider').flexslider({
+        	animation: "fade",
+		    controlNav: false,
+		    animationLoop: false, 
+		    slideshow: false,
+		    sync: "#cty-pic-carousel",
+		    after: function(){
+		    	var i_pic = numText[$('#cty-pic-slider').data('flexslider').currentSlide];
+		    	$('.c-image-caption').html(county_data[county_ref][i_pic]);
+		    }
+	  	}); 
+	  	$('#cty-pic-carousel').flexslider({
+		    animation: "slide",
+		    controlNav: false,
+		    animationLoop: false,
+		    slideshow: false,
+		    itemWidth: 100,
+		    itemMargin: 5,
+		    asNavFor: '#cty-pic-slider'
+		});  
+		
 	}
 	function region_navigation(hash_elem){
 		county = (hash_elem.length > 1) ? hash_elem[1] : 'none';
