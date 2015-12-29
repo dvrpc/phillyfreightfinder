@@ -302,66 +302,36 @@
                     <div class="col-md-8 col-lg-6">
                         <div id="cty-pic-slider" class="flexslider">
                             <ul class="slides c-slides">
-                                <!--<li>
-                                  <img src="lib/images/county/small/Bucks/1.jpg" />
-                                </li>
-                                <li>
-                                  <img src="lib/images/county/small/Bucks/2.jpg" />
-                                </li>
-                                <li>
-                                  <img src="lib/images/county/small/Bucks/3.jpg" />
-                                </li>
-                                <li>
-                                  <img src="lib/images/county/small/Bucks/4.jpg" />
-                                </li>
-                                <li>
-                                  <img src="lib/images/county/small/Bucks/5.jpg" />
-                                </li>
-                                <li>
-                                  <img src="lib/images/county/small/Bucks/6.jpg" />
-                                </li>
-                                <li>
-                                  <img src="lib/images/county/small/Bucks/7.jpg" />
-                                </li>-->
-
-                            <!-- items mirrored twice, total of 12 -->
-                             </ul>
+                                <!--primary slide list items -->
+                            </ul>
                         </div>
                     </div>
                     <div class="col-md-12 col-lg-6">
                         <div class="c-image-caption hidden-lg highlight-block"></div>
                         <div id="cty-pic-carousel" class="flexslider">
                             <ul class="slides c-slides">
-                                <!--<li>
-                                  <img src="lib/images/county/small/Bucks/1.jpg" />
-                                </li>
-                                <li>
-                                  <img src="lib/images/county/small/Bucks/2.jpg" />
-                                </li>
-                                <li>
-                                  <img src="lib/images/county/small/Bucks/3.jpg" />
-                                </li>
-                                <li>
-                                  <img src="lib/images/county/small/Bucks/4.jpg" />
-                                </li>
-                                <li>
-                                  <img src="lib/images/county/small/Bucks/5.jpg" />
-                                </li>
-                                <li>
-                                  <img src="lib/images/county/small/Bucks/6.jpg" />
-                                </li>
-                                <li>
-                                  <img src="lib/images/county/small/Bucks/7.jpg" />
-                                </li>-->
-                            <!-- items mirrored twice, total of 12 -->
-                             </ul>
+                                <!--carousel list items -->    
+                            </ul>
                         </div>
                         <div class="c-image-caption hidden-md hidden-sm hidden-xs highlight-block"></div>
-                        <!-- -->
                     </div>
                 </div>
-                <img id="c-region-network-map"/>
-                <div class="loading_panel  stat-map">
+                <div style="position:relative;">
+                    <img id="c-region-network-map"/>
+                    <div id="c-map-legend" class="closed" style="display:none;">
+                        <div id="c-legend-icon"><i class="dynico dynico-layers"></i></div>
+                        <ul class="c-legend-list" style="display:none;">
+                            <li> <div class="mi-trade-line "></div>freight rail line</li>
+                            <li> <div class="mi-data-swatch orange-bg"></div>freight rail yard</li>
+                            <li> <div class="mi-trade-line dkblue-ln"></div>primary freight highway</li>
+                            <li> <div class="mi-data-swatch dkblue-bg"></div>truck parking</li>
+                            <li> <div class="mi-data-swatch blue-bg"></div>port terminal</li>
+                            <li> <div class="mi-trade-swatch dkblue-bg"></div>freight center</li>
+                        </ul>
+                    </div>
+                    <div id="c-map-source"><b>Source:</b> 2015 DVRPC <em>PhillyFreightFinder Database</em></div>
+                </div>
+                <div class="loading_panel stat-map">
                 </div>
             </div>
         </div>

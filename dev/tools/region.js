@@ -170,6 +170,7 @@ function load_region(){
 		var desc_offset = $('#cty-pic-slider').width()/1.38 - 60;
         if($(window).width() >= 992){$('#c-county-desc').animate({ 'min-height' : desc_offset }, 500);}
 		$('#c-county-desc').html(county_desc[county]);
+
 		$('#c-region-network-map').attr('src', 'lib/images/county/'+county+'_map.png').attr('alt', capitalizeFirstLetter(county)+' County Map');
 		if(typeof county_data === 'undefined'){
 			d3.csv('data/county_network.csv', function(data) {
@@ -198,8 +199,9 @@ function load_region(){
                 
             }
         }
-        
         $('.loading_panel').delay(500).fadeOut('slow');
+        $('#c-map-legend').css('width', '40px').css('height', '40px').css('border-radius','20px').removeClass().addClass('closed');
+        $('#c-map-legend').delay(500).fadeIn('slow');
         $('#cty-pic-slider').flexslider({
         	animation: "fade",
 		    controlNav: false,
@@ -288,6 +290,21 @@ function load_region(){
 		var tname = $(this).find('span').text();
 		target = inverse_tabs[tname];
 		window.location.hash = 'region/'+county+'/'+target;	
+	});
+
+	//regional network legend controls
+	$(document.body).on('click', '#c-map-legend',function(){
+		var toggleStatus = $(this).attr('class');
+		if(toggleStatus === 'closed'){
+			$(this).css('width', '240px').css('height', '145px').css('border-radius','4px 20px 4px 4px').toggleClass('closed open');
+			$('#c-legend-icon i').toggleClass('dynico dynico-layers glyphicon glyphicon-minus');
+			$('.c-legend-list').show();
+		}else{
+			$(this).css('width', '40px').css('height', '40px').css('border-radius','20px').toggleClass('open closed');
+			$('#c-legend-icon i').toggleClass('glyphicon glyphicon-minus dynico dynico-layers');
+			$('.c-legend-list').hide();
+		}
+
 	});
 	
 	//explorer panel effects
