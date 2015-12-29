@@ -167,7 +167,7 @@ function load_region(){
 
  
 	function load_network(){
-		var desc_offset = $('#cty-pic-slider').width()/1.38 - 60;
+		var desc_offset = $('#cty-pic-slider').width()/1.38 - 59;
         if($(window).width() >= 992){$('#c-county-desc').animate({ 'min-height' : desc_offset }, 500);}
 		$('#c-county-desc').html(county_desc[county]);
 
