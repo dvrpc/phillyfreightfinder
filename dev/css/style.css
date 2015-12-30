@@ -233,6 +233,9 @@ a:hover, .footer_btn:hover {
     color: #312867;
 
 }
+.leaflet-bar a, .leaflet-bar a:hover{
+    color: #396AB2;
+}
 
 /*--------------------------------------------------------*/
 /*--------  Typeahead Search Styles  ---------------------*/
