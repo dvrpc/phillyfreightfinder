@@ -803,3 +803,16 @@ $(document).ready(function() {
      });
 
 });
+
+//custom button functionality
+function modalLink(modal, tab){
+    var element =  document.getElementById(modal);
+    if (typeof(element) != 'undefined' && element != null){ 
+        $('#'+modal+' li:eq('+ tab +') a').tab('show'); 
+    }else{
+        setTimeout(function(){
+          $('#'+modal+' li:eq('+ tab +') a').tab('show');
+        }, 0);
+    }
+    
+}

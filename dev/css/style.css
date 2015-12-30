@@ -2811,9 +2811,25 @@ inverse .navbar-nav .open > .dropdown-menu > .dropdown-submenu.open > a:before {
     left:30px;
     right:30px;
     pointer-events: none;
-
 }
-
+#mi-map-source{
+    font-size: 11px;
+    position: absolute;
+    bottom: 22px;
+    left: 17px;
+    background-color: #efefef;
+    padding: 3px 10px;
+}
+h4.panel-title a i{
+    padding:5px;
+    position: absolute;
+    top: 7px;
+    right: 25px;
+    color: #C6D5E9;
+}
+h4.panel-title a i:hover{
+    color: #fff;
+}
 #river path{
     fill: #CCCCCC;
 }
