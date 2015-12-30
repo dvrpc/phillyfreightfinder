@@ -170,7 +170,7 @@ function load_region(){
 		var desc_offset = $('#cty-pic-slider').width()/1.38 - 59;
         if($(window).width() >= 992){$('#c-county-desc').animate({ 'min-height' : desc_offset }, 500);}
 		$('#c-county-desc').html(county_desc[county]);
-
+		if($('#c-map-legend').hasClass('open')){$('#c-map-legend').trigger('click');}
 		$('#c-region-network-map').attr('src', 'lib/images/county/'+county+'_map.png').attr('alt', capitalizeFirstLetter(county)+' County Map');
 		if(typeof county_data === 'undefined'){
 			d3.csv('data/county_network.csv', function(data) {
@@ -200,7 +200,6 @@ function load_region(){
             }
         }
         $('.loading_panel').delay(500).fadeOut('slow');
-        $('#c-map-legend').css('width', '40px').css('height', '40px').css('border-radius','20px').removeClass().addClass('closed');
         $('#c-map-legend').delay(500).fadeIn('slow');
         $('#cty-pic-slider').flexslider({
         	animation: "fade",
