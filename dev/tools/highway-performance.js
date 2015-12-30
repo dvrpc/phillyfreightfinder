@@ -51,19 +51,7 @@ function buildSlider(){
         $(this).html(val);
     });
 
-    function recountVal(val){
-        switch(val){
-            case 5:return '5 <span class="hp_tod">AM</span>';
-            case 7:return '7 <span class="hp_tod">AM</span>';
-            case 9:return '9 <span class="hp_tod">AM</span>';
-            case 11:return '11 <span class="hp_tod">AM</span>';
-            case 13:return '1 <span class="hp_tod">PM</span>';
-            case 15:return '3 <span class="hp_tod">PM</span>';
-            case 17:return '5 <span class="hp_tod">PM</span>';
-            case 19:return '7 <span class="hp_tod">PM</span>';
-            default :return '12 <span class="hp_tod">AM</span>';
-        }
-    }
+    
 	var prev_Low = 0, prev_High = 5;
 	
 	//custom slide events to handle time bin periods
@@ -106,8 +94,33 @@ function buildSlider(){
 
 	time_slider.noUiSlider.on('change', function( values, handle ){
 		rebuild_hp_layers();
+		
+		
 		 //clearInterval(foo);
 	});
+	time_slider.noUiSlider.on('set', function( values, handle){
+		title_update(values);
+	});
+	
+	function title_update(val){
+		var t1 = recountVal(parseInt(val[0])), t2 = recountVal(parseInt(val[1]));
+		console.log(val);
+		$('#hp-t1').html(t1);
+		$('#hp-t2').html(t2);
+	}
+	function recountVal(val){
+        switch(val){
+            case 5:return '5 <span class="hp_tod">AM</span>';
+            case 7:return '7 <span class="hp_tod">AM</span>';
+            case 9:return '9 <span class="hp_tod">AM</span>';
+            case 11:return '11 <span class="hp_tod">AM</span>';
+            case 13:return '1 <span class="hp_tod">PM</span>';
+            case 15:return '3 <span class="hp_tod">PM</span>';
+            case 17:return '5 <span class="hp_tod">PM</span>';
+            case 19:return '7 <span class="hp_tod">PM</span>';
+            default :return '12 <span class="hp_tod">AM</span>';
+        }
+    }
 $(function() {
 	
 	
@@ -159,7 +172,7 @@ $(function() {
 			if(elem === 'hp_measure'){
 				hp_metric = $(this).val();
 				var elem_text = $(this).parent().text();
-				$('#hp_metric').html(elem_text);
+				$('#hp_title_metric').html('Truck ' + elem_text);
 				$('.hp_legend_wrapper').toggleClass('hidden');
 			}else{
 				var time_vals = time_slider.noUiSlider.get();

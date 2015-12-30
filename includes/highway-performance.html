@@ -1,6 +1,6 @@
 <div class='page-title center-block col-lg-12'>
     <div class='center-block col-lg-10 col-sm-12' style='float:none;'>
-        <h1>Highway Performance&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="hp_metric_wrapper">[Truck <span id="hp_metric">Travel Time Index</span>]</span></h1>
+        <h1>Highway Performance<span id="c-divider"></span><span id="hp_metric"><span id="hp_title_metric">Truck Travel Time Index</span>&nbsp;&nbsp;<span style="font-size:.8em;">(<span id="hp-t1">12 AM</span> - <span id="hp-t2">5 AM</span>)</span></span></h1>
     </div> 
 </div>
 <div class="page_loader" style="display:none;">
@@ -16,11 +16,12 @@
     <!-- filter content -->
     <div class='center-block col-lg-10 col-sm-12' style='float:none;'>
         <div class="row">
-            <div class="col-lg-5 hp_filter">
+            <div class="col-xs-12 col-md-5 hp_filter">
                 <div class="hp_label">Select performance measure:</div>
                 <div id="hp_select" class="btn-group" data-toggle="buttons">
                     <label for="t_tti" id="radio_t_tti" class="btn btn-sm btn-primary active">
                         <input type="radio" id="t_tti" name="hp_measure" value="TTI">Travel Time Index</label>
+                        <a href="modals/hp-tool.html" class="hp_info" data-toggle="modal" data-target="#hpToolModal"><i class="dynico dynico-info"></i></a>
                     <label for="t_speed" id="radio_t_speed" class="btn btn-sm btn-primary ">
                         <input type="radio" id="t_speed" name="hp_measure" value="Speed" >Average Speed</label>
                     <!--
@@ -52,7 +53,7 @@
                 </div>
                 
             </div>
-            <div class="col-lg-7 hp_filter">
+            <div class="col-xs-12 col-md-7 hp_filter">
                 <div class="hp_label">Select time period:</div>
                
                     

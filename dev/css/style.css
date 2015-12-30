@@ -2944,7 +2944,8 @@ h4.panel-title a i:hover{
     float: left;
     text-align: center;
     border-top-style: solid;
-    border-top-width: 4px;   
+    border-top-width: 4px;  
+    font-size: 11px; 
 }
 #hp_legend_TTI .hp_legend {
     width: 12.5%;
@@ -2963,6 +2964,17 @@ h4.panel-title a i:hover{
 #hp_tabbing{
     padding-left:15px;
     margin:0px;
+}
+.hp_info{
+    padding-left: 10px;
+    font-size: 20px;
+    line-height: 34px;
+}
+.hp_info:focus {
+  outline: none;
+}
+.hp_info:visited, .hp_info:link, .hp_info:active {
+    text-decoration: none !important;
 }
 .hp_z{
     border-color:#9c9c9c;
@@ -3020,7 +3032,7 @@ h4.panel-title a i:hover{
     text-align: center;
     /*overflow:hidden;*/    
 }
-#c-tab{
+#c-tab, #hp_metric{
     color:#636363;
     border-left: 1px solid;
     padding-left: 10px;
