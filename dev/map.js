@@ -73,24 +73,23 @@ $.getJSON("data/county5k.js", function(data) {
         minZoom: 8,
         maxZoom: 18
     });
-    var Acetate_all = L.tileLayer('http://a{s}.acetate.geoiq.com/tiles/acetate-hillshading/{z}/{x}/{y}.png', {
-        attribution: '&copy;2012 Esri & Stamen, Data from OSM and Natural Earth',
-        subdomains: '0123',
-        minZoom: 2,
-        maxZoom: 18
+    var CartoDB_Positron = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
+        subdomains: 'abcd',
+        maxZoom: 19
     });
 
     //create map instance
     var map = L.map("mapDIV", {
         minZoom: zLevel,
         zoomControl: false,
-        layers: [Acetate_all]
+        layers: [CartoDB_Positron]
     })/*.setView([oLat, oLng], zLevel)*/;
 
     //add Layer Control to map
     var baseLayers = {
         "Satellite": Esri_WorldImagery,
-        "Street Map": Acetate_all
+        "Street Map": CartoDB_Positron
     };
     L.control.layers(baseLayers).addTo(map);
 
