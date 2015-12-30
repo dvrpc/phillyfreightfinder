@@ -487,7 +487,7 @@ var commicon = L.OpenFreightMarkers.icon({
                 lng: layer.feature.geometry.coordinates[0]
             });
         }
-    })
+    }) 
 
     //define NHS polylines
     var nhspoly = L.geoJson(null, {
@@ -942,7 +942,7 @@ var commicon = L.OpenFreightMarkers.icon({
     //////////////////////////////////////////////////////
 
     // Highlight search box text on click
-    $("#searchbox").click(function() {
+   $("#searchbox").click(function() {
         $(this).select();
     });
 
@@ -1277,7 +1277,7 @@ var commicon = L.OpenFreightMarkers.icon({
             displayKey: "name",
             source: commBH.ttAdapter(),
             templates: {
-                header: "<h5 class='typeahead-header'><img src='lib/images/flat/aiport1.png' class='searchico'>Commercial Airports</h5>"
+                header: "<h5 class='typeahead-header'><img src='lib/images/flat/airport1.png' class='searchico'>Commercial Airports</h5>"
             }
         }, {
             name: "ReleivAirports",
@@ -1323,6 +1323,10 @@ var commicon = L.OpenFreightMarkers.icon({
                 header: "<h4 class='typeahead-header'>Place Results</h4>"
             }
         }).on("typeahead:selected", function(obj, datum) {
+            $('#search-panel').fadeOut('fast');
+            resetHighlight();
+            resetInfoWindow();
+            $e1.typeahead('val', '');
             if ($('#nav_search').hasClass('hidden')) {
                 $('#pFFlanding').fadeOut(800);
                 $('#nav_search').removeClass('hidden');

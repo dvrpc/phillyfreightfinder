@@ -12,7 +12,7 @@
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800' rel='stylesheet' type='text/css'>
     
         <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-        <link href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" rel="stylesheet" type="text/css">
+        <link href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" rel="stylesheet" type="text/css">
         
 
         <!-- locals for development
@@ -56,11 +56,6 @@
                     width:730px!important;
                 }
             }
-            @media (max-width: 1360px){
-                .search-container{
-                    width:250px!important;
-                }
-            }
             @media (max-width: 1270px) {
                 .navbar .navbar-brand {
                     font-size: 18px;
@@ -71,22 +66,11 @@
                 }
                 
             }
-            @media (max-width: 1200px) {
-               .search-container {
-                    width: 200px!important;
-                }
-            }
             @media (max-width: 1100px) {
                 .dvrpc-pff {
                     width: 260px;
                     overflow: hidden;
                     margin-bottom:-20px;
-                }
-
-            }
-            @media (max-width: 1024px) {
-               .search-container {
-                    width: 150px!important;
                 }
 
             }
@@ -101,11 +85,6 @@
                 .dvrpc-logo{display:none;}
             }
             @media (max-width: 768px){
-                .search-container {
-                    display: table!important;
-                    width: 100%!important;
-
-                }
                 .logo-container{
                     padding:0px;
                 }
@@ -155,12 +134,12 @@
             
                 <!-- Navigation links .navbar-collapse-->
                 <div id="navbar-links" class="navbar-collapse collapse">
-                    <form id='nav_search' class="navbar-form navbar-right " >
+                    <!--<form id='nav_search' class="navbar-form navbar-right " >
                             <div class="input-group search-container mapUI" style="display:none;">
                                 <input id="searchbox" type="text" class="form-control" placeholder="Search by facility/place name">
                                 <span class="input-group-addon"><i class="dynico dynico-search"></i></span>
                             </div>
-                    </form>
+                    </form>-->
                     <!-- Menu Items -->
                     <ul id='landing' class="nav navbar-nav">
                         <li><a href="#home" class='landingLink' data-tab='home' data-toggle="collapse" data-target=".navbar-collapse.in"><i class="dynico dynico-home"></i>&nbsp;&nbsp;Home</a></li>
@@ -173,18 +152,29 @@
                                 </ul>
                         </li>
                         <li class="dropdown">
-                                <a id="AboutDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"><i class="dynico dynico-compass"></i>&nbsp;&nbsp;About <b class="caret"></b></a>
-                                    <ul class="dropdown-menu" role="menu">
-                                        <li><a href="#planning" class='landingLink' data-tab='PhillyFreightFinder' data-toggle="collapse" data-target=".navbar-collapse.in"><i class="dynico dynico-compass"></i>&nbsp;&nbsp;Freight Planning</a></li>
-                                        <li><a href="#data" class='landingLink' data-tab='data' data-toggle="collapse" data-target=".navbar-collapse.in"><i class="dynico dynico-layers"></i>&nbsp;&nbsp;Our Data</a></li>
-                                        
-                                    </ul>
+                            <a id="AboutDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"><i class="dynico dynico-compass"></i>&nbsp;&nbsp;About <b class="caret"></b></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="#planning" class='landingLink' data-tab='PhillyFreightFinder' data-toggle="collapse" data-target=".navbar-collapse.in"><i class="dynico dynico-compass"></i>&nbsp;&nbsp;Freight Planning</a></li>
+                                    <li><a href="#data" class='landingLink' data-tab='data' data-toggle="collapse" data-target=".navbar-collapse.in"><i class="dynico dynico-layers"></i>&nbsp;&nbsp;Our Data</a></li>
+                                    
+                                </ul>
                         </li>
                         <li id='maplink' class='landingUI'><a href="#map" data-tab='map' data-toggle="collapse" data-target=".navbar-collapse.in"><i class="dynico dynico-map"></i>&nbsp;&nbsp;View Map</a></li>
+                        <li class='mapUI' style="display:none;"><a href="#map?search" data-toggle="collapse" data-target=".navbar-collapse.in" ><i class="glyphicon glyphicon-search"></i>&nbsp;&nbsp;Search</a></li>
                     </ul>
                 </div><!--/.navbar-collapse -->
             </div>
         </header>
+        <div id="search-panel" class="col-lg-offset-1 col-xs-12 col-lg-10 " style="display:none;">
+            <div id="search-subpanel">
+                <form id='nav_search' class="navbar-form navbar-right " >
+                    <div class="input-group search-container mapUI" style="display:none;">
+                        <input id="searchbox" type="text" class="form-control" placeholder="Search by facility/place name">
+                        <span class="input-group-addon"><i class="dynico dynico-search"></i></span>
+                    </div>
+                </form>
+            </div>
+        </div>
     <!-- Core pages (non-map) -->
         <section id='pFFlanding' class='landing fade in landtab-content landingUI'>
             <!--home tab-->
@@ -1028,9 +1018,10 @@
         
     <!--Map and Sidebar-->
        <div class="row ocontent mapUI" id="container">
+
             <div class="col-sm-4 col-lg-3" id="sidebar">
 				
-                <div class="tab-content" style="padding-top: 10px;">
+                <div class="tab-content" >
                         <!--ADD LAYER CONTROL GROUPS HERE -->
                         <!---Layer Group 1-->
                         <div class="panel-group legend">
@@ -1360,7 +1351,7 @@
         <script type="text/javascript" src="dev/locals/bootstrap.min.js"></script>
  --> 
         <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
-        <script type="text/javascript" src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+        <script type="text/javascript" src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
         <script type="text/javascript" src="http://cdn.jsdelivr.net/bxslider/4.1.1/jquery.bxslider.min.js"></script>
         <script type="text/javascript" src="http://cdn.jsdelivr.net/highcharts/4.0.3/highcharts.js"></script>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.6.0/jquery.nicescroll.min.js"></script>

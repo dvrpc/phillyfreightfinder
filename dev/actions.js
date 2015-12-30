@@ -814,5 +814,4 @@ function modalLink(modal, tab){
           $('#'+modal+' li:eq('+ tab +') a').tab('show');
         }, 0);
     }
-    
-}
+} 

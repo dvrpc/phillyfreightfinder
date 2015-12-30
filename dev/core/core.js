@@ -81,7 +81,10 @@ function getLocationHash () {
 //create navigation of content based on hash changes for self contained app
 $(window).bind('hashchange', function() {
     var tab_id = getLocationHash();
-    if (tab_id != 'map') {
+    if(tab_id === 'map?search'){
+        $('#search-panel').fadeIn('fast');
+        location.hash = '#map';
+    }else if (tab_id != 'map') {
     	$('.mapUI').fadeOut('fast', 'easeOutQuad' , function (){
             $('.landingUI').fadeIn('fast', 'easeInQuad' );
             countymap.invalidateSize();
@@ -95,7 +98,7 @@ $(window).bind('hashchange', function() {
         $('#' + tab_id).show();
         countymap.invalidateSize();
           
-    }else { 
+    }else{ 
        setMap(); 
        countymap.invalidateSize();
     }
@@ -385,6 +388,8 @@ function initializeHL(e){
         highlightMapFeature(e);
         props = layersearch.properties;
     }
+    $('#search-panel').fadeOut('fast');
+    $('#searchbox').typeahead('val', '');
     return props;
 }
 
@@ -396,7 +401,7 @@ function contentPush(header, content, featureName, featureClass, featureIcon){
         document.getElementById('mobileheader').innerHTML = header;                         //push content to info box header
         document.getElementById('mobileinfo').innerHTML = content;                          //push content to info box
         document.getElementById('mobilefeatureName').innerHTML = featureName;    //push Feature Type (optional, see below for manual version)
-        document.getElementById('mobileMdHeader').className = ''+ featureClass +' modal-header';;                 //push class to create style for info header
+        document.getElementById('mobileMdHeader').className = ''+ featureClass +' modal-header';                 //push class to create style for info header
         //document.getElementById('mobileiconography').className = ''+ icons +'';       //push icon class information (optional)
         $('#mobileInfo_modal').modal('show');
     } else {    
@@ -432,7 +437,7 @@ function highlightMapFeature(lyr){
         lyr.setStyle({weight: hlweight, color: ""+ hlColor +""});
     } else {
         iconElem = L.DomUtil.get(lyr._icon);
-        iconElem.id = 'preselect'
+        iconElem.id = 'preselect';
         
         if ($(iconElem).is('img')){
             hlmarkerSize = rdIconSize + 8;
@@ -464,6 +469,7 @@ function resetHighlight(){
         window[nm].setStyle(resStyle);
     }
     resetIconhighlights();
+
 };
 
 //hack to remove highlight from markers
@@ -498,12 +504,14 @@ function resetInfoWindow (){
         document.getElementById('iconography').className = '';
         document.getElementById('info').innerHTML = '';
 }
-// Clear the tooltip and clear highlights when map is clicked   
+// Clear the tooltip, highlights, and search bar when map is clicked   
 map.on('click',function(e){
         resetHighlight();
         resetInfoWindow();
-        
+        $('#search-panel').fadeOut('fast');
+        $('#searchbox').typeahead('val', '');        
 });
+
 
 // Tooltip Provisions for the Sidebar Legend elements
 $('.tab-content').find('.panel-group.legend .panel-heading').first().find('a > div').attr('data-placement', 'bottom');

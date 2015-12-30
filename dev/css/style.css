@@ -236,7 +236,22 @@ a:hover, .footer_btn:hover {
 .leaflet-bar a, .leaflet-bar a:hover{
     color: #396AB2;
 }
-
+#search-panel{
+    position:absolute;
+    z-index: 2000;
+    top: 70px;
+    
+}
+#search-subpanel{
+    right: 0px;
+    position: absolute;
+    padding: 10px 25px 10px 7px;
+    background-color: #efefef;
+    box-shadow: 0 0 10px #b7b7b7;
+    border: 2px solid rgba(0,0,0,0.2);
+    background-clip: padding-box;
+    border-radius: 5px;
+}
 /*--------------------------------------------------------*/
 /*--------  Typeahead Search Styles  ---------------------*/
 /*--------------------------------------------------------*/
@@ -274,9 +289,10 @@ a:hover, .footer_btn:hover {
     border-top: 1px solid #ccc;
 }
 .typeahead-header {
+    color: #555;
     margin: 0 5px 5px;
     padding: 3px 0;
-    border-bottom: 2px solid #333;
+    border-bottom: 1px solid #333;
 }
 .has-feedback .form-control-feedback {
     position: absolute;
@@ -371,8 +387,14 @@ a:hover, .footer_btn:hover {
     vertical-align: middle;
     margin-right: 4px;
 }
-.legend-icon i{
+.legend-icon i, .search-icon i{
     color:#fff!important;
+}
+.search-icon{
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+    margin-right: 4px;
 }
 .togglebox input[type=checkbox] {
     display: block;
@@ -1721,6 +1743,7 @@ Legend and Info Window Support
 img.searchico{
     width:20px;
     height: 20px;
+    margin-right:10px;
 }
 
 /*///////////////////////////////////////////
