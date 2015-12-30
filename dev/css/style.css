@@ -3075,7 +3075,7 @@ circle.c-step-ripple{
     stroke: #312867;
     stroke-width:1;
 }
-path{pointer-events:all;}
+/*path{pointer-events:all;}*/
 svg.c-ripple{
     display: block;
     position: absolute;
