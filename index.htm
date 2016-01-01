@@ -116,7 +116,7 @@
     </head>
 
     <body>
-        <header class="navbar navbar-inverse navbar-fixed-top pffheader">
+        <div class="navbar navbar-inverse navbar-fixed-top pffheader">
             <!-- Header logos and mobile menu button -->
             <div class="col-md-1 brand-leader hidden-xs hidden-sm hidden-md"></div>
             <div class="col-sm-12 col-md-12 col-lg-10 brand-left-offset" >
@@ -164,7 +164,7 @@
                     </ul>
                 </div><!--/.navbar-collapse -->
             </div>
-        </header>
+        </div>
         <div id="search-panel" class="col-lg-offset-1 col-xs-12 col-lg-10 " style="display:none;">
             <div id="search-subpanel">
                 <form id='nav_search' class="navbar-form navbar-right " >
@@ -1017,7 +1017,7 @@
         </section>
         
     <!--Map and Sidebar-->
-       <div class="row ocontent mapUI" id="container">
+       <div class="row ocontent mapUI" id="container" style="display:none;">
 
             <div class="col-sm-4 col-lg-3" id="sidebar">
 				
@@ -1213,7 +1213,7 @@
         <footer class="navbar-fixed-bottom pff_footer">
             <div style='height:34px;'>
                <div id="MapFooter" class="mapUI" style="display:none;"> 
-                    <button id="toggle" type="button" class="footer_btn" data-toggle="tooltip" title="Toggle Sidebar" style="height: 34px; padding: 5px 10px; margin-right: 10px;width:36px;"><i id="toggleIcon" class="PFFicon-chevron-left"></i></button>
+                    <button id="toggle" type="button" class="footer_btn" data-toggle="tooltip" title="Toggle Sidebar" style="height: 34px; padding: 5px 10px; margin-right: 10px;width:36px;"><i id="toggleIcon" class="glyphicon glyphicon-chevron-left"></i></button>
                     <button id="contact" type="button" class="footer_btn" data-toggle="tooltip" title="Contact Us" style="height: 34px; padding: 5px 10px; margin-right: 10px;" onclick="$('#contactModal').modal('show'); return false;"><i id="contactIcon" class="dynico dynico-mail"></i>&nbsp;&nbsp;Submit Feedback</button>
                     <div class='footernav'>                </div>
                     <div id='infobox_' class=''>
@@ -1360,7 +1360,6 @@
         <script type="text/javascript" src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
         <script type="text/javascript" src="http://cdn.jsdelivr.net/bxslider/4.1.1/jquery.bxslider.min.js"></script>
         <script type="text/javascript" src="http://cdn.jsdelivr.net/highcharts/4.0.3/highcharts.js"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.6.0/jquery.nicescroll.min.js"></script>
         <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
         
         <script type="text/javascript">
@@ -1426,10 +1425,6 @@
 
              $(document).ready(
                 function() {  
-                    $("#pFFlanding").niceScroll({
-                        touchbehavior: true,
-                        preventmultitouchscrolling: false 
-                    });
                     $('.homeslider').bxSlider({
                         mode: 'vertical',
                         slideMargin: 5

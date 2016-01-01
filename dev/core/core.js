@@ -33,13 +33,13 @@ $.fn.capitalize = function () {
 
 function setMap(){
     $('.landingUI').fadeOut('fast', 'easeOutQuad' , function (){
-             $('.mapUI').fadeIn('fast', 'easeInQuad' );
-             $('#mapDIV').fadeIn('fast', 'easeInQuad' );
-             loadLayers(); 
-             map.invalidateSize(); 
-             resetHighlight();
-             resetInfoWindow ();
-             setTimeout(function() {$("#loading").hide();}, 300);
+            $('.mapUI').fadeIn('fast', 'easeInQuad' );
+            $('#mapDIV').fadeIn('fast', 'easeInQuad' );
+            loadLayers(); 
+            map.invalidateSize(); 
+            resetHighlight();
+            resetInfoWindow ();
+            //setTimeout(function() {$("#loading").hide();}, 300);
         });  
 }
 function loadScript(id){
@@ -56,7 +56,7 @@ $(function() {
     var prev_tab = url.split('#')[1];
     if (tab_id != 'map' && tab_id !== undefined) {
         $('#' + tab_id).show(); 
-        countymap.invalidateSize();  
+        
         if(tab_status[tab_id] === false){
             $('#'+ tab_id).load('includes/'+ tab_id + '.html', loadScript(tab_id));
             tab_status[tab_id] = true; 
@@ -69,7 +69,7 @@ $(function() {
   }
   // Change hash for page-reload
   $('a[data-toggle="tab"]').on('show.bs.tab', function (e) {
-    window.location.hash = e.target.hash;  
+        window.location.hash = e.target.hash;  
   });
 });
         
@@ -87,7 +87,6 @@ $(window).bind('hashchange', function() {
     }else if (tab_id != 'map') {
     	$('.mapUI').fadeOut('fast', 'easeOutQuad' , function (){
             $('.landingUI').fadeIn('fast', 'easeInQuad' );
-            countymap.invalidateSize();
         });
         if(tab_status[tab_id] === false){
                 $('#'+ tab_id).load('includes/'+ tab_id + '.html', loadScript(tab_id));
@@ -95,12 +94,9 @@ $(window).bind('hashchange', function() {
             }
         $('.landtab-content > .tab-pane').hide();
         $("#pFFlanding").animate({ scrollTop: 0 }, 50);
-        $('#' + tab_id).show();
-        countymap.invalidateSize();
-          
+        $('#' + tab_id).show();          
     }else{ 
-       setMap(); 
-       countymap.invalidateSize();
+       setMap();
     }
     
 });
@@ -133,9 +129,8 @@ $(window).resize(function () {
             $("#toggle i").attr('class', 'glyphicon glyphicon-th-list');
         }
         
-    };
+    }
     map.invalidateSize(); 
-    countymap.invalidateSize();
 });
 
 // Placeholder hack for IE
@@ -168,7 +163,7 @@ $(document).ready(function () {
     if (document.body.clientWidth <= 767) {
         $("#mapDIV").css("class", "col-sm-12 col-lg-12");
         $("#sidebar").css("display", "none");
-    };
+    }
     
     //layer group check all functionality
     $('.checked_all').on("click", function (e) {
@@ -197,7 +192,9 @@ $(document).ready(function () {
 //Z-index not yet functional in Leaflet
 $('input:checkbox[name="LayerCont"]').on('change', function () {
     var layers = [];
+
     if ($('#' + $(this).attr('id')).is(':checked')) {
+        $("#loading").show();
         $('input:checkbox[name="LayerCont"]').each(function () {
             // Remove all overlay layers
             map.removeLayer(window[$(this).attr('id')]);
@@ -215,6 +212,7 @@ $('input:checkbox[name="LayerCont"]').on('change', function () {
         $.each(orderedLayers, function () {
             map.addLayer(window[$(this)[0].layer[0].id]);
         });
+        $("#loading").delay(100).fadeOut(150);
     } else {
         // Simply remove unchecked layers
         map.removeLayer(window[$(this).attr('id')]);
@@ -252,8 +250,8 @@ $("#toggle").click(function () {
     }
     if (document.body.clientWidth <= 767) {
         $("#mapDIV").toggleClass("hidden");
-    };
-    map.invalidateSize(); mountymap.invalidateSize();
+    }
+    map.invalidateSize(); 
     return false;
 });
 
@@ -263,27 +261,27 @@ $("#toggle").click(function () {
 function toggleinfo(e) {
     if ($('#togbtn').hasClass('hide')) {
         $('#togbtn').removeClass('hide');
-    };
+    }
     if ($('#togbtn').hasClass('glyphicon-plus')) {
         $('#togbtn').attr('class', 'glyphicon glyphicon-minus InfoTgl');
-    } else {};
+    } else {}
     var h = document.getElementById('info').offsetHeight + document.getElementById('infoheader').offsetHeight+0;
     $('#infobox_').addClass('active').css('bottom', h);
-};
+}
 
 function togglemin(e) {
     if ($('#togbtn').hasClass('glyphicon-plus')) {} else {
         $('#togbtn').attr('class', 'glyphicon glyphicon-plus InfoTgl');
-    };
+    }
     $('#infobox_').css('bottom', 0).removeClass('active');
-};
+}
 
 $(".InfoTgl").click(function () {
     if ($('#infobox_').hasClass('active')) {
         togglemin();
     } else {
         toggleinfo();
-    };
+    }
 });
 $('#mobileInfo_modal').on('hide.bs.modal',function(){
             resetHighlight();
@@ -414,7 +412,7 @@ function contentPush(header, content, featureName, featureClass, featureIcon){
     }
     toggleinfo();
     activateTooltip();            
-};
+}
 
 //zoom to polygon feature
 function zoomToFeature(e) {
@@ -470,7 +468,7 @@ function resetHighlight(){
     }
     resetIconhighlights();
 
-};
+}
 
 //hack to remove highlight from markers
 function resetIconhighlights(){
@@ -492,7 +490,7 @@ function resetIconhighlights(){
     }else{
         //do nothing
     }
-};
+}
 
 function resetInfoWindow (){
         $('#togbtn').addClass('hide');
@@ -598,7 +596,7 @@ $('.panel-group.legend').find('.checked_all').attr('data-toggle', 'tooltip').att
 
         if (!isActive || (isActive && e.keyCode == 27)) {
             if (e.which == 27) $parent.find(toggle).trigger('focus');
-            return $this.trigger('click')
+            return $this.trigger('click');
         }
 
         var desc = ' li:not(.divider):visible a';
@@ -613,7 +611,7 @@ $('.panel-group.legend').find('.checked_all').attr('data-toggle', 'tooltip').att
         if (e.keyCode == 40 && index < $items.length - 1) index++;                        // down
         if (!~index)                                      index = 0;
 
-        $items.eq(index).trigger('focus')
+        $items.eq(index).trigger('focus');
     };
 
     proto.change = function (e) {

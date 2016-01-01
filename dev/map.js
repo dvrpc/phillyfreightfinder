@@ -26,7 +26,7 @@ var map, map2, countySearch = [],
     mcountyPrint = [];
 //countyMap
 //county maps
-var Stamen_TonerBackground = L.tileLayer('http://{s}.tile.stamen.com/toner-background/{z}/{x}/{y}.png', {
+/*var Stamen_TonerBackground = L.tileLayer('http://{s}.tile.stamen.com/toner-background/{z}/{x}/{y}.png', {
     attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
     subdomains: 'abcd',
     opacity: 0.0
@@ -62,7 +62,7 @@ $.getJSON("data/county5k.js", function(data) {
     mcounty.addData(data);
 }).complete(function() {
     countymap.fitBounds(mcounty.getBounds());
-});
+});*/
 
     //declare basemaps
     // Basemap Layers
@@ -84,7 +84,7 @@ $.getJSON("data/county5k.js", function(data) {
         minZoom: zLevel,
         zoomControl: false,
         layers: [CartoDB_Positron]
-    })/*.setView([oLat, oLng], zLevel)*/;
+    }).setView([oLat, oLng], zLevel);
 
     //add Layer Control to map
     var baseLayers = {
@@ -93,6 +93,9 @@ $.getJSON("data/county5k.js", function(data) {
     };
     L.control.layers(baseLayers).addTo(map);
 
+    //load legend elements
+    $('.panelinfo').addClass('dynico dynico-info');
+    
     
 
     //advanced handling of street labels
@@ -122,7 +125,7 @@ $.getJSON("data/county5k.js", function(data) {
         };
     });
     // Static DVRPC Layers
-    var counties = L.geoJson(null, {
+   /* var counties = L.geoJson(null, {
         style: function(feature) {
             return {
                 color: "white",
@@ -146,6 +149,7 @@ $.getJSON("data/county5k.js", function(data) {
         map.fitBounds(counties.getBounds());
     });
     (counties).addTo(map);
+    alert(counties.getBounds());*/
 
 
 ///////////////////////////////////////////////////////////////////
@@ -891,7 +895,7 @@ var commicon = L.OpenFreightMarkers.icon({
 
     //map.setMaxBounds(counties.getBounds());
     //add layers in groups by order
-    countymap.addLayer(mcounty);
+    //countymap.addLayer(mcounty);
     
 
     var FCintergroup = new L.FeatureGroup([FCinterpt, FCinterpoly]);
@@ -953,7 +957,7 @@ var commicon = L.OpenFreightMarkers.icon({
             $e2 = $('#searchhome');
         var e1 = $e1[0],
             e2 = $e2[0];
-        var countyBH = new Bloodhound({
+        /*var countyBH = new Bloodhound({
             name: "Counties",
             datumTokenizer: function(d) {
                 return Bloodhound.tokenizers.whitespace(d.name);
@@ -961,7 +965,7 @@ var commicon = L.OpenFreightMarkers.icon({
             queryTokenizer: Bloodhound.tokenizers.whitespace,
             local: countySearch,
             limit: 10
-        });
+        });*/
         var hwysBH = new Bloodhound({
             name: "Highways",
             datumTokenizer: function(d) {
@@ -1155,7 +1159,7 @@ var commicon = L.OpenFreightMarkers.icon({
             },
             limit: 10
         });
-        countyBH.initialize();
+        //countyBH.initialize();
         hwysBH.initialize();
         parkingBH.initialize();
         hwyBridgeBH.initialize();
@@ -1181,14 +1185,14 @@ var commicon = L.OpenFreightMarkers.icon({
             highlight: true,
             hint: false
         }, {
-            //$("#searchbox").typeahead([{
+        /*    //$("#searchbox").typeahead([{
             name: "Counties",
             displayKey: "name",
             source: countyBH.ttAdapter(),
             templates: {
                 header: "<h5 class='typeahead-header'>County</h5>"
             }
-        }, {
+        }, {*/
             name: "Highways",
             displayKey: "name",
             source: hwysBH.ttAdapter(),
@@ -1534,26 +1538,28 @@ var commicon = L.OpenFreightMarkers.icon({
         $(".twitter-typeahead").css("position", "static");
         $(".twitter-typeahead").css("display", "block");
     }
+
 function renderLayers(){
     var layers = [];
     $('input:checkbox[name="LayerCont"]').each(function () {
-                    // Remove all overlay layers
-                    map.removeLayer(window[$(this).attr('id')]);
-                    if ($('#' + $(this).attr('id')).is(':checked')) {
-                        // Add checked layers to array for sorting
-                        layers.push({
-                            'z-index': $(this).attr('z-index'),
-                            'layer': $(this)
-                        });
-                    }
-                    
-                }); 
-                var orderedLayers = sortByKey(layers, 'z-index');
-                     // Loop through ordered layers array and add to map in correct order
-                    $.each(orderedLayers, function () {
-                        map.addLayer(window[$(this)[0].layer[0].id]);
+        // Remove all overlay layers
+        map.removeLayer(window[$(this).attr('id')]);
+        if ($('#' + $(this).attr('id')).is(':checked')) {
+            // Add checked layers to array for sorting
+            layers.push({
+                'z-index': $(this).attr('z-index'),
+                'layer': $(this)
             });
+        }
+        
+    }); 
+    var orderedLayers = sortByKey(layers, 'z-index');
+         // Loop through ordered layers array and add to map in correct order
+        $.each(orderedLayers, function () {
+            map.addLayer(window[$(this)[0].layer[0].id]);
+    });
 }
+
 function loadLayers (){
     var mapLoad = $('#mapLoad').val();
         if(mapLoad === 'false'){
@@ -1668,12 +1674,9 @@ function loadLayers (){
         $.getJSON("data/goodneighbor.js", function(data) {
             fgneighbor.addData(data);
         });
-        $('.panelinfo').addClass('dynico dynico-info');
+        
         //set checkbox status
-        
-        $('input#mapLoad').attr('value', 'true');
-        
-     $('.legPanel').each(function(){
+        $('.legPanel').each(function(){
             var loadall = $(this).find('input.layer').length;
             var loadchecked = $(this).find('input.layer:checked').length;
             if (loadall == loadchecked) {
@@ -1687,12 +1690,16 @@ function loadLayers (){
                 if (cbo > 0){
                     $(this).find('input.layer:checked').siblings('.dynacheck').find('.legend-check').html('<i class="dynico dynico-check-square-o"></i>');
                 }
-            });
+        });
+        $('input#mapLoad').attr('value', 'true');
+        
+    
      //renderLayers
-     renderLayers();
+     //renderLayers();
      //re-render layers (hack to ordering based on load delay)
-     setTimeout(function() { renderLayers();loadSearchBar();}, 3500);
-     setTimeout(function() { renderLayers();loadSearchBar(); }, 5500);
+     setTimeout(function() { renderLayers();loadSearchBar();}, 500);
+     //setTimeout(function() { renderLayers();loadSearchBar();}, 3500);
+     //setTimeout(function() { renderLayers();loadSearchBar(); }, 5500);
     }
     
 }

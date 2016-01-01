@@ -4,9 +4,8 @@ html,body,#sidebar,#container {
 }
 body {
     font-size: 13px;
-    padding-top: 50px;
     font-family: 'Open Sans', sans-serif;
-    overflow-y: hidden;
+    overflow-y: scroll;
 }
 p {
     font-family: 'Open Sans', sans-serif;
@@ -147,7 +146,9 @@ a:hover, .footer_btn:hover {
 .input-group-addon, .panel-group .panel, .form-control, .panel, .panel-heading, .btn, .btn-group-sm>.btn, .btn-sm, .dropdown-menu{
     border-radius:0px;
 }
-
+.modal-backdrop{
+    z-index:1049;
+}
 
 /*--------------------------------------------------------*/
 /*--------  Navigation Bar Styles  -----------------------*/
@@ -155,12 +156,12 @@ a:hover, .footer_btn:hover {
 .pffheader {
     /*background-image: url('images/headerStripe.png');*/
     background-color: #396ab2!important;
+    z-index:1049;
 
 }
 .brand-leader{
     background-color: #312867;
-    height: 54px;
-    
+    height: 54px;  
 }
 .brand-left-offset{
     margin-left: -15px;
@@ -191,8 +192,8 @@ a:hover, .footer_btn:hover {
     font-size: 22px;
     color: white;
     white-space: nowrap;
-    padding: 0px!important;
-        }
+    padding: 0 0 0 0!important;
+}
 .dvrpc-logo{display:inline-block;
                 }
 .dvrpc-pff{display:inline-block;
@@ -238,7 +239,7 @@ a:hover, .footer_btn:hover {
 }
 #search-panel{
     position:absolute;
-    z-index: 2000;
+    z-index: 1048;
     top: 70px;
     
 }
@@ -310,7 +311,7 @@ a:hover, .footer_btn:hover {
 /*--------  Side Bar/Legend Styles  ----------------------*/
 /*--------------------------------------------------------*/
 #sidebar {
-    padding: 10px;
+    padding: 10px 10px;
     overflow: auto;
 }
 .panel-heading a:hover {
@@ -565,6 +566,7 @@ input[type=checkbox]:checked + label, input[type=checkbox]:checked + label > div
 /*--------------  Map  UI Styles   --------------*/
 /*-----------------------------------------------*/
 #mapDIV {
+    padding-top:72px;
     height: 100%;
     margin: 0;
     -webkit-box-shadow: 0 -1px 10px rgba(0,0,0,0.5);
@@ -611,19 +613,15 @@ input[type=checkbox]:checked + label, input[type=checkbox]:checked + label > div
     float:right;
 }
 .landing {
-    z-index: 1029;
-    width: 100%;
-    overflow-y: auto;
+    padding-top: 61px;
     display: block;
-    bottom: 34px;
-    position: absolute;
-    top: 50px;
     padding-bottom: 20px;
+    width: 100%;
+
 }
 .landing-content{
     color: #636363;
     display: block;
-    padding-top: 10px;
 }
 .landtab-content > .tab-pane {
     display: none;
@@ -648,7 +646,7 @@ input[type=checkbox]:checked + label, input[type=checkbox]:checked + label > div
 }
 .ocontent {
     padding-bottom: 40px !important;
-    padding-top: 12px!important;
+    padding-top: 62px;
 }
 
 
@@ -786,7 +784,7 @@ input[type=checkbox]:checked + label, input[type=checkbox]:checked + label > div
     position: absolute;
     top: 0;
     left: 0;
-    z-index: 2000;
+    z-index: 1950;
 }
 
 /* PAGER */
@@ -937,7 +935,7 @@ ul.bxslider{
         }
 
 /*PFF Landing Page Styles */
-            .pfflanding{z-index: 1029;
+           /* .pfflanding{z-index: 1029;
                 display: block;
                 position: absolute;
                 background-color: #efefef!important;
@@ -945,7 +943,7 @@ ul.bxslider{
                 top: 64px;
                 bottom:34px;
                 overflow-y:auto;
-            }
+            }*/
             #homewidget .tt-dropdown-menu{max-height:180px!important;
             }
             .homepagefooter{
@@ -954,7 +952,7 @@ ul.bxslider{
                 font-size: .8em;
                 position: absolute;
                 bottom: 0px;
-                z-index: 2004;
+                z-index: 1040;
                 background-color: #ddd;
                 text-align: center;
                 border-top: 1px solid #312867;
@@ -988,7 +986,7 @@ ul.bxslider{
                 position: relative;
                 top: 220px;
                 left: 5px;
-                z-index: 2000;
+                z-index: 1040;
                 font-size: 1.2em;
                 font-weight: bold;}
             .ddata{ 
@@ -1013,7 +1011,7 @@ ul.bxslider{
                 padding: 6px;
                 margin-left: 20px;
                 position: absolute;
-                z-index: 100000;
+                z-index: 1040;
                 cursor: pointer;
                 margin-bottom:-40px;
             }
@@ -1027,7 +1025,7 @@ ul.bxslider{
               padding: 12px;
               background: rgba(49, 40, 103, 0.8);
               color: #fff;
-              z-index:6000;
+              z-index:1040;
               border-radius: 2px;
               text-align:center;
             }
@@ -1169,7 +1167,7 @@ ul.bxslider{
                     text-align: center;
                     color: #999;
                     font-size: 22px;
-                    z-index: 3500;
+                    z-index: 1040;
             }
             .page_loader i{
                 font-size:30px;
@@ -1949,7 +1947,7 @@ p#subtitle {
 
 #tradeFilters{
     height: 40px;
-    z-index: 2000;
+    z-index: 1045;
     position: relative;
 }
 
@@ -3258,7 +3256,7 @@ path.county_outlines{
     left: 0;
     bottom: 0;
     background-color: rgba(255, 255, 255, 0.64);
-    z-index: 1200;
+    z-index: 1049;
     transition: all .3s ease-out;
 }
 #c-explore-emphasis{
