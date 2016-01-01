@@ -356,7 +356,7 @@ $(function() {
                     var labelVar = 'year';
 
                     var l = new Date();
-                    var thisYear = l.getFullYear();
+                    var thisYear = 2015;
 
                     var varNames = ['swt_export', 'swt_import', 'domestic'];
 

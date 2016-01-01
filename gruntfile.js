@@ -104,6 +104,12 @@ module.exports = function(grunt){
 					dest: './html/includes/',
 					src: ['**']
 				},
+				modals: {
+					expand: true,
+					cwd: 'modals/',
+					dest: './html/modals/',
+					src: ['**']
+				},
 				data: {
 					expand: true,
 					cwd: 'data/',
