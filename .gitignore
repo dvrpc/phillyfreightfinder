@@ -1,5 +1,4 @@
-html/*
-lib/*
+html
 lib
 node_modules
 *.cache
