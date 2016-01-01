@@ -88,8 +88,14 @@ module.exports = function(grunt){
 				corefonts: {
 					expand: true,
 					cwd: 'dev/core/fonts/',
-					dest: 'lib/fonts/',
+					dest: './lib/fonts/',
 					src: '**'
+				},
+				images:{
+					expand: true,
+					cwd: 'dev/images/',
+					dest: './lib/images/',
+					src: ['**']
 				},
 				lib: {
 					expand: true,
@@ -147,6 +153,8 @@ module.exports = function(grunt){
       		}
 		},
 
+
+
 		imagemin:{
 			png:{
 				options:{
@@ -194,9 +202,12 @@ module.exports = function(grunt){
     });
 
     grunt.registerTask('default', ['concat', 'uglify', 'cssmin', 'clean']);
-    grunt.registerTask('publish', ['default', 'imagemin', 'copy']);
+    grunt.registerTask('publish', ['default', 'imagemin', 'copy-noImages']);
+    grunt.registerTask('quickPublish', ['default', 'copy']);
     grunt.registerTask('updatecss', ['cssmin']);
     grunt.registerTask('updatejs', ['concat', 'uglify', 'clean']);
     grunt.registerTask('imageUpdates', ['imagemin']);
     grunt.registerTask('start', ['express', 'watch']);
+    grunt.registerTask('copy-all', ['copy']);
+    grunt.registerTask('copy-noImages', ['copy:corefonts', 'copy:lib', 'copy:includes', 'copy:modals', 'copy:data', 'copy:index']);
 };
