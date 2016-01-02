@@ -26,7 +26,8 @@ $.fn.capitalize = function () {
     });
     return this;
 };
-
+//store global tab variable
+var current_tab;
 
 //stop button from remaining selected
 
@@ -38,7 +39,7 @@ function setMap(){
             loadLayers(); 
             map.invalidateSize(); 
             resetHighlight();
-            resetInfoWindow ();
+            resetInfoWindow();
             //setTimeout(function() {$("#loading").hide();}, 300);
         });  
 }
@@ -50,6 +51,8 @@ function loadScript(id){
 $(function() {
   // Javascript to enable link to tab
   var url = document.location.toString();
+  var windowHeight = $(window).height() - 250;
+            
   if (url.match('#')) {
     var full_hash = url.split('#')[1].split('/');
     var tab_id = full_hash[0];
@@ -61,11 +64,14 @@ $(function() {
             $('#'+ tab_id).load('includes/'+ tab_id + '.html', loadScript(tab_id));
             tab_status[tab_id] = true; 
         }
+        $('#pFFlanding').css('min-height', windowHeight + 'px');
+        $('.content-footer').fadeIn('slow');
     }else {
         setMap();
    }
   }else {
     $('#home').show();
+    $('#pFFlanding').css('min-height', windowHeight + 'px');
   }
   // Change hash for page-reload
   $('a[data-toggle="tab"]').on('show.bs.tab', function (e) {
@@ -78,26 +84,29 @@ function getLocationHash () {
     locations = hashLocation.split('/');
   return locations[0];
 }
+
 //create navigation of content based on hash changes for self contained app
 $(window).bind('hashchange', function() {
     var tab_id = getLocationHash();
-    if(tab_id === 'map?search'){
-        $('#search-panel').fadeIn('fast');
-        location.hash = '#map';
-    }else if (tab_id != 'map') {
-    	$('.mapUI').fadeOut('fast', 'easeOutQuad' , function (){
-            $('.landingUI').fadeIn('fast', 'easeInQuad' );
-        });
-        if(tab_status[tab_id] === false){
-                $('#'+ tab_id).load('includes/'+ tab_id + '.html', loadScript(tab_id));
-                tab_status[tab_id] = true;
-            }
-        $('.landtab-content > .tab-pane').hide();
-        $("#pFFlanding").animate({ scrollTop: 0 }, 50);
-        $('#' + tab_id).show();          
-    }else{ 
-       setMap();
-    }
+        if(tab_id === 'map?search'){
+            $('#search-panel').fadeIn('fast');
+            location.hash = '#map';
+        }else if (tab_id != 'map') {
+        	$('.mapUI').fadeOut('fast', 'easeOutQuad' , function (){
+                $('.landingUI').fadeIn('fast', 'easeInQuad' );
+            });
+            if(tab_status[tab_id] === false){
+                    $('#'+ tab_id).load('includes/'+ tab_id + '.html', loadScript(tab_id));
+                    tab_status[tab_id] = true;
+                }
+            $('.landtab-content > .tab-pane').hide();  
+            var windowHeight = $(window).height() - 250;
+            $('#pFFlanding').css('min-height', windowHeight + 'px');
+            $('#' + tab_id).show();  
+            $('body, html, #pFFlanding').scrollTop(0);            
+        }else{ 
+           setMap();
+        }
     
 });
 

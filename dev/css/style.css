@@ -613,15 +613,16 @@ input[type=checkbox]:checked + label, input[type=checkbox]:checked + label > div
     float:right;
 }
 .landing {
-    padding-top: 61px;
+    
     display: block;
-    padding-bottom: 20px;
+    padding-bottom: 50px;
     width: 100%;
-
 }
 .landing-content{
+    margin-top: 61px;
     color: #636363;
     display: block;
+    min-height:100px;
 }
 .landtab-content > .tab-pane {
     display: none;
@@ -648,8 +649,41 @@ input[type=checkbox]:checked + label, input[type=checkbox]:checked + label > div
     padding-bottom: 40px !important;
     padding-top: 62px;
 }
-
-
+.content-footer{
+    color:#efefef;
+    padding: 30px 0px;
+    min-height: 200px;
+    background-color: #312867;
+    margin-top: 50px;
+    font-size:12px;
+}
+.content-footer h4, .content-footer p{color:#efefef;}
+.content-footer h4{
+    font-weight: 200;
+    margin-top: 14px;
+    margin-bottom: 26px;
+}
+.content-footer i{
+    font-size:9px;
+    top:0px;
+}
+.footer-logo{
+    margin-bottom:20px;
+}
+.content-footer a{
+    color: #efefef;
+    text-decoration: underline;
+}
+.content-footer a:hover{
+    color:#ffffff;
+}
+ul.footer-links{
+    list-style: none;
+    padding-left:0px;
+}
+ul.footer-links li{
+    padding-bottom:5px;
+}
 /*-----------------------------------------------*/
 /*--------------   Footer Styles   --------------*/
 /*-----------------------------------------------*/
