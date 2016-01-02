@@ -3294,7 +3294,7 @@ path.county_outlines{
     transition: all .3s ease-out;
 }
 #c-explore-emphasis{
-    z-index: 3500; 
+    z-index: 1045; 
     margin-top:20px;
     position: relative;
     height:111px;
@@ -3319,7 +3319,7 @@ path.county_outlines{
 }
 
 #c-explorer-block{
-    z-index: 3600;
+    z-index: 1045;
     height: 111px;
     width: 100%;
     position: relative;
