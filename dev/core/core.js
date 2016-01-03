@@ -183,7 +183,7 @@ $(document).ready(function () {
                     $element.children().attr('class', 'chkicon dynico dynico-check-square-o');
                     $(listPanel).siblings('.checkbox').children('input').prop('checked', true).change();
                     $(listPanel).val('false');
-                    $("#loading").fadeOut(150);
+                    $("#loadingtm").fadeOut(150);
                 });
             } else {
                 $element.children().attr('class', 'chkicon dynico dynico-square-o');
@@ -193,7 +193,7 @@ $(document).ready(function () {
 
      });
     function loadBar(){
-        return $("#loading").show().delay(100).promise();
+        return $("#loadingtm").show().delay(100).promise();
     }
 });
 
@@ -203,7 +203,7 @@ $('input:checkbox[name="LayerCont"]').on('change', function () {
     var layers = [];
 
     if ($('#' + $(this).attr('id')).is(':checked')) {
-        $("#loading").show();
+        $("#loadingtm").show();
         $('input:checkbox[name="LayerCont"]').each(function () {
             // Remove all overlay layers
             map.removeLayer(window[$(this).attr('id')]);
@@ -221,7 +221,7 @@ $('input:checkbox[name="LayerCont"]').on('change', function () {
         $.each(orderedLayers, function () {
             map.addLayer(window[$(this)[0].layer[0].id]);
         });
-        $("#loading").delay(100).fadeOut(150);
+        $("#loadingtm").delay(100).fadeOut(150);
     } else {
         // Simply remove unchecked layers
         map.removeLayer(window[$(this).attr('id')]);
@@ -303,7 +303,7 @@ $('#mobileInfo_modal').on('hide.bs.modal',function(){
 ///On load loading bar functionality
 $( document ).ajaxStop(function() {
     setTimeout(function() {
-              $("#loading").hide();
+              $("#loadingtm").hide();
             }, 300);
 
 });
