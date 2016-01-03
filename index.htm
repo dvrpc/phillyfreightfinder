@@ -94,8 +94,13 @@
                 #infobox_ {
                     right:10px;
                 }
+                .page-title h1 {
+                    font-size: 18px;    
+                }
             }
+
             @media (max-width: 376px){
+
                 .infowrap{
                     padding:20px;
                     height:auto;
@@ -144,19 +149,19 @@
                     <ul id='landing' class="nav navbar-nav">
                         <li><a href="#home" data-toggle="collapse" data-target=".navbar-collapse.in"><i class="dynico dynico-home"></i>&nbsp;&nbsp;Home</a></li>
                         <li class="dropdown">
-                            <a id="ToolsDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"><i class="dynico dynico-dvrpc"></i>&nbsp;&nbsp;Tools <b class="caret"></b></a>
+                            <a id="AboutDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"><i class="dynico dynico-dvrpc"></i>&nbsp;&nbsp;About <b class="caret"></b></a>
                                 <ul class="dropdown-menu" role="menu">
-                                    <li><a href="#region" data-toggle="collapse" data-target=".navbar-collapse.in"><i class="dynico dynico-dvrpc"></i>&nbsp;&nbsp;County Profile Tool</a></li>
-                                    <li><a href="#maritime-indicators" class='landingLink' data-tab='maritime-indicators' data-toggle="collapse" data-target=".navbar-collapse.in"><i class="dynico dynico-layers"></i>&nbsp;&nbsp;Maritime Indicators</a></li>
-                                    <li><a href="#highway-performance" class='landingLink' data-tab='highway-performance' data-toggle="collapse" data-target=".navbar-collapse.in"><i class="dynico dynico-layers"></i>&nbsp;&nbsp;Highway Performance</a></li>
+                                    <li><a href="#planning" class='landingLink' data-toggle="collapse" data-target=".navbar-collapse.in">Freight Planning</a></li>
+                                    <li><a href="#data" class='landingLink' data-toggle="collapse" data-target=".navbar-collapse.in">Our Data</a></li>
+                                    <li><a href="#open-freight-app" class='landingLink' data-toggle="collapse" data-target=".navbar-collapse.in">Open Freight App</a></li>
                                 </ul>
                         </li>
                         <li class="dropdown">
-                            <a id="AboutDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"><i class="dynico dynico-compass"></i>&nbsp;&nbsp;About <b class="caret"></b></a>
+                            <a id="ToolsDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"><i class="dynico dynico-compass"></i>&nbsp;&nbsp;Tools <b class="caret"></b></a>
                                 <ul class="dropdown-menu" role="menu">
-                                    <li><a href="#planning" class='landingLink' data-tab='PhillyFreightFinder' data-toggle="collapse" data-target=".navbar-collapse.in"><i class="dynico dynico-compass"></i>&nbsp;&nbsp;Freight Planning</a></li>
-                                    <li><a href="#data" class='landingLink' data-tab='data' data-toggle="collapse" data-target=".navbar-collapse.in"><i class="dynico dynico-layers"></i>&nbsp;&nbsp;Our Data</a></li>
-                                    
+                                    <li><a href="#region" data-toggle="collapse" data-target=".navbar-collapse.in">County Profile Tool</a></li>
+                                    <li><a href="#maritime-indicators" class='landingLink' data-tab='maritime-indicators' data-toggle="collapse" data-target=".navbar-collapse.in">Maritime Indicators</a></li>
+                                    <li><a href="#highway-performance" class='landingLink' data-tab='highway-performance' data-toggle="collapse" data-target=".navbar-collapse.in">Highway Performance</a></li>
                                 </ul>
                         </li>
                         <li id='maplink' class='landingUI'><a href="#map" data-tab='map' data-toggle="collapse" data-target=".navbar-collapse.in"><i class="dynico dynico-map"></i>&nbsp;&nbsp;View Map</a></li>
@@ -1017,6 +1022,7 @@
                     </div>
                     <div class='clearfix'></div>
                 </section>  
+                
                 <!-- licenses -->
                 <section id ='license' class='tab-pane landing-content'>
                     <div class='page-title center-block col-lg-12'>
@@ -1051,6 +1057,7 @@
                     </div>
                     <div class='clearfix'></div>
                 </section>
+
                 <!-- data disclaimer -->
                 <section id ='disclaimer' class='tab-pane landing-content'>
                     <div class='page-title center-block col-lg-12'>
@@ -1077,6 +1084,41 @@
                     <div class='clearfix'></div>
                 </section>
 
+                <!-- open freight app -->
+                <section id ='open-freight-app' class='tab-pane landing-content'>
+                    <div class='page-title center-block col-lg-12'>
+                        <div class='center-block col-lg-10 col-sm-12' style='float:none;'>
+                            <h1>Open Freight App</h1>
+                        </div>
+                    </div>
+                    <div class='center-block col-lg-10 col-sm-12' style='float:none;'>
+                        <div class='col-md-7 content'>
+                                <p>Open Freight App is a project by the Delaware Valley Regional Planning Commission (DVRPC) to share with regional and national transportation planning partners the framework that is the basis for the <a href="http://www.dvrpc.org/webmaps/phillyfreightfinder/" target="_blank">PhillyFreightFinder</a> web mapping and data application. Through this effort, DVRPC hopes that county planning agencies, metropolitan planning organizations and state departments of transportation, and economic development agencies can leverage this framework to further their efforts in making freight transportation data public. By utilizing the Open Freight App framework, rather than building from scratch, planning agencies can focus their time and resources on the development of data sets that can serve to improve the access to information on freight facilities and their role in economic development and transportation across the country. Open Freight App would serve as a self-hosted solution to offer these datasets to other planners, economic developers, public officials, decision-makers and the general public.</p>
+                            <h4>Details</h4>
+                                <p>Open Freight App, is a white-label, open source version of the DVRPC <a href="http://www.dvrpc.org/webmaps/phillyfreightfinder/" target="_blank">PhillyFreightFinder</a> application. This version is available for download and open for replication by any user. This version will have no branding or color styling applied and a standardized icon set will be provided for a sample set of data. In addition, the project will include the following:</p>
+                                <ul>
+                                    <li>Full documentation and guide on:
+                                        <ul>
+                                            <li>Adding map functionality for layers and features</li>
+                                            <li>Creating info windows for feature data</li>
+                                            <li>Creating and modifying legend and layer controls</li>
+                                            <li>Populating search criteria</li>
+                                            <li>Converting ArcGIS Shapefiles to lightweight GeoJSONs for use in the map</li>
+                                            <li>and more!</li>
+                                        </ul>
+                                    <li>Fully commented versions of all necessary HTML, JavaScript and CSS files</li>
+                                    <li>A starter set of freight facility icons</li>
+                                    <li>License and credit materials</li>
+                                </ul>
+                                <p><em>Advanced coding support is not included with this product. While staff at DVRPC can field general questions and assist with certain aspects of the project, formal support in the form of coding, styling, graphic design and advanced development must be done by an outside consultant. If you require more advanced support <a href="mailto:mruane@dvrpc.org">please contact us for more information</a>.</em></p>
+
+                        </div> 
+                        <div class='col-md-5'>
+                            <a href="https://github.com/DVRPCfreight/open-freight-app/" target="_blank"><button type="button" class="btn btn-primary btn-lg" ><i class="dynico dynico-github"></i>&nbsp;&nbsp;View Project on GitHub</button></a><br/><br/>
+                        </div>
+                    </div>
+                    <div class='clearfix'></div>
+                </section>
 
 
               
@@ -1094,7 +1136,7 @@
                             <ul class="footer-links">
                                 <li><a href="#planning">DVRPC Freight Planning</a></li>
                                 <li><a href="#data">Our Data</a></li>
-                                <li><a href="#">Open Freight App</a></li>
+                                <li><a href="#open-freight-app">Open Freight App</a></li>
                             </ul>
 
                         </div>

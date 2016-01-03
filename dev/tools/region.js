@@ -2,6 +2,36 @@ $(function() {
 	//hack to fix the load sequence of rendered HTML
 	executeOnLoad("c-region-nav", load_region);
 
+
+	//declare all values for DOM element sizing and rendering of SVGs
+	var ww = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth, 
+		navigation_width, explorer, ct_width, explorer_shift;
+	
+	if(ww >= 1200){ //if col-lg
+		navigation_width = ((ww - 30) * 0.8333333 - 480) / 5;
+		explorer_shift = 100;
+		explorer = ((ww - 30) * 0.8333333 - 30) * 0.5 - 15;
+		ct_width = ((ww - 30) * 0.8333333 - 30) * 0.5 - 15;
+	}else if(ww < 1200 && ww >= 992 ){ //if col-md
+		navigation_width = (ww - 510) / 5;
+		explorer_shift = 100;
+		explorer = (ww - 60) * 0.5 - 15;
+		ct_width = (ww - 60) * 0.5 - 15;
+	}else if(ww < 992 && ww >= 768){ //if col-sm
+		navigation_width = (ww - 60) / 4.3;
+		explorer_shift = 0;
+		explorer = (ww - 60);
+		ct_width = (ww - 60) * 0.5833333333 - 15;
+	}else{//if col-xs
+		navigation_width = (ww - 60) / 4.3;
+		explorer_shift = 0;
+		explorer = (ww - 60);
+		ct_width = (ww - 60);
+	}
+
+	var	line_width = ((navigation_width / 2) * 3) + 18;
+
+
 function load_region(){
 	//****************************
 	// preset variables
@@ -14,10 +44,12 @@ function load_region(){
 		county = 'none', 
 		target = 'network',
 		dt_width = $('#content').width(), 
-		singleComm, bLabel, commItem, circle_scaler, offset, county_data, explorer, county_ref,
+		singleComm, bLabel, commItem, circle_scaler, offset, county_data, county_ref,
 		numText = {0:'zero',1:'one',2:'two',3:'three',4:'four',5:'five',6:'six',7:'seven'},
 		projection = d3.geo.albersUsa().scale(900).translate([dt_width, 430 / 2]);
-		
+
+	if(ww < 992){$('#c-region-nav').css({'top':'57px', 'left': '-10px'});}
+
 	var tabs = {'region':'Overview','network':'Network','freight_centers':'Freight Centers','domestic_trade':'Domestic Trade Patterns'},
 		inverse_tabs = {'Network':'network','Freight Centers':'freight_centers','Domestic Trade':'domestic_trade'},
 		countyCodes = {'bucks':42017,'burlington':34005,'camden':34007,'gloucester':34015,'mercer':34021,'chester':42029,'delaware':42045,'montgomery':42091,'philadelphia':42101};
@@ -39,13 +71,13 @@ function load_region(){
 	
 	// calculate the size of the title header
 	$('.loading_panel').html('').html('<div class="spin-item"><div class="item-inner"><div class="item-loader-container"><div class="la-ball-spin-clockwise la-2x"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div></div></div>');
+	
 
-	var navigaiton_width = ($('#c-region-title').width() - 450)/5;
-		line_width = ((navigaiton_width / 2) * 3) + 18;
-	$('.c-step-item').css('width', navigaiton_width+'px');
-	$('.c-step-line').css('width', navigaiton_width*2+'px').css('transform','translate('+ line_width +'px, 0)');
+	
+	$('.c-step-item').css('width', navigation_width+'px');
+	$('.c-step-line').css('width', navigation_width*2+'px').css('transform','translate('+ line_width +'px, 0)');
 
-
+	$('#c-region-nav').fadeIn('slow');
 	//******************************
 	// launch initial page
 	var url = document.location.toString();
@@ -57,7 +89,6 @@ function load_region(){
 				$('#c-region').fadeIn();
 				$('#c-name').html('DVRPC Region');
 				$('#c-tab').html('Overview');
-				explorer = $('#c-explore-emphasis').width();
 				$('#c-explore-emphasis').css('width',explorer+'px');
 				buildCountyMap();
 				$('#c-explorer-block').fadeOut('slow');
@@ -65,8 +96,7 @@ function load_region(){
 		}
 
 	function buildCountyMap(){
-		var ct_width = $('#c-map-wrapper').width(),
-			ct_height = 420 ;
+		var ct_height = 420;
 		if ($('#c-region-map').length === 0) {
 			d3.json('data/county_10k.js', function(county5k) {
 				//county_data = county5k;
@@ -308,7 +338,7 @@ function load_region(){
 	
 	//explorer panel effects
 	$(document.body).on('mouseover', '#c-explore-emphasis',function(){
-		$('#c-explore-emphasis').css('width', explorer+100+'px');	
+		$('#c-explore-emphasis').css('width', explorer+ explorer_shift +'px');	
 	});
 	$(document.body).on('mouseout', '#c-explore-emphasis',function(){
 		$('#c-explore-emphasis').css('width', explorer+'px');	
