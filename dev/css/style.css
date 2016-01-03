@@ -2583,6 +2583,7 @@ inverse .navbar-nav .open > .dropdown-menu > .dropdown-submenu.open > a:before {
     font-size: 31px;
     line-height:62px;
 }
+
 .mi-icons > .glyphicon-circle-arrow-up{
     color:#6CB545;
 }
@@ -2628,6 +2629,24 @@ inverse .navbar-nav .open > .dropdown-menu > .dropdown-submenu.open > a:before {
 }
 .mi-center{
     text-align:center!important;
+}
+.mi-no-data{
+    font-weight: 600;
+    font-size: 1.1em;
+    text-align: center; 
+}
+.mi-upper-total .mi-no-data{
+    padding-top: 20px;
+}
+.mi-upper-rank .mi-no-data{
+    padding-top:15px;
+}
+.mi-export-wrapper .mi-no-data{
+    padding-top:40px;
+}
+#mi-shipChange-nd{ 
+    text-align: center;
+    margin-top: 15px;
 }
 #mi-rank-icon{
     line-height: 55px;
@@ -2710,6 +2729,12 @@ inverse .navbar-nav .open > .dropdown-menu > .dropdown-submenu.open > a:before {
     width:14px;
     border-radius:14px;
     margin-right:8px;
+}
+.mi-min{
+    height: 10px;
+    width: 10px;
+    margin-top: 3px;
+    margin-right:20px;
 }
 .mi-legend-swatch-large{
     float:left;
@@ -2891,7 +2916,9 @@ h4.panel-title a i:hover{
 #river path{
     fill: #CCCCCC;
 }
-
+.port circle, .port text{
+    cursor: pointer;
+}
 .port.mi-bulk-terminal circle {
     fill: #DE6A35;
 }
@@ -3292,7 +3319,7 @@ path.county_outlines{
     right: 0;
     left: 0;
     bottom: 0;
-    z-index: 1049;
+    z-index: 1048;
     transition: all .3s ease-out;
 }
 #loadingtm .spin-item{

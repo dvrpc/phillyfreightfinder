@@ -1,12 +1,11 @@
 $(function() {
-    console.log('maritime indicators loaded');
     var miYear, updateTradePanel, sizePorts;
     var packer = sm.packer();
     var ind_up = '<i class="glyphicon glyphicon-circle-arrow-up"></i>',
         ind_even = '<i class="glyphicon glyphicon-circle-arrow-right"></i>',
         ind_down = '<i class="glyphicon glyphicon-circle-arrow-down"></i>';
 
-    
+    var no_data_yr = 2014;
 
     // ********************************************
     // Open data sets
@@ -138,13 +137,21 @@ $(function() {
                         }
                     });
                 }
-                console.log('maritime indicators parsed');
                 addPortCircles(port_points, 3);
 
                 // *********************************************
                 // size port circles based on ship calls
 
                 function sizePorts(count_year) {
+                    if(count_year === 2003){
+                        $('#mi-vessel-icon').hide();
+                        $('#mi-shipChange-text').hide();
+                        $('#mi-shipChange-nd').show();
+                    }else{
+                         $('#mi-shipChange-nd').hide();
+                        $('#mi-vessel-icon').show();
+                        $('#mi-shipChange-text').show();
+                    }
                     var scaleRange = [],
                         minSize = [],
                         maxSize = [],
@@ -162,8 +169,7 @@ $(function() {
                         portScale = d3.scale.pow()
                         .exponent(0.8)
                         .domain([minSize, maxSize])
-                        .range([5, 19]);
-                            
+                        .range([5, 19]); 
 
                     // loop through data and size metros related to primary
                     for (var i = 0; i < port_data.length; i++) {
@@ -216,6 +222,7 @@ $(function() {
                     $('#mi-vessel-count').html(numeral(tc).format('0,0'));
                     var totalCallChange = ((tc - pc) / pc)*100;
                     $('#mi-vessel-percent').html((totalCallChange).toFixed(0) + '%');
+                    
                     if (totalCallChange > 5) {
                         $('#mi-vessel-icon').html(ind_up);
                     } else if (totalCallChange < -5) {
@@ -233,8 +240,12 @@ $(function() {
                             d3.select(this).classed("active", true);
                             var a = this.getAttribute('val'), p = this.getAttribute('prev'), n = this.getAttribute('name');
                             var portCallChange = ((a - p) / p)*100;
+                            if(isFinite(portCallChange)){
+                                $('#mi-vessel-percent').html((portCallChange).toFixed(0) + '%');
+                            }else{
+                                $('#mi-vessel-percent').html('&#8734;');
+                            }
                             $('#mi-vessel-count').html(numeral(a).format('0,0')); 
-                            $('#mi-vessel-percent').html((portCallChange).toFixed(0) + '%');
                             $('#mi-vessel-title').html(n);
                             if (portCallChange > 5) {
                                 $('#mi-vessel-icon').html(ind_up);
@@ -258,7 +269,41 @@ $(function() {
                                 $('#mi-vessel-icon').html(ind_even);
                             }    
                         });
-                    
+                    d3.selectAll('.port text')
+                        .on('mouseover', function(e) {
+                            var item = $(this).parent().children('circle');
+                            item.toggleClass("active");
+                            var a = item.attr('val'), p = item.attr('prev'), n = item.attr('name');
+                            var portCallChange = ((a - p) / p)*100;
+                            if(isFinite(portCallChange)){
+                                $('#mi-vessel-percent').html((portCallChange).toFixed(0) + '%');
+                            }else{
+                                $('#mi-vessel-percent').html('&#8734;');
+                            }
+                            $('#mi-vessel-count').html(numeral(a).format('0,0')); 
+                            $('#mi-vessel-title').html(n);
+                            if (portCallChange > 5) {
+                                $('#mi-vessel-icon').html(ind_up);
+                            } else if (portCallChange < -5) {
+                                $('#mi-vessel-icon').html(ind_down);
+                            } else {
+                                $('#mi-vessel-icon').html(ind_even);
+                            }
+                        })
+                        .on('mouseout', function(e) {
+                            var item = $(this).parent().children('circle');
+                            item.toggleClass("active");
+                            $('#mi-vessel-count').html(numeral(tc).format('0,0'));   
+                            $('#mi-vessel-percent').html((totalCallChange).toFixed(0) + '%'); 
+                            $('#mi-vessel-title').html('All DVRPC Terminals');
+                            if (totalCallChange > 5) {
+                                $('#mi-vessel-icon').html(ind_up);
+                            } else if (totalCallChange < -5) {
+                                $('#mi-vessel-icon').html(ind_down);
+                            } else {
+                                $('#mi-vessel-icon').html(ind_even);
+                            }    
+                        });
                 }
 
                 function portname(id){
@@ -649,6 +694,13 @@ $(function() {
                         return (value > 0) ? 'change' : 'change';
                     }
                     updateTradePanel = function(mYear) {
+                        if(mYear === no_data_yr){
+                            $('.mi-data').hide();
+                            $('.mi-no-data').show();
+                        }else{
+                            $('.mi-no-data').hide();
+                            $('.mi-data').show();
+                        }
                         $('#mi-export-graph').html('');
                         $('#mi-container-graph').html('');
                         $('.mi-activity-year').html(mYear);
