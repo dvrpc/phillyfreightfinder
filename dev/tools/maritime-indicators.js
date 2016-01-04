@@ -22,7 +22,7 @@ $(function() {
                     .attr('height', port_dia_height)
                     .attr('id', 'port_map');
 
-                var river = port_svg.append('g')
+                var mi_river = port_svg.append('g')
                     .attr('width', port_dia_width)
                     .attr('height', port_dia_height)
                     .attr('id', 'river');
@@ -43,7 +43,7 @@ $(function() {
 
                 dia_projection.scale(scale).translate(transl);
 
-                river.selectAll("path")
+                mi_river.selectAll("path")
                     .data(json.features)
                     .enter().append("path")
                     .attr("d", river_path);
