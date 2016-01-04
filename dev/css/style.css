@@ -197,7 +197,7 @@ a:hover, .footer_btn:hover {
     background-image: -o-linear-gradient(left, #312867, #396ab2);
     background-image: -webkit-gradient(linear, left top, right top, from(#312867), to(#396ab2));
     background-image: -webkit-linear-gradient(left, #312867, #396ab2);
-    background-image: linear-gradient(left, #312867, #396ab2);
+    background-image: linear-gradient(to right, #312867, #396ab2);
     /*--IE9 DOES NOT SUPPORT CSS3 GRADIENT BACKGROUNDS--*/
 
     font-weight: bold;

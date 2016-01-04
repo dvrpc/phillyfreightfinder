@@ -72,6 +72,7 @@ $(function() {
   }else {
     $('#home').show();
     $('#pFFlanding').css('min-height', windowHeight + 'px');
+    $('.content-footer').fadeIn('slow');
   }
   // Change hash for page-reload
   $('a[data-toggle="tab"]').on('show.bs.tab', function (e) {
