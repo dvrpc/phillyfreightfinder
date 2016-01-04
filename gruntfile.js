@@ -4,11 +4,11 @@ module.exports = function(grunt){
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
 
-       /* postcss: {
+       postcss: {
 		  options: {
 		    map: true,
 		    processors: [
-		      require('autoprefixer')({browsers: ['> 5%']})
+		      require('autoprefixer')({browsers: ['> 1% in US', 'last 3 versions', 'IE >= 8']})
 		    ]
 		  },
 		  dist: {
@@ -16,7 +16,6 @@ module.exports = function(grunt){
 		    dest: 'dev/css/style_auto.css'
 		  }
 		},
-*/
 
         concat: {  
         	options: {
@@ -73,7 +72,7 @@ module.exports = function(grunt){
 			         	'dev/css/tipsy.css',
 			         	'dev/vendor/flexslider.css',
 			         	'dev/css/nouislider.min.css',
-			         	'dev/css/style.css'
+			         	'dev/css/style_auto.css'
 			         ]
 			    }
 		  }
@@ -145,7 +144,7 @@ module.exports = function(grunt){
       		},
       		cssUpdate: {
       			files: ['dev/css/*.css'],
-      			tasks: ['cssmin']
+      			tasks: ['postcss', 'cssmin']
       		},
       		coreUpdate: {
       			files: ['dev/core/*.js', 'dev/actions.js', 'dev/map.js'],
@@ -201,10 +200,10 @@ module.exports = function(grunt){
 		}
     });
 
-    grunt.registerTask('default', ['concat', 'uglify', 'cssmin', 'clean']);
+    grunt.registerTask('default', ['concat', 'uglify', 'postcss', 'cssmin', 'clean']);
     grunt.registerTask('publish', ['default', 'imagemin', 'copy-noImages']);
     grunt.registerTask('quickPublish', ['default', 'copy']);
-    grunt.registerTask('updatecss', ['cssmin']);
+    grunt.registerTask('updatecss', ['postcss', 'cssmin']);
     grunt.registerTask('updatejs', ['concat', 'uglify', 'clean']);
     grunt.registerTask('imageUpdates', ['imagemin']);
     grunt.registerTask('start', ['express', 'watch']);
