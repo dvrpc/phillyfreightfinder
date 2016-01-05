@@ -426,7 +426,7 @@ function clkFreightCenter(e) {
 function clkairport(e) {
     initializeHL(e);
     var aclass;
-    header = '<p>(' + props.NAVID + ') ' + props.NAME + '</p>',
+    header = '<p>(' + props.PFF_ID + ') ' + props.NAME + '</p>',
     content = "<div id='baseInfo'>"
             +"<div class='datafield'>" + props.TYPE + "</div><div class='labelfield'>Type</div>"
             +"<div class='datafield'>" + props.OWNER + "</div><div class='labelfield'>Owner</div>"
@@ -458,7 +458,7 @@ function clkairport(e) {
 //heliports
 function clkheliport(e) {
     initializeHL(e);
-    header = '<p>(' + props.LOCATIONID + ") " +props.FACILITYNA + '</p>',
+    header = '<p>(' + props.PFF_ID + ") " +props.FACILITY + '</p>',
     content = "<div id='baseInfo'>"
                 +"<div class='datafield'>" + props.OWNER + "</div><div class='labelfield'>Owner</div>"
                 +"<div class='datafield'>" + props.CITY + "</div><div class='labelfield'>Municipality(ies): </div>"
@@ -470,7 +470,7 @@ function clkheliport(e) {
                 +"<div id='indicator' class='tab-content'><!--tab panes-->"
                 +"<div class='tab-pane active' id='Cap' style='padding-bottom: 12px;'>"
                         +"<table class='table table-hover'>"
-                        +"<tr class='active'><td><strong>Diameter: </strong></td><td>" + props.SIZE + " ft</td></tr>"
+                        +"<tr class='active'><td><strong>Diameter: </strong></td><td>" + props.SIZE_ + " ft</td></tr>"
                         +"<tr class='active'><td><strong>Annual Operations: </strong></td><td>not available</td></tr></table>"
                 +"</div></div>"
                 +"<div class='labelfield source'>Data Source: 2013 DVRPC</div></div>",
@@ -832,3 +832,20 @@ function modalLink(modal, tab){
         }, 0);
     }
 } 
+
+//topoJSON handling
+
+L.TopoJSON = L.GeoJSON.extend({  
+  addData: function(jsonData) {    
+    if (jsonData.type === "Topology") {
+      for (key in jsonData.objects) {
+        geojson = topojson.feature(jsonData, jsonData.objects[key]);
+        L.GeoJSON.prototype.addData.call(this, geojson);
+      }
+    }    
+    else {
+      L.GeoJSON.prototype.addData.call(this, jsonData);
+    }
+  }  
+});
+// Copyright (c) 2013 Ryan Clark

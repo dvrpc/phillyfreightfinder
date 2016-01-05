@@ -214,7 +214,7 @@ var commicon = L.OpenFreightMarkers.icon({
    
     //define airport layers
     //define commercial airports
-    var commairpoly = L.geoJson(null, {
+    var commairpoly = new L.TopoJSON(null, {
         style: {
             fillColor: "#216937",
             fillOpacity: .50,
@@ -253,7 +253,7 @@ var commicon = L.OpenFreightMarkers.icon({
    
 
     //define releiver airports
-    var relairpoly = L.geoJson(null, {
+    var relairpoly = new L.TopoJSON(null, {
         style: {
             fillColor: "#30B34C",
             fillOpacity: .50,
@@ -303,7 +303,7 @@ var commicon = L.OpenFreightMarkers.icon({
                 dblclick: zoomToPoint
             });
             heliportSearch.push({
-                name: layer.feature.properties.FACILITYNA,
+                name: layer.feature.properties.FACILITY,
                 source: "Heliports",
                 id: L.stamp(layer),
                 lat: layer.feature.geometry.coordinates[1],
@@ -315,7 +315,7 @@ var commicon = L.OpenFreightMarkers.icon({
 
     //define freight centers
     //define intermediate centers
-    var FCinterpoly = L.geoJson(null, {
+    var FCinterpoly = new L.TopoJSON(null, {
         style: {
             fillColor: "#F9AB90",
             fillOpacity: .50,
@@ -354,7 +354,7 @@ var commicon = L.OpenFreightMarkers.icon({
     
 
     //define major centers
-    var FCmajorpoly = L.geoJson(null, {
+    var FCmajorpoly = new L.TopoJSON(null, {
         style: {
             fillColor: "#F26122",
             fillOpacity: .50,
@@ -394,7 +394,7 @@ var commicon = L.OpenFreightMarkers.icon({
 
 
     //define mega centers
-    var FCmegapoly = L.geoJson(null, {
+    var FCmegapoly = new L.TopoJSON(null, {
         style: {
             fillColor: "#C1332B",
             fillOpacity: .50,
@@ -435,7 +435,7 @@ var commicon = L.OpenFreightMarkers.icon({
 
     //define highway layers      
     //define truck parking polygons
-    var truckparkpoly = L.geoJson(null, {
+    var truckparkpoly = new L.TopoJSON(null, {
         style: {
             fillColor: "#884C9E",
             fillOpacity: .50,
@@ -495,7 +495,7 @@ var commicon = L.OpenFreightMarkers.icon({
     }) 
 
     //define NHS polylines
-    var nhspoly = L.geoJson(null, {
+    var nhspoly = new L.TopoJSON(null, {
         style: {
             weight: 5,
             color: "#E8C3F5 ",
@@ -507,7 +507,7 @@ var commicon = L.OpenFreightMarkers.icon({
                 dblclick: zoomToFeature
             });
             nhsSearch.push({
-                name: layer.feature.properties.NAME_1,
+                name: layer.feature.properties.NAME,
                 source: "NHS",
                 id: L.stamp(layer),
                 bounds: layer.getBounds()
@@ -531,7 +531,7 @@ var commicon = L.OpenFreightMarkers.icon({
     });
 
     //define freeways
-    var freeway = L.geoJson(null, {
+    var freeway = new L.TopoJSON(null, {
         style: function style(feature) {
             switch (feature.properties.TYPE) {
                 case 'Limited Access Highway':
@@ -566,7 +566,7 @@ var commicon = L.OpenFreightMarkers.icon({
 
     //define rail layers
     //define rail lines
-    var railines = L.geoJson(null, {
+    var railines = new L.TopoJSON(null, {
         style: function style(feature) {
             switch (feature.properties.TYPE) {
                 case 'Industrial Track \/ Shortline':
@@ -605,7 +605,7 @@ var commicon = L.OpenFreightMarkers.icon({
 
 
     //define rail yards
-    var railyardpoly = L.geoJson(null, {
+    var railyardpoly = new L.TopoJSON(null, {
         style: {
             fillColor: "#FBA919",
             fillOpacity: .50,
@@ -644,7 +644,7 @@ var commicon = L.OpenFreightMarkers.icon({
     });
 
     //define intermodal
-    var intermodalpoly = L.geoJson(null, {
+    var intermodalpoly = new L.TopoJSON(null, {
         style: {
             fillColor: "#FBA919",
             fillOpacity: .50,
@@ -728,7 +728,7 @@ var commicon = L.OpenFreightMarkers.icon({
 
     //define maritime facilities
     //define river
-    var river = L.geoJson(null, {
+    var river = new L.TopoJSON(null, {
         style: {
             fillColor: "#55B8DF",
             fillOpacity: .50,
@@ -752,7 +752,7 @@ var commicon = L.OpenFreightMarkers.icon({
 
 
     //define ports
-    var portpoly = L.geoJson(null, {
+    var portpoly = new L.TopoJSON(null, {
         style: {
             fillColor: "#29A0CF",
             fillOpacity: .50,
@@ -791,7 +791,7 @@ var commicon = L.OpenFreightMarkers.icon({
     });
 
     //define anchorages
-    var anchoragepoly = L.geoJson(null, {
+    var anchoragepoly = new L.TopoJSON(null, {
         style: {
             fillColor: "#0E76BC",
             fillOpacity: .50,
@@ -831,7 +831,7 @@ var commicon = L.OpenFreightMarkers.icon({
 
     //define energy layers
     //define pipelines
-    var pipelines = L.geoJson(null, {
+    var pipelines = new L.TopoJSON(null, {
         style: {
             color: "#EFD315",
             weight: 3,
@@ -1571,34 +1571,47 @@ function pointify(data){
     return data_n
 }
 
+function pointify_topo(data, layer){
+    var data_n = jQuery.extend(true, {}, data['objects'][layer]);
+    data_n.features = data_n.geometries;
+    data_n.type = 'FeatureCollection';
+    data_n.geometries = [];
+    for(var i = 0; i < data_n.features.length; i++){
+        data_n.features[i].type = 'Feature'
+        data_n.features[i].geometry = {'type': 'Point','coordinates': [data_n.features[i].properties.LONG_, data_n.features[i].properties.LAT]};
+    }
+    return data_n
+}
+
+
 function loadLayers (){
     var mapLoad = $('#mapLoad').val();
         if(mapLoad === 'false'){
         
         $.getJSON("data/freight_center_Intermediate.js", function(data) {
             FCinterpoly.addData(data);
-            var data_n = pointify(data);
+            var data_n = pointify_topo(data, 'freight_center_Intermediate');
             FCinterpt.addData(data_n);
         });
         polyLayer.push('FCinterpoly');
         
        $.getJSON("data/freight_center_Major.js", function(data) {
             FCmajorpoly.addData(data);
-            var data_n = pointify(data);
+             var data_n = pointify_topo(data, 'freight_center_Major');
             FCmajorpt.addData(data_n);
         });
         polyLayer.push('FCmajorpoly');
         
         $.getJSON("data/freight_center_Mega.js", function(data) {
             FCmegapoly.addData(data);
-            var data_n = pointify(data);
+             var data_n = pointify_topo(data, 'freight_center_Mega');
             FCmegapt.addData(data_n);
         });
         polyLayer.push('FCmegapoly');
        
         $.getJSON("data/airports_Commercial.js", function(data) {
             commairpoly.addData(data);
-            var data_n = pointify(data);
+             var data_n = pointify_topo(data, 'airports_Commercial');
             commairpt.addData(data_n);
         });
         polyLayer.push('commairpoly');
@@ -1606,7 +1619,7 @@ function loadLayers (){
 
         $.getJSON("data/airports_Reliever.js", function(data) {
             relairpoly.addData(data);
-            var data_n = pointify(data);
+            var data_n = pointify_topo(data, 'airports_Reliever');
             relvairpt.addData(data_n);
         });
         polyLayer.push('relairpoly');
@@ -1618,7 +1631,7 @@ function loadLayers (){
 
         $.getJSON("data/truck_parking.js", function(data) {
             truckparkpoly.addData(data);
-            var data_n = pointify(data);
+            var data_n = pointify_topo(data, 'truck_parking');
             tppoints.addData(data_n);
         });
         polyLayer.push('truckparkpoly');
@@ -1634,7 +1647,7 @@ function loadLayers (){
 
         $.getJSON("data/ports.js", function(data) {
             portpoly.addData(data);
-            var data_n = pointify(data);
+            var data_n = pointify_topo(data, 'ports');
             porticon.addData(data_n);
         });
         polyLayer.push('portpoly');
@@ -1646,14 +1659,14 @@ function loadLayers (){
 
         $.getJSON("data/rail_yards.js", function(data) {
             railyardpoly.addData(data);
-            var data_n = pointify(data);
+            var data_n = pointify_topo(data, 'rail_yards');
             railyardpt.addData(data_n);
         });
         polyLayer.push('railyardpoly');
        
         $.getJSON("data/intermodal.js", function(data) {
             intermodalpoly.addData(data);
-            var data_n = pointify(data);
+            var data_n = pointify_topo(data, 'intermodal');
             intermodalpt.addData(data_n);
         });
         polyLayer.push('intermodalpoly');
@@ -1664,9 +1677,11 @@ function loadLayers (){
         
         $.getJSON("data/nhs_connectors.js", function(data) {
             nhspoly.addData(data);
-            var data_n = pointify(data);
+            var data_n = pointify_topo(data, 'nhs_connectors');
             nhs.addData(data_n);
+            
         });
+
         polyLayer.push('nhspoly');
 
         $.getJSON("data/highways.js", function(data) {
@@ -1676,7 +1691,7 @@ function loadLayers (){
 
         $.getJSON("data/anchorages.js", function(data) {
             anchoragepoly.addData(data);
-            var data_n = pointify(data);
+            var data_n = pointify_topo(data, 'anchorages');
             anchoricon.addData(data_n);
         });
         polyLayer.push('anchoragepoly');
