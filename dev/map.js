@@ -1012,7 +1012,7 @@ var commicon = L.OpenFreightMarkers.icon({
             local: railSearch,
             limit: 10
         });
-        console.log(portSearch);
+       
         var yardsBH = new Bloodhound({
             name: "RailYards",
             datumTokenizer: function(d) {
