@@ -82,6 +82,7 @@ $.getJSON("data/county5k.js", function(data) {
     //create map instance
     var map = L.map("mapDIV", {
         minZoom: zLevel,
+        maxZoom: 16,
         zoomControl: false,
         layers: [CartoDB_Positron]
     }).setView([oLat, oLng], zLevel);
@@ -227,7 +228,7 @@ var commicon = L.OpenFreightMarkers.icon({
                 dblclick: zoomToFeature
             });
             commairSearch.push({
-                name: layer.feature.properties.Name,
+                name: layer.feature.properties.NAME,
                 source: "CommAirports",
                 id: L.stamp(layer),
                 bounds: layer.getBounds()
@@ -266,7 +267,7 @@ var commicon = L.OpenFreightMarkers.icon({
                 dblclick: zoomToFeature
             });
             relairSearch.push({
-                name: layer.feature.properties.Name,
+                name: layer.feature.properties.NAME,
                 source: "ReleivAirports",
                 id: L.stamp(layer),
                 bounds: layer.getBounds()
@@ -302,7 +303,7 @@ var commicon = L.OpenFreightMarkers.icon({
                 dblclick: zoomToPoint
             });
             heliportSearch.push({
-                name: layer.feature.properties.FacilityNa,
+                name: layer.feature.properties.FACILITYNA,
                 source: "Heliports",
                 id: L.stamp(layer),
                 lat: layer.feature.geometry.coordinates[1],
@@ -328,7 +329,7 @@ var commicon = L.OpenFreightMarkers.icon({
                 dblclick: zoomToFeature
             });
             FCinterSearch.push({
-                name: layer.feature.properties.Name,
+                name: layer.feature.properties.NAME,
                 source: "FCInter",
                 id: L.stamp(layer),
                 bounds: layer.getBounds()
@@ -367,7 +368,7 @@ var commicon = L.OpenFreightMarkers.icon({
                 dblclick: zoomToFeature
             });
             FCmajorSearch.push({
-                name: layer.feature.properties.Name,
+                name: layer.feature.properties.NAME,
                 source: "FCmajor",
                 id: L.stamp(layer),
                 bounds: layer.getBounds()
@@ -407,7 +408,7 @@ var commicon = L.OpenFreightMarkers.icon({
                 dblclick: zoomToFeature
             });
             FCmegaSearch.push({
-                name: layer.feature.properties.Name,
+                name: layer.feature.properties.NAME,
                 source: "FCmega",
                 id: L.stamp(layer),
                 bounds: layer.getBounds()
@@ -448,7 +449,7 @@ var commicon = L.OpenFreightMarkers.icon({
                 dblclick: zoomToFeature
             });
             truckParkSearch.push({
-                name: layer.feature.properties.Name,
+                name: layer.feature.properties.NAME,
                 source: "TruckParking",
                 id: L.stamp(layer),
                 bounds: layer.getBounds()
@@ -484,7 +485,7 @@ var commicon = L.OpenFreightMarkers.icon({
                 dblclick: zoomToPoint
             });
             hwyBridgeSearch.push({
-                name: layer.feature.properties.Name_1,
+                name: layer.feature.properties.NAME_1,
                 source: "HwyBridges",
                 id: L.stamp(layer),
                 lat: layer.feature.geometry.coordinates[1],
@@ -506,7 +507,7 @@ var commicon = L.OpenFreightMarkers.icon({
                 dblclick: zoomToFeature
             });
             nhsSearch.push({
-                name: layer.feature.properties.Name_1,
+                name: layer.feature.properties.NAME_1,
                 source: "NHS",
                 id: L.stamp(layer),
                 bounds: layer.getBounds()
@@ -532,7 +533,7 @@ var commicon = L.OpenFreightMarkers.icon({
     //define freeways
     var freeway = L.geoJson(null, {
         style: function style(feature) {
-            switch (feature.properties.Type) {
+            switch (feature.properties.TYPE) {
                 case 'Limited Access Highway':
                     return {
                         color: "#C57AE0",
@@ -553,7 +554,7 @@ var commicon = L.OpenFreightMarkers.icon({
                 dblclick: zoomToFeature
             });
             highwaySearch.push({
-                name: layer.feature.properties.Name,
+                name: layer.feature.properties.NAME,
                 source: "Highways",
                 id: L.stamp(layer),
                 bounds: layer.getBounds()
@@ -567,7 +568,7 @@ var commicon = L.OpenFreightMarkers.icon({
     //define rail lines
     var railines = L.geoJson(null, {
         style: function style(feature) {
-            switch (feature.properties.Type) {
+            switch (feature.properties.TYPE) {
                 case 'Industrial Track \/ Shortline':
                     return {
                         color: "#FDD195",
@@ -594,7 +595,7 @@ var commicon = L.OpenFreightMarkers.icon({
                 dblclick: zoomToFeature
             });
             railSearch.push({
-                name: layer.feature.properties.Name,
+                name: layer.feature.properties.NAME,
                 source: "RailLines",
                 id: L.stamp(layer),
                 bounds: layer.getBounds()
@@ -618,7 +619,7 @@ var commicon = L.OpenFreightMarkers.icon({
                 dblclick: zoomToFeature
             });
             railyardSearch.push({
-                name: layer.feature.properties.Name,
+                name: layer.feature.properties.NAME,
                 source: "RailYards",
                 id: L.stamp(layer),
                 bounds: layer.getBounds()
@@ -657,7 +658,7 @@ var commicon = L.OpenFreightMarkers.icon({
                 dblclick: zoomToFeature
             });
             intermodalSearch.push({
-                name: layer.feature.properties.Name_1,
+                name: layer.feature.properties.NAME_1,
                 source: "Intermodal",
                 id: L.stamp(layer),
                 bounds: layer.getBounds()
@@ -692,7 +693,7 @@ var commicon = L.OpenFreightMarkers.icon({
                 dblclick: zoomToPoint
             });
             xingSearch.push({
-                name: layer.feature.properties.Name,
+                name: layer.feature.properties.NAME,
                 source: "GradeCrossing",
                 id: L.stamp(layer),
                 lat: layer.feature.geometry.coordinates[1],
@@ -700,7 +701,7 @@ var commicon = L.OpenFreightMarkers.icon({
             });
         }
     });
-    $.getJSON("data/gradeXing.js", function(data) {
+    $.getJSON("data/pff_grade_xings.js", function(data) {
         gradexing.addData(data);
     });
     //define rail bridge
@@ -716,7 +717,7 @@ var commicon = L.OpenFreightMarkers.icon({
                 dblclick: zoomToPoint
             });
             RailBridgeSearch.push({
-                name: layer.feature.properties.Name,
+                name: layer.feature.properties.NAME,
                 source: "RailBridges",
                 id: L.stamp(layer),
                 lat: layer.feature.geometry.coordinates[1],
@@ -765,7 +766,7 @@ var commicon = L.OpenFreightMarkers.icon({
                 dblclick: zoomToFeature
             });
             portSearch.push({
-                name: layer.feature.properties.Name,
+                name: layer.feature.properties.NAME,
                 source: "PortTerminals",
                 id: L.stamp(layer),
                 bounds: layer.getBounds()
@@ -804,7 +805,7 @@ var commicon = L.OpenFreightMarkers.icon({
                 dblclick: zoomToFeature
             });
             anchSearch.push({
-                name: layer.feature.properties.Name,
+                name: layer.feature.properties.NAME,
                 source: "Anchorages",
                 id: L.stamp(layer),
                 bounds: layer.getBounds()
@@ -1011,6 +1012,7 @@ var commicon = L.OpenFreightMarkers.icon({
             local: railSearch,
             limit: 10
         });
+        console.log(portSearch);
         var yardsBH = new Bloodhound({
             name: "RailYards",
             datumTokenizer: function(d) {
@@ -1560,118 +1562,131 @@ function renderLayers(){
     });
 }
 
+function pointify(data){
+    var data_n = jQuery.extend(true, {}, data);
+    for(var i = 0; i < data_n.features.length; i++){
+        data_n.features[i].geometry.type = 'Point';
+        data_n.features[i].geometry.coordinates = [data_n.features[i].properties.LONG_, data_n.features[i].properties.LAT]
+    }
+    return data_n
+}
+
 function loadLayers (){
     var mapLoad = $('#mapLoad').val();
         if(mapLoad === 'false'){
         
-        $.getJSON("data/FCinterPoly.js", function(data) {
+        $.getJSON("data/freight_center_Intermediate.js", function(data) {
             FCinterpoly.addData(data);
+            var data_n = pointify(data);
+            FCinterpt.addData(data_n);
         });
         polyLayer.push('FCinterpoly');
-        $.getJSON("data/FCinterPts.js", function(data) {
-            FCinterpt.addData(data);
-        });
-        $.getJSON("data/FCmajorPoly.js", function(data) {
+        
+       $.getJSON("data/freight_center_Major.js", function(data) {
             FCmajorpoly.addData(data);
+            var data_n = pointify(data);
+            FCmajorpt.addData(data_n);
         });
         polyLayer.push('FCmajorpoly');
-        $.getJSON("data/FCmajorPts.js", function(data) {
-            FCmajorpt.addData(data);
-        });
-        $.getJSON("data/FCmegaPoly.js", function(data) {
+        
+        $.getJSON("data/freight_center_Mega.js", function(data) {
             FCmegapoly.addData(data);
+            var data_n = pointify(data);
+            FCmegapt.addData(data_n);
         });
         polyLayer.push('FCmegapoly');
-        $.getJSON("data/FCmegaPts.js", function(data) {
-            FCmegapt.addData(data);
-        });
-        $.getJSON("data/commPoly.js", function(data) {
+       
+        $.getJSON("data/airports_Commercial.js", function(data) {
             commairpoly.addData(data);
+            var data_n = pointify(data);
+            commairpt.addData(data_n);
         });
         polyLayer.push('commairpoly');
 
-        $.getJSON("data/commPts.js", function(data) {
-            commairpt.addData(data);
-        });
 
-        $.getJSON("data/releivPoly.js", function(data) {
+        $.getJSON("data/airports_Reliever.js", function(data) {
             relairpoly.addData(data);
+            var data_n = pointify(data);
+            relvairpt.addData(data_n);
         });
         polyLayer.push('relairpoly');
 
-        $.getJSON("data/releivPts.js", function(data) {
-            relvairpt.addData(data);
-        });
-
-        $.getJSON("data/heliports.js", function(data) {
+    
+        $.getJSON("data/heliport.js", function(data) {
             heliport.addData(data);
         });
-        $.getJSON("data/truckparkPoly.js", function(data) {
+
+        $.getJSON("data/truck_parking.js", function(data) {
             truckparkpoly.addData(data);
+            var data_n = pointify(data);
+            tppoints.addData(data_n);
         });
         polyLayer.push('truckparkpoly');
-        $.getJSON("data/truckparkPts.js", function(data) {
-            tppoints.addData(data);
-        });
-        $.getJSON("data/hwybrdgPts.js", function(data) {
+        
+        $.getJSON("data/river_crossing_Highway.js", function(data) {
             hwyrivcrossing.addData(data);
         });
+
         $.getJSON("data/river.js", function(data) {
             river.addData(data);
         });
         polyLayer.push('river');
-        $.getJSON("data/portPoly.js", function(data) {
+
+        $.getJSON("data/ports.js", function(data) {
             portpoly.addData(data);
+            var data_n = pointify(data);
+            porticon.addData(data_n);
         });
-        $.getJSON("data/nhsPts.js", function(data) {
-            nhs.addData(data);
-        });
-        
-        $.getJSON("data/freightrail.js", function(data) {
+        polyLayer.push('portpoly');
+
+        $.getJSON("data/freight_rail.js", function(data) {
             railines.addData(data);
         });
         polyLayer.push('railines');
-        $.getJSON("data/railyardPoly.js", function(data) {
+
+        $.getJSON("data/rail_yards.js", function(data) {
             railyardpoly.addData(data);
+            var data_n = pointify(data);
+            railyardpt.addData(data_n);
         });
         polyLayer.push('railyardpoly');
-        $.getJSON("data/railyardPts.js", function(data) {
-            railyardpt.addData(data);
-        });
-        $.getJSON("data/intermodalPoly.js", function(data) {
+       
+        $.getJSON("data/intermodal.js", function(data) {
             intermodalpoly.addData(data);
+            var data_n = pointify(data);
+            intermodalpt.addData(data_n);
         });
         polyLayer.push('intermodalpoly');
-        $.getJSON("data/intermodalPts.js", function(data) {
-            intermodalpt.addData(data);
-        });
-        $.getJSON("data/railbrdgPts.js", function(data) {
+       
+        $.getJSON("data/river_crossing_Rail.js", function(data) {
             railbridge.addData(data);
         });
-        polyLayer.push('portpoly');
-        $.getJSON("data/portPts.js", function(data) {
-            porticon.addData(data);
-        });
-        polyLayer.push('anchoragepoly');
-        $.getJSON("data/anchPts.js", function(data) {
-            anchoricon.addData(data);
-        });
-        $.getJSON("data/nhsPoly.js", function(data) {
+        
+        $.getJSON("data/nhs_connectors.js", function(data) {
             nhspoly.addData(data);
+            var data_n = pointify(data);
+            nhs.addData(data_n);
         });
         polyLayer.push('nhspoly');
+
         $.getJSON("data/highways.js", function(data) {
             freeway.addData(data);
         });
         polyLayer.push('freeway');
-        $.getJSON("data/anchPoly.js", function(data) {
+
+        $.getJSON("data/anchorages.js", function(data) {
             anchoragepoly.addData(data);
+            var data_n = pointify(data);
+            anchoricon.addData(data_n);
         });
+        polyLayer.push('anchoragepoly');
+
         $.getJSON("data/pipelines.js", function(data) {
             pipelines.addData(data);
         });
         polyLayer.push('pipelines');
-        $.getJSON("data/goodneighbor.js", function(data) {
+
+        $.getJSON("data/good_neighbor_pts.js", function(data) {
             fgneighbor.addData(data);
         });
         
@@ -1692,13 +1707,14 @@ function loadLayers (){
                 }
         });
         $('input#mapLoad').attr('value', 'true');
-        
+       
+       
     
      //renderLayers
      //renderLayers();
      //re-render layers (hack to ordering based on load delay)
-     setTimeout(function() { renderLayers();loadSearchBar();}, 500);
-     //setTimeout(function() { renderLayers();loadSearchBar();}, 3500);
+     setTimeout(function() { renderLayers();}, 500);
+     setTimeout(function() { loadSearchBar();}, 1500);
      //setTimeout(function() { renderLayers();loadSearchBar(); }, 5500);
     }
     

@@ -9,18 +9,19 @@ var hlweight = 7, 			//weight of highlighted feature outline
 var layersearch, props, header, content, featureName, featureClass, featureIcon;
 
 ////////////////////////////////////////////////////
-///Individual Feature actions /////////////////////	
+///Individual Feature actions ///////////////////// 
 
 //Trucking-Highway Actions ////////////
 //  freeway
 function clkHwy(e) {
-	initializeHL(e);
-	header = '<p>' + props.Name + '</p>';
-	if (props.Owner===undefined){ var Owner = " ";}
-				else { var Owner = "<div class='two_third' style='float:left;'><div class='datafield'>" + props.Owner+ "</div><div class='labelfield'>Owner</div>";}
+    initializeHL(e);
+    header = '<p>' + props.NAME + '</p>';
+    var Owner = " ";
+    if (props.OWNER===undefined){ Owner = " ";}
+                else { Owner = "<div class='two_third' style='float:left;'><div class='datafield'>" + props.OWNER+ "</div><div class='labelfield'>Owner</div>";}
 
-	content = "<div id='baseInfo'>"+ Owner +"</div>"
-						+"<img src='lib/images/Shields/" + props.SHLD_ID + ".png' alt='Shield' height='50' style='padding-left:20px;'>"
+    content = "<div id='baseInfo'>"+ Owner +"</div>"
+                        +"<img src='lib/images/Shields/" + props.SHLD_ID + ".png' alt='Shield' height='50' style='padding-left:20px;'>"
                         +"</div><!--close baseInfo-->"
                         +"<div class='infoDivider'></div>"
                         +"<div id='indactorInfo'>"
@@ -31,23 +32,23 @@ function clkHwy(e) {
                                 +"<table class='table table-hover'>"
                                 +"<tr class='active'><td class='item'><strong> </strong></td><td><strong>" + props.DIR_1 + "</strong></td><td><strong>" + props.DIR_2 + "</strong></td></tr>"
                                 +"<tr class='active'><td class='item'><strong><a title='Predominant lane count for designated segment' data-toggle='infotooltip'>Capacity <span style='font-weight:normal;'>(lanes)</span></a>: </strong></td><td>" + props.CAP_1 + "</td><td>" + props.CAP_2 + "</td></tr>"
-                                +"<tr><td class='item'><strong><a title='Average Annual Daily Traffic volume for truck traffic (FHWA Vehicle Classes 5-13)' data-toggle='infotooltip'>Truck AADT</a>: </strong></td><td>" + props.ACT_1A + "</td><td>" + props.ACT_2A + "</td></tr>"
-                                +"<tr><td class='item'><strong>Truck share of <a title='Average Annual Daily Traffic' data-toggle='infotooltip'>AADT</a>: </strong></td><td>" + props.ACT_1B + "</td><td>" + props.ACT_2B + "</td></tr></table>"
+                                +"<tr class='active'><td class='item'><strong><a title='Average Annual Daily Traffic volume for truck traffic (FHWA Vehicle Classes 5-13)' data-toggle='infotooltip'>Truck AADT</a>: </strong></td><td>" + props.ACT_1A + "</td><td>" + props.ACT_2A + "</td></tr>"
+                                +"<tr class='active'><td class='item'><strong>Truck share of <a title='Average Annual Daily Traffic' data-toggle='infotooltip'>AADT</a>: </strong></td><td>" + props.ACT_1B + "</td><td>" + props.ACT_2B + "</td></tr></table>"
                         +"</div></div>"
                         +"<div class='labelfield source'>Data Source: " + props.YEAR + " " + props.SOURCE + "</div></div>",
-	featureName = '<p>Type: ' + props.Type + '</p>',
-	featureClass = 'hwycl',
-	featureIcon = 'hwyicon icon';
-	contentPush(header,content,featureName,featureClass,featureIcon);
+    featureName = '<p>Type: ' + props.TYPE + '</p>',
+    featureClass = 'hwycl',
+    featureIcon = 'hwyicon icon';
+    contentPush(header,content,featureName,featureClass,featureIcon);
 };
 //  truck parking
 function clkParking(e) {
-	initializeHL(e);
-	header = '<p>' + props.Name + '</p>',
-	content = "<div id='baseInfo'>"
-                        +"<div class='datafield'>" + props.Owner+ "</div><div class='labelfield'>Owner</div>"
-                        +"<div class='datafield'>" + props.Operator_s + "</div><div class='labelfield'>Operator(s)</div>"
-                        +"<div class='datafield'>" + props.Township_s + "</div><div class='labelfield'>Municipality(ies)</div>"
+    initializeHL(e);
+    header = '<p>' + props.NAME + '</p>',
+    content = "<div id='baseInfo'>"
+                        +"<div class='datafield'>" + props.OWNER+ "</div><div class='labelfield'>Owner</div>"
+                        +"<div class='datafield'>" + props.OPERATOR + "</div><div class='labelfield'>Operator(s)</div>"
+                        +"<div class='datafield'>" + props.TOWNSHIP + "</div><div class='labelfield'>Municipality(ies)</div>"
                         +"</div><!--close baseInfo-->"
                         +"<div class='infoDivider'></div>"
                         +"<div id='indactorInfo'>"
@@ -56,24 +57,40 @@ function clkParking(e) {
                         +"<div id='indicator' class='tab-content'><!--tab panes-->"
                         +"<div class='tab-pane active' id='RailrivCap' style='padding-bottom: 12px;'>"
                                 +"<table class='table table-hover'>"
-                                +"<tr class='active'><td><strong>Truck Spaces Available: </strong></td><td>" + props.Capacity + "</td></tr>"
-                                +"<tr><td><strong> <a title='Truck space utilization determined by single overnight count' data-toggle='infotooltip'>Truck Spaces Utilized</a>: </strong></td><td> " + props.Activity_1 + " </td></tr>"
+                                +"<tr class='active'><td><strong>Truck Spaces Available: </strong></td><td>" + props.CAPACITY + "</td></tr>"
+                                +"<tr class='active'><td><strong> <a title='Truck space utilization determined by single overnight count' data-toggle='infotooltip'>Truck Spaces Utilized</a>: </strong></td><td> " + props.RATING + " </td></tr>"
                                 +"</table>"
                         +"</div></div>"
-                        +"<div class='labelfield source'>Data Source: " + props.Source + "</div></div>",
-		             // +"<p>More Information: " + props.REPORT + "</p>";
-	featureName = '<p>Type: Truck Parking</p>',
-	featureClass = 'hwycl',
-	featureIcon = 'trkparkicon icon';
-	contentPush(header,content,featureName,featureClass,featureIcon);	
+                        +"<div class='labelfield source'>Data Source: " + props.SOURCE + "</div></div>",
+                     // +"<p>More Information: " + props.REPORT + "</p>";
+    featureName = '<p>Type: Truck Parking</p>',
+    featureClass = 'hwycl',
+    featureIcon = 'trkparkicon icon';
+    contentPush(header,content,featureName,featureClass,featureIcon);   
 };
+
+var custom_matches = {'CI-1': 'South Philadelphia Freight Complex', 'CI-2': 'Broadway & Gloucester Marine Terminals'};
+
+function findMatch(layer, id){
+    var facility;
+    $.each(layer._layers, function(key, value) {
+        if(value.feature.properties.PFF_ID === id){
+            facility = value.feature.properties.NAME;
+        } 
+
+    });
+    return facility
+}
+
+
 //  NHS Connectors
 function clkNHS(e) {
-	initializeHL(e);
-	header = '<p>' + props.Name + '</p>';
-	content = "<div id='baseInfo'>"
-                        +"<div class='datafield'>" + props.Fac_Served + "</div><div class='labelfield'>Facility Served</div>"
-                        +"<div class='datafield'>" + props.Township_s + "</div><div class='labelfield'>Municipality(ies)</div>"
+    initializeHL(e);
+    header = '<p>' + props.NAME + '</p>';
+    var facility = findMatch(portpoly, props.LINK_ID) || findMatch(commairpoly, props.LINK_ID) || findMatch(intermodalpoly, props.LINK_ID) || custom_matches[props.LINK_ID];
+    content = "<div id='baseInfo'>"
+                        +"<div class='datafield'>" +  facility/*props.FAC_SERVED*/ + "</div><div class='labelfield'>Facility Served</div>"
+                        +"<div class='datafield'>" + props.TOWNSHIP_S + "</div><div class='labelfield'>Municipality(ies)</div>"
                         +"</div><!--close baseInfo-->"
                         +"<div class='infoDivider'></div>"
                         +"<div id='indactorInfo'>"
@@ -82,27 +99,27 @@ function clkNHS(e) {
                         +"<div id='indicator' class='tab-content'><!--tab panes-->"
                         +"<div class='tab-pane active' id='RailrivCap' style='padding-bottom: 12px;'>"
                                 +"<table class='table table-hover'>"
-                                +"<tr class='active'><td><strong> <a title='Predominant lane count for designated segment' data-toggle='infotooltip'>Lanes per direction</a>: </strong></td><td>" + props.Cap_1 + "</td></tr>"
-                                +"<tr><td><strong> <a title='Average Annual Daily Traffic' data-toggle='infotooltip'>AADT</a>: </strong></td><td>not available</td></tr>"
+                                +"<tr class='active'><td><strong> <a title='Predominant lane count for designated segment' data-toggle='infotooltip'>Lanes per direction</a>: </strong></td><td>" + props.CAP_1 + "</td></tr>"
+                                +"<tr class='active'><td><strong> <a title='Average Annual Daily Traffic' data-toggle='infotooltip'>AADT</a>: </strong></td><td>not available</td></tr>"
                                 +"</table>"
                         +"</div></div>"
-                        +"<div class='labelfield source'>Data Source: " + props.Source + "</div></div>",
-		             //           +"<br/><p>" + props.Profile + "</p>";,
-	featureName = '<p>Type: NHS Connector</p>',
-	featureClass = 'hwycl',
-	featureIcon = 'nhsicon icon';
-	contentPush(header,content,featureName,featureClass,featureIcon);		
+                        +"<div class='labelfield source'>Data Source: " + props.SOURCE + "</div></div>",
+                     //           +"<br/><p>" + props.Profile + "</p>";,
+    featureName = '<p>Type: NHS Connector</p>',
+    featureClass = 'hwycl',
+    featureIcon = 'nhsicon icon';
+    contentPush(header,content,featureName,featureClass,featureIcon);       
 };
 //  Highway Bridges
 function clkHwyRvrXing(e) {
-	initializeHL(e);
-	header = '<p>' + props.Name + '</p>',
-	content = "<div id='baseInfo'>"
-                        +"<div class='datafield'>" + props.Line + "</div><div class='labelfield'>Highway</div>"
-                        +"<div class='datafield'>" + props.Owner + "</div><div class='labelfield'>Owner</div>"
-                        +"<div class='datafield'>" + props.Operator_s + "</div><div class='labelfield'>Tolled (y/n)</div>"
-                        +"<div class='datafield'>" + props.Type_1 + "</div><div class='labelfield'>Bridge Type</div>"
-                        +"<div class='datafield'>" + props.Town_1 + " - " + props.Town_2  + "</div><div class='labelfield'>Connecting Municipality(ies)</div>"
+    initializeHL(e);
+    header = '<p>' + props.NAME + '</p>',
+    content = "<div id='baseInfo'>"
+                        +"<div class='datafield'>" + props.LINE + "</div><div class='labelfield'>Highway</div>"
+                        +"<div class='datafield'>" + props.OWNER + "</div><div class='labelfield'>Owner</div>"
+                        +"<div class='datafield'>" + props.OPERATOR + "</div><div class='labelfield'>Tolled (y/n)</div>"
+                        +"<div class='datafield'>" + props.TYPE + "</div><div class='labelfield'>Bridge Type</div>"
+                        +"<div class='datafield'>" + props.TOWN_1 + " - " + props.TOWN_2  + "</div><div class='labelfield'>Connecting Municipality(ies)</div>"
                         +"</div><!--close baseInfo-->"
                         +"<div class='infoDivider'></div>"
                         +"<div id='indactorInfo'>"
@@ -111,26 +128,26 @@ function clkHwyRvrXing(e) {
                         +"<div id='indicator' class='tab-content'><!--tab panes-->"
                         +"<div class='tab-pane active' id='RailrivCap' style='padding-bottom: 12px;'>"
                                 +"<table class='table table-hover'>"
-                                +"<tr class='active'><td><strong><a title='Total count of lanes, both directions.' data-toggle='infotooltip'>Travel Lanes</a>: </strong></td><td>" + props.Cap_1 + "</td></tr>"
-                                +"<tr><td><strong>Vertical Restriction <span style='font-weight:normal;'>(ft)</span>: </strong></td><td>" + props.Cap_2 + "</td></tr>"
-                                +"<tr class='active'><td><strong> <a title='Average Annual Daily Traffic' data-toggle='infotooltip'>AADT</a>: </strong></td><td>" + props.Act_1 + "</td></tr>"
+                                +"<tr class='active'><td><strong><a title='Total count of lanes, both directions.' data-toggle='infotooltip'>Travel Lanes</a>: </strong></td><td>" + props.CAP_1 + "</td></tr>"
+                                +"<tr class='active'><td><strong>Vertical Restriction <span style='font-weight:normal;'>(ft)</span>: </strong></td><td>" + props.CAP_2 + "</td></tr>"
+                                +"<tr class='active'><td><strong> <a title='Average Annual Daily Traffic' data-toggle='infotooltip'>AADT</a>: </strong></td><td>" + props.ACT_1 + "</td></tr>"
                                 +"</table>"
                         +"</div></div>"
-                        +"<div class='labelfield source'>Data Source: " + props.Source + "</div></div>",
-	featureName = '<p>Type: Highway River Crossing</p>',
-	featureClass = 'hwycl',
-	featureIcon = 'hwyrivicon icon';
-	contentPush(header,content,featureName,featureClass,featureIcon);
-};	
+                        +"<div class='labelfield source'>Data Source: " + props.SOURCE + "</div></div>",
+    featureName = '<p>Type: Highway River Crossing</p>',
+    featureClass = 'hwycl',
+    featureIcon = 'hwyrivicon icon';
+    contentPush(header,content,featureName,featureClass,featureIcon);
+};  
 
 //Rail Actions
 //rail lines
 function clkRailline(e) {
-	initializeHL(e);
-	header = '<p>' + props.Name + '</p>',
-	content = "<div id='baseInfo'>"
-            +"<div class='datafield'>" + props.Owner + "</div><div class='labelfield'>Owner</div>"
-            +"<div class='datafield'>" + props.Operator + "</div><div class='labelfield'>Operator(s)</div>"
+    initializeHL(e);
+    header = '<p>' + props.NAME + '</p>',
+    content = "<div id='baseInfo'>"
+            +"<div class='datafield'>" + props.OWNER + "</div><div class='labelfield'>Owner</div>"
+            +"<div class='datafield'>" + props.OPERATOR + "</div><div class='labelfield'>Operator(s)</div>"
             +"</div><!--close baseInfo-->"
             +"<div class='infoDivider'></div>"
             +"<div id='indactorInfo'>"
@@ -139,26 +156,26 @@ function clkRailline(e) {
             +"<div id='indicator' class='tab-content'><!--tab panes-->"
             +"<div class='tab-pane active' id='IntermodalCap' style='padding-bottom: 12px;'>"
                     +"<table class='table table-hover'>"
-                    +"<tr class='active'><td><strong> <a title='Predominant count of through tracks on designated segment' data-toggle='infotooltip'>Number of Tracks</a>: </strong></td><td>" + props.Cap1 + "</td></tr>"
-                    +"<tr><td><strong> <a title='Ability to operate double stack trains. Double stack is a technology allowing intermodal containers to be stack two high on train cars.' data-toggle='infotooltip'>Double Stack Clearance</a>: </strong></td><td> " + props.Cap2 + " </td></tr>"
-                    +"<tr class='active'><td><strong> <a title='Capacity to operate 286,000 pound rail cars on designated segment' data-toggle='infotooltip'>286k Capacity</a>: </strong></td><td>" + props.Cap3 + "</td></tr>"
-                    +"<tr><td><strong> Trains Daily: </strong></td><td>not reported</td></tr></table>"
+                    +"<tr class='active'><td><strong> <a title='Predominant count of through tracks on designated segment' data-toggle='infotooltip'>Number of Tracks</a>: </strong></td><td>" + props.TRK_MAIN + "</td></tr>"
+                    +"<tr class='active'><td><strong> <a title='Ability to operate double stack trains. Double stack is a technology allowing intermodal containers to be stack two high on train cars.' data-toggle='infotooltip'>Double Stack Clearance</a>: </strong></td><td> " + props.TRK_DBL + " </td></tr>"
+                    +"<tr class='active'><td><strong> <a title='Capacity to operate 286,000 pound rail cars on designated segment' data-toggle='infotooltip'>286k Capacity</a>: </strong></td><td>" + props.TRK_WEIGHT + "</td></tr>"
+                    +"<tr class='active'><td><strong> Trains Daily: </strong></td><td>not reported</td></tr></table>"
             +"</div></div>"
-            +"<div class='labelfield source'>Data Source: " + props.Source + "</div></div>",
-	featureName = '<p>Type: ' + props.Type + '</p>',
-	featureClass = 'railcl',
-	featureIcon = 'railicon icon';
-	contentPush(header,content,featureName,featureClass,featureIcon);
-};	
+            +"<div class='labelfield source'>Data Source: " + props.SOURCE + "</div></div>",
+    featureName = '<p>Type: ' + props.TYPE + '</p>',
+    featureClass = 'railcl',
+    featureIcon = 'railicon icon';
+    contentPush(header,content,featureName,featureClass,featureIcon);
+};  
 //rail yards
 function clkRailYard(e) {
-	initializeHL(e);
-	header = '<p>' + props.Name + '</p>',
-	content = "<div id='baseInfo'>"
-                        +"<div class='datafield'>" + props.Owner + "</div><div class='labelfield'>Owner</div>"
-                        +"<div class='datafield'>" + props.Operator_s + "</div><div class='labelfield'>Operator(s)</div>"
-                        +"<div class='datafield'>" + props.Rail_Line + "</div><div class='labelfield'>Line Serving</div>"
-                        +"<div class='datafield'>" + props.Township + "</div><div class='labelfield'>Municipality(ies)</div>"
+    initializeHL(e);
+    header = '<p>' + props.NAME + '</p>',
+    content = "<div id='baseInfo'>"
+                        +"<div class='datafield'>" + props.OWNER + "</div><div class='labelfield'>Owner</div>"
+                        +"<div class='datafield'>" + props.OPERATOR + "</div><div class='labelfield'>Operator(s)</div>"
+                        +"<div class='datafield'>" + findMatch(railines, props.RAIL_ID) + "</div><div class='labelfield'>Line Serving</div>"
+                        +"<div class='datafield'>" + props.TOWNSHIP + "</div><div class='labelfield'>Municipality(ies)</div>"
                         +"</div><!--close baseInfo-->"
                         +"<div class='infoDivider'></div>"
                         +"<div id='indactorInfo'>"
@@ -167,24 +184,24 @@ function clkRailYard(e) {
                         +"<div id='indicator' class='tab-content'><!--tab panes-->"
                         +"<div class='tab-pane active' id='IntermodalCap' style='padding-bottom: 12px;'>"
                                 +"<table class='table table-hover'>"
-                                +"<tr class='active'><td><strong>Acres: </strong></td><td>" + numeral(props.GIS_Acres).format('0,0.0') + "</td></tr>"
-                                +"<tr><td><strong>Annual Car Count: </strong></td><td>n/a</td></tr></table>"
+                                +"<tr class='active'><td><strong>Acres: </strong></td><td>" + numeral(props.GIS_ACRES).format('0,0.0') + "</td></tr>"
+                                +"<tr class='active'><td><strong>Annual Car Count: </strong></td><td>n/a</td></tr></table>"
                         +"</div></div>"
-                        +"<div class='labelfield source'>Data Source: " + props.Source + "</div></div>",
+                        +"<div class='labelfield source'>Data Source: " + props.SOURCE + "</div></div>",
                         //+"<div style='height:34px;'><a href='http://www.dvrpc.org/webmaps/PhillyFreightFinder/reports/FC/FC34.pdf' target='_blank' style='line-height:34px;float:left;'><div class='pdf'></div>Related Report: " + props.REPORT + "</a></span></div></div>" ;
-	featureName = '<p>Type: Rail Yard</p>',
-	featureClass = 'railcl',
-	featureIcon = 'railyardicon icon';
-	contentPush(header,content,featureName,featureClass,featureIcon);
-};	
+    featureName = '<p>Type: Rail Yard</p>',
+    featureClass = 'railcl',
+    featureIcon = 'railyardicon icon';
+    contentPush(header,content,featureName,featureClass,featureIcon);
+};  
 //rail crossings
 function clkRailXing(e) {
-	initializeHL(e);
-	header = '<p>' + props.Name + '</p>',
-	content = "<div id='baseInfo'>"
-                        +"<div class='datafield'>" + props.Owner_1 + "</div><div class='labelfield'>Owner</div>"
-                        +"<div class='datafield'>" + props.Operator_s + "</div><div class='labelfield'>Operator(s)</div>"
-                        +"<div class='datafield'>" + props.Township + "</div><div class='labelfield'>Municipality(ies)</div>"
+    initializeHL(e);
+    header = '<p>' + props.NAME + '</p>',
+    content = "<div id='baseInfo'>"
+                        +"<div class='datafield'>" + props.OWNER + "</div><div class='labelfield'>Owner</div>"
+                        +"<div class='datafield'>" + props.OPERATOR + "</div><div class='labelfield'>Operator(s)</div>"
+                        +"<div class='datafield'>" + props.TOWNSHIP + "</div><div class='labelfield'>Municipality(ies)</div>"
                         +"</div><!--close baseInfo-->"
                         +"<div class='infoDivider'></div>"
                         +"<div id='indactorInfo'>"
@@ -193,24 +210,24 @@ function clkRailXing(e) {
                         +"<div id='indicator' class='tab-content'><!--tab panes-->"
                         +"<div class='tab-pane active' id='Cap' style='padding-bottom: 12px;'>"
                                 +"<table class='table table-hover'>"
-                                +"<tr class='active'><td><strong> <a title='Count of active tracks at grade crossing' data-toggle='infotooltip'>Tracks at Crossing</a>: </strong></td><td>" + props.Cap + "</td></tr></table>"
+                                +"<tr class='active'><td><strong> <a title='Count of active tracks at grade crossing' data-toggle='infotooltip'>Tracks at Crossing</a>: </strong></td><td>" + props.TRACKS + "</td></tr></table>"
                         +"</div></div>"
-                        +"<div class='labelfield source'>Data Source: " + props.Source_1 + "</div></div>"
-                        +"<div style='height:34px;'><a href='http://safetydata.fra.dot.gov/OfficeofSafety/publicsite/Crossing/Report.aspx?phasetype=C&rpttype=A&txtcrossingnum="+props.CROSSING+"' target='_blank' style='line-height:34px;float:left;'><div class='pdf'></div>Related Report:</a></div>",
+                        +"<div class='labelfield source'>Data Source: " + props.SOURCE_1 + "</div></div>"
+                        +"<div style='height:34px;'><a href='http://safetydata.fra.dot.gov/OfficeofSafety/publicsite/Crossing/Report.aspx?phasetype=C&rpttype=A&txtcrossingnum="+props.FRA_ID+"' target='_blank' style='line-height:34px;float:left;'><div class='pdf'></div>FRA Crossing History</a></div>",
                         // +"<p>" + props.Report + "</p>";
-	featureName = '<p>Type: Class I Grade Crossing</p>',
-	featureClass = 'railcl',
-	featureIcon = 'railcrossicon icon';
-	contentPush(header,content,featureName,featureClass,featureIcon);
+    featureName = '<p>Type: Class I Grade Crossing</p>',
+    featureClass = 'railcl',
+    featureIcon = 'railcrossicon icon';
+    contentPush(header,content,featureName,featureClass,featureIcon);
 };
 //rail intermodal
 function clkIntermodal(e) {
-	initializeHL(e);
-	header = '<p>' + props.Name + '</p>',
-	content = "<div id='baseInfo'>"
-                        +"<div class='datafield'>" + props.Owner + "</div><div class='labelfield'>Owner</div>"
-                        +"<div class='datafield'>" + props.Operator_s + "</div><div class='labelfield'>Operator(s)</div>"
-                        +"<div class='datafield'>" + props.Township + "</div><div class='labelfield'>Municipality(ies)</div>"
+    initializeHL(e);
+    header = '<p>' + props.NAME + '</p>',
+    content = "<div id='baseInfo'>"
+                        +"<div class='datafield'>" + props.OWNER + "</div><div class='labelfield'>Owner</div>"
+                        +"<div class='datafield'>" + props.OPERATOR + "</div><div class='labelfield'>Operator(s)</div>"
+                        +"<div class='datafield'>" + props.TOWNSHIP + "</div><div class='labelfield'>Municipality(ies)</div>"
                         +"</div><!--close baseInfo-->"
                         +"<div class='infoDivider'></div>"
                         +"<div id='indactorInfo'>"
@@ -219,26 +236,26 @@ function clkIntermodal(e) {
                         +"<div id='indicator' class='tab-content'><!--tab panes-->"
                         +"<div class='tab-pane active' id='IntermodalCap' style='padding-bottom: 12px;'>"
                                 +"<table class='table table-hover'>"
-                                +"<tr class='active'><td><strong>Acres: </strong></td><td>" + numeral(props.GIS_Acres).format('0,0.0') + "</td></tr>"
-                                +"<tr><td><strong>Activity: </strong></td><td>n/a</td></tr></table>"
+                                +"<tr class='active'><td><strong>Acres: </strong></td><td>" + numeral(props.ACRES).format('0,0.0') + "</td></tr>"
+                                +"<tr class='active'><td><strong>Activity: </strong></td><td>n/a</td></tr></table>"
                         +"</div></div>"
-                        +"<div class='labelfield source'>Data Source: " + props.Source + "</div></div>",
+                        +"<div class='labelfield source'>Data Source: " + props.SOURCE + "</div></div>",
                         //+"<div style='height:34px;'><a href='http://www.dvrpc.org/webmaps/PhillyFreightFinder/reports/FC/FC34.pdf' target='_blank' style='line-height:34px;float:left;'><div class='pdf'></div>Related Report</a></span></div></div>" ;
-	featureName = '<p>Type: Intermodal Rail Yard</p>',
-	featureClass = 'railcl',
-	featureIcon = 'railintericon icon';
-	contentPush(header,content,featureName,featureClass,featureIcon);
+    featureName = '<p>Type: Intermodal Rail Yard</p>',
+    featureClass = 'railcl',
+    featureIcon = 'railintericon icon';
+    contentPush(header,content,featureName,featureClass,featureIcon);
 };
 //rail river crossing
 function clkRailRvrXing(e) {
-	initializeHL(e);
-	header = '<p>' + props.Name + '</p>',
-	content = "<div id='baseInfo'>"
-                        +"<div class='datafield'>" + props.Line + "</div><div class='labelfield'>Rail Line</div>"
-                        +"<div class='datafield'>" + props.Owner + "</div><div class='labelfield'>Owner</div>"
-                        +"<div class='datafield'>" + props.Operator_s + "</div><div class='labelfield'>Operator(s)</div>"
-                        +"<div class='datafield'>" + props.Type_1 + "</div><div class='labelfield'>Bridge Type</div>"
-                        +"<div class='datafield'>" + props.Town_1 + " - " + props.Town_2  + "</div><div class='labelfield'>Connecting Municipality(ies)</div>"
+    initializeHL(e);
+    header = '<p>' + props.NAME + '</p>',
+    content = "<div id='baseInfo'>"
+                        +"<div class='datafield'>" + findMatch(railines, props.LINK_ID) + "</div><div class='labelfield'>Rail Line</div>"
+                        +"<div class='datafield'>" + props.OWNER + "</div><div class='labelfield'>Owner</div>"
+                        +"<div class='datafield'>" + props.OPERATOR + "</div><div class='labelfield'>Operator(s)</div>"
+                        +"<div class='datafield'>" + props.TYPE + "</div><div class='labelfield'>Bridge Type</div>"
+                        +"<div class='datafield'>" + props.TOWN_1 + " - " + props.TOWN_2  + "</div><div class='labelfield'>Connecting Municipality(ies)</div>"
                         +"</div><!--close baseInfo-->"
                         +"<div class='infoDivider'></div>"
                         +"<div id='indactorInfo'>"
@@ -247,27 +264,27 @@ function clkRailRvrXing(e) {
                         +"<div id='indicator' class='tab-content'><!--tab panes-->"
                         +"<div class='tab-pane active' id='RailrivCap' style='padding-bottom: 12px;'>"
                                 +"<table class='table table-hover'>"
-                                +"<tr class='active'><td><strong>Width <span style='font-weight:normal;'>(tracks)</span>: </strong></td><td>" + props.Cap_1 + "</td></tr>"
-                                +"<tr><td><strong> <a title='Ability to operate double stack trains. Double stack is a technology allowing intermodal containers to be stack two high on train cars.' data-toggle='infotooltip'>Double Stack Clearance</a>: </strong></td><td>" + props.Cap_2 + "</td></tr>"
-                                +"<tr class='active'><td><strong> <a title='Capacity to operate 286,000 pound rail cars on designated segment' data-toggle='infotooltip'>286k Capacity</a>: </strong></td><td>" + props.Cap_3 + "</td></tr>"
-                                +"<tr><td><strong>Activity: </strong></td><td>" + props.Act_1 + "</a></td></tr></table>"
+                                +"<tr class='active'><td><strong>Width <span style='font-weight:normal;'>(tracks)</span>: </strong></td><td>" + props.CAP_1 + "</td></tr>"
+                                +"<tr class='active'><td><strong> <a title='Ability to operate double stack trains. Double stack is a technology allowing intermodal containers to be stack two high on train cars.' data-toggle='infotooltip'>Double Stack Clearance</a>: </strong></td><td>" + props.CAP_2 + "</td></tr>"
+                                +"<tr class='active'><td><strong> <a title='Capacity to operate 286,000 pound rail cars on designated segment' data-toggle='infotooltip'>286k Capacity</a>: </strong></td><td>" + props.CAP_3 + "</td></tr>"
+                                +"<tr class='active'><td><strong>Activity: </strong></td><td>" + props.ACT_1 + "</a></td></tr></table>"
                         +"</div></div>"
-                        +"<div class='labelfield source'>Data Source: " + props.Source + "</div></div>",
-   	featureName = '<p>Type: Rail River Crossing</p>',
-	featureClass = 'railcl',
-	featureIcon = 'railrivicon icon';
-	contentPush(header,content,featureName,featureClass,featureIcon);
+                        +"<div class='labelfield source'>Data Source: " + props.SOURCE + "</div></div>",
+    featureName = '<p>Type: Rail River Crossing</p>',
+    featureClass = 'railcl',
+    featureIcon = 'railrivicon icon';
+    contentPush(header,content,featureName,featureClass,featureIcon);
 };
 
 //Ports/Waterways Features
 //Ports
 function clkport(e) {
-	initializeHL(e);
-	header = '<p>' + props.Name + '</p>';
-	var contentBulk = "<div id='baseInfo'>"
-                        +"<div class='datafield'>" + props.Owner + "</div><div class='labelfield'>Owner</div>"
-                        +"<div class='datafield'>" + props.Operator_s + "</div><div class='labelfield'>Operator(s)</div>"
-                        +"<div class='datafield'>" + props.Township + "</div><div class='labelfield'>Municipal Location</div>"
+    initializeHL(e);
+    header = '<p>' + props.NAME + '</p>';
+    var contentBulk = "<div id='baseInfo'>"
+                        +"<div class='datafield'>" + props.OWNER + "</div><div class='labelfield'>Owner</div>"
+                        +"<div class='datafield'>" + props.OPERATOR + "</div><div class='labelfield'>Operator(s)</div>"
+                        +"<div class='datafield'>" + props.TOWNSHIP + "</div><div class='labelfield'>Municipal Location</div>"
                         +"</div><!--close baseInfo-->"
                         +"<div class='infoDivider'></div>"
                         +"<div id='indactorInfo'>"
@@ -275,21 +292,21 @@ function clkport(e) {
                         +"<li class='active'><a href='#portCap' data-toggle='tab'>Capacity</a></li>"
                         +"<li><a href='#portAct' data-toggle='tab'>Activity</a></li></ul>"
                         +"<div id='indicator' class='tab-content'><!--tab panes-->"
-        				+"<div class='tab-pane active' id='portCap' style='padding-bottom: 12px;height:72px;'>"
+                        +"<div class='tab-pane active' id='portCap' style='padding-bottom: 12px;height:72px;'>"
                                 +"<table class='table table-hover'>"
                                 +"<tr class='active'><td><strong>Berth Depth <span style='font-weight:normal;'><a title='Mean Low Water' data-toggle='infotooltip'>(MLW)</a></span>: </strong></td><td>not reported</td></tr>"
                                 +"<tr class='active'><td><strong>Storage Capacity: </strong></td><td>not reported</td></tr></table>"
                         +"</div>"
                         +"<div class='tab-pane' id='portAct' style='padding-bottom: 12px;height:72px;'>"
                                 +"<table class='table table-hover'>"
-                                +"<tr class='active'><td class='item'><strong>2012 Ship Arrivals: </strong></td><td>" + props.Act_1 + "</td><td>o</td></tr>"
-                                +"<tr class='active'><td class='item'><strong>Cargo handled: </strong></td><td colspan='2' style='line-height:1!important;'>" + props.Cargo + "</td></tr></table>"
+                                +"<tr class='active'><td class='item'><strong>2012 Ship Arrivals: </strong></td><td>" + props.ACT_1 + "</td><td>o</td></tr>"
+                                +"<tr class='active'><td class='item'><strong>Cargo handled: </strong></td><td colspan='2' style='line-height:1!important;'>" + props.CARGO + "</td></tr></table>"
                         +"</div></div>"
-                        +"<div class='labelfield source'>" + props.Source + "</div></div>",
+                        +"<div class='labelfield source'>" + props.SOURCE + "</div></div>",
     contentGeneral ="<div id='baseInfo'>"
-                        +"<div class='datafield'>" + props.Owner + "</div><div class='labelfield'>Owner</div>"
-                        +"<div class='datafield'>" + props.Operator_s + "</div><div class='labelfield'>Operator(s)</div>"
-                        +"<div class='datafield'>" + props.Township + "</div><div class='labelfield'>Municipal Location</div>"
+                        +"<div class='datafield'>" + props.OWNER + "</div><div class='labelfield'>Owner</div>"
+                        +"<div class='datafield'>" + props.OPERATOR + "</div><div class='labelfield'>Operator(s)</div>"
+                        +"<div class='datafield'>" + props.TOWNSHIP + "</div><div class='labelfield'>Municipal Location</div>"
                         +"</div><!--close baseInfo-->"
                         +"<div class='infoDivider'></div>"
                         +"<div id='indactorInfo'>"
@@ -299,30 +316,30 @@ function clkport(e) {
                         +"<div id='indicator' class='tab-content'><!--tab panes-->"
                         +"<div class='tab-pane active' id='portCap' style='padding-bottom: 12px;'>"
                                 +"<table class='table table-hover'>"
-                                +"<tr class='active'><td><strong>Qty of Berths: </strong></td><td>" + props.Cap_1 + "</td></tr>"
-                                +"<tr><td><strong>Total Berth Length: </strong></td><td>" + props.Cap_2 + " linear ft</td></tr>"
-                                +"<tr class='active'><td><strong>Berth Depth <span style='font-weight:normal;'><a title='Mean Low Water' data-toggle='infotooltip'>(MLW)</a></span>: </strong></td><td>" + props.Cap_3 + " feet</td></tr>"
-                                +"<tr><td><strong>Available Cranes: </strong></td><td><a title='" + props.Cap_4 + "' data-toggle='infotooltip'>" + props.Cap_41 + "</a></td></tr>"
-                                +"<tr class='active'><td><strong>Warehouse Space: </strong></td><td>" + props.Cap_5 + "</td></tr></table>"
+                                +"<tr class='active'><td><strong>Qty of Berths: </strong></td><td>" + props.CAP_1 + "</td></tr>"
+                                +"<tr class='active'><td><strong>Total Berth Length: </strong></td><td>" + props.CAP_2 + " linear ft</td></tr>"
+                                +"<tr class='active'><td><strong>Berth Depth <span style='font-weight:normal;'><a title='Mean Low Water' data-toggle='infotooltip'>(MLW)</a></span>: </strong></td><td>" + props.CAP_3 + " feet</td></tr>"
+                                +"<tr class='active'><td><strong>Available Cranes: </strong></td><td><a title='" + props.CAP_4 + "' data-toggle='infotooltip'>" + props.CAP_6 + "</a></td></tr>"
+                                +"<tr class='active'><td><strong>Warehouse Space: </strong></td><td>" + props.CAP_5 + "</td></tr></table>"
                         +"</div>"
                         +"<div class='tab-pane' id='portAct' style='padding-bottom: 12px;height:132px;'>"
                                 +"<table class='table table-hover'>"
-                                +"<tr class='active'><td class='item'><strong>2012 Ship Arrivals: </strong></td><td>" + props.Act_1 + "</td><td>o</td></tr>"
-                                +"<tr class='active'><td class='item'><strong>Cargo handled: </strong></td><td colspan='2' style='line-height:1!important;'>" + props.Cargo + "</td></tr></table>"
+                                +"<tr class='active'><td class='item'><strong>2012 Ship Arrivals: </strong></td><td>" + props.ACT_1 + "</td><td>o</td></tr>"
+                                +"<tr class='active'><td class='item'><strong>Cargo handled: </strong></td><td colspan='2' style='line-height:1!important;'>" + props.CARGO + "</td></tr></table>"
                         +"</div></div>"
-                        +"<div class='labelfield source'>" + props.Source + "</div></div>";
-    if (props.Type == 'Bulk'){ content = contentBulk; } else {content = contentGeneral;}
-   	featureName = '<p>Type: '+ props.Type + ' Terminal</p>',
-	featureClass = 'portcl',
-	featureIcon = 'porticon icon';
-	contentPush(header,content,featureName,featureClass,featureIcon);
+                        +"<div class='labelfield source'>" + props.SOURCE + "</div></div>";
+    if (props.TYPE == 'Bulk'){ content = contentBulk; } else {content = contentGeneral;}
+    featureName = '<p>Type: '+ props.TYPE + ' Terminal</p>',
+    featureClass = 'portcl',
+    featureIcon = 'porticon icon';
+    contentPush(header,content,featureName,featureClass,featureIcon);
 };
 //anchorage
 function clkanchorage(e) {
-	initializeHL(e);
-	header = '<p>' + props.Name + '</p>',
-	content = "<div id='baseInfo'>"
-            +"<div class='datafield'>" + props.Township_s + "</div><div class='labelfield'>Adjacent Municipality(ies)</div>"
+    initializeHL(e);
+    header = '<p>' + props.NAME + '</p>',
+    content = "<div id='baseInfo'>"
+            +"<div class='datafield'>" + props.TOWNSHIP_S + "</div><div class='labelfield'>Adjacent Municipality(ies)</div>"
             //+"<div class='datafield'>" + props.Start + "</div><div class='labelfield'>Start Point</div>"
             //+"<div class='datafield'>" + props.End + "</div><div class='labelfield'>End Point</div>"
             +"</div><!--close baseInfo-->"
@@ -333,22 +350,22 @@ function clkanchorage(e) {
             +"<div id='indicator' class='tab-content'><!--tab panes-->"
             +"<div class='tab-pane active' id='Cap' style='padding-bottom: 12px;'>"
                     +"<table class='table table-hover'>"
-                    +"<tr class='active'><td><strong> Annual Ships (" + props.YEAR + "): </strong></td><td>" + props.Act_1 + "</td></tr></table>"
+                    +"<tr class='active'><td><strong> Annual Ships (" + props.YEAR + "): </strong></td><td>" + props.ACT_1 + "</td></tr></table>"
             +"</div></div>"
-            +"<div class='labelfield source'>Data Source: " + props.Source + "</div></div>",
-   	featureName = '<p>Type: Anchorage</p>',
-	featureClass = 'portcl',
-	featureIcon = 'anchicon icon';
-	contentPush(header,content,featureName,featureClass,featureIcon);
+            +"<div class='labelfield source'>Data Source: " + props.SOURCE + "</div></div>",
+    featureName = '<p>Type: Anchorage</p>',
+    featureClass = 'portcl',
+    featureIcon = 'anchicon icon';
+    contentPush(header,content,featureName,featureClass,featureIcon);
 };
 //River
 function clkriver(e) {
-	initializeHL(e);
-	header = '<p>' + props.NAME + '</p>',
-	content = "<div id='baseInfo'>"
-            +"<div class='datafield'>" + props.Township_s + "</div><div class='labelfield'>Adjacent Municipality(ies)</div>"
-            +"<div class='datafield'>" + props.Start + "</div><div class='labelfield'> <a title='Nautical miles from Atlantic Ocean' data-toggle='infotooltip'>Start Point</a>: </div>"
-            +"<div class='datafield'>" + props.End + "</div><div class='labelfield'> <a title='Nautical miles from Atlantic Ocean' data-toggle='infotooltip'>End Point</a>: </div>"
+    initializeHL(e);
+    header = '<p>' + props.NAME + '</p>',
+    content = "<div id='baseInfo'>"
+            +"<div class='datafield'>" + props.TOWNSHIPS + "</div><div class='labelfield'>Adjacent Municipality(ies)</div>"
+            +"<div class='datafield'>" + props.START_ + "</div><div class='labelfield'> <a title='Nautical miles from Atlantic Ocean' data-toggle='infotooltip'>Start Point</a>: </div>"
+            +"<div class='datafield'>" + props.END + "</div><div class='labelfield'> <a title='Nautical miles from Atlantic Ocean' data-toggle='infotooltip'>End Point</a>: </div>"
             +"</div><!--close baseInfo-->"
             +"<div class='infoDivider'></div>"
             +"<div id='indactorInfo'>"
@@ -357,26 +374,26 @@ function clkriver(e) {
             +"<div id='indicator' class='tab-content'><!--tab panes-->"
             +"<div class='tab-pane active' id='Cap' style='padding-bottom: 12px;'>"
                     +"<table class='table table-hover'>"
-                    +"<tr class='active'><td><strong>Channel Width <span style='font-weight:normal;'>(ft)</span>: </strong></td><td>" + props.Cap_1 + "</td></tr>"
-                    +"<tr><td><strong> Channel Depth <span style='font-weight:normal;'><a title='Mean Lower Low Water' data-toggle='infotooltip'>(MLLW in ft)</a></span>: </strong></td><td>" + props.Cap_2 + "</td></tr>"
-                    +"<tr class='active'><td><strong> <a title='Approved vertical clearance within navigable channel' data-toggle='infotooltip'>Maximum Air Draft <span style='font-weight:normal;'>(ft)</span></a>: </strong></td><td>" + props.Cap_3 + "</td></tr>"
-                    +"<tr><td><strong>Annual Activity: </strong></td><td>not reported</td></tr></table>"
+                    +"<tr class='active'><td><strong>Channel Width <span style='font-weight:normal;'>(ft)</span>: </strong></td><td>" + props.WIDTH + "</td></tr>"
+                    +"<tr class='active'><td><strong> Channel Depth <span style='font-weight:normal;'><a title='Mean Lower Low Water' data-toggle='infotooltip'>(MLLW in ft)</a></span>: </strong></td><td>" + props.DEPTH + "</td></tr>"
+                    +"<tr class='active'><td><strong> <a title='Approved vertical clearance within navigable channel' data-toggle='infotooltip'>Maximum Air Draft <span style='font-weight:normal;'>(ft)</span></a>: </strong></td><td>" + props.CLEARANCE + "</td></tr>"
+                    +"<tr class='active'><td><strong>Annual Activity: </strong></td><td>not reported</td></tr></table>"
             +"</div></div>"
-            +"<div class='labelfield source'>Data Source: " + props.Source + "</div></div>",
-   	featureName = '<p>Type: River Channel</p>',
-	featureClass = 'portcl',
-	featureIcon = 'rivericon icon';
-	contentPush(header,content,featureName,featureClass,featureIcon);
+            +"<div class='labelfield source'>Data Source: " + props.SOURCE + "</div></div>",
+    featureName = '<p>Type: River Channel</p>',
+    featureClass = 'portcl',
+    featureIcon = 'rivericon icon';
+    contentPush(header,content,featureName,featureClass,featureIcon);
 };
 
 //Freight Centers
 function clkFreightCenter(e) {
-	initializeHL(e);
-	var fclass;
-	header = '<p>' + props.Name + '</p>',
-	content = "<div id='baseInfo'>"
-                        +"<div class='datafield'>" + props.Center_Typ + "</div><div class='labelfield'>Type</div>"
-                        +"<div class='datafield'>" + props.Township_s + "</div><div class='labelfield'>Municipality(ies): </div>"
+    initializeHL(e);
+    var fclass;
+    header = '<p>' + props.NAME + '</p>',
+    content = "<div id='baseInfo'>"
+                        +"<div class='datafield'>" + props.CENTER_TYP + "</div><div class='labelfield'>Type</div>"
+                        +"<div class='datafield'>" + props.TOWNSHIP_S + "</div><div class='labelfield'>Municipality(ies): </div>"
                         +"</div><!--close baseInfo-->"
                         +"<div class='infoDivider'></div>"
                         +"<div id='indactorInfo'>"
@@ -385,35 +402,35 @@ function clkFreightCenter(e) {
                         +"<div id='indicator' class='tab-content'><!--tab panes-->"
                         +"<div class='tab-pane active' id='Cap' style='padding-bottom: 12px;'>"
                                 +"<table class='table table-hover'>"
-                                +"<tr class='active'><td><strong>Acres: </strong></td><td>" + numeral(props.Acres).format('0,0.0') + "</td></tr>"
-                                +"<tr><td><strong>Output: </strong></td><td>not available</td></tr></table>"
+                                +"<tr class='active'><td><strong>Acres: </strong></td><td>" + numeral(props.ACRES_1).format('0,0.0') + "</td></tr>"
+                                +"<tr class='active'><td><strong>Output: </strong></td><td>not available</td></tr></table>"
                         +"</div></div>"
-                        +"<div class='labelfield source'>Data Source: " + props.Source + "</div></div>";
+                        +"<div class='labelfield source'>Data Source: " + props.SOURCE + "</div></div>";
                         // +"<p>" + props.REPORT + "</p>";
-    if (props.Center_Typ === 'Intermediate'){
-    		fclass = 'fcinter';
-    }else if(props.Center_Typ === 'Major'){
-    		fclass = 'fcmajor';
-    }else if (props.Center_Typ === 'Mega'){
-    		fclass = 'fcmega';
+    if (props.CENTER_TYP === 'Intermediate'){
+            fclass = 'fcinter';
+    }else if(props.CENTER_TYP === 'Major'){
+            fclass = 'fcmajor';
+    }else if (props.CENTER_TYP === 'Mega'){
+            fclass = 'fcmega';
     }else{}
 
-   	featureName = '<p>Type: '+ props.Center_Typ +' Freight Center</p>',
-	featureClass = ''+ fclass +'cl',
-	featureIcon = ''+ fclass +'icon icon';
-	contentPush(header,content,featureName,featureClass,featureIcon);
+    featureName = '<p>Type: '+ props.CENTER_TYP +' Freight Center</p>',
+    featureClass = ''+ fclass +'cl',
+    featureIcon = ''+ fclass +'icon icon';
+    contentPush(header,content,featureName,featureClass,featureIcon);
 };
 
 //Airports
 //commercial/reliever
 function clkairport(e) {
-	initializeHL(e);
-	var aclass;
-	header = '<p>(' + props.NAVID + ') ' + props.Name + '</p>',
-	content = "<div id='baseInfo'>"
-            +"<div class='datafield'>" + props.Airport_Ty + "</div><div class='labelfield'>Type</div>"
-            +"<div class='datafield'>" + props.Owner + "</div><div class='labelfield'>Owner</div>"
-            +"<div class='datafield'>" + props.Township + "</div><div class='labelfield'>Municipality(ies): </div>"
+    initializeHL(e);
+    var aclass;
+    header = '<p>(' + props.NAVID + ') ' + props.NAME + '</p>',
+    content = "<div id='baseInfo'>"
+            +"<div class='datafield'>" + props.TYPE + "</div><div class='labelfield'>Type</div>"
+            +"<div class='datafield'>" + props.OWNER + "</div><div class='labelfield'>Owner</div>"
+            +"<div class='datafield'>" + props.TOWNSHIP + "</div><div class='labelfield'>Municipality(ies): </div>"
             +"</div><!--close baseInfo-->"
             +"<div class='infoDivider'></div>"
             +"<div id='indactorInfo'>"
@@ -422,29 +439,29 @@ function clkairport(e) {
             +"<div id='indicator' class='tab-content'><!--tab panes-->"
             +"<div class='tab-pane active' id='Cap' style='padding-bottom: 12px;'>"
                     +"<table class='table table-hover'>"
-                    +"<tr class='active'><td><strong>Runway(s): </strong></td><td>" + props.Cap_1 + "</td></tr>"
-                    +"<tr><td><strong>Runway Length(s): </strong></td><td> " + props.Cap_2 + " </td></tr>"
-                    +"<tr class='active'><td><strong>Total Acreage: </strong></td><td>" + props.Cap_3 + "</td></tr>"
-                    +"<tr><td><strong> <a title='Count of annual takeoffs and landings' data-toggle='infotooltip'>Annual Operations</a>: </strong></td><td> " + props.Activity_1 + " </td></tr></table>"
+                    +"<tr class='active'><td><strong>Runway(s): </strong></td><td>" + props.CAP_1 + "</td></tr>"
+                    +"<tr class='active'><td><strong>Runway Length(s): </strong></td><td> " + props.CAP_2 + " </td></tr>"
+                    +"<tr class='active'><td><strong>Total Acreage: </strong></td><td>" + props.CAP_3 + "</td></tr>"
+                    +"<tr class='active'><td><strong> <a title='Count of annual takeoffs and landings' data-toggle='infotooltip'>Annual Operations</a>: </strong></td><td> " + numeral(props.ACTIVITY_1).format('0,0') + " </td></tr></table>"
             +"</div></div>"
-            +"<div class='labelfield source'>Data Source: " + props.Source + "</div></div>";
-	if (props.Airport_Ty === 'Commercial'){
-    		aclass = 'comm';
-    }else if(props.Airport_Ty === 'Reliever'){
-    		aclass = 'rel';
+            +"<div class='labelfield source'>Data Source: " + props.SOURCE + "</div></div>";
+    if (props.TYPE === 'Commercial'){
+            aclass = 'comm';
+    }else if(props.TYPE === 'Reliever'){
+            aclass = 'rel';
     } else{}
-   	featureName = '<p>Type: '+ props.Airport_Ty +' Airport</p>',
-	featureClass = ''+ aclass +'aircl',
-	featureIcon = ''+ aclass +'icon icon';
-	contentPush(header,content,featureName,featureClass,featureIcon);
+    featureName = '<p>Type: '+ props.TYPE +' Airport</p>',
+    featureClass = ''+ aclass +'aircl',
+    featureIcon = ''+ aclass +'icon icon';
+    contentPush(header,content,featureName,featureClass,featureIcon);
 };
 //heliports
 function clkheliport(e) {
-	initializeHL(e);
-	header = '<p>(' + props.LocationID + ") " +props.FacilityNa + '</p>',
-	content = "<div id='baseInfo'>"
-                +"<div class='datafield'>" + props.Owner + "</div><div class='labelfield'>Owner</div>"
-                +"<div class='datafield'>" + props.City + "</div><div class='labelfield'>Municipality(ies): </div>"
+    initializeHL(e);
+    header = '<p>(' + props.LOCATIONID + ") " +props.FACILITYNA + '</p>',
+    content = "<div id='baseInfo'>"
+                +"<div class='datafield'>" + props.OWNER + "</div><div class='labelfield'>Owner</div>"
+                +"<div class='datafield'>" + props.CITY + "</div><div class='labelfield'>Municipality(ies): </div>"
                 +"</div><!--close baseInfo-->"
                 +"<div class='infoDivider'></div>"
                 +"<div id='indactorInfo'>"
@@ -453,45 +470,45 @@ function clkheliport(e) {
                 +"<div id='indicator' class='tab-content'><!--tab panes-->"
                 +"<div class='tab-pane active' id='Cap' style='padding-bottom: 12px;'>"
                         +"<table class='table table-hover'>"
-                        +"<tr class='active'><td><strong>Diameter: </strong></td><td>" + props.Size + " ft</td></tr>"
-                        +"<tr><td><strong>Annual Operations: </strong></td><td>not available</td></tr></table>"
+                        +"<tr class='active'><td><strong>Diameter: </strong></td><td>" + props.SIZE + " ft</td></tr>"
+                        +"<tr class='active'><td><strong>Annual Operations: </strong></td><td>not available</td></tr></table>"
                 +"</div></div>"
                 +"<div class='labelfield source'>Data Source: 2013 DVRPC</div></div>",
-   	featureName = '<p>Type: Heliport</p>',
-	featureClass = 'heliportcl',
-	featureIcon = 'heliporticon icon';
-	contentPush(header,content,featureName,featureClass,featureIcon);
+    featureName = '<p>Type: Heliport</p>',
+    featureClass = 'heliportcl',
+    featureIcon = 'heliporticon icon';
+    contentPush(header,content,featureName,featureClass,featureIcon);
 };
 
 //Energy-Utilities
 //pipelines
 function clkpipelines(e) {
-	initializeHL(e);
-	header = '<p>Pipeline</p>',
-	content = "<div id='baseInfo'>"
-	        +"<div class='datafield'>" + props.TYPE + "</div><div class='labelfield'>Material Transported</div>"
-	        +"<div class='datafield'>" + props.COUNTY + "</div><div class='labelfield'>County</div>"
-	        +"<div class='labelfield source'>Data Source: " + props.Source + "</div></div>",
-   	featureName = '<p>Type: Pipeline</p>',
-	featureClass = 'energycl',
-	featureIcon = 'pipelineicon icon';
-	contentPush(header,content,featureName,featureClass,featureIcon);
+    initializeHL(e);
+    header = '<p>Pipeline</p>',
+    content = "<div id='baseInfo'>"
+            +"<div class='datafield'>" + props.TYPE + "</div><div class='labelfield'>Material Transported</div>"
+            +"<div class='datafield'>" + props.COUNTY + "</div><div class='labelfield'>County</div>"
+            +"<div class='labelfield source'>Data Source: " + props.SOURCE + "</div></div>",
+    featureName = '<p>Type: Pipeline</p>',
+    featureClass = 'energycl',
+    featureIcon = 'pipelineicon icon';
+    contentPush(header,content,featureName,featureClass,featureIcon);
 };
 
 //Community
 //Freight as Good Neighbor
 function clkfgneighbor(e) {
-	initializeHL(e);
-	header = '<p>Freight as a Good Neighbor</p>',
-	content = "<div id='baseInfo'>"
-            +"<div class='datafield'>" + props.Municipali + "</div><div class='labelfield'>Municipality</div>"
-            +"<div class='datafield'>" + props.County + " County</div><div class='labelfield'>County</div>"
-            +"<div class='datafield'> " + props.Descr1 + props.Descr2 +" "+ props.Descr3 + " </div>"
+    initializeHL(e);
+    header = '<p>Freight as a Good Neighbor</p>',
+    content = "<div id='baseInfo'>"
+            +"<div class='datafield'>" + props.MUNICIPALI + "</div><div class='labelfield'>Municipality</div>"
+            +"<div class='datafield'>" + props.COUNTY + " County</div><div class='labelfield'>County</div>"
+            +"<div class='datafield'> " + props.DESCR1 + props.DESCR2 +" "+ props.DESCR3 + " </div>"
             +"<div class='labelfield source'>Data Source: 2012 DVRPC</div></div>",
-   	featureName = '<p>Type: Freight as a Good Neighbor</p>',
-	featureClass = 'communcl',
-	featureIcon = 'communicon icon';
-	contentPush(header,content,featureName,featureClass,featureIcon);
+    featureName = '<p>Type: Freight as a Good Neighbor</p>',
+    featureClass = 'communcl',
+    featureIcon = 'communicon icon';
+    contentPush(header,content,featureName,featureClass,featureIcon);
 };
 
 //county data controls and functions
@@ -687,7 +704,7 @@ $(document).ready(function() {
       e.preventDefault();
      });
     
-    Highcharts.setOptions({
+    /*Highcharts.setOptions({
         chart: {
                 type: 'pie',
                 backgroundColor: '#396AB2'
@@ -800,7 +817,7 @@ $(document).ready(function() {
                         }]
                     });
 
-     });
+     });*/
 
 });
 
