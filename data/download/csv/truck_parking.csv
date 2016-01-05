@@ -1,0 +1,15 @@
+ID,PFF_ID,NAME,OWNER,OPERATOR,TOWNSHIP,CAPACITY,TRUCK_COUN,SOURCE,RATING,LAT,LONG_,CARGO
+14,TP14,Route 309 Truck Stop,309 Truck Stop Corp,309 Truck Stop Corp,Springfield Township,25,0,2009 DVRPC,n/a,40.492898,-75.381569,Freight All Kinds
+9,TP9,Yardley Welcome Center,Pennsylvania Department of Transportation,Pennsylvania Department of Transportation,Lower Makefield Township,8,16,2009 DVRPC,over capacity,40.252374,-74.867108,Freight All Kinds
+13,TP13,Bensalem Travel Plaza,Atkinson Freight Lines,Atkinson Freight Lines,Bensalem Township,100,0,2009 DVRPC,n/a,40.075193,-74.933105,Freight All Kinds
+6,TP6,Richard Stockton Service Plaza,New Jersey Turnpike Authority,HMSHost / Sunoco,Hamilton Township,42,46,2009 DVRPC,over capacity,40.17802,-74.630891,Freight All Kinds
+5,TP5,Woodrow Wilson Service Plaza,New Jersey Turnpike Authority,HMSHost / Sunoco,Hamilton Township,42,82,2009 DVRPC,over capacity,40.17623,-74.629071,Freight All Kinds
+1,TP1,Petro Bordentown,Petro Truck Stops,Petro Truck Stops,Bordentown Township,490,490,2009 DVRPC,at capacity,40.123537,-74.711473,Freight All Kinds
+2,TP2,Love's Travel Stop Bordentown,Love's Travel Stops & Country Stores,Love's Travel Stops & Country Stores,Bordentown Township,79,88,2009 DVRPC,over capacity,40.119864,-74.708241,Freight All Kinds
+4,TP4,James Fenimore Cooper Service Plaza,New Jersey Turnpike Authority,HMSHost / Sunoco,Mount Laurel Township,46,54,2009 DVRPC,over capacity,39.980892,-74.887981,Freight All Kinds
+7,TP7,Walt Whitman Service Plaza,New Jersey Turnpike Authority,HMSHost / Sunoco,Cherry Hill Township,31,28,2009 DVRPC,under capacity,39.885724,-75.002841,Freight All Kinds
+3,TP3,TravelCenters of America Paulsboro,TravelCenters of America,TravelCenters of America,"East Greenwich Township, Greenwich Township",185,194,2009 DVRPC,over capacity,39.81874,-75.238744,Freight All Kinds
+8,TP8,Linwood Welcome Center,Pennsylvania Department of Transportation,Pennsylvania Department of Transportation,Chichester Township,10,8,2009 DVRPC,under capacity,39.823642,-75.437869,Freight All Kinds
+10,TP10,King of Prussia Service Plaza,Pennsylvania Turnpike Commission,HMSHost / Sunoco,Upper Merion Township,28,29,2009 DVRPC,at capacity,40.090011,-75.3713,Freight All Kinds
+12,TP12,Valley Forge Service Plaza,Pennsylvania Turnpike Commission,HMSHost / Sunoco,Tredyffrin Township,9,60,2009 DVRPC,over capacity,40.083116,-75.440108,Freight All Kinds
+11,TP11,Peter J Camiel Service Plaza,Pennsylvania Turnpike Commission,HMSHost / Sunoco,Wallace Township,27,34,2009 DVRPC,over capacity,40.121926,-75.776379,Freight All Kinds

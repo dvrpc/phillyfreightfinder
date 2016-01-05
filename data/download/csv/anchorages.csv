@@ -1,0 +1,4 @@
+PFF_ID,NAME,TOWNSHIP_S,START_,END,LENGTH,SOURCE,LAT,LONG_
+A2,Mantua Creek Anchorage,"PA-Tinicum Township, Philadelphia City; NJ- National Park Borough, West Deptford",0,83.2,2.6,"2012 NOAA Nautical Charts, 2012 DVRPC, 2013 Maritime Exchange",39.864161,-75.215157
+A1,Marcus Hook Anchorage,"PA-Marcus Hook Borough, Trainer Borough; NJ-Logan Township",0,73.1,1.8,"2012 NOAA Nautical Charts, 2012 DVRPC, 2013 Maritime Exchange",39.807285,-75.398401
+A3,Kaign's Point Anchorage,"PA-Philadelphia City; NJ-Camden City",0,90,4.3,"2012 NOAA Nautical Charts, 2012 DVRPC, 2013 Maritime Exchange",39.925479,-75.133567

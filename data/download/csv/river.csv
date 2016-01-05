@@ -1,0 +1,48 @@
+PFF_ID,NAME,TOWNSHIPS,START_,END,LENGTH,WIDTH,DEPTH,CLEARANCE,SOURCE,WEB_ID,DVRPC_ST
+RV46,Chester Range,"Chester City, Logan Township",0,75.1,1.82,800,40,no limit,"2012 NOAA Nautical Charts, 2012 DVRPC",46,NJ/PA
+RV47,Schuylkill River,Philadlephia City,0,0,5.76,0,33,135,"2012 NOAA Nautical Charts, 2012 DVRPC",47,PA
+RV28,Torresdale Range,"Philadelphia City, Cinnaminson Township, Delran Township",0,98.92,1.39,400,40,no limit,"2012 NOAA Nautical Charts, 2012 DVRPC",28,NJ/PA
+RV1,Marcus Hook Range,"Marcus Hook Borough, Trainer Borough, Chester City, Logan Township",0,73.28,1.98,800,40,no limit,"2012 NOAA Nautical Charts, 2012 DVRPC",1,NJ/PA
+RV2,Trenton Channel,"Falls Township, Morrisville Borough, Trenton City",0,118.49,1.07,200,12,no limit,"2012 NOAA Nautical Charts, 2012 DVRPC",2,NJ/PA
+RV3,Moon Channel,"Falls Township, Trenton City",0,117.42,0.39,500,25,no limit,"2012 NOAA Nautical Charts, 2012 DVRPC",3,NJ/PA
+RV4,Cochran Channel,"Falls Township, Trenton City",0,117.03,0.31,300,25,no limit,"2012 NOAA Nautical Charts, 2012 DVRPC",4,NJ/PA
+RV5,Biles Island Channel,"Falls Township, Hamilton Township",0,116.72,0.38,300,25,no limit,"2012 NOAA Nautical Charts, 2012 DVRPC",5,NJ/PA
+RV6,Perriwig Channel,"Falls Township, Hamilton Township",0,116.34,0.24,400,25,no limit,"2012 NOAA Nautical Charts, 2012 DVRPC",6,NJ/PA
+RV7,Duck Island Range,"Falls Township, Hamilton Township",0,116.1,1.25,300,25,no limit,"2012 NOAA Nautical Charts, 2012 DVRPC",7,NJ/PA
+RV8,Bordentown Range,"Falls Township, Bordentown Borough, Hamilton Township",0,114.85,0.65,300,25,no limit,"2012 NOAA Nautical Charts, 2012 DVRPC",8,NJ/PA
+RV9,Raritan Range,"Falls Township, Bordentown Borough, Bordentown Township",0,114.2,0.24,400,25,no limit,"2012 NOAA Nautical Charts, 2012 DVRPC",9,NJ/PA
+RV10,Whitehill Range,"Falls Township, Fieldsboro Borough, Bordentown  Township",0,113.96,1.03,300,25,no limit,"2012 NOAA Nautical Charts, 2012 DVRPC",10,NJ/PA
+RV11,Blake Channel,"Falls Township, Bordentown  Township",0,112.93,0.17,400,25,no limit,"2012 NOAA Nautical Charts, 2012 DVRPC",11,NJ/PA
+RV12,Newbold Channel,"Falls Township, Bordentown  Township",0,112.76,0.52,400,40,no limit,"2012 NOAA Nautical Charts, 2012 DVRPC",12,NJ/PA
+RV13,Penn Channel,"Falls Township, Bordentown  Township",0,112.24,0.36,400,40,no limit,"2012 NOAA Nautical Charts, 2012 DVRPC",13,NJ/PA
+RV14,Kinkora,"Falls Township, Florence Township, Mansfield Township",0,111.88,1.15,400,40,no limit,"2012 NOAA Nautical Charts, 2012 DVRPC",14,NJ/PA
+RV15,Roebling Range,"Falls Township, Florence Township",0,110.73,0.34,400,40,no limit,"2012 NOAA Nautical Charts, 2012 DVRPC",15,NJ/PA
+RV16,Florence Range,"Tullytown Borough, Falls Township, Florence Township",0,110.39,1.34,400,40,no limit,"2012 NOAA Nautical Charts, 2012 DVRPC",16,NJ/PA
+RV17,Florence Bend,"Bristol Township, Florence Township",0,109.05,0.61,500,40,no limit,"2012 NOAA Nautical Charts, 2012 DVRPC",17,NJ/PA
+RV18,Landreth Channel,"Bristol Borough, Burlington Borough",0,106.81,0.62,400,40,135,"2012 NOAA Nautical Charts, 2012 DVRPC",18,NJ/PA
+RV19,Keystone Range,"Bristol Borough, Burlington Borough, Burlington Township",0,107.23,0.42,400,40,no limit,"2012 NOAA Nautical Charts, 2012 DVRPC",19,NJ/PA
+RV20,Bristol Range,"Bristol Borough, Bristol Township, Burlington Township",0,108.44,1.21,400,40,no limit,"2012 NOAA Nautical Charts, 2012 DVRPC",20,NJ/PA
+RV21,Canal Channel,"Bristol Borough, Burlington Borough",0,106.19,0.19,500,40,no limit,"2012 NOAA Nautical Charts, 2012 DVRPC",21,NJ/PA
+RV22,Lehigh Channel,"Bristol Township, Burlington Borough",0,106,0.66,400,40,no limit,"2012 NOAA Nautical Charts, 2012 DVRPC",22,NJ/PA
+RV23,Devlin Channel,"Bristol Township, Burlington Township, Burlington Borough",0,105.34,1.03,400,40,no limit,"2012 NOAA Nautical Charts, 2012 DVRPC",23,NJ/PA
+RV24,Edgewater Channel,"Bensalem Township, Bristol Township, Beverly Borough, Edgewater Park Township, Burlington Township",0,104.31,1.37,400,40,no limit,"2012 NOAA Nautical Charts, 2012 DVRPC",24,NJ/PA
+RV25,Beverly Channel,"Bensalem Township, Beverly Borough",0,102.94,0.65,400,40,no limit,"2012 NOAA Nautical Charts, 2012 DVRPC",25,NJ/PA
+RV26,Enterprise Range,"Bensalem Township, Delanco Township, Beverly Borough",0,102.29,1.7,400,40,no limit,"2012 NOAA Nautical Charts, 2012 DVRPC",26,NJ/PA
+RV27,Mud Island Range,"Philadelphia City, Bensalem Township, Cinnaminson Township, Delanco Township",0,100.59,1.67,400,40,no limit,"2012 NOAA Nautical Charts, 2012 DVRPC",27,NJ/PA
+RV29,Tacony Channel,"Philadelphia City, Palmyra Borough, Riverton Borough",0,97.53,1.17,400,40,no limit,"2012 NOAA Nautical Charts, 2012 DVRPC",29,NJ/PA
+RV30,Frankford Channel,"Philadelphia City, Palmyra Borough",0,96.36,1.05,400,40,no limit,"2012 NOAA Nautical Charts, 2012 DVRPC",30,NJ/PA
+RV31,Bridesburg Channel,"Philadelphia City, Palmyra Borough",0,95.31,0.31,400,40,no limit,"2012 NOAA Nautical Charts, 2012 DVRPC",31,NJ/PA
+RV32,Delair Range,"Philadelphia City, Pennsauken Township, Palmyra Borough",0,95,0.98,400,40,no limit,"2012 NOAA Nautical Charts, 2012 DVRPC",32,NJ/PA
+RV33,Draw Channel,"Philadelphia City, Pennsauken Township",0,94.02,0.74,400,40,135,"2012 NOAA Nautical Charts, 2012 DVRPC",33,NJ/PA
+RV34,Fisher Channel,"Philadelphia City, Pennsauken Township",0,93.28,0.31,400,40,no limit,"2012 NOAA Nautical Charts, 2012 DVRPC",34,NJ/PA
+RV35,Harbor Range,"Philadelphia City, Pennsauken Township",0,92.97,0.7,400,40,no limit,"2012 NOAA Nautical Charts, 2012 DVRPC",35,NJ/PA
+RV36,Cambria to Allegheny Ave,"Philadelphia City, Pennsauken Township",0,92.27,0.42,400,40,no limit,"2012 NOAA Nautical Charts, 2012 DVRPC",36,NJ/PA
+RV37,Ben Franklin Bridge to Cambria St.,"Philadelphia City, Camden City, Pennsauken Township",0,91.85,2,400,40,135,"2012 NOAA Nautical Charts, 2012 DVRPC",37,NJ/PA
+RV38,Reach M to Ben Franklin Bridge,"Philadelphia City, Gloucester City, Camden City",0,89.85,2.95,400,40,139,"2012 NOAA Nautical Charts, 2012 DVRPC",38,NJ/PA
+RV39,Horseshoe Range and Reach M,"Philadelphia City, Westville Borough, Gloucester City",0,86.9,1.17,0,40,no limit,"2012 NOAA Nautical Charts, 2012 DVRPC",39,NJ/PA
+RV40,Horseshoe Bend,"Philadelphia City, West Deptford Township, Westville Borough",0,85.73,0.8,0,40,no limit,"2012 NOAA Nautical Charts, 2012 DVRPC",40,NJ/PA
+RV41,Eagle Point,"Philadelphia City, West Deptford Township, National Park Borough",0,84.93,1.74,800,40,no limit,"2012 NOAA Nautical Charts, 2012 DVRPC",41,NJ/PA
+RV42,Mifflin Range,"Tinicum Township, Philadelphia City, Paulsboro Borough, West Deptford Township, National Park Borough",0,83.19,2.83,800,40,no limit,"2012 NOAA Nautical Charts, 2012 DVRPC",42,NJ/PA
+RV43,Billingsport Range,"Tinicum Township, Greenwich Township, Paulsboro Borough",0,80.36,1.15,800,40,no limit,"2012 NOAA Nautical Charts, 2012 DVRPC",43,NJ/PA
+RV44,Tinicum Range,"Chester City, Eddystone Borough, Tinicum Township, Greenwich Township",0,79.21,3.03,800,40,no limit,"2012 NOAA Nautical Charts, 2012 DVRPC",44,NJ/PA
+RV45,Eddystone Range,"Chester City, Logan Township, Greenwich Township",0,76.18,1.08,800,40,no limit,"2012 NOAA Nautical Charts, 2012 DVRPC",45,NJ/PA
