@@ -66,9 +66,9 @@ module.exports = function(grunt){
 		   dist: {
 			    files: {
 			         'lib/style.min.css': [
-			         	'dev/core/dyna.css',
+			         	//'dev/core/dyna.css',
 			         	'dev/css/typeahead.min.css',
-			         	'dev/css/pfficons.css',
+			         	//'dev/css/pfficons.css',
 			         	'dev/css/tipsy.css',
 			         	'dev/vendor/flexslider.css',
 			         	'dev/css/nouislider.min.css',

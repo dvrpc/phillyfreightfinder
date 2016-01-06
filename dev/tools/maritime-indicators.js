@@ -1,4 +1,6 @@
 $(function() {
+    executeOnLoad("mi-port-diagram-wrapper", load_maritime);
+
     var miYear, updateTradePanel, sizePorts;
     var packer = sm.packer();
     var ind_up = '<i class="glyphicon glyphicon-circle-arrow-up"></i>',
@@ -9,7 +11,7 @@ $(function() {
 
     // ********************************************
     // Open data sets
-
+function load_maritime(){
     d3.csv('data/d3/port_diagram.csv', function(port_points) {
         d3.csv('data/d3/port_activity.csv', function(port_data) {
             d3.json("data/d3/river_diagram.js", function(json) {
@@ -933,6 +935,6 @@ $(function() {
         });
     });
 
-
+}
 
 });

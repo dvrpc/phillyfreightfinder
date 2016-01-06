@@ -1,6 +1,6 @@
 $(function() {
 	//hack to fix the load sequence of rendered HTML
-	executeOnLoad("c-region-nav", load_region);
+	executeOnLoad("c-region-nav", load_region); 
 
 
 	//declare all values for DOM element sizing and rendering of SVGs
@@ -98,7 +98,7 @@ function load_region(){
 	function buildCountyMap(){
 		var ct_height = 420;
 		if ($('#c-region-map').length === 0) {
-			d3.json('data/county_10k.js', function(county5k) {
+			d3.json('data/d3/county_10k.js', function(county5k) {
 				//county_data = county5k;
 				var svg = d3.select('#c-county-map').append('svg')
 					.attr('width', ct_width)
@@ -203,7 +203,7 @@ function load_region(){
 		if($('#c-map-legend').hasClass('open')){$('#c-map-legend').trigger('click');}
 		$('#c-region-network-map').attr('src', 'lib/images/county/'+county+'_map.png').attr('alt', capitalizeFirstLetter(county)+' County Map');
 		if(typeof county_data === 'undefined'){
-			d3.csv('data/county_network.csv', function(data) {
+			d3.csv('data/d3/county_network.csv', function(data) {
 				county_data = data;
 				populateNetwork();
 			});
