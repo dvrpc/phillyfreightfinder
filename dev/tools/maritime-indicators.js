@@ -12,7 +12,7 @@ $(function() {
 
     d3.csv('data/d3/port_diagram.csv', function(port_points) {
         d3.csv('data/d3/port_activity.csv', function(port_data) {
-            d3.json("data/d3/river_diagram.json", function(json) {
+            d3.json("data/d3/river_diagram.js", function(json) {
                 //build the port diagram
                 var port_dia_width = $('#mi-port-diagram-wrapper').width() + 40,
                     port_dia_height = $('#mi-port-diagram-wrapper').height() + 30;

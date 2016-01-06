@@ -407,7 +407,7 @@ function load_region(){
 		d3.csv('data/d3/totalFlowsBEA.csv', function(regionData) {
 		d3.csv('data/d3/commodities.csv', function(CoData) {
 		d3.csv('data/d3/stcc.csv', function(stcc) {	
-		d3.json('data/d3/us_states_shapes.json', function(json) {
+		d3.json('data/d3/us_states_shapes.js', function(json) {
 			regions = regionLookup;
 			flows = regionData;
 			comm_data = CoData;
