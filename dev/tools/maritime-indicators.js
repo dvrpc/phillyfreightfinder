@@ -1,5 +1,27 @@
 $(function() {
-    executeOnLoad("mi-port-diagram-wrapper", load_maritime);
+    
+
+    //declare all values for DOM element sizing and rendering of SVGs
+    var mi_ww = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth, 
+        port_dia_width, chartW;
+    
+    if(mi_ww >= 1200){ //if col-lg
+        port_dia_width = ((mi_ww -30) * 0.5833333333 ) - 30;
+        chartW = (((mi_ww -30)  * 0.8333333 - 30) * 0.75) - 40;        
+    }else if(mi_ww < 1200 && mi_ww >= 992 ){ //if col-md
+        port_dia_width = ((mi_ww -30) * 0.6666666667 ) - 30;
+        chartW = (((mi_ww -30)) * 0.75) - 40; 
+    }else if(mi_ww < 992 && mi_ww >= 768){ //if col-sm
+        port_dia_width = mi_ww - 60;
+        chartW = mi_ww - 120;
+    }else{//if col-xs
+        port_dia_width = mi_ww - 60;
+        chartW = mi_ww - 120; 
+    }
+
+console.log(chartW);
+
+
 
     var miYear, updateTradePanel, sizePorts;
     var packer = sm.packer();
@@ -11,13 +33,12 @@ $(function() {
 
     // ********************************************
     // Open data sets
-function load_maritime(){
+
     d3.csv('data/d3/port_diagram.csv', function(port_points) {
         d3.csv('data/d3/port_activity.csv', function(port_data) {
             d3.json("data/d3/river_diagram.js", function(json) {
                 //build the port diagram
-                var port_dia_width = $('#mi-port-diagram-wrapper').width() + 40,
-                    port_dia_height = $('#mi-port-diagram-wrapper').height() + 30;
+                var port_dia_height = $('#mi-port-diagram-wrapper').height() + 30;
 
                 var port_svg = d3.select('#mi-port-diagram').append('svg')
                     .attr('width', port_dia_width)
@@ -331,7 +352,6 @@ function load_maritime(){
                         bottom: 30,
                         left: 60
                     },
-                    chartW = $('#maritimeChartWrapper').width(),
                     width = chartW - margin.left - margin.right,
                     height = 200 - margin.top - margin.bottom;
 
@@ -935,6 +955,6 @@ function load_maritime(){
         });
     });
 
-}
+
 
 });

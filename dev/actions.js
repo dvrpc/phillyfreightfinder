@@ -642,7 +642,9 @@ $(document).ready(function() {
      });*/
 
 });
-
+function activateTooltip() {
+    $("[data-toggle=infotooltip]").tooltip({ placement: 'left'});
+}
 //custom button functionality
 function modalLink(modal, tab){
     var element =  document.getElementById(modal);
