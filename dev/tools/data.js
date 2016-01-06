@@ -7,7 +7,7 @@ $(function() {
 
         // Access data update file and push data/////
         var baseURL = window.location.href.split('#')[0];
-        var dataURL = baseURL+'data/download/dataUpdates.js';
+        var dataURL = baseURL+'data/download/d3/dataUpdates.js';
         var sandboxURL = baseURL.substring(0, baseURL.length-10)+'/data/d3/dataUpdates.js';
         $.getJSON(dataURL, function(data) {
             for(var i = 0; i < data.length; i++){
