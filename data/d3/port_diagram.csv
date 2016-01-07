@@ -1,32 +1,32 @@
-port_link,lon,lat,port_typ,port_name,dir
-PT1,-74.87093299,40.0583265,b,Riverside,l
-PT10,-74.8631371,40.04042345,b,National Gypsum,r
-PT11,-75.32513331,39.84921368,b,Trainer,r
-PT12,-75.23345697,39.85083063,b,PBF Paulsboro,r
-PT13,-75.05505556,39.9498378,g,Pier 84,l
-PT14,-75.04193563,39.96849324,g,Phila. Forest Products [78/80],l
-PT15,-75.03204816,39.98117021,g,Phila. Forest Products [38/40],l
-PT16,-74.81857215,40.09260934,g,Port of Bucks,r
-PT17,-74.95973014,40.0212052,g,Tioga Marine Terminal,l
-PT18,-74.98220168,39.98828426,g,Petty's Island,r
-PT19,-75.00542803,39.96630732,g,Balzano Marine Terminal,r
-PT2,-74.92018023,40.01392415,b,Hess Delair,r
-PT20,-75.06228102,39.89967608,g,Gloucester Marine Terminal,r
-PT21,-75.09688719,39.91819936,g,Packer Ave Marine Terminal,l
-PT22,-75.263263,39.87720805,g,Penn Terminals,l
-PT23,-75.03318902,39.92738622,g,Broadway Terminal,r
-PT25,-75.04897095,39.95829168,g,Pier 82,l
-PT26,-74.81312928,40.12189521,b,Mercer Co. Generating Station,r
-PT27,-75.21762849,39.89602917,b,Hog Island,l
-PT28,-74.98901228,40.00839002,b,Pier H Port Richmond,l
-PT29,-75.18720548,39.87268437,b,Axeon Specialty Products,r
-PT3,-74.97437121,40.01465229,b,Kinder Morgan Liquid Term.,l
-PT30,-74.82525095,40.08288095,b,Grows Terminal,l
-PT33,-75.06399231,39.93963345,g,Pier 96,l
-PT34,-75.22238208,39.85663022,b,Plains Products Terminal,r
-PT35,-75.24101617,39.8871299,b,Eddystone Rail-to-Barge,l
-PT4,-75.01588594,39.95377335,b,Georgia Pacific,r
-PT5,-75.08852086,39.88946425,b,Eagle Point,r
-PT6,-75.20450857,39.90055131,b,Fort Mifflin,l
-PT8,-75.34245161,39.84112009,b,Marcus Hook,r
-PT9,-75.17332499,39.92461571,b,Girard Point,r
+port_link,port_typ,port_name,dir,lon,lat
+PT1,b,Riverside,l,-74.87093299,40.0583265
+PT10,b,National Gypsum,r,-74.8631371,40.04042345
+PT11,b,Trainer,r,-75.32513331,39.84921368
+PT12,b,PBF Paulsboro,r,-75.23345697,39.85083063
+PT13,g,Pier 84,l,-75.05505556,39.9498378
+PT14,g,Phila. Forest Products [78/80],l,-75.04193563,39.96849324
+PT15,g,Phila. Forest Products [38/40],l,-75.02992630004883,39.98343393295322
+PT16,g,Port of Bucks,r,-74.81857215,40.09260934
+PT17,g,Tioga Marine Terminal,l,-74.95973014,40.0212052
+PT18,g,Petty's Island,r,-74.98220168,39.98828426
+PT19,g,Balzano Marine Terminal,r,-75.00542803,39.96630732
+PT2,b,Hess Delair,r,-74.92018023,40.01392415
+PT20,g,Gloucester Marine Terminal,r,-75.06228102,39.89967608
+PT21,g,Packer Ave Marine Terminal,l,-75.09688719,39.91819936
+PT22,g,Penn Terminals,l,-75.263263,39.87720805
+PT23,g,Broadway Terminal,r,-75.03318902,39.92738622
+PT25,g,Pier 82,l,-75.04897095,39.95829168
+PT26,b,Mercer Co. Generating Station,r,-74.81312928,40.12189521
+PT27,b,Hog Island,l,-75.21762849,39.89602917
+PT28,b,Pier H Port Richmond,l,-74.98901228,40.00839002
+PT29,b,Axeon Specialty Products,r,-75.18720548,39.87268437
+PT3,b,Kinder Morgan Liquid Term.,l,-74.97437121,40.01465229
+PT30,b,Grows Terminal,l,-74.82525095,40.08288095
+PT33,g,Pier 96,l,-75.06399231,39.93963345
+PT34,b,Plains Products Terminal,r,-75.22238208,39.85663022
+PT35,b,Eddystone Rail-to-Barge,l,-75.24101617,39.8871299
+PT4,b,Georgia Pacific,r,-75.01588594,39.95377335
+PT5,b,Eagle Point,r,-75.08852086,39.88946425
+PT6,b,Fort Mifflin,l,-75.20450857,39.90055131
+PT8,b,Marcus Hook,r,-75.34245161,39.84112009
+PT9,b,Girard Point,r,-75.17332499,39.92461571
