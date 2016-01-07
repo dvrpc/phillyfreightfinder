@@ -12,7 +12,7 @@ $(function() {
         $.getJSON(dataURL, function(data) {
             for(var i = 0; i < data.length; i++){
                 dwnID = data[i].id, dwnName = data[i].name, dwnFile = data[i].filename, dwnDate = data[i].date;
-                $('.dataDwnld-' + dwnID).append('<div class="right dl"><div class="noLink">Last Update: '+ dwnDate +'</div><div class="noLink">Download: </div><a class="dlLink" href="http://dvrpcfreight.github.io/phillyfreightfinder/data/download/'+ dwnFile + '.zip" data-toggle="tooltip" title="Download Shapefile" >shp</a><a class="dlLink" href="http://dvrpcfreight.github.io/phillyfreightfinder/data/download/'+ dwnFile + '.csv" data-toggle="tooltip" title="Download CSV" >csv</a><a class="dlLink" href="http://dvrpcfreight.github.io/phillyfreightfinder/data/download/'+ dwnFile + '.json" download="'+ dwnFile +'.json" data-toggle="tooltip" title="Download JSON" >json</a></div>' );
+                $('.dataDwnld-' + dwnID).append('<div class="right dl"><div class="noLink">Last Update: '+ dwnDate +'</div><div class="noLink">Download: </div><a class="dlLink" href="http://dvrpcfreight.github.io/phillyfreightfinder/data/download/shp/'+ dwnFile + '.zip" data-toggle="tooltip" title="Download Shapefile" >shp</a><a class="dlLink" href="http://dvrpcfreight.github.io/phillyfreightfinder/data/download/csv/'+ dwnFile + '.csv" data-toggle="tooltip" title="Download CSV" >csv</a><a class="dlLink" href="http://dvrpcfreight.github.io/phillyfreightfinder/data/download/json/'+ dwnFile + '.json" download="'+ dwnFile +'.json" data-toggle="tooltip" title="Download JSON" >json</a></div>' );
                 $('[data-toggle="tooltip"]').tooltip(); 
             }
         });

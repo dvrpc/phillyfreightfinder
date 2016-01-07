@@ -19,10 +19,6 @@ $(function() {
         chartW = mi_ww - 120; 
     }
 
-console.log(chartW);
-
-
-
     var miYear, updateTradePanel, sizePorts;
     var packer = sm.packer();
     var ind_up = '<i class="glyphicon glyphicon-circle-arrow-up"></i>',
@@ -48,7 +44,7 @@ console.log(chartW);
                 var mi_river = port_svg.append('g')
                     .attr('width', port_dia_width)
                     .attr('height', port_dia_height)
-                    .attr('id', 'river');
+                    .attr('id', 'mi_river');
 
                 port_svg.append('g')
                     .attr('width', port_dia_width)
