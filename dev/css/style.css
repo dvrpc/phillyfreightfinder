@@ -2719,6 +2719,7 @@ h4.panel-title a i:hover{
 .mi-river-label{
     font-size: 12px;
     font-weight: 300;
+    font-style: italic;
 }
 .port circle, .port text{
     cursor: pointer;
