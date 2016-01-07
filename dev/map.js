@@ -73,10 +73,9 @@ $.getJSON("data/county5k.js", function(data) {
         minZoom: 8,
         maxZoom: 18
     });
-    var CartoDB_Positron = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
-        subdomains: 'abcd',
-        maxZoom: 19
+    var Esri_WorldGrayCanvas = L.tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
+        attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ',
+        maxZoom: 16
     });
 
     //create map instance
@@ -84,13 +83,13 @@ $.getJSON("data/county5k.js", function(data) {
         minZoom: zLevel,
         maxZoom: 16,
         zoomControl: false,
-        layers: [CartoDB_Positron]
+        layers: [Esri_WorldGrayCanvas]
     }).setView([oLat, oLng], zLevel);
 
     //add Layer Control to map
     var baseLayers = {
         "Satellite": Esri_WorldImagery,
-        "Street Map": CartoDB_Positron
+        "Street Map": Esri_WorldGrayCanvas
     };
     L.control.layers(baseLayers).addTo(map);
 
@@ -107,23 +106,23 @@ $.getJSON("data/county5k.js", function(data) {
         var topLayer = (Esri_transportation).addTo(map);
         topPane.appendChild(topLayer.getContainer());
         topLayer.setZIndex(2);
-    };
+    }
     map.on('moveend', function() {
         if (map.getZoom() > 13 && map.hasLayer(Esri_WorldImagery)) {
             addStreetLabels();
 
-        };
+        }
         if (map.getZoom() <= 13) {
             map.removeLayer(Esri_transportation);
-        };
+        }
     });
     map.on('baselayerchange', function() {
         if (map.getZoom() > 13 && map.hasLayer(Acetate_all)) {
             map.removeLayer(Esri_transportation);
-        };
+        }
         if (map.getZoom() > 13 && map.hasLayer(Esri_WorldImagery)) {
             addStreetLabels();
-        };
+        }
     });
     // Static DVRPC Layers
    /* var counties = L.geoJson(null, {
@@ -217,10 +216,10 @@ var commicon = L.OpenFreightMarkers.icon({
     var commairpoly = new L.TopoJSON(null, {
         style: {
             fillColor: "#216937",
-            fillOpacity: .50,
+            fillOpacity: 0.50,
             weight: 1,
             color: "#E0E0E0 ",
-            opacity: .75
+            opacity: 0.75
         },
         onEachFeature: function(feature, layer) {
             layer.on({
@@ -256,10 +255,10 @@ var commicon = L.OpenFreightMarkers.icon({
     var relairpoly = new L.TopoJSON(null, {
         style: {
             fillColor: "#30B34C",
-            fillOpacity: .50,
+            fillOpacity: 0.50,
             weight: 1,
             color: "#E0E0E0 ",
-            opacity: .75
+            opacity: 0.75
         },
         onEachFeature: function(feature, layer) {
             layer.on({
@@ -318,10 +317,10 @@ var commicon = L.OpenFreightMarkers.icon({
     var FCinterpoly = new L.TopoJSON(null, {
         style: {
             fillColor: "#F9AB90",
-            fillOpacity: .50,
+            fillOpacity: 0.50,
             weight: 1,
             color: "#E0E0E0 ",
-            opacity: .75
+            opacity: 0.75
         },
         onEachFeature: function(feature, layer) {
             layer.on({
@@ -357,10 +356,10 @@ var commicon = L.OpenFreightMarkers.icon({
     var FCmajorpoly = new L.TopoJSON(null, {
         style: {
             fillColor: "#F26122",
-            fillOpacity: .50,
+            fillOpacity: 0.50,
             weight: 1,
             color: "#E0E0E0 ",
-            opacity: .75
+            opacity: 0.75
         },
         onEachFeature: function(feature, layer) {
             layer.on({
@@ -397,10 +396,10 @@ var commicon = L.OpenFreightMarkers.icon({
     var FCmegapoly = new L.TopoJSON(null, {
         style: {
             fillColor: "#C1332B",
-            fillOpacity: .50,
+            fillOpacity: 0.50,
             weight: 1,
             color: "#E0E0E0 ",
-            opacity: .75
+            opacity: 0.75
         },
         onEachFeature: function(feature, layer) {
             layer.on({
@@ -438,10 +437,10 @@ var commicon = L.OpenFreightMarkers.icon({
     var truckparkpoly = new L.TopoJSON(null, {
         style: {
             fillColor: "#884C9E",
-            fillOpacity: .50,
+            fillOpacity: 0.50,
             weight: 1,
             color: "#E0E0E0 ",
-            opacity: .75
+            opacity: 0.75
         },
         onEachFeature: function(feature, layer) {
             layer.on({
@@ -573,19 +572,19 @@ var commicon = L.OpenFreightMarkers.icon({
                     return {
                         color: "#FDD195",
                         weight: 5,
-                        opacity: .90
+                        opacity: 0.90
                     };
                 case 'Secondary':
                     return {
                         color: "#FCBB65",
                         weight: 5,
-                        opacity: .90
+                        opacity: 0.90
                     };
                 case 'Interstate':
                     return {
                         color: "#FD8D3C",
                         weight: 5,
-                        opacity: .90
+                        opacity: 0.90
                     };
             }
         },
@@ -608,10 +607,10 @@ var commicon = L.OpenFreightMarkers.icon({
     var railyardpoly = new L.TopoJSON(null, {
         style: {
             fillColor: "#FBA919",
-            fillOpacity: .50,
+            fillOpacity: 0.50,
             weight: 1,
             color: "#E0E0E0 ",
-            opacity: .75
+            opacity: 0.75
         },
         onEachFeature: function(feature, layer) {
             layer.on({
@@ -647,10 +646,10 @@ var commicon = L.OpenFreightMarkers.icon({
     var intermodalpoly = new L.TopoJSON(null, {
         style: {
             fillColor: "#FBA919",
-            fillOpacity: .50,
+            fillOpacity: 0.50,
             weight: 1,
             color: "#E0E0E0 ",
-            opacity: .75
+            opacity: 0.75
         },
         onEachFeature: function(feature, layer) {
             layer.on({
@@ -731,10 +730,10 @@ var commicon = L.OpenFreightMarkers.icon({
     var river = new L.TopoJSON(null, {
         style: {
             fillColor: "#55B8DF",
-            fillOpacity: .50,
+            fillOpacity: 0.50,
             weight: 1,
             color: "#E0E0E0 ",
-            opacity: .65
+            opacity: 0.65
         },
         onEachFeature: function(feature, layer) {
             layer.on({
@@ -755,10 +754,10 @@ var commicon = L.OpenFreightMarkers.icon({
     var portpoly = new L.TopoJSON(null, {
         style: {
             fillColor: "#29A0CF",
-            fillOpacity: .50,
+            fillOpacity: 0.50,
             weight: 1,
             color: "#E0E0E0 ",
-            opacity: .75
+            opacity: 0.75
         },
         onEachFeature: function(feature, layer) {
             layer.on({
@@ -794,10 +793,10 @@ var commicon = L.OpenFreightMarkers.icon({
     var anchoragepoly = new L.TopoJSON(null, {
         style: {
             fillColor: "#0E76BC",
-            fillOpacity: .50,
+            fillOpacity: 0.50,
             weight: 1,
             color: "#E0E0E0 ",
-            opacity: .65
+            opacity: 0.65
         },
         onEachFeature: function(feature, layer) {
             layer.on({
@@ -835,7 +834,7 @@ var commicon = L.OpenFreightMarkers.icon({
         style: {
             color: "#EFD315",
             weight: 3,
-            opacity: .90
+            opacity: 0.90
         },
         onEachFeature: function(feature, layer) {
             layer.on({
@@ -853,22 +852,22 @@ var commicon = L.OpenFreightMarkers.icon({
         if (map.getZoom() > 14) {
             $('#pipelabel').parent().addClass('disabled');
             $('#pipelabel').closest('.panel').find('.checked_all').addClass('disabled');
-        };
+        }
         if (map.getZoom() > 14 && map.hasLayer(pipelines) && $("#pipelines").is(':checked')) {
             map.removeLayer(pipelines);
             var pipelinelegend = document.getElementById('pipehidden');
             pipelinelegend.innerHTML = "[not available at zoom level]";
-        };
+        }
         if (map.getZoom() <= 14) {
             $('#pipelabel').parent().removeClass('disabled');
             $('#pipelabel').closest('.panel').find('.checked_all').removeClass('disabled');
-        };
+        }
         if (map.getZoom() <= 14 && $("#pipelines").is(':checked')) {
             map.addLayer(pipelines);
             var pipelinelegend = document.getElementById('pipehidden');
             pipelinelegend.innerHTML = "";
             $('#pipelabel').parent().removeClass('disabled');
-        };
+        }
     });
 
     //define community layers

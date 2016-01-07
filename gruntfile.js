@@ -34,7 +34,7 @@ module.exports = function(grunt){
 		    d3: {
 		        src: [
 		            'dev/vendor/d3_2.7.0/d3.min.js',
-		            'dev/vendor/d3_2.7.0/d3.csv.min.js',
+		            //'dev/vendor/d3_2.7.0/d3.csv.min.js',
 		            'dev/vendor/d3_2.7.0/d3compat.min.js',
 		            'dev/vendor/d3_2.7.0/circle_packer_movers.js' 
 		        ],
