@@ -17,5 +17,11 @@
     "grunt-postcss": "^0.7.1",
     "jshint-stylish": "^2.0.1",
     "matchdep": "^1.0.0"
+  },
+  "dependencies": {
+    "bootstrap": "^3.2.0",
+    "esri-leaflet": "^1.0.0",
+    "jquery": "^1.11.1",
+    "leaflet": "^0.7.7"
   }
 }
