@@ -1,0 +1,24 @@
+PFF_ID,NAME,OWNER,OPERATOR,TOWNSHIP,ACRES,RAIL_ID,SOURCE,GIS_ACRES,WEB_ID,LAT,LONG_
+RY16,Wanamaker Yard,Conrail,"Conrail, Norfolk Southern, CSX",Tinicum Township,,RL7,2012 DVRPC,2.788166,16,39.86512,-75.307082
+RY13,Seaboard Yard,Norfolk Southern,Norfolk Southern,Upper Merion Township,,RL12,2012 DVRPC,8.000348,13,40.113752,-75.371466
+RY15,Stowe Yard,Norfolk Southern,Norfolk Southern,Pottstown Borough,,RL12,2012 DVRPC,2.217152,15,40.248178,-75.674026
+RY2,Aramingo Ave Yard,Conrail,"Conrail, Norfolk Southern, CSX",Philadelphia City,,RL64,2012 DVRPC,2.572707,2,39.999714,-75.082759
+RY14,Stoney Creek Yard,Conrail,"Conrail, Norfolk Southern, CSX",Trainer Borough,,RL7,2012 DVRPC,20.498161,14,39.82575,-75.396012
+RY3,Bristol Yard,AMTRAK,AMTRAK,Bristol Borough,,RL61,2012 DVRPC,1.469078,3,40.11282,-74.843713
+RY4,Bulson Street Yard,Conrail,"Conrail, Norfolk Southern, CSX",Camden City,,RL57,2012 DVRPC,5.587077,4,39.918099,-75.122421
+RY10,Morrisville Yard,Norfolk Southern,Norfolk Southern,Falls Township,,RL16,2012 DVRPC,18.459385,10,40.193547,-74.810321
+RY9,Lansdale Yard,SEPTA,Pennsylvania Northeastern Railroad,Lansdale Borough,,RL36,2012 DVRPC,0.707996,9,40.245514,-75.285814
+RY18,Woodbourne Yard,CSX,CSX,Langhorne Borough,,RL42,2012 DVRPC,6.189724,18,40.18225,-74.894799
+RY17,West Falls Yard,Norfolk Southern,Norfolk Southern,Philadelphia City,,RL52,2012 DVRPC,6.780293,17,40.009996,-75.204358
+RY1,Abrams Yard,Norfolk Southern,Norfolk Southern,Upper Merion Township,,RL12,2012 DVRPC,30.160704,1,40.11529,-75.38967
+RY5,Burlington Yard,Conrail,"Conrail, Norfolk Southern, CSX",Burlington Township,,RL4,2012 DVRPC,1.567523,5,40.086948,-74.832721
+RY11,Paulsboro Yard,SMS Rail Lines,SMS Rail Lines,Paulsboro Borough,,RL22,2012 DVRPC,3.380128,11,39.834564,-75.248069
+RY21,Bustleton Yard,Conrail,"Conrail, Norfolk Southern, CSX",Philadelphia City,,RL8,2012 DVRPC,1.04544,21,40.072886,-75.020299
+RY20,Woodbury Yard,Conrail,"Conrail, Norfolk Southern, CSX",Woodbury City,,RL30,2012 DVRPC,4.356593,20,39.829276,-75.15312
+RY7,Frankford Junction,Conrail,"Conrail, Norfolk Southern, CSX",Philadelphia City,,RL10,2012 DVRPC,3.549685,7,40.001248,-75.092971
+RY19,Fairless Yard,Conrail,"Conrail, Norfolk Southern, CSX",Falls Township,,RL16,2012 DVRPC,15.431411,19,40.174919,-74.757687
+RY8,Greenwich Yard,CSX,"CSX, Conrail",Philadelphia City,,RL39,2012 DVRPC,24.942987,8,39.898917,-75.150047
+RY6,Eastside Yard,CSX,CSX,Philadelphia City,,RL60,2012 DVRPC,16.200318,6,39.933346,-75.20461
+RY12,Pavonia Yard,Conrail,"Conrail, Norfolk Southern, CSX",Camden City,,RL72,2012 DVRPC,54.471593,12,39.9491,-75.094839
+RY23,Modena Yard,ArcelorMittal Steel,Brandywine Valley Railroad,East Fallowfield Township,,RL86,"2015 ArcelorMittal Steel, 2015 DVRPC",4.078663,23,39.9591,-75.7892
+RY22,Richey Yard,ArcelorMittal Steel,Brandywine Valley Railroad,South Coatesville Borough,,RL86,"2015 ArcelorMittal Steel, 2015 DVRPC",7.742786,22,39.9696,-75.8064

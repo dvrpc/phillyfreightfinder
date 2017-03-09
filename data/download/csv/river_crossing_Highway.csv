@@ -1,0 +1,15 @@
+PFF_ID,NAME,TYPE,OWNER,OPERATOR,USE,TOWN_1,TOWN_2,CAP_1,CAP_2,CAP_3,ACT_1,SOURCE,LINK_ID,LINE
+RB18,Schuylkill Expressway,Fixed Bridge,PennDOT,No,Highway,Philadelphia City,Philadelphia City,4,no limit,,,2012 DVRPC,,I 76
+RB10,Commodore Barry Bridge,Fixed Bridge,DRPA,Yes,Highway,Chester City,Logan Township,5,no limit,,,2013 DVRPC,,US 322
+RB34,Twin Bridges,Fixed Bridge,PennDOT,No,Highway,Philadelphia City,Philadelphia City,6,no limit,,,2012 DVRPC,,US 1 (Roosevelt Blvd)
+RB8,Ben Franklin Bridge,Fixed Bridge,DRPA,Yes,Highway,Philadelphia City,Camden City,7,16.8,,,"2012 DVRPC, 2012 DRPA",,I 676
+RB6,Betsy Ross Bridge,Fixed Bridge,DRPA,Yes,Highway,Philadelphia City,Pennsauken Township,6,37.6,,,"2012 DVRPC, 2012 DRPA",,NJ 90
+RB41,Pearl Harbor Memorial Bridge,Fixed Bridge,PennDOT,No,Highway,West Conshohocken,Plymouth Township,8,no limit,,,2012 DVRPC,,I 476
+RB9,Walt Whitman Bridge,Fixed Bridge,DRPA,Yes,Highway,Philadelphia City,Camden City,7,15.8,,,"2012 DVRPC, 2012 DRPA",,I 76
+RB44,Schuylkill River Bridge,Fixed Bridge,PennDOT,No,Highway,Upper Merion Township,Plymouth Township,6,no limit,,,2012 DVRPC,,I 276
+RB26,Vine Street Expressway Bridge,Fixed Bridge,PennDOT,No,Highway,Philadelphia City,Philadelphia City,6,no limit,,,2012 DVRPC,,I 676
+RB1,Scudder Falls Bridge,Fixed Bridge,Delaware River Joint Toll Bridge Commission,No,Highway,Lower Makefield Township,Ewing Township,4,no limit,,,"2012 DVRPC, 2012 DRJTBC",,I 95
+RB5,Delaware River – Turnpike Toll Bridge,Fixed Bridge,PA Turnpike Commission & NJ Turnpike Authority,Yes,Highway,Bristol Township,Burlington Township,4,28,,,2012 DVRPC,,I 276 (Pennsylvania Turnpike)
+RB12,Girard Point Bridge,Fixed Bridge,PennDOT,No,Highway,Philadelphia City,Philadelphia City,8,n/a,,,2012 DVRPC,,I 95
+RB13,George C. Platt Bridge,Fixed Bridge,PennDOT,No,Highway,Philadelphia City,Philadelphia City,4,17.5,,,2012 DVRPC,,PA 291
+RB3,Trenton–Morrisville Toll Bridge,Fixed Bridge,Delaware River Joint Toll Bridge Commission,Yes,Highway,Morrisville Borough,Trenton City,6,no limit,,,"2012 DVRPC, 2012 DRJTBC",,US 1 (Trenton Freeway)

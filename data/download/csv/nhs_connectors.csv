@@ -1,0 +1,12 @@
+PFF_ID,NAME,TOWNSHIP_S,CAP_1,CAP_2,AADT,HWY_ID,LINK_ID,SOURCE,LAT,LONG_
+NHS6,"Morgan Boulevard, Broadway (County Road 551), King Street","Camden City, Gloucester City",1,0.97,,,CI-2,2012 DVRPC,39.908077,-75.11979
+NHS2,Bethel Road,Upper Chichester Township,1,0.38,,,IM3,2012 DVRPC,39.842979,-75.413959
+NHS9,"36th Street, River Road","Palmyra Borough, Pennsauken Township, Camden City",1,4.05,,,PT18,2012 DVRPC,39.977652,-75.056344
+NHS8,"Bath Street, Alleghany Avenue, N. Delaware Avenue, Castor Avenue",Philadelphia City,1,1.67,,,PT17,2012 DVRPC,39.98038,-75.090301
+NHS11,Pennsylvania Avenue,"Morrisville Borough, Falls Township",1,2.56,,,PT16,2012 DVRPC,40.187041,-74.763429
+NHS10,"East Cabot Boulevard, Oxford Valley Road","Lower Makefield Township, Falls Township",1,1.41,,,IM1,2013 DVRPC,40.192634,-74.857536
+NHS1,"Bartram Avenue, Island Avenue, Enterprise Avenue, Fort Mifflin Road, Hog Island Road, Scott Way","Philadelphia City, Tinicum Township",1,11.28,,,PHL,2012 DVRPC,39.87633,-75.261375
+NHS5,Delaware Avenue,Philadelphia City,1,1.13,,,CI-1,2012 DVRPC,39.906877,-75.138915
+NHS7,"Balzano Boulevard, 2nd Street, Ferry Avenue, Atlantic Avenue",Camden City,1,2.37,,,PT19,2012 DVRPC,39.935076,-75.127038
+NHS4,"Wharton Street, Warfield Street, Moore Street, 34th Street, Maiden Lane, Vare Street, 28th Street, Passyunk Avenue",Philadelphia City,1,2.38,,,IM4,2012 DVRPC,39.928006,-75.196101
+NHS3,"Stewart Avenue, Industrial Highway (PA 291), Saville Avenue","Ridley Township, Eddystone Borough",2,2.14,,,PT22,2012 DVRPC,39.861517,-75.329203

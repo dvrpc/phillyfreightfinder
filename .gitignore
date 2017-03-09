@@ -1,0 +1,4 @@
+html
+lib
+node_modules
+*.cache

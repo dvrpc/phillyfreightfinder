@@ -1,0 +1,12 @@
+PFF_ID,NAVID,NAME,OWNER,TYPE,TOWERED,TOWNSHIP,CAP_1,CAP_2,CAP_3,ACTIVITY_1,FC_ID,SOURCE,LAT,LONG_
+MQS,MQS,Chester County Airport,Chester County Area Airport Authority,Reliever,No,Valley Township,1,"5,400",153,52551,0,2007 DVRPC,39.979103,-75.863499
+LOM,LOM,Wings Field,Wings Field Preservation Associates,Reliever,No,Whitpain Township,1,"3,700",210,46689,0,2007 DVRPC,40.137556,-75.265139
+PTW,PTW,Pottstown-Limerick Airport,Exelon Generation Company LLC,Reliever,No,Limerick Township,1,"3,371",223,37217,0,2007 DVRPC,40.240394,-75.555742
+N57,N57,New Garden Airport,New Garden Township,Reliever,No,New Garden Township,1,"3,695",190,26128,0,2006 DVRPC,39.830526,-75.769745
+OQN,OQN,Brandywine Airport,New Brandywine Airport Club,Reliever,No,West Goshen Township,1,"3,347",110,50857,0,2006 DVRPC,39.990173,-75.579406
+VAY,VAY,South Jersey Regional Airport,New Jersey Department of Tranportation,Reliever,No,Lumberton Township,1,"3,911",642,37782,0,2007 DVRPC,39.943004,-74.844442
+DYL,DYL,Doylestown Airport,Bucks County Airport Authority,Reliever,No,Buckingham Township,1,"3,004",93,41238,0,2007 DVRPC,40.333598,-75.122065
+PNE,PNE,Northeast Philadelphia Airport,City of Philadelphia,Reliever,Yes,Philadelphia City,2,"5,000-7,000","1,150",105485,0,2006 DVRPC,40.079403,-75.010322
+N87,N87,Trenton-Robbinsville Airport,"Trenton-Robbinsville Airport, Inc",Reliever,No,Washington Township,1,"4,275",240,25401,0,2005 DVRPC,40.213892,-74.600668
+TTN,TTN,Trenton-Mercer Airport,Mercer County,Commercial,Yes,Ewing Township,2,"4,800-6,006","1,345",97455,0,2006 DVRPC,40.276867,-74.811872
+PHL,PHL,Philadelphia International Airport,City of Philadelphia,Commercial,Yes,"Philadelphia City, Tinicum Township",4,"5,000-10,506","2,315",515869,0,2006 DVRPC,39.876596,-75.23755

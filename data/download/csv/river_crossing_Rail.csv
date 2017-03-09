@@ -1,0 +1,11 @@
+PFF_ID,NAME,TYPE,OWNER,OPERATOR,USE,TOWN_1,TOWN_2,CAP_1,CAP_2,CAP_3,ACT_1,SOURCE,LINK_ID,LINE
+RB15,B&O Railroad Bridge,Swing Bridge,CSX,"CSX, Norfolk Southern",Rail,Philadelphia City,Philadelphia City,2,n/a,,n/a,2012 DVRPC,,Philadelphia Subdivision
+RB2,CSX/Trenton Subdivision Bridge,Fixed Bridge,CSX,"CSX, SEPTA",Rail,Lower Makefield Township,Ewing Township,2,Yes,,n/a,2012 DVRPC,,Trenton Subdivision
+RB30,Columbia Railroad Bridge,Stone Arch Bridge,CSX,CSX,Rail,Philadelphia City,Philadelphia City,2,Yes,,n/a,2012 DVRPC,,Trenton Subdivision
+RB4,Morrisville–Trenton Railroad Bridge,Stone Arch Bridge,AMTRAK,"AMTRAK, Conrail, CSX, Norfolk Southern, SEPTA",Rail,Morrisville Borough,Trenton City,4,Yes,,n/a,2012 DVRPC,,Northeast Corridor
+RB45,NS Schuylkill Rail Bridge,Fixed Bridge,Norfolk Southern,"Norfolk Southern, CSX",Rail,Upper Merion Township,Norristown Borough,2,Yes,,n/a,2012 DVRPC,,Morrisville Line
+RB19,Schuylkill Aresnal Railroad Bridge,Swing Bridge (immobilized),CSX,"Canadian Pacific, CSX, Norfolk Southern",Rail,Philadelphia City,Philadelphia City,1,Yes,,n/a,2012 DVRPC,,25th Street Viaduct and South Philadelphia Track
+RB32,Schuylkill River Viaduct,Stone Arch Bridge,Norfolk Southern,"Canadian Pacific, CSX, Norfolk Southern",Rail,Philadelphia City,Philadelphia City,1,Yes,,n/a,2012 DVRPC,,Harrisburg Line
+RB29,Connecting Railway Bridge,Stone Arch Bridge,AMTRAK,"AMTRAK, Conrail, CSX, Norfolk Southern, SEPTA",Rail,Philadelphia City,Philadelphia City,4,No,,n/a,2012 DVRPC,,Northeast Corridor-Delair Branch
+RB7,Delair Rail Bridge,RR Lift Bridge,Conrail,"Conrail, NJ Transit",Rail,Philadelphia City,Pennsauken Township,2,No,,n/a,2012 DVRPC,,Delair Branch
+RB33,Bridge at West Falls,Fixed Bridge,CSX,"CSX, Norfolk Southern, Canadian Pacific",Rail,Philadelphia City,Philadelphia City,2,Yes,,n/a,2012 DVRPC,,Trenton Subdivision

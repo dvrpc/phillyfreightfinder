@@ -1,0 +1,469 @@
+<div class='page-title center-block col-lg-12'>
+    <div id="c-region-title" class='center-block col-lg-10 col-md-12' style='float:none;'>
+        <div id='c-title-wrapper' >
+    		<h1><span id="c-name"> </span><span id="c-divider"></span><span id="c-tab"> </span></h1>
+		</div>
+        <div id='c-region-nav' style="display:none;">
+        	<ul id='c-steps'>
+        		<li>
+        			<a href='#' class='c-step-item c-step-current' data-target='c-region'>
+        				<svg id='o-ripple' class='c-ripple' fill="#686868">
+                            <circle cx="20" cy="20" r="8" stroke-width="0" class="c-step-ripple"></circle>
+                        </svg>
+        				<svg class="c-step-nav">
+        					<circle cx="10" cy="10" r="8" class="c-active-circle"></circle>
+							<circle cx="10" cy="10" r="3" class="c-step-active">
+							</circle>
+						</svg>
+						
+						<div class='c-step-name'>Overview</div>
+        			</a>
+        		</li>
+        		<li>
+        			<a href='#' class='c-step-item' data-target='c-network'>
+        				<svg id='n-ripple' class='c-ripple'><circle cx="20" cy="20" r="6" stroke-width="0" class="c-step-ripple"></circle></svg>
+        				<svg class="c-step-nav">
+							<circle cx="10" cy="10" r="5" class="c-active-circle"></circle>
+							<circle cx="10" cy="10" r="6" class="c-step-active">
+							</circle>
+						</svg>
+						<div class='c-step-name'>Network</div>
+        			</a>
+        		</li>
+        		<li>
+        			<a href='#' class='c-step-item' data-target='c-freight_centers'>
+        				<svg id='f-ripple' class='c-ripple'><circle cx="20" cy="20" r="6" stroke-width="0" class="c-step-ripple"></circle></svg>
+        				<svg class="c-step-nav">
+	        				<circle cx="10" cy="10" r="5" class="c-active-circle"></circle>
+							<circle cx="10" cy="10" r="6" class="c-step-active">
+							</circle>
+						</svg>
+						<div class='c-step-name'>Freight Centers</div>
+        			</a>
+        		</li>
+        		<li>
+        			<a href='#' class='c-step-item' data-target='c-domestic_trade'>
+        				<svg id='t-ripple' class='c-ripple'><circle cx="20" cy="20" r="6" stroke-width="0" class="c-step-ripple"></circle></svg>
+        				<svg class="c-step-nav">
+	        				<circle cx="10" cy="10" r="5" class="c-active-circle"></circle>
+							<circle cx="10" cy="10" r="6" class="c-step-active">
+							</circle>
+						</svg>
+						<div class='c-step-name'>Trade Patterns</div>
+        			</a>
+        		</li>
+        	</ul>
+        	<div class='c-step-line'></div>
+        </div>
+    </div> 
+</div><!--close the header -->
+<div class='hidden-lg hidden-md col-xs-12 ' style='height:57px;margin-bottom:10px'></div><div class='clearfix'></div>
+<!-- regional overview template -->
+<div id="c-region" class="col-lg-12 tool-content-dt c-region-tab" style="display: none;">
+
+	<div class='center-block col-lg-10 col-sm-12 ' style='float:none;'>
+		<div class="row">
+	        <div class='col-sm-5 col-md-6'>
+	            <p>The Delaware Valley region consists of nine counties: Bucks, Chester, Delaware, Montgomery and Philadelphia in Pennsylvania, and Burlington, Camden, Gloucester and Mercer in New Jersey.</p>
+	            <p class="highlight-block">The DVRPC region contains an impressive freight transportation network consisting of highways, rail lines, ports, airports, and pipelines. These key linkages unite an expansive list of facilities including warehouses, manufacturing sites, rail yards, and truck stops.</p>
+	            <p>Strategically positioned in the middle of the densest population center in the United States; over 100 million people live within a 500-mile radius of Philadelphia, representing a vast consumer base and making the region ideally situated as a manufacturing and distribution hub.</p>
+	            <div id="c-explore-emphasis">
+                    <img src="./lib/images/emphasis_panel_left.png" alt="Link Panel" height="111" width="55" style="float:left;">
+                    <div id="c-emphasis-text">Explore freight facilties and<br/>activity by county<br/><span>(select a county of interest)</span></div>
+                    <img src="./lib/images/emphasis_panel_right.png" alt="Link Panel" height="111" width="55" style="float:right;">
+                </div>
+                <div id="c-explorer-block"></div>
+	        </div> 
+	        <div id="c-map-wrapper" class='col-sm-7 col-md-6'>
+	        	<div id="c-county-map" class="region-county-map">
+                </div>
+                <div id="c-county-prompt" style="display:none;"><i class="glyphicon glyphicon-triangle-bottom"></i>&nbsp;&nbsp;&nbsp;&nbsp;Select a county to proceed&nbsp;&nbsp;&nbsp;&nbsp;<i class="glyphicon glyphicon-triangle-bottom"></i></div>
+	        </div>
+	    </div>
+    </div>
+    <!--<div class='row'>
+        <div class='col-md-12 hpbanner' style='padding-bottom:20px;'> 
+            <div class='center-block col-lg-10 col-sm-12' style='float:none;'>
+                <div id='dataContainer'>
+                    <div class='col-md-5 center'>
+                        <h4>Regional Freight Shipments by Mode [2010]</h4>
+                        <div id="containerTon" style="height:185px;width:350px;margin-bottom:-15px;display: block;margin-left:auto;margin-right:auto;"></div>
+                        <div class='divider'></div>
+                        <div style='padding-bottom:10px;'><span class='ctylegend' style='border-color:#8dd3c7'>Truck</span>&nbsp;&nbsp;&nbsp;
+                        <span class='ctylegend' style='border-color:#ffffb3'>Rail</span>&nbsp;&nbsp;&nbsp;
+                        <span class='ctylegend' style='border-color:#bebada'>Water</span>&nbsp;&nbsp;&nbsp;
+                        <span class='ctylegend' style='border-color:#fb8072'>Air/Air + Truck</span><br/><br/>
+                        <span class='ctylegend' style='border-color:#80b1d3'>Multiple Modes</span>&nbsp;&nbsp;&nbsp;
+                        <span class='ctylegend' style='border-color:#fdb462'>Pipeline</span>&nbsp;&nbsp;&nbsp;
+                        <span class='ctylegend' style='border-color:#b3de69'>Other</span>&nbsp;</div>
+                        <div class='divider'></div>
+                        <div id="containerValue" style="height:185px;width:350px;margin-top:-15px;display: block;margin-left:auto;margin-right:auto;"></div>
+                        <div class='col-md-10 col-md-offset-1'><p style='line-height:8px;'><span style="font-size:10px;color:#BBE6FA;">Source: US Department of Transportation, Federal Highway Administration, Office of Freight Management and Operations, Freight Analysis Framework Version 3</span></p></div>
+                    </div>
+                    <div class='col-md-6'>
+                    </div>
+                    
+                        
+                </div> 
+            </div>
+        </div>
+    </div>-->
+</div>
+
+<!-- network content template -->
+<div id="c-network" class="col-lg-12 tool-content-dt c-region-tab" style="display: none;">
+	<div class='center-block col-lg-10 col-md-12' style='float:none;'>
+        <div class="row" style="min-height:185px;">
+            <div class='col-sm-12 col-md-5'>
+                <p id="c-county-desc"></p>
+                <!-- highway stats -->
+                <div id="c-stat-highway" class="row stat-block stat-title">
+                    <h4>Freight Network Statistics</h4>
+                </div>
+                <div id="c-stat-highway" class="row stat-block stat-hwy">
+                    <div class="col-xs-4 center c-data">
+                        <svg class="c-stat-icon" viewBox="0 0 156.3 85.7" width="100" height="60">
+                            <g>
+                                <polygon class="st0" points="67.8,77.8 70.6,79.5 87.8,74.7 85.9,73  "/>
+                                <polygon class="st0" points="105.7,67.1 108,69.1 125.2,63.5 122.8,61.7  "/>
+                                <polygon class="st0" points="151,53.5 141.6,56.2 144.4,57.8 151,55.8    "/>
+                                <path class="st0" d="M151,44.9v-2.1l-15,1.6v-1.4l7-0.8V20h0.7L84.5,7H52v10h27.3c1.1,0,2.2,0.4,3.1,1.3c0.9,0.9,1.5,1.8,1.5,2.9
+                                    V48h0.5l16.5-1.4v2.4l-16.8,2.1c0-0.8,0-1.5-0.3-2.1c-0.4-0.7-1.9-1.3-1.9-1.6V21.2c0-0.7-0.2-1.4-0.8-2.1c-0.6-0.7-1.2-1-1.9-1
+                                    H45.5c-0.7,0-1.7,0.3-2.3,1c-0.6,0.7-1.2,1.4-1.2,2.1v26.2c-2,0.4-1.6,0.9-2,1.6c-0.4,0.7-1,1.6-1,2.7v8.6c0,1,0.5,1.9,1.2,2.7
+                                    c-0.1,0-0.1,0-0.2,0c-5.1-1.2-12-3.6-17.1-8.7c-2.9-2.9-5.7-6.4-8-12.3l26.1-9.7L41,20.5c0.1-1.5,1.5-3.3,3-3.6l7.1-0.1l0-3.1
+                                    c-1.8-1.8-2.8-2.6-2.8-2.6s-3.3,4.2-9.6,5.6c-6.4,1.4-10.2-0.2-10.2-0.2s-2.9,5.2-8.9,7.5c-5.9,2.4-10.1,1.4-10.1,1.4
+                                    s-1.1,7.1,1.8,15.8C13,46.3,16.2,52,21.9,57.2c0.6,0.5,1.2,1.1,1.9,1.6L5.4,61.1l0.3,2.4l21-2.7c9.5,5.8,20.4,5.9,20.4,5.9
+                                    s0.3-1,0.8-2.3c0.2-0.1,0.4-0.3,0.5-0.4c1.1-1,1.6-2.2,1.6-3.6V57h26v3.4c0,1.4-0.4,2.7,0.6,3.6c1,1,1.8,1.5,3.2,1.5
+                                    c1.3,0,2-0.5,3.1-1.5c1.1-1,1.2-2.2,1.2-3.6v-6.9l16.8-2.1c0.2,0.8,0.5,1.6,1.1,2.1c0.8,0.8,1.9,1.2,3.4,1.2c0.5,0,1.1-0.1,1.8-0.3
+                                    c0.6-0.2,1.1-0.5,1.5-0.8c0.4,0.4,0.8,0.6,1.4,0.8c0.5,0.2,1.2,0.3,1.9,0.3c1.3,0,2.2-0.4,3.1-1.2c0.9-0.8,1.2-1.9,1.2-3.4v-0.7
+                                    l4-0.4v0.6c0,1.4,0.4,2.6,1.3,3.5c0.9,0.9,2,1.4,3.5,1.4c0.5,0,1.1-0.1,1.6-0.3c0.5-0.2,1.1-0.4,1.6-0.8c0.4,0.4,0.8,0.6,1.3,0.8
+                                    c0.5,0.2,1.1,0.3,1.6,0.3c1.4,0,2.7-0.5,3.6-1.4c0.9-0.9,1.4-2.1,1.4-3.5v-2.7L151,44.9z M46,25.5c0-0.9,0.1-1.1,0.9-1.9
+                                    c0.7-0.8,1.5-0.6,2.7-0.6h25.1c1.1,0,1.7-0.3,2.4,0.4c0.7,0.7,0.8,1,0.8,2.1v5.7c0,0.9-0.1,1.8-0.8,2.6c-0.7,0.8-1.4,1.2-2.4,1.2
+                                    H49.6c-1.1,0-1.8-0.4-2.6-1.1c-0.8-0.7-1-1.6-1-2.7V25.5z M51,49.5c-0.2,0.4-0.4,0.6-0.5,0.8c-0.2,0.2-0.4,0.4-0.8,0.5
+                                    c-0.4,0.2-0.8,0.3-1.4,0.3c-0.7,0-1.4-0.3-1.9-0.8c-0.5-0.5-0.8-1.2-0.8-1.9c0-0.4,0.1-0.7,0.3-1.1c0.2-0.4,0.4-0.6,0.5-0.8
+                                    c0.2-0.2,0.5-0.4,0.8-0.5c0.4-0.2,0.7-0.3,1.1-0.3c0.9,0,1.6,0.3,2.2,0.8c0.5,0.5,0.8,1.2,0.8,1.9C51.2,48.8,51.1,49.2,51,49.5z
+                                     M71,53H52v-8.6c0-0.5,1.4-0.6,1.9-0.6c0.9,0,1.4,0.2,2.5,0.2h11.9c0.4,0,1.8-0.4,2.1-0.1c0.3,0.4,0.7-0.1,0.7,0.5V53z M75.5,51.7
+                                    c-0.2,0-0.4,0-0.5-0.1c-0.2-0.1-0.4-0.2-0.5-0.4c-0.5-0.2-1-0.5-1.4-1.1c-0.4-0.5-0.5-1.1-0.5-1.6c0-0.7,0.3-1.4,0.8-1.9
+                                    c0.5-0.5,1.2-0.8,1.9-0.8c0.4,0,0.8,0.1,1.2,0.3s0.9,0.4,1.2,0.8c0.2,0.2,0.4,0.4,0.5,0.8c0.2,0.4,0.3,0.8,0.3,1.3
+                                    c0,0.7-0.3,1.4-0.8,1.9C77.2,51.4,76.4,51.7,75.5,51.7z M116,46.9v-2l4-0.5v2.1L116,46.9z"/>
+                            </g>
+                        </svg>
+                        <div class="c-stat-title">Highway</div>
+                        <div class="c-stat-sub">Statistics</div>
+                    </div>
+                    <div class="col-xs-4 center c-data">
+                        <div class='ddata c-data-IntRouteMi'>00</div><div class='dlabel'>miles<br/><strong>interstate routes</strong></div>
+                    </div>
+                    <div class="col-xs-4 center c-data">
+                        <div class='ddata c-data-NatHwyMile'>0.0k</div><div class='dlabel'>miles<br/><strong>national highway</strong></div>
+                    </div> 
+                    <div class="col-xs-4 center c-data">
+                        <div class='ddata c-data-NHS'>00</div><div class='dlabel'><strong>NHS<br/>connectors</strong></div>
+                    </div> 
+                    <div class="col-xs-4 center c-data">
+                        <div class='ddata c-data-interch'>00</div><div  class='dlabel'>interstate highway<br/><strong>interchanges</strong></div>
+                    </div> 
+                    <div class="col-xs-4 center c-data">
+                        <div class='ddata c-data-truckStop'>0</div><div  class='dlabel'><strong>truck stops<br/>and rest areas</strong></div>
+                    </div> 
+                </div>
+                <!-- rail stats -->
+                <div id="c-stat-rail" class="row stat-block stat-rail">
+                    <div class="col-xs-4 center c-data">
+                        <svg class="c-stat-icon" viewBox="0 0 156.3 85.7" width="100" height="60">
+                            <g>
+                                <polygon class="st0" points="2,31.4 4,32.8 4,25.5 2,26.9    "/>
+                                <polygon class="st0" points="6,33.5 9,35.3 9,23.5 6,24.9    "/>
+                                <path class="st0" d="M141.9,84h10.5L86.3,55H86V36H48.1L48,55.8L47,55V8h1v27h21V20.4l-2.3-3.6l1-0.6l2.2,4.1L70,35h13.6L84,11.9
+                                    V9.4c-1-5.8-12.7-7.9-22.4-7.9c-5.1,0-9.7,1.2-13.1,3.2l0-0.1L39,9h1v28.9l-21-7.6V40h-0.8l33.6,18h0l48.1,26h12.9L91.9,73h26.4
+                                    L141.9,84z M60,31.7c0,0.4-0.2,0.3-0.4,0.3h-5.3c-0.2,0-0.3,0.1-0.3-0.3v-2.8c0-0.4,0.1-0.9,0.3-0.9h5.3c0.2,0,0.4,0.5,0.4,0.9
+                                    V31.7z M82,28.9v2.8c0,0.4-0.4,0.3-0.6,0.3h-5.3c-0.2,0-0.1,0.1-0.1-0.3v-2.8c0-0.4-0.1-0.9,0.1-0.9h5.3C81.6,28,82,28.5,82,28.9z
+                                     M79,11.6v2.8c0,0.4-0.5,0.5-0.7,0.5h-8.4c-0.3,0-0.9-0.2-0.9-0.5v-2.8c0-0.4,0.6-0.6,0.9-0.6h8.4C78.5,11,79,11.2,79,11.6z
+                                     M63,6.9C63,6.6,63.2,6,63.5,6h8.4C72.2,6,72,6.6,72,6.9v1.6C72,8.7,72.2,9,71.9,9h-8.4C63.2,9,63,8.7,63,8.4V6.9z M53,11.6
+                                    c0-0.4,0-0.6,0.4-0.6h13c0.4,0,0.6,0.2,0.6,0.6v2.8c0,0.4-0.2,0.5-0.6,0.5h-13C53,15,53,14.8,53,14.5V11.6z M60,58h24.2l8,3H67.7
+                                    L60,58z M83.7,69l-9.6-4.6l23.6-0.3L109,69H83.7z"/>
+                                <polygon class="st0" points="31,33.4 31,28 26,28 26,31.4    "/>
+                                <polygon class="st0" points="19,18.7 11,22.8 11,36 18,39.7 18,28.5 19,29.1  "/>
+                                <polygon class="st0" points="20,26 38,26 38,9.5 20,18 20,18     "/>
+                                <polygon class="st0" points="38,36.1 38,28 32,28 32,33.8    "/>
+                                <polygon class="st0" points="20,29.5 24,31 24,28 20,28  "/>
+                            </g>
+                        </svg>
+                        <div class="c-stat-title">Freight Rail</div>
+                        <div class="c-stat-sub">Statistics</div>
+                    </div>
+                    <div class="col-xs-4 center c-data">
+                        <div class='ddata c-data-freightRai'>00</div><div class='dlabel'>miles<br/><strong>freight trackage</strong></div>
+                    </div>
+                    <div class="col-xs-4 center c-data">
+                        <div class='ddata c-data-yards'>00</div><div class='dlabel'>yards and<br/><strong>intermodal terminals</strong></div>
+                    </div> 
+                </div>
+                <!-- maritime stats -->
+                <div id="c-stat-maritime" class="row stat-block stat-maritime">
+                    <div class="col-xs-4 center c-data">
+                        <svg class="c-stat-icon" viewBox="0 0 156.3 85.7" width="100" height="60">
+                            <g>
+                                <path class="st0" d="M25,56.9c4.3,3.8,9.4,6,11.8,6.9c0.9,0.3,1.4,0.5,1.4,0.5l0.2,0l7.4,1.3L48,66v0l42.7,8.5
+                                    C85,68,81.4,59.5,81.4,50.2c0-2,0.1-3.9,0.4-5.8c0-0.2-0.2-0.4-0.1-0.5l-0.3-0.6l0-4.3l-0.1,0l1.7,0.1l0.1-0.4l0.2-0.5
+                                    c0.9-2,2-5,3.5-7H74.1L69,32.7v1l-11,3.2l0.2,3.4l0,0.5l0,0.1h0l-11.8-1.3L45,30.8v0l-4.3-19.7L57,7.8V12c0,0.6-2.5,2.7-3.9,6
+                                    c-1.2,2.7-1.1,4.2-1,4.8c0,0,0,0,0,0L49,23v6.9l7,0.8L71,26.9l0.2-4.9h-1.4c0,0,0-0.1-0.1-0.1c-1-1.8-3.8-5.9-5.6-7.4
+                                    c-2.5-2.1-4.1-2.6-5.1-2.7V7.4V7V5.3L40.2,7.4l-4-4.4L25,4.1v11.8l-4,9.9v12.1l-5.9-0.6C15.1,37.2,14.4,47.6,25,56.9z M63.6,37.9
+                                    l4.5,0.3l0.1,3.7l-4.5-0.5L63.6,37.9z M68.6,38.2l5.5,0.3l0,4l-5.5-0.6L68.6,38.2z M74.7,38.5l6.1,0.3l0,4.3l-6.1-0.7L74.7,38.5z
+                                     M69,34.2L69,34.2L69,34.2l0,3.4l-5-0.3l-0.6,0l-1.9-0.1l-2.4-0.1L69,34.2z M58.7,39L58.7,39l0-0.7l0-0.8l4.5,0.4l0.1,3.4l-4.4-0.5
+                                    L58.7,39z M59.4,12.8c0.3,0,1.7,0.2,4.5,2.5c1.5,1.3,3.4,4.7,4.6,6.6c0.5,0.8,0.7,1.1,0.2,0.1h-4.8l-10.3,0.7c0,0.2,0,0.2,0,0
+                                    c0.1-0.5,0.3-1.8,1.4-4.3C56.1,15.3,58.8,13.2,59.4,12.8z M41.5,21l0.3,1h0l0.9,4.7l0.9,4.3l0,0h0.3l1.2,9v0.2l-0.2,0l0.2-0.1
+                                    L44.8,40h0L43,39.9l0,0l-1.8-0.1l0,0l-1.7-0.2l0,0l-1.6-0.2l0-0.4l0.1,0l-0.6-5.5l0,0.3L37,31.3l0,0l0-0.2v-0.1v-0.3l3.1-5.5
+                                    l3.1,4.6L40,36.1l-3-4.8l0.2,2.3l0-0.5l2.3,4l-1.2,2.2l-0.5-0.2l0,0.4l1.6,0.2l0.7-1.4l1,1.6L43,40l-2.2-2.8l2.8-5.7l0-0.2
+                                    l-0.9-4.4l0.1,0.5l-2.1-3.1l1.1-1.9l-0.2-1.2L41.4,21l-1.3,2.3l-1.9-2.8l1-10.6L41.5,21z M38.1,22l1.5,2.3l-2.1,3.9L38.1,22z
+                                     M27,25.7l4-9.7V9.9L37.9,9l-2.2,21.7l-0.6,8.7L27,38.6V25.7z"/>
+                                <path class="st0" d="M145.2,38.5c-1.6-3.7-3.8-6.9-6.5-9.7c-2.8-2.7-6-4.9-9.7-6.5c-3.7-1.6-7.6-2.4-11.8-2.4s-8.1,0.8-11.8,2.4
+                                    c-3.7,1.6-6.9,3.8-9.7,6.5c-2.7,2.8-4.9,6-6.5,9.7c-1.6,3.7-2.4,7.6-2.4,11.8c0,4.2,0.8,8.1,2.4,11.8c1.6,3.7,3.8,6.9,6.5,9.7
+                                    c2.8,2.7,6,4.9,9.7,6.5c3.7,1.6,7.6,2.4,11.8,2.4s8.1-0.8,11.8-2.4c3.7-1.6,6.9-3.8,9.7-6.5c2.7-2.8,4.9-6,6.5-9.7
+                                    c1.6-3.7,2.4-7.6,2.4-11.8C147.6,46.2,146.8,42.2,145.2,38.5z M142.1,61c-1.4,3.3-3.4,6.2-5.8,8.7c-2.5,2.5-5.3,4.4-8.6,5.8
+                                    c-3.3,1.4-6.8,2.1-10.5,2.1c-3.8,0-7.4-0.7-10.6-2.2c-3.3-1.5-6.2-3.4-8.7-5.9c-2.5-2.5-4.4-5.4-5.8-8.7c-1.4-3.3-2.1-6.9-2.1-10.6
+                                    c0-3.7,0.7-7.2,2.2-10.5c1.5-3.3,3.4-6.2,5.9-8.6c2.5-2.5,5.4-4.4,8.7-5.8c3.3-1.4,6.9-2.1,10.6-2.1c3.7,0,7.2,0.7,10.5,2.1
+                                    c3.3,1.4,6.2,3.4,8.6,5.8c2.5,2.5,4.4,5.3,5.8,8.6c1.4,3.3,2.1,6.8,2.1,10.5C144.3,54.2,143.6,57.7,142.1,61z"/>
+                                <path class="st0" d="M129.7,57c0.3,0.7,0.5,1.2,0.5,1.3c0.2,0.6,0.2,1.1-0.2,1.2c-0.4,0.2-0.8,0.5-1.2,0.9
+                                    c-0.4,0.3-0.8,0.6-1.3,0.9c-0.5,0.3-1,0.5-1.4,0.8c-0.5,0.2-1,0.5-1.5,0.7c-0.5,0.2-1,0.3-1.5,0.4c-0.2,0.1-0.6,0.2-1.4,0.4
+                                    c-0.9,0.2-1.7,0.1-1.7-0.2V42h9v-3h-7.7c0.3,0,0.6-0.6,1-1c0.3-0.4,0.6-0.7,0.7-1.1c0.2-0.5,0.3-0.9,0.4-1.4
+                                    c0.1-0.4,0.2-0.9,0.2-1.4c0-0.9-0.2-1.7-0.5-2.4c-0.3-0.8-0.8-1.4-1.3-2c-0.6-0.6-1.2-1-2-1.4c-0.8-0.4-1.6-0.5-2.5-0.5
+                                    c-0.9,0-1.7,0.2-2.4,0.5c-0.8,0.4-1.4,0.8-2,1.4c-0.6,0.6-1,1.2-1.3,2c-0.3,0.8-0.5,1.6-0.5,2.4c0,0.5,0,0.9,0.1,1.4
+                                    c0.1,0.4,0.2,0.9,0.5,1.4c0.2,0.4,0.4,0.7,0.7,1.1c0.3,0.4,0.6,1,1,1H106v3h9v21.6c-1,0.2-1.1,0.3-2,0.1c-0.9-0.2-1.5-0.2-1.7-0.2
+                                    c-0.5-0.2-1-0.3-1.5-0.5c-0.5-0.2-1-0.4-1.5-0.7c-0.5-0.2-1-0.5-1.4-0.8c-0.5-0.3-0.9-0.6-1.3-0.9c-0.6-0.3-1-0.6-1.4-0.8
+                                    c-0.4-0.2-0.4-0.6-0.1-1.2c0.1-0.2,0.3-0.6,0.5-1.4c0.3-0.8,0.5-1.1,0.8-1.1l-7.9,1.8l3,8.3l1.7-3.7l1.8,1.7
+                                    c0.3,0.2,0.6,0.5,0.9,0.7c0.3,0.2,0.6,0.5,1,0.7c0.3,0.2,0.7,0.5,1,0.7c0.4,0.2,0.7,0.4,1,0.6c0.5,0.2,0.9,0.5,1.4,0.7
+                                    c0.4,0.2,0.9,0.4,1.4,0.5c0.4,0.2,0.8,0.3,1.3,0.5s1,0.4,1.4,0.5c0.5,0.2,1,0.4,1.4,0.6c0.5,0.2,0.9,0.5,1.3,0.8l0.9,0.7V71l0,0
+                                    v0.3l1.1-0.7c0.4-0.3,0.9-0.6,1.4-0.8c0.5-0.2,1-0.4,1.4-0.6c0.5-0.2,1-0.3,1.4-0.5c0.5-0.2,0.9-0.4,1.3-0.5
+                                    c0.5-0.2,0.9-0.3,1.4-0.5c0.4-0.2,0.9-0.4,1.4-0.7c0.3-0.2,0.6-0.4,1-0.6c0.3-0.2,0.6-0.5,1-0.7c0.3-0.2,0.7-0.5,1-0.7
+                                    c0.4-0.2,0.7-0.5,1-0.7l1.8-1.7l1.7,3.7l3-8.3l-7.8-1.9C129.2,56,129.4,56.3,129.7,57z M118.7,37.6c-0.4,0.2-0.9,0.3-1.5,0.3
+                                    s-1.1-0.1-1.5-0.3c-0.4-0.2-0.8-0.5-1.1-0.9c-0.3-0.3-0.6-0.7-0.8-1.1c-0.2-0.4-0.3-0.9-0.3-1.4c0-0.6,0.1-1.1,0.3-1.5
+                                    c0.2-0.4,0.5-0.8,0.9-1.1c0.3-0.3,0.7-0.6,1.1-0.8c0.4-0.2,0.9-0.3,1.4-0.3c0.6,0,1.1,0.1,1.5,0.3c0.4,0.2,0.8,0.5,1.1,0.9
+                                    c0.3,0.3,0.6,0.7,0.8,1.1c0.2,0.4,0.3,0.9,0.3,1.4c0,0.6-0.1,1.1-0.2,1.5c-0.2,0.4-0.4,0.8-0.8,1.1
+                                    C119.5,37.1,119.1,37.4,118.7,37.6z"/>
+                                <path class="st0" d="M36.4,65.9c-2.6-0.5-7.7-3.4-7.7-3.4L7,59.9V73l19.1,8h72c-1.8-1-3.5-2.5-5.1-3.9
+                                    C77.9,74.1,38.6,66.3,36.4,65.9z"/>
+                            </g>
+                        </svg>
+                        <div class="c-stat-title">Maritime</div>
+                        <div class="c-stat-sub">Statistics</div>
+                    </div>
+                    <div class="col-xs-4 center c-data">
+                        <div class='ddata c-data-portTermin'>00</div><div class='dlabel'><strong>port<br/>terminals</strong></div>
+                    </div>
+                    <div class="col-xs-4 center c-data">
+                        <div class='ddata c-data-ShipCalls'>0.0k</div><div class='dlabel'><strong>annual<br/>ship calls</strong></div>
+                    </div> 
+                </div>
+                <!-- freight center stats -->
+                <div id="c-stat-centers" class="row stat-block stat-centers">
+                    <div class="col-xs-4 center c-data">
+                        <svg class="c-stat-icon" viewBox="0 0 156.3 85.7" width="100" height="60">
+                            <g>
+                                <path class="st0" d="M145.7,46c-1.5-3.4-3.4-6.3-5.9-8.7c-2.5-2.5-5.4-4.5-8.8-5.9c-3.3-1.4-6.9-2.2-10.7-2.2
+                                    c-3.8,0-7.4,0.7-10.7,2.2c-3.3,1.4-6.3,3.4-8.8,5.9c-2.4,2.4-4.4,5.3-5.9,8.7c-1.5,3.4-2.2,7-2.2,10.8c0,3.8,0.7,7.4,2.2,10.7
+                                    c1.5,3.3,3.4,6.3,5.9,8.8c2.5,2.4,5.4,4.4,8.8,5.9c3.3,1.5,6.9,2.2,10.7,2.2c3.8,0,7.4-0.7,10.7-2.2c3.3-1.5,6.3-3.4,8.8-5.9
+                                    c2.4-2.5,4.4-5.4,5.9-8.8c1.5-3.3,2.2-6.9,2.2-10.7C147.9,53,147.2,49.4,145.7,46z M107.6,35.7c1.1-0.7,2.4-1.3,3.7-1.8
+                                    c1.2-0.5,2.4-0.9,3.7-1.2c1.4-0.3,3.1-0.5,4.1-0.6v13.6c0,0.1-0.9,0.2-1.4,0.3c-0.5,0.1-0.9,0.2-1.3,0.4c-0.4,0.2-0.8,0.4-1.2,0.6
+                                    c-0.4,0.2-0.8,0.5-1.2,0.8l-9.6-9.6C105.3,37.2,106.4,36.4,107.6,35.7z M96.5,50.7c0.4-1.4,0.9-2.8,1.5-4.1c0.6-1.3,1.3-2.5,2-3.7
+                                    c0.8-1.1,1.7-2.2,2.7-3.2l9.5,9.6c-0.4,0.4-0.7,0.8-1,1.2c-0.3,0.4-0.5,0.9-0.8,1.4c-0.1,0.5-0.3,1.1-0.4,1.6
+                                    c-0.1,0.5-0.2,0.6-0.3,1.6H95.8C95.9,53,96.1,52.1,96.5,50.7z M99.5,69.7c-0.8-1.2-1.4-2.5-2-3.8c-0.6-1.4-1-2.9-1.3-4.3
+                                    c-0.3-1.4-0.5-2.6-0.6-4.6h14.1c0,1,0.1,1.2,0.2,1.8c0.1,0.5,0.3,1.1,0.5,1.6c0.2,0.5,0.4,1,0.7,1.5c0.3,0.5,0.5,0.9,0.8,1.4
+                                    l-9.9,9.9C101.1,72.1,100.3,70.9,99.5,69.7z M119,81.3c-1-0.1-2.8-0.3-4.2-0.6c-1.4-0.3-2.7-0.8-4-1.3c-1.3-0.5-2.5-1.1-3.7-1.9
+                                    c-1.2-0.8-2.3-1.6-3.4-2.6l10-9.9c0.4,0.3,0.8,0.6,1.2,0.9c0.4,0.3,0.9,0.5,1.4,0.6c0.4,0.2,0.7,0.4,1.3,0.5
+                                    c0.5,0.1,1.4,0.3,1.4,0.3V81.3z M122,32.1c1,0.1,2.7,0.3,4,0.6c1.4,0.4,2.6,0.8,3.9,1.3c1.3,0.6,2.5,1.2,3.6,1.9
+                                    c1.1,0.7,2.2,1.5,3.2,2.5l-9.5,9.5c-0.4-0.4-0.8-0.7-1.2-0.9c-0.4-0.3-0.9-0.5-1.4-0.7c-0.4-0.1-0.7-0.3-1.3-0.4
+                                    c-0.5-0.1-1.4-0.3-1.4-0.3V32.1z M134.1,77.1c-1.2,0.8-2.5,1.5-3.8,2c-1.3,0.6-2.5,1-4,1.4c-1.4,0.4-3.3,0.6-4.3,0.6V67.4
+                                    c0-0.1,1-0.2,1.5-0.3c0.5-0.1,1-0.3,1.5-0.5s1-0.5,1.4-0.8c0.5-0.3,0.9-0.6,1.3-0.9l9.6,9.6C136.4,75.5,135.3,76.4,134.1,77.1z
+                                     M144.5,61.5c-0.3,1.4-0.7,2.9-1.3,4.1c-0.5,1.3-1.1,2.5-1.8,3.7c-0.7,1.1-1.5,2.3-2.4,3.4l-9.8-9.8c0.3-0.4,0.6-0.8,0.8-1.2
+                                    c0.3-0.5,0.4-0.9,0.6-1.3c0.2-0.5,0.4-1.1,0.4-1.6c0.1-0.5,0.1-0.7,0.2-1.7h13.7C144.9,59,144.8,60.1,144.5,61.5z M131.2,55
+                                    c-0.1-1-0.2-1.1-0.3-1.5c-0.1-0.5-0.3-0.9-0.5-1.4c-0.1-0.4-0.3-0.9-0.6-1.3c-0.3-0.4-0.5-0.8-0.8-1.2l9.5-9.5
+                                    c0.9,1,1.8,2.1,2.5,3.2c0.8,1.1,1.4,2.3,1.9,3.6c0.6,1.2,1,2.6,1.4,3.9c0.4,1.4,0.6,3.2,0.6,4.2H131.2z"/>
+                                <path class="st0" d="M90.8,42h-3.2L87,2.6c0,0-1.8-1.3-3.7-1.3c-2,0-3.4,0.9-3.4,0.9L79,39.5c-0.4-0.1-1-0.2-1.3-0.2
+                                    c-0.9,0-1.6,0.3-1.6,0.3l-0.3,12.8L68.6,52h-0.2l-0.2-13.2c0,0-1.2-0.1-1.7-0.1c-0.9,0-1.6,0.9-1.6,0.9l0,2.4H59V6.4
+                                    c0,0-0.2-0.4-3.1-0.4h-0.6l0.6,33.3c-0.2-0.1-0.4-0.3-0.7-0.3L54.7,5c0,0-1.5-1-3.2-1c-1.7,0-2.9,0.9-2.9,0.9L47.7,48H26.1
+                                    l-0.2,0.9l-0.3-25c0,0-2.2-0.5-2.9-0.5c-0.6,0-2.3,0.1-2.3,0.1L19.5,52H16v3.2l-8,1v24l22.4,0.4L44,77.1V76h3v0.3v0V79h36l9.8-5.1
+                                    c-3.5-5.1-5.6-11-5.6-17.6C87.2,51,88.5,46,90.8,42z"/>
+                            </g>
+                        </svg>
+                        <div class="c-stat-title">Freight Center</div>
+                        <div class="c-stat-sub">Statistics</div>
+                    </div>
+                    <div class="col-xs-4 center c-data">
+                        <div class='ddata c-data-centers'>00</div><div class='dlabel'>unique<br/><strong>freight centers</strong></div>
+                    </div>
+                    <div class="col-xs-4 center c-data">
+                        <div class='ddata c-data-centerEmp'>0.0k</div><div class='dlabel'>employment<br/><strong>freight centers</strong></div>
+                    </div> 
+                </div>
+            </div>
+            <div class='col-sm-12 col-md-7'>
+
+                <div class="row">
+                    <div class="col-md-8 col-lg-6">
+                        <div id="cty-pic-slider" class="flexslider">
+                            <ul class="slides c-slides">
+                                <!--primary slide list items -->
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-lg-6">
+                        <div class="c-image-caption hidden-lg highlight-block"></div>
+                        <div id="cty-pic-carousel" class="flexslider">
+                            <ul class="slides c-slides">
+                                <!--carousel list items -->    
+                            </ul>
+                        </div>
+                        <div class="c-image-caption hidden-md hidden-sm hidden-xs highlight-block"></div>
+                    </div>
+                </div>
+                <div style="position:relative;">
+                    <img id="c-region-network-map"/>
+                    <div id="c-map-legend" class="closed" style="display:none;">
+                        <div id="c-legend-icon"><i class="dynico dynico-layers"></i></div>
+                        <ul class="c-legend-list" style="display:none;">
+                            <li> <div class="mi-trade-line "></div>freight rail line</li>
+                            <li> <div class="mi-data-swatch orange-bg"></div>freight rail yard</li>
+                            <li> <div class="mi-trade-line dkblue-ln"></div>primary freight highway</li>
+                            <li> <div class="mi-data-swatch dkblue-bg"></div>truck parking</li>
+                            <li> <div class="mi-data-swatch blue-bg"></div>port terminal</li>
+                            <li> <div class="mi-trade-swatch dkblue-bg"></div>freight center</li>
+                        </ul>
+                    </div>
+                    <div id="c-map-source"><b>Source:</b> 2015 DVRPC <em>PhillyFreightFinder Database</em></div>
+                </div>
+                <div class="loading_panel stat-map">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class='col-sm-12 col-md-5'>
+                
+            </div> 
+            <div class='col-sm-12 col-md-7'>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- freight center template -->
+<div id="c-freight_centers" class="col-lg-12 tool-content-dt c-region-tab" style="display: none;">
+    <div class='center-block col-lg-10 col-md-12' style='float:none;'>
+    	<div class="alert alert-danger" role="alert"><i class="glyphicon glyphicon-exclamation-sign"></i>&nbsp;&nbsp;<strong>Oh snap!</strong>&nbsp;&nbsp;There seem to be some script errors with this tool. It will be live again soon!</div>
+    </div>
+</div>
+
+<!-- trade patterns template-->
+<div id="c-domestic_trade" class=" col-lg-12 tool-content-dt c-region-tab" style="display: none;">
+    <div class='center-block col-lg-10 col-md-12' style='float:none;'>
+          <div class="row"> 
+            <div id="topPartners" class="col-md-4 col-sm-12">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h4 class="panel-title" id="topPartnerTitle">Top Trading Partners</h4>
+                    </div>
+                    <div class="panel-body load-panel">
+                        <ul id="tradeList">
+                        </ul>
+                        <div class="loading_panel" style="display:none;">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8 col-sm-12">
+                <div id="tradeFilters">
+                    <div style="float:left;">
+                        <div id="countySelect" class="btn-group" data-toggle="buttons">
+                            <label for="tons" id="radio_ton" class="flowBtn btn btn-sm btn-primary active">
+                                <input type="radio" id="tons" name="measure" value="ton" >Volume</label>
+                            <label for="val" id="radio_val" class="flowBtn btn btn-sm btn-primary">
+                                <input type="radio" id="val" name="measure" value="val">Value</label>
+                        </div>
+                        <div class="filterLabel">Measured by:</div>
+                    </div>
+                    <div style="float:left;">
+                        <div id="controls">
+                            <div id="dir" class="btn-group" data-toggle="buttons">
+                                <label for="dir_in" id="radio_in" class="flowBtn btn btn-sm btn-primary active">
+                                    <input type="radio" id="dir_in" name="dir" value="in" ><span>Inbound</span></label>
+                                <label for="dir_out" id="radio_out" class="flowBtn btn btn-sm btn-primary">
+                                    <input type="radio" id="dir_out" name="dir" value="out" ><span>Outbound</span>
+                                </label>
+                            </div>
+                            <div class="filterLabel">Shipment direction:</div>
+                        </div>
+                    </div>
+                    <div id="modes">
+                        <div id="countySelect" class="btn-group" data-toggle="buttons">
+                            <label for="all" class="flowBtn btn btn-sm btn-primary active">
+                                <input type="radio" id="all" name="mode" value="all" checked="checked"/><span>All</span></label>
+                            <label for="truck" class="flowBtn btn btn-sm btn-primary">
+                                <input type="radio" id="truck" name="mode" value="truck" /><span>Truck</span></label>
+                            <label for="rail" class="flowBtn btn btn-sm btn-primary">
+                                <input type="radio" id="rail" name="mode" value="rail" /><span>Rail</span></label>
+                            <label for="water" class="flowBtn btn btn-sm btn-primary">
+                                <input type="radio" id="water" name="mode" value="water" /><span>Water</span></label>
+                            <label for="air" class="flowBtn btn btn-sm btn-primary">
+                                <input type="radio" id="air" name="mode" value="air" /><span>Air</span></label>
+                        </div>
+                        <div class="filterLabel">Mode of transportation:</div>
+                    </div>
+                </div>
+                <div id="content" class="domestic-trade-map">
+                	<div class="loading_panel map-gray" style="display:none;">
+				    	
+				    </div>
+                </div>
+            </div>
+        
+        </div>
+    
+        <!--<div class='clearfix'></div> style='float:none;'-->
+        <div class='row dt-chart-row' >
+            <div id="topCommoditiesChart" class="col-xs-12">
+                <div class="panel panel-primary dt-chart-panel">
+                    <div class="panel-heading">
+                        <h4 class="panel-title" id="topPartnerTitle">Top 
+                            <div class="btn-group tradeBtn trade-commodity">
+                                  <button data-toggle="dropdown" id="tradeDirection" class="btn btn-default dropdown-toggle">Inbound <span class="caret"></span></button>
+                                    <ul class="dropdown-menu">
+                                      <li><input type="radio" id="comm-in" name="tradeDirection" value="in" checked><label for="comm-in">Inbound</label></li>
+                                      <li><input type="radio" id="comm-out" name="tradeDirection" value="out"><label for="comm-out">Outbound</label></li>
+                                    </ul>
+                            </div> 
+                            Commodities by 
+                            <div class="btn-group tradeBtn trade-commodity">
+                                  <button data-toggle="dropdown" id="tradeMeasure" class="btn btn-default dropdown-toggle">Volume <span class="caret"></span></button>
+                                    <ul class="dropdown-menu">
+                                      <li><input type="radio" id="comm-ton" name="tradeMeasure" value="ton" checked><label for="comm-ton">Volume</label></li>
+                                      <li><input type="radio" id="comm-val" name="tradeMeasure" value="val"><label for="comm-val">Value</label></li>
+                                    </ul>
+                            </div></h4>
+                    </div>
+                    <div class="panel-body load-panel" >
+                        <svg id="commChart"></svg>
+                       	<div class="loading_panel" style="display:none;">
+    				    	
+    				    </div>
+                    </div>
+                </div>
+            </div> 
+            <!--<div id="modalSplitChart" class="col-md-5 col-sm-12">
+                <div class="panel panel-primary dt-chart-panel">
+                    <div class="panel-heading">
+                        <h4 class="panel-title" id="topPartnerTitle">Total Shipments by Mode in Tons</h4>
+                    </div>
+                    <div class="panel-body">
+                        <svg id=""></svg>
+                    </div>
+                </div>
+            </div>-->
+        </div> 
+        <div><b>Source:</b> Data based on DVRPC processing of 2011 IHS Global Transearch database</div>  
+    </div>
+</div>
+<div class="c-nav-left c-nav" style="display:none;"><i class="glyphicon glyphicon-chevron-left"></i><div><span id="c-nav-left-label"></span></div></div>
+<div class="c-nav-right c-nav" style="display:none;"><i class="glyphicon glyphicon-chevron-right"></i><div><span id="c-nav-right-label"></span></div></div>
+<div class='clearfix'></div>

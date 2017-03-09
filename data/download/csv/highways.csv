@@ -1,0 +1,34 @@
+PFF_ID,SHIELD,HWY_NUM,STATE,NAME,TYPE,OWNER,SECTION_MI,SHIELD_ID,DIR_1,CAP_1,ACT_1A,ACT_1B,DEVICE_1,DIR_2,CAP_2,ACT_2A,ACT_2B,DEVICE_2,YEAR,SOURCE,SHLD_ID,GIS_MILES
+HWY25,T,476,PA,I 476 (Pennsylvania Turnpike Northeast Extension),Interstate Highway,Pennsylvania Turnpike Commission,15.205599,476,NB,2,n/a,n/a,,SB,2,n/a,n/a,,0,,476,30.406486
+HWY26,T,476,PA,I 476 (Pennsylvania Turnpike Northeast Extension),Interstate Highway,Pennsylvania Turnpike Commission,16.071431,476,NB,2,n/a,n/a,,SB,2,n/a,n/a,,0,,476,21.729747
+HWY27,I,476,PA,I 476,Interstate Highway,PennDOT,3.828654,476,NB,3,n/a,n/a,,SB,3,n/a,n/a,,0,,476,7.661902
+HWY30,I,476,PA,I 476,Interstate Highway,PennDOT,10.990555,476,NB,3,n/a,n/a,,SB,3,n/a,n/a,,0,,476,21.981848
+HWY13,T,276,PA,I 276 (Pennsylvania Turnpike),Interstate Highway,Pennsylvania Turnpike Commission,7.713531,276,WB,3,n/a,n/a,,EB,3,n/a,n/a,,0,,276,15.433671
+HWY5,I,195,NJ,I 195,Interstate Highway,NJDOT,8.683189,195,WB,2,n/a,n/a,00195B,EB,2,3440,9.9%,00195B,2011,NJ DOT WiM,195,17.367414
+HWY33,I,676,NJ,I 676,Interstate Highway,NJDOT,4.807277,676,NB,4,n/a,n/a,,SB,3,n/a,n/a,,0,,676,9.47842
+HWY34,I,676,PA,I 676 (Vine Street Expressway),Interstate Highway,PennDOT,2.264071,676,WB,3,n/a,n/a,,EB,3,n/a,n/a,,0,,676,6.527936
+HWY35,I,76,NJ,I 76,Interstate Highway,DRPA,1.924852,76,WB,3,n/a,n/a,,EB,3,n/a,n/a,,0,,76,9.003573
+HWY12,T,276,PA,I 276 (Pennsylvania Turnpike),Interstate Highway,Pennsylvania Turnpike Commission,7.390264,276,WB,2,n/a,n/a,,EB,2,n/a,n/a,,0,,276,14.781328
+HWY43,I,95,PA,I 95,Interstate Highway,PennDOT,3.195207,95,NB,4,n/a,n/a,,SB,4,n/a,n/a,,0,,95,7.09555
+HWY44,I,95,PA,I 95,Interstate Highway,PennDOT,11.802435,95,NB,3,n/a,n/a,,SB,3,n/a,n/a,,0,,95,23.791894
+HWY45,I,95,PA,I 95,Interstate Highway,PennDOT,6.724165,95,NB,3,n/a,n/a,,SB,3,n/a,n/a,,0,,95,13.263495
+HWY46,I,95,PA,I 95,Interstate Highway,PennDOT,4.56017,95,NB,4,n/a,n/a,,SB,4,n/a,n/a,,0,,95,10.866817
+HWY47,I,95,PA,I 95,Interstate Highway,PennDOT,8.413432,95,NB,3,n/a,n/a,,SB,3,n/a,n/a,,0,,95,16.824221
+HWY48,I,95,PA,I 95,Interstate Highway,PennDOT,10.878457,95,NB,3,n/a,n/a,,SB,3,n/a,n/a,,0,,95,21.759003
+HWY16,I,295,NJ,I 295,Interstate Highway,NJDOT,7.77375,295,NB,3,n/a,n/a,,SB,3,n/a,n/a,,0,,295,15.518562
+HWY17,I,295,NJ,I 295,Interstate Highway,NJDOT,24.278101,295,NB,3,4184,12.6%,00295L,SB,4,4129,13.0%,00295L,2011,NJ DOT WiM,295,51.425568
+HWY18,I,295,NJ,I 295,Interstate Highway,NJDOT,12.67502,295,NB,3,n/a,n/a,,SB,3,n/a,n/a,,0,,295,25.369589
+HWY19,I,295,NJ,I 295,Interstate Highway,NJDOT,13.756453,295,NB,3,5468,8.9%,00295c,SB,3,5042,8.5%,00295c,2011,NJ DOT WiM,295,27.27276
+HWY49,I,95,NJ,I 95,Interstate Highway,NJDOT,8.103613,95,NB,3,n/a,n/a,,SB,3,n/a,n/a,,0,,95,16.207491
+HWY50,I,95,NJ,I 95,Interstate Highway,NJDOT,14.435724,95,NB,2,n/a,n/a,,SB,2,n/a,n/a,,0,,95,28.913633
+HWY51,I,95,NJ,I 95,Interstate Highway,NJDOT,5.699952,95,NB,3,n/a,n/a,,SB,3,n/a,n/a,,0,,95,11.408763
+HWY56,T,NJTPK,NJ,I 95 (New Jersey Turnpike),Interstate Highway,New Jersey Turnpike Authority,9.830284,95,NB,3,n/a,n/a,,SB,3,n/a,n/a,,0,,95,20.965523
+HWY36,T,76,PA,I 76 (Pennsylvania Turnpike),Interstate Highway,Pennsylvania Turnpike Commission,26.039357,76,WB,2,n/a,n/a,,EB,2,n/a,n/a,,0,,76,52.077364
+HWY37,I,76,PA,I 76 (Schuykill Expressway),Interstate Highway,PennDOT,5.361899,76,WB,2,n/a,n/a,,EB,2,3711,7.9%,,2010,DVRPC,76,10.376027
+HWY38,I,76,PA,I 76 (Schuykill Expressway),Interstate Highway,PennDOT,8.208127,76,WB,2,4286,7.3%,66354,EB,2,4690,8.2%,,2010,DVRPC,76,16.408761
+HWY39,I,76,PA,I 76 (Schuykill Expressway),Interstate Highway,PennDOT,4.284465,76,WB,3,n/a,n/a,,EB,3,n/a,n/a,,0,,76,8.589871
+HWY40,I,76,PA,I 76 (Schuykill Expressway),Interstate Highway,PennDOT,8.846588,76,WB,2,2046,8.8%,66356,EB,2,2396,9.4%,,2010,DVRPC,76,14.432006
+HWY14,T,276,PA,I 276 (Pennsylvania Turnpike),Interstate Highway,Pennsylvania Turnpike Commission,4.241934,276,WB,3,n/a,n/a,,EB,3,n/a,n/a,,0,,276,8.489057
+HWY15,T,276,PA,I 276 (Pennsylvania Turnpike),Interstate Highway,Pennsylvania Turnpike Commission,13.554977,276,WB,3,n/a,n/a,,EB,3,n/a,n/a,,0,,276,27.107147
+HWY64,I,95,NJ,I 95,Interstate Highway,PennDOT,14.435724,95,NB,2,n/a,n/a,,SB,2,n/a,n/a,,0,,95,28.913633
+HWY27,I,476,PA,I 476,Interstate Highway,PennDOT,3.828654,476,NB,3,n/a,n/a,,SB,3,n/a,n/a,,0,,476,10.723945

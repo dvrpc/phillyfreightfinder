@@ -1,0 +1,45 @@
+PFF_ID,NAME,CENTER_TYP,TOWNSHIP_S,ACRES,RAIL_ID,SOURCE,COUNTY,ACRES_1,ID,LAT,LONG_
+FC17,Schuylkill River East / Girard Point,Mega,Philadelphia City,,,2012 DVRPC,Philadelphia,1794.745592,17,39.908524,-75.199887
+FC18,Schuylkill River West / Philadelphia International Airport,Mega,"Philadelphia City, Tinicum Township",,,2012 DVRPC,Philadelphia,4130.483888,18,39.883563,-75.222962
+FC19,West Deptford / Mantua Grove Road,Major,West Deptford Township,,,2012 DVRPC,Gloucester,930.936673,19,39.830846,-75.209129
+FC2,Warminster / Northampton,Major,"Warminster Township, Northamption Township, Warwick Township, Ivyland Borough",,,2012 DVRPC,Bucks,957.402192,2,40.205183,-75.081623
+FC20,Paulsboro / Greenwich,Major,"Greenwich Township,  West Deptford Township, Paulsboro Borough",,,2012 DVRPC,Gloucester,1561.230929,20,39.840863,-75.259104
+FC21,Westville / Eagle Point,Intermediate,Westville Borough,,,2012 DVRPC,Gloucester,1194.109261,21,39.871359,-75.154099
+FC22,Logan / Pureland,Mega,Logan Township,,,2012 DVRPC,Gloucester,2649.227824,22,39.777466,-75.371976
+FC23,West Chester / US 202,Intermediate,"West Goshen Township, Westtown Township, West Chester Borough",,,2012 DVRPC,Chester,651.456505,23,39.968218,-75.59334
+FC24,Downingtown / Boot Road,Major,"East Caln Township, West Whiteland Township, Downingtown Borough",,,2012 DVRPC,Chester,788.540008,24,40.009246,-75.669125
+FC25,Coatesville / ArcelorMittal,Intermediate,"Coatesville Borough, South Coatesville Borough, East Fallowfield Township",,,2012 DVRPC,Chester,535.707962,25,39.973309,-75.827376
+FC26,New Garden / Baltimore Pike,Intermediate,"New Garden Township, Avondale Borough",,,2012 DVRPC,Chester,431.833228,26,39.832205,-75.75808
+FC27,Pottstown / Limerick,Major,"Lower Pottsgrove Township, Limerick Township",,,2012 DVRPC,Montgomery,702.449605,27,40.242126,-75.632973
+FC28,Upper Merion / Plymouth,Intermediate,"Upper Merion Township, Plymouth Township",,,2012 DVRPC,Montgomery,672.613346,28,40.089183,-75.318437
+FC29,Montgomery Twp. / PA 309,Intermediate,"Montgomery Township, Lower Gwynedd Township",,,2012 DVRPC,Montgomery,534.127899,29,40.225083,-75.225248
+FC3,Bensalem / Street Road,Major,Bensalem Township,,,2012 DVRPC,Bucks,735.657178,3,40.079352,-74.933363
+FC30,Towamencin / Hatfield,Major,"Lower Salford Township, Towamencin Township, Hatfield Township, Franconia Township",,,2012 DVRPC,Montgomery,456.933058,30,40.266262,-75.356128
+FC31,Robbinsville / NJ Turnpike Interchange 7A,Major,Robbinsville Township,,,2012 DVRPC,Mercer,918.428241,31,40.19609,-74.587154
+FC1,Quakertown / Milford,Intermediate,"Milford Township, Richland Township",,,2012 DVRPC,Bucks,558.192619,1,40.457354,-75.353145
+FC10,Burlington Twp. / Haines Industrial Center,Mega,"Burlington Township, Florence Township",,,2012 DVRPC,Burlington,1517.926689,10,40.091167,-74.831515
+FC11,Hainesport / Lumberton,Intermediate,"Mount Laurel Township, Hainesport Township, Lumberton Township",,,2012 DVRPC,Burlington,425.880528,11,39.97923,-74.836738
+FC12,Northeast Philadelphia Airport / Byberry Road,Mega,Philadelphia City,,,2012 DVRPC,Philadelphia,2328.527828,12,40.087067,-75.003513
+FC13,Juniata / Castor Ave,Intermediate,Philadelphia City,,,2012 DVRPC,Philadelphia,381.188379,13,40.012335,-75.122794
+FC14,Wayne Junction / Roberts Ave,Intermediate,Philadelphia City,,,2012 DVRPC,Philadelphia,368.666975,14,40.013285,-75.172337
+FC15,Port Richmond / North Delaware Ave.,Intermediate,Philadelphia City,,,2012 DVRPC,Philadelphia,609.060134,15,39.983019,-75.085421
+FC16,South Philadelphia / Packer Ave.,Major,Philadelphia City,,,2012 DVRPC,Philadelphia,1293.917381,16,39.904294,-75.144221
+FC42,Bridesburg / Bridge Street,Intermediate,Philadelphia City,,,2012 DVRPC,Philadelphia,454.913517,42,40.004621,-75.061765
+FC43,Ewing / Trenton Mercer Airport,Intermediate,Ewing Township,,,2012 DVRPC,Mercer,591.13208,43,40.279548,-74.814769
+FC44,Moorestown / Lockheed Martin,Intermediate,Moorestown Township,,,2012 DVRPC,Burlington,133.387476,44,39.975585,-74.914669
+FC5,Bristol / PA Turnpike Interchange 358,Intermediate,Bristol Township,,,2012 DVRPC,Bucks,548.090601,5,40.127167,-74.846027
+FC6,Falls / Cabot Blvd.,Intermediate,"Falls Township, Middletown Township",,,2012 DVRPC,Bucks,324.698448,6,40.191961,-74.854959
+FC7,Falls / Penn-Warner,Major,Falls Township,,,2012 DVRPC,Bucks,773.424952,7,40.189819,-74.790736
+FC8,Falls / Keystone Industrial Port Complex,Mega,Falls Township,,,2012 DVRPC,Bucks,4497.868515,8,40.152442,-74.743672
+FC9,Cinnaminson / Delran,Intermediate,"Cinnaminson Township, Delran Township",,,2012 DVRPC,Burlington,675.897622,9,40.019073,-74.981419
+FC32,Trenton / Hamilton,Intermediate,"Trenton City, Lawrence Township, Hamilton Township",,,2012 DVRPC,Mercer,524.154043,32,40.236438,-74.731347
+FC33,Upper Chichester / Twin Oaks,Intermediate,"Upper Chichester Township, Chester Township",,,2012 DVRPC,Delaware,645.040307,33,39.849633,-75.417099
+FC34,Marcus Hook / Trainer,Mega,"Lower Chichester Township, Marcus Hook Borough, Trainer Borough",,,2012 DVRPC,Delaware,1432.062271,34,39.819186,-75.411629
+FC35,Chester / Eddystone,Mega,"Chester City, Eddystone Borough",,,2012 DVRPC,Delaware,972.098428,35,39.854407,-75.339714
+FC36,Folcroft / Hook Road,Intermediate,"Darby Township, Folcroft Borough",,,2012 DVRPC,Delaware,456.571482,36,39.895727,-75.262024
+FC37,Camden / Gloucester City Waterfront,Major,"Camden City, Gloucester City",,,2012 DVRPC,Camden,734.879314,37,39.922526,-75.125685
+FC38,Bellmawr / Runnemede,Intermediate,"Bellmawr Borough, Runnemede Borough",,,2012 DVRPC,Camden,275.722698,38,39.8585,-75.079275
+FC39,Pennsauken / NJ 90,Major,Pennsauken Township,,,2012 DVRPC,Camden,861.283851,39,39.983563,-75.036365
+FC4,West Bristol / PA 413,Intermediate,"Bristol Township, Bristol Borough",,,2012 DVRPC,Bucks,699.59235,4,40.09385,-74.873002
+FC40,Upper Gwynedd /  West Point,Major,"Upper Gwynedd Township, Lansdale Borough",,,2012 DVRPC,Montgomery,670.327859,40,40.214874,-75.301955
+FC41,Lansdale / Bethlehem Branch,Intermediate,"Hatfield Township, Lansdale Borough",,,2012 DVRPC,Montgomery,271.37991,41,40.257236,-75.284125

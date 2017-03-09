@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"> 
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,20 +7,21 @@
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="description" content="">
         <meta name="author" content="Michael Ruane, Delaware Valley Regional Planning Commission, Office of Freight and Aviation Planning">
-        <title>PhillyFreightFinder 3.1.2 |  DVRPC</title>
-        <link href='lib/pfficons.css' rel='stylesheet'/>
-        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600' rel='stylesheet' type='text/css'>
-        <link href="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-        <link href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" rel="stylesheet" type="text/css">
-        <link rel="stylesheet" href="https://dvrpcfreight.github.io/dynamic-icons/dyna.css">
-        <link href="lib/assets/typeahead.min.css" rel="stylesheet" type="text/css">
-        <link rel="stylesheet" media="all" href="lib/tipsy.css"/>
-        <link href='lib/style.css' rel='stylesheet'/>
+        <title>PhillyFreightFinder 3.1.3  |  DVRPC</title>
 
-        <style>
-       
-       
-       
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800' rel='stylesheet' type='text/css'>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.css" rel="stylesheet" type="text/css">
+        <link href="http://dvrpcfreight.github.io/dynamic-icons/dyna.css" rel="stylesheet" type="text/css">
+
+        <!-- locals for development
+        <link href="dev/locals/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="dev/locals/leaflet.css" rel="stylesheet" type="text/css">
+        -->
+
+        <link href='lib/style.min.css' rel='stylesheet' type="text/css"/>
+
+        <style>       
         #loading {
                 position: absolute;
                 width: 220px;
@@ -51,11 +52,6 @@
                     width:730px!important;
                 }
             }
-            @media (max-width: 1360px){
-                .search-container{
-                    width:250px!important;
-                }
-            }
             @media (max-width: 1270px) {
                 .navbar .navbar-brand {
                     font-size: 18px;
@@ -66,22 +62,11 @@
                 }
                 
             }
-            @media (max-width: 1200px) {
-               .search-container {
-                    width: 200px!important;
-                }
-            }
             @media (max-width: 1100px) {
                 .dvrpc-pff {
                     width: 260px;
                     overflow: hidden;
                     margin-bottom:-20px;
-                }
-
-            }
-            @media (max-width: 1024px) {
-               .search-container {
-                    width: 150px!important;
                 }
 
             }
@@ -96,11 +81,6 @@
                 .dvrpc-logo{display:none;}
             }
             @media (max-width: 768px){
-                .search-container {
-                    display: table!important;
-                    width: 100%!important;
-
-                }
                 .logo-container{
                     padding:0px;
                 }
@@ -110,8 +90,13 @@
                 #infobox_ {
                     right:10px;
                 }
+                .page-title h1 {
+                    font-size: 18px;    
+                }
             }
+
             @media (max-width: 376px){
+
                 .infowrap{
                     padding:20px;
                     height:auto;
@@ -121,11 +106,7 @@
                 }
             }
             /* Print Handling */
-            @media print {
-                .navbar, .toggle, #sidebar {
-                    display: none !important;
-                }
-            }
+            
         
         </style> 
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -136,216 +117,114 @@
     </head>
 
     <body>
-        <div class="navbar navbar-inverse navbar-fixed-top pffheader">
-        <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-            <div class="navbar-brand">
-                <a href="http://www.dvrpc.org/freight/" target="_blank"><div class="dvrpc-logo"><img src='lib/images/header_dvrpc.png' height='50'/></div></a>
-                <a href="#"><div class="dvrpc-pff"><img src='lib/images/header_pff.png' height='50'/></div></a>
+        <header class="navbar navbar-inverse navbar-fixed-top pffheader">
+            <!-- Header logos and mobile menu button -->
+            <div class="col-md-1 brand-leader hidden-xs hidden-sm hidden-md"></div>
+            <div class="col-sm-12 col-md-12 col-lg-10 brand-left-offset" >
+                <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    <div class="navbar-brand ">
+                        <a href="http://www.dvrpc.org/freight/" title="DVRPC Website" target="_blank" class="dvrpc-logo"><img src='lib/images/header_dvrpc.png' alt="DVRPC logo" height='50'/></a>
+                        <a href="#home" class="dvrpc-pff" title="PFF homepage"><img src='lib/images/header_pff.png' height='50' alt="PFF logo"/></a>
+                    </div>
+                </div>
+            
+                <!-- Navigation links .navbar-collapse-->
+                <div id="navbar-links" class="navbar-collapse collapse">
+                    <!--<form id='nav_search' class="navbar-form navbar-right " >
+                            <div class="input-group search-container mapUI" style="display:none;">
+                                <input id="searchbox" type="text" class="form-control" placeholder="Search by facility/place name">
+                                <span class="input-group-addon"><i class="dynico dynico-search"></i></span>
+                            </div>
+                    </form>-->
+                    <!-- Menu Items -->
+                    <ul id='landing' class="nav navbar-nav">
+                        <li><a href="#home" data-toggle="collapse" data-target=".navbar-collapse.in"><i class="dynico dynico-home"></i>&nbsp;&nbsp;Home</a></li>
+                        <li class="dropdown">
+                            <a id="AboutDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"><i class="dynico dynico-dvrpc"></i>&nbsp;&nbsp;About <b class="caret"></b></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="#planning" class='landingLink' data-toggle="collapse" data-target=".navbar-collapse.in">Freight Planning</a></li>
+                                    <li><a href="#data" class='landingLink' data-toggle="collapse" data-target=".navbar-collapse.in">Our Data</a></li>
+                                    <li><a href="#open-freight-app" class='landingLink' data-toggle="collapse" data-target=".navbar-collapse.in">Open Freight App</a></li>
+                                </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a id="ToolsDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"><i class="dynico dynico-compass"></i>&nbsp;&nbsp;Tools <b class="caret"></b></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="#region" data-toggle="collapse" data-target=".navbar-collapse.in">County Profile Tool</a></li>
+                                    <li><a href="#maritime-indicators" class='landingLink' data-tab='maritime-indicators' data-toggle="collapse" data-target=".navbar-collapse.in">Maritime Indicators</a></li>
+                                    <li><a href="#highway-performance" class='landingLink' data-tab='highway-performance' data-toggle="collapse" data-target=".navbar-collapse.in">Highway Performance</a></li>
+                                </ul>
+                        </li>
+                        <li id='maplink' class='landingUI'><a href="#map" data-tab='map' data-toggle="collapse" data-target=".navbar-collapse.in"><i class="dynico dynico-map"></i>&nbsp;&nbsp;View Map</a></li>
+                        <li class='mapUI' style="display:none;"><a href="#map?search" data-toggle="collapse" data-target=".navbar-collapse.in" ><i class="glyphicon glyphicon-search"></i>&nbsp;&nbsp;Search</a></li>
+                    </ul>
+                </div><!--/.navbar-collapse -->
             </div>
-        </div>
-        <div id="navbar-links" class="navbar-collapse collapse">
-            <form id='nav_search' class="navbar-form navbar-right " >
+        </header>
+    <!-- Search panel for map -->    
+        <div id="search-panel" class="col-lg-offset-1 col-xs-12 col-lg-10 " style="display:none;">
+            <div id="search-subpanel">
+                <form id='nav_search' class="navbar-form navbar-right " >
                     <div class="input-group search-container mapUI" style="display:none;">
                         <input id="searchbox" type="text" class="form-control" placeholder="Search by facility/place name">
                         <span class="input-group-addon"><i class="dynico dynico-search"></i></span>
                     </div>
-            </form>
-            <ul id='landing' class="nav navbar-nav">
-                <li><a href="#home" class='landingLink' data-tab='home' data-toggle="collapse" data-target=".navbar-collapse.in"><i class="dynico dynico-home"></i>&nbsp;&nbsp;Home</a></li>
-                <li><a href="#region" class='landingLink' data-tab='docs' data-toggle="collapse" data-target=".navbar-collapse.in"><i class="dynico dynico-dvrpc"></i>&nbsp;&nbsp;Our Region</a></li>
-                <li class="dropdown">
-                        <a id="AboutDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"><i class="dynico dynico-compass"></i>&nbsp;&nbsp;About <b class="caret"></b></a>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="#planning" class='landingLink' data-tab='PhillyFreightFinder' data-toggle="collapse" data-target=".navbar-collapse.in"><i class="dynico dynico-compass"></i>&nbsp;&nbsp;Freight Planning</a></li>
-                                <li><a href="#data" class='landingLink' data-tab='data' data-toggle="collapse" data-target=".navbar-collapse.in"><i class="dynico dynico-layers"></i>&nbsp;&nbsp;Our Data</a></li>
-                                <li><a href="#domestic-trade" class='landingLink' data-tab='data' data-toggle="collapse" data-target=".navbar-collapse.in"><i class="dynico dynico-layers"></i>&nbsp;&nbsp;Our Data</a></li>
-                            </ul>
-                </li>
-                <li id='maplink' class='landingUI'><a href="#map" data-tab='map' data-toggle="collapse" data-target=".navbar-collapse.in"><i class="dynico dynico-map"></i>&nbsp;&nbsp;View Map</a></li>
-            </ul>
-           
-        </div><!--/.navbar-collapse -->
-    </div>
-    <!--landing pages-->
-        <div id='pFFlanding' class='landing fade in landtab-content landingUI'>
-            
+                </form>
+            </div>
+        </div>
+    <!-- Core pages (non-map) -->
+        <section id='pFFlanding' class='landing fade in landtab-content landingUI'>
             <!--home tab-->
-                <div id ='home' class='tab-pane active in landing-content'style='color:#333333;'>
-                    <div class='center-block col-lg-9 col-md-10' style='float:none;'>
-                        <h3>Welcome to <i>PhillyFreightFinder, </i>the freight mapping and data platform for the Delaware Valley!</h3> 
-                    </div>
-                    <div class='center-block col-lg-9 col-md-10' style='float:none;'>
-                        <!--<div class='col-md-6'>
-                           <ul class="homeslider">
-                              <li><img src="lib/images/county/slider/1.jpg" /></li>
-                              <li><img src="lib/images/county/slider/2.jpg" /></li>
-                              <li><img src="lib/images/county/slider/3.jpg" /></li>
-                            </ul>
-                        </div>-->
-                        <div class='col-md-6'>
-                            <p><i>PhillyFreightFinder</i> is a dynamic, web-based mapping application that pinpoints freight facilities and freight activity in the Philadelphia-Camden-Trenton region. In addition, this tool also highlights how the various freight system components intertwine and complement one another.</p>
-                            <p><i>PhillyFreightFinder</i> contains 20 individual layers and over 350 features of infrastructure and facilities that are organized into seven categories. These elements form the core of the region’s extraordinary freight network and services that link the region to the global economy.</p>
-                            <p><i>PhillyFreightFinder </i>is fully customizable, giving you-the user, the ability to easily control both the extent of the mapping window and the combination of layers to be displayed.</p>
-                        </div> 
-                        <div class='col-md-6'>
-                            <ul class='landingButtons'>
-                                <li><a href='#region' class='' data-tab='region'><i class="PFFicon-group lbIcon"></i><div class='lbLabels'>Our Region<br/><span class='btnSub'>Learn about the DVRPC region and view county-level freight statistics</span></div></a></li>
-                                <li><a href='#planning' class='' data-tab='planning'><i class="PFFicon-compass lbIcon"></i><div class='lbLabels'>Freight Planning<br/><span class='btnSub'>Learn more about DVRPC and our freight planning program</span></div></a></li>
-                                <li><a href='#data' class='' data-tab='data'><i class="PFFicon-stack lbIcon"></i><div class='lbLabels'>Our Data<br/><span class='btnSub'>View our data sources and download the data behind PhillyFreightFinder</span></div></a></li> 
-                            </ul>
+                <section id ='home' class='tab-pane active in landing-content'>
+                    <div class='homepage-title center-block col-lg-12'>
+                        <img class="hidden-xs hidden-sm homepage-data-overlay" src="lib/images/home_page_overlay.png">
+                        <div class='center-block col-lg-10 col-md-12' style='float:none;'>
+                            <h1>Freight Data Portal for the Delaware Valley</h1>
+                            <div class="col-sm-10 col-md-8 hp-block-text">
+                                <p>The Delaware Valley is a premier freight transportation gateway. It possesses one of the world's busiest freshwater ports; rail freight service from two large Class I railroads and 12 smaller short lines; an airport with expanding international cargo services; an excellent highway and connector network; and numerous rail and port intermodal terminals.<br/><br/><b>The performance of this extraordinary network helps promote and support a thriving economy. <i>PhillyFreightFinder</i> is a resource for exploring and tracking this regional freight network.</b></p>
+                            </div>
+                            <div class='clearfix'></div>
+                            <div class="col-sm-offset-2 col-md-4 col-sm-6 col-xs-12 hp-action-button">Get started below</div>
                         </div>
                     </div>
-                    <div class='clearfix'></div>
-                   <!-- <div class='col-md-12 hpbanner'>    
-                        <div class='center-block col-md-10' style='float:none;'>
-                            <h4>Start exploring freight in our region!</h4>
-                            <p>You can search by facility or place name by using the search dialog or browse the region with the map viewer.
-                                <div id='homewidget' class='col-md-5'>
-                                    <div class="input-group search-container" style='color:#000000;padding-top:6px;width:90%;'>
-                                        <input id="searchhome" type="text" class="form-control" placeholder="Search by facility or place name">
-                                        <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
-                                    </div>
-                                </div>
-                                <div class='col-md-1'>
-                                    <p style='line-height:55px;'><i>or</i></p>
-                                </div>
-                                <div class='col-md-5'>
-                                    <button type="button" id='mapView' class="btn btn-default navbar-btn">Explore in Map Viewer</button>
-                                </div>
-                        </div>
-                    </div>-->
-                    <div class='col-md-12 hpbanner'>
-                        <div class='center-block col-md-9' style='float:none;'>
-                           <a href="#map"> <img style="width: 100%;max-width: 1100px;margin: 20px auto;border-radius: 10px;"src="lib/images/homeMap.png"/></a>
-                        </div>
-                    </div>
-                </div>
-                <!--region tab-->
-                <div id ='region' class='tab-pane landing-content' style='color:#333333;'>
-                    <div class='page-title center-block col-lg-12'>
-                        <div class='center-block col-lg-10 col-sm-12' style='float:none;'>
-                            <h3>The Delaware Valley Region</h3> 
-                        </div>
-                    </div>
-                    <div class='center-block col-lg-10 col-sm-12 ' style='float:none;'>
-                        <div class='col-md-7 col-lg-6'>
-                            <p>The PhillyFreightFinder application covers Bucks, Chester, Delaware, Montgomery and Philadelphia counties in Pennsylvania, and Burlington, Camden, Gloucester and Mercer counties in New Jersey.</p>
-                            <p>This region contains an impressive freight transportation network consisting of highways, rail lines, ports, airports, and pipelines. There are also many related support facilities such as warehouses, manufacturing sites, rail yards, and truck stops.</p>
-                            <p>The Delaware Valley is strategically positioned in the middle of the densest population center in the United States. Over 100 million people live within a 500-mile radius of Philadelphia, representing a vast consumer base and making the region ideally situated as a manufacturing and distribution hub.</p>
-                        </div> 
-                        <div class='col-md-5 col-lg-6'>
-                            <a onClick="showRegional()"><div id='regionLink' data-toggle="tooltip" title="View regional data" ><i class="PFFicon-group" style="font-size:16px;color:white;"></i></div></a>
-                            <div id='map2'data-toggle="tooltip" title="Select County to View Data">
-                                <div id='countyname' class='hidden'></div>
+                    <div class='center-block col-lg-10 col-md-12' style='float:none;'>
+                        <div class='col-sm-6 col-md-4'>
+                            <div class="hp-tool-links">
+                                <a href="#region" data-toggle="tab" ><h2>County Freight Profiles</h2></a>
+                                <p>The DVRPC region is comprised of nine counties, each with a unique freight profile of facilities, employment, and trade patterns. The County Profile Tool provides insights on these unique aspects.</p>
+                                <a href="#region" data-toggle="tab" ><button class="hp-tool-btn">Explore a county</button></a>
                             </div>
                         </div>
+                        <div class='col-sm-6 col-md-4'>
+                            <div class="hp-tool-links">
+                                <h2>Performance Indicators</h2>
+                                <p class="hp-half">A key to understanding freight in the Delaware Valley is evaluating the performance of the facilities that support freight in the region.</p>
+                                <a href="#highway-performance" data-toggle="tab" ><button class="hp-tool-btn hp-btn-upper">View Highway Performance</button></a>
+                                <a href="#maritime-indicators" data-toggle="tab" ><button class="hp-tool-btn">View Maritime Indicators</button></a>
+                            </div>
+                        </div>
+                        <div class='col-sm-6 col-md-4'>
+                            <div class="hp-tool-links">
+                                <a href="#map" data-toggle="tab" ><h2>Explore Our Network</h2></a>
+                                <p>The region's extensive network includes hundreds of individual facilities that function together to drive the economy. Our map tool allows you to explore key details and facts about each of these facilities.</p>
+                                <a href="#map" data-toggle="tab" ><button class="hp-tool-btn">Browse the network map</button></a>
+                            </div>
+                        </div>
+                        
                     </div>
                     <div class='clearfix'></div>
-                    <div class='col-md-12 hpbanner' style='padding-bottom:20px;'> 
-                        <div class='center-block col-lg-10 col-sm-12' style='float:none;'>
-                            <div id='dataContainer'>
-                                    <h3 id=''>DVRPC Region</h3>
-                                    <div class='col-md-6'>
-                                        <div class='row'>
-                                            <div class='col-md-4 center'><img src='lib/images/trkHighway.png' width='90'/><div class='dlabel white'><strong>Trucking/Highway</strong><br/>Statistics</div></div>
-                                            <div class='col-md-4 center'><div class='ddata'>352</div><div class='dlabel'>miles<br/><strong>interstate routes</strong></div></div>
-                                            <div class='col-md-4 center'><div class='ddata'>1.0k</div><div class='dlabel'>miles<br/><strong>national highway</strong></div></div>
-                                        </div>
-                                        <div class='row'> 
-                                            <div class='col-md-4 center'><div class='ddata'>11</div><div class='dlabel'><strong>NHS<br/>connectors</strong></div></div>
-                                            <div class='col-md-4 center'><div class='ddata'>106</div><div  class='dlabel'><strong>interstate<br/>highway interchanges</strong></div></div>
-                                            <div class='col-md-4 center'><div class='ddata'>9.8m</div><div class='dlabel'><strong>daily<br/>truck miles</strong></div></div>
-                                        </div>
-                                        <div class='divider'></div>
-                                        <div class='row'>
-                                            <div class='col-md-4 center'><img src='lib/images/frRail.png' width='90'/><div class='dlabel white'><strong>Freight Rail</strong><br/>Statistics</div></div>
-                                            <div class='col-md-4 center'><div class='ddata'>689</div><div class='dlabel'>miles<br/><strong>freight trackage</strong></div></div>
-                                            <div class='col-md-4 center'><div class='ddata'>32</div><div class='dlabel'><strong>yards and<br/>intermodal terminals</strong></div></div>
-                                        </div>
-                                        <div class='divider'></div>
-                                        <div class='row'>
-                                            <div class='col-md-4 center'><img src='lib/images/pMAritime.png' width='90'/><div class='dlabel white'><strong>Port &#38; Maritime</strong><br/>Statistics</div></div>
-                                            <div class='col-md-4 center'><div class='ddata'>31</div><div class='dlabel'><strong>port<br/>terminals</strong></div></div>
-                                            <div class='col-md-4 center'><div class='ddata'>1.7k</div><div class='dlabel'><strong>annual<br/>ship calls</strong></div></div>
-                                        </div>
-                                        <div class='divider'></div>
-                                        <div class='row'>
-                                            <div class='col-md-4 center'><img src='lib/images/fCenters.png' width='90'/><div class='dlabel white'><strong>Freight Center</strong><br/>Statistics</div></div>
-                                            <div class='col-md-4 center'><div class='ddata'>43</div><div class='dlabel'>unique<br/><strong>freight centers</strong></div></div>
-                                            <div class='col-md-4 center'><div class='ddata'>43.8k</div><div class='dlabel'>acres<br/><strong>freight centers</strong></div></div>
-                                        </div>
-                                    </div>
-                                    <div class='col-md-5 center'>
-                                        <h4>Total Shipments by Mode [2010]</h4>
-                                        <div id="containerTon" style="height:185px;width:350px;margin-bottom:-15px;display: block;margin-left:auto;margin-right:auto;"></div>
-                                        <div class='divider'></div>
-                                        <div style='padding-bottom:10px;'><span class='ctylegend' style='border-color:#8dd3c7'>Truck</span>&nbsp;&nbsp;&nbsp;
-                                        <span class='ctylegend' style='border-color:#ffffb3'>Rail</span>&nbsp;&nbsp;&nbsp;
-                                        <span class='ctylegend' style='border-color:#bebada'>Water</span>&nbsp;&nbsp;&nbsp;
-                                        <span class='ctylegend' style='border-color:#fb8072'>Air/Air + Truck</span><br/><br/>
-                                        <span class='ctylegend' style='border-color:#80b1d3'>Multiple Modes</span>&nbsp;&nbsp;&nbsp;
-                                        <span class='ctylegend' style='border-color:#fdb462'>Pipeline</span>&nbsp;&nbsp;&nbsp;
-                                        <span class='ctylegend' style='border-color:#b3de69'>Other</span>&nbsp;</div>
-                                        <div class='divider'></div>
-                                        <div id="containerValue" style="height:185px;width:350px;margin-top:-15px;display: block;margin-left:auto;margin-right:auto;"></div>
-                                        <div class='col-md-10 col-md-offset-1'><p style='line-height:8px;'><span style="font-size:10px;color:#BBE6FA;">Source: US Department of Transportation, Federal Highway Administration, Office of Freight Management and Operations, Freight Analysis Framework Version 3</span></p></div>
-                                    </div>
-                                    
-                            </div> 
-                            <div id='dataCounty' class='hidden'>
-                                    <h3 id='ctyDataName'></h3>
-                                    <div class='col-md-6'>
-                                        <div class='row'>
-                                            <div class='col-md-4 center'><img src='lib/images/trkHighway.png' width='90'/><div class='dlabel white'><strong>Trucking/Highway</strong><br/>Statistics</div></div>
-                                            <div class='col-md-4 center'><div id='data-1' class='ddata'></div><div class='dlabel'>miles<br/><strong>interstate routes</strong></div></div>
-                                            <div class='col-md-4 center'><div id='data-2' class='ddata'></div><div class='dlabel'>miles<br/><strong>national highway</strong></div></div>
-                                        </div>
-                                        <div class='row'> 
-                                            <div class='col-md-4 center'><div id='data-3' class='ddata'></div><div class='dlabel'><strong>NHS<br/>connectors</strong></div></div>
-                                            <div class='col-md-4 center'><div id='data-4' class='ddata'></div><div  class='dlabel'><strong>interstate<br/>highway interchanges</strong></div></div>
-                                            <div class='col-md-4 center'><div id='data-5' class='ddata'></div><div class='dlabel'><strong>daily<br/>truck miles</strong></div></div>
-                                        </div>
-                                        <div class='divider'></div>
-                                        <div class='row'>
-                                            <div class='col-md-4 center'><img src='lib/images/frRail.png' width='90'/><div class='dlabel white'><strong>Freight Rail</strong><br/>Statistics</div></div>
-                                            <div class='col-md-4 center'><div id='data-6' class='ddata'></div><div class='dlabel'>miles<br/><strong>freight trackage</strong></div></div>
-                                            <div class='col-md-4 center'><div id='data-7' class='ddata'></div><div class='dlabel'><strong>yards and<br/>intermodal terminals</strong></div></div>
-                                        </div>
-                                        <div class='divider'></div>
-                                        <div class='row'>
-                                            <div class='col-md-4 center'><img src='lib/images/pMAritime.png' width='90'/><div class='dlabel white'><strong>Port &#38; Maritime</strong><br/>Statistics</div></div>
-                                            <div class='col-md-4 center'><div id='data-8' class='ddata'></div><div class='dlabel'><strong>port<br/>terminals</strong></div></div>
-                                            <div class='col-md-4 center'><div id='data-9' class='ddata'></div><div class='dlabel'><strong>annual<br/>ship calls</strong></div></div>
-                                        </div>
-                                        <div class='divider'></div>
-                                        <div class='row'>
-                                            <div class='col-md-4 center'><img src='lib/images/fCenters.png' width='90'/><div class='dlabel white'><strong>Freight Center</strong><br/>Statistics</div></div>
-                                            <div class='col-md-4 center'><div id='data-10' class='ddata'></div><div class='dlabel'>unique<br/><strong>freight centers</strong></div></div>
-                                            <div class='col-md-4 center'><div id='data-11' class='ddata'></div><div class='dlabel'>acres<br/><strong>freight centers</strong></div></div>
-                                        </div>
-                                    </div>
-                                    <div class='col-md-6'>
-                                        <div class="row"><div class='col-md-6 center' id="countyBoundsLink"></div><div class='col-md-6 center' id="countyBtn"></div></div>
-                                        <div class='divider'></div>
-                                        <div id="ctySlideshow"></div>
-                                    </div>
-                                    
-                                    
-                                    
-                            </div> 
-                        </div>
-                    </div>
-                </div>
+                </section>
+            
                 <!--planning tab-->
-                <div id ='planning' class='tab-pane landing-content' style='color:#333333;'>
+                <section id ='planning' class='tab-pane landing-content'>
                     <div class='page-title center-block col-lg-12'>
                         <div class='center-block col-lg-10 col-sm-12' style='float:none;'>
-                            <h3>Freight Planning at DVRPC</h3>
+                            <h1>Freight Planning at DVRPC</h1>
                         </div> 
                     </div>
                         <div class='center-block col-lg-10 col-sm-12' style='float:none;'>
@@ -399,707 +278,179 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                    <div class='clearfix'></div>
+                </section>
+                <!--domestic trade tab-->
+                <section id ='region' class='tab-pane landing-content load_data'>
+                </section>
 
                 <!--domestic trade tab-->
-                <div id ='domestic-trade' class='tab-pane landing-content' style='color:#333333;'>
-                    <div class='page-title center-block col-lg-12'>
-                        <div class='center-block col-lg-10 col-sm-12' style='float:none;'>
-                            <h3>Domestic Trade Patterns <span class="subHeader">for </span>
-                                <div class="btn-group tradeBtn">
-                                  <button data-toggle="dropdown" id="tradeCounty"class="btn btn-default dropdown-toggle">Bucks County<span class="caret"></span></button>
-                                    <ul class="dropdown-menu">
-                                      <li><input type="radio" id="bucks" name="county" value="42017" checked><label for="bucks">Bucks County</label></li>
-                                      <li><input type="radio" id="burlington" name="county" value="34005"><label for="burlington">Burlington County</label></li>
-                                      <li><input type="radio" id="camden" name="county" value="34007"><label for="camden">Camden County</label></li>
-                                      <li><input type="radio" id="chester" name="county" value="42029"><label for="chester">Chester County</label></li>
-                                      <li><input type="radio" id="delaware" name="county" value="42045"><label for="delaware">Delaware County</label></li>
-                                      <li><input type="radio" id="gloucester" name="county" value="34015"><label for="gloucester">Gloucester County</label></li>
-                                      <li><input type="radio" id="mercer" name="county" value="34021"><label for="mercer">Mercer County</label></li>
-                                      <li><input type="radio" id="montgomery" name="county" value="42091"><label for="montgomery">Montgomery County</label></li>
-                                      <li><input type="radio" id="philadelphia" name="county" value="42101"><label for="philadelphia">Philadelphia County</label></li>
-                                    </ul>
-                                </div><span id="countySelect"></span></h3>
-                        </div> 
-                    </div>
-                    <div class="col-lg-12">
-                        <div class='center-block col-lg-10 col-sm-12' style='float:none;'>
-                              <div id="content">
-                                <div id="topPartners">
-                                    <div class="panel panel-primary">
-                                        <div class="panel-heading">
-                                            <h4 class="panel-title" id="topPartnerTitle">Top Trading Partners</h4>
-                                        </div>
-                                        <div class="panel-body">
-                                            <ul id="comm1">
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div id="tradeFilters">
-                                    <div style="float:left;">
-                                        <div id="countySelect" class="btn-group" data-toggle="buttons">
-                                            <label class="btn btn-sm btn-primary disabled">View by:</label>
-                                            <label for="value" class="flowBtn btn btn-sm btn-primary active">
-                                                <input type="radio" id="tons" name="measure" value="ton" checked/><span>Volume</span></label>
-                                            <label for="vasl" class="flowBtn btn btn-sm btn-primary">
-                                                <input type="radio" id="val" name="measure" value="val" /><span>Value</span></label>
-                                        </div>
-                                    </div>
-                                    <div style="float:left;">
-                                        <div id="controls">
-                                            <div id="dir" class="btn-group" data-toggle="buttons">
-                                                <label for="dir_in" class="flowBtn btn btn-sm btn-primary active">
-                                                    <input type="radio" id="dir_in" name="dir" value="in" checked="checked"/><span>Inbound Shipments</span></label>
-                                                <label for="dir_out" class="flowBtn btn btn-sm btn-primary">
-                                                    <input type="radio" id="dir_out" name="dir" value="out" /><span>Outbound Shipments</span>
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div id="modes">
-                                        <div id="countySelect" class="btn-group" data-toggle="buttons">
-                                            <label for="all" class="flowBtn btn btn-sm btn-primary active">
-                                                <input type="radio" id="all" name="mode" value="all" checked="checked"/><span>All</span></label>
-                                            <label for="truck" class="flowBtn btn btn-sm btn-primary">
-                                                <input type="radio" id="truck" name="mode" value="truck" /><span>Truck</span></label>
-                                            <label for="rail" class="flowBtn btn btn-sm btn-primary">
-                                                <input type="radio" id="rail" name="mode" value="rail" /><span>Rail</span></label>
-                                            <label for="water" class="flowBtn btn btn-sm btn-primary">
-                                                <input type="radio" id="water" name="mode" value="water" /><span>Water</span></label>
-                                            <label for="air" class="flowBtn btn btn-sm btn-primary">
-                                                <input type="radio" id="air" name="mode" value="air" /><span>Air</span></label>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                            </div>
-                        </div>
-                        
-                        <div class='clearfix'></div>
-                        <div class='center-block col-lg-10 col-sm-12' style='float:none;'>
-                            <h3>Traded Commodities</h3>
-                            <p class="commodityHeader">Top 10 <span id="commDir" class="selectable">Inbound</span> Commodities by <span id="commMeasure" class="selectable">Volume</span></p> 
-                            <div id="commodities" class="col-md-4">
-                                <div id="comm3" class="commBox">
-                                </div>
-                            </div>
-                        </div>
-                     
-                    </div>
-                </div>
+                <section id ='domestic-trade' class='tab-pane landing-content load_data'>
+                </section>
+
+                <!--maritime indicators tab-->
+                <section id ='maritime-indicators' class='tab-pane landing-content load_data'>    
+                </section>
+
+                <!--highway performance tab-->
+                <section id ='highway-performance' class='tab-pane landing-content load_data'>    
+                </section>
+                
                 <!--data tab-->
-                <div id ='data' class='tab-pane landing-content' style='color:#333333;'>
+                <section id ='data' class='tab-pane landing-content load_data'>
+                </section>  
+                
+                <!-- licenses -->
+                <section id ='license' class='tab-pane landing-content'>
                     <div class='page-title center-block col-lg-12'>
                         <div class='center-block col-lg-10 col-sm-12' style='float:none;'>
-                            <h3>Our Data</h3>
+                            <h1>Application Licenses</h1>
                         </div>
                     </div>
                     <div class='center-block col-lg-10 col-sm-12' style='float:none;'>
-                        <div class='col-md-6 col-lg-6'>
-                        <p><i>PhillyFreightFinder</i> was created primarily as a platform for data. This framework is intended to improve the access to freight facility data throughout the region in order to improve planning, economic development, and public awareness around freight in the Delaware Valley.</p>
-                        <p>Our data sets have been developed through years of planning studies in the region. In addition, regional private sector and public partners have contributed valuable data related to the appropriate nomenclature of facilities and have evaluated our datasets to further refine the accuracy of <i>PhillyFreightFinder</i>. These partners have also been instrumental in sharing activity data that helps our regional partners to better understand priorities across the Delaware Valley.</p>
-                        <p>Below you will find details about each of our data layers and links to download the current data available in PhillyFreightFinder.</p><br/>
-                        <ul>
-                            <li><a class="tocLink" val="THD">Trucking + Highway Data Layers</a></li>
-                            <li><a class="tocLink" val="RFD">Rail Freight Data Layers</a></li>
-                            <li><a class="tocLink" val="PWD">Port + Waterway Data Layers</a></li>
-                            <li><a class="tocLink" val="AD">Aviation Data Layers</a></li>
-                            <li><a class="tocLink" val="FCD">Freight Center Data Layers</a></li>
-                        </ul></div>
-                        <div class='col-md-6 col-lg-6'>
-                            <div class="well well-sm"><p><b>Disclaimer:</b><br/>
-                            The contents and information contained in this application will be updated on a regular basis as new information is available. However, at any one point in time, some data may not reflect the most current conditions. At the present time, this mapping tool only contains infrastructure and facilities within the official DVRPC region.</p>
-                            <p>The format and information on this map may be updated or changed at any time. This map does not expand the liability of DVRPC, state, local, and other agencies beyond existing law.</p>
-                            <!--<p>PhillyFreightFinder is open data, licensed under the <a href="http://opendatacommons.org/licenses/odbl/summary/">Open Data Commons Open Database License (ODbL)</a>.</p>
-                            <p>You are free to copy, distribute, transmit and adapt our data, as long as you credit DVRPC PhillyFreightFinder. If you alter or build upon our data, you may distribute the result only under the same license. The <a href="http://opendatacommons.org/licenses/odbl/1.0/">full legal code</a> explains your rights and responsibilities.</p>--></div>
-                            <p>If you require additional information please contact Michael Ruane, Transportation Planner at 215.588.8226 or by email <a href="mailto:mruane@dvrpc.org">mruane@dvrpc.org</a>.</p>
-                        </div>
-                        <div class='clearfix'></div>
-                        <div class='col-md-12 '>
-                        
-                            <div class="panel panel-default">
-                                <div id="THD" class="panel-heading dataTabPanel">Trucking + Highway Data Layers</div>
-                                <div id="dataTabhighway">
-                                    <div class="panel-body">
-                                        <div class="well well-sm">
-                                            <div class="row"><div class="col-md-6"><h4>Highways</h4></div><div class="col-md-6"><div class="dataDwnld-01"></div></div></div>
-                                            <p>The DVRPC Freight Highways data layer was based on DVRPC's major routes dataset representing major highways in the region. The dataset uses the centerlines of undivided highway segments and ramps to depict each of the major freight serving highways as identified by DVRPC staff. The highways are limited to regional serving routes including interstates and limited-access highways. This dataset is mapped by route name number and is segmented at key interchanges and by several characteristics: road profile, V/C ratio and performance indicators.</p>
-                                            <table class="table table-striped">
-                                                <tr>
-                                                    <th>Data point</th>
-                                                    <th>Source</th>
-                                                    <th>Source Date</th>
-                                                    <th>Scheduled Update</th>
-                                                </tr>
-                                                <tr>
-                                                    <td>Capacity (lanes)</td>
-                                                    <td>DVRPC</td>
-                                                    <td>2013</td>
-                                                    <td>2018</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Average Annual Daily Traffic (AADT)</td>
-                                                    <td>Freight Analysis Framework</td>
-                                                    <td>--</td>
-                                                    <td>07-2014</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Average Annual Daily Truck Traffic (AADTT)</td>
-                                                    <td>Freight Analysis Framework</td>
-                                                    <td>--</td>
-                                                    <td>07-2014</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Truck share of AADT</td>
-                                                    <td>DVRPC</td>
-                                                    <td>--</td>
-                                                    <td>07-2014</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Volume to Capacity Ratio</td>
-                                                    <td>DVRPC</td>
-                                                    <td>--</td>
-                                                    <td>07-2014</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Reliability Index</td>
-                                                    <td>Vehicle Probe Data Suite
-                                                        <br>I-95 Corridor Coalition</td>
-                                                    <td>--</td>
-                                                    <td>07-2014</td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                        <div class="well well-sm">
-                                            <div class="row"><div class="col-md-6"><h4>NHS Connectors</h4></div><div class="col-md-6"><div class="dataDwnld-02"></div></div></div>
-                                            <p>National Highway System (NHS) connectors are roads, which may be either state or locally owned, which connect intermodal facilities to major highways on the National Highway System. The NHS Connectors in this data layer are officially designated NHS freight connectors that serve any of three types of facilities: intermodal rail facility, port, and/or airport. These routes were digitized based on DVRPC's street centerline data set to correspond with the officially designated NHS Connector routes.</p>
-                                            <table class="table table-striped">
-                                                <tr>
-                                                    <th>Data point</th>
-                                                    <th>Source</th>
-                                                    <th>Source Date</th>
-                                                    <th>Scheduled Update</th>
-                                                </tr>
-                                                <tr>
-                                                    <td>Capacity (lanes)</td>
-                                                    <td>DVRPC</td>
-                                                    <td>2012</td>
-                                                    <td>2018</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Average Annual Daily Traffic (AADT)</td>
-                                                    <td>--</td>
-                                                    <td>--</td>
-                                                    <td>--</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Average Annual Daily Truck Traffic (AADTT)</td>
-                                                    <td>--</td>
-                                                    <td>--</td>
-                                                    <td>--</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Truck share of AADT</td>
-                                                    <td>DVRPC</td>
-                                                    <td>--</td>
-                                                    <td>07-2014</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Volume to Capacity Ratio</td>
-                                                    <td>DVRPC</td>
-                                                    <td>--</td>
-                                                    <td>07-2014</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Reliability Index</td>
-                                                    <td>Vehicle Probe Data Suite
-                                                        <br>I-95 Corridor Coalition</td>
-                                                    <td>--</td>
-                                                    <td>07-2014</td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                        <div class="well well-sm">
-                                            <div class="row"><div class="col-md-6"><h4>Truck Parking</h4></div><div class="col-md-6"><div class="dataDwnld-03"></div></div></div>
-                                            <p>Truck Parking facilities are essential to the freight system to accommodate overnight parking to support long haul truck movement in, out and through the region. In the DVRPC region there three types of truck parking facilities: private truck stops, service plazas, and rest areas. This data layer was assembled by DVRPC utilizing directory listing for these facilities and related property boundaries. Additional data was acquired through on site surveys of facilities.</p>
-                                            <table class="table table-striped">
-                                                <tr>
-                                                    <th>Data point</th>
-                                                    <th>Source</th>
-                                                    <th>Source Date</th>
-                                                    <th>Scheduled Update</th>
-                                                </tr>
-                                                <tr>
-                                                    <td>Truck Spaces Available</td>
-                                                    <td>DVRPC</td>
-                                                    <td>2009</td>
-                                                    <td>2015</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Truck Spaces Utilized</td>
-                                                    <td>DVRPC</td>
-                                                    <td>2009</td>
-                                                    <td>2015</td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                        <div class="well well-sm">   
-                                            <div class="row"><div class="col-md-6"><h4>Highway River Crossing</h4></div><div class="col-md-6"><div class="dataDwnld-04"></div></div></div>
-                                            <p>The DVRPC Highway River Crossing data layer was developed to identify key bridges in the region that span major rivers and can be considered crucial to interstate commerce. These bridge were mapped as point features identifying the center point location of the facility. Additional inputs were on the facilities was based on Department of Transportation, Turnpike Commission and Bridge Commission data.</p>
-                                            <table class="table table-striped">
-                                                <tr>
-                                                    <th>Data point</th>
-                                                    <th>Source</th>
-                                                    <th>Source Date</th>
-                                                    <th>Scheduled Update</th>
-                                                </tr>
-                                                <tr>
-                                                    <td>Travel Lanes</td>
-                                                    <td>DVRPC</td>
-                                                    <td>2013</td>
-                                                    <td>2018</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Vertical Restriction (feet of clearance)</td>
-                                                    <td>PennDOT, NJDOT, DRPA, DRJTBC</td>
-                                                    <td>2009</td>
-                                                    <td>2015</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Average Annual Daily Traffic (AADT)</td>
-                                                    <td>--</td>
-                                                    <td>--</td>
-                                                    <td>--</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Average Annual Daily Truck Traffic (AADTT)</td>
-                                                    <td>--</td>
-                                                    <td>--</td>
-                                                    <td>--</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Truck share of AADT</td>
-                                                    <td>DVRPC</td>
-                                                    <td>--</td>
-                                                    <td>07-2014</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Volume to Capacity Ratio</td>
-                                                    <td>DVRPC</td>
-                                                    <td>--</td>
-                                                    <td>07-2014</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Reliability Index</td>
-                                                    <td>Vehicle Probe Data Suite
-                                                        <br>I-95 Corridor Coalition</td>
-                                                    <td>--</td>
-                                                    <td>07-2014</td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="panel panel-default">
-                                <div id="RFD" class="panel-heading dataTabPanel">Rail Freight Data Layers</div>
-                                <div id="dataTabrail" >
-                                    <div class="panel-body">
-                                        <div class="well well-sm"> 
-                                        <div class="row"><div class="col-md-6"><h4>Freight Rail Lines</h4></div><div class="col-md-6"><div class="dataDwnld-05"></div></div></div>
-                                        <p>The DVRPC Freight Rail Line data layer was developed to identify key ownership and operation details for freight rail lines in the Delaware Valley. This data set was developed internally using various rail mapping and track chart sources. The polyline network represents rights-of-way rather than track and is segmented based on subdivision or track name as well as key profile details. The line set has been developed with input from various Class I and short-line railroads in the region.</p>
-                                        <table class="table table-striped">
-                                            <tr>
-                                                <th>Data point</th>
-                                                <th>Source</th>
-                                                <th>Source Date</th>
-                                                <th>Scheduled Update</th>
-                                            </tr>
-                                            <tr>
-                                                <td>Number of Tracks (mainline + sidings)</td>
-                                                <td>DVRPC, rail operators</td>
-                                                <td>2013</td>
-                                                <td>2015</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Double Stack Clearance</td>
-                                                <td>DVRPC, NJ DOT, PennDOT, CSX, NS</td>
-                                                <td>2014</td>
-                                                <td>2018</td>
-                                            </tr>
-                                            <tr>
-                                                <td>286,000 lb Capacity</td>
-                                                <td>DVRPC, NJ DOT, PennDOT, CSX, NS</td>
-                                                <td>2014</td>
-                                                <td>2018</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Daily Train Activity</td>
-                                                <td>--</td>
-                                                <td>--</td>
-                                                <td>--</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Train Density</td>
-                                                <td>--</td>
-                                                <td>--</td>
-                                                <td>--</td>
-                                            </tr>
-                                        </table>
-                                        </div>
-                                        <div class="well well-sm"> 
-                                        <div class="row"><div class="col-md-6"><h4>Rail Yards</h4></div><div class="col-md-6"><div class="dataDwnld-06"></div></div></div>
-                                        <p>The DVRPC Freight Rail Yards data layer was developed to provide information about key interchange, sorting, and storage yards in the region. The yard data was created utilizing a combination of outreach to rail operators and DVRPC mapping.</p>
-                                        <table class="table stable=striped">
-                                            <tr>
-                                                <th>Data point</th>
-                                                <th>Source</th>
-                                                <th>Source Date</th>
-                                                <th>Scheduled Update</th>
-                                            </tr>
-                                            <tr>
-                                                <td>Acres</td>
-                                                <td>DVRPC</td>
-                                                <td>2013</td>
-                                                <td>2020</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Car Capacity</td>
-                                                <td>DVRPC, Rail Operators</td>
-                                                <td>--</td>
-                                                <td>2015</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Car Activity (type/count)</td>
-                                                <td>--</td>
-                                                <td>--</td>
-                                                <td>--</td>
-                                            </tr>
-                                        </table>
-                                        </div>
-                                        <div class="well well-sm"> 
-                                        <div class="row"><div class="col-md-6"><h4>Intermodal Rail Terminals</h4></div><div class="col-md-6"><div class="dataDwnld-07"></div></div></div>
-                                        <p>Intermodal rail terminals provide key connections between the nation freight rail network and local shippers and receivers. The DVRPC intermodal rail terminals data set represents four types of intermodal terminals: trans-flow, transload, auto-intermodal and intermodal container.</p>
-                                        <table class="table table-striped">
-                                            <tr>
-                                                <th>Data point</th>
-                                                <th>Source</th>
-                                                <th>Source Date</th>
-                                                <th>Scheduled Update</th>
-                                            </tr>
-                                            <tr>
-                                                <td>Acres</td>
-                                                <td>DVRPC</td>
-                                                <td>2013</td>
-                                                <td>2020</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Loading/Unloading Capacity (racks/car spots)</td>
-                                                <td>DVRPC, Rail Operators</td>
-                                                <td>--</td>
-                                                <td>2015</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Total Car Capacity (car spots)</td>
-                                                <td>--</td>
-                                                <td>--</td>
-                                                <td>--</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Activity (lifts/day)-Intermodal only</td>
-                                                <td>Rail Operators</td>
-                                                <td>--</td>
-                                                <td>2015</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Lift Capacity (lifts/day)-intermodal only</td>
-                                                <td>Rail Operators</td>
-                                                <td>--</td>
-                                                <td>2015</td>
-                                            </tr>
-                                        </table>
-                                        </div>
-                                        <div class="well well-sm"> 
-                                        <div class="row"><div class="col-md-6"><h4>Class I Grade Crossings</h4></div><div class="col-md-6"><div class="dataDwnld-08"></div></div></div>
-                                        <p>The DVRPC Class I Grade Crossing data set is an extraction of the U.S. DOT National Highway-Rail Crossing Inventory with details related to the regional freight system. This data set includes only those grade crossings that exist on Class I mainlines in the Delaware Valley.</p>
-                                        </div>
-                                        <div class="well well-sm">
-                                        <div class="row"><div class="col-md-6"><h4>Railroad River Crossings</h4></div><div class="col-md-6"><div class="dataDwnld-09"></div></div></div>
-                                        <p>The DVRPC Railroad River Crossing data layer was developed to identify key bridges in the region that span major rivers and can be considered crucial to interstate commerce. These bridge were mapped as point features identifying the center point location of the facility. Additional inputs were on the facilities was based on Department of Transportation and rail carrier data.</p>
-                                        <table class="table table-striped">
-                                            <tr>
-                                                <th>Data point</th>
-                                                <th>Source</th>
-                                                <th>Source Date</th>
-                                                <th>Scheduled Update</th>
-                                            </tr>
-                                            <tr>
-                                                <td>Width (active tracks)</td>
-                                                <td>DVRPC</td>
-                                                <td>2013</td>
-                                                <td>2020</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Double-stack Clearance</td>
-                                                <td>NJ DOT, PennDOT, CSX, NS</td>
-                                                <td>2013</td>
-                                                <td>2020</td>
-                                            </tr>
-                                            <tr>
-                                                <td>286,000 lb Capacity</td>
-                                                <td>NJ DOT, PennDOT, CSX, NS</td>
-                                                <td>2013</td>
-                                                <td>2020</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Annual Activity</td>
-                                                <td>--</td>
-                                                <td>--</td>
-                                                <td>--</td>
-                                            </tr>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="panel panel-default">
-                                <div id="PWD" class="panel-heading dataTabPanel">Port + Waterway Data Layers</div>
-                                <div id="dataTabport" >
-                                    <div class="panel-body">
-                                        <div class="well well-sm">
-                                            <div class="row"><div class="col-md-6"><h4>Navigable River</h4></div><div class="col-md-6"><div class="dataDwnld-10"></div></div></div>
-                                        <p>The DVRPC navigable river layer is a polygon layer representing the extents of the Delaware and Schulykill rivers that are designated for commercial traffic. Each waterway is segmented by the appropriate channel and reaches division. NOAA data was utilized to populate the segments with related navigation data.</p>
-                                        <table class="table table-striped">
-                                            <tr>
-                                                <th>Data point</th>
-                                                <th>Source</th>
-                                                <th>Source Date</th>
-                                                <th>Scheduled Update</th>
-                                            </tr>
-                                            <tr>
-                                                <td>Channel width (feet)</td>
-                                                <td>NOAA Navigation Charts</td>
-                                                <td>2013</td>
-                                                <td>--</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Channel Depth (MLLW)</td>
-                                                <td>NOAA Navigation Charts</td>
-                                                <td>2013</td>
-                                                <td>--</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Air Draft (Vertical Clearance ft)</td>
-                                                <td>NOAA Navigation Charts</td>
-                                                <td>2013</td>
-                                                <td>--</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Annual Activity</td>
-                                                <td>--</td>
-                                                <td>--</td>
-                                                <td>--</td>
-                                            </tr>
-                                        </table>
-                                    </div>
-                                    <div class="well well-sm">
-                                        <div class="row"><div class="col-md-6"><h4>Anchorages</h4></div><div class="col-md-6"><div class="dataDwnld-11"></div></div></div>
-                                        <p>The DVRPC anchorages data set is a polygon data file showing navigation anchorages from NOAA Navigation Charts.</p>
-                                        <table class="table table-striped">
-                                            <tr>
-                                                <th>Data point</th>
-                                                <th>Source</th>
-                                                <th>Source Date</th>
-                                                <th>Scheduled Update</th>
-                                            </tr>
-                                            <tr>
-                                                <td>Annual Activity (ships)</td>
-                                                <td>Maritime Exchange</td>
-                                                <td>2013</td>
-                                                <td>2014</td>
-                                            </tr>
-                                        </table>
-                                    </div>
-                                    <div class="well well-sm">
-                                        <div class="row"><div class="col-md-6"><h4>Port Terminals</h4></div><div class="col-md-6"><div class="dataDwnld-12"></div></div></div>
-                                        <p>The DVRPC port terminals data set represents the landside and pier data for active commercial marine terminals in the Delaware Valley. The data shows piers consolidated by operator along with the landside terminal facilities. Data varies by bulk and general cargo facility. Data was compiled by DVRPC using port terminal marketing materials and outreach with terminal operators.</p>
-                                        <table class="table table-striped">
-                                            <tr>
-                                                <th>Data point</th>
-                                                <th>Source</th>
-                                                <th>Source Date</th>
-                                                <th>Scheduled Update</th>
-                                            </tr>
-                                            <tr>
-                                                <td>Berths</td>
-                                                <td>DVRPC</td>
-                                                <td>2013</td>
-                                                <td>2018</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Berth length (combined total, linear feet)</td>
-                                                <td>DVRPC</td>
-                                                <td>2013</td>
-                                                <td>2018</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Berth Depth (MLW)</td>
-                                                <td>DVRPC</td>
-                                                <td>2013</td>
-                                                <td>2018</td>
-                                            </tr>
-                                            <tr>
-                                                <th colspan="4">General Cargo Terminals</th>
-                                            </tr>
-                                            <tr>
-                                                <td>Available Cranes</td>
-                                                <td>DVRPC</td>
-                                                <td>2013</td>
-                                                <td>2018</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Warehouse Space (sq ft)</td>
-                                                <td>DVRPC</td>
-                                                <td>2013</td>
-                                                <td>2018</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Ship Arrivals</td>
-                                                <td>Maritime Exchange</td>
-                                                <td>2013</td>
-                                                <td>2014</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Gate Turns</td>
-                                                <td>--</td>
-                                                <td>--</td>
-                                                <td>--</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Rail car turns</td>
-                                                <td>--</td>
-                                                <td>--</td>
-                                                <td>--</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Containers</td>
-                                                <td>--</td>
-                                                <td>--</td>
-                                                <td>--</td>
-                                            </tr>
-                                            <tr>
-                                                <th colspan="4">Bulk Terminals</th>
-                                            </tr>
-                                            <tr>
-                                                <td>Storage Capacity</td>
-                                                <td>--</td>
-                                                <td>--</td>
-                                                <td>2015</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Ship Arrivals</td>
-                                                <td>Maritime Exchange</td>
-                                                <td>2013</td>
-                                                <td>2014</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Cargo Types</td>
-                                                <td>DVRPC</td>
-                                                <td>2013</td>
-                                                <td>2018</td>
-                                            </tr>
-                                        </table>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="panel panel-default">
-                                <div id="AD" class="panel-heading dataTabPanel">Aviation Data Layers</div>
-                                <div id="dataTabair" >
-                                    <div class="panel-body">
-                                        <div class="well well-sm">
-                                            <div class="row"><div class="col-md-6"><h4>Commercial/Reliever Airports</h4></div><div class="col-md-6"><div class="dataDwnld-13"></div></div></div>
-                                            <p>The DVRPC airports data set includes the property areas of all commercial and reliever airports in the Delaware Valley. Annual operations are extracted from FAA records or based upon the DVRPC counting program.</p>
-                                            <table class="table table-striped">
-                                                <tr>
-                                                    <th>Data point</th>
-                                                    <th>Source</th>
-                                                    <th>Source Date</th>
-                                                    <th>Scheduled Update</th>
-                                                </tr>
-                                                <tr>
-                                                    <td>Annual Operations</td>
-                                                    <td>FAA/DVRPC</td>
-                                                    <td>2014</td>
-                                                    <td>2016</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Cargo Carriers</td>
-                                                    <td>DVRPC</td>
-                                                    <td>--</td>
-                                                    <td>--</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Connections</td>
-                                                    <td>--</td>
-                                                    <td>--</td>
-                                                    <td>--</td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="panel panel-default">
-                                <div id="FCD" class="panel-heading dataTabPanel">Freight Center Data Layers</div>
-                                <div id="dataTabFC" >
-                                    <div class="panel-body">
-                                        <div class="well well-sm">
-                                            <div class="row"><div class="col-md-6"><h4>Freight Centers</h4></div><div class="col-md-6"><div class="dataDwnld-14"></div></div></div>
-                                            <p>The DVRPC Freight Centers data file is based on an internal classification system for geographic areas with a high concentration of freight generating land uses. This data set has been developed through comprehensive local research on firm location and land uses. Currently the file contains three tiers: Mega, Major and Intermediate.</p>
-                                            <table class="table table-striped">
-                                                <tr>
-                                                    <th>Data point</th>
-                                                    <th>Source</th>
-                                                    <th>Source Date</th>
-                                                    <th>Scheduled Update</th>
-                                                </tr>
-                                                <tr>
-                                                    <td>Acres</td>
-                                                    <td>DVRPC</td>
-                                                    <td>2013</td>
-                                                    <td>2020</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Employment</td>
-                                                    <td>--</td>
-                                                    <td>--</td>
-                                                    <td>--</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Firm Types</td>
-                                                    <td>--</td>
-                                                    <td>--</td>
-                                                    <td>--</td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        
+                        <div class="col-xs-12">
+                            <b>PhillyFreightFinder's code is licensed under the <a href="http://opensource.org/licenses/MIT">MIT License</a></b>
+                            <p>Copyright (c) 2014 Delaware Valley Regional Planning Commission</p>
+                            <p>Permission is hereby granted, free of charge, to any person obtaining a copy of
+                            this software and associated documentation files (the "Software"), to deal in
+                            the Software without restriction, including without limitation the rights to
+                            use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+                            the Software, and to permit persons to whom the Software is furnished to do so,
+                            subject to the following conditions:</p>
+                            <p><b>The above copyright notice and this permission notice shall be included in all
+                            copies or substantial portions of the Software.</b></p>
+                            <p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR                    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS 
+                            FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+                            COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+                            IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+                            CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
+                            <br>
+                            <h4>Additional Licenses</h4>
+                            <p>PhillyFreightFinder includes elements of other software, their licenses are as follows:</p
+                            >
+                            <h5>Awesome Markers</h5>
+                            <p>Awesome Markers and its components are licensed under the <a href="http://opensource.org/licenses/MIT">MIT License</a>. &copy;&nbsp;2013 L. Voogdt</p>
                         </div>
                     </div>
-                </div>         
-                       
-        </div>
+                    <div class='clearfix'></div>
+                </section>
+
+                <!-- data disclaimer -->
+                <section id ='disclaimer' class='tab-pane landing-content'>
+                    <div class='page-title center-block col-lg-12'>
+                        <div class='center-block col-lg-10 col-sm-12' style='float:none;'>
+                            <h1>Data Disclaimer</h1>
+                        </div>
+                    </div>
+                    <div class='center-block col-lg-10 col-sm-12' style='float:none;'>
+                        <div class="col-xs-12 col-sm-6">
+                            <p>The Delaware Valley Regional Planning Commission (DVRPC) excludes any and all implied warranties of merchantability and fitness for any digital file obtained from the Commission. No guarantees are expressed or implied as to the use or application of the digital information supplied. DVRPC assumes no responsibility to maintain them in any manner or form.</p>
+                            <p>DVRPC will not be liable for and the user agrees to hold DVRPC harmless from and against any direct, indirect, special, incidental, or consequential damages arising out of the use or inability to use the material supplied, or arising out of any inaccuracy or defect in the digital information supplied.</p>
+                            <p>Recipients of DVRPC digital files are not entitled to any file revisions, updates, corrections or new releases.</p>
+                            <p>Recipients of DVRPC digital files are encouraged to credit DVRPC as the source of the data when producing maps, graphics, or other documents that utilize DVRPC files.</p>
+                            
+                        </div>
+                        <div class="col-xs-12 col-sm-6">
+                            <div class="well well-sm">
+                                <h4>PhillyFreightFinder</h4>
+                                <p>The contents and information contained in this application will be updated on a regular basis as new information is available. However, at any one point in time, some data may not reflect the most current conditions. At the present time, this mapping tool only contains infrastructure and facilities within the official DVRPC region.</p>
+                                <p>The format and information on this map may be updated or changed at any time. This map does not expand the liability of DVRPC, state, local, and other agencies beyond existing law.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='clearfix'></div>
+                </section>
+
+                <!-- open freight app -->
+                <section id ='open-freight-app' class='tab-pane landing-content'>
+                    <div class='page-title center-block col-lg-12'>
+                        <div class='center-block col-lg-10 col-sm-12' style='float:none;'>
+                            <h1>Open Freight App</h1>
+                        </div>
+                    </div>
+                    <div class='center-block col-lg-10 col-sm-12' style='float:none;'>
+                        <div class='col-md-7 content'>
+                                <p>Open Freight App is a project by the Delaware Valley Regional Planning Commission (DVRPC) to share with regional and national transportation planning partners the framework that is the basis for the <a href="http://www.dvrpc.org/webmaps/phillyfreightfinder/" target="_blank">PhillyFreightFinder</a> web mapping and data application. Through this effort, DVRPC hopes that county planning agencies, metropolitan planning organizations and state departments of transportation, and economic development agencies can leverage this framework to further their efforts in making freight transportation data public. By utilizing the Open Freight App framework, rather than building from scratch, planning agencies can focus their time and resources on the development of data sets that can serve to improve the access to information on freight facilities and their role in economic development and transportation across the country. Open Freight App would serve as a self-hosted solution to offer these datasets to other planners, economic developers, public officials, decision-makers and the general public.</p>
+                            <h4>Details</h4>
+                                <p>Open Freight App, is a white-label, open source version of the DVRPC <a href="http://www.dvrpc.org/webmaps/phillyfreightfinder/" target="_blank">PhillyFreightFinder</a> application. This version is available for download and open for replication by any user. This version will have no branding or color styling applied and a standardized icon set will be provided for a sample set of data. In addition, the project will include the following:</p>
+                                <ul>
+                                    <li>Full documentation and guide on:
+                                        <ul>
+                                            <li>Adding map functionality for layers and features</li>
+                                            <li>Creating info windows for feature data</li>
+                                            <li>Creating and modifying legend and layer controls</li>
+                                            <li>Populating search criteria</li>
+                                            <li>Converting ArcGIS Shapefiles to lightweight GeoJSONs for use in the map</li>
+                                            <li>and more!</li>
+                                        </ul>
+                                    <li>Fully commented versions of all necessary HTML, JavaScript and CSS files</li>
+                                    <li>A starter set of freight facility icons</li>
+                                    <li>License and credit materials</li>
+                                </ul>
+                                <p><em>Advanced coding support is not included with this product. While staff at DVRPC can field general questions and assist with certain aspects of the project, formal support in the form of coding, styling, graphic design and advanced development must be done by an outside consultant. If you require more advanced support <a href="mailto:mruane@dvrpc.org">please contact us for more information</a>.</em></p>
+
+                        </div> 
+                        <div class='col-md-5'>
+                            <a href="https://github.com/DVRPCfreight/open-freight-app/" target="_blank"><button type="button" class="btn btn-primary btn-lg" ><i class="dynico dynico-github"></i>&nbsp;&nbsp;View Project on GitHub</button></a><br/><br/>
+                        </div>
+                    </div>
+                    <div class='clearfix'></div>
+                </section>
+        </section>
+        <footer class="content-footer col-xs-12 landingUI" style="display:none;">
+            <div class="center-block col-lg-10 col-md-12" style="float:none;">
+                <div class="col-xs-12 col-sm-6 col-md-4">
+                    <a href="/"><img class="footer-logo" src="lib/images/dvrpclogotinywhite.png" alt="DVRPC"></a>
+                    <p>190 N. Independence Mall West, 8th Floor,<br>Philadelphia, PA 19106-1520<br>215.592.1800<br>Contact:&nbsp;&nbsp;<a id="contact-info" href="mailto:mruane@dvrpc.org">Michael Ruane</a></p>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-4">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6">
+                            <h4>About</h4>
+                            <ul class="footer-links">
+                                <li><a href="#planning">DVRPC Freight Planning</a></li>
+                                <li><a href="#data">Our Data</a></li>
+                                <li><a href="#open-freight-app">Open Freight App</a></li>
+                            </ul>
+
+                        </div>
+                        <div class="col-xs-12 col-sm-6">
+                            <h4>Tools</h4>
+                            <ul class="footer-links">
+                                <li><a href="#region">County Profiles</a></li>
+                                <li><a href="#maritime-indicators">Maritime Indicators</a></li>
+                                <li><a href="#highway-performance">Highway Performance</a></li>
+                                <li><a href="#map">Network Explorer</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-4">
+                    <div class="row">
+                        <div class="hidden-xs col-sm-6 col-md-12">
+                            
+                        </div>
+                        <div class="col-sm-6 col-md-12">
+                            <p style="padding-top:58px;"><a href="#disclaimer">Data Disclaimer</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#license">License</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://www.dvrpc.org/policies/" target="_blank">Policies&nbsp;&nbsp;<i class="glyphicon glyphicon-new-window"></i></a></p><p>&copy;&nbsp;2015 Delaware Valley Regional Planning Commission</p>
+                        </div>
+                    </div>
+                </div>
+                <!--<div class="col-xs-12 col-sm-6">
+                    <div class="row">
+                        
+                        <div class="col-xs-12 col-sm-3">
+                        </div>
+                    </div>
+                </div>-->
+            </div>
+        </footer> 
         
     <!--Map and Sidebar-->
-       <div class="row ocontent mapUI" id="container">
+       <div class="row ocontent mapUI" id="container" style="display:none;">
+
             <div class="col-sm-4 col-lg-3" id="sidebar">
 				
-                <div class="tab-content" style="padding-top: 10px;">
+                <div class="tab-content" >
                         <!--ADD LAYER CONTROL GROUPS HERE -->
                         <!---Layer Group 1-->
                         <div class="panel-group legend">
@@ -1277,21 +628,15 @@
             </div><!--Siderbar Close-->
             <!---Map Pane -->
             <div class="col-sm-8 col-lg-9 mapUI" id="mapDIV" >
-                <div id="loading" style="display: block;">
-                    <div class="loading-indicator">
-                        <div class="progress progress-striped active">
-                            <div class="progress-bar progress-bar-info" style="width: 100%"></div>
-                        </div>
-                    </div>
-                </div>
+                <div id="loadingtm" class="" style="display:block;"><div class="spin-item"><div class="item-inner"><div class="item-loader-container"><div class="la-ball-spin-clockwise la-2x"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div></div></div></div>
             </div>
             <input type="hidden" id="mapLoad" value="false" />
         </div><!--end Map and Sidebar-->
         <!--Footer container-->
-        <div class="navbar-fixed-bottom pff_footer">
+        <footer class="navbar-fixed-bottom pff_footer mapUI" style="display:none;">
             <div style='height:34px;'>
-               <div id="MapFooter" class="mapUI" style="display:none;"> 
-                    <button id="toggle" type="button" class="footer_btn" data-toggle="tooltip" title="Toggle Sidebar" style="height: 34px; padding: 5px 10px; margin-right: 10px;width:36px;"><i id="toggleIcon" class="PFFicon-chevron-left"></i></button>
+               <div id="MapFooter" > 
+                    <button id="toggle" type="button" class="footer_btn" data-toggle="tooltip" title="Toggle Sidebar" style="height: 34px; padding: 5px 10px; margin-right: 10px;width:36px;"><i id="toggleIcon" class="glyphicon glyphicon-chevron-left"></i></button>
                     <button id="contact" type="button" class="footer_btn" data-toggle="tooltip" title="Contact Us" style="height: 34px; padding: 5px 10px; margin-right: 10px;" onclick="$('#contactModal').modal('show'); return false;"><i id="contactIcon" class="dynico dynico-mail"></i>&nbsp;&nbsp;Submit Feedback</button>
                     <div class='footernav'>                </div>
                     <div id='infobox_' class=''>
@@ -1303,21 +648,19 @@
                             </div>
                             
                         </div> 
-                </div>
-                <div id="LandingFooter" class="center landingUI">
-                    <!--<a id="" href="#" onclick="$('#contactModal').modal('show'); return false;" type="button" data-toggle="tooltip" title="Contact DVRPC" style="height: 34px; padding: 5px 10px; margin-right: 10px;float:left;"><i id="contactIcon" class="PFFicon-envelope-alt"></i>&nbsp;&nbsp;Contact Us</a>-->
-                    <p class="dkgrey" style="font-size:10px;margin-top:5px;line-height: 12px;"><strong><i class="dynico dynico-dvrpc"></i>&nbsp;Delaware Valley Regional Planning Commission</strong><br/>190 N Independence Mall West, 8th Floor&nbsp;&nbsp;|&nbsp;&nbsp;Philadelphia, PA 19106</p>
-                </div>            
+                </div>        
             </div>
-        </div> 
-        <div class="navbar-fixed-bottom" style='height:6px;background-color:#312867;'></div> 
+            <div class="navbar-fixed-bottom" style='height:7px;background-color:#312867;bottom: -7px;'></div> 
+        </footer> 
+        
+        
         <!--contact modal-->
         <div class="modal fade" id="contactModal"><form>
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title">Submit Feedback</h4>
+                        <h4 class="modal-title white">Submit Feedback</h4>
                     </div>
                     <div class="modal-body">
                         <p>Please submit your comments, questions, etc. about PhillyFreightFinder below.  Your interest in this freight mapping and data platform for the Delaware Valley is greatly appreciated.</p>
@@ -1388,6 +731,18 @@
 		     <div class="modal-content"></div>
 		     </div>
 		</div>  
+        <!-- Maritime Indicator Tool Modal Window-->
+        <div class="modal fade" id="miToolModal">
+            <div class="modal-dialog">  
+             <div class="modal-content"></div>
+             </div>
+        </div>  
+        <!-- Highway Performance Tool Modal Window-->
+        <div class="modal fade" id="hpToolModal">
+            <div class="modal-dialog">  
+             <div class="modal-content"></div>
+             </div>
+        </div>  
         </div>
         <!-- Community Modal Window-->
         <div class="modal fade" id="commModal"><div class="modal-dialog">  
@@ -1409,36 +764,36 @@
           </div><!-- /.modal-dialog -->
         </div><!-- /.modal --> 
 
+
+        <!-- prep external loaded elements -->
+
+        <!-- locals for offline dev--> 
+<!--
+        <script type="text/javascript" src="dev/locals/jquery-1.10.2.min.js"></script>
+        <script type="text/javascript" src="dev/locals/leaflet.js"></script>
+        <script type="text/javascript" src="dev/locals/jquery.bxslider.min.js"></script>
+        <script type="text/javascript" src="dev/locals/highcharts.js"></script>
+        <script type="text/javascript" src="dev/locals/jquery.nicescroll.js"></script>
+        <script type="text/javascript" src="dev/locals/bootstrap.min.js"></script>
+ --> 
         <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
-        <script type="text/javascript" src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
-        <script type="text/javascript" src="http://cdn.jsdelivr.net/bxslider/4.1.1/jquery.bxslider.min.js"></script>
-        <script type="text/javascript" src="http://cdn.jsdelivr.net/highcharts/4.0.3/highcharts.js"></script>
-        <script type="text/javascript" src="lib/core/dyna-icons.js"></script>
-        <script type="text/javascript" src="lib/assets/typeahead.min.js"></script>
-        <script type="text/javascript" src="lib/assets/numeral.min.js"></script> 
-        <!--<script type="text/javascript" src="lib/assets/jquery-1.10.2.min.js"></script>
-        <script type="text/javascript" src="lib/assets/leaflet.js"></script>-->
-        <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.5.1/jquery.nicescroll.min.js"></script>
-        <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>  
-        <!--d3 dependencies-->
-        <script src="lib/assets/d3_2.7.0/d3.min.js"></script>
-        <script src="lib/assets/d3_2.7.0/d3compat.min.js"></script>
-        <script src="lib/assets/d3_2.7.0/d3.geo.min.js"></script>
-        <script src="lib/assets/d3_2.7.0/d3.csv.min.js"></script>
-        <script src="lib/assets/circle_packer_movers.js"></script>
-        <script src="lib/assets/tipsy.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
         
+        <script type="text/javascript">
+            // prep data tabs for loading of external resources
+            var tab_status = {};
+            $('.load_data').each(function(){
+                var data_id = this.getAttribute('id');                
+                tab_status[data_id]= false;
+            });
+        </script>
+       
+        <script src="http://d3js.org/topojson.v1.min.js"></script>
 
-        <!--<script type="text/javascript" src="lib/assets/bootstrap.min.js"></script>
-        <script type="text/javascript" src="lib/assets/jquery.address.min.js"></script>-->
-        <script type="text/javascript" src="lib/actions.js"></script><!--core application functions -->
-        <script type="text/javascript" src="lib/map.js"></script><!--customized mapping functions to load data -->
-        <script type="text/javascript" src="lib/core/core.js"></script><!--core application functions -->
-
-        <!--widget add-ons-->
-        <script type="text/javascript" src="lib/domestic_trade.js"></script><!--domestic trade application functions -->
-
-
+        <script src="lib/d3.build.min.js"></script>
+        <script type="text/javascript" src="lib/build.min.js"></script>
 
 
         <script type="text/javascript">
@@ -1485,16 +840,7 @@
                 $(this).find('form').get(0).reset();
               });
 
-              $(document).ready(
-                function() {  
-                  $("#pFFlanding").niceScroll();
-                  $('.homeslider').bxSlider({
-                  mode: 'vertical',
-                  slideMargin: 5
-                });
-                }
-
-              );
+             
 
               
             

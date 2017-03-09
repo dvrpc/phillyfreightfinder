@@ -1,0 +1,30 @@
+PFF_ID,FRA_ID,RAIL_ID,NAME,OWNER,OPERATOR,TOWNSHIP,TRACKS,LAT,LONG_,ACT,STREET_1,RAIL_LINE,TOTALSWT,TOTALTRN,SOURCE_1
+140647H,140647H,RL25,Ashland Avenue (USDOT Crossing No. 140647H),CSX,"CSX, Norfolk Southern",Glenolden Borough,1,39.9034,-75.2903,n/a,Ashland Avenue,Philadelphia Subdivision,1,34,2012 DVRPC
+140641S,140641S,RL25,Main Street (USDOT Crossing No. 140641S),CSX,"CSX, Norfolk Southern",Darby Borough,1,39.9178,-75.2557,n/a,Main Street,Philadelphia Subdivision,1,34,2012 DVRPC
+140670C,140670C,RL25,Meetinghouse Road (USDOT Crossing No. 140670C),CSX,"CSX, Norfolk Southern",Upper Chichester Township,2,39.838963,-75.430629,n/a,Meetinghouse Road,Philadelphia Subdivision,3,38,2012 DVRPC
+140650R,140650R,RL25,Amosland Road (USDOT Crossing No. 140650R),CSX,"CSX, Norfolk Southern",Prospect Park Borough,1,39.8962,-75.3065,n/a,Amosland Avenue,Philadelphia Subdivision,1,34,2012 DVRPC
+589735M,589735M,RL42,Heacock Road (USDOT Crossing No. 589735M),CSX,"CSX, SEPTA",Lower Makefield Township,2,40.210985,-74.866033,n/a,Heacock Road,Trenton Subdivision,0,26,2012 DVRPC
+589327C,589327C,RL12,Hanover Street (USDOT Crossing No. 589327C),Norfolk Southern,"CSX, Norfolk Southern",Pottstown Borough,2,40.2447,-75.6507,n/a,Hanover Street,Harrisburg Line,0,13,2012 DVRPC
+140672R,140672R,RL25,Naamens Creek Road (USDOT Crossing No. 140672R),CSX,"CSX, Norfolk Southern",Upper Chichester Township,1,39.8282,-75.4535,n/a,Naamans Creek Road,Philadelphia Subdivision,4,28,2012 DVRPC
+140649W,140649W,RL25,South Avenue (USDOT Crossing No. 140649W),CSX,"CSX, Norfolk Southern",Glenolden Borough,1,39.8989,-75.3005,n/a,South Avenue,Philadelphia Subdivision,1,34,2012 DVRPC
+589737B,589737B,RL42,Edgewood Road (USDOT Crossing No. 589737B),CSX,"CSX, SEPTA",Lower Makefield Township,2,40.224871,-74.84646,n/a,Edgewood Road,Trenton Subdivision,0,27,2012 DVRPC
+588602S,588602S,RL12,Main Street (USDOT Crossing No. 588602S),Norfolk Southern,"CSX, Norfolk Southern",Royersford Borough,2,40.1831,-75.5431,n/a,Main Street,Harrisburg Line,0,13,2012 DVRPC
+589958D,589958D,RL42,Bellevue Avenue (USDOT Crossing No. 589958D),CSX,"CSX, SEPTA",Langhorne Manor Borough,2,40.1608,-74.9124,n/a,Bellview Avenue,Trenton Subdivision,3,29,2012 DVRPC
+140673X,140673X,RL25,Meetinghouse Road (USDOT Crossing No. 140673X),CSX,"CSX, Norfolk Southern",Upper Chichester Township,1,39.82717,-75.454662,n/a,Meetinghouse Road,Philadelphia Subdivision,4,28,2012 DVRPC
+140652E,140652E,RL25,Swarthmore Avenue (USDOT Crossing No. 140652E),CSX,"CSX, Norfolk Southern",Ridley Park Borough,1,39.8831,-75.3286,n/a,Swarthmore Avenue,Philadelphia Subdivision,1,34,2012 DVRPC
+588601K,588601K,RL12,Arch Street  (USDOT Crossing No. 588601K),Norfolk Southern,"CSX, Norfolk Southern",Royersford Borough,2,40.1787,-75.5396,n/a,Arch Street,Harrisburg Line,0,13,2012 DVRPC
+532123F,532123F,RL17,County Line Road (USDOT Crossing No. 589123F),Norfolk Southern,"Norfolk Southern, CSX",Hatboro Borough,1,40.1606,-75.0529,n/a,County Line Road,Morrisville Line,5,17,2012 DVRPC
+140640K,140640K,RL25,Fifth Street ( USDOT Crossing No. 14064K),CSX,"CSX, Norfolk Southern",Darby Borough,1,39.9184,-75.254,n/a,Fifth Street,Philadelphia Subdivision,1,34,2012 DVRPC
+589339W,589339W,RL52,Mill Street (USDOT Crossing No. 589339W),Norfolk Southern,"CSX, Norfolk Southern",Bridgeport Borough,3,40.106358,-75.344047,n/a,Mill Street,Harrisburg Line,2,15,2012 DVRPC
+140646B,140646B,RL25,Oak Lane (USDOT Crossing No. 140646B),CSX,"CSX, Norfolk Southern",Glenolden Borough,1,39.9058,-75.2851,n/a,Oak Lane,Philadelphia Subdivision,1,34,2012 DVRPC
+140631L,140631L,RL25,58th Street (USDOT Crossing No. 140631L),CSX,"CSX, Norfolk Southern",Philadelphia City,2,39.9314,-75.2233,n/a,58th Street,Philadelphia Subdivision,1,32,2012 DVRPC
+589736U,589736U,RL42,Stony Hill Road (USDOT Crossing No. 589736U),CSX,"CSX, SEPTA",Lower Makefield Township,2,40.215702,-74.860114,n/a,Stony Hill Road,Trenton Subdivision,0,27,2012 DVRPC
+532118J,532118J,RL17,Bustleton Pike (USDOT Crossing No.  532118J),Norfolk Southern,"Norfolk Southern, CSX",Langhorne Borough,1,40.1622,-75.0058,n/a,Bustleton Pike,Morrisville Line,5,16,2012 DVRPC
+589609T,589609T,RL52,River Road (USDOT Crossing No. 589609T),Norfolk Southern,"CSX, Norfolk Southern",Lower Merion Township,2,40.058322,-75.270476,n/a,River Road,Harrisburg Line,2,15,2012 DVRPC
+589734F,589734F,RL42,Dobry Road (USDOT Crossing No. 589734F),CSX,"CSX, SEPTA",Lower Makefield Township,2,40.204416,-74.874283,n/a,Dorby Road,Trenton Subdivision,0,26,2012 DVRPC
+589602V,589602V,RL52,Ford Street (USDOT Crossing No. 589602V),Norfolk Southern,"CSX, Norfolk Southern",Bridgeport Borough,2,40.1058,-75.3374,n/a,Ford Street,Harrisburg Line,2,15,2012 DVRPC
+140654T,140654T,RL25,Fairview Road (USDOT Crossing No. 140654T),CSX,"CSX, Norfolk Southern",Ridley Park Borough,1,39.8712,-75.3415,n/a,Fairview Road,Philadelphia Subdivision,0,16,2012 DVRPC
+589338P,589338P,RL52,Depot Street (USDOT Crossing No. 589338P),Norfolk Southern,"CSX, Norfolk Southern",Bridgeport Borough,3,40.106134,-75.3416,n/a,Depot Street,Harrisburg Line,2,15,2012 DVRPC
+589964G,589964G,RL42,Woodbourne Road (USDOT Crossing No. 589964G),CSX,"CSX, SEPTA",Middletown Township,3,40.191275,-74.89047,n/a,Woodbourne Road,Trenton Subdivision,0,27,2012 DVRPC
+589731K,589731K,RL42,Township Line Road (USDOT Crossing No. 589731K),CSX,"CSX, SEPTA",Middletown Township,2,40.201623,-74.877822,n/a,Township Line Road,Trenton Subdivision,0,27,2012 DVRPC
+588605M,588605M,RL12,Trinley Road (USDOT Crossing No. 588605M),Norfolk Southern,"CSX, Norfolk Southern",Royersford Borough,2,40.210038,-75.566295,n/a,Trinley Road,Harrisburg Line,0,13,2012 DVRPC

@@ -1,0 +1,91 @@
+PFF_ID,NAME,TYPE,OWNER,OPERATOR,START_,END,MILES,TRK_MAIN,TRK_SIDE,TRK_MULTI,TRK_DBL,TRK_WEIGHT,TRK_PLATE,TRK_TRAINS,SOURCE
+RL16,USX Running Track,Industrial Track / Shortline,Conrail,"Conrail, CSX, Norfolk Southern",,,5.244575,1,,,n/a,n/a,,n/a,2013 DVRPC
+RL14,Keystone Industrial Port Complex,Industrial Track / Shortline,Keystone Industrial Port Complex,Kinder Morgan,,,9.456687,1,,,n/a,n/a,,n/a,2012 DVRPC
+RL8,Bustleton Industrial Track,Industrial Track / Shortline,Philadelphia Industrial Development Corporation,East Penn Railroad LLC,,,4.561741,1,,,n/a,No,,n/a,"2012 DVRPC, 2013 Regional Rail LLC, 2013 Conrail"
+RL6,Bustleton Industrial Track,Industrial Track / Shortline,Conrail,"Conrail, CSX, Norfolk Southern",,,3.524445,1,,,No,No,,n/a,"2012 DVRPC, 2012 CSX Clearance Maps"
+RL17,Morrisville Line,Interstate,Norfolk Southern,"Norfolk Southern, CSX",,,30.236021,1,,,Yes,Yes,,n/a,"2012 DVRPC, 2012 CSX Clearance Maps"
+RL7,Chester Secondary,Secondary,Conrail,"Conrail, CSX, Norfolk Southern",,,11.619298,1,,,No,Yes,,n/a,"2012 DVRPC, 2013 CSX"
+RL45,Chester Secondary,Secondary,Conrail,"Conrail, CSX, Norfolk Southern",,,0.754246,1,,,No,Yes,,n/a,"2012 DVRPC, 2013 CSX"
+RL59,Trenton Subdivision,Interstate,CSX,CSX,,,12.642242,1,,,No,Yes,,n/a,"2012 DVRPC, 2012 CSX Clearance Maps"
+RL50,Trenton Subdivision,Interstate,CSX,CSX,,,11.165836,2,,,Yes,Yes,,n/a,"2012 DVRPC, 2012 CSX Clearance Maps"
+RL60,Trenton Subdivision,Interstate,CSX,"CSX, Norfolk Southern",,,7.663215,2,,,No,Yes,,n/a,"2013 DVRPC, 2013 CSX"
+RL54,Bethlehem Branch,Secondary,SEPTA,"Pennsylvania Northeastern Railroad, SEPTA",,,6.530948,1,,,n/a,No,,n/a,2015 DVRPC
+RL23,Perkiomen Line,Industrial Track / Shortline,Regional Rail LLC,East Penn Railroad LLC,,,3.783938,1,,,n/a,Yes,,n/a,"2012 DVRPC, 2013 Regional Rail LLC"
+RL18,New Hope and Ivyland Line,Industrial Track / Shortline,New Hope and Ivyland Railroad,New Hope and Ivyland Railroad,,,15.927798,1,,,n/a,n/a,,n/a,2012 DVRPC
+RL35,Doylestown Line,Secondary,SEPTA,"Pennsylvania Northeastern Railroad, SEPTA",,,10.120332,1,,,n/a,No,,n/a,"2013 DVRPC, 2013 CSX"
+RL3,Bethlehem Branch,Secondary,SEPTA,"East Penn Railway, SEPTA",,,10.000596,1,,,n/a,No,,n/a,"2015 DVRPC, 2012 CSX Clearance Maps"
+RL4,Bordentown Secondary (RiverLine),Secondary,NJTransit,"Conrail, NJ Transit",,,28.426499,2,,,No,Yes,,n/a,"2013 DVRPC, 2013 Conrail, 2013 NJ DOT"
+RL19,Northeast Corridor,Secondary,AMTRAK,"AMTRAK, Norfolk Southern, SEPTA",,,18.766625,4,,,No,Yes,,n/a,"2013 DVRPC, 2013 Norfolk Southern"
+RL33,Warminster Line,Secondary,SEPTA,"CSX, Pennsylvania Northeastern Railroad, SEPTA",,,9.86833,1,,,n/a,No,,n/a,"2013 DVRPC, 2013 CSX"
+RL38,Penn Warner Industrial Park,Industrial Track / Shortline,SMS Rail Lines,SMS Rail Lines,,,1.951952,1,,,n/a,n/a,,n/a,2012 DVRPC
+RL43,Tyburn Railroad,Industrial Track / Shortline,Regional Rail LLC,Tyburn Railroad LLC,,,0.74949,1,,,n/a,Yes,,n/a,"2012 DVRPC, 2013 Regional Rail LLC"
+RL26,Phoenixville Industrial Track,Industrial Track / Shortline,Norfolk Southern,Norfolk Southern,,,11.169763,1,,,n/a,No,,n/a,2012 DVRPC
+RL41,Stony Creek Branch,Secondary,SEPTA,"CSX, Pennsylvania Northeastern Railroad",,,5.908906,1,,,n/a,No,,n/a,"2013 DVRPC, 2013 CSX"
+RL32,Neshaminy Line,Secondary,SEPTA,"CSX, Pennsylvania Northeastern Railroad, SEPTA",,,10.297413,2,,,No,No,,n/a,"2013 DVRPC, 2013 CSX"
+RL5,Bristol Industrial Terminal Railway,Industrial Track / Shortline,Bristol Industrial Terminal Railway,Bristol Industrial Terminal Railway,,,0.820149,1,,,n/a,n/a,,n/a,2012 DVRPC
+RL9,Dale Secondary,Secondary,Norfolk Southern,Norfolk Southern,,,15.931667,1,,,n/a,n/a,,n/a,2012 DVRPC
+RL36,Jenkintown/Lansdale Main Line,Secondary,SEPTA,"CSX, Pennsylvania Northeastern Railroad SEPTA",,,17.906583,2,,,n/a,No,,n/a,"2013 DVRPC, 2013 CSX"
+RL37,Norristown Line,Secondary,SEPTA,"Norfolk Southern, SEPTA",,,6.250696,2,,,n/a,No,,n/a,"2012 DVRPC, 2012 CSX Clearance Maps"
+RL15,Keystone Corridor,Secondary,AMTRAK,"AMTRAK, Norfolk Southern, SEPTA",,,46.532007,4,,,No,n/a,,n/a,"2012 DVRPC, 2012 CSX Clearance Maps"
+RLVOID,Chestnut Hill West Line,Secondary,SEPTA [WEB ID-34],"Conrail, SEPTA",,,1.89111,2,,,n/a,n/a,,n/a,2012 DVRPC
+RL25,Philadelphia Subdivision,Interstate,CSX,"CSX, Norfolk Southern",,,16.008701,1,,,No,Yes,,n/a,"2012 DVRPC, 2012 CSX Clearance Maps"
+RL47,Wilmington and Northern Branch,Secondary,Regional Rail LLC,East Penn Railroad LLC,,,14.434407,1,,,n/a,Yes,,n/a,"2012 DVRPC, 2013 Regional Rail LLC"
+RL21,Pemberton Industrial Track,Industrial Track / Shortline,NJ Transit,"Conrail, CSX, Norfolk Southern",,,6.69545,1,,,n/a,Yes,,n/a,"2013 DVRPC, 2013 NJ DOT"
+RL31,Media Line,Secondary,SEPTA,"CSX, SEPTA",,,6.281243,2,,,No,No,,n/a,"2012 DVRPC, 2012 CSX Clearance Maps"
+RL11,Grenloch Industrial Track,Industrial Track / Shortline,Conrail,"Conrail, CSX, Norfolk Southern",,,4.068661,1,,,No,No,,n/a,"2012 DVRPC, 2012 CSX Clearance Maps"
+RL1,60th St. Industrial Track,Industrial Track / Shortline,Conrail,"Conrail, CSX, Norfolk Southern",,,7.054526,1,,,n/a,No,,n/a,"2012 DVRPC, 2012 CSX Clearance Maps"
+RL20,Octoraro Branch,Secondary,Regional Rail LLC,East Penn Railroad LLC,,,27.551634,1,,,n/a,Yes,,n/a,"2012 DVRPC, 2013 Regional Rail LLC"
+RL22,Penns Grove Secondary,Secondary,Conrail,"Conrail, CSX, Norfolk Southern",,,14.884322,1,,,n/a,Yes,,n/a,"2012 DVRPC, 2012 CSX Clearance Maps"
+RL30,Salem Running Track,Secondary,Conrail,"Conrail, CSX, Norfolk Southern",,,10.107475,1,,,n/a,No,,n/a,"2013 DVRPC, 2013 NJ DOT"
+RL46,Vineland Secondary,Secondary,Conrail,"Conrail, CSX, Norfolk Southern",,,21.565219,1,,,n/a,No,,n/a,"2012 DVRPC, 2012 CSX Clearance Maps"
+RL48,Southern Secondary,Secondary,Southern Railroad of New Jersey,Southern Railroad of New Jersey,,,6.675638,1,,,n/a,n/a,,n/a,2012 DVRPC
+RL53,Winslow Industrial Track,Industrial Track / Shortline,Southern Railroad of New Jersey,Southern Railroad of New Jersey,,,3.24529,1,,,n/a,n/a,,n/a,2012 DVRPC
+RL2,Beesley's Point Secondary,Secondary,Conrail,"Conrail, CSX, Norfolk Southern",,,24.618678,1,,,No,Yes,,n/a,"2012 DVRPC, 2012 CSX Clearance Maps"
+RL27,Pureland Industrial Track,Industrial Track / Shortline,SMS Rail Lines,SMS Rail Lines,,,4.556622,1,,,n/a,No,,n/a,2013 DVRPC
+RL44,Upper Merion and Plymouth,Industrial Track / Shortline,Mittal Steel,Mittal Steel,,,1.161304,1,,,n/a,n/a,,n/a,2012 DVRPC
+RL57,Bulson Street Industrial Track,Industrial Track / Shortline,Conrail,"Conrail, CSX, Norfolk Southern",,,1.591971,1,,,n/a,Yes,,n/a,"2013 DVRPC, 2013 Conrail"
+RL58,Turnpike Industrial Track,Industrial Track / Shortline,Conrail,"Conrail, CSX, Norfolk Southern",,,3.563554,1,,,n/a,Yes,,n/a,"2013 DVRPC, 2013 Conrail"
+RL42,Trenton Subdivision,Interstate,CSX,"CSX, SEPTA",,,11.975173,3,,,Yes,Yes,,n/a,"2012 DVRPC, 2012 CSX Clearance Maps"
+RL49,Trenton Subdivision,Interstate,CSX,"CSX, Norfolk Southern",,,4.99107,2,,,No,Yes,,n/a,"2013 DVRPC, 2013 CSX"
+RL51,Airport Line,Secondary,SEPTA,"Conrail, CSX, Norfolk Southern, SEPTA",,,3.496879,2,,,No,Yes,,n/a,"2012 DVRPC, 2013 CSX, 2013 SEPTA"
+RL52,Harrisburg Line,Interstate,Norfolk Southern,"CSX, Norfolk Southern",,,14.228211,2,,,Yes,Yes,,n/a,"2012 DVRPC, 2012 CSX Clearance Maps"
+RL12,Harrisburg Line,Interstate,Norfolk Southern,Norfolk Southern,,,23.629476,2,,,Yes,Yes,,n/a,"2012 DVRPC, 2012 Norfolk Southern"
+RL40,Salem Industrial Track,Industrial Track / Shortline,Southern Railroad of New Jersey,Southern Railroad of New Jersey,,,4.454975,1,,,n/a,n/a,,n/a,2012 DVRPC
+RL28,Philadelphia Belt Line Industrial Track,Industrial Track / Shortline (ROW with track),Philadelphia Belt Line Railroad,"Conrail, CSX, Norfolk Southern",,,2.85214,1,,,n/a,Yes,,n/a,
+RL89,Philadelphia Belt Line Industrial Track,Industrial Track / Shortline (ROW no track),Philadelphia Belt Line Railroad,"Conrail, CSX, Norfolk Southern",,,0.474083,0,,,,,,,
+RL91,Philadelphia Belt Line Industrial Track,Industrial Track / Shortline (ROW no track),Philadelphia Belt Line Railroad,"Conrail, CSX, Norfolk Southern",,,1.576289,0,,,,,,,
+RL92,Philadelphia Belt Line Industrial Track,Industrial Track / Shortline (ROW with track),Philadelphia Belt Line Railroad,"CSX, Norfolk Southern",,,2.140981,0,,,,,,,
+RL24,Industrial Track / Shortline,Industrial Track / Shortline,Conrail,"Conrail, CSX, Norfolk Southern",,,1.844327,1,,,n/a,Yes,,n/a,"2012 DVRPC, 2012 CSX Clearance Maps"
+RL24,Philadelphia Belt Line Industrial Track,Industrial Track / Shortline (ROW with track),Philadelphia Belt Line Railroad,"Conrail, CSX, Norfolk Southern",,,2.067848,1,,,n/a,Yes,,n/a,"2012 DVRPC, 2012 CSX Clearance Maps"
+RL39,Trenton Subdivision (South Philadelphia Joint Track),Interstate,CSX + NS,"CSX, Norfolk Southern",,,0.924983,4,,,Yes,Yes,,n/a,"2013 DVRPC, 2013 CSX"
+RL10,Delair Branch,Interstate,Conrail,"Conrail, CSX, Norfolk Southern, NJ Transit",,,4.435944,2,,,No,Yes,,n/a,"2012 DVRPC, 2012 CSX Clearance Maps"
+RL56,Shell Industrial Track,Industrial Track / Shortline,Conrail,"Conrail, CSX, Norfolk Southern",,,2.088763,1,,,n/a,No,,n/a,"2012 DVRPC, 2012 CSX Clearance Maps"
+RL28,Richmond Industrial Track,Secondary,Conrail,"Conrail, CSX, Norfolk Southern",,,0.814783,1,,,n/a,Yes,,n/a,"2013 DVRPC, 2013 Conrail"
+RL55,Stony Creek Branch,Secondary,SEPTA,CSX,,,4.954029,1,,,n/a,No,,n/a,"2012 DVRPC, 2012 CSX Clearance Maps"
+RL71,Bordentown Secondary (RiverLine),Secondary,Conrail,"Conrail, CSX, Norfolk Southern",,,2.732258,2,,,No,Yes,,n/a,"2013 DVRPC, 2013 Conrail"
+RL61,Northeast Corridor,Secondary,AMTRAK,"Conrail, CSX, Norfolk Southern, AMTRAK, SEPTA",,,29.722041,4,,,No,Yes,,n/a,"2012 DVRPC, 2012 CSX Clearance Maps"
+RL73,Vineland Secondary,Secondary,Conrail,"Conrail, CSX, Norfolk Southern",,,8.287901,1,,,n/a,No,,n/a,"2012 DVRPC, 2012 CSX Clearance Maps"
+RL65,Fairless Branch,Secondary,CSX,CSX,,,3.894166,1,,,n/a,n/a,,n/a,"2013 DVRPC, 2013 CSX"
+RL66,Northeast Corridor,Secondary,AMTRAK,"Conrail, CSX, Norfolk Southern, AMTRAK, NJ Transit",,,10.59997,4,,,No,No,,n/a,"2013 DVRPC, 2013 NJ DOT"
+RL72,Bordentown Secondary,Secondary,Conrail,Conrail,,,4.246321,2,,,No,Yes,,n/a,"2013 DVRPC, 2013 Conrail, 2013 NJ DOT"
+RL69,Pemberton Industrial Track,Industrial Track / Shortline,Conrail,"Conrail, CSX, Norfolk Southern",,,6.394522,1,,,n/a,Yes,,n/a,"2013 DVRPC, 2013 NJ DOT"
+RL63,Trenton Avenue Elevated,Industrial Track / Shortline,Conrail,"Conrail, CSX, Norfolk Southern",,,1.385897,1,,,n/a,n/a,,n/a,"2013 DVRPC, 2013 Conrail"
+RL64,Frankford Street Industrial Track,Industrial Track / Shortline,Conrail,"Conrail, CSX, Norfolk Southern",,,1.917102,1,,,n/a,n/a,,n/a,"2013 DVRPC, 2013 Conrail"
+RL62,Northeast Corridor,Secondary,AMTRAK,"Conrail, CSX, Norfolk Southern, AMTRAK, NJ Transit, SEPTA",,,0.860402,4,,,No,No,,n/a,"2013 DVRPC, 2013 NJ DOT"
+RL67,25th Street Viaduct,Interstate,CSX,"CSX, Norfolk Southern",,,2.503528,2,,,Yes,Yes,,n/a,"2013 DVRPC, 2013 CSX"
+RL70,Harrisburg Line,Interstate,CSX,"CSX, Norfolk Southern",,,2.077601,1,,,Yes,Yes,,n/a,"2013 DVRPC, 2013 CSX"
+RL13,Harrisburg Line (High Line),Interstate,CSX,"CSX, Norfolk Southern",,,3.554837,1,,,Yes,Yes,,n/a,"2013 DVRPC, 2013 CSX"
+RL78,Delair Branch,Interstate,Conrail,"Conrail, CSX, Norfolk Southern",,,5.377204,1,,,No,Yes,,n/a,"2013 DVRPC, 2013 CSX"
+RL80,Girard Point Industrial Track,Industrial Track / Shortline,Conrail,"Conrail, CSX, Norfolk Southern",,,2.086492,1,,,n/a,n/a,,n/a,"2013 DVRPC, 2013 Conrail"
+RL81,Pottstown Industrial Track,Industrial Track / Shortline,Norfolk Southern,Norfolk Southern,,,2.16605,1,,,n/a,n/a,,n/a,
+RL29,Robbinsville Industrial Track,Industrial Track / Shortline,Conrail,"Conrail, CSX, Norfolk Southern",,,5.306862,1,,,n/a,No,,n/a,"2012 DVRPC, 2012 CSX Clearance Maps"
+RL82,Trenton Subdivision,Interstate,CSX,"CSX, Norfolk Southern",,,1.215263,3,,,Yes,Yes,,n/a,"2014 DVRPC, 2013 CSX"
+RL83,Wilmington and Northern Branch,Secondary,Regional Rail LLC,East Penn Railroad LLC,,,2.651472,1,,,n/a,Yes,,n/a,"2012 DVRPC, 2013 Regional Rail LLC"
+RL84,Lansdale Wye,Industrial Track / Shortline,SEPTA,"Pennsylvania Northeastern Railroad, SEPTA",,,0.210985,1,,,n/a,No,,n/a,2014 DVRPC
+RL85,Venice Industrial Track,Industrial Track / Shortline,Norfolk Southern,Norfolk Southern,,,1.788956,1,,,n/a,n/a,,n/a,"2014 DVRPC, 2014 Norfolk Southern"
+RL87,Wilmington and Northern Branch,Secondary,Norfolk Southern,Norfolk Southern,,,1.182571,1,,,n/a,Yes,,n/a,"2014 DVRPC, 2014 ArcelorMittal"
+RL86,Wilmington and Northern Branch,Secondary,ArcelorMittal Steel,Brandywine Valley Railroad,,,3.984844,1,,,n/a,Yes,,n/a,"2014 DVRPC, 2014 ArcelorMittal"
+RL28,Richmond Industrial Track,Secondary,Conrail,"Conrail, CSX, Norfolk Southern",,,0.416231,1,,,n/a,Yes,,n/a,"2013 DVRPC, 2013 Conrail"
+RL28,Richmond Industrial Track,Secondary,Conrail,"Conrail, CSX, Norfolk Southern",,,4.775126,1,,,n/a,Yes,,n/a,"2013 DVRPC, 2013 Conrail"
+RL88,Philadelphia Belt Line Industrial Track,Industrial Track / Shortline,Philadelphia Belt Line Railroad,"Conrail, CSX, Norfolk Southern",,,5.38401,2,,,,,,,
+RL90,Philadelphia Belt Line Industrial Track,ROW no track,Philadelphia Belt Line Railroad,"Conrail, CSX, Norfolk Southern",,,5.083897,0,,,,,,,

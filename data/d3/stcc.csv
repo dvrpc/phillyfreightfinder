@@ -1,0 +1,457 @@
+stcc,name
+100,Farm products
+112,Raw cotton
+113,Grain
+114,"Oil from kernels, nuts or seeds"
+115,Field seeds
+119,Misc. field crops
+121,Citrus fruits
+122,Deciduous fruits
+123,Tropical fruits
+129,Misc. fresh fruits or tree nuts
+131,"Bulbs, roots or tubers"
+133,Leafy fresh vegetables
+134,Dry ripe vegetable seeds
+139,Misc. fresh vegetables
+140,Livestock or livestock products
+141,Livestock
+142,Dairy products
+151,Live poultry
+152,Poultry eggs
+191,Horticultural specialties
+192,Animal specialties
+199,"Farm products, n.e.c."
+842,Crude barks or gums
+861,Misc. forest products
+900,Fresh fish or marine products
+912,Fresh fish or whale products
+913,Marine products
+1011,Iron ores
+1021,Copper ores
+1041,Gold ore
+1051,Bauxite or other alum ores
+1061,Manganese ores
+1071,Tungsten ores
+1081,Chromium ores
+1092,Misc. metal ores
+1111,Anthracite
+1121,Bituminous coal
+1311,Crude petroleum
+1400,Nonmetallic minerals
+1411,"Dimension stone,quarry"
+1421,Broken stone or riprap
+1441,Gravel or sand
+1451,Clay ceramic or refrac minerals
+1471,Crude chemical or fertilizer minerals
+1491,"Misc. nonmetallic minerals, n.e.c."
+1492,Water
+1900,Ordnance or accessories
+1911,"Guns, howitzers, mortars, etc."
+1929,"Ammo or related parts, n.e.c."
+1931,Tracked combat vehicle or parts
+1951,"Small arms, 30mm or less"
+1961,"Small arms ammo, 30mm or less"
+2000,Food or kindred products
+2010,"Meat or poultry, fresh or chilled"
+2011,"Meat, fresh or chilled"
+2012,"Meat, fresh frozen"
+2013,Meat products
+2014,"Animal by-product, inedible"
+2015,"Dressed poultry, fresh"
+2016,"Dressed poultry, frozen"
+2017,Processed poultry or eggs
+2021,Creamery butter
+2023,"Condensed, evaporated or dry milk"
+2024,Ice cream or related frozen desserts
+2025,Cheese or special dairy products
+2026,Processed milk
+2031,Canned or cured sea foods
+2032,Canned specialties
+2033,"Canned fruits, vegetables, etc."
+2034,Dehydrated or dried fruits or vegetables
+2035,Pickled fruits or vegetables
+2036,Processed fish products
+2037,"Frozen fruits, vegetables or juice"
+2038,Frozen specialties
+2039,"Canned or preserved food, mixed"
+2041,Flour or other grain mill products
+2042,Prepared or canned feed
+2043,Cereal preparations
+2044,"Milled rice, flour or meal"
+2045,Blended or prepared flour
+2046,Wet corn milling or milo
+2047,"Dog, cat or other pet food, n.e.c."
+2051,Bread or other bakery products
+2052,"Biscuits, crackers or pretzles"
+2061,Sugar mill product or by-products
+2062,"Sugar, refined, cane or beet"
+2071,Candy or other confectionery
+2082,Malt liquors
+2083,Malt
+2084,"Wine, brandy or brandy spirit"
+2085,Distilled or blended liquors
+2086,Soft drinks or mineral water
+2087,Misc. flavoring extracts
+2091,Cottonseed oil or by-products
+2092,Soybean oil or by-products
+2093,Nut or vegetable oils or by-products
+2094,Marine fats or oils
+2095,Roasted or instant coffee
+2096,"Margarine, shortening, etc."
+2097,"Ice, natural or manufactured"
+2098,"Macaroni, spaghetti, etc."
+2099,"Misc. food preparations, n.e.c."
+2111,Cigarettes
+2121,Cigars
+2131,Chewing or smoking tobacco
+2141,Stemmed or redried tobacco
+2200,Textile mill products
+2211,Cotton broad-woven fabrics
+2221,Man-made or glass woven fiber
+2222,Silk-woven fabrics
+2231,Wool broad-woven fabrics
+2241,Narrow fabrics
+2251,Knit fabrics
+2271,"Woven carpets, mats or rugs"
+2272,"Tufted carpets, rugs or mats"
+2279,"Carpets, mats or rugs, nec"
+2281,Yarn
+2284,Thread
+2291,Felt goods
+2292,Lace goods
+2293,"Paddings, upholstery fill, etc."
+2294,"Textile waste, processed"
+2295,Coated or imprinted fabric
+2296,"Cord or fabrics, industrial"
+2297,Wool or mohair
+2298,Cordage or twine
+2299,"Textile goods, n.e.c."
+2311,Mens or boys clothing
+2331,Womens or childrens clothing
+2351,Millinery
+2352,Caps or hats or hat bodies
+2371,Fur goods
+2381,"Gloves, mittens or linings"
+2384,Robes or dressing gowns
+2385,Raincoats or other rain wear
+2386,Leather clothing
+2387,Apparel belts
+2389,"Apparel, n.e.c."
+2391,Curtains or draperies
+2392,Textile house furnishings
+2393,Textile bags
+2394,Canvas products
+2395,"Textile products, pleated, etc."
+2396,Apparel findings
+2399,Misc. fabricated textile products
+2400,Lumber or wood products
+2411,Primary forest materials
+2421,Lumber or dimension stock
+2429,Misc. sawmill or planing mill
+2431,Millwork or cabinetwork
+2432,Plywood or veneer
+2433,Prefabricated wood buildings
+2434,"Kitchen cabinets, wood"
+2439,"Structural wood products, n.e.c."
+2441,Wood containers or box shooks
+2491,Treated wood products
+2492,Rattan or bamboo ware
+2493,Lasts or related products
+2494,Cork products
+2495,Hand tool handles
+2496,Scaffolding equipment or ladders
+2497,Wooden ware or flatware
+2498,"Wood products, n.e.c."
+2499,Misc. wood products
+2500,Furniture or fixtures
+2511,"Benches, chairs, stools"
+2512,Tables or desks
+2513,"Sofas, couches, etc."
+2514,"Buffets, china closets, etc."
+2515,Bedsprings or mattresses
+2516,"Beds, dressers, chests, etc."
+2517,Cabinets or cases
+2518,Childrens furniture
+2519,"Household or office furniture, n.e.c."
+2531,Public building or related furniture
+2541,"Wood lockers, partitions, etc."
+2542,"Metal lockers, partitions, etc."
+2591,"Venetian blinds, shades, etc."
+2599,"Furniture or fixtures, n.e.c."
+2600,"Pulp, paper or allied products"
+2611,Pulp or pulp mill products
+2621,Paper
+2631,"Fiber, paper or pulpboard"
+2642,Envelopes
+2643,Paper bags
+2644,Wallpaper
+2645,Die-cut paper or pulpboard products
+2646,Pressed or molded pulp goods
+2647,Sanitary paper products
+2649,Misc. converted paper products
+2651,"Containers or boxes, paper"
+2654,Sanitary food containers
+2655,"Fibre cans, drums or tubes"
+2661,Paper or building board
+2700,Printed matter
+2711,Newspapers
+2721,Periodicals
+2731,Books
+2741,Misc. printed matter
+2761,Manifold business forms
+2771,"Greeting cards, seals, etc."
+2781,"Blankbook, loose leaf binder"
+2791,Svc indus for print trades
+2800,Chemicals or allied products
+2810,Industrial chemicals
+2812,Potassium or sodium compound
+2813,Industrial gases
+2814,"Crude prod of coal, gas, petroleum"
+2815,Cyclic intermediates or dyes
+2816,Inorganic pigments
+2818,Misc. industrial organic chemicals
+2819,Misc. industrial organic chemicals
+2821,Plastic matter or synthetic fibers
+2831,Drugs
+2841,Soap or other detergents
+2842,Specialty cleaning preparations
+2843,Surface active agents
+2844,"Cosmetics, perfumes, etc."
+2851,"Paints, lacquers, etc."
+2861,Gum or wood chemicals
+2871,Fertilizers
+2879,Misc. agricultural chemicals
+2891,Adhesives
+2892,Explosives
+2893,Printing ink
+2899,"Chemical preparations, n.e.c."
+2911,Petroleum refining products
+2912,"Liquefied gases, coal or petroleum"
+2951,Asphalt paving blocks or mix
+2952,Asphalt coatings 
+2991,Misc. coal or petroleum products
+3000,Rubber or misc. plastics
+3011,Tires or inner tubes
+3021,Rubber or plastic footwear
+3031,Reclaimed rubber
+3041,Rub or plastic hose or belting
+3061,Misc. fabricated products
+3071,Misc. plastic products
+3072,Misc. plastic products
+3111,"Leather, finished or tanned"
+3121,Industrial leather belting
+3131,Boot or shoe cut stock
+3141,Leather footwear
+3142,Leather house slippers
+3151,Leather gloves or mittens
+3161,Leather luggage or handbags
+3199,"Leather goods, n.e.c."
+3211,Flat glass
+3221,Glass containers
+3229,"Misc. glassware, blown or pressed"
+3241,Portland cement
+3251,Clay brick or tile
+3253,Ceramic floor or wall tile
+3255,Refractories
+3259,Misc. structural clay products
+3261,Vitreous china plumbing fixtures
+3262,Vitreous china kitchen articles
+3264,Porcelain electric supplies
+3269,Misc. pottery products
+3271,Concrete products
+3273,"Ready-mix concrete, wet"
+3274,Lime or lime plaster
+3275,Gypsum products
+3281,Cut stone or stone products
+3291,Abrasive products
+3292,Asbestos products
+3293,Gaskets or packing
+3295,"Nonmetal minerals, processed"
+3296,Mineral wool
+3299,Misc. nonmetallic minerals
+3300,Primary metal products
+3311,Blast furnace or coke oven products
+3312,Primary iron or steel products
+3313,Electrometallurgical products
+3315,"Steel wire, nails or spikes"
+3321,Iron or steel castings
+3331,Primary copper smelter products
+3332,Primary lead smelter products
+3333,Primary zinc smelter products
+3334,Primary aluminum smelter products
+3339,Misc prim nonferr smelter products
+3351,Copper or alloy basic shapes
+3352,Aluminum or alloy basic shapes
+3356,Misc. nonferrous basic shapes
+3357,Nonferrous wire
+3361,Aluminum or alloy castings
+3362,Copper or alloy castings
+3369,Misc. nonferrous castings
+3391,Iron or steel forgings
+3392,Nonferrous metal forgings
+3399,"Primary metal products, n.e.c."
+3400,Fabricated metal products
+3411,Metal cans
+3421,"Cutlery, not electrical"
+3423,Edge or hand tools
+3425,Hand saws or saw blades
+3428,Builders or cabinet hardware
+3429,Misc hardware
+3431,Metal sanitary ware
+3432,Plumbing fixtures
+3433,"Heating equipment, not electrical"
+3441,Fabricated structural metal products
+3442,"Metal doors, sash, etc."
+3443,Fabricated plate products
+3444,Sheet metal products
+3446,Architectural metal work
+3449,Misc. metal work
+3452,"Bolts, nuts, screws, etc."
+3461,Metal stampings
+3481,Misc. fabricated wire products
+3491,Metal shipping containers
+3492,Metal safes or vaults
+3493,Steel springs
+3494,Valves or pipe fittings
+3499,"Fabricated metal products, n.e.c."
+3500,Machinery
+3511,"Steam engines, turbines, etc."
+3519,Misc. internal combustion engines
+3522,Farm machinery or equipment
+3524,Lawn or garden equipment
+3531,Constr machinery or equipment
+3532,Mining machinery or parts
+3533,Oil field machinery or equipment
+3534,Elevators or escalators
+3535,Conveyors or parts
+3536,"Hoists, industrial cranes, etc."
+3537,"Industrial trucks, etc."
+3541,"Machine tools, metal cutting"
+3542,"Machine tools, metal forming"
+3544,"Special dies, tools, jigs, etc."
+3545,Machine tool accessories
+3548,Metalworking machinery
+3551,Food production machinery
+3552,Textile machinery or parts
+3553,Woodworking machinery
+3554,Paper industries machinery
+3555,Printing trades machinery
+3559,Misc special industry machinery
+3561,Industrial pumps
+3562,Ball or roller bearings
+3564,Ventilating equipment
+3566,Mech power transmission equipment
+3567,Industrial process furnaces
+3569,Misc. general industrial
+3572,Typewriters or parts
+3573,Electronic data proc equipment
+3574,Accounting or calculating equipment
+3576,Scales or balances
+3579,Misc. office machines
+3581,Automatic merchandising machines
+3582,Commercial laundry equipment
+3585,Refrigeration machinery
+3589,Misc. service industry machinery
+3592,"Carburetors, pistons, etc."
+3599,Misc machinery or parts
+3600,Electrical equipment
+3611,Electric measuring instrmts
+3612,Electrical transformers
+3613,Switchgear or switchboards
+3621,Motors or generators
+3622,Industrial controls or parts
+3623,Welding apparatus
+3624,Carbon prod for electric uses
+3629,Misc. electrical industrial equipment
+3631,Household cooking equipment
+3632,Household refrigerators
+3633,Household laundry equipment
+3634,Electric housewares or fans
+3635,Household vacuum cleaners
+3636,Sewing machines or parts
+3639,Misc. household appliances
+3641,Electric lamps
+3642,Lighting fixtures
+3643,Current carrying wiring equipment
+3644,Noncurrent wiring devices
+3651,Radio or TV receiving sets
+3652,Phonograph records
+3661,Telephone or telegraph equipment
+3662,Radio or TV transmitting equipment
+3671,Electronic tubes
+3674,Solid state semiconducts
+3679,Misc. electronic components
+3691,Storage batteries or plates
+3692,Primary batteries
+3693,X-ray equipment
+3694,Elec equipment for internal combustion engine
+3699,"Electrical equipment, n.e.c."
+3700,Transportation equipment
+3711,Motor vehicles
+3713,Motor bus or truck bodies
+3714,Motor vehicle parts or accessories
+3715,Truck trailers
+3722,Aircraft or missile engines
+3723,Aircraft propellers or parts
+3729,Misc. aircraft parts
+3732,Ships or boats
+3741,Locomotives or parts
+3742,Railroad cars
+3751,"Motorcycles, bicycles or parts"
+3769,Missile or space vehicle parts
+3791,Trailer coaches
+3799,"Transportation equipment, n.e.c."
+3800,"Instruments, watches, or clocks"
+3811,"Engineering, lab or scientific equipment"
+3821,Mech measuring or control equipment
+3822,Automatic temperature controls
+3831,Optical instruments or lenses
+3841,Surgical or medical instruments
+3842,Orthopedic or prosthetic supplies
+3843,Dental equipment or supplies
+3851,Ophthalmic or opticians goods
+3861,Photographic equipment or supplies
+3871,"Watches, clocks, etc."
+3900,Misc. manufacturing products
+3911,"Jewelry, precious metal, etc."
+3914,Silverware or plated ware
+3931,Musical instruments or parts
+3941,Games or toys
+3942,Dolls or stuffed toys
+3943,"Childrens vehic or parts, n.e.c."
+3949,Sporting or athletic goods
+3951,Pens or parts
+3952,"Pencils, crayons, or artists materials"
+3953,Marking devices
+3955,Carbon paper or inked ribbons
+3961,Costume jewelry or novelties
+3963,Buttons
+3964,Apparel fasteners
+3991,"Brooms, brushes, etc."
+3992,Linoleum or other coverings
+3993,Signs or advertising displays
+3994,Morticians goods
+3996,Matches
+3999,"Manufactured products, n.e.c."
+4011,Ashes
+4021,Metal scrap or tailings
+4022,Textile scrap or sweepings
+4024,Paper waste or scrap
+4025,Chemical or petroleum waste
+4029,Misc. waste or scrap
+4111,Misc. freight shipments
+4121,Special commodities
+4211,Shipping containers
+4221,Semi-trailers returned empty
+4231,"Empty equipment, reverse route"
+4311,Mail and express traffic
+4411,Freight forwarder traffic
+4511,Shipper association traffic
+4611,Freight-all-kinds shipments
+4621,"Mixed shipments, multi-stcc"
+4711,Small packaged freight shipments
+5010,Warehouse & distribution center
+5021,Rail intermodal drayage to ramp
+5022,Rail intermodal drayage from ramp
+5031,Air freight drayage to airport
+5032,Air freight drayage from airport

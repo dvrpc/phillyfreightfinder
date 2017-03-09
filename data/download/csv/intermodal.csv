@@ -1,0 +1,13 @@
+PFF_ID,NAME,OWNER,OPERATOR,TOWNSHIP,CARGO,ACRES,CAPACITY,SOURCE,FC_ID,NHS_ID,RAIL_ID,LAT,LONG_
+IM5,Savage Transload  / Philadelphia (East),Savage,Savage,Philadelphia City,"Chemicals, Dry Bulk, Ethanol, Food-grade products, Plastics, Waste Materials",25.31279,,2014 DVRPC,16,No,,39.911677,-75.145853
+IM6,Mustin Field Intermodal,Norfolk Southern,Norfolk Southern,Philadelphia City,"Containers, Trailers",61.396435,,2014 DVRPC,16,No,,39.895607,-75.157973
+IM9,Coatesville Transload,Mittal Steel,Brandywine Valley Railroad,Coatesville City,Steel,2.186805,,2014 DVRPC,25,No,,39.97163,-75.821825
+IM11,Avondale Transload,Regional Rail LLC,East Penn Railway,Avondale Borough,"Chemicals, other bulk liquids, grain & grain products, aggregates, lumber",5.196468,,"2014 DVRPC, 2013 Regional Rail LLC",26,No,,39.823345,-75.777338
+IM3,Twin Oaks Intermodal,CSX,CSX,Upper Chichester Township,Automobiles,65.310978,,2014 DVRPC,33,Yes,,39.840297,-75.414184
+IM12,Tyburn Railroad Transload Facility,Regional Rail LLC,Tyburn Railroad LLC,Falls Township,Liquid and bulk,14,,2013 Regional Rail LLC,,Yes,,40.190828,-74.767187
+IM8,Chester Transload,Transflo,CSX,"Chester City, Upland Borough","Chemicals, Dry Bulk, Ethanol, Food-grade products, Plastics, Waste Materials",2.892257,,2014 DVRPC,NA,No,,39.856052,-75.364957
+IM10,Oxford Transload,Regional Rail LLC,East Penn Railway,Oxford Borough,"Lumber and building products, aggregates",1.898086,,"2014 DVRPC, 2013 Regional Rail LLC",NA,No,,39.746378,-76.017486
+IM4,East Side Transload / Philadelphia (West),Transflo,CSX,Philadelphia City,"Chemicals, Dry Bulk, Ethanol, Food-grade products, Plastics, Waste Materials",7.711781,,2014 DVRPC,17,Yes,,39.93111,-75.205065
+IM13,NS Pottstown Thoroughbred Bulk Transfer Terminal,Norfolk Southern,Norflolk Southern,Borough of Pottstown,"Dry/Liquid Bulk, Dry/Liquid, Food Grade, Aggregates, Steel, Lumber",10.5,,"2013 Norfolk Southern, 2013 DVRPC",NA,No,,40.238512,-75.636352
+IM1,Morrisville Intermodal,Norfolk Southern,Norfolk Southern,Falls Township,"Containers, Trailers",39.432723,,2014 DVRPC,6,Yes,,40.191775,-74.835517
+IM2,Greenwich Intermodal,CSX,CSX,Philadelphia City,"Containers, Trailers",102.30861,,2014 DVRPC,FC16,NHS5,RL24,39.899719,-75.153456

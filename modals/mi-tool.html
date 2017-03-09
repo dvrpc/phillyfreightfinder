@@ -1,0 +1,49 @@
+<div class="modal-header ">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h4 class="modal-title white">Maritime Indicator Tool</h4>
+</div>
+<div class="modal-body">
+     <ul id="miToolTabs" class="nav nav-tabs">
+        <li class="active"><a href="#mi-overview" data-toggle="tab">Overview</a></li>
+        <li><a href="#mi-1" data-toggle="tab" >Annual Indicators</a></li>
+        <li><a href="#mi-2" data-toggle="tab">Vessel Activity</a></li>
+        <li><a href="#mi-3" data-toggle="tab">Activity Over Time</a></li>
+        
+    </ul>
+    <div id="portTabsContent" class="tab-content" style="padding-top: 10px;">
+        
+          <div class="tab-pane fade in active" id="mi-overview">
+            <p>The port system of the Delaware Valley is a critical component of the economy and freight transportation system. Measuring and communicating the performance of this system is a priorityfor understanding the regions ability to participate in a world economy. While the agency has not yet fully defined a set of performance measures, this tool highlights key indicators that track activity for the port system. The maritime activity tool is comprised of three distinct components:</p>
+                <ul>
+                    <li>annual indicators</li>
+                    <li>vessel activity by terminal</li>
+                    <li>maritime activity over time</li>
+                </ul>
+      </div> 
+      
+        <div class="tab-pane fade in" id="mi-1">
+            <p>The annual indicators widget was designed to communicate performance of the port year over year. These five indicators were identified to help explain the regional port system’s performance. Several of the indicators are based on a change in the region versus a change at the national level to better demonstrate the region’s performance versus current national trends.</p>
+            <h5>Regional Port Rank by Volume</h5>
+            <p>This ranks the regional ports versus all other MSA regions in the nation with ports based on the total volume of shipments. This indicator utilizes US Army Corps Principal Port data aggregated to the MSA level to calculate rank.</p>
+            <h5>Total Trade (tons)</h5>
+            <p>This is an indicator that assesses the change in total trade, measured in tons, from the previous year. The indicator itself is determined based on the change relative to the national change. The indicator utilizes domestic trade date from the Principal Ports dataset and international trade from the USA Trade database to estimate a total trade for the region. The national change was calculated utilizing all Principal Ports activity and USA Trade for all US Ports.</p>
+            <h5>Total Foreign Trade</h5>
+            <p>This indicator explores the value of maritime foreign trade and the change year over year. The indicator is determined based on the change of foreign trade value in the region versus the change for all U.S. maritime ports. The indicator utilizes USA Trade for the value of maritime foreign trade.</p>
+            <h5>Maritime Exports (tons)</h5>
+            <p>This indicator assesses the change in export trade, measured in tons, from the previous year. The indicator is determined based on the change in export tonnage in the region versus change in exports for all U.S. maritime ports. The indicator utilizes USA Trade for the tonnage of exports.</p>
+            <h5>Export Share of Foreign Trade</h5>
+            <p>This indicator shows the percentage of foreign trade that is export for the region. The indicator utilizes USA Trade Data for the calculation of exports as a share of total foreign trade.</p>
+            
+        </div>
+        
+        <div id="mi-2"  class="tab-pane fade in">
+            <p>This simple diagram illustrates the 31 marine terminals in the DVRPC region, color coded by facility type and scaled based on the number of ship calls the terminal received that year. The user is able to change the year to see how terminal activity varies over time. <em>Mousing over an individual terminal provides details on the number of ship calls and the percent change from the previous year of counts.</em></p>
+            <p><b>Data source:</b> Maritime Exchange of the Delaware River and Bay (ship calls), Additional terminal activity data for barge traffic collected from individual terminal operators.</p>
+        </div>
+        
+        <div id="mi-3" class="tab-pane fade in">
+            <p>This interactive graph, charts the volume of domestic, import, and export shipments over time from 2003 through the last year with full data available. The domestic and foreign trade data is based on the same sources as the maritime indicators. In addition, a second series charting a single line represents containerized cargo activity, measured in twenty-foot equivalents (TEUs). Mousing over the chart provides a popup that lists the details for each data point.</p>
+            <p><b>Data source:</b> U.S. Army Corps of Engineers Principal Port File (domestic); USA Trade Online (foreign); U.S. Maritime Administration- U.S. Waterborne Foreign Container Trade (container).</p>    
+        </div>
+</div>
+</div><!-- /.modal-content -->
