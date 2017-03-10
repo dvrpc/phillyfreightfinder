@@ -688,7 +688,7 @@ $(function() {
                                             yV = d.values[c[1]].value;
                                     }
                                     //push values to div and then update position
-                                    $('.mi-dw-year').html(d0);
+                                    $('.mi-dw-year').html(dd0);
                                     $('.mi-dw-domestic').html((dom_val * 0.000001).toFixed(2));
                                     $('.mi-dw-import').html((imp_val * 0.000001).toFixed(2));
                                     $('.mi-dw-export').html((exp_val * 0.000001).toFixed(2));
