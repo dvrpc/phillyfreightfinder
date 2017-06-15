@@ -25,7 +25,7 @@ $(function() {
         ind_even = '<i class="glyphicon glyphicon-circle-arrow-right"></i>',
         ind_down = '<i class="glyphicon glyphicon-circle-arrow-down"></i>';
 
-    var no_data_yr = 2014;
+    var no_data_yr = 0;
 
     // ********************************************
     // Open data sets
@@ -68,10 +68,7 @@ $(function() {
                         .enter().append("path")
                         .attr("d", river_path);
                    
-                    console.log(river_labels);
-                   
-                    function add_labels(pl){
-                        
+                    function add_labels(pl){                       
                         for (var i = 0; i < pl.length; i++) {
                             var label = pl[i],
                                 lxly = dia_projection([label.lon, label.lat]);
@@ -90,24 +87,9 @@ $(function() {
                         }
 
                     }
+
                     add_labels(river_labels);
-                   /* mi_river.append("text")
-                        .attr("class","mi-river-label")
-                        .attr("dy", ".35em")
-                        .text("Delaware River")
-                        .attr('fill','#636363')
-                        .attr("text-anchor", "middle")
-                        //.attr("transform", "translate(243,290) rotate(-17)")
-                        .attr("transform", "translate("+transl[0] + 100, transl[1] + 200+")");
-
-                    mi_river.append("text")
-                        .attr("class","mi-river-label")
-                        .attr("dy", ".35em")
-                        .text("Delaware River")
-                        .attr('fill','#636363')
-                        .attr("text-anchor", "middle")
-                        .attr("transform", "translate(580,160) rotate(-18)");*/
-
+                  
                     var portCount, prevPortCount, portCallChange;
 
                     // ***********************************************************/
@@ -457,7 +439,7 @@ $(function() {
                         var labelVar = 'year';
 
                         var l = new Date();
-                        var thisYear = 2015;
+                        var thisYear = l.getFullYear();
 
                         var varNames = ['swt_export', 'swt_import', 'domestic'];
 
@@ -475,18 +457,24 @@ $(function() {
                             seriesArr.push(series[name]);
                         });
 
+                        //filter incomplete years
+                        completeData = data.filter(function (a) { return a.domestic !== "" && a.cont_teu !== ""; });
+
                         var maxDataYear = d3.max(data, function(d) {
                             return d.year;
                         });
-                        miYear = maxDataYear - 1;
+
+                        miYear = maxDataYear;
+                        
                         $('#mi-year-select').html(miYear + ' <span class="caret"></span>');
                         for (var i = 2003; i <= maxDataYear; i++) {
                             $('#maritime-year-dropdown').append('<li><input type="radio" id="m' + i + '" class="miYear" name="miYear" value="' + i + '"><label for="m' + i + '">' + i + '</label></li>');
                         }
+
                         $('#m' + (maxDataYear - 1)).prop('checked', true);
 
-                        data.map(function(d) {
-                            if (d.year != thisYear - 1 && d.year > 2002) {
+                        completeData.map(function(d) {
+                            if (d.year > 2002) {
                                 varNames.map(function(name) {
                                     series[name].values.push({
                                         label: parseDate(d[labelVar]),
@@ -677,11 +665,11 @@ $(function() {
                             } else {
                                 var dd0 = x0.getFullYear();
                             }
-                            var i = bisectDate(data, dd0, 1),
-                                d0 = data[i - 1].year,
-                                d1 = data[i].year,
-                                c = dd0 - d0 > d1 - dd0 ? [d1, i - 1] : [d0, i - 2]; //adjust i to reflect drop of 2002 from data
 
+                            var i = bisectDate(data, dd0, 1);
+                      
+                            var c = [(dd0).toString(), i - 2];
+                        
                             circles.transition()
                                 .duration(50)
                                 .attr('transform', function(d) {
@@ -700,7 +688,7 @@ $(function() {
                                             yV = d.values[c[1]].value;
                                     }
                                     //push values to div and then update position
-                                    $('.mi-dw-year').html(d0);
+                                    $('.mi-dw-year').html(dd0);
                                     $('.mi-dw-domestic').html((dom_val * 0.000001).toFixed(2));
                                     $('.mi-dw-import').html((imp_val * 0.000001).toFixed(2));
                                     $('.mi-dw-export').html((exp_val * 0.000001).toFixed(2));
