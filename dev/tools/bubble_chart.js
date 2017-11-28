@@ -415,40 +415,61 @@ function createBubbleChart() {
         xAxis = xScale; //d3.scaleBand().rangeRound([0, width]).padding(0.1);
         yAxis = yScale; //d3.scaleLinear().rangeRound([height, 0]);  
 
-        // inner_svg.append("g")
-        //     .attr("class", "axis axis--x")
-        //     .attr("transform", "translate(0," + height + ")")
-        //     .call(d3.axisBottom(xAxis))
-        // inner_svg.append("text")
-        //     .attr("class", "axis axis--x label")
-        //     .attr("transform", "translate(" + (width/2) + " , " + (height) + ")")
-        //     // so the text is immediately below the bounding box, rather than above
-        //     .attr('dominant-baseline', 'hanging')
-        //     .attr("dy", "1.5em")
-        //     .style("text-anchor", "middle")
-        //     .text(mode.xDataField);
 
         //build freight industry axis
         inner_svg.insert("g", ":first-child")
             .attr("class", "axis wage-industry-axis")
             .attr("transform", "translate(0," + height * 0.33 + ")")
-            .call(d3.axisBottom(xAxis))
+            .call(d3.axisBottom(xAxis)
+                .tickSizeOuter(0))
             .selectAll(".tick").remove()
 
+        // build the non-freight axis
         inner_svg.insert("g", ":first-child")
             .attr("class", "axis wage-industry-axis")
             .attr("transform", "translate(0," + height * 0.66 + ")")
-            .call(d3.axisBottom(xAxis))
+            .call(d3.axisBottom(xAxis)
+                .tickSizeOuter(0))
             .selectAll(".tick").remove()
 
-        var sectorOverall = inner_svg.append("g")
+
+        var freightOverall = inner_svg.append("g")
               .attr("class", "g-overall")
-              .attr("transform", "translate(250," + height * 0.33 + ")");
+              .attr("transform", "translate(" + xAxis(69869) + "," + height * 0.33 + ")");
 
+        freightOverall.append("line")
+            .attr("y1", -100)
+            .attr("y2", +60)
+            .attr("stroke", "#000000")
+            .attr("stroke-width", 2.0);
 
-        sectorOverall.append("line")
+        var overallText = freightOverall.append("text")
+            .attr("y", -90)
+            .style("font-weight", "bold");
+
+        overallText.append("tspan")
+            .attr("x", 10)
+            .style("font-size", "13px")
+            .text("$69,869");
+
+        var nonFreightOverall = inner_svg.append("g")
+              .attr("class", "g-overall")
+              .attr("transform", "translate(" + xAxis(50180) + "," + height * 0.66 + ")");
+
+        nonFreightOverall.append("line")
           .attr("y1", -100)
-          .attr("y2", +127);
+          .attr("y2", +60)
+          .attr("stroke", "#000000")
+          .attr("stroke-width", 2.0);
+
+        var overallText = nonFreightOverall.append("text")
+            .attr("y", -90)
+            .style("font-weight", "bold");
+
+        overallText.append("tspan")
+            .attr("x", 10)
+            .style("font-size", "13px")
+            .text("$50,180");
 
         var format = d3.format(",");
 
@@ -460,20 +481,13 @@ function createBubbleChart() {
                 .tickFormat(function(d) { return "$" + format(d); }))
             .select(".domain").remove()
         
-        // var format = d3.format(",.2f");
-
-        // inner_svg.select('axis axis--x x-wage-label').selectAll("text").text(function(d) { return "$" + format(d); });
-        
         function _firstTickLocation() {
             var labelXAxis = document.getElementsByClassName('axis axis--x x-wage-label');
             var children = labelXAxis[0].children[0].attributes.transform.nodeValue
-
-              //as children is the whole translate string, i.e 'translate(124.555,0)' etc we have to split it
-              //we know the x value is from index 10 to the first comma
-              var thisXPos = children.substring(10, children.lastIndexOf(","));
-              //return split string
-              console.log(thisXPos);
-              return thisXPos - 10;
+            var thisXPos = children.substring(10, children.lastIndexOf(","));
+            
+            //return split string
+            return thisXPos - 10;
 
         }
 
@@ -483,20 +497,6 @@ function createBubbleChart() {
             .attr("text-anchor", "end")
             .attr("dy", "0.4em")
             .text("Average Annual Wage");
-
-
-
-        // inner_svg.append("g")
-        //     .attr("class", "axis axis--y")
-        //     .call(d3.axisLeft(yAxis).ticks(10))//, "%"))
-        
-        // inner_svg.append("text")
-        //     .attr("class", "axis axis--y label")
-        //     // We need to compose a rotation with a translation to place the y-axis label
-        //     .attr("transform", "translate(" + 0 + ", " + (height/2) + ")rotate(-90)")
-        //     .attr("dy", "-3em")
-        //     .attr("text-anchor", "middle")
-        //     .text(mode.yDataField);
     }
 
     function createBubbles() {
@@ -619,7 +619,7 @@ function createBubbleChart() {
 
         smRadiusScale = d3.scalePow()
             .exponent(0.5)
-            .range([5, 25])  // Range between 2 and 25 pixels
+            .range([3, 30])  // Range between 2 and 25 pixels
             .domain([0, maxRadius]);   // Domain between 0 and the largest bubble radius
 
         fillColorScale = getFillColorScale();
@@ -692,33 +692,13 @@ function createBubbleChart() {
 
         }
         // ADD FORCE LAYOUT
-        if (currentMode.type == "scatterplot" || currentMode.type == "map") {
+        if (currentMode.type == "scatterplot" ) {
             addForceLayout(true);  // make it static so we can plot bubbles
         } else {
             addForceLayout(false); // the bubbles should repel about the grid centers
         }
 
-        // SHOW MAP (if our mode is "map")
-        if (currentMode.type == "map") {
-            var path = d3.geoPath().projection(bubbleMercProjection);
-
-            d3.queue()
-                .defer(d3.json, "data/world-110m2.json")
-                .await(ready);
-
-                function ready(error, topology) {
-                  if (error) throw error;
-
-                  inner_svg.selectAll(".world_map_container")
-                    .append("g")
-                    .attr("class", "world_map")
-                    .selectAll("path")
-                    .data(topojson.feature(topology, topology.objects.countries).features)
-                    .enter()
-                    .append("path")
-                    .attr("d", path);
-                }
-        }
+        
         
         // MOVE BUBBLES TO THEIR NEW LOCATIONS
         var targetFunction;
@@ -746,26 +726,8 @@ function createBubbleChart() {
         var targetForceY = d3.forceY(function(d) {return targetFunction(d).y})
             .strength(+BUBBLE_PARAMETERS.force_strength);
  
-        //  if (currentMode.type == "wage") {
-        //     var x = d3.scaleLog()
-        //         .rangeRound([0, width]);
-        //     // console.log(data)
-        //     console.log(dataExtents)
-        //     x.domain([dataExtents['wage'][0], dataExtents['wage'][1]]);
-
-        //     targetFunction = function (d) {
-        //         return { 
-        //             x: x(d.wage),
-        //             y: 0
-        //         };
-        //     };
-            
-        //     var targetForceX = d3.forceX(function(d) { return x(d.wage); })
-        //         .strength(+BUBBLE_PARAMETERS.force_strength);
-        //     var targetForceY = d3.forceY(height / 2);
-        // }
         // Specify the target of the force layout for each of the circles
-        // console.log(targetForceX);
+        
         forceSim
             .force("x", targetForceX)
             .force("y", targetForceY);

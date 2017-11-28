@@ -383,25 +383,17 @@
         <!-- <script type="text/javascript" src="lib/build.min.js"></script> -->
 
         <script>
-        // $('#chart').scrollStory({
-        //     contentSelector: '.graphic',
-        //     triggerOffset: 290,
-        //     itemfocus: function(ev, item){
-        //         console.log(item)
-        //         if(item.index === 0) {
-        //            $('#employment-bubble').removeClass('fixed-graphic'); 
-        //         }
-        //     }
-        // });
-         var getSPageHeight = function() {
-                winHeight = $(window).height();
+        // helper function to adjust trigger to half of page height
+        var getPageHeight = function() {
+            winHeight = $(window).height();
+            return winHeight / 2;
+        }
 
-                return winHeight / 2;
-            }
+        // initialization and options for scroll story functionality
         $('#planning').scrollStory({
-           
-             triggerOffset: getSPageHeight(),
-             itemfocus: function(ev, item){
+            scrollOffset: 75,
+            triggerOffset: getPageHeight(),
+            itemfocus: function(ev, item){
                 if(item.index === 0) {
                    $('#employment-bubble').css('position', 'relative').html('');
                 }
@@ -428,12 +420,14 @@
 
                 }
                 
-             }
+            }
         });
+    
 
-        // $("#planning").on('itemfocus', function(item){
-        //   console.log(item);
-        // });
+        window.onbeforeunload = function () {
+            window.scrollTo(0, 0);
+        }
+
         </script>
         
 
