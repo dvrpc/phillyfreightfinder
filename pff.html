@@ -87,7 +87,9 @@
         .axis.x-wage-header {
             font-weight: bold;
         }
-
+        .text-lighter {
+            fill: #999;
+        }
         body {
             height: auto;
         }
@@ -281,15 +283,17 @@
                                 <h3>Consumption</h3>
                                 <p>These industries serve as the vital link between the other components of the supply chain. Their business is the conveyance, storage, and xXxX of freight.</p>
                             </div>        
-                            <div class="story card" data-section="employment" data-mode="wage">
-                                <p>Lay out that wage yo!</p>
-                            </div>  
+                              
                         </div>
+
                         <!-- chart column for bubble diagram -->
                         <div id="chart" class="col-lg-8 col-sm-12">
                             <div id="employment-bubble" >
                             </div>    
                         </div>
+                        <div class="story  col-lg-offset-8 col-lg-4 col-sm-12" data-section="employment" data-mode="wage">
+                                
+                            </div>
                     </section>
                     <div class='clearfix'></div>
                 </section>              
@@ -397,6 +401,9 @@
                 if(item.index === 0) {
                    $('#employment-bubble').css('position', 'relative').html('');
                 }
+                //clears any annotations
+                $('.g-annotations').remove();
+
                 if(item.data.section === 'employment') {
                     switch (item.data.mode){
                         case 'all':

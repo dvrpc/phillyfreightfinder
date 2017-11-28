@@ -432,8 +432,11 @@ function createBubbleChart() {
                 .tickSizeOuter(0))
             .selectAll(".tick").remove()
 
+        // add annotation container
+        var annotation = inner_svg.append("g")
+            .attr("class", "g-annotations");
 
-        var freightOverall = inner_svg.append("g")
+        var freightOverall = annotation.append("g")
               .attr("class", "g-overall")
               .attr("transform", "translate(" + xAxis(69869) + "," + height * 0.33 + ")");
 
@@ -443,16 +446,16 @@ function createBubbleChart() {
             .attr("stroke", "#000000")
             .attr("stroke-width", 2.0);
 
-        var overallText = freightOverall.append("text")
+        var freightIndustryText = freightOverall.append("text")
             .attr("y", -90)
             .style("font-weight", "bold");
 
-        overallText.append("tspan")
+        freightIndustryText.append("tspan")
             .attr("x", 10)
             .style("font-size", "13px")
             .text("$69,869");
 
-        var nonFreightOverall = inner_svg.append("g")
+        var nonFreightOverall = annotation.append("g")
               .attr("class", "g-overall")
               .attr("transform", "translate(" + xAxis(50180) + "," + height * 0.66 + ")");
 
@@ -462,14 +465,72 @@ function createBubbleChart() {
           .attr("stroke", "#000000")
           .attr("stroke-width", 2.0);
 
-        var overallText = nonFreightOverall.append("text")
+        var nonFreightInudstryText = nonFreightOverall.append("text")
             .attr("y", -90)
             .style("font-weight", "bold");
 
-        overallText.append("tspan")
+        nonFreightInudstryText.append("tspan")
             .attr("x", 10)
             .style("font-size", "13px")
             .text("$50,180");
+
+        // build the living wage line
+        var livingWage = annotation.append("g")
+              .attr("class", "line-living-wage")
+              .attr("transform", "translate(" + xAxis(47004) + "," + height * 0.85 + ")");
+
+        livingWage.append("line")
+          .attr("y1", -height * 0.75)
+          .attr("y2", 0)
+          .attr("stroke", "#000000")
+          .attr('stroke-dasharray', '6 4')
+          .attr("stroke-width", 2.0);
+
+        // livingWage.append("text")
+        //     .attr("y", -(height * 0.75) - 10)
+        //     .style("font-size", "13px")
+        //     .style("font-weight", "bold")
+        //     .text("Family Living Wage");
+
+        var livingWageText = livingWage.append("text")
+            .attr("y", -(height * 0.75) + 10)
+            .attr("x", 10);
+        
+        livingWageText.append("tspan")
+            .style("font-size", "13px")
+            .style("font-weight", "bold")
+            .text("Family Living Wage");
+
+        livingWageText.append("tspan")
+            .attr("dy", 18)
+            .attr("x", 10)
+            .style("font-size", "13px")
+            .style("font-weight", "bold")
+            .text("$47,004");
+
+        livingWageText.append("tspan")
+            .attr("class", "text-lighter")
+            .attr("x", 24)
+            .attr("dy", 18)
+            .style("font-size", "12px")
+            .style("font-weight", "bold")
+            .text("2 adults");
+
+        livingWageText.append("tspan")
+            .attr("class", "text-lighter")
+            .attr("x", 24)
+            .attr("dy", 15)
+            .style("font-size", "12px")
+            .text("(1 working)");
+
+        livingWageText.append("tspan")
+            .attr("class", "text-lighter")
+            .attr("x", 24)
+            .attr("dy", 15)
+            .style("font-size", "12px")
+            .style("font-weight", "bold")
+            .text("1 child");
+
 
         var format = d3.format(",");
 
