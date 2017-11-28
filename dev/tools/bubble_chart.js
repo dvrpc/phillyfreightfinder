@@ -151,6 +151,15 @@ function createBubbleChart() {
         return fillColorScale;
     }
 
+    function getFillColorOpacity(d) {
+        // Obtain a color mapping from keys to color values specified in our parameters file
+        if(d.wages == 10000){
+            return 0.0
+        }
+
+        return 1.0;
+    }
+
     
     function createNodes(rawData) {
         /*
@@ -238,10 +247,10 @@ function createBubbleChart() {
     
     function getAxis(node) {
         if(node.type == "C"){
-            var yConsumerIndustry = height * 0.33;
+            var yConsumerIndustry = height * 0.66;
             return yConsumerIndustry;
         } else {
-            var yFreightIndustry = height * 0.66;
+            var yFreightIndustry = height * 0.33;
             return yFreightIndustry;
         }      
 
@@ -397,7 +406,7 @@ function createBubbleChart() {
             .attr("cy", function(d) { return d.y; });
     }
 
-    function showAxis(mode) {
+    function showWageAxis(mode) {
         /*
          *  Show the axes.
          */
@@ -406,18 +415,76 @@ function createBubbleChart() {
         xAxis = xScale; //d3.scaleBand().rangeRound([0, width]).padding(0.1);
         yAxis = yScale; //d3.scaleLinear().rangeRound([height, 0]);  
 
-        inner_svg.append("g")
-            .attr("class", "axis axis--x")
-            .attr("transform", "translate(0," + height + ")")
+        // inner_svg.append("g")
+        //     .attr("class", "axis axis--x")
+        //     .attr("transform", "translate(0," + height + ")")
+        //     .call(d3.axisBottom(xAxis))
+        // inner_svg.append("text")
+        //     .attr("class", "axis axis--x label")
+        //     .attr("transform", "translate(" + (width/2) + " , " + (height) + ")")
+        //     // so the text is immediately below the bounding box, rather than above
+        //     .attr('dominant-baseline', 'hanging')
+        //     .attr("dy", "1.5em")
+        //     .style("text-anchor", "middle")
+        //     .text(mode.xDataField);
+
+        //build freight industry axis
+        inner_svg.insert("g", ":first-child")
+            .attr("class", "axis wage-industry-axis")
+            .attr("transform", "translate(0," + height * 0.33 + ")")
             .call(d3.axisBottom(xAxis))
+            .selectAll(".tick").remove()
+
+        inner_svg.insert("g", ":first-child")
+            .attr("class", "axis wage-industry-axis")
+            .attr("transform", "translate(0," + height * 0.66 + ")")
+            .call(d3.axisBottom(xAxis))
+            .selectAll(".tick").remove()
+
+        var sectorOverall = inner_svg.append("g")
+              .attr("class", "g-overall")
+              .attr("transform", "translate(250," + height * 0.33 + ")");
+
+
+        sectorOverall.append("line")
+          .attr("y1", -100)
+          .attr("y2", +127);
+
+        var format = d3.format(",");
+
+        inner_svg.append("g")
+            .attr("class", "axis axis--x x-wage-label")
+            .attr("transform", "translate(0," + height * 0.85 + ")")
+            .call(d3.axisBottom(xAxis)
+                .tickValues([30000, 50000, 70000, 90000, 110000, 130000])
+                .tickFormat(function(d) { return "$" + format(d); }))
+            .select(".domain").remove()
+        
+        // var format = d3.format(",.2f");
+
+        // inner_svg.select('axis axis--x x-wage-label').selectAll("text").text(function(d) { return "$" + format(d); });
+        
+        function _firstTickLocation() {
+            var labelXAxis = document.getElementsByClassName('axis axis--x x-wage-label');
+            var children = labelXAxis[0].children[0].attributes.transform.nodeValue
+
+              //as children is the whole translate string, i.e 'translate(124.555,0)' etc we have to split it
+              //we know the x value is from index 10 to the first comma
+              var thisXPos = children.substring(10, children.lastIndexOf(","));
+              //return split string
+              console.log(thisXPos);
+              return thisXPos - 10;
+
+        }
+
         inner_svg.append("text")
-            .attr("class", "axis axis--x label")
-            .attr("transform", "translate(" + (width/2) + " , " + (height) + ")")
-            // so the text is immediately below the bounding box, rather than above
-            .attr('dominant-baseline', 'hanging')
-            .attr("dy", "1.5em")
-            .style("text-anchor", "middle")
-            .text(mode.xDataField);
+            .attr("class", "axis axis--x x-wage-header")
+            .attr("transform", "translate(" + _firstTickLocation() +", " + height * 0.85 + ")")
+            .attr("text-anchor", "end")
+            .attr("dy", "0.4em")
+            .text("Average Annual Wage");
+
+
 
         // inner_svg.append("g")
         //     .attr("class", "axis axis--y")
@@ -484,7 +551,7 @@ function createBubbleChart() {
         }
         
         if (!isStatic) {
-            console.log('static');
+          
             // Decide what kind of force layout to use: "collide" or "charge"
             if(BUBBLE_PARAMETERS.force_type == "collide") {
                 var bubbleCollideForce = d3.forceCollide()
@@ -609,17 +676,11 @@ function createBubbleChart() {
 
         // SHOW AXIS (if our mode is scatter plot)
         if (currentMode.type == "scatterplot") {
-
-            //update scale of nodes
-            var maxRadius = dataExtents[BUBBLE_PARAMETERS.radius_field][1];
-            radiusScale = d3.scalePow()
-                .exponent(0.5)
-                .range([5, 25])  // Range between 2 and 25 pixels
-                .domain([0, maxRadius]);   // Domain between 0 and the largest bubble radius
             
             // inner_svg.selectAll('.bubble')
             inner_svg.selectAll('.bubble')  //here's how you get all the nodes
-                .attr('r', function(d) {return d.sm_scaled_radius});
+                .attr('r', function(d) {return d.sm_scaled_radius})
+                .attr('opacity', function(d) {return getFillColorOpacity(d)});
 
 
             xScale = d3.scaleLinear().rangeRound([0, width])
@@ -627,7 +688,7 @@ function createBubbleChart() {
             yScale = d3.scaleLinear().rangeRound([height, 0])
                 .domain([dataExtents[currentMode.yDataField][0], dataExtents[currentMode.yDataField][1]]);
             
-            showAxis(currentMode);
+            showWageAxis(currentMode);
 
         }
         // ADD FORCE LAYOUT

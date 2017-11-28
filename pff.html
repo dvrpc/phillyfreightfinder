@@ -75,8 +75,18 @@
             top: 60px;
             left: 8.333%;
         }
-              
         
+        .wage-industry-axis {
+            stroke: #ccc;
+            stroke-dasharray: 1,1;
+        }
+        
+        .axis.x-wage-labels {
+            font-size: 1.2em;
+        }
+        .axis.x-wage-header {
+            font-weight: bold;
+        }
 
         body {
             height: auto;
@@ -247,7 +257,7 @@
                         </div>
                     </div>
                     <section id="employment-chart" class='center-block col-lg-10 col-sm-12' style='float:none;'>
-                        <div class='col-lg-4 col-sm-12'>
+                        <div class='col-lg-4 col-sm-12' style="z-index:10;pointer-events: none;">
                             <div class="story card" data-section="employment" data-mode="all" style="margin-top:200px">
                                 <p>These businesses can be grouped by industrial sectors to better explain the type of economic activity in which each establishment is involved.</p>
                                 <p>When considering each of these sectors and their relationship with freight transportation it is helpful to associate the industry sector with a component of the supply with which it is involved.</p>
@@ -260,7 +270,7 @@
                                 <p>These industries are involved in the extraction of raw materials from the earth and/or the raising of animals and crops.</p>
                             </div>  
                             <div class="story card" data-section="employment" data-mode="production">
-                                <h3>Manufacturing</h3>
+                                <h3>Production</h3>
                                 <p>These industries are the makers. They are responsible for the production of the goods that allow for our way of life. Their operations have a critical reliance on freight transportation system to deliver the necessary inputs and get their outputs, or final products to market.</p>
                             </div>  
                             <div class="story card" data-section="employment" data-mode="distribution">
@@ -383,9 +393,14 @@
         //         }
         //     }
         // });
+         var getSPageHeight = function() {
+                winHeight = $(window).height();
 
+                return winHeight / 2;
+            }
         $('#planning').scrollStory({
-             triggerOffset: 290,
+           
+             triggerOffset: getSPageHeight(),
              itemfocus: function(ev, item){
                 if(item.index === 0) {
                    $('#employment-bubble').css('position', 'relative').html('');
