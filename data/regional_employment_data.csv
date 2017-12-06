@@ -7,7 +7,7 @@ naics,employment,establishments,money,wages,meth,SubSector,type
 211,108,24,139414.0,139414.0,sa,Oil and Gas Extraction,E
 212,843,55,60624.0,60624.0,r,Mining (except Oil and Gas),E
 213,464,106,90671.0,90671.0,r,Support Activities for Mining,E
-221,10582,467,72527.0,72527.0,sa,Utilities ,D
+221,10582,467,72527.0,72527.0,sa,Utilities,D
 236,49166,15943,67257.0,67257.0,r,Construction of Buildings,P
 237,16611,2110,53286.0,53286.0,sa,Heavy and Civil Engineering Construction,P
 238,89258,22872,64449.0,64449.0,r,Specialty Trade Contractors,P
@@ -32,20 +32,20 @@ naics,employment,establishments,money,wages,meth,SubSector,type
 336,14632,322,66111.0,66111.0,sa,Transportation Equipment Manufacturing,P
 337,6040,530,57536.0,57536.0,r,Furniture and Related Product Manufacturing,P
 339,22843,2590,81979.0,81979.0,sa,Miscellaneous Manufacturing,P
-423,82351,11452,75460.0,75460.0,r,"Merchant Wholesalers, Durable Goods ",D
-424,64564,7544,88977.0,88977.0,r,"Merchant Wholesalers, Nondurable Goods ",D
-441,28557,2711,52778.0,52778.0,r,Motor Vehicle and Parts Dealers ,C
-442,12591,2773,32268.0,32268.0,sa,Furniture and Home Furnishings Stores ,C
-443,12238,2724,49013.0,49013.0,sa,Electronics and Appliance Stores ,C
-444,21792,2374,33647.0,33647.0,r,Building Material and Garden Equipment and Supplies Dealers ,C
-445,72301,7290,23058.0,23058.0,r,Food and Beverage Stores ,C
-446,27045,3685,36248.0,36248.0,r,Health and Personal Care Stores ,C
-447,11263,1303,21153.0,21153.0,r,Gasoline Stations ,C
-448,37318,6017,20277.0,20277.0,r,Clothing and Clothing Accessories Stores ,C
-451,13947,2896,18850.0,18850.0,sa,"Sporting Goods, Hobby, Musical Instrument, and Book Stores ",C
-452,45362,1217,20814.0,20814.0,r,General Merchandise Stores ,C
-453,25171,7988,22861.0,22861.0,r,Miscellaneous Store Retailers ,C
-454,12277,2238,69701.0,69701.0,r,Nonstore Retailers ,C
+423,82351,11452,75460.0,75460.0,r,"Merchant Wholesalers, Durable Goods",D
+424,64564,7544,88977.0,88977.0,r,"Merchant Wholesalers, Nondurable Goods",D
+441,28557,2711,52778.0,52778.0,r,Motor Vehicle and Parts Dealers,C
+442,12591,2773,32268.0,32268.0,sa,Furniture and Home Furnishings Stores,C
+443,12238,2724,49013.0,49013.0,sa,Electronics and Appliance Stores,C
+444,21792,2374,33647.0,33647.0,r,Building Material and Garden Equipment and Supplies Dealers,C
+445,72301,7290,23058.0,23058.0,r,Food and Beverage Stores,C
+446,27045,3685,36248.0,36248.0,r,Health and Personal Care Stores,C
+447,11263,1303,21153.0,21153.0,r,Gasoline Stations,C
+448,37318,6017,20277.0,20277.0,r,Clothing and Clothing Accessories Stores,C
+451,13947,2896,18850.0,18850.0,sa,"Sporting Goods, Hobby, Musical Instrument, and Book Stores",C
+452,45362,1217,20814.0,20814.0,r,General Merchandise Stores,C
+453,25171,7988,22861.0,22861.0,r,Miscellaneous Store Retailers,C
+454,12277,2238,69701.0,69701.0,r,Nonstore Retailers,C
 481,1081,61,70782.0,70782.0,r,Air Transportation,D
 482,2852,53,1.0,10000.0,nd,Rail Transportation,D
 483,201,31,87621.0,87621.0,r,Water Transportation,D
@@ -64,7 +64,7 @@ naics,employment,establishments,money,wages,meth,SubSector,type
 518,11150,765,79691.0,79691.0,r,"Data Processing, Hosting, and Related Services",C
 519,7000,639,55488.0,55488.0,sa,Other Information Services,C
 522,49302,5381,43870.0,43870.0,sa,Credit Intermediation and Related Activities,C
-523,46876,7535,151167.0,151167.0,r,"Securities, Commodity Contracts, and Other Financial Investments and Related Activities",C
+523,46876,7535,151167.0,151167.0,r,"Securities, Commodity Contracts, and Other Financial Investments",C
 524,57103,5381,66682.0,66682.0,sa,Insurance Carriers and Related Activities,C
 525,15543,554,1.0,10000.0,nd,"Funds, Trusts, and Other Financial Vehicles ",C
 531,74447,16664,44529.0,44529.0,sa,Real Estate,C
@@ -86,13 +86,13 @@ naics,employment,establishments,money,wages,meth,SubSector,type
 722,129424,9927,18083.0,18083.0,r,Food Services and Drinking Places,C
 811,39472,13109,45115.0,45115.0,r,Repair and Maintenance,C
 812,42452,13725,23668.0,23668.0,r,Personal and Laundry Services,C
-813,89204,19836,38739.0,38739.0,r,"Religious, Grantmaking, Civic, Professional, and Similar Organizations",C
+813,89204,19836,38739.0,38739.0,r,"Religious, Grantmaking, Civic, Professional, and Similar Orgs",C
 921,41740,886,1.0,10000.0,nd,"Executive, Legislative, and Other General Government Support ",C
 922,54451,1115,1.0,10000.0,nd,"Justice, Public Order, and Safety Activities ",C
-923,24766,300,1.0,10000.0,nd,Administration of Human Resource Programs ,C
-924,14546,244,1.0,10000.0,nd,Administration of Environmental Quality Programs ,C
-925,4251,161,1.0,10000.0,nd,"Administration of Housing Programs, Urban Planning, and Community Development ",C
-926,13039,257,1.0,10000.0,nd,Administration of Economic Programs ,C
-927,4,2,1.0,10000.0,nd,Space Research and Technology ,P
-928,28066,362,1.0,10000.0,nd,National Security and International Affairs ,C
+923,24766,300,1.0,10000.0,nd,Administration of Human Resource Programs,C
+924,14546,244,1.0,10000.0,nd,Administration of Environmental Quality Programs,C
+925,4251,161,1.0,10000.0,nd,"Administration of Housing Programs and Urban Planning",C
+926,13039,257,1.0,10000.0,nd,Administration of Economic Programs,C
+927,4,2,1.0,10000.0,nd,Space Research and Technology,P
+928,28066,362,1.0,10000.0,nd,National Security and International Affairs,C
 999,1598,321,28531.0,28531.0,r,Other,C

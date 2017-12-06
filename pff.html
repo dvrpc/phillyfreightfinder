@@ -90,6 +90,90 @@
         .text-lighter {
             fill: #999;
         }
+
+        .industry-list {
+            line-height: 1.6em;
+            font-size: 0.9em;
+        }
+        .industry-list span { 
+            border-bottom: 1px dotted #999;
+        }
+        .industry-list span:hover {
+            border-bottom-color: #312867;
+            color: #312867;
+            cursor: pointer;
+        }
+        #bubble_tooltip_list {
+            position: fixed;
+        }
+
+
+        /* tooltip */
+        .g-tip-up {
+            position: absolute;
+            pointer-events: none;
+        }
+        .g-tip-down {
+            position: absolute;
+            pointer-events: none;
+        }
+
+        .g-tip-down > .g-tip-shadow {
+            margin-top: 8px;
+        }
+
+        .g-tip-down > .g-tip-content {
+            padding-top: 15px;
+        }
+        .g-tip-shadow {
+            position: absolute;
+            box-shadow: 0 4px 8px rgba(0,0,0,.2);
+            width: 100%;
+            height: 100%;
+        }
+        .g-tip-box {
+            position: absolute;
+            fill: #fff;
+            stroke: #000;
+            stroke-width: .5px;
+            stroke-opacity: .2;
+        }
+        .g-tip-content {
+            position: absolute;
+            padding: 8px;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            width: 100%;
+            height: 100%;
+        }
+        .g-tip-title {
+            /*min-height: 20px;*/
+            margin-bottom: 8px;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+        .g-tip-title, .g-tip-metric-value {
+            font-weight: bold;
+        }
+
+        .g-tip-metric {
+            /*font-size: 0.8em;*/
+            clear: right;
+            padding: 2px 0;
+        }
+        .g-tip-metric-name {
+            color: #777;
+        }
+        .g-tip-metric-value {
+            float: right;
+        }
+        .g-tip-metric + .g-tip-metric {
+            border-top: solid 1px #eee;
+        }
+
+
+
         body {
             height: auto;
         }
@@ -256,7 +340,7 @@
                         </div>
                     </div>
                     <section id="employment-chart" class='center-block col-lg-10 col-sm-12' style='float:none;'>
-                        <div class='col-lg-4 col-sm-12' style="z-index:10;pointer-events: none;">
+                        <div class='col-lg-4 col-sm-12' style="z-index:10;">
                             <div class="story card" data-section="employment" data-mode="all" style="margin-top:200px">
                                 <p>To understand these roles, we can group businesses into industrial sectors to better explain the type of economic activity in which each is involved. Here we visualize each of the region’s 33 industrial sub-sectors, scaling each by the size of its employment. </p>
                                 <h4>What is freight employment?</h4>
@@ -269,22 +353,22 @@
                             <div class="story card" data-section="employment" data-mode="extraction">
                                 <h3>Extraction</h3>
                                 <p>These industries are involved in the extraction of raw materials from the earth and/or the raising of animals and crops. These industries represent a small but important part of the regional economy.</p>
-                                <p>The region has <b>12.6 thousand</b> employees working in extraction industries including: <span id="extraction-list"></span></p>
+                                <p>The region has <b>12.6 thousand</b> employees working in extraction industries including: <div id="js-E-list" class="industry-list"></div></p>
                             </div>  
                             <div class="story card" data-section="employment" data-mode="production">
                                 <h3>Production</h3>
                                 <p>These industries are the makers. They are responsible for the production of the goods that allow for our way of life. Their operations have a critical reliance on freight transportation system to deliver the necessary inputs and get their outputs, or final products to market.</p>
-                                <p>The region has <b>450 thousand</b> employees working in production industries including: <span id="production-list"></span></p>
+                                <p>The region has <b>450 thousand</b> employees working in production industries including: <div id="js-P-list" class="industry-list"></div></p>
                             </div>  
                             <div class="story card" data-section="employment" data-mode="distribution">
                                 <h3>Distribution</h3>
                                 <p>These industries serve as the vital link between the various components of the supply chain. Their business is the conveyance and storage of freight.</p>
-                                <p>The region has <b>210 thousand</b> employees working in distribution industries including: <span id="distribution-list"></span></p>
+                                <p>The region has <b>210 thousand</b> employees working in distribution industries including: <div id="js-D-list" class="industry-list"></div></p>
                             </div> 
                             <div class="story card" data-section="employment" data-mode="consumption">
                                 <h3>Consumption</h3>
                                 <p>These industries are primarily consumers of finished goods. While they can be major attractors of freight they are not considered core to the development of freight centers. These industries are addressed through urban freight planning in commercial corridors and towns.</p>
-                                <p>The region has <b>2.4 million</b> employees working in consumption industries including: <span id="consumption-list"></span></p>
+                                <p>The region has <b>2.4 million</b> employees working in 51 consumption industries.</p>
                             </div> 
                             <div class="story card" data-section="employment" data-mode="full">
                                 <p>Together Extraction, Manufacturing, and Distribution industries represent the primary freight intensive industries of the region. The total employment across these industries is <b>675 thousand</b> or <b>22% of regional employment</b>.</p>
@@ -297,7 +381,52 @@
                         <!-- chart column for bubble diagram -->
                         <div id="chart" class="col-lg-8 col-sm-12">
                             <div id="employment-bubble" >
-                            </div>    
+                                <div class="g-tip-up" style="width:250px;height:133px;display:none;">
+                                    <div class="g-tip-shadow"></div>
+                                    <svg class="g-tip-box" width="250" height="145">
+                                    <path transform="translate(125,152) scale(1.66667)" d="M0.5,-6.5l5,-5H74.5v-79H-74.5v79H-5Z"></path>
+                                    </svg>
+                                    <div class="g-tip-content">
+                                    <div class="g-tip-title"> </div>
+                                    <div class="g-tip-metric" data-name="establishments">
+                                    <span class="g-tip-metric-name">Establishments</span>
+                                    <span class="g-tip-metric-value"> </span>
+                                    </div>
+                                    <div class="g-tip-metric" data-name="employment">
+                                    <span class="g-tip-metric-name">Employment</span>
+                                    <span class="g-tip-metric-value"> </span>
+                                    </div>
+                                    <div class="g-tip-metric" data-name="wages">
+                                    <span class="g-tip-metric-name">Average Wage</span>
+                                    <span class="g-tip-metric-value"> </span>
+                                    </div>
+                                    </div>
+                                </div>
+                                <div class="g-tip-down" style="width:250px;height:133px;display:none;">
+                                    <div class="g-tip-shadow"></div>
+                                    <svg class="g-tip-box" width="250" height="145">
+                                    <path transform="translate(125,-10) scale(1.66667) rotate(180)" d="M0.5,-6.5l5,-5H74.5v-79H-74.5v79H-5Z"></path>
+                                    </svg>
+                                    <div class="g-tip-content">
+                                    <div class="g-tip-title"> </div>
+                                    <div class="g-tip-metric" data-name="establishments">
+                                    <span class="g-tip-metric-name">Establishments</span>
+                                    <span class="g-tip-metric-value"> </span>
+                                    </div>
+                                    <div class="g-tip-metric" data-name="employment">
+                                    <span class="g-tip-metric-name">Employment</span>
+                                    <span class="g-tip-metric-value"> </span>
+                                    </div>
+                                    <div class="g-tip-metric" data-name="wages">
+                                    <span class="g-tip-metric-name">Average Wage</span>
+                                    <span class="g-tip-metric-value"> </span>
+                                    </div>
+                                    </div>
+                                </div>
+                                <div id="g-employment-bubble">
+                                </div> 
+                            </div> 
+                              
                         </div>
                         <div class="story  col-lg-offset-8 col-lg-4 col-sm-12" data-section="employment" data-mode="wage">
                                 
@@ -390,7 +519,6 @@
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/bootstrap.min.js"></script>
         <script src="dev/vendor/d3v4.min.js"></script>
         <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
-        <script src="dev/tools/tooltip.js"></script>
         <script src="dev/tools/bubble_chart.js"></script>
         <!-- <script type="text/javascript" src="lib/build.min.js"></script> -->
 
@@ -402,12 +530,13 @@
         }
 
         // initialization and options for scroll story functionality
-        $('#planning').scrollStory({
+        var fcStory = $('#planning').scrollStory({
             scrollOffset: 75,
             triggerOffset: getPageHeight(),
             itemfocus: function(ev, item){
                 if(item.index === 0) {
-                   $('#employment-bubble').css('position', 'relative').html('');
+                   $('#employment-bubble').css('position', 'relative');
+                   //.html('');
                 }
                 //clears any annotations
                 $('.g-annotations').remove();
@@ -421,13 +550,17 @@
                                 if (error) { console.log(error); }
 
                                 // Display bubble chart inside the #vis div.
-                                myBubbleChart('#employment-bubble', data);
+                                myBubbleChart('#g-employment-bubble', data);
 
                                 // // Start the visualization with the first button
                                 myBubbleChart.switchMode(BUBBLE_PARAMETERS.modes[0].button_id)
+
                             });
                             break;
-                        
+                        case 'color':
+                            this.updateOffsets();
+                            myBubbleChart.switchMode(item.data.mode);
+                            break;
                         default :
                             myBubbleChart.switchMode(item.data.mode);
                             break;       
@@ -435,9 +568,14 @@
 
                 }
                 
+            },
+            updateoffsets: function() {
+                console.log('updated');
             }
+
         });
     
+
 
         window.onbeforeunload = function () {
             window.scrollTo(0, 0);

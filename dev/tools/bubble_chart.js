@@ -23,13 +23,7 @@ var BUBBLE_PARAMETERS = {
             "C": "#bdcbde"
         }
     },
-    "tooltip": [
-        {"title": "NAICS", "data_field": "naics"},
-        {"title": "Sector Name", "data_field": "SubSector"},
-        {"title": "Employment", "data_field": "employment"},
-        {"title": "Establishments", "data_field": "establishments"},
-        {"title": "Wages", "data_field": "wages"}
-    ],
+    "types": ["E","P","D"],
     "modes": [
         {
             "button_text": "All Sectors",
@@ -118,8 +112,12 @@ function createBubbleChart() {
      * it in and a dataset to visualize.
      */
 
-    // Tooltip object for mouseover functionality, width 200
-    var tooltip = floatingTooltip('bubble_chart_tooltip', 200);
+    // Tooltip object for mouseover functionality
+    var tipUp = d3.select('.g-tip-up');
+    var tipDown = d3.select('.g-tip-down');
+    var tipMetric = d3.selectAll(".g-tip-metric")
+      .datum(function() { return this.getAttribute("data-name"); });
+    var format = d3.format(",");
     // These will be set in the `bubbleChart` function
     var svg = null, inner_svg = null;
     var bubbles = null;
@@ -136,9 +134,21 @@ function createBubbleChart() {
     var yAxis = null;
     var xScale = null;
     var yScale = null;
-    // For the map
-    var bubbleMercProjection = d3.geoMercator()
-        .rotate([-180, 0]);
+
+
+    // event handlers
+    $('.industry-list').on('mouseover', 'span', function(e){
+        var _id = '#' + this.getAttribute('class');
+        var circle = d3.select(_id).datum();
+        mouseover(circle);
+    });
+
+    $('.industry-list').on('mouseout', 'span', function(e){
+        var _id = '#' + this.getAttribute('class');
+        var circle = d3.selectAll(_id).datum();
+
+        mouseout(circle);
+    });
 
     function getFillColorScale() {
         // Obtain a color mapping from keys to color values specified in our parameters file
@@ -309,62 +319,51 @@ function createBubbleChart() {
         }
     }
 
-    function tooltipContent(d) {
-        /*
-         * Helper function to generate the tooltip content
-         * 
-         * Parameters: d, a dict from the node
-         * Returns: a string representing the formatted HTML to display
-         */
-        var content = ''
+    function mouseover(d) {
+        d3.select('#industry-' + d.naics).attr('stroke', 'black').attr('stroke-width', 1.5);
+        var dx, dy;
+        var adjust_scale = (currentMode.type === 'scatterplot') ? d.sm_scaled_radius : d.scaled_radius;
 
-        // Loop through all lines we want displayed in the tooltip
-        for(var i=0; i<BUBBLE_PARAMETERS.tooltip.length; i++) {
-            var cur_tooltip = BUBBLE_PARAMETERS.tooltip[i];
-            var value_formatted;
 
-            // If a format was specified, use it
-            if ("format_string" in cur_tooltip) {
-                value_formatted = 
-                    d3.format(cur_tooltip.format_string)(d[cur_tooltip.data_field]);
-            } else {
-                value_formatted = d[cur_tooltip.data_field];
-            }
-            
-            // If there was a previous tooltip line, add a newline separator
-            if (i > 0) {
-                content += '<br/>';
-            }
-            content += '<span class="name">'  + cur_tooltip.title + ': </span>';
-            content += '<span class="value">' + value_formatted     + '</span>';
-        }        
+        dx = d.x, dy = d.y;
 
-        return content;
+        if (dy > 200) {
+            dy -= 120, dx -= 45; // margin fudge factors
+
+            tipUp.style("display", null)
+                .style("top", (dy - adjust_scale ) + "px")
+                .style("left", dx + "px");
+
+            tipUp.select(".g-tip-title")
+                .text(d.SubSector);
+        } else {
+            dy += 20, dx -= 45; // margin fudge factors
+
+            tipDown.style("display", null)
+                .style("top", (dy + adjust_scale ) + "px")
+                .style("left", dx + "px");
+
+            tipDown.select(".g-tip-title")
+                .text(d.SubSector);
+        }
+
+        tipMetric.select(".g-tip-metric-value").text(function(name) {
+          switch (name) {
+            case "establishments": return format(d.establishments);
+            case "employment": return format(d.employment);
+            case "wages": return '$' + format(d.wages);
+          }
+        });
     }
 
-    function showTooltip(d) {
-        /*
-         * Function called on mouseover to display the
-         * details of a bubble in the tooltip.
-         */
-        // Change the circle's outline to indicate hover state.
-        d3.select(this).attr('stroke', 'black').attr('stroke-width', 1.5);
+    function mouseout(d) {
+        tipUp.style("display", "none");
+        tipDown.style("display", "none");
 
-        // Show the tooltip
-        tooltip.showTooltip(tooltipContent(d), d3.event);
-    }
-
-    function hideTooltip(d) {
-        /*
-         * Hide tooltip
-         */
-        // Reset the circle's outline back to its original color.
         var originalColor = d3.rgb(fillColorScale(d.fill_color_group)).darker()
-        d3.select(this).attr('stroke', originalColor).attr('stroke-width', 0.5);
-
-        // Hide the tooltip
-        tooltip.hideTooltip();
+        d3.select('#industry-' + d.naics).attr('stroke', originalColor).attr('stroke-width', 0.5);
     }
+
 
     function ticked() {
         bubbles.each(function (node) {})
@@ -491,7 +490,7 @@ function createBubbleChart() {
             .text("1 child");
 
 
-        var format = d3.format(",");
+        
 
         inner_svg.append("g")
             .attr("class", "axis axis--x x-wage-label")
@@ -519,6 +518,35 @@ function createBubbleChart() {
             .text("Average Annual Wage");
     }
 
+    function populateLists() {
+        // Add data from each node to the correct list
+        
+        function getRelatedIndustries(type) {
+            var _industries = '';
+            
+            for(var i=0; i<nodes.length; i++) {
+                if (type === nodes[i].type){
+                    _industries += '<span class="industry-'+ nodes[i].id +'">' + nodes[i].SubSector + ';</span>&nbsp;&nbsp;';
+                }
+                
+            }
+            //remove the last semicolon
+            _industries = _industries.slice(0, -13);
+
+            return _industries;
+        }
+        
+        for(var i=0; i<BUBBLE_PARAMETERS.types.length; i++) {
+            
+            var _currSector = BUBBLE_PARAMETERS.types[i];
+            var _industryList = getRelatedIndustries(_currSector);
+
+            $('#js-' + _currSector + '-list').html(_industryList);
+        }
+        
+
+    }
+
     function createBubbles() {
         // Bind nodes data to what will become DOM elements to represent them.
         inner_svg.selectAll('.bubble')
@@ -527,14 +555,15 @@ function createBubbleChart() {
             // There will be one circle.bubble for each object in the nodes array.
             .enter()
             .append('circle').attr('r', 0) // Initially, their radius (r attribute) will be 0.
+            .attr('id', function (d) { return 'industry-' + d.naics; })
             .classed('bubble', true)
             // .attr('fill', function (d) { return fillColorScale(d.fill_color_group); })
             // .attr('stroke', function (d) { return d3.rgb(fillColorScale(d.fill_color_group)).darker(); })
             .attr('fill', '#bdcbde')
             .attr('stroke', function() { return d3.rgb('#bdcbde').darker(); })
             .attr('stroke-width', 0.5)
-            .on('mouseover', showTooltip)
-            .on('mouseout', hideTooltip);
+            .on('mouseover', mouseover)
+            .on('mouseout', mouseout);
 
         bubbles = d3.selectAll('.bubble');
 
@@ -543,6 +572,7 @@ function createBubbleChart() {
             .duration(2000)
             .attr('r', function (d) { return d.scaled_radius; });
     }
+
 
     function colorBubbles() {
         inner_svg.selectAll('.bubble')
@@ -565,7 +595,7 @@ function createBubbleChart() {
         if(isStatic) {
             var bubbleCollideForce = d3.forceCollide()
                     .radius(function(d) { return d.sm_scaled_radius + 0.5; })
-                    .iterations(4)
+                    .iterations(8)
             forceSim
                 .force("collide", bubbleCollideForce)
         }
@@ -582,13 +612,15 @@ function createBubbleChart() {
             }
             if(BUBBLE_PARAMETERS.force_type == "charge") {
                 function bubbleCharge(d) {
-                    return -Math.pow(d.scaled_radius, 2) * (+BUBBLE_PARAMETERS.force_strength);
+                    return -Math.pow(d.scaled_radius, 2.0) * (+BUBBLE_PARAMETERS.force_strength);
                 }    
                 forceSim
                     .force('charge', d3.forceManyBody().strength(bubbleCharge))
-                    .force('collide', d3.forceCollide().radius(function(d) {
-                        return d.radius
-                      }));
+
+// @in progress- need to improve the overlap collision which may require a new tick method
+                    // .force('collide', d3.forceCollide().radius(function(d) {
+                    //     return d.radius
+                    //   }));
             }
         }
     }
@@ -650,14 +682,12 @@ function createBubbleChart() {
         // Initialize the "nodes" with the data we've loaded
         nodes = createNodes(rawData);
 
+        // Add the data on sectors to list DOM elements
+        populateLists();
+
         // Initialize svg and inner_svg, which we will attach all our drawing objects to.
         createCanvas(parentDOMElement);
 
-        // Create a container for the map before creating the bubbles
-        // Then we will draw the map inside this container, so it will appear behind the bubbles
-        inner_svg.append("g")
-            .attr("class", "world_map_container");
-        
         // Create the bubbles and the force holding them apart
         createBubbles();
     };
@@ -695,8 +725,6 @@ function createBubbleChart() {
         // SHOW LABELS AND POPULATE LISTS
         if (currentMode.type == "isolate" ) {
             showLabels(currentMode);
-            console.log(nodes);
-
         }
 
         // SHOW AXIS (if our mode is scatter plot)
