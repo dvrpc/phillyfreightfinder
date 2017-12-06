@@ -40,6 +40,14 @@ var BUBBLE_PARAMETERS = {
             "data_field": null
         },
         {
+            "button_text": "Merged bubbles",
+            "button_id": "full",
+            "type": "grid",
+            "labels": null,
+            "grid_dimensions": {"rows": 1, "columns": 1},
+            "data_field": null
+        },
+        {
             "button_text": "Color 'em",
             "button_id": "color",
             "type": "color",
@@ -284,14 +292,7 @@ function createBubbleChart() {
                 .attr('text-anchor', 'middle')                // centre the text
                 .attr('dominant-baseline', 'hanging') // so the text is immediately below the bounding box, rather than above
                 .text(function (d) { return d });   
-            
-            // bubble_group_labels.enter().append('text')
-            //     .attr('class', 'bubble_group_label')
-            //     .attr('x', function (d) { return mode.gridCenters[labelData[d]].x; })
-            //     .attr('y', function (d) { return mode.gridCenters[labelData[d]].y - grid_element_half_height; })
-            //     .attr('text-anchor', 'middle')                // centre the text
-            //     .attr('dominant-baseline', 'hanging') // so the text is immediately below the bounding box, rather than above
-            //     .text(function (d) { return m });
+      
         }else{
             var bubble_group_labels = inner_svg.selectAll('.bubble_group_label')
             .data(currentLabels);
@@ -306,41 +307,6 @@ function createBubbleChart() {
                 .attr('dominant-baseline', 'hanging') // so the text is immediately below the bounding box, rather than above
                 .text(function (d) { return d; });
         }
-        
-
-        // var grid_element_half_height = height / (mode.gridDimensions.rows * 2);
-        // // console.log(bubble_group_labels)
-        // bubble_group_labels.enter().append('text')
-        //     .attr('class', 'bubble_group_label')
-        //     .attr('x', function (d) { return mode.gridCenters[d].x; })
-        //     .attr('y', function (d) { return mode.gridCenters[d].y - grid_element_half_height; })
-        //     .attr('text-anchor', 'middle')                // centre the text
-        //     .attr('dominant-baseline', 'hanging') // so the text is immediately below the bounding box, rather than above
-        //     .text(function (d) { return d; });
-
-        // GRIDLINES FOR DEBUGGING PURPOSES
-        
-        // var grid_element_half_height = height / (mode.gridDimensions.rows * 2);
-        // var grid_element_half_width = width / (mode.gridDimensions.columns * 2);
-        
-        // for (var key in currentMode.gridCenters) {
-        //     if (currentMode.gridCenters.hasOwnProperty(key)) {
-        //         var rectangle = inner_svg.append("rect")
-        //             .attr("class", "mc_debug")
-        //             .attr("x", currentMode.gridCenters[key].x - grid_element_half_width)
-        //             .attr("y", currentMode.gridCenters[key].y - grid_element_half_height)
-        //             .attr("width", grid_element_half_width*2)
-        //             .attr("height", grid_element_half_height*2)
-        //             .attr("stroke", "red")
-        //             .attr("fill", "none");
-        //         var ellipse = inner_svg.append("ellipse")
-        //             .attr("class", "mc_debug")
-        //             .attr("cx", currentMode.gridCenters[key].x)
-        //             .attr("cy", currentMode.gridCenters[key].y)
-        //             .attr("rx", 15)
-        //             .attr("ry", 10);
-        //     }
-        // }
     }
 
     function tooltipContent(d) {
@@ -415,7 +381,6 @@ function createBubbleChart() {
         xAxis = xScale; //d3.scaleBand().rangeRound([0, width]).padding(0.1);
         yAxis = yScale; //d3.scaleLinear().rangeRound([height, 0]);  
 
-
         //build freight industry axis
         inner_svg.insert("g", ":first-child")
             .attr("class", "axis wage-industry-axis")
@@ -485,12 +450,6 @@ function createBubbleChart() {
           .attr("stroke", "#000000")
           .attr('stroke-dasharray', '6 4')
           .attr("stroke-width", 2.0);
-
-        // livingWage.append("text")
-        //     .attr("y", -(height * 0.75) - 10)
-        //     .style("font-size", "13px")
-        //     .style("font-weight", "bold")
-        //     .text("Family Living Wage");
 
         var livingWageText = livingWage.append("text")
             .attr("y", -(height * 0.75) + 10)
@@ -606,7 +565,7 @@ function createBubbleChart() {
         if(isStatic) {
             var bubbleCollideForce = d3.forceCollide()
                     .radius(function(d) { return d.sm_scaled_radius + 0.5; })
-                    .iterations(8)
+                    .iterations(4)
             forceSim
                 .force("collide", bubbleCollideForce)
         }
@@ -617,16 +576,19 @@ function createBubbleChart() {
             if(BUBBLE_PARAMETERS.force_type == "collide") {
                 var bubbleCollideForce = d3.forceCollide()
                     .radius(function(d) { return d.scaled_radius + 0.5; })
-                    .iterations(4)
+                    .iterations(8)
                 forceSim
                     .force("collide", bubbleCollideForce)
             }
             if(BUBBLE_PARAMETERS.force_type == "charge") {
                 function bubbleCharge(d) {
-                    return -Math.pow(d.scaled_radius, 2.0) * (+BUBBLE_PARAMETERS.force_strength);
+                    return -Math.pow(d.scaled_radius, 2) * (+BUBBLE_PARAMETERS.force_strength);
                 }    
                 forceSim
-                    .force('charge', d3.forceManyBody().strength(bubbleCharge));
+                    .force('charge', d3.forceManyBody().strength(bubbleCharge))
+                    .force('collide', d3.forceCollide().radius(function(d) {
+                        return d.radius
+                      }));
             }
         }
     }
@@ -730,9 +692,11 @@ function createBubbleChart() {
             showLabels(currentMode);
         }
 
-        // SHOW LABELS 
+        // SHOW LABELS AND POPULATE LISTS
         if (currentMode.type == "isolate" ) {
             showLabels(currentMode);
+            console.log(nodes);
+
         }
 
         // SHOW AXIS (if our mode is scatter plot)
@@ -882,21 +846,12 @@ function ViewMode(button_id, width, height) {
         this.xFormatString = curMode.x_format_string;
         this.yFormatString = curMode.y_format_string;
     }
-    if (this.type == "map") {
-        this.latitudeField = curMode.latitude_field;
-        this.longitudeField = curMode.longitude_field;
-    }
 };
 
 
 /////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////
 
-// Set title
-// document.title = BUBBLE_PARAMETERS.report_title;
-// report_title.innerHTML = BUBBLE_PARAMETERS.report_title;
-// // Set footer
-// document.getElementById("footer_text").innerHTML = BUBBLE_PARAMETERS.footer_text;
 
 // Create a new bubble chart instance
 var myBubbleChart = createBubbleChart();
@@ -907,11 +862,8 @@ d3.csv("data/" + BUBBLE_PARAMETERS.data_file, function (error, data) {
     
     if (error) { console.log(error); }
 
-    // Display bubble chart inside the #vis div.
-    // myBubbleChart('#employment-bubble', data);
+    // wait for the scroll action to start...  
 
-    // // Start the visualization with the first button
-    // myBubbleChart.switchMode(BUBBLE_PARAMETERS.modes[0].button_id)
 });
 
 
