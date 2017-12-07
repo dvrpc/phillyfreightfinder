@@ -717,15 +717,12 @@ function createBubbleChart() {
             return bubbleChart;
         }
 
-        // SHOW LABELS (if we have more than one category to label)
-        if (currentMode.type == "grid" && currentMode.size > 1) {
+        // SHOW LABELS 
+        if (currentMode.type == "grid" || currentMode.type == "isolate" ) {
             showLabels(currentMode);
         }
 
-        // SHOW LABELS AND POPULATE LISTS
-        if (currentMode.type == "isolate" ) {
-            showLabels(currentMode);
-        }
+        
 
         // SHOW AXIS (if our mode is scatter plot)
         if (currentMode.type == "scatterplot") {
@@ -744,6 +741,7 @@ function createBubbleChart() {
             showWageAxis(currentMode);
 
         }
+
         // ADD FORCE LAYOUT
         if (currentMode.type == "scatterplot" ) {
             addForceLayout(true);  // make it static so we can plot bubbles
@@ -787,6 +785,8 @@ function createBubbleChart() {
 
         // Restart the force layout simulation
         forceSim.alphaTarget(0).restart();
+
+        
     };
     
     // Return the bubbleChart function from closure.

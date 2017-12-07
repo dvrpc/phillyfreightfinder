@@ -56,31 +56,19 @@
         .story.active{
             opacity: 1;
         }
-        .details {
-            font-size: 0.9em;
+
+
+        /*.story.card {
+            background-color: #FFF;
+            border: 1px solid #B7B7B7;
+            text-align: left;
+            padding: 10px 20px 20px;
+            transition: all .3s ease-in-out;
         }
 
-        .story > .card, .story.card {
-            /*background-color: #FFF;*/
-            /*border: 1px solid #B7B7B7;*/
-            /*text-align: left;*/
-            padding: 10px 20px;
-            /*transition: all .3s ease-in-out;*/
-        }
-        .story > .card {
-            margin-bottom: 20px;
-        }
-        /*.story.active > .card , .story.card.active{
+        .story.card.active {
             box-shadow: 0 0 10px #b7b7b7;
         }*/
-        .story > .details {
-            padding:60px 20px 20px;
-        }
-
-        .card + .details {
-            border-top: dotted 1px #777;
-        }
-
         #employment-bubble {
             position: relative;
             transition: all 1s ease-in-out;
@@ -362,45 +350,30 @@
                                 <h4>Freight-intensive Industry Sectors</h4>
                                 <p>Identifying freight intensive sectors is done by associating each industry sub-sector with a segment of the economy’s product lifecycle. We can break this lifecycle and the related sectors into four distinct components.</p>
                             </div>  
-                            <div class="story " data-section="employment" data-mode="extraction">
-                                <div class="card">
-                                   <h3>Extraction</h3>
-                                    <p>These industries are involved in the extraction of raw materials from the earth and/or the raising of animals and crops. These industries represent a small but important part of the regional economy.</p>
-                                </div>
-                                <div class="details">
-                                    <p>The region has <b>12.6 thousand</b> employees working in extraction industries including: <div id="js-E-list" class="industry-list"></div></p>
-                                </div> 
-                            </div> 
-                            <div class="story " data-section="employment" data-mode="production">
-                                <div class="card">
-                                    <h3>Production</h3>
-                                    <p>These industries are the makers. They are responsible for the production of the goods that allow for our way of life. Their operations have a critical reliance on freight transportation system to deliver the necessary inputs and get their outputs, or final products to market.</p>
-                                </div>
-                                <div class="details">
-                                    <p>The region has <b>450 thousand</b> employees working in production industries including: <div id="js-P-list" class="industry-list"></div></p>
-                                </div>
+                            <div class="story card" data-section="employment" data-mode="extraction">
+                                <h3>Extraction</h3>
+                                <p>These industries are involved in the extraction of raw materials from the earth and/or the raising of animals and crops. These industries represent a small but important part of the regional economy.</p>
+                                <p>The region has <b>12.6 thousand</b> employees working in extraction industries including: <div id="js-E-list" class="industry-list"></div></p>
                             </div>  
-                            <div class="story " data-section="employment" data-mode="distribution">
-                                <div class="card">
-                                    <h3>Distribution</h3>
-                                    <p>These industries serve as the vital link between the various components of the supply chain. Their business is the conveyance and storage of freight.</p>
-                                </div>
-                                <div class="details">
-                                    <p>The region has <b>210 thousand</b> employees working in distribution industries including: <div id="js-D-list" class="industry-list"></div></p>
-                                </div>
+                            <div class="story card" data-section="employment" data-mode="production">
+                                <h3>Production</h3>
+                                <p>These industries are the makers. They are responsible for the production of the goods that allow for our way of life. Their operations have a critical reliance on freight transportation system to deliver the necessary inputs and get their outputs, or final products to market.</p>
+                                <p>The region has <b>450 thousand</b> employees working in production industries including: <div id="js-P-list" class="industry-list"></div></p>
+                            </div>  
+                            <div class="story card" data-section="employment" data-mode="distribution">
+                                <h3>Distribution</h3>
+                                <p>These industries serve as the vital link between the various components of the supply chain. Their business is the conveyance and storage of freight.</p>
+                                <p>The region has <b>210 thousand</b> employees working in distribution industries including: <div id="js-D-list" class="industry-list"></div></p>
                             </div> 
-                            <div class="story" data-section="employment" data-mode="consumption">
-                                <div class="card">
-                                    <h3>Consumption</h3>
-                                    <p>These industries are primarily consumers of finished goods. While they can be major attractors of freight they are not considered core to the development of freight centers. These industries are addressed through urban freight planning in commercial corridors and towns.</p>
-                                </div>
-                                <div class="details">
-                                    <p>The region has <b>2.4 million</b> employees working in 51 consumption industries.</p>
-                                </div>
+                            <div class="story card" data-section="employment" data-mode="consumption">
+                                <h3>Consumption</h3>
+                                <p>These industries are primarily consumers of finished goods. While they can be major attractors of freight they are not considered core to the development of freight centers. These industries are addressed through urban freight planning in commercial corridors and towns.</p>
+                                <p>The region has <b>2.4 million</b> employees working in 51 consumption industries.</p>
                             </div> 
                             <div class="story card" data-section="employment" data-mode="full" data-action="reset-size">
                                 <p>Together Extraction, Manufacturing, and Distribution industries represent the primary freight intensive industries of the region. The total employment across these industries is <b>675 thousand</b> or <b>22% of regional employment</b>.</p>
                                 <p>While the share of employment in each of these freight intensive industries is lower than consumption industries, average wage is often higher.</p>
+                                
                             </div>        
                               
                         </div>
@@ -457,7 +430,7 @@
                         </div>
                         <div class="story  col-lg-offset-8 col-lg-4 col-sm-12" data-section="employment" data-mode="wage">
                                 
-                        </div>
+                            </div>
                     </section>
                     <div class='clearfix'></div>
                 </section>              
@@ -617,6 +590,7 @@
             }
 
         });
+    
 
 
         window.onbeforeunload = function () {
