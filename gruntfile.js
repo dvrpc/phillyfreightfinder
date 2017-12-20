@@ -140,7 +140,7 @@ module.exports = function(grunt){
 		watch: {
 			toolscripts: {
       			files: ['dev/tools/*.js'],
-      			tasks: ['uglify:tools']
+      			tasks: ['uglify:tools', 'copy:lib']
       		},
       		cssUpdate: {
       			files: ['dev/css/*.css'],
