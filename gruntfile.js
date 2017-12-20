@@ -149,6 +149,10 @@ module.exports = function(grunt){
       		coreUpdate: {
       			files: ['dev/core/*.js', 'dev/actions.js', 'dev/map.js'],
       			tasks: ['concat:build', 'uglify:build']
+      		},
+      		html: {
+      			files: ['*.htm'],
+      			tasks: ['copy:index']
       		}
 		},
 
