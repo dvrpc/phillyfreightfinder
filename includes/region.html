@@ -81,33 +81,7 @@
 	        </div>
 	    </div>
     </div>
-    <!--<div class='row'>
-        <div class='col-md-12 hpbanner' style='padding-bottom:20px;'> 
-            <div class='center-block col-lg-10 col-sm-12' style='float:none;'>
-                <div id='dataContainer'>
-                    <div class='col-md-5 center'>
-                        <h4>Regional Freight Shipments by Mode [2010]</h4>
-                        <div id="containerTon" style="height:185px;width:350px;margin-bottom:-15px;display: block;margin-left:auto;margin-right:auto;"></div>
-                        <div class='divider'></div>
-                        <div style='padding-bottom:10px;'><span class='ctylegend' style='border-color:#8dd3c7'>Truck</span>&nbsp;&nbsp;&nbsp;
-                        <span class='ctylegend' style='border-color:#ffffb3'>Rail</span>&nbsp;&nbsp;&nbsp;
-                        <span class='ctylegend' style='border-color:#bebada'>Water</span>&nbsp;&nbsp;&nbsp;
-                        <span class='ctylegend' style='border-color:#fb8072'>Air/Air + Truck</span><br/><br/>
-                        <span class='ctylegend' style='border-color:#80b1d3'>Multiple Modes</span>&nbsp;&nbsp;&nbsp;
-                        <span class='ctylegend' style='border-color:#fdb462'>Pipeline</span>&nbsp;&nbsp;&nbsp;
-                        <span class='ctylegend' style='border-color:#b3de69'>Other</span>&nbsp;</div>
-                        <div class='divider'></div>
-                        <div id="containerValue" style="height:185px;width:350px;margin-top:-15px;display: block;margin-left:auto;margin-right:auto;"></div>
-                        <div class='col-md-10 col-md-offset-1'><p style='line-height:8px;'><span style="font-size:10px;color:#BBE6FA;">Source: US Department of Transportation, Federal Highway Administration, Office of Freight Management and Operations, Freight Analysis Framework Version 3</span></p></div>
-                    </div>
-                    <div class='col-md-6'>
-                    </div>
-                    
-                        
-                </div> 
-            </div>
-        </div>
-    </div>-->
+    
 </div>
 
 <!-- network content template -->
@@ -350,7 +324,7 @@
 <!-- freight center template -->
 <div id="c-freight_centers" class="col-lg-12 tool-content-dt c-region-tab" style="display: none;">
     <div class='center-block col-lg-10 col-md-12' style='float:none;'>
-    	<div class="alert alert-danger" role="alert"><i class="glyphicon glyphicon-exclamation-sign"></i>&nbsp;&nbsp;<strong>Oh snap!</strong>&nbsp;&nbsp;There seem to be some script errors with this tool. It will be live again soon!</div>
+    	<div class="alert alert-danger" role="alert"><i class="glyphicon glyphicon-exclamation-sign"></i>&nbsp;&nbsp;<strong>Oh snap!</strong>&nbsp;&nbsp;There seem to be some script errors with this tool. It will be live again soon!</div> 
     </div>
 </div>
 
@@ -376,9 +350,9 @@
                 <div id="tradeFilters">
                     <div style="float:left;">
                         <div id="countySelect" class="btn-group" data-toggle="buttons">
-                            <label for="tons" id="radio_ton" class="flowBtn btn btn-sm btn-primary active">
+                            <label for="tons" id="radio_ton" data-visual="Volume" class="flowBtn btn btn-sm btn-primary active">
                                 <input type="radio" id="tons" name="measure" value="ton" >Volume</label>
-                            <label for="val" id="radio_val" class="flowBtn btn btn-sm btn-primary">
+                            <label for="val" id="radio_val" data-visual="Value" class="flowBtn btn btn-sm btn-primary">
                                 <input type="radio" id="val" name="measure" value="val">Value</label>
                         </div>
                         <div class="filterLabel">Measured by:</div>
@@ -386,9 +360,9 @@
                     <div style="float:left;">
                         <div id="controls">
                             <div id="dir" class="btn-group" data-toggle="buttons">
-                                <label for="dir_in" id="radio_in" class="flowBtn btn btn-sm btn-primary active">
+                                <label for="dir_in" id="radio_in" data-visual="Inbound" class="flowBtn btn btn-sm btn-primary active">
                                     <input type="radio" id="dir_in" name="dir" value="in" ><span>Inbound</span></label>
-                                <label for="dir_out" id="radio_out" class="flowBtn btn btn-sm btn-primary">
+                                <label for="dir_out" id="radio_out" data-visual="Outbound" class="flowBtn btn btn-sm btn-primary">
                                     <input type="radio" id="dir_out" name="dir" value="out" ><span>Outbound</span>
                                 </label>
                             </div>
@@ -397,15 +371,15 @@
                     </div>
                     <div id="modes">
                         <div id="countySelect" class="btn-group" data-toggle="buttons">
-                            <label for="all" class="flowBtn btn btn-sm btn-primary active">
+                            <label for="all" data-visual="All Modes" class="flowBtn btn btn-sm btn-primary active">
                                 <input type="radio" id="all" name="mode" value="all" checked="checked"/><span>All</span></label>
-                            <label for="truck" class="flowBtn btn btn-sm btn-primary">
+                            <label for="truck" data-visual="Truck Mode" class="flowBtn btn btn-sm btn-primary">
                                 <input type="radio" id="truck" name="mode" value="truck" /><span>Truck</span></label>
-                            <label for="rail" class="flowBtn btn btn-sm btn-primary">
+                            <label for="rail" data-visual="Rail Mode" class="flowBtn btn btn-sm btn-primary">
                                 <input type="radio" id="rail" name="mode" value="rail" /><span>Rail</span></label>
-                            <label for="water" class="flowBtn btn btn-sm btn-primary">
+                            <label for="water" data-visual="Water Mode" class="flowBtn btn btn-sm btn-primary">
                                 <input type="radio" id="water" name="mode" value="water" /><span>Water</span></label>
-                            <label for="air" class="flowBtn btn btn-sm btn-primary">
+                            <label for="air" data-visual="Air Mode" class="flowBtn btn btn-sm btn-primary">
                                 <input type="radio" id="air" name="mode" value="air" /><span>Air</span></label>
                         </div>
                         <div class="filterLabel">Mode of transportation:</div>

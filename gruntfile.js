@@ -153,6 +153,10 @@ module.exports = function(grunt){
       		html: {
       			files: ['*.htm'],
       			tasks: ['copy:index']
+      		},
+      		includes: {
+      			files: ['**/*.html'],
+      			tasks: ['copy:includes']
       		}
 		},
 
