@@ -182,6 +182,7 @@ $(function() {
                     // size port circles based on ship calls
 
                     function sizePorts(count_year) {
+                        count_year = parseInt(count_year);
                         if(count_year === 2003){
                             $('#mi-vessel-icon').hide();
                             $('#mi-shipChange-text').hide();
@@ -471,7 +472,7 @@ $(function() {
                             $('#maritime-year-dropdown').append('<li><input type="radio" id="m' + i + '" class="miYear" name="miYear" value="' + i + '"><label for="m' + i + '">' + i + '</label></li>');
                         }
 
-                        $('#m' + (maxDataYear - 1)).prop('checked', true);
+                        $('#m' + (maxDataYear)).prop('checked', true);
 
                         completeData.map(function(d) {
                             if (d.year > 2002) {
@@ -749,7 +750,9 @@ $(function() {
                             $('#mi-container-graph').html('');
                             $('.mi-activity-year').html(mYear);
                             var yr = mYear - 2002;
+
                             if (data[yr].port_rank !== "") {
+
                                 //port rank indicator calculations
                                 var portRank = data[yr].port_rank,
                                     prevRank = data[yr - 1].port_rank,
