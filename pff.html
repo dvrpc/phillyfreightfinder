@@ -31,6 +31,9 @@
                 margin: -10px 0 0 -110px;
                 z-index: 1028;
             }
+        #chart {
+            z-index: 2;
+        }
         .omodal{
             position: absolute;
             width: 220px;
@@ -83,7 +86,7 @@
 
         #employment-bubble {
             position: relative;
-            transition: all 1s ease-in-out;
+            /*transition: all 1s ease-in-out;*/
             top: 60px;
             left: 8.333%;
         }
@@ -183,7 +186,16 @@
         .g-tip-metric + .g-tip-metric {
             border-top: solid 1px #eee;
         }
+        .wage-chart {
+            z-index: 1;
+            margin-bottom: 550px;
+            padding-top: 50px;
+        }
 
+        .story.extra-tall {
+            padding-bottom: 550px;
+            margin-bottom: 0;
+        }
 
 
         body {
@@ -352,61 +364,65 @@
                         </div>
                     </div>
                     <section id="employment-chart" class='center-block col-lg-10 col-sm-12' style='float:none;'>
-                        <div class='col-lg-4 col-sm-12' style="z-index:10;">
-                            <div class="story card" data-section="employment" data-mode="all" style="margin-top:200px">
-                                <p>To understand these roles, we can group businesses into industrial sectors to better explain the type of economic activity in which each is involved. Here we visualize each of the region’s 33 industrial sub-sectors, scaling each by the size of its employment. </p>
-                                <h4>What is freight employment?</h4>
-                                <p>Not all of these industries rely on freight in equal degree. Our goal is simply to define if an industry is freight-intensive, meaning that it generates or attracts large amounts of freight trips or movements.</p>
-                            </div>  
-                            <div class="story card" data-section="employment" data-mode="color">
-                                <h4>Freight-intensive Industry Sectors</h4>
-                                <p>Identifying freight intensive sectors is done by associating each industry sub-sector with a segment of the economy’s product lifecycle. We can break this lifecycle and the related sectors into four distinct components.</p>
-                            </div>  
-                            <div class="story " data-section="employment" data-mode="extraction">
-                                <div class="card">
-                                   <h3>Extraction</h3>
-                                    <p>These industries are involved in the extraction of raw materials from the earth and/or the raising of animals and crops. These industries represent a small but important part of the regional economy.</p>
-                                </div>
-                                <div class="details">
-                                    <p>The region has <b>12.6 thousand</b> employees working in extraction industries including: <div id="js-E-list" class="industry-list"></div></p>
+                        <div class="row">
+                            <div class='col-lg-4 col-sm-12' style="z-index:10;">
+                                <div class="story card" data-section="employment" data-mode="all" style="margin-top:200px">
+                                    <p>To understand these roles, we can group businesses into industrial sectors to better explain the type of economic activity in which each is involved. Here we visualize each of the region’s 33 industrial sub-sectors, scaling each by the size of its employment. </p>
+                                    <h4>What is freight employment?</h4>
+                                    <p>Not all of these industries rely on freight in equal degree. Our goal is simply to define if an industry is freight-intensive, meaning that it generates or attracts large amounts of freight trips or movements.</p>
+                                </div>  
+                                <div class="story card" data-section="employment" data-mode="color">
+                                    <h4>Freight-intensive Industry Sectors</h4>
+                                    <p>Identifying freight intensive sectors is done by associating each industry sub-sector with a segment of the economy’s product lifecycle. We can break this lifecycle and the related sectors into four distinct components.</p>
+                                </div>  
+                                <div class="story " data-section="employment" data-mode="extraction">
+                                    <div class="card">
+                                       <h3>Extraction</h3>
+                                        <p>These industries are involved in the extraction of raw materials from the earth and/or the raising of animals and crops. These industries represent a small but important part of the regional economy.</p>
+                                    </div>
+                                    <div class="details">
+                                        <p>The region has <b>12.6 thousand</b> employees working in extraction industries including: <div id="js-E-list" class="industry-list"></div></p>
+                                    </div> 
                                 </div> 
-                            </div> 
-                            <div class="story " data-section="employment" data-mode="production">
-                                <div class="card">
-                                    <h3>Production</h3>
-                                    <p>These industries are the makers. They are responsible for the production of the goods that allow for our way of life. Their operations have a critical reliance on freight transportation system to deliver the necessary inputs and get their outputs, or final products to market.</p>
-                                </div>
-                                <div class="details">
-                                    <p>The region has <b>450 thousand</b> employees working in production industries including: <div id="js-P-list" class="industry-list"></div></p>
-                                </div>
-                            </div>  
-                            <div class="story " data-section="employment" data-mode="distribution">
-                                <div class="card">
-                                    <h3>Distribution</h3>
-                                    <p>These industries serve as the vital link between the various components of the supply chain. Their business is the conveyance and storage of freight.</p>
-                                </div>
-                                <div class="details">
-                                    <p>The region has <b>210 thousand</b> employees working in distribution industries including: <div id="js-D-list" class="industry-list"></div></p>
-                                </div>
-                            </div> 
-                            <div class="story" data-section="employment" data-mode="consumption">
-                                <div class="card">
-                                    <h3>Consumption</h3>
-                                    <p>These industries are primarily consumers of finished goods. While they can be major attractors of freight they are not considered core to the development of freight centers. These industries are addressed through urban freight planning in commercial corridors and towns.</p>
-                                </div>
-                                <div class="details">
-                                    <p>The region has <b>2.4 million</b> employees working in 51 consumption industries.</p>
-                                </div>
-                            </div> 
-                            <div class="story card" data-section="employment" data-mode="full" data-action="reset-size">
-                                <p>Together Extraction, Manufacturing, and Distribution industries represent the primary freight intensive industries of the region. The total employment across these industries is <b>675 thousand</b> or <b>22% of regional employment</b>.</p>
-                                <p>While the share of employment in each of these freight intensive industries is lower than consumption industries, average wage is often higher.</p>
-                            </div>        
-                              
+                                <div class="story " data-section="employment" data-mode="production">
+                                    <div class="card">
+                                        <h3>Production</h3>
+                                        <p>These industries are the makers. They are responsible for the production of the goods that allow for our way of life. Their operations have a critical reliance on freight transportation system to deliver the necessary inputs and get their outputs, or final products to market.</p>
+                                    </div>
+                                    <div class="details">
+                                        <p>The region has <b>450 thousand</b> employees working in production industries including: <div id="js-P-list" class="industry-list"></div></p>
+                                    </div>
+                                </div>  
+                                <div class="story " data-section="employment" data-mode="distribution">
+                                    <div class="card">
+                                        <h3>Distribution</h3>
+                                        <p>These industries serve as the vital link between the various components of the supply chain. Their business is the conveyance and storage of freight.</p>
+                                    </div>
+                                    <div class="details">
+                                        <p>The region has <b>210 thousand</b> employees working in distribution industries including: <div id="js-D-list" class="industry-list"></div></p>
+                                    </div>
+                                </div> 
+                                <div class="story" data-section="employment" data-mode="consumption">
+                                    <div class="card">
+                                        <h3>Consumption</h3>
+                                        <p>These industries are primarily consumers of finished goods. While they can be major attractors of freight they are not considered core to the development of freight centers. These industries are addressed through urban freight planning in commercial corridors and towns.</p>
+                                    </div>
+                                    <div class="details">
+                                        <p>The region has <b>2.4 million</b> employees working in 51 consumption industries.</p>
+                                    </div>
+                                </div> 
+                                <div class="story card extra-tall" data-section="employment" data-mode="full" data-action="reset-size">
+                                    <p>Together Extraction, Manufacturing, and Distribution industries represent the primary freight intensive industries of the region. The total employment across these industries is <b>675 thousand</b> or <b>22% of regional employment</b>.</p>
+                                    <p>While the share of employment in each of these freight intensive industries is lower than consumption industries, average wage is often higher.</p>
+                                </div>        
+                                  
+                            </div>
                         </div>
-
+                       <div class="story wage-chart pull-right col-lg-4 col-sm-12" data-section="employment" data-mode="wage">
+                            <p>When charted by average wage we see that many freight sector industries have a higher average annual wage. Additionally, these freight sectors are often family sustaining, having a wage greater than the region’s living wage for a family of three.</p>
+                        </div>
                         <!-- chart column for bubble diagram -->
-                        <div id="chart" class="col-lg-8 col-sm-12">
+                        <!-- <div id="chart" class="col-lg-8 col-sm-12"> -->
                             <div id="employment-bubble" >
                                 <div class="g-tip-up" style="width:250px;height:133px;display:none;">
                                     <div class="g-tip-shadow"></div>
@@ -452,13 +468,34 @@
                                 </div>
                                 <div id="g-employment-bubble">
                                 </div> 
+
+                            <!-- <div class='clearfix'></div>  -->
                             </div> 
-                              
-                        </div>
-                        <div class="story  col-lg-offset-8 col-lg-4 col-sm-12" data-section="employment" data-mode="wage">
-                                
-                        </div>
+                        <!-- </div> -->
+                        <div class='clearfix'></div>
                     </section>
+                    <div class='clearfix'></div>
+                    <section id="geographic-distribution">
+                        <div class="story">
+                            <div class='clearfix'></div>
+                            <div class='col-md-12 hpbanner'>
+                                <div class='center-block col-lg-10 col-sm-12' style='float:none;'>
+                                <h4></h4>
+                                    <div class='col-md-6 col-lg-6'>
+                                        <h2>Where is freight in the region?</h2>
+                                        <p>Understanding the geographic distribution of freight in the Delaware Valley is key to identifying the region’s Freight Centers.</p>
+                                        <p>While freight employment is a key factor in identifying freight activity, understanding the regional freight economy’s distribution requires additional metrics to help identify key clusters of activity.</p> 
+                                        <p>Let’s explore the spatial distribution of several key indicators that help us to predict the level of freight activity throughout the region.</p>
+                                        <br/>
+                                        <br/>
+                                        <br/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="distribution-map"></div>
+                    </section>
+                    
                     <div class='clearfix'></div>
                 </section>              
               
@@ -614,8 +651,46 @@
             },
             updateoffsets: function() {
                
+            },
+            itementerviewport: function(ev, item) {
+                 console.log(item.index)
+                switch (item.index){
+
+                    case 8:
+
+                        // $('#employment-bubble').css('position', 'absolute').css('top','6919px').css('left','0');
+                        // var oldChart = $('#g-employment-bubble svg');
+                        // var offset = oldChart.offset();
+                        // var top = offset.top;
+                        // var oldChartBottom = oldChart.outerHeight() - top;
+                        // console.log(oldChartBottom);
+                        break;
+                    default :
+                        break;
+
+                }
+            },
+            itemexitviewport: function(ev, item) {
+                switch (item.index){
+                    case 7:
+                        var textBox = $('#story-08');
+                        var textboxHeight = 690;
+                            console.log(textboxHeight);
+                        document.getElementById('employment-bubble').setAttribute('style','position:relative; top:-'+textboxHeight+'px;left:-15px;margin-bottom:-'+textboxHeight+'px;');
+                        // $('#employment-bubble').css('position', 'relative').css('top','-600px').css('left','0');
+                        
+                        break;
+                    default :
+                        break;
+
+                }
             }
 
+
+        });
+
+        $('#geographic-distribution').on('itementerviewport', function(ev, item){
+                console.log('here comes the geodist');
         });
 
 
