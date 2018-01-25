@@ -197,6 +197,12 @@
             margin-bottom: 0;
         }
 
+        #distribution-map {
+            position: relative;
+            top: -450px;
+            height: 750px;
+            width: 100%;
+        }
 
         body {
             height: auto;
@@ -423,54 +429,54 @@
                         </div>
                         <!-- chart column for bubble diagram -->
                         <!-- <div id="chart" class="col-lg-8 col-sm-12"> -->
-                            <div id="employment-bubble" >
-                                <div class="g-tip-up" style="width:250px;height:133px;display:none;">
-                                    <div class="g-tip-shadow"></div>
-                                    <svg class="g-tip-box" width="250" height="145">
-                                    <path transform="translate(125,152) scale(1.66667)" d="M0.5,-6.5l5,-5H74.5v-79H-74.5v79H-5Z"></path>
-                                    </svg>
-                                    <div class="g-tip-content">
-                                    <div class="g-tip-title"> </div>
-                                    <div class="g-tip-metric" data-name="establishments">
-                                    <span class="g-tip-metric-name">Establishments</span>
-                                    <span class="g-tip-metric-value"> </span>
-                                    </div>
-                                    <div class="g-tip-metric" data-name="employment">
-                                    <span class="g-tip-metric-name">Employment</span>
-                                    <span class="g-tip-metric-value"> </span>
-                                    </div>
-                                    <div class="g-tip-metric" data-name="wages">
-                                    <span class="g-tip-metric-name">Average Wage</span>
-                                    <span class="g-tip-metric-value"> </span>
-                                    </div>
-                                    </div>
+                        <div id="employment-bubble" >
+                            <div class="g-tip-up" style="width:250px;height:133px;display:none;">
+                                <div class="g-tip-shadow"></div>
+                                <svg class="g-tip-box" width="250" height="145">
+                                <path transform="translate(125,152) scale(1.66667)" d="M0.5,-6.5l5,-5H74.5v-79H-74.5v79H-5Z"></path>
+                                </svg>
+                                <div class="g-tip-content">
+                                <div class="g-tip-title"> </div>
+                                <div class="g-tip-metric" data-name="establishments">
+                                <span class="g-tip-metric-name">Establishments</span>
+                                <span class="g-tip-metric-value"> </span>
                                 </div>
-                                <div class="g-tip-down" style="width:250px;height:133px;display:none;">
-                                    <div class="g-tip-shadow"></div>
-                                    <svg class="g-tip-box" width="250" height="145">
-                                    <path transform="translate(125,-10) scale(1.66667) rotate(180)" d="M0.5,-6.5l5,-5H74.5v-79H-74.5v79H-5Z"></path>
-                                    </svg>
-                                    <div class="g-tip-content">
-                                    <div class="g-tip-title"> </div>
-                                    <div class="g-tip-metric" data-name="establishments">
-                                    <span class="g-tip-metric-name">Establishments</span>
-                                    <span class="g-tip-metric-value"> </span>
-                                    </div>
-                                    <div class="g-tip-metric" data-name="employment">
-                                    <span class="g-tip-metric-name">Employment</span>
-                                    <span class="g-tip-metric-value"> </span>
-                                    </div>
-                                    <div class="g-tip-metric" data-name="wages">
-                                    <span class="g-tip-metric-name">Average Wage</span>
-                                    <span class="g-tip-metric-value"> </span>
-                                    </div>
-                                    </div>
+                                <div class="g-tip-metric" data-name="employment">
+                                <span class="g-tip-metric-name">Employment</span>
+                                <span class="g-tip-metric-value"> </span>
                                 </div>
-                                <div id="g-employment-bubble">
-                                </div> 
-
-                            <!-- <div class='clearfix'></div>  -->
+                                <div class="g-tip-metric" data-name="wages">
+                                <span class="g-tip-metric-name">Average Wage</span>
+                                <span class="g-tip-metric-value"> </span>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="g-tip-down" style="width:250px;height:133px;display:none;">
+                                <div class="g-tip-shadow"></div>
+                                <svg class="g-tip-box" width="250" height="145">
+                                <path transform="translate(125,-10) scale(1.66667) rotate(180)" d="M0.5,-6.5l5,-5H74.5v-79H-74.5v79H-5Z"></path>
+                                </svg>
+                                <div class="g-tip-content">
+                                <div class="g-tip-title"> </div>
+                                <div class="g-tip-metric" data-name="establishments">
+                                <span class="g-tip-metric-name">Establishments</span>
+                                <span class="g-tip-metric-value"> </span>
+                                </div>
+                                <div class="g-tip-metric" data-name="employment">
+                                <span class="g-tip-metric-name">Employment</span>
+                                <span class="g-tip-metric-value"> </span>
+                                </div>
+                                <div class="g-tip-metric" data-name="wages">
+                                <span class="g-tip-metric-name">Average Wage</span>
+                                <span class="g-tip-metric-value"> </span>
+                                </div>
+                                </div>
+                            </div>
+                            <div id="g-employment-bubble">
                             </div> 
+
+                        <!-- <div class='clearfix'></div>  -->
+                        </div> 
                         <!-- </div> -->
                         <div class='clearfix'></div>
                     </section>
@@ -493,7 +499,11 @@
                                 </div>
                             </div>
                         </div>
-                        <div id="distribution-map"></div>
+                        <div class='center-block col-lg-10 col-sm-12' style='float:none;'>
+                            <div class="col-lg-8 pull-right">
+                                    <div id="distribution-map"></div>
+                            </div>
+                        </div>
                     </section>
                     
                     <div class='clearfix'></div>
@@ -584,6 +594,9 @@
         <script src="dev/vendor/d3v4.min.js"></script>
         <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
         <script src="dev/tools/bubble_chart.js"></script>
+        <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.43.0/mapbox-gl.js'></script>
+        <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.43.0/mapbox-gl.css' rel='stylesheet' />
+        <!-- <script src="dev/tools/freight_story/geo-distribution.js"></script> -->
         <!-- <script type="text/javascript" src="lib/build.min.js"></script> -->
 
         <script>
@@ -653,17 +666,10 @@
                
             },
             itementerviewport: function(ev, item) {
-                 console.log(item.index)
                 switch (item.index){
 
                     case 8:
-
-                        // $('#employment-bubble').css('position', 'absolute').css('top','6919px').css('left','0');
-                        // var oldChart = $('#g-employment-bubble svg');
-                        // var offset = oldChart.offset();
-                        // var top = offset.top;
-                        // var oldChartBottom = oldChart.outerHeight() - top;
-                        // console.log(oldChartBottom);
+                        $.getScript('dev/tools/freight_story/geo-distribution.js');
                         break;
                     default :
                         break;
@@ -675,10 +681,7 @@
                     case 7:
                         var textBox = $('#story-08');
                         var textboxHeight = 690;
-                            console.log(textboxHeight);
                         document.getElementById('employment-bubble').setAttribute('style','position:relative; top:-'+textboxHeight+'px;left:-15px;margin-bottom:-'+textboxHeight+'px;');
-                        // $('#employment-bubble').css('position', 'relative').css('top','-600px').css('left','0');
-                        
                         break;
                     default :
                         break;
@@ -687,10 +690,6 @@
             }
 
 
-        });
-
-        $('#geographic-distribution').on('itementerviewport', function(ev, item){
-                console.log('here comes the geodist');
         });
 
 
