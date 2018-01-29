@@ -188,9 +188,9 @@
         }
         .wage-chart {
             z-index: 1;
-            margin-bottom: 0px;
-            padding-bottom: 560px;
-            padding-top: 50px;
+            margin-bottom: -45px;
+            padding-top: 60px;
+            min-height: 760px;
         }
 
         .story.extra-tall {
@@ -200,7 +200,7 @@
 
         #distribution-map {
             position: relative;
-            top: -450px;
+            top: -771px;
             height: 750px;
             width: 100%;
         }
@@ -482,9 +482,8 @@
                         <div class='clearfix'></div>
                     </section>
                     <div class='clearfix'></div>
-                    <section id="geographic-distribution" style="padding-top:65px;">
+                    <section id="geographic-distribution" style="padding-top:60px;">
                         <div class="story" data-section="distribution" data-mode="none">
-                            <div class='clearfix'></div>
                             <div class='col-md-12 hpbanner'>
                                 <div class='center-block col-lg-10 col-sm-12' style='float:none;'>
                                 <h4></h4>
@@ -499,6 +498,7 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class='clearfix'></div>
                         </div>
                         <div class='center-block col-lg-10 col-sm-12' style='float:none;'>
                             <div class="col-lg-8 pull-right">
@@ -710,7 +710,6 @@
                 }
                 if(item.data.section === 'distribution' && item.data.mode) {
                     freightMap.repaint(item.data.mode);
-                    // freightMap.
                 }
                 
             },
@@ -720,14 +719,16 @@
             itementerviewport: function(ev, item) {
                 activeItem = this.getActiveItem();
                 switch (item.index){
+                    // return the employment bubble chart to fixed position on reverse scroll
                     case 7:
-                        document.getElementById('employment-bubble').setAttribute('style','position:fixed; top:60px;top: 60px;left: 8.333%;');
+                        document.getElementById('employment-bubble').setAttribute('style','position:fixed; top: 60px;left: 8.333%;');
                         break;
+                    // lazy load map ahead of story element or return map to normal flow location on reverse scroll
                     case 8:
                         if(!map_exists){
                             $.getScript('dev/tools/freight_story/geo-distribution.js');
                         } else if (activeItem.index >= 9){
-                            document.getElementById('distribution-map').setAttribute('style','position:relative; top:-450px;');
+                            document.getElementById('distribution-map').setAttribute('style','position:relative; top:-771px;');
                         }
                         break;
                     default :
@@ -738,13 +739,15 @@
             itemexitviewport: function(ev, item) {
                 activeItem = this.getActiveItem();
                 switch (item.index){
+                    // return the employee bubble graphic to normal flow 
                     case 7:
                         if(activeItem.index == 8){
                             var textBox = $('#story-08');
-                            var textboxHeight = 690;
+                            var textboxHeight = 660;
                             document.getElementById('employment-bubble').setAttribute('style','position:relative; top:-'+textboxHeight+'px;left:-15px;margin-bottom:-'+textboxHeight+'px;');
                         }
                         break;
+                    // set map graphic to fixed position
                     case 8:
                         if(activeItem.index == 9){
                             document.getElementById('distribution-map').setAttribute('style','position:fixed; top:60px;');
