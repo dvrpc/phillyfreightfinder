@@ -188,7 +188,8 @@
         }
         .wage-chart {
             z-index: 1;
-            margin-bottom: 550px;
+            margin-bottom: 0px;
+            padding-bottom: 560px;
             padding-top: 50px;
         }
 
@@ -481,8 +482,8 @@
                         <div class='clearfix'></div>
                     </section>
                     <div class='clearfix'></div>
-                    <section id="geographic-distribution">
-                        <div class="story">
+                    <section id="geographic-distribution" style="padding-top:65px;">
+                        <div class="story" data-section="distribution" data-mode="none">
                             <div class='clearfix'></div>
                             <div class='col-md-12 hpbanner'>
                                 <div class='center-block col-lg-10 col-sm-12' style='float:none;'>
@@ -502,6 +503,53 @@
                         <div class='center-block col-lg-10 col-sm-12' style='float:none;'>
                             <div class="col-lg-8 pull-right">
                                     <div id="distribution-map"></div>
+                            </div>
+                        </div>
+                        <div id="distribtion-narrative" class='center-block col-lg-10 col-sm-12' style='float:none;'>
+                            <div class="row">
+                                <div class='col-lg-4 col-sm-12' style="z-index:10;">
+                                    <div class="story" data-section="distribution" data-mode="establishment">
+                                        <div class="card">
+                                            <h4>Freight Establishments</h4>
+                                            <p>The distribution of freight establishments in the region provides a starting point for cluster analysis. These highlight the location where there are many establishments located in proximity to each other.</p>
+                                            <div class="details">
+                                                <p>The distribution of freight employment using establishments can give unnecessary weight to a location with many small businesses that have little activity associated with them.</p>
+                                            </div>
+                                        </div>
+
+                                    </div>  
+                                    <div class="story " data-section="distribution" data-mode="employment">
+                                        <div class="card">
+                                            <h4>Freight Employment</h4>
+                                            <p>The distribution of freight employment using number of employees helps us to better understand the relative intensity of freight activity in each zone. More employees working in freight industries would indicate a higher probability for freight generating activities.</p>
+                                            <div class="details">
+                                                <p>Employment, measured as establishments or employees, is just one type of measure for understanding the freight economy in the built environment. These numbers may miss some key freight generators due to incomplete data or activity types. To fill these gaps we can look at the distribution of existing land uses, industrial buildings and intermodal freight facilities.</p>
+                                            </div>
+                                        </div>
+                                    </div> 
+                                    <div class="story " data-section="distribution" data-mode="landuse">
+                                        <div class="card">
+                                            <h4>Freight Related Land-uses</h4>
+                                            <p>Evaluating the percent of each analysis zone that is dedicated to freight related land uses reveals additional locations in the region that may contribute to the freight economy thought no single employer is reported at that location.</p>
+                                            <div class="details">
+                                                <p>Our key freight related land uses included industrial, mining, utility, and transportation. This helps us to identify valuable generators that may not have fixed employment or establishments assigned to them despite their potential to generate freight.</p>
+                                            </div>
+
+
+                                        </div>
+                                    </div>  
+                                    <div class="story " data-section="distribution" data-mode="industrial">
+                                        <div class="card">
+                                            <h4>Industrial Development</h4>
+                                            <p>In addition to land-use, the physical industrial structures both built and proposed in the region can be used to understand the potential for freight activity.</p>
+                                            <div class="details">
+                                                <p>Using real estate data, we are able to map the distribution of square footage of occupied and proposed industrial buildings throughout the region</p>
+                                            </div>
+
+
+                                        </div>
+                                    </div>                                    
+                                </div>
                             </div>
                         </div>
                     </section>
@@ -607,7 +655,8 @@
         }
 
         var employment_exists = false;
-
+        var map_exists = false;
+        var activeItem = '';
         // initialization and options for scroll story functionality
         var fcStory = $('#planning').scrollStory({
             scrollOffset: 75,
@@ -626,7 +675,7 @@
                             .attr('opacity', 1.0);
                     // }
                 }
-                // console.log(item);
+
                 //clears any annotations
                 $('.g-annotations').remove();
 
@@ -658,7 +707,10 @@
                             myBubbleChart.switchMode(item.data.mode);
                             break;       
                     }
-
+                }
+                if(item.data.section === 'distribution' && item.data.mode) {
+                    freightMap.repaint(item.data.mode);
+                    // freightMap.
                 }
                 
             },
@@ -666,10 +718,17 @@
                
             },
             itementerviewport: function(ev, item) {
+                activeItem = this.getActiveItem();
                 switch (item.index){
-
+                    case 7:
+                        document.getElementById('employment-bubble').setAttribute('style','position:fixed; top:60px;top: 60px;left: 8.333%;');
+                        break;
                     case 8:
-                        $.getScript('dev/tools/freight_story/geo-distribution.js');
+                        if(!map_exists){
+                            $.getScript('dev/tools/freight_story/geo-distribution.js');
+                        } else if (activeItem.index >= 9){
+                            document.getElementById('distribution-map').setAttribute('style','position:relative; top:-450px;');
+                        }
                         break;
                     default :
                         break;
@@ -677,12 +736,19 @@
                 }
             },
             itemexitviewport: function(ev, item) {
+                activeItem = this.getActiveItem();
                 switch (item.index){
                     case 7:
-                        var textBox = $('#story-08');
-                        var textboxHeight = 690;
-                        document.getElementById('employment-bubble').setAttribute('style','position:relative; top:-'+textboxHeight+'px;left:-15px;margin-bottom:-'+textboxHeight+'px;');
+                        if(activeItem.index == 8){
+                            var textBox = $('#story-08');
+                            var textboxHeight = 690;
+                            document.getElementById('employment-bubble').setAttribute('style','position:relative; top:-'+textboxHeight+'px;left:-15px;margin-bottom:-'+textboxHeight+'px;');
+                        }
                         break;
+                    case 8:
+                        if(activeItem.index == 9){
+                            document.getElementById('distribution-map').setAttribute('style','position:fixed; top:60px;');
+                        }  
                     default :
                         break;
 
