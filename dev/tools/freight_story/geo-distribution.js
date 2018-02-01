@@ -9,72 +9,65 @@ var freightMap = {
 	    [5, '#312867']
     ],
 
-  //   fqStops : [
-		// [0.7, '#EDF1F7'],
-		// [1.7, '#75A6EF'],
-		// [2.95, '#4790FF'],
-	 //    [4.5, '#2375EF'],
-	 //    [7.55, '#396AB2']
-  //   ],
-
 	fqStops : [
-		[0.7, '#EDF1F7'],
+		[0.8, '#EDF1F7'],
 		[1.7, '#4790FF'],
-		[2.95, '#2375EF'],
-	    [4.5, '#2A4EAB'],
-	    [7.55, '#312867']
+		[2.85, '#2375EF'],
+	    [4.4, '#2A4EAB'],
+        [7.45, '#312867']
     ],
-   
+
 	stylesheet : {
-	  "version": 8,
-	  "sources": {
-	    "counties": {
-	      "type": "vector",
-	      "url": "http://a.michaelruane.com/dvrpc_boundaries.json"
-	    }
-	  },
-	  "layers": [
-	    {"id": "county-fill",
-	      "type": "fill",
-	      "source": "counties",
-	      "source-layer": "county",
-	      "layout": {},
-	      "paint": {
-	          "fill-color": "#c9c9c9",
-	          "fill-opacity": 1
-	      },
-	      "filter": [
-	                "==",
-	                "DVRPC_REG",
-	                "Yes"
-	            ],
-	    },
-	    {
-	        "id": "municipality-outline",
-	        "type": "line",
-	        "source": "counties",
-	        "source-layer": "municipalities",
-	        "paint": {
-	            'line-width': 0.5,
-	            'line-color': '#fff'
-	        }
-	    },
-	    {
-	        "id": "county-outline",
-	        "type": "line",
-	        "source": "counties",
-	        "source-layer": "county",
-	        "paint": {
-	            'line-width': 2.5,
-	            'line-color': '#fff'
-	        },
-	        "filter": [
-	                "==",
-	                "DVRPC_REG",
-	                "Yes"
-	            ]
-	    }
-	  ]
+	   "version": 8,
+	   "sources": {
+	       "counties": {
+	           "type": "vector",
+	           "url": "http://a.michaelruane.com/dvrpc_boundaries.json"
+    	    }
+    	},
+
+    	"layers": [
+    	    {"id": "county-fill",
+    	      "type": "fill",
+    	      "source": "counties",
+    	      "source-layer": "county",
+    	      "layout": {},
+    	      "paint": {
+    	          "fill-color": "#c9c9c9",
+    	          "fill-opacity": 1
+    	      },
+    	      "filter": [
+    	                "==",
+    	                "DVRPC_REG",
+    	                "Yes"
+    	            ],
+    	    },
+    	    {
+    	        "id": "municipality-outline",
+    	        "type": "line",
+    	        "source": "counties",
+    	        "source-layer": "municipalities",
+    	        "paint": {
+    	            'line-width': 0.5,
+    	            'line-color': '#fff'
+    	        }
+    	    },
+    	    {
+    	        "id": "county-outline",
+    	        "type": "line",
+    	        "source": "counties",
+    	        "source-layer": "county",
+    	        "paint": {
+    	            'line-width': 2.5,
+    	            'line-color': '#fff'
+    	        },
+    	        "filter": [
+    	                "==",
+    	                "DVRPC_REG",
+    	                "Yes"
+    	            ]
+    	    }
+    	  ]
 	},
 
 	overlays: ['employment','establishment','industrial', 'landuse', 'facilities', 'fq'],
@@ -105,28 +98,16 @@ var freightMap = {
 	},
 	
 	repaint: function(mode){
-		// console.log(mode);
-		
-			for (i = 0; i < this.overlays.length; i++) {
-			    if(this.overlays[i] == mode){
-			    	console.log(mode)
-			      	map.setPaintProperty(mode +'-fill', 'fill-opacity', 0.65);
-			      	map.setPaintProperty(mode +'-half-fill', 'fill-opacity', 0.45);
-			      	
-			    }else{ 
-			    	map.setPaintProperty(this.overlays[i] +'-fill', 'fill-opacity', 0);
-			      	map.setPaintProperty(this.overlays[i] +'-half-fill', 'fill-opacity', 0);
-			    }
-			    // if(mode == 'fq'){
-			    // 	map.setPaintProperty(this.overlays[i] +'-fill', 'fill-opacity', 0.65);
-			    //   	map.setPaintProperty(this.overlays[i] +'-half-fill', 'fill-opacity', 0.45);
-			    // }else{
-			    // 	map.setPaintProperty('fq-fill', 'fill-opacity', 0);
-			    //   	map.setPaintProperty('fq-half-fill', 'fill-opacity', 0);
-			    // }
-			}
-		
-		
+		for (i = 0; i < this.overlays.length; i++) {
+		    if(this.overlays[i] == mode){
+		      	map.setPaintProperty(mode +'-fill', 'fill-opacity', 0.65);
+		      	map.setPaintProperty(mode +'-half-fill', 'fill-opacity', 0.45);
+		      	
+		    }else{ 
+		    	map.setPaintProperty(this.overlays[i] +'-fill', 'fill-opacity', 0);
+		      	map.setPaintProperty(this.overlays[i] +'-half-fill', 'fill-opacity', 0);
+		    }
+		}
 	}
 }
 
@@ -158,14 +139,14 @@ xhr.onload = function() {
                 'paint': {
                     "fill-opacity": 0,
                     'fill-color': {
-                      property: 'fq_results_score_emp',
+                      property: 'score_emp',
                       stops: freightMap.colorStops
                     },
                 },
                 'filter': 
                           [
                     "<",
-                    "fq_results_score_emp",
+                    "score_emp",
                     3
                 ],
             });
@@ -177,14 +158,14 @@ xhr.onload = function() {
                 'paint': {
                     "fill-opacity": 0,
                     'fill-color': {
-                      property: 'fq_results_score_emp',
+                      property: 'score_emp',
                       stops: freightMap.colorStops
                     },
                 },
                 'filter': 
                           [
                     ">",
-                    "fq_results_score_emp",
+                    "score_emp",
                     2
                 ],
             });
@@ -196,14 +177,14 @@ xhr.onload = function() {
                 'paint': {
                     "fill-opacity": 0,
                     'fill-color': {
-                      property: 'fq_results_score_est',
+                      property: 'score_est',
                       stops: freightMap.colorStops
                     },
                 },
                 'filter': 
                           [
                     "<",
-                    "fq_results_score_est",
+                    "score_est",
                     3
                 ],
             });
@@ -215,52 +196,14 @@ xhr.onload = function() {
                 'paint': {
                     "fill-opacity": 0,
                     'fill-color': {
-                      property: 'fq_results_score_est',
+                      property: 'score_est',
                       stops: freightMap.colorStops
                     },
                 },
                 'filter': 
                           [
                     ">",
-                    "fq_results_score_est",
-                    2
-                ],
-            });
-
-            map.addLayer({
-                "id": "facility-half-fill",
-                "type": "fill",
-                "source": "hex",
-                'paint': {
-                    "fill-opacity": 0,
-                    'fill-color': {
-                      property: 'fq_results_score_fac',
-                      stops: freightMap.colorStops
-                    },
-                },
-                'filter': 
-                          [
-                    "<",
-                    "fq_results_score_fac",
-                    3
-                ],
-            });
-
-            map.addLayer({
-                "id": "facility-fill",
-                "type": "fill",
-                "source": "hex",
-                'paint': {
-                    "fill-opacity": 0,
-                    'fill-color': {
-                      property: 'fq_results_score_fac',
-                      stops: freightMap.colorStops
-                    },
-                },
-                'filter': 
-                          [
-                    ">",
-                    "fq_results_score_fac",
+                    "score_est",
                     2
                 ],
             });
@@ -272,14 +215,14 @@ xhr.onload = function() {
                 'paint': {
                     "fill-opacity": 0,
                     'fill-color': {
-                      property: 'fq_results_score_lu',
+                      property: 'score_lu',
                       stops: freightMap.colorStops
                     },
                 },
                 'filter': 
                           [
                     "<",
-                    "fq_results_score_lu",
+                    "score_lu",
                     3
                 ],
             });
@@ -291,14 +234,14 @@ xhr.onload = function() {
                 'paint': {
                     "fill-opacity": 0,
                     'fill-color': {
-                      property: 'fq_results_score_lu',
+                      property: 'score_lu',
                       stops: freightMap.colorStops
                     },
                 },
                 'filter': 
                           [
                     ">",
-                    "fq_results_score_lu",
+                    "score_lu",
                     2
                 ],
             });
@@ -310,14 +253,14 @@ xhr.onload = function() {
                 'paint': {
                     "fill-opacity": 0,
                     'fill-color': {
-                      property: 'fq_results_score_ind',
+                      property: 'score_ind',
                       stops: freightMap.colorStops
                     },
                 },
                 'filter': 
                           [
                     "<",
-                    "fq_results_score_ind",
+                    "score_ind",
                     3
                 ],
             });
@@ -329,14 +272,14 @@ xhr.onload = function() {
                 'paint': {
                     "fill-opacity": 0,
                     'fill-color': {
-                      property: 'fq_results_score_ind',
+                      property: 'score_ind',
                       stops: freightMap.colorStops
                     },
                 },
                 'filter': 
                           [
                     ">",
-                    "fq_results_score_ind",
+                    "score_ind",
                     2
                 ],
             });
@@ -349,14 +292,14 @@ xhr.onload = function() {
                 'paint': {
                     "fill-opacity": 0,
                     'fill-color': {
-                      property: 'fq_results_score_fac',
+                      property: 'score_fac',
                       stops: freightMap.colorStops
                     },
                 },
                 'filter': 
                           [
                     "<",
-                    "fq_results_score_fac",
+                    "score_fac",
                     3
                 ],
             });
@@ -368,14 +311,14 @@ xhr.onload = function() {
                 'paint': {
                     "fill-opacity": 0,
                     'fill-color': {
-                      property: 'fq_results_score_fac',
+                      property: 'score_fac',
                       stops: freightMap.colorStops
                     },
                 },
                 'filter': 
                           [
                     ">",
-                    "fq_results_score_fac",
+                    "score_fac",
                     2
                 ],
             });
@@ -387,15 +330,15 @@ xhr.onload = function() {
                 'paint': {
                     "fill-opacity": 0,
                     'fill-color': {
-                      property: 'fq_results_fq',
+                      property: 'fq',
                       stops: freightMap.fqStops
                     },
                 },
                 'filter': 
                           [
                     "<=",
-                    "fq_results_fq",
-                    1.7
+                    "fq",
+                    2.85
                 ],
             });
 
@@ -406,15 +349,15 @@ xhr.onload = function() {
                 'paint': {
                     "fill-opacity": 0,
                     'fill-color': {
-                      property: 'fq_results_fq',
+                      property: 'fq',
                       stops: freightMap.fqStops
                     },
                 },
                 'filter': 
                           [
-                    ">=",
-                    "fq_results_fq",
-                    2.95
+                    ">",
+                    "fq",
+                    2.85
                 ],
             });
 
