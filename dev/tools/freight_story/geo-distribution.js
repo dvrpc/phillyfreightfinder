@@ -115,7 +115,6 @@ mapboxgl.accessToken = 'pk.eyJ1IjoibXJ1YW5lIiwiYSI6ImNpZ3dnaGF1bjBzNGZ3N201bTQwN
 
 var map = freightMap.makeIt();
 
-map_exists = true;
 
 	//request to award data for 2017
 var xhr = new XMLHttpRequest();
@@ -360,6 +359,8 @@ xhr.onload = function() {
                     2.85
                 ],
             });
+
+            map_exists = true;
 
         });
     }

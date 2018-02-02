@@ -191,6 +191,7 @@
             z-index: 1;
             margin-bottom: -45px;
             padding-top: 60px;
+            /*margin-top: -60px;*/
             min-height: 760px;
         }
 
@@ -358,12 +359,16 @@
                             <h4></h4>
                                 <div class='col-md-6 col-lg-6'>
                                     <p>The Delaware Valley is home to over 430 thousand business establishments employing over 3.1 million individuals. The story of freight centers starts with these employers. The role that each business plays in the regional economy influences the movement of goods and services and informs the patterns of freight related development.</p>
+                                     <button class="story-nav" data-story-nav="3" >Wage Chart</button>
+                                     <<button class="story-nav" data-story-nav="8" >Wage Chart</button>
+                                     <button class="story-nav" data-story-nav="10" >Wage Chart</button>
                                     <br/>
                                     <br/>
                                     <br/>
                                     <br/>
                                     <br/>
                                     <br/>
+
                                 </div>
                                 <div class='col-md-6 col-lg-6'>
                                     
@@ -503,7 +508,7 @@
                         </div>
                         <div class='center-block col-lg-10 col-sm-12' style='float:none;'>
                             <div class="col-lg-8 pull-right">
-                                    <div id="distribution-map"></div>
+                                <div id="distribution-map"></div>
                             </div>
                         </div>
                         <div id="distribtion-narrative" class='center-block col-lg-10 col-sm-12' style='float:none;'>
@@ -671,60 +676,64 @@
         var employment_exists = false;
         var map_exists = false;
         var activeItem = '';
+        var map_called = false;
         // initialization and options for scroll story functionality
-        var fcStory = $('#planning').scrollStory({
+        var scrollStory = $('#planning').scrollStory({
             scrollOffset: 75,
             triggerOffset: getPageHeight(),
             itemfocus: function(ev, item){
+                
                 if(item.index === 0) {
                    $('#employment-bubble').css('position', 'relative');
-                   //.html('');
                 }
 
-                if(item.data.action === 'reset-size') {
+                if(item.index < 8) {
                     // RETURN OPACITY AND SIZE TO NORMAL
-                    // if (currentMode.type !== "scatterplot" ) {
-                        d3.selectAll('.bubble')  //here's how you get all the nodes
-                            .attr('r', function(d) {return d.scaled_radius})
-                            .attr('opacity', 1.0);
-                    // }
+                    d3.selectAll('.bubble')  //here's how you get all the nodes
+                        .attr('r', function(d) {return d.scaled_radius})
+                        .attr('opacity', 1.0);
                 }
 
                 //clears any annotations
                 $('.g-annotations').remove();
+                
+                //ensures color is set
+                if(item.index >= 2) {
+                    myBubbleChart.switchMode('color');
+                }
+
+                if(item.index > 0 && item.data.section === 'employment' && item.index != 8) {
+                    $('#employment-bubble').css('position', 'fixed');
+                }
 
                 if(item.data.section === 'employment') {
                     switch (item.data.mode){
-                        case 'all':
-                            $('#employment-bubble').css('position', 'fixed');
-                            if(!employment_exists){
-                                d3.csv("data/" + BUBBLE_PARAMETERS.data_file, function (error, data) {
-                                    // Once the data is loaded...
-                                    if (error) { console.log(error); }
-
-                                    // Display bubble chart inside the #vis div.
-                                    myBubbleChart('#g-employment-bubble', data);
-
-                                    // // Start the visualization with the first button
-                                    myBubbleChart.switchMode(BUBBLE_PARAMETERS.modes[0].button_id)
-
-                                });
-                            }
-                            employment_exists = true;
-
-                            break;
                         case 'color':
                             this.updateOffsets();
-                            myBubbleChart.switchMode(item.data.mode);
                             break;
                         default :
                             myBubbleChart.switchMode(item.data.mode);
                             break;       
                     }
                 }
-                if(item.data.section === 'distribution' && item.data.mode) {
-                    freightMap.repaint(item.data.mode);
+
+                if(item.index > 8 && item.data.section === 'distribution' && item.data.mode){
+                    if(!map_called){
+                        map_called = true;
+                        console.log('called by focus', item.index);
+                        $.getScript('dev/tools/freight_story/geo-distribution.js', function(){
+                            // freightMap.repaint(item.data.mode);
+                        });
+                    }else if (map_exists) {
+                        freightMap.repaint(item.data.mode);
+                    }
                 }
+
+
+                if (item.index > 9 && item.data.section === 'distribution'){
+                     document.getElementById('distribution-map').setAttribute('style','position:fixed; top:60px;');
+                }
+
                 
             },
             updateoffsets: function() {
@@ -739,9 +748,11 @@
                         break;
                     // lazy load map ahead of story element or return map to normal flow location on reverse scroll
                     case 8:
-                        if(!map_exists){
+                        if(!map_exists && !map_called){
+                            map_called = true;
                             $.getScript('dev/tools/freight_story/geo-distribution.js');
                         } else if (activeItem.index >= 9){
+                            console.log('return to fixe map')
                             document.getElementById('distribution-map').setAttribute('style','position:relative; top:-771px;');
                         }
                         break;
@@ -759,7 +770,8 @@
                             var textBox = $('#story-08');
                             var textboxHeight = 660;
                             document.getElementById('employment-bubble').setAttribute('style','position:relative; top:-'+textboxHeight+'px;left:-15px;margin-bottom:-'+textboxHeight+'px;');
-                        }
+                           
+                           } 
                         break;
                     // set map graphic to fixed position
                     case 8:
@@ -773,12 +785,21 @@
             }
 
 
-        });
+        }).data('plugin_scrollStory');
 
 
         window.onbeforeunload = function () {
             window.scrollTo(0, 0);
         }
+
+        $('.story-nav').on('click', function(e){
+            var storyIndex = $(this).data('story-nav');
+
+            scrollStory.index(storyIndex);
+           
+        })
+
+
 
         </script>
         

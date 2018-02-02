@@ -693,6 +693,7 @@ function createBubbleChart() {
     };
 
     bubbleChart.switchMode = function (buttonID) {
+
         /*
          * Externally accessible function (this is attached to the
          * returned chart function). Allows the visualization to toggle
@@ -721,8 +722,6 @@ function createBubbleChart() {
         if (currentMode.type == "grid" || currentMode.type == "isolate" ) {
             showLabels(currentMode);
         }
-
-        
 
         // SHOW AXIS (if our mode is scatter plot)
         if (currentMode.type == "scatterplot") {
@@ -884,13 +883,18 @@ function ViewMode(button_id, width, height) {
 // Create a new bubble chart instance
 var myBubbleChart = createBubbleChart();
 
-// Load data
+// // Load data
 d3.csv("data/" + BUBBLE_PARAMETERS.data_file, function (error, data) {
     // Once the data is loaded...
-    
+
     if (error) { console.log(error); }
 
-    // wait for the scroll action to start...  
+    //     // Display bubble chart inside the #vis div.
+    myBubbleChart('#g-employment-bubble', data);
+    employment_exists = true;
+    // // Start the visualization with the first button
+    myBubbleChart.switchMode(BUBBLE_PARAMETERS.modes[0].button_id)
+
 
 });
 
