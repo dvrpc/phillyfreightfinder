@@ -270,6 +270,123 @@
                 }
             }
             /* Print Handling */
+
+            /* Common styles and resets */
+            .dotnav {
+                margin-left: 7.5%;
+                z-index: 2000;
+                position: fixed;
+                top: 50%;
+            }
+            .dotnav ul {
+                width:15px;
+                position: relative;
+                display: inline-block;
+                margin: 0;
+                padding: 0;
+                list-style: none;
+                cursor: default;
+                -webkit-touch-callout: none;
+                -webkit-user-select: none;
+                -khtml-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+                transform: translate(0,-50%);
+            }
+
+            .dotnav li {
+                position: relative;
+                display: block;
+                float: left;
+                margin: 5px 0;
+                width: 10px;
+                height: 10px;
+                cursor: pointer;
+                outline: none;
+                border-radius: 50%;
+                background-color: #fff;
+                background-color: rgba(49,40,103,0.36);
+                box-shadow: 0 0 0 2px rgba(49,40,103,0);
+                -webkit-transition: box-shadow 0.3s ease, background-color 0.3s ease;
+                transition: box-shadow 0.3s ease, background-color 0.3s ease;
+            }
+
+            .dotnav li a {
+                top: 0;
+                left: 0;
+                outline: none;
+                border-radius: 50%;
+                text-indent: -999em; /* make the text accessible to screen readers */
+                cursor: pointer;
+                position: absolute;
+            }
+
+            .dotnav li a:focus {
+                outline: none;
+            }
+
+            .dotnav li a:hover,
+            .dotnav li a:focus {
+                background-color: #312867;
+            }
+
+            .dotnav li.current {
+                background-color: transparent;
+                box-shadow: 0 0 0 2px #312867;
+            }
+
+            .dotnav li:hover a {
+                top: -8px;
+                left: 20px;
+                padding: 0 10px;
+                width: auto;
+                height: auto;
+                white-space: nowrap;
+                border-radius: 0;
+                background-color: #312867;
+                color: #fff;
+                text-indent: 0;
+                line-height: 2;
+                opacity: 1;
+                transition: transform 0.3s ease, opacity 0.3s ease, visibility 0s 0.3s ease;
+            }
+
+            .dotnav li:hover a::after { /* http: //cssarrowplease.com/ */
+                position: absolute;
+                left: -19px;
+                top: -50%;
+                width: 0;
+                height: 0;
+                border: solid transparent;
+                border-width: 10px;
+                border-color: transparent;
+                border-right-color: #312867;
+                content: '';
+                pointer-events: none;
+                top: 13%;
+                -webkit-backface-visibility: hidden;
+                backface-visibility: hidden;
+                -webkit-transition: opacity 0.3s ease;
+                transition: opacity 0.3s ease;
+            }
+
+            .dotnav li:hover, 
+            .dotnav li:focus  {
+                z-index: 100;
+                background-color: #312867;
+            }
+            .dotnav li+li.new-section {
+                margin-top: 10px;
+            }
+            .dotnav li+li.new-section::before {
+                border-top: solid 1px rgba(49,40,103,0.36);
+                content: '';
+                height: 2px;
+                margin-left: -5px;
+                padding: 7px 20px 0;
+            }
+
             
         
         </style> 
@@ -343,7 +460,27 @@
         </div>
     <!-- Core pages (non-map) -->
         <section id='pFFlanding' class='landing fade in landtab-content landingUI'>
-           
+            <!-- dot navigation -->
+            <div class="dotnav">
+                <ul>
+                    <li class="current" data-story-nav="0"><a href="#" >Overview</a></li>
+                    <li class="new-section" data-story-nav="1"><a href="#">What is freight employment?</a></li>
+                    <li data-story-nav="3"><a href="#">Extraction</a></li>
+                    <li data-story-nav="4"><a href="#">Production</a></li>
+                    <li data-story-nav="5"><a href="#">Distribution</a></li>
+                    <li data-story-nav="6"><a href="#">Consumption</a></li>
+                    <li data-story-nav="8"><a href="#">Camparing Wages</a></li>
+                    <li class="new-section" data-story-nav="9"><a href="#">Where is freight in the region?</a></li>
+                    <li data-story-nav="10"><a href="#">Freight establishments</a></li>
+                    <li data-story-nav="11"><a href="#">Freight employees</a></li>
+                    <li data-story-nav="12"><a href="#">Freight related land-use</a></li>
+                    <li data-story-nav="13"><a href="#">Industrial development</a></li>
+                    <li data-story-nav="14"><a href="#">Intermodal freight facilities</a></li>
+                    <li data-story-nav="15"><a href="#">Regional Freight Quotient</a></li>
+                    <li data-story-nav="16"><a href="#">Camparing Wages</a></li>
+                </ul>
+            </div>
+
                 <!--planning tab-->
                 <section id ='planning' class='landing-content'>
                     <div class='page-title center-block col-lg-12'>
@@ -359,9 +496,7 @@
                             <h4></h4>
                                 <div class='col-md-6 col-lg-6'>
                                     <p>The Delaware Valley is home to over 430 thousand business establishments employing over 3.1 million individuals. The story of freight centers starts with these employers. The role that each business plays in the regional economy influences the movement of goods and services and informs the patterns of freight related development.</p>
-                                     <button class="story-nav" data-story-nav="3" >Wage Chart</button>
-                                     <<button class="story-nav" data-story-nav="8" >Wage Chart</button>
-                                     <button class="story-nav" data-story-nav="10" >Wage Chart</button>
+                                    
                                     <br/>
                                     <br/>
                                     <br/>
@@ -682,6 +817,15 @@
             scrollOffset: 75,
             triggerOffset: getPageHeight(),
             itemfocus: function(ev, item){
+                var active_dot = $('.dotnav li[data-story-nav="'+ item.index +'"]').data('story-nav');
+                
+                if (active_dot === item.index) {
+                    $('.dotnav li.current').toggleClass('current');
+                    $('.dotnav li[data-story-nav="'+ item.index +'"]').toggleClass('current');
+                } else {
+                    console.log('shit needs to work reverse too!')
+                }
+                
                 
                 if(item.index === 0) {
                    $('#employment-bubble').css('position', 'relative');
@@ -792,7 +936,8 @@
             window.scrollTo(0, 0);
         }
 
-        $('.story-nav').on('click', function(e){
+        $('.dotnav li').on('click', function(e){
+            console.log(e);
             var storyIndex = $(this).data('story-nav');
 
             scrollStory.index(storyIndex);
