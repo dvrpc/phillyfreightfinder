@@ -22,7 +22,7 @@ var freightMap = {
 	   "sources": {
 	       "counties": {
 	           "type": "vector",
-	           "url": "http://a.michaelruane.com/dvrpc_boundaries.json"
+	           "url": "https://dvrpc-freight.michaelruane.com/dvrpc_boundaries.json"
     	    }
     	},
 
