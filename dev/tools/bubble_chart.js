@@ -571,8 +571,36 @@ function createBubbleChart() {
         bubbles.transition()
             .duration(2000)
             .attr('r', function (d) { return d.scaled_radius; });
+
+        // add a legend for bubbles
+        var legend = inner_svg.append("g")
+            .attr("class", "g-legend-container");
+
+        legend.append('circle')
+            .attr('class', 'legend-bubble')
+            .attr('r', radiusScale(300000))
+            .attr("cx", width * 0.15)
+            .attr("cy", height * 0.8);
+
+        legend.append('circle')
+            .attr('r', radiusScale(100000))
+            .attr('class', 'legend-bubble')
+            .attr("cx", width * 0.15)
+            .attr("cy", height * 0.8)
+            .attr('transform','translate(0, '+ (radiusScale(300000)-radiusScale(100000)) +')');
+
+        legend.append('circle')
+            .attr('r', radiusScale(500))
+            .attr('class', 'legend-bubble')
+            .attr("cx", width * 0.15)
+            .attr("cy", height * 0.8)
+            .attr('transform','translate(0, '+ (radiusScale(300000)-radiusScale(500)) +')');
     }
 
+    function rightAlignLegend(){
+        inner_svg.selectAll('.legend-bubble')
+            .attr('cx', width);
+    }
 
     function colorBubbles() {
         inner_svg.selectAll('.bubble')
@@ -692,6 +720,14 @@ function createBubbleChart() {
         createBubbles();
     };
 
+    bubbleChart.legendPosition = function(position) {
+        /* position of legend passed to function        */
+        inner_svg.selectAll('.g-legend-container')
+            .transition()
+            .attr("transform", "translate("+ (width*0.8) +", "+(height*0.15)+")")
+            .duration(1000);
+    }
+
     bubbleChart.switchMode = function (buttonID) {
 
         /*
@@ -787,6 +823,8 @@ function createBubbleChart() {
 
         
     };
+
+
     
     // Return the bubbleChart function from closure.
     return bubbleChart;
