@@ -204,7 +204,8 @@
             stroke-dasharray: 2 2;
             fill: none;
         }
-        .g-legend-container text {
+        .g-legend-container text,
+        .g-color-legend  text {
             fill: #636363;
         }
         .story.extra-tall {
@@ -508,6 +509,40 @@
                 border: dashed 2px #fff;
                 color: white;
             }
+            .circle-multiline.small {
+                width: 100px;
+                height: 100px;
+                border: 1px solid rgb(132, 142, 155);
+                background-color: rgb(189, 203, 222);
+            }
+            .circle-multiline.extraction {
+                background-color: rgb(49, 40, 103);
+                border-color: rgb(34, 28, 72);
+            }
+            .circle-multiline.production {
+                background-color: rgb(57, 106, 178);
+                border-color: rgb(40, 74, 125);
+            }
+            .circle-multiline.distribution {
+                background-color: rgb(244, 179, 135);
+                border-color: rgb(171, 125, 95);
+            }
+            .circle-multiline.consumption {
+                color: #636363;
+            }
+            #freight-intensive-box{
+                outline: 1px dotted;
+                outline-offset: -19px;
+                padding-bottom: 35px;
+            }
+            #freight-intensive-box h5{
+                background-color: #efefef;
+                position: relative;
+                width: 24ch;
+                padding-bottom: 5px;
+                margin-bottom: 5px;
+            }
+                
             .aligner {
                 display: flex;
                 align-items: center;
@@ -675,8 +710,6 @@
                                 <div class='col-md-6 col-lg-6'>
                                     <h3 style="color:#fff">1. Defining Freight Employment</h3>
                                     <p>The Delaware Valley is home to over 430 thousand business establishments employing over 3.1 million individuals. The story of freight centers starts with these employers. The role that each business plays in the regional economy influences the movement of goods and services and informs the patterns of freight related development.</p>
-
-                                    
                                     <br/>
                                     <br/>
                                     <br/>
@@ -704,6 +737,45 @@
                                 <div class="story card" data-section="employment" data-mode="color">
                                     <h4>Freight-intensive Industry Sectors</h4>
                                     <p>Identifying freight intensive sectors is done by associating each industry sub-sector with a segment of the economy’s product lifecycle. We can break this lifecycle and the related sectors into four distinct components.</p>
+                                    <br>
+                                    <br>
+                                    <div id="freight-intensive-box" class="row col-sm-12">
+                                        <h5>Freight Intensive Sectors</h5>
+                                        <div class="col-sm-4">
+                                            <div class='circle-multiline small extraction'>
+                                                <div class="aligner">
+                                                <span style='font-size: 1.1em'>extraction<br>industries</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class='circle-multiline small production'>
+                                                <div class="aligner">
+                                                <span style='font-size: 1.1em'>production<br>industries</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class='circle-multiline small distribution'>
+                                                <div class="aligner">
+                                                <span style='font-size: 1.1em'>distribution<br>industries</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row col-sm-12">
+                                        <br>
+                                        <h5>Other Sectors</h5>
+                                        <div class="col-sm-4">
+
+                                            <div class='circle-multiline small consumption'>
+                                                <div class="aligner">
+                                                <span style='font-size: 1.1em'>consumption<br>industries</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class='clearfix'></div>
                                 </div>  
                                 <div class="story " data-section="employment" data-mode="extraction">
                                     <div class="card">
@@ -1030,6 +1102,16 @@
                 //ensures color is set
                 if(item.index >= 2) {
                     myBubbleChart.switchMode('color');
+                } 
+
+                if(item.index >= 3) {
+                    myBubbleChart.colorLegend("show");
+                } else if (item.index < 3) {
+                    try {
+                        myBubbleChart.colorLegend("hide");
+                    } catch(err){
+
+                    }
                 }
 
                 if(item.index > 0 && item.data.section === 'employment' && item.index != 8) {

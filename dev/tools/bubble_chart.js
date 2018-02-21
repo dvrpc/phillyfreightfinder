@@ -654,6 +654,40 @@ function createBubbleChart() {
             .attr('opacity', 1)
             .attr('transform', 'translate(75,125)');
 
+        //build the color legend
+        var color_legend = inner_svg.append('g')
+            .attr('class', 'g-color-legend')
+            .attr('opacity', 0)
+            .attr('transform', 'translate('+ legX +','+ (legY/2) +')');
+
+        color_legend.append('text')
+            .attr('class','g-legend-title')
+            .attr('transform','translate(-10,0)')
+            .text('Color represents lifecycle ');
+        color_legend.append('text')
+            .attr('class','g-legend-title')
+            .attr('transform','translate(-10,15)')
+            .text('component of sub-sector');
+
+        var legend_colors = {'extraction': 'E', 'production':'P', 'distribution':'D', 'consumption':'C'};
+
+        var legend_count = 2
+        for(var key in legend_colors) {
+            color_legend.append('circle')
+                .attr('r', 10)
+                .attr('cx', 0)
+                .attr('cy', legend_count * 25)
+                .attr('fill', function (d) { return fillColorScale(legend_colors[key]); })
+                .attr('stroke-width', 0.5)
+                .attr('stroke', function (d) { return d3.rgb(fillColorScale(legend_colors[key])).darker(); });
+            
+            color_legend.append('text')
+                .attr('transform', 'translate(20,'+ (legend_count * 25 + 4) +')')
+                .text(key);
+            
+            legend_count++;
+        }
+
     }
 
     function rightAlignLegend(){
@@ -665,6 +699,12 @@ function createBubbleChart() {
         inner_svg.selectAll('.bubble')
             .attr('fill', function (d) { return fillColorScale(d.fill_color_group); })
             .attr('stroke', function (d) { return d3.rgb(fillColorScale(d.fill_color_group)).darker(); });
+    }
+
+    function unColorBubbles() {
+        inner_svg.selectAll('.bubble')
+            .attr('fill', '#bdcbde')
+            .attr('stroke', function() { return d3.rgb('#bdcbde').darker(); })
     }
     
     function addForceLayout(isStatic) {
@@ -779,14 +819,6 @@ function createBubbleChart() {
         createBubbles();
     };
 
-    bubbleChart.legendPosition = function(position) {
-        /* position of legend passed to function        */
-        inner_svg.selectAll('.g-legend-container')
-            .transition()
-            .attr("transform", "translate("+ (width*0.8) +", "+(height*0.15)+")")
-            .duration(1000);
-    }
-
     bubbleChart.switchMode = function (buttonID) {
 
         /*
@@ -811,6 +843,9 @@ function createBubbleChart() {
         if (currentMode.type == "color") {
             colorBubbles();
             return bubbleChart;
+        }
+         if (currentMode.buttonId == "all") {
+            unColorBubbles();
         }
 
         // SHOW LABELS 
@@ -893,6 +928,23 @@ function createBubbleChart() {
                 break;
             case "false":
                 inner_svg.select('.g-legend-container')
+                    .transition()
+                    .duration(750)
+                    .attr("opacity", 0);
+                break;
+        }
+    }
+
+    bubbleChart.colorLegend = function (mode) {
+        switch (mode){
+            case "show":
+                inner_svg.select('.g-color-legend')
+                    .transition()
+                    .duration(750)
+                    .attr("opacity", 1);
+                break;
+            case "hide":
+                inner_svg.select('.g-color-legend')
                     .transition()
                     .duration(750)
                     .attr("opacity", 0);
