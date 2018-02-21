@@ -884,15 +884,16 @@ function createBubbleChart() {
     };
 
     bubbleChart.legendShow = function (direction) {
-        var legendSVG = inner_svg.select('.g-legend-container');
         switch (direction){
             case "true":
-                legendSVG.transition()
+                inner_svg.select('.g-legend-container')
+                    .transition()
                     .duration(750)
                     .attr("opacity", 1);
                 break;
             case "false":
-                legendSVG.transition()
+                inner_svg.select('.g-legend-container')
+                    .transition()
                     .duration(750)
                     .attr("opacity", 0);
                 break;
