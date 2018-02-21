@@ -187,6 +187,10 @@
         .g-tip-metric + .g-tip-metric {
             border-top: solid 1px #eee;
         }
+        .g-legend-line {
+            stroke-width: 1;
+            stroke: #999;
+        }
         .wage-chart {
             z-index: 1;
             margin-bottom: -45px;
@@ -199,6 +203,9 @@
             stroke: #999;
             stroke-dasharray: 2 2;
             fill: none;
+        }
+        .g-legend-container text {
+            fill: #636363;
         }
         .story.extra-tall {
             padding-bottom: 550px;
@@ -508,6 +515,9 @@
                 height: 100%;
                 text-align: center;
             }
+            .no-mouse {
+                pointer-events: none;
+            }
         </style> 
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
@@ -652,9 +662,9 @@
                     </div>
                     
                         
-                    <div class="story">
+                    <div class="">
                         <div class='clearfix'></div>
-                        <div class='col-md-12 fc-color-full'>
+                        <div class='story col-md-12 fc-color-full' style="margin-bottom:100px;">
                             <div class='center-block col-lg-10 col-sm-12' style='float:none;'>
                                 <div class="col-lg-12">
                                     <h3 style="color:#fff">Introduction to DVRPC Freight Centers</h3>
@@ -665,6 +675,7 @@
                                 <div class='col-md-6 col-lg-6'>
                                     <h3 style="color:#fff">1. Defining Freight Employment</h3>
                                     <p>The Delaware Valley is home to over 430 thousand business establishments employing over 3.1 million individuals. The story of freight centers starts with these employers. The role that each business plays in the regional economy influences the movement of goods and services and informs the patterns of freight related development.</p>
+
                                     
                                     <br/>
                                     <br/>
@@ -685,6 +696,10 @@
                                     <p>To understand these roles, we can group businesses into industrial sectors to better explain the type of economic activity in which each is involved. Here we visualize each of the region’s 33 industrial sub-sectors, scaling each by the size of its employment. </p>
                                     <h4>What is freight employment?</h4>
                                     <p>Not all of these industries rely on freight in equal degree. Our goal is simply to define if an industry is freight-intensive, meaning that it generates or attracts large amounts of freight trips or movements.</p>
+                                    <br/>
+                                    <br/>
+                                    <svg id="svg-story-legend" width="300" height="250">
+                                    </svg>
                                 </div>  
                                 <div class="story card" data-section="employment" data-mode="color">
                                     <h4>Freight-intensive Industry Sectors</h4>
@@ -733,7 +748,7 @@
                                   
                             </div>
                         </div>
-                       <div class="story wage-chart pull-right col-lg-4 col-sm-12" data-section="employment" data-mode="wage">
+                       <div class="story wage-chart pull-right col-lg-4 col-sm-12 no-mouse" data-section="employment" data-mode="wage">
                             <p>When charted by average wage we see that many freight sector industries have a higher average annual wage. Additionally, these freight sectors are often family sustaining, having a wage greater than the region’s living wage for a family of three.</p>
                         </div>
                         <!-- chart column for bubble diagram -->
@@ -994,9 +1009,12 @@
                     console.log('shit needs to work reverse too!')
                 }
                 
-                
-                if(item.index === 0) {
-                   $('#employment-bubble').css('position', 'relative');
+                switch (item.index){
+                    case 0:
+                        $('#employment-bubble').css('position', 'relative');
+                        break;
+                    case 1:
+                        myBubbleChart.legendShow("false");
                 }
 
                 if(item.index < 8) {
@@ -1041,12 +1059,18 @@
                     }
                 }
 
-
                 if (item.index > 9 && item.data.section === 'distribution'){
                      document.getElementById('distribution-map').setAttribute('style','position:fixed; top:60px;');
                 }
 
                 
+            },
+            itemblur: function(ev, item){
+               switch (item.index){
+                    case 1:
+                        myBubbleChart.legendShow("true");
+                        break;
+                    }
             },
             updateoffsets: function() {
                
@@ -1054,6 +1078,9 @@
             itementerviewport: function(ev, item) {
                 activeItem = this.getActiveItem();
                 switch (item.index){
+                    case 1:
+                        myBubbleChart.legendShow("false");
+                        break;
                     // return the employment bubble chart to fixed position on reverse scroll
                     case 7:
                         document.getElementById('employment-bubble').setAttribute('style','position:fixed; top: 60px;left: 8.333%;');

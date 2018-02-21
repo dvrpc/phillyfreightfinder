@@ -10,6 +10,7 @@ var BUBBLE_PARAMETERS = {
     "footer_text": "Concept for PFF Freight Employment tool",
     "width": getSize(),
     "height": 700,
+    "marginRight": 100,
     "force_strength": 0.06,
     "force_type": "charge",
     "radius_field": "employment",
@@ -573,28 +574,86 @@ function createBubbleChart() {
             .attr('r', function (d) { return d.scaled_radius; });
 
         // add a legend for bubbles
+        var circleThree = radiusScale(300000),
+            circleTwo = radiusScale(100000),
+            circleOne = radiusScale(500),
+            legX = width - 230,
+            legY = height * 0.8;
+
         var legend = inner_svg.append("g")
-            .attr("class", "g-legend-container");
+            .attr("class", "g-legend-container")
+            .attr("opacity", 0)
+            .attr('transform', 'translate('+legX+','+legY+')');
+       
+        legend.append('text')
+            .attr('class','g-legend-title')
+            .attr('transform','translate(-'+ circleThree +',-'+ (circleThree + 15) +')')
+            .text('Circles sized by number of employees');
 
-        legend.append('circle')
-            .attr('class', 'legend-bubble')
-            .attr('r', radiusScale(300000))
-            .attr("cx", width * 0.15)
-            .attr("cy", height * 0.8);
+        var legendCircles = legend.append('g');
 
-        legend.append('circle')
-            .attr('r', radiusScale(100000))
+        legendCircles.append('circle')
             .attr('class', 'legend-bubble')
-            .attr("cx", width * 0.15)
-            .attr("cy", height * 0.8)
-            .attr('transform','translate(0, '+ (radiusScale(300000)-radiusScale(100000)) +')');
+            .attr('r', circleThree);
 
-        legend.append('circle')
-            .attr('r', radiusScale(500))
+        legendCircles.append('circle')
+            .attr('r', circleTwo)
             .attr('class', 'legend-bubble')
-            .attr("cx", width * 0.15)
-            .attr("cy", height * 0.8)
-            .attr('transform','translate(0, '+ (radiusScale(300000)-radiusScale(500)) +')');
+            .attr('transform','translate(0, '+ (circleThree - circleTwo) +')');
+
+        legendCircles.append('circle')
+            .attr('r', circleOne)
+            .attr('class', 'legend-bubble')
+            .attr('transform','translate(0, '+ (circleThree - circleOne) +')');
+
+        var legendLabels = legend.append('g')
+            .attr('transform', 'translate('+ ((circleThree * 0.65 + 60)) +',0)');
+
+        legendLabels.append('text')
+            .attr('class','g-legend-label')
+            .attr('transform','translate(0,-'+ (circleThree * 0.45) +')')
+            .text('300,000');
+        
+        legendLabels.append('text')
+            .attr('class','g-legend-label')
+            .attr('transform','translate(0,'+ (circleThree  - circleTwo) +')')
+            .text('100,000');
+       
+        legendLabels.append('text')
+            .attr('class','g-legend-label')
+            .attr('transform','translate(0,'+ (circleThree - circleOne) +')')
+            .text('500');
+
+        legendLabels.append('line')
+            .attr('class','g-legend-line')
+            .attr('x1', -(circleThree * 0.65 + 10))
+            .attr('x2', -5)
+            .attr('y1', -(circleThree * 0.45 + 4))
+            .attr('y2', -(circleThree * 0.45  + 4));
+        legendLabels.append('line')
+            .attr('class','g-legend-line')
+            .attr('x1', -(circleThree * 0.65 + circleTwo - 10))
+            .attr('x2', -5)
+            .attr('y1', (circleThree  - circleTwo - 4))
+            .attr('y2', (circleThree  - circleTwo - 4));
+        legendLabels.append('line')
+            .attr('class','g-legend-line')
+            .attr('x1', -(circleThree - circleOne + 40))
+            .attr('x2', -5)
+            .attr('y1', ((circleThree - circleOne) - 4))
+            .attr('y2', ((circleThree - circleOne) - 4));
+
+        legend.attr('transform', 'translate('+legX+','+legY+')');
+        
+        var legendCopy = legend.node().cloneNode(true);
+        $('#svg-story-legend').append(legendCopy);
+
+        var newLegend = d3.select('#svg-story-legend');
+
+        newLegend.selectAll('.g-legend-container')
+            .attr('opacity', 1)
+            .attr('transform', 'translate(75,125)');
+
     }
 
     function rightAlignLegend(){
@@ -657,7 +716,7 @@ function createBubbleChart() {
         // Create a SVG element inside the provided selector with desired size.
         svg = d3.select(parentDOMElement)
             .append('svg')
-            .attr('width', BUBBLE_PARAMETERS.width)
+            .attr('width', BUBBLE_PARAMETERS.width + BUBBLE_PARAMETERS.marginRight)
             .attr('height', BUBBLE_PARAMETERS.height);
 
         // Specify margins and the inner width and height
@@ -768,7 +827,7 @@ function createBubbleChart() {
                 .attr('opacity', function(d) {return getFillColorOpacity(d)});
 
 
-            xScale = d3.scaleLinear().rangeRound([0, width])
+            xScale = d3.scaleLinear().rangeRound([0, width - BUBBLE_PARAMETERS.marginRight])
                 .domain([dataExtents[currentMode.xDataField][0], dataExtents[currentMode.xDataField][1]]);
             yScale = d3.scaleLinear().rangeRound([height, 0])
                 .domain([dataExtents[currentMode.yDataField][0], dataExtents[currentMode.yDataField][1]]);
@@ -824,6 +883,22 @@ function createBubbleChart() {
         
     };
 
+    bubbleChart.legendShow = function (direction) {
+        var legendSVG = inner_svg.select('.g-legend-container');
+        switch (direction){
+            case "true":
+                legendSVG.transition()
+                    .duration(750)
+                    .attr("opacity", 1);
+                break;
+            case "false":
+                legendSVG.transition()
+                    .duration(750)
+                    .attr("opacity", 0);
+                break;
+        }
+    }
+
 
     
     // Return the bubbleChart function from closure.
@@ -872,7 +947,7 @@ function ViewMode(button_id, width, height) {
             var cur_col = i % this.gridDimensions.columns;    // indexed starting at zero
             var currentCenter = {
                 // x: (2 * cur_col + 1) * (width / (this.gridDimensions.columns * 2)),
-                x: (width * 0.7),
+                x: (width * 0.7) - BUBBLE_PARAMETERS.marginRight,
                 y: (2 * cur_row + 1) * (height / (this.gridDimensions.rows * 2))
             };
             this.gridCenters[this.labels[i]] = currentCenter;
@@ -894,11 +969,11 @@ function ViewMode(button_id, width, height) {
         // Loop through all grid labels and assign the centre coordinates
         this.gridCenters = {};
         this.gridCenters[this.isolateKey] = { 
-            x: (width * 0.7), 
+            x: (width * 0.7) - BUBBLE_PARAMETERS.marginRight, 
             y: (height * 0.6)
         }
         this.gridCenters["A"] = {
-            x: (width * 0.7), 
+            x: (width * 0.7) - BUBBLE_PARAMETERS.marginRight, 
             y: (height * 0.4)
         }
         
