@@ -404,7 +404,7 @@ function createBubbleChart() {
 
         //build the guide for wages ticks
         inner_svg.insert("g", ":first-child")            
-          .attr("class", "g-tick-guides")
+          .attr("class", "axis g-tick-guides")
           .attr("transform", "translate(0," + height * 0.85 + ")")
           .call(make_x_gridlines()
               .tickSize(-(height * 0.75))
@@ -591,12 +591,15 @@ function createBubbleChart() {
         var circleThree = radiusScale(300000),
             circleTwo = radiusScale(100000),
             circleOne = radiusScale(500),
+            smCircle3 = smRadiusScale(300000),
+            smCircle2 = smRadiusScale(100000),
+            smCircle1 = smRadiusScale(500),
             legX = width - 230,
             legY = height * 0.8;
 
         var legend = inner_svg.append("g")
-            .attr("class", "g-legend-container")
-            .attr("opacity", 0)
+            .attr("class", "g-legend size-legend")
+            .attr("opacity", 1)
             .attr('transform', 'translate('+legX+','+legY+')');
        
         legend.append('text')
@@ -668,9 +671,68 @@ function createBubbleChart() {
             .attr('opacity', 1)
             .attr('transform', 'translate(75,125)');
 
+        // build horizontal wage circle legend
+        var wage_legend = inner_svg.append("g")
+            .attr("class", "g-legend wage-legend")
+            .attr("opacity", 0)
+            .attr('transform', 'translate('+ (width - 250) +', '+ (height) +')');
+
+        var legendWageCircles = wage_legend.append('g');
+
+        legendWageCircles.append('circle')
+            .attr('class', 'legend-bubble')
+            .attr('r', smCircle3);
+
+        legendWageCircles.append('circle')
+            .attr('r', smCircle2)
+            .attr('class', 'legend-bubble')
+            .attr('transform','translate(0, '+ (smCircle3 - smCircle2) +')');
+
+        legendWageCircles.append('circle')
+            .attr('r', smCircle1)
+            .attr('class', 'legend-bubble')
+            .attr('transform','translate(0, '+ (smCircle3 - smCircle1) +')');
+        
+        var wageLegendLabels = wage_legend.append('g')
+            .attr('transform', 'translate('+ ((smCircle3 * 0.65 + 35)) +',0)');
+
+        wageLegendLabels.append('text')
+            .attr('class','g-legend-label')
+            .attr('transform','translate(0,-'+ (smCircle3 * 0.45) +')')
+            .text('300,000');
+        
+        wageLegendLabels.append('text')
+            .attr('class','g-legend-label')
+            .attr('transform','translate(0,'+ (smCircle3  - smCircle2) +')')
+            .text('100,000');
+       
+        wageLegendLabels.append('text')
+            .attr('class','g-legend-label')
+            .attr('transform','translate(0,'+ (smCircle3 - smCircle1 + 4) +')')
+            .text('500');
+
+        wageLegendLabels.append('line')
+            .attr('class','g-legend-line')
+            .attr('x1', -(smCircle3 * 0.65 + 10))
+            .attr('x2', -5)
+            .attr('y1', -(smCircle3 * 0.45 + 4))
+            .attr('y2', -(smCircle3 * 0.45  + 4));
+        wageLegendLabels.append('line')
+            .attr('class','g-legend-line')
+            .attr('x1', -(smCircle3 * 0.65 + smCircle2))
+            .attr('x2', -5)
+            .attr('y1', (smCircle3  - smCircle2 - 4))
+            .attr('y2', (smCircle3  - smCircle2 - 4));
+        wageLegendLabels.append('line')
+            .attr('class','g-legend-line')
+            .attr('x1', -(smCircle3 - smCircle1 + 25))
+            .attr('x2', -5)
+            .attr('y1', ((smCircle3 - smCircle1) ))
+            .attr('y2', ((smCircle3 - smCircle1) ));
+
         //build the color legend
         var color_legend = inner_svg.append('g')
-            .attr('class', 'g-color-legend')
+            .attr('class', 'g-legend color-legend')
             .attr('opacity', 0)
             .attr('transform', 'translate('+ legX +','+ (legY/2) +')');
 
@@ -946,6 +1008,17 @@ function createBubbleChart() {
                     .duration(750)
                     .attr("opacity", 0);
                 break;
+            case "wage":
+                inner_svg.select('.g-legend-container')
+                    .transition()
+                    .duration(750)
+                    .attr("opacity", 0);
+                inner_svg.select('.g-wage-size-legend')
+                    .transition()
+                    .duration(750)
+                    .attr("opacity", 1);
+                break;
+
         }
     }
 
@@ -963,6 +1036,27 @@ function createBubbleChart() {
                     .duration(750)
                     .attr("opacity", 0);
                 break;
+        }
+    }
+
+    bubbleChart.legendHandler = function (mode) {
+        var legendDict = ['wage', 'color', 'size'];
+
+        var activeLegends = mode.split(',');
+
+        var legendSwitch =  function (cla, opacity) {
+            inner_svg.selectAll(cla)
+                .transition()
+                .duration(500)
+                .attr("opacity", opacity);
+        }
+        if (mode === 'none') {
+            legendSwitch('.g-legend', 0)
+            return;
+        }
+
+        for (i = 0; i < legendDict.length; i++) { 
+            (activeLegends.indexOf( legendDict[i] ) >= 0) ? legendSwitch( '.'+legendDict[i] +'-legend', 1) : legendSwitch( '.'+legendDict[i] +'-legend', 0) 
         }
     }
 

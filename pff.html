@@ -211,8 +211,7 @@
             stroke-dasharray: 2 2;
             fill: none;
         }
-        .g-legend-container text,
-        .g-color-legend  text {
+        .g-legend text {
             fill: #636363;
         }
         .story.extra-tall {
@@ -706,7 +705,7 @@
                         
                     <div class="">
                         <div class='clearfix'></div>
-                        <div class='story col-md-12 fc-color-full' style="margin-bottom:100px;">
+                        <div class='story col-md-12 fc-color-full' style="margin-bottom:100px;" data-legend="none">
                             <div class='center-block col-lg-10 col-sm-12' style='float:none;'>
                                 <div class="col-lg-12">
                                     <h3 style="color:#fff">Introduction to DVRPC Freight Centers</h3>
@@ -732,7 +731,7 @@
                     <section id="employment-chart" class='center-block col-lg-10 col-sm-12' style='float:none;'>
                         <div class="row">
                             <div class='col-lg-4 col-sm-12' style="z-index:10;">
-                                <div class="story card" data-section="employment" data-mode="all" style="margin-top:200px">
+                                <div class="story card" data-section="employment" data-mode="all" data-legend="none" style="margin-top:200px">
                                     <p>To understand these roles, we can group businesses into industrial sectors to better explain the type of economic activity in which each is involved. Here we visualize each of the region’s 33 industrial sub-sectors, scaling each by the size of its employment. </p>
                                     <h4>What is freight employment?</h4>
                                     <p>Not all of these industries rely on freight in equal degree. Our goal is simply to define if an industry is freight-intensive, meaning that it generates or attracts large amounts of freight trips or movements.</p>
@@ -741,7 +740,7 @@
                                     <svg id="svg-story-legend" width="300" height="250">
                                     </svg>
                                 </div>  
-                                <div class="story card" data-section="employment" data-mode="color">
+                                <div class="story card" data-section="employment" data-mode="color" data-legend="size">
                                     <h4>Freight-intensive Industry Sectors</h4>
                                     <p>Identifying freight intensive sectors is done by associating each industry sub-sector with a segment of the economy’s product lifecycle. We can break this lifecycle and the related sectors into four distinct components.</p>
                                     <br>
@@ -784,7 +783,7 @@
                                     </div>
                                     <div class='clearfix'></div>
                                 </div>  
-                                <div class="story " data-section="employment" data-mode="extraction">
+                                <div class="story " data-section="employment" data-mode="extraction" data-legend="size,color">
                                     <div class="card">
                                        <h3>Extraction</h3>
                                         <p>These industries are involved in the extraction of raw materials from the earth and/or the raising of animals and crops. These industries represent a small but important part of the regional economy.</p>
@@ -793,7 +792,7 @@
                                         <p>The region has <b>12.6 thousand</b> employees working in extraction industries including: <div id="js-E-list" class="industry-list"></div></p>
                                     </div> 
                                 </div> 
-                                <div class="story " data-section="employment" data-mode="production">
+                                <div class="story " data-section="employment" data-mode="production" data-legend="size,color">
                                     <div class="card">
                                         <h3>Production</h3>
                                         <p>These industries are the makers. They are responsible for the production of the goods that allow for our way of life. Their operations have a critical reliance on freight transportation system to deliver the necessary inputs and get their outputs, or final products to market.</p>
@@ -802,7 +801,7 @@
                                         <p>The region has <b>450 thousand</b> employees working in production industries including: <div id="js-P-list" class="industry-list"></div></p>
                                     </div>
                                 </div>  
-                                <div class="story " data-section="employment" data-mode="distribution">
+                                <div class="story " data-section="employment" data-mode="distribution" data-legend="size,color">
                                     <div class="card">
                                         <h3>Distribution</h3>
                                         <p>These industries serve as the vital link between the various components of the supply chain. Their business is the conveyance and storage of freight.</p>
@@ -811,7 +810,7 @@
                                         <p>The region has <b>210 thousand</b> employees working in distribution industries including: <div id="js-D-list" class="industry-list"></div></p>
                                     </div>
                                 </div> 
-                                <div class="story" data-section="employment" data-mode="consumption">
+                                <div class="story" data-section="employment" data-mode="consumption" data-legend="size,color">
                                     <div class="card">
                                         <h3>Consumption</h3>
                                         <p>These industries are primarily consumers of finished goods. While they can be major attractors of freight they are not considered core to the development of freight centers. These industries are addressed through urban freight planning in commercial corridors and towns.</p>
@@ -820,14 +819,14 @@
                                         <p>The region has <b>2.4 million</b> employees working in 51 consumption industries.</p>
                                     </div>
                                 </div> 
-                                <div class="story card extra-tall" data-section="employment" data-mode="full" data-action="reset-size">
+                                <div class="story card extra-tall" data-section="employment" data-mode="full" data-action="reset-size" data-legend="size,color">
                                     <p>Together Extraction, Manufacturing, and Distribution industries represent the primary freight intensive industries of the region. The total employment across these industries is <b>675 thousand</b> or <b>22% of regional employment</b>.</p>
                                     <p>While the share of employment in each of these freight intensive industries is lower than consumption industries, average wage is often higher.</p>
                                 </div>        
                                   
                             </div>
                         </div>
-                       <div class="story wage-chart pull-right col-lg-4 col-sm-12 no-mouse" data-section="employment" data-mode="wage">
+                       <div class="story wage-chart pull-right col-lg-4 col-sm-12 no-mouse" data-section="employment" data-mode="wage" data-legend="wage">
                             <p>When charted by average wage we see that many freight sector industries have a higher average annual wage. Additionally, these freight sectors are often family sustaining, having a wage greater than the region’s living wage for a family of three.</p>
                         </div>
                         <!-- chart column for bubble diagram -->
@@ -1069,6 +1068,8 @@
             return winHeight / 2;
         }
 
+
+
         var employment_exists = false;
         var map_exists = false;
         var activeItem = '';
@@ -1088,12 +1089,16 @@
                     console.log('shit needs to work reverse too!')
                 }
                 
+                switch (item.data.section) {
+                    case 'employment':
+                        myBubbleChart.legendHandler(item.data.legend);
+                        break;
+                }
+
                 switch (item.index){
                     case 0:
                         $('#employment-bubble').css('position', 'relative');
                         break;
-                    case 1:
-                        myBubbleChart.legendShow("false");
                 }
 
                 if(item.index < 8) {
@@ -1110,16 +1115,6 @@
                 if(item.index >= 2) {
                     myBubbleChart.switchMode('color');
                 } 
-
-                if(item.index >= 3) {
-                    myBubbleChart.colorLegend("show");
-                } else if (item.index < 3) {
-                    try {
-                        myBubbleChart.colorLegend("hide");
-                    } catch(err){
-
-                    }
-                }
 
                 if(item.index > 0 && item.data.section === 'employment' && item.index != 8) {
                     $('#employment-bubble').css('position', 'fixed');
@@ -1155,11 +1150,7 @@
                 
             },
             itemblur: function(ev, item){
-               switch (item.index){
-                    case 1:
-                        myBubbleChart.legendShow("true");
-                        break;
-                    }
+
             },
             updateoffsets: function() {
                
@@ -1167,9 +1158,6 @@
             itementerviewport: function(ev, item) {
                 activeItem = this.getActiveItem();
                 switch (item.index){
-                    case 1:
-                        myBubbleChart.legendShow("false");
-                        break;
                     // return the employment bubble chart to fixed position on reverse scroll
                     case 7:
                         document.getElementById('employment-bubble').setAttribute('style','position:fixed; top: 60px;left: 8.333%;');
