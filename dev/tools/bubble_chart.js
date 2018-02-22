@@ -397,6 +397,20 @@ function createBubbleChart() {
                 .tickSizeOuter(0))
             .selectAll(".tick").remove()
 
+        function make_x_gridlines() {       
+            return d3.axisBottom(xAxis)
+                .tickValues([30000, 50000, 70000, 90000, 110000, 130000])
+        }
+
+        //build the guide for wages ticks
+        inner_svg.insert("g", ":first-child")            
+          .attr("class", "g-tick-guides")
+          .attr("transform", "translate(0," + height * 0.85 + ")")
+          .call(make_x_gridlines()
+              .tickSize(-(height * 0.75))
+              .tickFormat("")
+          )
+
         // add annotation container
         var annotation = inner_svg.append("g")
             .attr("class", "g-annotations");
