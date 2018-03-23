@@ -1,15 +1,20 @@
-var getSize = function() {
+var getWidth = function() {
     elWidth = $('#employment-chart').width();
 
     return elWidth;
+}
+var getHeight = function() {
+    elHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+
+    return elHeight - 65;
 }
 
 var BUBBLE_PARAMETERS = {
     "data_file": "regional_employment_data.csv",
     "report_title": "DVRPC Employment",
     "footer_text": "Concept for PFF Freight Employment tool",
-    "width": getSize(),
-    "height": 700,
+    "width": getWidth(),
+    "height": getHeight(),
     "marginRight": 100,
     "force_strength": 0.06,
     "force_type": "charge",
@@ -130,7 +135,7 @@ function createBubbleChart() {
     var width = null;
     var height = null;
     var dataExtents = {};
-    // For scatterplots (initialized if applicable)
+    // For scatterplots 
     var xAxis = null;
     var yAxis = null;
     var xScale = null;
@@ -171,7 +176,6 @@ function createBubbleChart() {
     }
 
     function getFillColorOpacity(d) {
-        // Obtain a color mapping from keys to color values specified in our parameters file
         if(d.wages == 10000){
             return 0.0
         }
@@ -594,7 +598,7 @@ function createBubbleChart() {
             smCircle3 = smRadiusScale(300000),
             smCircle2 = smRadiusScale(100000),
             smCircle1 = smRadiusScale(500),
-            legX = width - 230,
+            legX = (BUBBLE_PARAMETERS.width > 1350)? width - 230 : width - 149,
             legY = height * 0.8;
 
         var legend = inner_svg.append("g")
