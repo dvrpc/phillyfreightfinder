@@ -603,7 +603,7 @@ function createBubbleChart() {
 
         var legend = inner_svg.append("g")
             .attr("class", "g-legend size-legend")
-            .attr("opacity", 1)
+            .attr("opacity", 0)
             .attr('transform', 'translate('+legX+','+legY+')');
        
         legend.append('text')

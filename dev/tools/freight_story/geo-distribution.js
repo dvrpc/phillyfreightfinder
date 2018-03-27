@@ -1,4 +1,3 @@
-
 var freightMap = {
 
 	colorStops : [
@@ -22,7 +21,7 @@ var freightMap = {
 	   "sources": {
 	       "counties": {
 	           "type": "vector",
-	           "url": "https://dvrpc-freight.michaelruane.com/dvrpc_boundaries.json"
+	           "url": "https://a.michaelruane.com/data/dvrpc-municipal.json"
     	    }
     	},
 
@@ -73,8 +72,9 @@ var freightMap = {
 	overlays: ['employment','establishment','industrial', 'landuse', 'facilities', 'fq'],
 
 	makeIt: function(){
+        $('#distribution-map').css('height', BUBBLE_PARAMETERS.height);
 			// lets build the map
-		var map= new mapboxgl.Map({
+		var map = new mapboxgl.Map({
 		    container: 'distribution-map', // container id
 		    style: this.stylesheet,
 		    center: [-75.2273, 40.071],
@@ -115,13 +115,11 @@ mapboxgl.accessToken = 'pk.eyJ1IjoibXJ1YW5lIiwiYSI6ImNpZ3dnaGF1bjBzNGZ3N201bTQwN
 
 var map = freightMap.makeIt();
 
-
-	//request to award data for 2017
 var xhr = new XMLHttpRequest();
 xhr.open('GET', 'data/d3/dvrpc_fq_hex_score.geojson', true);
 xhr.onload = function() {
     if (xhr.status === 200) {
-        // var data = geobuf.decode(new Pbf(xhr.response));
+
         var data = xhr.responseText;
 
         map.on('load', function(){
