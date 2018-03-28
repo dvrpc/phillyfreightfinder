@@ -121,7 +121,6 @@ xhr.onload = function() {
     if (xhr.status === 200) {
 
         var data = xhr.responseText;
-
         map.on('load', function(){
             // Add a new source from our GeoJSON data 
             map.addSource("hex", {
