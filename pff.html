@@ -11,8 +11,6 @@
 
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800' rel='stylesheet' type='text/css'>
         <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.css" rel="stylesheet" type="text/css">
-        <link href="http://dvrpcfreight.github.io/dynamic-icons/dyna.css" rel="stylesheet" type="text/css">
 
         <!-- locals for development
         <link href="dev/locals/bootstrap.min.css" rel="stylesheet" type="text/css">
@@ -655,7 +653,8 @@
                 <!--planning tab-->
                 <section id ='planning' class='landing-content'>
                     <div id="fc-splash">
-                        <div class="fc-hero"></div>
+                        <img style="display:none;" src="lib/images/fc-hero-full.jpg"/>
+                        <div class="fc-hero" ></div>
                         <div id="scroll-hint">scroll to begin<br>
                             <svg style="fill:#fff;margin-top:10px" x="0px" y="0px" width="28.4px" height="22.2px" viewBox="0 0 28.4 22.2" enable-background="new 0 0 28.4 22.2" xml:space="preserve">
                             <polygon points="14.2,22.2 0,11.2 0.9,10 14.2,20.3 27.5,10 28.4,11.2 "/>
@@ -1049,176 +1048,17 @@
         <script type="text/javascript" src="dev/locals/jquery.nicescroll.js"></script>
         <script type="text/javascript" src="dev/locals/bootstrap.min.js"></script>
  --> 
-        <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
-        <script type="text/javascript" src="dev/vendor/scrollstory.min.js"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/bootstrap.min.js"></script>
-        <script src="dev/vendor/d3v4.min.js"></script>
-        <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
-        <script src="dev/tools/bubble_chart.js"></script>
-        <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.43.0/mapbox-gl.js'></script>
-        <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.43.0/mapbox-gl.css' rel='stylesheet' />
-        <!-- <script src="dev/tools/freight_story/geo-distribution.js"></script> -->
-        <!-- <script type="text/javascript" src="lib/build.min.js"></script> -->
-
-        <script>
-        // helper function to adjust trigger to half of page height
-        var getPageHeight = function() {
-            winHeight = $(window).height();
-            return winHeight / 2;
-        }
-
-
-
-        var employment_exists = false;
-        var map_exists = false;
-        var activeItem = '';
-        var map_called = false;
-        // initialization and options for scroll story functionality
-        var scrollStory = $('#planning').scrollStory({
-            scrollOffset: 75,
-            autoActivateFirstItem: true,
-            triggerOffset: getPageHeight(),
-            itemfocus: function(ev, item){
-                var active_dot = $('.dotnav li[data-story-nav="'+ item.index +'"]').data('story-nav');
-                
-                if (active_dot === item.index) {
-                    $('.dotnav li.current').toggleClass('current');
-                    $('.dotnav li[data-story-nav="'+ item.index +'"]').toggleClass('current');
-                } else {
-                    console.log('shit needs to work reverse too!')
-                }
-                
-                switch (item.data.section) {
-                    case 'employment':
-                        myBubbleChart.legendHandler(item.data.legend);
-                        break;
-                }
-
-                switch (item.index){
-                    case 0:
-                        $('#employment-bubble').css('position', 'relative');
-                        break;
-                }
-
-                if(item.index < 8) {
-                    // RETURN OPACITY AND SIZE TO NORMAL
-                    d3.selectAll('.bubble')  //here's how you get all the nodes
-                        .attr('r', function(d) {return d.scaled_radius})
-                        .attr('opacity', 1.0);
-                }
-
-                //clears any annotations
-                $('.g-annotations').remove();
-                
-                //ensures color is set
-                if(item.index >= 2) {
-                    myBubbleChart.switchMode('color');
-                } 
-
-                if(item.index > 0 && item.data.section === 'employment' && item.index != 8) {
-                    $('#employment-bubble').css('position', 'fixed');
-                }
-
-                if(item.data.section === 'employment') {
-                    switch (item.data.mode){
-                        case 'color':
-                            this.updateOffsets();
-                            break;
-                        default :
-                            myBubbleChart.switchMode(item.data.mode);
-                            break;       
-                    }
-                }
-
-                if(item.index > 8 && item.data.section === 'distribution' && item.data.mode){
-                    if(!map_called){
-                        map_called = true;
-                        console.log('called by focus', item.index);
-                        $.getScript('dev/tools/freight_story/geo-distribution.js', function(){
-                            // freightMap.repaint(item.data.mode);
-                        });
-                    }else if (map_exists) {
-                        freightMap.repaint(item.data.mode);
-                    }
-                }
-
-                if (item.index > 9 && item.data.section === 'distribution'){
-                     document.getElementById('distribution-map').setAttribute('style','position:fixed; top:60px;');
-                }
-
-                
-            },
-            itemblur: function(ev, item){
-
-            },
-            updateoffsets: function() {
-               
-            },
-            itementerviewport: function(ev, item) {
-                activeItem = this.getActiveItem();
-                switch (item.index){
-                    // return the employment bubble chart to fixed position on reverse scroll
-                    case 7:
-                        document.getElementById('employment-bubble').setAttribute('style','position:fixed; top: 60px;left: 8.333%;');
-                        break;
-                    // lazy load map ahead of story element or return map to normal flow location on reverse scroll
-                    case 8:
-                        if(!map_exists && !map_called){
-                            map_called = true;
-                            $.getScript('dev/tools/freight_story/geo-distribution.js');
-                        } else if (activeItem.index >= 9){
-                            console.log('return to fixe map')
-                            document.getElementById('distribution-map').setAttribute('style','position:relative; top:-771px;');
-                        }
-                        break;
-                    default :
-                        break;
-
-                }
-            },
-            itemexitviewport: function(ev, item) {
-                activeItem = this.getActiveItem();
-                switch (item.index){
-                    // return the employee bubble graphic to normal flow 
-                    case 7:
-                        if(activeItem.index == 8){
-                            var textBox = $('#story-08');
-                            var textboxHeight = 660;
-                            document.getElementById('employment-bubble').setAttribute('style','position:relative; top:-'+textboxHeight+'px;left:-15px;margin-bottom:-'+textboxHeight+'px;');
-                           
-                           } 
-                        break;
-                    // set map graphic to fixed position
-                    case 8:
-                        if(activeItem.index == 9){
-                            document.getElementById('distribution-map').setAttribute('style','position:fixed; top:60px;');
-                        }  
-                    default :
-                        break;
-
-                }
-            }
-
-
-        }).data('plugin_scrollStory');
-
-
-        window.onbeforeunload = function () {
-            window.scrollTo(0, 0);
-        }
-
-        $('.dotnav li').on('click', function(e){
-            console.log(e);
-            var storyIndex = $(this).data('story-nav');
-
-            scrollStory.index(storyIndex);
-           
-        })
-
-
-
-        </script>
+        <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js" defer></script>
+        <script type="text/javascript" src="dev/vendor/scrollstory.min.js" defer></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/bootstrap.min.js" defer></script>
+        <script src="dev/vendor/d3-custom.min.js" defer></script>
+        <script src="dev/tools/bubble_chart.js" defer></script>
+        <script src="dev/tools/freight_story/story-controls.js" defer></script>
         
+        <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.43.0/mapbox-gl.js' defer></script>
+        <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.43.0/mapbox-gl.css' rel='stylesheet'/>
+        <script src="dev/tools/freight_story/geo-distribution.js" defer></script>
+        <!-- <script type="text/javascript" src="lib/build.min.js"></script> -->
 
 
        
