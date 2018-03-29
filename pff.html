@@ -610,22 +610,11 @@
                                 </ul>
                         </li>
                         <li id='maplink' class='landingUI'><a href="#map" data-tab='map' data-toggle="collapse" data-target=".navbar-collapse.in"><i class="dynico dynico-map"></i>&nbsp;&nbsp;View Map</a></li>
-                        <li class='mapUI' style="display:none;"><a href="#map?search" data-toggle="collapse" data-target=".navbar-collapse.in" ><i class="glyphicon glyphicon-search"></i>&nbsp;&nbsp;Search</a></li>
                     </ul>
                 </div><!--/.navbar-collapse -->
             </div>
         </header>
-    <!-- Search panel for map -->    
-        <div id="search-panel" class="col-lg-offset-1 col-xs-12 col-lg-10 " style="display:none;">
-            <div id="search-subpanel">
-                <form id='nav_search' class="navbar-form navbar-right " >
-                    <div class="input-group search-container mapUI" style="display:none;">
-                        <input id="searchbox" type="text" class="form-control" placeholder="Search by facility/place name">
-                        <span class="input-group-addon"><i class="dynico dynico-search"></i></span>
-                    </div>
-                </form>
-            </div>
-        </div>
+    
     <!-- Core pages (non-map) -->
         <section id='pFFlanding' class='landing fade in landtab-content landingUI' role='main'>
             
@@ -1017,25 +1006,6 @@
                 </div>-->
             </div>
         </footer> 
-   
-        
-
-        <!--Mobile InfoWindow Modal-->
-        <div class="modal fade" id="mobileInfo_modal">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div id="mobileMdHeader" class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" onClick='resetHighlight()'><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <div id="mobileheader"></div>
-              </div>
-              <div class='infowrap'>
-                <div id='mobileinfo'></div>
-                <div id='mobilefeatureName'></div>
-                </div>
-            </div><!-- /.modal-content -->
-          </div><!-- /.modal-dialog -->
-        </div><!-- /.modal --> 
-
 
         <!-- prep external loaded elements -->
 
