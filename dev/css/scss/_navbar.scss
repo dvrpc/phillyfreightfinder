@@ -1,0 +1,120 @@
+.pffheader {
+    /*background-image: url('images/headerStripe.png');*/
+    background-color: #396ab2!important;
+    z-index:1049;
+}
+.brand-leader{
+    background-color: #312867;
+    height: 54px;  
+}
+.brand-left-offset{
+    margin-left: -15px;
+    margin-right: -15px;
+}
+.navbar-fixed-top{border-top: 7px solid #312867!important;
+            border-bottom: 1px solid #312867!important;}
+/*.pffcontent{padding-top:14px!important;padding-bottom:40px!important;}*/
+
+.dvrpc-logo{display:inline-block;
+                }
+.dvrpc-pff{display:inline-block;
+                }
+.logo-container {
+    display: inline-block;
+    padding: 0px 30px 0px 10px;
+}
+.navbar-inverse .navbar-nav>li>a {
+    font-family: 'Open Sans', sans-serif;
+}
+.navbar .navbar-brand {
+    height:54px;
+    background-color: #ffffff;
+    filter: progid:DXImageTransform.Microsoft.gradient(GradientType = 1, startColorstr = '#312867', endColorstr = '#396ab2');
+    /*INNER ELEMENTS MUST NOT BREAK THIS ELEMENTS BOUNDARIES*/
+    /*Element must have a height (not auto)*/
+    /*All filters must be placed together*/
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType = 1, startColorstr = '#312867', endColorstr = '#396ab2')";
+    /*Element must have a height (not auto)*/
+    /*All filters must be placed together*/
+    background-image: -moz-linear-gradient(left, #312867, #396ab2);
+    background-image: -ms-linear-gradient(left, #312867, #396ab2);
+    background-image: -o-linear-gradient(left, #312867, #396ab2);
+    background-image: -webkit-gradient(linear, left top, right top, from(#312867), to(#396ab2));
+    background-image: -webkit-linear-gradient(left, #312867, #396ab2);
+    background-image: linear-gradient(to right, #312867, #396ab2);
+    /*--IE9 DOES NOT SUPPORT CSS3 GRADIENT BACKGROUNDS--*/
+
+    font-weight: bold;
+    font-size: 22px;
+    color: white;
+    white-space: nowrap;
+    padding: 0 0 0 0!important;
+}
+.navbar-nav>li>a, .navbar-nav>li>.dropdown {
+    margin: 6px 10px;
+    padding: 10px 5px 3px;
+    font-size: 1.05em;
+    transition: all 250ms ease-in-out;
+    border-bottom: 3px solid #396ab2;
+}
+.navbar-nav>li>.dropdown:hover, .navbar-nav>li>a:hover{
+    border-bottom: 3px solid #312867;
+    color:#BBE6FA;
+}
+.navbar-nav > li > .dropdown-menu {
+    margin-top: -7px;
+    margin-left:4px;
+    border-radius: 0px;
+}
+.navbar-inverse .navbar-nav>.open>a,.navbar-inverse .navbar-nav>.open>a:hover,.navbar-inverse .navbar-nav>.open>a:focus {
+    color: #fff;
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+.navbar-collapse.in {
+    overflow-y: hidden;
+}
+.dropdown-menu>li>a {
+
+    color: #312867;
+
+}
+.leaflet-bar a, .leaflet-bar a:hover{
+    color: #396AB2;
+}
+#search-panel{
+    position:absolute;
+    z-index: 1048;
+    top: 70px;
+    
+}
+#search-subpanel{
+    right: 0px;
+    position: absolute;
+    padding: 10px 25px 10px 7px;
+    background-color: #efefef;
+    box-shadow: 0 0 10px #b7b7b7;
+    border: 2px solid rgba(0,0,0,0.2);
+    background-clip: padding-box;
+    border-radius: 5px;
+}
+
+@media (max-width: 768px){
+    #landing{
+        float:left;
+        width:100%;
+        margin-left: 0px;
+    }
+    .navbar-nav>li>.dropdown, .navbar-nav>li>a{
+        border-bottom:1px solid #fff;
+    }
+    .navbar-nav>li>.dropdown:hover, .navbar-nav>li>a:hover, .nav .open>a, .nav .open>a:focus, .nav .open>a:hover{
+        border-bottom:1px solid #312867;
+    }
+    .navbar-inverse .navbar-nav .open .dropdown-menu>li>a{
+        color:#312867;
+    }
+    .navbar-inverse .navbar-nav .open .dropdown-menu>li>a:hover{
+        color:#333;
+    }   
+}
