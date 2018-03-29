@@ -5,7 +5,8 @@
   "scripts": {
     "start": "http-server ./html/ -e .htm  -o --cors",
     "install": "grunt imagemin && npm run demo",
-    "demo": "grunt quickPublish && start npm start && grunt watch "
+    "demo": "grunt quickPublish && start npm start && grunt watch ",
+    "compile-sass": "node-sass --output-style compressed -o dest ./dev/css/scss/styles.scss ./dev/css/scss/style.min.css"
   },
   "devDependencies": {
     "autoprefixer": "^6.2.3",
