@@ -1,4 +1,5 @@
 var freightMap = {
+    activeMode : 'none',
 
 	colorStops : [
 		[1, '#EDF1F7'],
@@ -115,254 +116,243 @@ mapboxgl.accessToken = 'pk.eyJ1IjoibXJ1YW5lIiwiYSI6ImNpZ3dnaGF1bjBzNGZ3N201bTQwN
 
 var map = freightMap.makeIt();
 
-var xhr = new XMLHttpRequest();
-xhr.open('GET', 'data/d3/dvrpc_fq_hex_score.geojson', true);
-xhr.onload = function() {
-    if (xhr.status === 200) {
+map.on('load', function(){
+    // Add a new source from our GeoJSON data 
+    map.addSource("hex", {
+        type: "geojson",
+        data: 'data/d3/dvrpc_fq_hex_score.geojson'
+    });
 
-        var data = xhr.responseText;
-        map.on('load', function(){
-            // Add a new source from our GeoJSON data 
-            map.addSource("hex", {
-                type: "geojson",
-                data: JSON.parse(data)
-            });
+    map.addLayer({
+        "id": "employment-half-fill",
+        "type": "fill",
+        "source": "hex",
+        'paint': {
+            "fill-opacity": 0,
+            'fill-color': {
+                property: 'score_emp',
+                stops: freightMap.colorStops
+            },
+        },
+        'filter': 
+                    [
+            "<",
+            "score_emp",
+            3
+        ],
+    });
 
-            map.addLayer({
-                "id": "employment-half-fill",
-                "type": "fill",
-                "source": "hex",
-                'paint': {
-                    "fill-opacity": 0,
-                    'fill-color': {
-                      property: 'score_emp',
-                      stops: freightMap.colorStops
-                    },
-                },
-                'filter': 
-                          [
-                    "<",
-                    "score_emp",
-                    3
-                ],
-            });
+    map.addLayer({
+        "id": "employment-fill",
+        "type": "fill",
+        "source": "hex",
+        'paint': {
+            "fill-opacity": 0,
+            'fill-color': {
+                property: 'score_emp',
+                stops: freightMap.colorStops
+            },
+        },
+        'filter': 
+                    [
+            ">",
+            "score_emp",
+            2
+        ],
+    });
 
-            map.addLayer({
-                "id": "employment-fill",
-                "type": "fill",
-                "source": "hex",
-                'paint': {
-                    "fill-opacity": 0,
-                    'fill-color': {
-                      property: 'score_emp',
-                      stops: freightMap.colorStops
-                    },
-                },
-                'filter': 
-                          [
-                    ">",
-                    "score_emp",
-                    2
-                ],
-            });
+    map.addLayer({
+        "id": "establishment-half-fill",
+        "type": "fill",
+        "source": "hex",
+        'paint': {
+            "fill-opacity": 0,
+            'fill-color': {
+                property: 'score_est',
+                stops: freightMap.colorStops
+            },
+        },
+        'filter': 
+                    [
+            "<",
+            "score_est",
+            3
+        ],
+    });
 
-            map.addLayer({
-                "id": "establishment-half-fill",
-                "type": "fill",
-                "source": "hex",
-                'paint': {
-                    "fill-opacity": 0,
-                    'fill-color': {
-                      property: 'score_est',
-                      stops: freightMap.colorStops
-                    },
-                },
-                'filter': 
-                          [
-                    "<",
-                    "score_est",
-                    3
-                ],
-            });
+    map.addLayer({
+        "id": "establishment-fill",
+        "type": "fill",
+        "source": "hex",
+        'paint': {
+            "fill-opacity": 0,
+            'fill-color': {
+                property: 'score_est',
+                stops: freightMap.colorStops
+            },
+        },
+        'filter': 
+                    [
+            ">",
+            "score_est",
+            2
+        ],
+    });
 
-            map.addLayer({
-                "id": "establishment-fill",
-                "type": "fill",
-                "source": "hex",
-                'paint': {
-                    "fill-opacity": 0,
-                    'fill-color': {
-                      property: 'score_est',
-                      stops: freightMap.colorStops
-                    },
-                },
-                'filter': 
-                          [
-                    ">",
-                    "score_est",
-                    2
-                ],
-            });
+    map.addLayer({
+        "id": "landuse-half-fill",
+        "type": "fill",
+        "source": "hex",
+        'paint': {
+            "fill-opacity": 0,
+            'fill-color': {
+                property: 'score_lu',
+                stops: freightMap.colorStops
+            },
+        },
+        'filter': 
+                    [
+            "<",
+            "score_lu",
+            3
+        ],
+    });
 
-            map.addLayer({
-                "id": "landuse-half-fill",
-                "type": "fill",
-                "source": "hex",
-                'paint': {
-                    "fill-opacity": 0,
-                    'fill-color': {
-                      property: 'score_lu',
-                      stops: freightMap.colorStops
-                    },
-                },
-                'filter': 
-                          [
-                    "<",
-                    "score_lu",
-                    3
-                ],
-            });
+    map.addLayer({
+        "id": "landuse-fill",
+        "type": "fill",
+        "source": "hex",
+        'paint': {
+            "fill-opacity": 0,
+            'fill-color': {
+                property: 'score_lu',
+                stops: freightMap.colorStops
+            },
+        },
+        'filter': 
+                    [
+            ">",
+            "score_lu",
+            2
+        ],
+    });
 
-            map.addLayer({
-                "id": "landuse-fill",
-                "type": "fill",
-                "source": "hex",
-                'paint': {
-                    "fill-opacity": 0,
-                    'fill-color': {
-                      property: 'score_lu',
-                      stops: freightMap.colorStops
-                    },
-                },
-                'filter': 
-                          [
-                    ">",
-                    "score_lu",
-                    2
-                ],
-            });
+    map.addLayer({
+        "id": "industrial-half-fill",
+        "type": "fill",
+        "source": "hex",
+        'paint': {
+            "fill-opacity": 0,
+            'fill-color': {
+                property: 'score_ind',
+                stops: freightMap.colorStops
+            },
+        },
+        'filter': 
+                    [
+            "<",
+            "score_ind",
+            3
+        ],
+    });
 
-            map.addLayer({
-                "id": "industrial-half-fill",
-                "type": "fill",
-                "source": "hex",
-                'paint': {
-                    "fill-opacity": 0,
-                    'fill-color': {
-                      property: 'score_ind',
-                      stops: freightMap.colorStops
-                    },
-                },
-                'filter': 
-                          [
-                    "<",
-                    "score_ind",
-                    3
-                ],
-            });
+    map.addLayer({
+        "id": "industrial-fill",
+        "type": "fill",
+        "source": "hex",
+        'paint': {
+            "fill-opacity": 0,
+            'fill-color': {
+                property: 'score_ind',
+                stops: freightMap.colorStops
+            },
+        },
+        'filter': 
+                    [
+            ">",
+            "score_ind",
+            2
+        ],
+    });
 
-            map.addLayer({
-                "id": "industrial-fill",
-                "type": "fill",
-                "source": "hex",
-                'paint': {
-                    "fill-opacity": 0,
-                    'fill-color': {
-                      property: 'score_ind',
-                      stops: freightMap.colorStops
-                    },
-                },
-                'filter': 
-                          [
-                    ">",
-                    "score_ind",
-                    2
-                ],
-            });
+    // Create layer from source
+    map.addLayer({
+        "id": "facilities-half-fill",
+        "type": "fill",
+        "source": "hex",
+        'paint': {
+            "fill-opacity": 0,
+            'fill-color': {
+                property: 'score_fac',
+                stops: freightMap.colorStops
+            },
+        },
+        'filter': 
+                    [
+            "<",
+            "score_fac",
+            3
+        ],
+    });
 
-            // Create layer from source
-            map.addLayer({
-                "id": "facilities-half-fill",
-                "type": "fill",
-                "source": "hex",
-                'paint': {
-                    "fill-opacity": 0,
-                    'fill-color': {
-                      property: 'score_fac',
-                      stops: freightMap.colorStops
-                    },
-                },
-                'filter': 
-                          [
-                    "<",
-                    "score_fac",
-                    3
-                ],
-            });
+    map.addLayer({
+        "id": "facilities-fill",
+        "type": "fill",
+        "source": "hex",
+        'paint': {
+            "fill-opacity": 0,
+            'fill-color': {
+                property: 'score_fac',
+                stops: freightMap.colorStops
+            },
+        },
+        'filter': 
+                    [
+            ">",
+            "score_fac",
+            2
+        ],
+    });
+    // Create layer from source
+    map.addLayer({
+        "id": "fq-half-fill",
+        "type": "fill",
+        "source": "hex",
+        'paint': {
+            "fill-opacity": 0,
+            'fill-color': {
+                property: 'fq',
+                stops: freightMap.fqStops
+            },
+        },
+        'filter': 
+                    [
+            "<=",
+            "fq",
+            2.85
+        ],
+    });
 
-			map.addLayer({
-                "id": "facilities-fill",
-                "type": "fill",
-                "source": "hex",
-                'paint': {
-                    "fill-opacity": 0,
-                    'fill-color': {
-                      property: 'score_fac',
-                      stops: freightMap.colorStops
-                    },
-                },
-                'filter': 
-                          [
-                    ">",
-                    "score_fac",
-                    2
-                ],
-            });
-            // Create layer from source
-            map.addLayer({
-                "id": "fq-half-fill",
-                "type": "fill",
-                "source": "hex",
-                'paint': {
-                    "fill-opacity": 0,
-                    'fill-color': {
-                      property: 'fq',
-                      stops: freightMap.fqStops
-                    },
-                },
-                'filter': 
-                          [
-                    "<=",
-                    "fq",
-                    2.85
-                ],
-            });
+    map.addLayer({
+        "id": "fq-fill",
+        "type": "fill",
+        "source": "hex",
+        'paint': {
+            "fill-opacity": 0,
+            'fill-color': {
+                property: 'fq',
+                stops: freightMap.fqStops
+            },
+        },
+        'filter': 
+                    [
+            ">",
+            "fq",
+            2.85
+        ],
+    });
 
-            map.addLayer({
-                "id": "fq-fill",
-                "type": "fill",
-                "source": "hex",
-                'paint': {
-                    "fill-opacity": 0,
-                    'fill-color': {
-                      property: 'fq',
-                      stops: freightMap.fqStops
-                    },
-                },
-                'filter': 
-                          [
-                    ">",
-                    "fq",
-                    2.85
-                ],
-            });
+    (freightMap.activeMode !== 'none') ?  freightMap.repaint(freightMap.activeMode) : '';
+    map_exists = true;
 
-            map_exists = true;
-
-        });
-    }
-    else {
-        alert('Request failed.  Returned status of ' + xhr.status);
-    }
-};
-xhr.send();
+});

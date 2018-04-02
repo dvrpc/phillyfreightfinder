@@ -26,6 +26,8 @@ var scrollStory = $('#planning').scrollStory({
         switch (item.data.section) {
             case 'employment':
                 myBubbleChart.legendHandler(item.data.legend);
+                document.getElementById('distribution-map').style.position = 'relative';
+                document.getElementById('distribution-map').style.top = '-771px';
                 break;
         }
 
@@ -66,19 +68,28 @@ var scrollStory = $('#planning').scrollStory({
         }
 
         if(item.index > 8 && item.data.section === 'distribution' && item.data.mode){
+            //make sure employment is gone
+            
+            document.getElementById('employment-bubble').setAttribute('style','position:relative; top:-'+ BUBBLE_PARAMETERS.height +'px;left:-15px;margin-bottom:-'+ (BUBBLE_PARAMETERS.height) +'px;');
+
             if(!map_called){
                 map_called = true;
                 console.log('called by focus', item.index);
+                
                 $.getScript('dev/tools/freight_story/geo-distribution.js', function(){
-                    // freightMap.repaint(item.data.mode);
+                    freightMap.repaint(item.data.mode);
                 });
+            }else if(!map_exists && map_called){
+                freightMap.activeMode = item.data.mode;
             }else if (map_exists) {
+                
                 freightMap.repaint(item.data.mode);
             }
         }
 
         if (item.index > 9 && item.data.section === 'distribution'){
-             document.getElementById('distribution-map').setAttribute('style','position:fixed; top:60px;');
+            document.getElementById('distribution-map').style.position = 'fixed';
+            document.getElementById('distribution-map').style.top = '60px';
         }
 
         
@@ -102,15 +113,16 @@ var scrollStory = $('#planning').scrollStory({
                     map_called = true;
                     $.getScript('dev/tools/freight_story/geo-distribution.js');
                 } else if (activeItem.index >= 9){
-                    console.log('return to fixe map')
-                    document.getElementById('distribution-map').setAttribute('style','position:relative; top:-771px;');
+                    // console.log('return to fixe map')
+                    // document.getElementById('distribution-map').setAttribute('style','position:relative; top:-771px;');
+                    document.getElementById('distribution-map').style.position = 'relative';
+                    document.getElementById('distribution-map').style.top = '-771px';
                 }
                 break;
             case 9: 
                 if(activeItem.index === 8){
-                    document.getElementById('employment-bubble').setAttribute('style','position:relative; top:-'+ BUBBLE_PARAMETERS.height +'px;left:-15px;margin-bottom:-'+ BUBBLE_PARAMETERS.height +'px;');
+                    document.getElementById('employment-bubble').setAttribute('style','position:relative; top:-'+ BUBBLE_PARAMETERS.height +'px;left:-15px;margin-bottom:-'+ (BUBBLE_PARAMETERS.height) +'px;');
                 }
-                break;
             default :
                 break;
 
@@ -119,18 +131,13 @@ var scrollStory = $('#planning').scrollStory({
     itemexitviewport: function(ev, item) {
         activeItem = this.getActiveItem();
         switch (item.index){
-            // return the employee bubble graphic to normal flow 
-            case 7:
-                if(activeItem.index == 8){
-                    document.getElementById('employment-bubble').setAttribute('style','position:relative; top:-'+ (BUBBLE_PARAMETERS.height + 45) +'px;left:-15px;margin-bottom:-'+ (BUBBLE_PARAMETERS.height + 45) +'px;');
-                   
-                   } 
-                break;
             // set map graphic to fixed position
-            // case 8:
-            //     if(activeItem.index == 9){
-            //         document.getElementById('distribution-map').setAttribute('style','position:fixed; top:60px;');
-            //     }  
+            case 8:
+                if(activeItem.index == 9){
+                    document.getElementById('distribution-map').style.position = 'fixed';
+                    document.getElementById('distribution-map').style.top = '60px';
+                    // document.getElementById('distribution-map').setAttribute('style','position:fixed; top:60px;');
+                }  
             default :
                 break;
 
