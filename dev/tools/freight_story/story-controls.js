@@ -11,6 +11,7 @@ var map_called = false;
 // initialization and options for scroll story functionality
 var scrollStory = $('#planning').scrollStory({
     scrollOffset: 75,
+    autoUpdateOffsets: true,
     autoActivateFirstItem: true,
     triggerOffset: getPageHeight(),
     itemfocus: function(ev, item){
@@ -92,15 +93,15 @@ var scrollStory = $('#planning').scrollStory({
             document.getElementById('distribution-map').style.top = '60px';
         }
 
-        
     },
     itemblur: function(ev, item){
 
     },
     updateoffsets: function() {
-       
+        
     },
     itementerviewport: function(ev, item) {
+        this.updateOffsets();
         activeItem = this.getActiveItem();
         switch (item.index){
             // return the employment bubble chart to fixed position on reverse scroll
