@@ -4,8 +4,6 @@ var getPageHeight = function() {
     return winHeight / 2;
 }
 
-
-
 var employment_exists = false;
 var map_exists = false;
 var activeItem = '';
@@ -108,6 +106,11 @@ var scrollStory = $('#planning').scrollStory({
                     document.getElementById('distribution-map').setAttribute('style','position:relative; top:-771px;');
                 }
                 break;
+            case 9: 
+                if(activeItem.index === 8){
+                    document.getElementById('employment-bubble').setAttribute('style','position:relative; top:-'+ BUBBLE_PARAMETERS.height +'px;left:-15px;margin-bottom:-'+ BUBBLE_PARAMETERS.height +'px;');
+                }
+                break;
             default :
                 break;
 
@@ -119,17 +122,15 @@ var scrollStory = $('#planning').scrollStory({
             // return the employee bubble graphic to normal flow 
             case 7:
                 if(activeItem.index == 8){
-                    var textBox = $('#story-08');
-                    var textboxHeight = 660;
-                    document.getElementById('employment-bubble').setAttribute('style','position:relative; top:-'+textboxHeight+'px;left:-15px;margin-bottom:-'+textboxHeight+'px;');
+                    document.getElementById('employment-bubble').setAttribute('style','position:relative; top:-'+ (BUBBLE_PARAMETERS.height + 45) +'px;left:-15px;margin-bottom:-'+ (BUBBLE_PARAMETERS.height + 45) +'px;');
                    
                    } 
                 break;
             // set map graphic to fixed position
-            case 8:
-                if(activeItem.index == 9){
-                    document.getElementById('distribution-map').setAttribute('style','position:fixed; top:60px;');
-                }  
+            // case 8:
+            //     if(activeItem.index == 9){
+            //         document.getElementById('distribution-map').setAttribute('style','position:fixed; top:60px;');
+            //     }  
             default :
                 break;
 

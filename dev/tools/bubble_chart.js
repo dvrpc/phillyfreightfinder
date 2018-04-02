@@ -298,12 +298,12 @@ function createBubbleChart() {
             var bubble_group_labels = inner_svg.selectAll('.bubble_group_label')
             .data(currentLabels);
 
-            var grid_element_half_height = height / (mode.gridDimensions.rows * 2);
+            var label_position_calc = (height < 800) ? height * 0.4 : height * 0.25;
 
             bubble_group_labels.enter().append('text')
                 .attr('class', 'bubble_group_label')
                 .attr('x', function (d) { return mode.gridCenters[mode.isolateKey].x; })
-                .attr('y', function (d) { return mode.gridCenters[mode.isolateKey].y + (grid_element_half_height * 1.4 ); })
+                .attr('y', function (d) { return mode.gridCenters[mode.isolateKey].y + label_position_calc; })
                 .attr('text-anchor', 'middle')                // centre the text
                 .attr('dominant-baseline', 'hanging') // so the text is immediately below the bounding box, rather than above
                 .text(function (d) { return d });   
@@ -1111,9 +1111,8 @@ function ViewMode(button_id, width, height) {
             var cur_row = Math.floor(i / this.gridDimensions.columns);    // indexed starting at zero
             var cur_col = i % this.gridDimensions.columns;    // indexed starting at zero
             var currentCenter = {
-                // x: (2 * cur_col + 1) * (width / (this.gridDimensions.columns * 2)),
                 x: (width * 0.7) - BUBBLE_PARAMETERS.marginRight,
-                y: (2 * cur_row + 1) * (height / (this.gridDimensions.rows * 2))
+                y: (height < 800) ? height * 0.5 : height * 0.4
             };
             this.gridCenters[this.labels[i]] = currentCenter;
         }
@@ -1135,11 +1134,12 @@ function ViewMode(button_id, width, height) {
         this.gridCenters = {};
         this.gridCenters[this.isolateKey] = { 
             x: (width * 0.7) - BUBBLE_PARAMETERS.marginRight, 
-            y: (height * 0.6)
+            y: (height < 800) ? height * 0.6 : height * 0.5
+            // (height * 0.6)
         }
         this.gridCenters["A"] = {
             x: (width * 0.7) - BUBBLE_PARAMETERS.marginRight, 
-            y: (height * 0.4)
+            y: (height < 800) ? height * 0.4 : height * 0.35
         }
         
     }
@@ -1156,7 +1156,8 @@ function ViewMode(button_id, width, height) {
 
 /////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////
-
+// DOM update to account for the size of the graphics
+document.getElementById("js-wage-desc").style.height = BUBBLE_PARAMETERS.height + "px";
 
 // Create a new bubble chart instance
 var myBubbleChart = createBubbleChart();
