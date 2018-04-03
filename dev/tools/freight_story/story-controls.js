@@ -8,6 +8,7 @@ var employment_exists = false;
 var map_exists = false;
 var activeItem = '';
 var map_called = false;
+var map_mode = 'none';
 // initialization and options for scroll story functionality
 var scrollStory = $('#planning').scrollStory({
     scrollOffset: 75,
@@ -82,7 +83,7 @@ var scrollStory = $('#planning').scrollStory({
                     freightMap.repaint(item.data.mode);
                 });
             }else if(!map_exists && map_called){
-                freightMap.activeMode = item.data.mode;
+                map_mode = item.data.mode;
             }else if (map_exists) {
                 
                 freightMap.repaint(item.data.mode);
@@ -102,7 +103,7 @@ var scrollStory = $('#planning').scrollStory({
 
     },
     itementerviewport: function(ev, item) {
-        this.updateOffsets();
+        // this.updateOffsets();
         activeItem = this.getActiveItem();
         switch (item.index){
             // return the employment bubble chart to fixed position on reverse scroll
@@ -153,7 +154,7 @@ window.onbeforeunload = function () {
 }
 
 $('.dotnav li').on('click', function(e){
-    console.log(e);
+
     var storyIndex = $(this).data('story-nav');
 
     scrollStory.index(storyIndex);
@@ -174,7 +175,5 @@ window.addEventListener('scroll', function () {
                 item.classList.remove('white-overlay')
             }
         })
-    }
-
-        
+    }   
 });

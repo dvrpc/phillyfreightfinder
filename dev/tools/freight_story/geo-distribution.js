@@ -352,7 +352,7 @@ map.on('load', function(){
         ],
     });
 
-    (freightMap.activeMode !== 'none') ?  freightMap.repaint(freightMap.activeMode) : '';
+    (map_mode !== 'none') ?  freightMap.repaint(map_mode) : '';
     map_exists = true;
 
 });
