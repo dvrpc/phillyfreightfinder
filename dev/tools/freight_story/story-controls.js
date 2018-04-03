@@ -29,6 +29,7 @@ var scrollStory = $('#planning').scrollStory({
                 myBubbleChart.legendHandler(item.data.legend);
                 document.getElementById('distribution-map').style.position = 'relative';
                 document.getElementById('distribution-map').style.top = '-771px';
+                document.getElementById('distribution-map').style.margin = '0 0 -'+ BUBBLE_PARAMETERS.height +'px 0';
                 break;
         }
 
@@ -98,7 +99,7 @@ var scrollStory = $('#planning').scrollStory({
 
     },
     updateoffsets: function() {
-        
+
     },
     itementerviewport: function(ev, item) {
         this.updateOffsets();
@@ -114,10 +115,9 @@ var scrollStory = $('#planning').scrollStory({
                     map_called = true;
                     $.getScript('dev/tools/freight_story/geo-distribution.js');
                 } else if (activeItem.index >= 9){
-                    // console.log('return to fixe map')
-                    // document.getElementById('distribution-map').setAttribute('style','position:relative; top:-771px;');
                     document.getElementById('distribution-map').style.position = 'relative';
                     document.getElementById('distribution-map').style.top = '-771px';
+                    document.getElementById('distribution-map').style.margin = '0 0 -'+ BUBBLE_PARAMETERS.height +'px 0';
                 }
                 break;
             case 9: 
@@ -137,7 +137,6 @@ var scrollStory = $('#planning').scrollStory({
                 if(activeItem.index == 9){
                     document.getElementById('distribution-map').style.position = 'fixed';
                     document.getElementById('distribution-map').style.top = '60px';
-                    // document.getElementById('distribution-map').setAttribute('style','position:fixed; top:60px;');
                 }  
             default :
                 break;
