@@ -346,7 +346,7 @@
                 -webkit-transition: box-shadow 0.3s ease, background-color 0.3s ease;
                 transition: box-shadow 0.3s ease, background-color 0.3s ease;
             }
-
+            
             .dotnav li a {
                 top: 0;
                 left: 0;
@@ -383,6 +383,7 @@
                 color: #fff;
                 text-indent: 0;
                 line-height: 2;
+                pointer-events: none;
                 opacity: 1;
                 transition: transform 0.3s ease, opacity 0.3s ease, visibility 0s 0.3s ease;
             }
@@ -421,6 +422,40 @@
                 margin-left: -5px;
                 padding: 7px 20px 0;
             }
+            /* dots over dark handling */
+            .dotnav li.white-overlay {
+                background-color: rgba(255,255,255,0.36);
+                box-shadow: 0 0 0 2px rgba(49,40,103,0);
+            }
+
+            .dotnav li+li.new-section.white-overlay::before{
+                border-top: solid 1px rgba(255,255,255,0.36);
+            }
+
+            .dotnav li.white-overlay.current {
+                background-color: transparent;
+                box-shadow: 0 0 0 2px #fff;
+            }
+
+            .dotnav li.white-overlay a:hover,
+            .dotnav li.white-overlay a:focus {
+                background-color: #fff;
+            }
+
+            .dotnav li.white-overlay:hover a::after { 
+                border-right-color: #fff;
+            }
+
+            .dotnav li.white-overlay:hover, 
+            .dotnav li.white-overlay:focus  {
+                background-color: #fff;
+            }
+
+            .dotnav li.white-overlay:hover a {
+                background-color: #fff;
+                color: #312867;
+            }
+
             #fc-splash {
                 position: relative;
                 height: 100vh;

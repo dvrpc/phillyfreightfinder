@@ -159,3 +159,22 @@ $('.dotnav li').on('click', function(e){
     scrollStory.index(storyIndex);
    
 })
+
+window.addEventListener('scroll', function () {
+    var fullElement = document.querySelector('.fc-color-full.inviewport') || document.querySelector('.inviewport .fc-color-full');
+    
+    if(fullElement !== null && fullElement !== ''){
+        var underlay = fullElement.getBoundingClientRect();
+        var navDots = document.querySelectorAll('.dotnav li');
+        navDots.forEach(function(item, i){
+            var dot = item.getBoundingClientRect();
+            if (underlay.top <= dot.top + dot.height && underlay.top + underlay.height > dot.top) {
+                item.classList.add('white-overlay')
+            } else if(item.classList.contains('white-overlay')){
+                item.classList.remove('white-overlay')
+            }
+        })
+    }
+
+        
+});
