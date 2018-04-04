@@ -1157,7 +1157,7 @@ function ViewMode(button_id, width, height) {
 /////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////
 // DOM update to account for the size of the graphics
-document.getElementById("js-wage-desc").style.height = BUBBLE_PARAMETERS.height + "px";
+
 
 // Create a new bubble chart instance
 var myBubbleChart = createBubbleChart();

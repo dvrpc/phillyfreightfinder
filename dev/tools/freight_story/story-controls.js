@@ -3,6 +3,12 @@ var getPageHeight = function() {
     winHeight = $(window).height();
     return winHeight / 2;
 }
+// set the graphic DOM elements correctly
+document.getElementById("employment-bubble").style['margin-bottom'] = '-'+ BUBBLE_PARAMETERS.height + "px";
+document.getElementById("js-wage-desc").style.height = BUBBLE_PARAMETERS.height + "px";
+document.getElementById('distribution-map').style.position = 'relative';
+document.getElementById('distribution-map').style.top = '-771px';
+document.getElementById('distribution-map').style['margin-bottom'] = '-'+ BUBBLE_PARAMETERS.height +'px';
 
 var employment_exists = false;
 var map_exists = false;
