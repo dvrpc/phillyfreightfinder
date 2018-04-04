@@ -20,16 +20,16 @@ var freightMap = {
 	stylesheet : {
 	   "version": 8,
 	   "sources": {
-	       "counties": {
+	       "fq-data": {
 	           "type": "vector",
-	           "url": "https://a.michaelruane.com/data/dvrpc-municipal.json"
+	           "url": "https://a.michaelruane.com/data/dvrpc-freight-story.json"
     	    }
     	},
 
     	"layers": [
     	    {"id": "county-fill",
     	      "type": "fill",
-    	      "source": "counties",
+    	      "source": "fq-data",
     	      "source-layer": "county",
     	      "layout": {},
     	      "paint": {
@@ -45,7 +45,7 @@ var freightMap = {
     	    {
     	        "id": "municipality-outline",
     	        "type": "line",
-    	        "source": "counties",
+    	        "source": "fq-data",
     	        "source-layer": "municipalities",
     	        "paint": {
     	            'line-width': 0.5,
@@ -55,7 +55,7 @@ var freightMap = {
     	    {
     	        "id": "county-outline",
     	        "type": "line",
-    	        "source": "counties",
+    	        "source": "fq-data",
     	        "source-layer": "county",
     	        "paint": {
     	            'line-width': 2.5,
@@ -118,15 +118,16 @@ var map = freightMap.makeIt();
 
 map.on('load', function(){
     // Add a new source from our GeoJSON data 
-    map.addSource("hex", {
-        type: "geojson",
-        data: 'data/d3/dvrpc_fq_hex_score.geojson'
-    });
+    // map.addSource("hex", {
+    //     type: "vector",
+    //     url: 'https://a.michaelruane.com/data/dvrpc-freight-fq-hexbins.json'
+    // });
 
     map.addLayer({
         "id": "employment-half-fill",
         "type": "fill",
-        "source": "hex",
+        "source": "fq-data",
+        'source-layer': 'fq-analysis',
         'paint': {
             "fill-opacity": 0,
             'fill-color': {
@@ -145,7 +146,8 @@ map.on('load', function(){
     map.addLayer({
         "id": "employment-fill",
         "type": "fill",
-        "source": "hex",
+        "source": "fq-data",
+        'source-layer': 'fq-analysis',
         'paint': {
             "fill-opacity": 0,
             'fill-color': {
@@ -164,7 +166,8 @@ map.on('load', function(){
     map.addLayer({
         "id": "establishment-half-fill",
         "type": "fill",
-        "source": "hex",
+        "source": "fq-data",
+        'source-layer': 'fq-analysis',
         'paint': {
             "fill-opacity": 0,
             'fill-color': {
@@ -183,7 +186,8 @@ map.on('load', function(){
     map.addLayer({
         "id": "establishment-fill",
         "type": "fill",
-        "source": "hex",
+        "source": "fq-data",
+        'source-layer': 'fq-analysis',
         'paint': {
             "fill-opacity": 0,
             'fill-color': {
@@ -202,7 +206,8 @@ map.on('load', function(){
     map.addLayer({
         "id": "landuse-half-fill",
         "type": "fill",
-        "source": "hex",
+        "source": "fq-data",
+        'source-layer': 'fq-analysis',
         'paint': {
             "fill-opacity": 0,
             'fill-color': {
@@ -221,7 +226,8 @@ map.on('load', function(){
     map.addLayer({
         "id": "landuse-fill",
         "type": "fill",
-        "source": "hex",
+        "source": "fq-data",
+        'source-layer': 'fq-analysis',
         'paint': {
             "fill-opacity": 0,
             'fill-color': {
@@ -240,7 +246,8 @@ map.on('load', function(){
     map.addLayer({
         "id": "industrial-half-fill",
         "type": "fill",
-        "source": "hex",
+        "source": "fq-data",
+        'source-layer': 'fq-analysis',
         'paint': {
             "fill-opacity": 0,
             'fill-color': {
@@ -259,7 +266,8 @@ map.on('load', function(){
     map.addLayer({
         "id": "industrial-fill",
         "type": "fill",
-        "source": "hex",
+        "source": "fq-data",
+        'source-layer': 'fq-analysis',
         'paint': {
             "fill-opacity": 0,
             'fill-color': {
@@ -279,7 +287,8 @@ map.on('load', function(){
     map.addLayer({
         "id": "facilities-half-fill",
         "type": "fill",
-        "source": "hex",
+        "source": "fq-data",
+        'source-layer': 'fq-analysis',
         'paint': {
             "fill-opacity": 0,
             'fill-color': {
@@ -298,7 +307,8 @@ map.on('load', function(){
     map.addLayer({
         "id": "facilities-fill",
         "type": "fill",
-        "source": "hex",
+        "source": "fq-data",
+        'source-layer': 'fq-analysis',
         'paint': {
             "fill-opacity": 0,
             'fill-color': {
@@ -317,7 +327,8 @@ map.on('load', function(){
     map.addLayer({
         "id": "fq-half-fill",
         "type": "fill",
-        "source": "hex",
+        "source": "fq-data",
+        'source-layer': 'fq-analysis',
         'paint': {
             "fill-opacity": 0,
             'fill-color': {
@@ -336,7 +347,8 @@ map.on('load', function(){
     map.addLayer({
         "id": "fq-fill",
         "type": "fill",
-        "source": "hex",
+        "source": "fq-data",
+        'source-layer': 'fq-analysis',
         'paint': {
             "fill-opacity": 0,
             'fill-color': {
