@@ -10,11 +10,18 @@ document.getElementById('distribution-map').style.position = 'relative';
 document.getElementById('distribution-map').style.top = '-771px';
 document.getElementById('distribution-map').style['margin-bottom'] = '-'+ BUBBLE_PARAMETERS.height +'px';
 
+// update class list based on 12 columns
+function updateClass(element, cols) {
+    var colOffset = 12 - cols;
+    document.getElementById(element).className = 'col-lg-offset-'+ colOffset +' col-lg-'+ cols ;
+}
+
 var employment_exists = false;
 var map_exists = false;
 var activeItem = '';
 var map_called = false;
 var map_mode = 'none';
+var map_section = 'distribution';
 // initialization and options for scroll story functionality
 var scrollStory = $('#planning').scrollStory({
     scrollOffset: 75,
@@ -66,6 +73,7 @@ var scrollStory = $('#planning').scrollStory({
         }
 
         if(item.data.section === 'employment') {
+            
             switch (item.data.mode){
                 case 'color':
                     this.updateOffsets();
@@ -76,9 +84,31 @@ var scrollStory = $('#planning').scrollStory({
             }
         }
 
+        if(item.data.section === 'typologies') {
+            document.getElementById('distribution-map').style.opacity = 1.0;
+            freightMap.repaint(item.data.mode, item.data.section);
+            switch (item.data.mode) {
+                case 'hide':
+                    document.getElementById('distribution-map').style.opacity = 0;
+                    updateClass('map-parent', 8);
+                    
+                    freightMap.fitRegion('distribution-map', false);
+                    break;
+                case 'all':
+                    updateClass('map-parent', 6);
+                    freightMap.fitRegion('distribution-map', true);
+                    break;
+                default:
+                    updateClass('map-parent', 7);
+                    freightMap.fitRegion('distribution-map', true);
+                    break;
+            }
+            
+        }
+
         if(item.index > 8 && item.data.section === 'distribution' && item.data.mode){
             //make sure employment is gone
-            
+            document.getElementById('distribution-map').style.opacity = 1.0;
             document.getElementById('employment-bubble').setAttribute('style','position:relative; top:-'+ BUBBLE_PARAMETERS.height +'px;left:-15px;margin-bottom:-'+ (BUBBLE_PARAMETERS.height) +'px;');
 
             if(!map_called){
@@ -86,13 +116,14 @@ var scrollStory = $('#planning').scrollStory({
                 console.log('called by focus', item.index);
                 
                 $.getScript('dev/tools/freight_story/geo-distribution.js', function(){
-                    freightMap.repaint(item.data.mode);
+                    freightMap.repaint(item.data.mode, item.data.section);
                 });
             }else if(!map_exists && map_called){
                 map_mode = item.data.mode;
+                map_section = item.data.section;
             }else if (map_exists) {
                 
-                freightMap.repaint(item.data.mode);
+                freightMap.repaint(item.data.mode, item.data.section);
             }
         }
 

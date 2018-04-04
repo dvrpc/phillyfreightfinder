@@ -98,18 +98,41 @@ var freightMap = {
 		return map;
 	},
 	
-	repaint: function(mode){
-		for (i = 0; i < this.overlays.length; i++) {
-		    if(this.overlays[i] == mode){
-		      	map.setPaintProperty(mode +'-fill', 'fill-opacity', 0.65);
-		      	map.setPaintProperty(mode +'-half-fill', 'fill-opacity', 0.45);
-		      	
-		    }else{ 
-		    	map.setPaintProperty(this.overlays[i] +'-fill', 'fill-opacity', 0);
-		      	map.setPaintProperty(this.overlays[i] +'-half-fill', 'fill-opacity', 0);
-		    }
-		}
-	}
+	repaint: function(mode, section){
+        if(section === 'distribution') {
+            for (i = 0; i < this.overlays.length; i++) {
+                if(this.overlays[i] == mode){
+                      map.setPaintProperty(mode +'-fill', 'fill-opacity', 0.65);
+                      map.setPaintProperty(mode +'-half-fill', 'fill-opacity', 0.45);
+                      
+                }else{ 
+                    map.setPaintProperty(this.overlays[i] +'-fill', 'fill-opacity', 0);
+                    map.setPaintProperty(this.overlays[i] +'-half-fill', 'fill-opacity', 0);
+                }
+            }
+        } else {
+            for (i = 0; i < this.overlays.length; i++) {
+                map.setPaintProperty(this.overlays[i] +'-fill', 'fill-opacity', 0);
+                map.setPaintProperty(this.overlays[i] +'-half-fill', 'fill-opacity', 0);
+            }
+        }
+        
+    },
+    
+    fitRegion: function(div, aspect){
+        var mapCanvas = document.getElementsByClassName('mapboxgl-canvas')[0];
+        var mapDiv = document.getElementById(div);
+        var parent = mapDiv.parentNode.offsetWidth;
+        var height = (aspect) ? (parent * 0.83) + 'px' : BUBBLE_PARAMETERS.height + 'px';
+        mapDiv.style.width = parent+'px';
+        mapDiv.style.height = height;
+        mapCanvas.style.width = parent+'px';
+         mapCanvas.style.height = height;
+        map.resize();
+        map.fitBounds([
+			[-76.09405517578125, 39.49211914385648], [-74.32525634765625,40.614734298694216]
+		]);
+    }
 }
 
 mapboxgl.accessToken = 'pk.eyJ1IjoibXJ1YW5lIiwiYSI6ImNpZ3dnaGF1bjBzNGZ3N201bTQwN3h6YngifQ.pw1khldm3UDHd56okxc5bQ';
@@ -364,7 +387,7 @@ map.on('load', function(){
         ],
     });
 
-    (map_mode !== 'none') ?  freightMap.repaint(map_mode) : '';
+    (map_mode !== 'none') ?  freightMap.repaint(map_mode, map_section) : '';
     map_exists = true;
 
 });

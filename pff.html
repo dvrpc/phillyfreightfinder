@@ -222,6 +222,7 @@
             top: -771px;
             height: 750px;
             width: 100%;
+            /* transition: opacity 0.3s; */
         }
 
         body {
@@ -1001,7 +1002,7 @@
                             <div class='clearfix'></div>
                         </div>
                         <div class='center-block col-lg-12 col-sm-12' style='float:none;'>
-                            <div class="col-lg-8 pull-right">
+                            <div id="map-parent" class="col-lg-offset-4 col-lg-8">
                                 <div id="distribution-map"></div>
                             </div>
                         </div>
@@ -1073,7 +1074,7 @@
                     <div class='clearfix'></div>
                     <!-- typology section -->
                     <section id="typologies" style="padding-top:60px;">
-                        <div class="story" data-section="typologies" data-mode="none">
+                        <div class="story" data-section="typologies" data-mode="hide">
                             <div class='col-md-12 fc-color-full'>
                                 <div class='center-block col-lg-10 col-sm-12' style='float:none;'>
                                     <div class='col-md-6 col-lg-6'>
@@ -1090,7 +1091,7 @@
                         <div id="typologies-narrative" class='center-block col-lg-10 col-sm-12' style='float:none;'>
                             <div class="row">
                                 <div class="col-sm-12">
-                                    <div class="story" data-section="typologies" data-mode="establishment">
+                                    <div class="story" data-section="typologies" data-mode="all">
                                         <div class="card row">
                                             <div class="col-lg-4 col-sm-12">
                                                 <h4>Typologies Overview</h4>
@@ -1098,10 +1099,10 @@
                                             </div>
                                             <div class="col-sm-12">
                                                 <div id="typologies-squares" class="">
-                                                    <div class="typo-sq typo-ig"><img src="/dev/tools/freight_story/images/IG_1.svg" alt="Image description" /><figcaption>International Gateway</figcaption></div>
-                                                    <div class="typo-sq typo-hi"><img src="/dev/tools/freight_story/images/HI_1.svg" alt="Image description" /><figcaption>Heavy Industrial</figcaption></div>
-                                                    <div class="typo-sq typo-dc"><img src="/dev/tools/freight_story/images/DC_1.svg" alt="Image description" /><figcaption>Distribution & Logistics</figcaption></div>
-                                                    <div class="typo-sq typo-ht"><img src="/dev/tools/freight_story/images/HT_2.svg" alt="Image description" /><figcaption>High Tech Manufacturing</figcaption></div>
+                                                    <div class="typo-sq typo-ig"><img src="/dev/tools/freight_story/images/IG_1.svg" alt="Image description" /><figcaption>International <br>Gateway</figcaption></div>
+                                                    <div class="typo-sq typo-hi"><img src="/dev/tools/freight_story/images/HI_1.svg" alt="Image description" /><figcaption>Heavy <br>Industrial</figcaption></div>
+                                                    <div class="typo-sq typo-dc"><img src="/dev/tools/freight_story/images/DC_1.svg" alt="Image description" /><figcaption>Distribution & <br>Logistics</figcaption></div>
+                                                    <div class="typo-sq typo-ht"><img src="/dev/tools/freight_story/images/HT_2.svg" alt="Image description" /><figcaption>High Tech <br>Manufacturing</figcaption></div>
                                                     <div class="typo-sq typo-lm"><img src="/dev/tools/freight_story/images/LM_1.svg" alt="Image description" /><figcaption>Local Manufacturing & Distribution</figcaption></div>
                                                 </div>
                                             </div>
