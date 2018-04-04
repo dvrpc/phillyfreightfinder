@@ -173,7 +173,7 @@ window.addEventListener('scroll', function () {
     if(fullElement !== null && fullElement !== ''){
         var underlay = fullElement.getBoundingClientRect();
         var navDots = document.querySelectorAll('.dotnav li');
-        navDots.forEach(function(item, i){
+        [].forEach.call(navDots, function(item, i){
             var dot = item.getBoundingClientRect();
             if (underlay.top <= dot.top + dot.height && underlay.top + underlay.height > dot.top) {
                 item.classList.add('white-overlay')
@@ -183,3 +183,4 @@ window.addEventListener('scroll', function () {
         })
     }   
 });
+

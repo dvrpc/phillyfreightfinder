@@ -581,6 +581,83 @@
                 padding-bottom: 5px;
                 margin-bottom: 5px;
             }
+
+            /* center typologies */
+            #typologies-squares {
+                padding-left: 5px;
+            }
+            
+            .typo-sq figcaption {
+                text-align: center;
+                font-weight: bold;
+                padding: 5px;
+                background-color:#545454;
+                outline: 2px solid;
+                color: #fff;
+                min-height: 65px;
+                border-top:  5px solid #fff;
+            }
+            .typo-sq img {
+                width: 100%;
+                background-color: #fff;
+                outline: 2px solid;
+                border-width: 0px;
+            }
+            .typo-ig figcaption, 
+            .typo-ig img {
+                background-color: #f4bd48;
+                border-color: #f4bd48;
+                outline-color: #f4bd48;
+                color: #fff;
+                text-shadow: 0px 0px 7px rgba(141, 49, 12, 0.75);
+            }
+
+            .typo-hi figcaption, 
+            .typo-hi img {
+                background-color: #ef7e51;
+                border-color: #ef7e51;
+                outline-color: #ef7e51;
+                color: #fff;
+                text-shadow: 0px 0px 7px rgba(136, 50, 114, 0.75);
+            }
+
+            .typo-dc figcaption, 
+            .typo-dc img {
+                background-color: #ca4b66;
+                border-color: #ca4b66;
+                outline-color: #ca4b66;
+                color: #fff;
+                text-shadow: 0px 0px 7px rgba(136, 50, 114, 0.75);
+            }
+
+            .typo-ht figcaption, 
+            .typo-ht img {
+                background-color: #883272;
+                border-color: #883272;
+                outline-color: #883272;
+                color: #fff;
+            }
+
+            .typo-lm figcaption, 
+            .typo-lm img {
+                background-color: #312867;
+                border-color: #312867;
+                outline-color: #312867;
+                color: #fff;
+            }
+            
+            .typo-sq img {
+                background-color: #fff;
+            }
+            #typologies-squares .typo-sq {
+                width: 20%;
+                padding-right: 10px;
+                float: left;
+            }
+            .typo-half {
+                width: 50%;
+                padding-right: 15px;
+            }
                 
             .aligner {
                 display: flex;
@@ -670,7 +747,7 @@
                     <li data-story-nav="13"><a href="#">Industrial development</a></li>
                     <li data-story-nav="14"><a href="#">Intermodal freight facilities</a></li>
                     <li data-story-nav="15"><a href="#">Regional Freight Quotient</a></li>
-                    <li data-story-nav="16"><a href="#">Hey Fuck You Robert</a></li>
+                    <li data-story-nav="17"><a href="#">Hey Fuck You Robert</a></li>
                 </ul>
             </div>
 
@@ -1000,17 +1077,107 @@
                             <div class='col-md-12 fc-color-full'>
                                 <div class='center-block col-lg-10 col-sm-12' style='float:none;'>
                                     <div class='col-md-6 col-lg-6'>
-                                        <h2 style="color:#fff;">3. How can we classify freight centers?</h2>
-                                        <p>Understanding the geographic distribution of freight in the Delaware Valley is key to identifying the region’s Freight Centers.</p>
-                                        <p>While freight employment is a key factor in identifying freight activity, understanding the regional freight economy’s distribution requires additional metrics to help identify key clusters of activity.</p> 
-                                        <p>Let’s explore the spatial distribution of several key indicators that help us to predict the level of freight activity throughout the region.</p>
-                                        <br/>
+                                        <h2 style="color:#fff;">3. Classification of Freight Centers</h2>
+                                        <p>The core function of Freight Centers is to provide a better understanding of the land use and economic development patterns as they relate to freight activity in the region. The classification into specific typologies provides another layer of detail to that designation.</p>
+                                        <p>Through the typologies we can better understand transportation infrastructure requirements, land use/land development patterns, building types, employment characteristics, and potential community impacts that may exist at each freight center type. </p>
                                         <br/>
                                         <br/>
                                     </div>
                                 </div>
                             </div>
                             <div class='clearfix'></div>
+                        </div>
+                        <div id="typologies-narrative" class='center-block col-lg-10 col-sm-12' style='float:none;'>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="story" data-section="typologies" data-mode="establishment">
+                                        <div class="card row">
+                                            <div class="col-lg-4 col-sm-12">
+                                                <h4>Typologies Overview</h4>
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas volutpat magna at tortor pretium ultricies. Pellentesque a molestie odio. Maecenas sodales metus ut orci accumsan pellentesque. </p>
+                                            </div>
+                                            <div class="col-sm-12">
+                                                <div id="typologies-squares" class="">
+                                                    <div class="typo-sq typo-ig"><img src="/dev/tools/freight_story/images/IG_1.svg" alt="Image description" /><figcaption>International Gateway</figcaption></div>
+                                                    <div class="typo-sq typo-hi"><img src="/dev/tools/freight_story/images/HI_1.svg" alt="Image description" /><figcaption>Heavy Industrial</figcaption></div>
+                                                    <div class="typo-sq typo-dc"><img src="/dev/tools/freight_story/images/DC_1.svg" alt="Image description" /><figcaption>Distribution & Logistics</figcaption></div>
+                                                    <div class="typo-sq typo-ht"><img src="/dev/tools/freight_story/images/HT_2.svg" alt="Image description" /><figcaption>High Tech Manufacturing</figcaption></div>
+                                                    <div class="typo-sq typo-lm"><img src="/dev/tools/freight_story/images/LM_1.svg" alt="Image description" /><figcaption>Local Manufacturing & Distribution</figcaption></div>
+                                                </div>
+                                            </div>
+                                        </div> 
+                                    </div>
+                                </div>  
+
+                                <div class='col-lg-5 col-sm-12' style="z-index:10;">
+                                    <div class="story " data-section="typologies" data-mode="international">
+                                        <div class="card">
+                                            <h4>International Gateway</h4>
+                                            <p>An International Gateway Freight Center is a core node in the regional and national goods movement system and serves as a connection to the global market. These centers are focused around a single or multiple maritime or air port facilities. </p>
+                                        </div>
+                                        <div class="details">
+                                            <p>The economic activity and land development at these facilities is directly related to supporting trade and distribution of import/export goods through the related port terminal(s). Building size and distribution is often varied but commodity specific.</p>
+                                        </div>
+                                        <div class="card row">
+                                            <div class="col-sm-6 typo-sq"><img src="/dev/tools/freight_story/images/IG_1.svg" alt="Image description" /></div>
+                                            <div class="col-sm-6 typo-sq"><img src="/dev/tools/freight_story/images/IG_2.svg" alt="Image description" /></div>
+                                        </div>
+                                    </div> 
+                                    <div class="story " data-section="typologies" data-mode="industrial">
+                                        <div class="card">
+                                            <h4>Heavy Industrial</h4>
+                                            <p>A Heavy Manufacturing Freight Center is a node focused around heavy industrial land-uses involved in the manufacturing of goods. These centers are served by freight rail access and often have additional access to a port terminal allowing for the movement of bulk or break-bulk source materials. </p>
+                                        </div>
+                                        <div class="details">
+                                            <p>Employment and development at these centers is focused around manufacturing. The mix of building development is highly dependent on manufacturing processes but often includes dedicated power plants, old industrial buildings, and tank farms.</p>
+                                        </div>
+                                        <div class="card row">
+                                            <div class="col-sm-6 typo-sq"><img src="/dev/tools/freight_story/images/HI_1.svg" alt="Image description" /></div>
+                                            <div class="col-sm-6 typo-sq"><img src="/dev/tools/freight_story/images/HI_2.svg" alt="Image description" /></div>
+                                        </div>
+                                    </div>  
+                                    <div class="story " data-section="typologies" data-mode="distribution">
+                                        <div class="card">
+                                            <h4>Distribution & Logisitics</h4>
+                                            <p>A Distribution and Logistics Freight Center is a node with a high concentration of regional and national serving distribution and logistics businesses. These centers are often located around key highway interchanges with access to both port gateways and consumer markets.</p>
+                                        </div>
+                                        <div class="details">
+                                            <p>Employment and development at the center is primarily third-party logistics providers, national retail chain warehousing and distribution, e-commerce fulfillment centers, as well as supporting services such as truck service, tires, and leasing. Building development is a combination of large footprint or high ceiling modern warehouses as well as small footprint cross-dock facilities.</p>
+                                        </div>
+                                        <div class="card row">
+                                            <div class="col-sm-6 typo-sq"><img src="/dev/tools/freight_story/images/DC_1.svg" alt="Image description" /></div>
+                                            <div class="col-sm-6 typo-sq"><img src="/dev/tools/freight_story/images/DC_2.svg" alt="Image description" /></div>
+                                        </div>
+                                    </div>    
+                                    <div class="story " data-section="typologies" data-mode="high-tech">
+                                        <div class="card">
+                                            <h4>High Tech Manufacturing</h4>
+                                            <p>A High Tech Manufacturing Freight Center is a node focused around advanced manufacturing land-uses and businesses. These centers rely less on major freight rail and maritime facilities but are well located relative to highway facilities.</p>
+                                        </div>
+                                        <div class="details">
+                                            <p>Employment and development at these centers is primarily in bio-pharmaceuticals, electronic components, advanced chemical manufacturing, with a mix of research and development activity. This center typology is often small footprint, flex buildings with an occasional mix of office facilities and residential development in close proximity.</p>
+                                        </div>
+                                        <div class="card row">
+                                            <div class="col-sm-6 typo-sq"><img src="/dev/tools/freight_story/images/HT_1.svg" alt="Image description" /></div>
+                                            <div class="col-sm-6 typo-sq"><img src="/dev/tools/freight_story/images/HT_2.svg" alt="Image description" /></div>
+                                        </div>
+                                    </div>  
+                                    <div class="story " data-section="typologies" data-mode="local">
+                                        <div class="card">
+                                            <h4>Local Manufacturing and Distribution Center</h4>
+                                            <p>A Local Manufacturing and Distribution Center is a node focused around locally serving small manufacturing and distribution facilities. These are less dependent on prime location near interstate interchanges but are well served by smaller highway facilities and proximity to consumer populations.</p>
+                                        </div>
+                                        <div class="details">
+                                            <p>Employment and development at these centers is primarily in local food and beverage distribution, building and contractor supply, and small scale manufacturing. This center typology is often comprised of densely developed, smaller footprint warehouses and industrial facilities.</p>
+                                        </div>
+                                        <div class="card row">
+                                            <div class="col-sm-6 typo-sq"><img src="/dev/tools/freight_story/images/LM_1.svg" alt="Image description" /></div>
+                                            <div class="col-sm-6 typo-sq"><img src="/dev/tools/freight_story/images/LM_2.svg" alt="Image description" /></div>
+                                        </div>
+                                    </div>  
+                                                                        
+                                </div>
+                            </div>
                         </div>
                     </section>
                 </section>              
