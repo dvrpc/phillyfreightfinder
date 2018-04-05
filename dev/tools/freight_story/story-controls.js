@@ -95,7 +95,7 @@ var scrollStory = $('#planning').scrollStory({
                     freightMap.fitRegion('distribution-map', false);
                     break;
                 case 'all':
-                    updateClass('map-parent', 6);
+                    updateClass('map-parent', 7);
                     freightMap.fitRegion('distribution-map', true);
                     break;
                 default:
