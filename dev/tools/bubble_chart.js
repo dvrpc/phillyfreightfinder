@@ -670,8 +670,8 @@ function createBubbleChart() {
         $('#svg-story-legend').append(legendCopy);
 
         var newLegend = d3.select('#svg-story-legend');
-
-        newLegend.selectAll('.g-legend-container')
+        console.log('x:',legX, 'y:', legY)
+        newLegend.selectAll('.g-legend')
             .attr('opacity', 1)
             .attr('transform', 'translate(75,125)');
 
