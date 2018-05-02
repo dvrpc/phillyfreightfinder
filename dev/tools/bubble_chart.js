@@ -519,9 +519,9 @@ function createBubbleChart() {
                 .tickFormat(function(d) { return "$" + format(d); }))
             .select(".domain").remove()
         
-        function _firstTickLocation() {
+        function _nTickLocation(n) {
             var labelXAxis = document.getElementsByClassName('axis axis--x x-wage-label');
-            var children = labelXAxis[0].children[0].attributes.transform.nodeValue
+            var children = labelXAxis[0].children[n].attributes.transform.nodeValue
             var thisXPos = children.substring(10, children.lastIndexOf(","));
             
             //return split string
@@ -531,7 +531,7 @@ function createBubbleChart() {
 
         inner_svg.append("text")
             .attr("class", "axis axis--x x-wage-header")
-            .attr("transform", "translate(" + _firstTickLocation() +", " + height * 0.85 + ")")
+            .attr("transform", "translate(" + _nTickLocation(3) +", " + height * 0.90 + ")")
             .attr("text-anchor", "end")
             .attr("dy", "0.4em")
             .text("Average Annual Wage");
@@ -670,7 +670,7 @@ function createBubbleChart() {
         $('#svg-story-legend').append(legendCopy);
 
         var newLegend = d3.select('#svg-story-legend');
-        console.log('x:',legX, 'y:', legY)
+
         newLegend.selectAll('.g-legend')
             .attr('opacity', 1)
             .attr('transform', 'translate(75,125)');
@@ -680,7 +680,12 @@ function createBubbleChart() {
             .attr("class", "g-legend wage-legend")
             .attr("opacity", 0)
             .attr('transform', 'translate('+ (width - 250) +', '+ (height) +')');
-
+        
+        wage_legend.append('text')
+            .attr('class','g-legend-title')
+            .attr('transform','translate(-'+ smCircle3 +',-'+ (smCircle3 + 15) +')')
+            .text('Circles sized by number of employees');
+            
         var legendWageCircles = wage_legend.append('g');
 
         legendWageCircles.append('circle')
@@ -766,6 +771,35 @@ function createBubbleChart() {
                 .text(key);
             
             legend_count++;
+        }
+
+        //build the wage color legend
+        var wage_color_legend = inner_svg.append('g')
+            .attr('class', 'g-legend wage-legend')
+            .attr('opacity', 0)
+            .attr('transform',  'translate('+ (width * 0.05) +', '+ (height) +')');
+
+        wage_color_legend.append('text')
+            .attr('class','g-legend-title')
+            .attr('transform','translate(-10,-'+ (smCircle3 + 15) +')')
+            .text('Color represents lifecycle component of sub-sector ');
+
+        var wage_count = 0
+        for(var key in legend_colors) {
+            var offset = (wage_count < 2) ? { x: 10 , y: (wage_count * 25) - 15 } : { x: 160 , y: ((wage_count-2) * 25) -15 };
+            wage_color_legend.append('circle')
+                .attr('r', 10)
+                .attr('cx', offset.x)
+                .attr('cy', offset.y)
+                .attr('fill', function (d) { return fillColorScale(legend_colors[key]); })
+                .attr('stroke-width', 0.5)
+                .attr('stroke', function (d) { return d3.rgb(fillColorScale(legend_colors[key])).darker(); });
+            
+            wage_color_legend.append('text')
+                .attr('transform', 'translate('+ (offset.x + 20) +','+ (offset.y + 4) +')')
+                .text(key);
+            
+            wage_count++;
         }
 
     }
@@ -1048,14 +1082,20 @@ function createBubbleChart() {
 
         var activeLegends = mode.split(',');
 
+        var titleSwitch = function(id, opacity) {
+            d3.selectAll(id)
+                .style('opacity', opacity);
+        }
         var legendSwitch =  function (cla, opacity) {
             inner_svg.selectAll(cla)
                 .transition()
                 .duration(500)
                 .attr("opacity", opacity);
+            titleSwitch(cla + '-header', opacity)
         }
         if (mode === 'none') {
             legendSwitch('.g-legend', 0)
+            titleSwitch('size-legend-header', 1)
             return;
         }
 

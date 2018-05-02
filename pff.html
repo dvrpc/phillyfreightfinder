@@ -127,7 +127,24 @@
         #bubble_tooltip_list {
             position: fixed;
         }
-
+        .chart-title {
+            text-align: right;
+            top: 30px;
+            position: absolute;
+        }
+        .b-title {
+            right: 30px;
+        }
+        .w-title {
+            left: 30px;
+        }
+        .chart-title h4 {
+            font-weight: 100;
+            line-height: 1.25;
+            padding-bottom: 4px;
+            border-bottom: 1px dotted;
+            text-transform: uppercase;
+        }
 
         /* tooltip */
         .g-tip-up {
@@ -197,7 +214,7 @@
             stroke: #999;
         }
         .wage-chart {
-            z-index: 1;
+            /* z-index: 1; */
             margin-bottom: -45px;
             padding-top: 60px;
             /*margin-top: -60px;*/
@@ -919,7 +936,7 @@
                             </div>
                         </div>
                        <div id="js-wage-desc" class="story wage-chart pull-right col-lg-4 col-sm-12 no-mouse" data-section="employment" data-mode="wage" data-legend="wage">
-                            <p>When charted by average wage we see that many freight sector industries have a higher average annual wage. Additionally, these freight sectors are often family sustaining, having a wage greater than the region’s living wage for a family of three.</p>
+                            <p>When charted by average wage we see that many freight sector industries have a higher average annual wage. Additionally, <b>these freight sectors are often family sustaining</b>, having a wage greater than the region’s living wage for a family of three.</p>
                         </div>
                         <!-- chart column for bubble diagram -->
                         <!-- <div id="chart" class="col-lg-8 col-sm-12"> -->
@@ -967,6 +984,12 @@
                                 </div>
                             </div>
                             <div id="g-employment-bubble">
+                                <div id="g-employment-title" class="chart-title b-title size-legend-header">
+                                    <h4>Employment by Industry Sub-sector</h4>
+                                </div>
+                                <div id="g-wage-title" class="chart-title w-title wage-legend-header" style="opacity:0">
+                                        <h4>Average Wage by Sub-sector</h4>
+                                    </div>
                             </div> 
 
                         <!-- <div class='clearfix'></div>  -->
