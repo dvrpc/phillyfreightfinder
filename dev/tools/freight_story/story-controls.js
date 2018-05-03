@@ -22,6 +22,8 @@ var activeItem = '';
 var map_called = false;
 var map_mode = 'none';
 var map_section = 'distribution';
+var distNarrative = document.getElementById('distribution-narrative').offsetHeight;
+
 // initialization and options for scroll story functionality
 var scrollStory = $('#planning').scrollStory({
     scrollOffset: 75,
@@ -162,6 +164,13 @@ var scrollStory = $('#planning').scrollStory({
                 if(activeItem.index === 8){
                     document.getElementById('employment-bubble').setAttribute('style','position:relative; top:-'+ BUBBLE_PARAMETERS.height +'px;left:-15px;margin-bottom:-'+ (BUBBLE_PARAMETERS.height) +'px;');
                 }
+            case 18:
+                if(activeItem.index < 18){
+                    document.getElementById('distribution-map').style.position = 'relative';
+                    document.getElementById('distribution-map').style.top = (distNarrative - BUBBLE_PARAMETERS.height)+'px';
+                    document.getElementById('distribution-map').style.margin = '0 0 -'+ BUBBLE_PARAMETERS.height +'px 0';
+                }
+                break;
             default :
                 break;
 
