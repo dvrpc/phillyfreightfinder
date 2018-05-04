@@ -676,6 +676,45 @@
             .no-mouse {
                 pointer-events: none;
             }
+
+            /* freight center typology styles */
+            .typology-row {
+                height: 80px;
+                display: table;
+                margin-bottom: 15px;
+            }
+            .typology-row p {
+                display: table-cell;
+                vertical-align: middle;
+            }
+            .typology-row span{
+                font-weight: 600;
+                font-size: 1.12em;
+            }
+            .typo-icon {
+                width: 80px;
+                margin-right: 25px;
+                float: left;
+            }
+            .ig-icon svg {
+                fill: #f4bd48;
+            }
+
+            .hi-icon use {
+                fill: #ef7e51;
+            }
+
+            .dc-icon use {
+                fill: #ca4b66;
+            }
+
+            .ht-icon use {
+                fill: #883272;
+            }
+
+            .lm-icon use {
+                fill: #312867;
+            }
         </style> 
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
@@ -1140,7 +1179,20 @@
                                             <p>An International Gateway Freight Center is a core node in the regional and national goods movement system and serves as a connection to the global market. These centers are focused around a single or multiple maritime or air port facilities. </p>
                                         </div>
                                         <div class="details">
-                                            <p>The economic activity and land development at these facilities is directly related to supporting trade and distribution of import/export goods through the related port terminal(s). Building size and distribution is often varied but commodity specific.</p>
+                                            <div class="typology-row ig-icon">
+                                                <svg id="employment-icon" class="typo-icon" viewBox="0 0 94.95 94.95"><g id="employment"><path d="M47.48,0A47.48,47.48,0,1,0,95,47.48,47.48,47.48,0,0,0,47.48,0Zm-18,24.5,2.89-.39c.28-5.31,4.11-9.86,8.11-12.11V23h3V11.51c0-1.22,1.44-3.51,2.67-3.51h3.44c1.22,0,1.89,2.29,1.89,3.51V23h2V12.1a13.56,13.56,0,0,1,8,12l3,.39v3.42c-11,3.62-23,3.62-35,0ZM79.75,66l-1.14,6.25C78.41,73.49,77.25,74,76,74H19.49a2.33,2.33,0,0,1-2.57-1.71l-1.14-6.48a2.46,2.46,0,0,1,1.73-2.71l12.24-3.84c8.31-2.64,9.49-8.2,9.65-10C37,47,36.2,43.35,35.93,41h0c-.33-.09-1.94.92-2.78-3.83-.49-2.77,0-3.79.51-4.17a59.54,59.54,0,0,0,14.14,1.71A59.46,59.46,0,0,0,61.9,33c.51.38,1,1.41.52,4.18C61.58,41.94,60,40.94,59.63,41h0c-.27,2.34-1.08,5.95-3.47,8.28.16,1.78,1.34,7.37,9.64,10L78,63.21A2.6,2.6,0,0,1,79.75,66Z"/></g></svg>
+                                                <p class="">
+                                                    <span>Employment and Development</span><br/>
+                                                    directly related to supporting trade and distribution of import/export goods through the related port terminal(s)
+                                                </p>
+                                            </div>
+                                            <div class="typology-row ig-icon">
+                                                <svg id="warehouse-icon" class="typo-icon" viewBox="0 0 94.95 94.95"><g id="warehouse"><rect x="35" y="24" width="26" height="5"/><path d="M25,67H70V35H25ZM56,40h3v3h3V40h4V51H56Zm0,14h3v2h3V54h4V64H56ZM42,40h4v3h4V40h3V51H42Zm0,14h4v2h4V54h3V64H42ZM30,54h3v2h3V54h4V64H30Z"/><path d="M47.48,0A47.48,47.48,0,1,0,95,47.48,47.48,47.48,0,0,0,47.48,0ZM13,73V67h5V22l30-8.22L78,22V67h4v6Z"/></g></svg>
+                                                <p class="">
+                                                    <span>Building Size and Distribution</span><br/>
+                                                    often varied but commodity specific, related to import/export activity
+                                                </p>
+                                            </div>
                                         </div>
                                         <div class="card row">
                                             <div class="col-sm-6 typo-sq"><img src="/dev/tools/freight_story/images/IG_1.svg" alt="Image description" /></div>
@@ -1153,7 +1205,24 @@
                                             <p>A Heavy Manufacturing Freight Center is a node focused around heavy industrial land-uses involved in the manufacturing of goods. These centers are served by freight rail access and often have additional access to a port terminal allowing for the movement of bulk or break-bulk source materials. </p>
                                         </div>
                                         <div class="details">
-                                            <p>Employment and development at these centers is focused around manufacturing. The mix of building development is highly dependent on manufacturing processes but often includes dedicated power plants, old industrial buildings, and tank farms.</p>
+                                            <div class="typology-row hi-icon">
+                                                <svg class="typo-icon" viewBox="0 0 94.95 94.95">
+                                                    <use href="#employment"></use>
+                                                </svg>
+                                                <p class="">
+                                                    <span>Employment and Development</span><br/>
+                                                    focused around manufacturing and production sectors
+                                                </p>
+                                            </div>
+                                            <div class="typology-row hi-icon">
+                                                <svg class="typo-icon" viewBox="0 0 94.95 94.95">
+                                                    <use href="#warehouse"></use>
+                                                </svg>
+                                                <p class="">
+                                                    <span>Building Size and Distribution</span><br/>
+                                                    highly dependent on manufacturing processes but often includes dedicated power plants, old industrial buildings, and tank farms
+                                                </p>
+                                            </div>
                                         </div>
                                         <div class="card row">
                                             <div class="col-sm-6 typo-sq"><img src="/dev/tools/freight_story/images/HI_1.svg" alt="Image description" /></div>
@@ -1166,7 +1235,24 @@
                                             <p>A Distribution and Logistics Freight Center is a node with a high concentration of regional and national serving distribution and logistics businesses. These centers are often located around key highway interchanges with access to both port gateways and consumer markets.</p>
                                         </div>
                                         <div class="details">
-                                            <p>Employment and development at the center is primarily third-party logistics providers, national retail chain warehousing and distribution, e-commerce fulfillment centers, as well as supporting services such as truck service, tires, and leasing. Building development is a combination of large footprint or high ceiling modern warehouses as well as small footprint cross-dock facilities.</p>
+                                            <div class="typology-row dc-icon">
+                                                <svg class="typo-icon" viewBox="0 0 94.95 94.95">
+                                                    <use href="#employment"></use>
+                                                </svg>
+                                                <p class="">
+                                                    <span>Employment and Development</span><br/>
+                                                    primarily third-party logistics providers, national retail chain warehousing and distribution, e-commerce fulfillment centers, as well as supporting services such as truck service, tires, and leasing
+                                                </p>
+                                            </div>
+                                            <div class="typology-row dc-icon">
+                                                <svg class="typo-icon" viewBox="0 0 94.95 94.95">
+                                                    <use href="#warehouse"></use>
+                                                </svg>
+                                                <p class="">
+                                                    <span>Building Size and Distribution</span><br/>
+                                                    a combination of large footprint and/or high ceiling modern warehouses as well as small footprint cross-dock facilities
+                                                </p>
+                                            </div>    
                                         </div>
                                         <div class="card row">
                                             <div class="col-sm-6 typo-sq"><img src="/dev/tools/freight_story/images/DC_1.svg" alt="Image description" /></div>
@@ -1179,7 +1265,24 @@
                                             <p>A High Tech Manufacturing Freight Center is a node focused around advanced manufacturing land-uses and businesses. These centers rely less on major freight rail and maritime facilities but are well located relative to highway facilities.</p>
                                         </div>
                                         <div class="details">
-                                            <p>Employment and development at these centers is primarily in bio-pharmaceuticals, electronic components, advanced chemical manufacturing, with a mix of research and development activity. This center typology is often small footprint, flex buildings with an occasional mix of office facilities and residential development in close proximity.</p>
+                                            <div class="typology-row ht-icon">
+                                                <svg class="typo-icon" viewBox="0 0 94.95 94.95">
+                                                    <use href="#employment"></use>
+                                                </svg>
+                                                <p class="">
+                                                    <span>Employment and Development</span><br/>
+                                                    primarily in bio-pharmaceuticals, electronic components, advanced chemical manufacturing, with a mix of research and development activity
+                                                </p>
+                                            </div>
+                                            <div class="typology-row ht-icon">
+                                                <svg class="typo-icon" viewBox="0 0 94.95 94.95">
+                                                    <use href="#warehouse"></use>
+                                                </svg>
+                                                <p class="">
+                                                    <span>Building Size and Distribution</span><br/>
+                                                    often small footprint, flex buildings with an occasional mix of office facilities and residential development in close proximity
+                                                </p>
+                                            </div>    
                                         </div>
                                         <div class="card row">
                                             <div class="col-sm-6 typo-sq"><img src="/dev/tools/freight_story/images/HT_1.svg" alt="Image description" /></div>
@@ -1192,7 +1295,24 @@
                                             <p>A Local Manufacturing and Distribution Center is a node focused around locally serving small manufacturing and distribution facilities. These are less dependent on prime location near interstate interchanges but are well served by smaller highway facilities and proximity to consumer populations.</p>
                                         </div>
                                         <div class="details">
-                                            <p>Employment and development at these centers is primarily in local food and beverage distribution, building and contractor supply, and small scale manufacturing. This center typology is often comprised of densely developed, smaller footprint warehouses and industrial facilities.</p>
+                                            <div class="typology-row lm-icon">
+                                                <svg class="typo-icon" viewBox="0 0 94.95 94.95">
+                                                    <use href="#employment"></use>
+                                                </svg>
+                                                <p class="">
+                                                    <span>Employment and Development</span><br/>
+                                                    primarily in local food and beverage distribution, building and contractor supply, and small scale manufacturing
+                                                </p>
+                                            </div>
+                                            <div class="typology-row lm-icon">
+                                                <svg class="typo-icon" viewBox="0 0 94.95 94.95">
+                                                    <use href="#warehouse"></use>
+                                                </svg>
+                                                <p class="">
+                                                    <span>Building Size and Distribution</span><br/>
+                                                    often comprised of densely developed, smaller footprint warehouses and industrial facilities
+                                                </p>
+                                            </div>
                                         </div>
                                         <div class="card row">
                                             <div class="col-sm-6 typo-sq"><img src="/dev/tools/freight_story/images/LM_1.svg" alt="Image description" /></div>
