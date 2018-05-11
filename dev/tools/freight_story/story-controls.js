@@ -3,18 +3,30 @@ var getPageHeight = function() {
     winHeight = $(window).height();
     return winHeight / 2;
 }
-// set the graphic DOM elements correctly
-document.getElementById("employment-bubble").style['margin-bottom'] = '-'+ BUBBLE_PARAMETERS.height + "px";
-document.getElementById("js-wage-desc").style.height = BUBBLE_PARAMETERS.height + "px";
-document.getElementById('distribution-map').style.position = 'relative';
-document.getElementById('distribution-map').style.top = '-771px';
-document.getElementById('distribution-map').style['margin-bottom'] = '-'+ BUBBLE_PARAMETERS.height +'px';
 
 // update class list based on 12 columns
 function updateClass(element, cols) {
     var colOffset = 12 - cols;
     document.getElementById(element).className = 'col-lg-offset-'+ colOffset +' col-lg-'+ cols ;
 }
+
+setGraphicPosition = function(el, position, top, margin) {
+    position !== null && position?
+        el.style.position = position : '';
+    top !== null && top ?
+        el.style.top = top+'px' : '';
+    margin !== null && margin?
+        el.style.margin = margin : console.log('no margin change');
+}
+
+//DOM elements
+var employmentBubbles = document.getElementById('employment-bubble');
+var distributionMap = document.getElementById('distribution-map');
+
+// set the graphic DOM elements correctly
+setGraphicPosition(employmentBubbles, null, null, '0 0 -'+ BUBBLE_PARAMETERS.height +'px 0');
+setGraphicPosition(distributionMap, 'relative', -771, '0 0 -'+ BUBBLE_PARAMETERS.height +'px 0');
+document.getElementById("js-wage-desc").style.height = BUBBLE_PARAMETERS.height + "px";
 
 var employment_exists = false;
 var map_exists = false;
@@ -43,9 +55,7 @@ var scrollStory = $('#planning').scrollStory({
         switch (item.data.section) {
             case 'employment':
                 myBubbleChart.legendHandler(item.data.legend);
-                document.getElementById('distribution-map').style.position = 'relative';
-                document.getElementById('distribution-map').style.top = '-771px';
-                document.getElementById('distribution-map').style.margin = '0 0 -'+ BUBBLE_PARAMETERS.height +'px 0';
+                setGraphicPosition(distributionMap, 'relative', -771, '0 0 -'+ BUBBLE_PARAMETERS.height +'px 0')
                 break;
         }
 
@@ -86,32 +96,31 @@ var scrollStory = $('#planning').scrollStory({
             }
         }
 
-        if(item.data.section === 'typologies') {
-            document.getElementById('distribution-map').style.opacity = 1.0;
-            freightMap.repaint(item.data.mode, item.data.section);
-            switch (item.data.mode) {
-                case 'hide':
-                    document.getElementById('distribution-map').style.opacity = 0;
-                    updateClass('map-parent', 8);
+        // if(item.data.section === 'typologies') {
+        //     document.getElementById('distribution-map').style.opacity = 1.0;
+        //     freightMap.repaint(item.data.mode, item.data.section);
+        //     switch (item.data.mode) {
+        //         case 'hide':
+        //             document.getElementById('distribution-map').style.opacity = 0;
+        //             updateClass('map-parent', 8);
                     
-                    freightMap.fitRegion('distribution-map', false);
-                    break;
-                case 'all':
-                    updateClass('map-parent', 7);
-                    freightMap.fitRegion('distribution-map', true);
-                    break;
-                default:
-                    updateClass('map-parent', 7);
-                    freightMap.fitRegion('distribution-map', true);
-                    break;
-            }
+        //             freightMap.fitRegion('distribution-map', false);
+        //             break;
+        //         case 'all':
+        //             updateClass('map-parent', 7);
+        //             freightMap.fitRegion('distribution-map', true);
+        //             break;
+        //         default:
+        //             updateClass('map-parent', 7);
+        //             freightMap.fitRegion('distribution-map', true);
+        //             break;
+        //     }
             
-        }
+        // }
 
         if(item.index > 8 && item.data.section === 'distribution' && item.data.mode){
             //make sure employment is gone
-            document.getElementById('distribution-map').style.opacity = 1.0;
-            document.getElementById('employment-bubble').setAttribute('style','position:relative; top:-'+ BUBBLE_PARAMETERS.height +'px;left:-15px;margin-bottom:-'+ (BUBBLE_PARAMETERS.height) +'px;');
+            setGraphicPosition(employmentBubbles, 'relative', -BUBBLE_PARAMETERS.height, '0 0 -'+ (BUBBLE_PARAMETERS.height) +'px 0')
 
             if(!map_called){
                 map_called = true;
@@ -129,9 +138,8 @@ var scrollStory = $('#planning').scrollStory({
             }
         }
 
-        if (item.index > 9 && item.data.section === 'distribution'){
-            document.getElementById('distribution-map').style.position = 'fixed';
-            document.getElementById('distribution-map').style.top = '60px';
+        if ( 17 > item.index > 9 && item.data.section === 'distribution'){
+            setGraphicPosition(distributionMap, 'fixed', 60);
         }
 
     },
@@ -147,7 +155,7 @@ var scrollStory = $('#planning').scrollStory({
         switch (item.index){
             // return the employment bubble chart to fixed position on reverse scroll
             case 7:
-                document.getElementById('employment-bubble').setAttribute('style','position:fixed; top: 60px;left: 8.333%;');
+                setGraphicPosition(employmentBubbles, 'fixed', 60)
                 break;
             // lazy load map ahead of story element or return map to normal flow location on reverse scroll
             case 8:
@@ -155,20 +163,17 @@ var scrollStory = $('#planning').scrollStory({
                     map_called = true;
                     $.getScript('dev/tools/freight_story/geo-distribution.js');
                 } else if (activeItem.index >= 9){
-                    document.getElementById('distribution-map').style.position = 'relative';
-                    document.getElementById('distribution-map').style.top = '-771px';
-                    document.getElementById('distribution-map').style.margin = '0 0 -'+ BUBBLE_PARAMETERS.height +'px 0';
+                    setGraphicPosition(distributionMap, 'relative', -771, '0 0 -'+ BUBBLE_PARAMETERS.height +'px 0')
                 }
                 break;
             case 9: 
                 if(activeItem.index === 8){
-                    document.getElementById('employment-bubble').setAttribute('style','position:relative; top:-'+ BUBBLE_PARAMETERS.height +'px;left:-15px;margin-bottom:-'+ (BUBBLE_PARAMETERS.height) +'px;');
+                    setGraphicPosition(employmentBubbles, 'relative', -BUBBLE_PARAMETERS.height, '0 0 -'+ (BUBBLE_PARAMETERS.height) +'px 0')
                 }
+                break;
             case 18:
                 if(activeItem.index < 18){
-                    document.getElementById('distribution-map').style.position = 'relative';
-                    document.getElementById('distribution-map').style.top = (distNarrative - BUBBLE_PARAMETERS.height)+'px';
-                    document.getElementById('distribution-map').style.margin = '0 0 -'+ BUBBLE_PARAMETERS.height +'px 0';
+                    setGraphicPosition(distributionMap, 'relative', (distNarrative - BUBBLE_PARAMETERS.height), '0 0 -'+ BUBBLE_PARAMETERS.height +'px 0')
                 }
                 break;
             default :
@@ -182,9 +187,14 @@ var scrollStory = $('#planning').scrollStory({
             // set map graphic to fixed position
             case 8:
                 if(activeItem.index == 9){
-                    document.getElementById('distribution-map').style.position = 'fixed';
-                    document.getElementById('distribution-map').style.top = '60px';
-                }  
+                    setGraphicPosition(distributionMap, 'fixed', 60)
+                }
+                break;
+            case 18:
+                if(activeItem.index < 18) {
+                    setGraphicPosition(distributionMap, 'fixed', 60)
+                }
+                break;
             default :
                 break;
 

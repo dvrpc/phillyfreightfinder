@@ -87,7 +87,7 @@
             position: relative;
             /*transition: all 1s ease-in-out;*/
             top: 60px;
-            left: 8.333%;
+            /* left: 8.333%; */
         }
         
         .wage-industry-axis {
@@ -607,7 +607,7 @@
                 padding-left: 5px;
             }
             
-            .typo-sq figcaption {
+            .t-sq figcaption {
                 position: relative;
                 top: 30px;
                 margin-right: 10px;
@@ -620,7 +620,7 @@
                 border-bottom: 1px solid;
                 transition: all 1.5s;
             }
-            .typo-sq img {
+            .t-sq img {
                 position: relative;
                 z-index: 2;
                 width: 125px;
@@ -629,39 +629,42 @@
                 border: 3px solid;
                 float: left;
             }
-            .typo-ig figcaption, 
-            .typo-ig img {
+            .t-sq img.fc-detail {
+                width: 80%;
+            }
+            .t-ig figcaption, 
+            .t-ig img {
                 border-color: #f4bd48;
             }
 
-            .typo-hi figcaption, 
-            .typo-hi img {
+            .t-hi figcaption, 
+            .t-hi img {
                 border-color: #ef7e51;
             }
 
-            .typo-dc figcaption, 
-            .typo-dc img {
+            .t-dc figcaption, 
+            .t-dc img {
                 border-color: #ca4b66;
             }
 
-            .typo-ht figcaption, 
-            .typo-ht img {
+            .t-ht figcaption, 
+            .t-ht img {
                 border-color: #883272;
             }
 
-            .typo-lm figcaption, 
-            .typo-lm img {
+            .t-lm figcaption, 
+            .t-lm img {
                 border-color: #312867;
             }
             
-            .typo-sq img {
+            .t-sq img {
                 background-color: #fff;
             }
-            #typologies-squares .typo-sq {
+            #typologies-squares .t-sq {
                 padding-right: 10px;
                 height: 140px;
             }
-            .typo-half {
+            .t-half {
                 width: 50%;
                 padding-right: 15px;
             }
@@ -691,7 +694,7 @@
                 font-weight: 600;
                 font-size: 1.12em;
             }
-            .typo-icon {
+            .t-icon {
                 width: 80px;
                 margin-right: 25px;
                 float: left;
@@ -849,7 +852,7 @@
                     </div>
                     
                         
-                    <div class="">
+                    <div>
                         <div class='clearfix'></div>
                         <div class='story col-md-12 fc-color-full' style="margin-bottom:100px;" data-legend="none">
                             <div class='center-block col-lg-10 col-sm-12' style='float:none;'>
@@ -1157,12 +1160,12 @@
                                             <div class="col-lg-5 col-sm-12">
                                                 <h4>Typologies Overview</h4>
                                                 <p>An analysis of each of the 67 freight centers, grouping them by economic, transportation, and development activity resulted in classification into five typologies:</p>
-                                                <div id="typologies-squares" class="">
-                                                    <div class="typo-sq typo-ig"><img src="/dev/tools/freight_story/images/IG_1.svg" alt="Image description" /><figcaption>International <br>Gateway</figcaption></div>
-                                                    <div class="typo-sq typo-hi"><img src="/dev/tools/freight_story/images/HI_1.svg" alt="Image description" /><figcaption>Heavy <br>Industrial</figcaption></div>
-                                                    <div class="typo-sq typo-dc"><img src="/dev/tools/freight_story/images/DC_1.svg" alt="Image description" /><figcaption>Distribution & <br>Logistics</figcaption></div>
-                                                    <div class="typo-sq typo-ht"><img src="/dev/tools/freight_story/images/HT_2.svg" alt="Image description" /><figcaption>High Tech <br>Manufacturing</figcaption></div>
-                                                    <div class="typo-sq typo-lm"><img src="/dev/tools/freight_story/images/LM_1.svg" alt="Image description" /><figcaption>Local Manufacturing &<br> Distribution</figcaption></div>
+                                                <div id="typologies-squares">
+                                                    <div class="t-sq t-ig"><img src="/dev/tools/freight_story/images/IG_1.svg" alt="Image description" /><figcaption>International <br>Gateway</figcaption></div>
+                                                    <div class="t-sq t-hi"><img src="/dev/tools/freight_story/images/HI_1.svg" alt="Image description" /><figcaption>Heavy <br>Industrial</figcaption></div>
+                                                    <div class="t-sq t-dc"><img src="/dev/tools/freight_story/images/DC_1.svg" alt="Image description" /><figcaption>Distribution & <br>Logistics</figcaption></div>
+                                                    <div class="t-sq t-ht"><img src="/dev/tools/freight_story/images/HT_2.svg" alt="Image description" /><figcaption>High Tech <br>Manufacturing</figcaption></div>
+                                                    <div class="t-sq t-lm"><img src="/dev/tools/freight_story/images/LM_1.svg" alt="Image description" /><figcaption>Local Manufacturing &<br> Distribution</figcaption></div>
                                                 </div>
                                             </div>
                                             <div class="col-sm-12">
@@ -1180,23 +1183,23 @@
                                         </div>
                                         <div class="details">
                                             <div class="typology-row ig-icon">
-                                                <svg id="employment-icon" class="typo-icon" viewBox="0 0 94.95 94.95"><g id="employment"><path d="M47.48,0A47.48,47.48,0,1,0,95,47.48,47.48,47.48,0,0,0,47.48,0Zm-18,24.5,2.89-.39c.28-5.31,4.11-9.86,8.11-12.11V23h3V11.51c0-1.22,1.44-3.51,2.67-3.51h3.44c1.22,0,1.89,2.29,1.89,3.51V23h2V12.1a13.56,13.56,0,0,1,8,12l3,.39v3.42c-11,3.62-23,3.62-35,0ZM79.75,66l-1.14,6.25C78.41,73.49,77.25,74,76,74H19.49a2.33,2.33,0,0,1-2.57-1.71l-1.14-6.48a2.46,2.46,0,0,1,1.73-2.71l12.24-3.84c8.31-2.64,9.49-8.2,9.65-10C37,47,36.2,43.35,35.93,41h0c-.33-.09-1.94.92-2.78-3.83-.49-2.77,0-3.79.51-4.17a59.54,59.54,0,0,0,14.14,1.71A59.46,59.46,0,0,0,61.9,33c.51.38,1,1.41.52,4.18C61.58,41.94,60,40.94,59.63,41h0c-.27,2.34-1.08,5.95-3.47,8.28.16,1.78,1.34,7.37,9.64,10L78,63.21A2.6,2.6,0,0,1,79.75,66Z"/></g></svg>
-                                                <p class="">
+                                                <svg id="employment-icon" class="t-icon" viewBox="0 0 94.95 94.95"><g id="employment"><path d="M47.48,0A47.48,47.48,0,1,0,95,47.48,47.48,47.48,0,0,0,47.48,0Zm-18,24.5,2.89-.39c.28-5.31,4.11-9.86,8.11-12.11V23h3V11.51c0-1.22,1.44-3.51,2.67-3.51h3.44c1.22,0,1.89,2.29,1.89,3.51V23h2V12.1a13.56,13.56,0,0,1,8,12l3,.39v3.42c-11,3.62-23,3.62-35,0ZM79.75,66l-1.14,6.25C78.41,73.49,77.25,74,76,74H19.49a2.33,2.33,0,0,1-2.57-1.71l-1.14-6.48a2.46,2.46,0,0,1,1.73-2.71l12.24-3.84c8.31-2.64,9.49-8.2,9.65-10C37,47,36.2,43.35,35.93,41h0c-.33-.09-1.94.92-2.78-3.83-.49-2.77,0-3.79.51-4.17a59.54,59.54,0,0,0,14.14,1.71A59.46,59.46,0,0,0,61.9,33c.51.38,1,1.41.52,4.18C61.58,41.94,60,40.94,59.63,41h0c-.27,2.34-1.08,5.95-3.47,8.28.16,1.78,1.34,7.37,9.64,10L78,63.21A2.6,2.6,0,0,1,79.75,66Z"/></g></svg>
+                                                <p>
                                                     <span>Employment and Development</span><br/>
                                                     directly related to supporting trade and distribution of import/export goods through the related port terminal(s)
                                                 </p>
                                             </div>
                                             <div class="typology-row ig-icon">
-                                                <svg id="warehouse-icon" class="typo-icon" viewBox="0 0 94.95 94.95"><g id="warehouse"><rect x="35" y="24" width="26" height="5"/><path d="M25,67H70V35H25ZM56,40h3v3h3V40h4V51H56Zm0,14h3v2h3V54h4V64H56ZM42,40h4v3h4V40h3V51H42Zm0,14h4v2h4V54h3V64H42ZM30,54h3v2h3V54h4V64H30Z"/><path d="M47.48,0A47.48,47.48,0,1,0,95,47.48,47.48,47.48,0,0,0,47.48,0ZM13,73V67h5V22l30-8.22L78,22V67h4v6Z"/></g></svg>
-                                                <p class="">
+                                                <svg id="warehouse-icon" class="t-icon" viewBox="0 0 94.95 94.95"><g id="warehouse"><rect x="35" y="24" width="26" height="5"/><path d="M25,67H70V35H25ZM56,40h3v3h3V40h4V51H56Zm0,14h3v2h3V54h4V64H56ZM42,40h4v3h4V40h3V51H42Zm0,14h4v2h4V54h3V64H42ZM30,54h3v2h3V54h4V64H30Z"/><path d="M47.48,0A47.48,47.48,0,1,0,95,47.48,47.48,47.48,0,0,0,47.48,0ZM13,73V67h5V22l30-8.22L78,22V67h4v6Z"/></g></svg>
+                                                <p>
                                                     <span>Building Size and Distribution</span><br/>
                                                     often varied but commodity specific, related to import/export activity
                                                 </p>
                                             </div>
                                         </div>
                                         <div class="card row">
-                                            <div class="col-sm-6 typo-sq"><img src="/dev/tools/freight_story/images/IG_1.svg" alt="Image description" /></div>
-                                            <div class="col-sm-6 typo-sq"><img src="/dev/tools/freight_story/images/IG_2.svg" alt="Image description" /></div>
+                                            <div class="col-sm-6 t-sq t-ig"><img class="fc-detail" src="/dev/tools/freight_story/images/IG_1.svg" alt="Image description" /></div>
+                                            <div class="col-sm-6 t-sq t-ig"><img class="fc-detail" src="/dev/tools/freight_story/images/IG_2.svg" alt="Image description" /></div>
                                         </div>
                                     </div> 
                                     <div class="story " data-section="typologies" data-mode="industrial">
@@ -1206,27 +1209,27 @@
                                         </div>
                                         <div class="details">
                                             <div class="typology-row hi-icon">
-                                                <svg class="typo-icon" viewBox="0 0 94.95 94.95">
+                                                <svg class="t-icon" viewBox="0 0 94.95 94.95">
                                                     <use href="#employment"></use>
                                                 </svg>
-                                                <p class="">
+                                                <p>
                                                     <span>Employment and Development</span><br/>
                                                     focused around manufacturing and production sectors
                                                 </p>
                                             </div>
                                             <div class="typology-row hi-icon">
-                                                <svg class="typo-icon" viewBox="0 0 94.95 94.95">
+                                                <svg class="t-icon" viewBox="0 0 94.95 94.95">
                                                     <use href="#warehouse"></use>
                                                 </svg>
-                                                <p class="">
+                                                <p>
                                                     <span>Building Size and Distribution</span><br/>
                                                     highly dependent on manufacturing processes but often includes dedicated power plants, old industrial buildings, and tank farms
                                                 </p>
                                             </div>
                                         </div>
                                         <div class="card row">
-                                            <div class="col-sm-6 typo-sq"><img src="/dev/tools/freight_story/images/HI_1.svg" alt="Image description" /></div>
-                                            <div class="col-sm-6 typo-sq"><img src="/dev/tools/freight_story/images/HI_2.svg" alt="Image description" /></div>
+                                            <div class="col-sm-6 t-sq t-hi"><img class="fc-detail" src="/dev/tools/freight_story/images/HI_1.svg" alt="Image description" /></div>
+                                            <div class="col-sm-6 t-sq t-hi"><img class="fc-detail" src="/dev/tools/freight_story/images/HI_2.svg" alt="Image description" /></div>
                                         </div>
                                     </div>  
                                     <div class="story " data-section="typologies" data-mode="distribution">
@@ -1236,27 +1239,27 @@
                                         </div>
                                         <div class="details">
                                             <div class="typology-row dc-icon">
-                                                <svg class="typo-icon" viewBox="0 0 94.95 94.95">
+                                                <svg class="t-icon" viewBox="0 0 94.95 94.95">
                                                     <use href="#employment"></use>
                                                 </svg>
-                                                <p class="">
+                                                <p>
                                                     <span>Employment and Development</span><br/>
                                                     primarily third-party logistics providers, national retail chain warehousing and distribution, e-commerce fulfillment centers, as well as supporting services such as truck service, tires, and leasing
                                                 </p>
                                             </div>
                                             <div class="typology-row dc-icon">
-                                                <svg class="typo-icon" viewBox="0 0 94.95 94.95">
+                                                <svg class="t-icon" viewBox="0 0 94.95 94.95">
                                                     <use href="#warehouse"></use>
                                                 </svg>
-                                                <p class="">
+                                                <p>
                                                     <span>Building Size and Distribution</span><br/>
                                                     a combination of large footprint and/or high ceiling modern warehouses as well as small footprint cross-dock facilities
                                                 </p>
                                             </div>    
                                         </div>
                                         <div class="card row">
-                                            <div class="col-sm-6 typo-sq"><img src="/dev/tools/freight_story/images/DC_1.svg" alt="Image description" /></div>
-                                            <div class="col-sm-6 typo-sq"><img src="/dev/tools/freight_story/images/DC_2.svg" alt="Image description" /></div>
+                                            <div class="col-sm-6 t-sq t-dc"><img class="fc-detail" src="/dev/tools/freight_story/images/DC_1.svg" alt="Image description" /></div>
+                                            <div class="col-sm-6 t-sq t-dc"><img class="fc-detail" src="/dev/tools/freight_story/images/DC_2.svg" alt="Image description" /></div>
                                         </div>
                                     </div>    
                                     <div class="story " data-section="typologies" data-mode="high-tech">
@@ -1266,27 +1269,27 @@
                                         </div>
                                         <div class="details">
                                             <div class="typology-row ht-icon">
-                                                <svg class="typo-icon" viewBox="0 0 94.95 94.95">
+                                                <svg class="t-icon" viewBox="0 0 94.95 94.95">
                                                     <use href="#employment"></use>
                                                 </svg>
-                                                <p class="">
+                                                <p>
                                                     <span>Employment and Development</span><br/>
                                                     primarily in bio-pharmaceuticals, electronic components, advanced chemical manufacturing, with a mix of research and development activity
                                                 </p>
                                             </div>
                                             <div class="typology-row ht-icon">
-                                                <svg class="typo-icon" viewBox="0 0 94.95 94.95">
+                                                <svg class="t-icon" viewBox="0 0 94.95 94.95">
                                                     <use href="#warehouse"></use>
                                                 </svg>
-                                                <p class="">
+                                                <p>
                                                     <span>Building Size and Distribution</span><br/>
                                                     often small footprint, flex buildings with an occasional mix of office facilities and residential development in close proximity
                                                 </p>
                                             </div>    
                                         </div>
                                         <div class="card row">
-                                            <div class="col-sm-6 typo-sq"><img src="/dev/tools/freight_story/images/HT_1.svg" alt="Image description" /></div>
-                                            <div class="col-sm-6 typo-sq"><img src="/dev/tools/freight_story/images/HT_2.svg" alt="Image description" /></div>
+                                            <div class="col-sm-6 t-sq t-ht"><img class="fc-detail" src="/dev/tools/freight_story/images/HT_1.svg" alt="Image description" /></div>
+                                            <div class="col-sm-6 t-sq t-ht"><img class="fc-detail" src="/dev/tools/freight_story/images/HT_2.svg" alt="Image description" /></div>
                                         </div>
                                     </div>  
                                     <div class="story " data-section="typologies" data-mode="local">
@@ -1296,27 +1299,27 @@
                                         </div>
                                         <div class="details">
                                             <div class="typology-row lm-icon">
-                                                <svg class="typo-icon" viewBox="0 0 94.95 94.95">
+                                                <svg class="t-icon" viewBox="0 0 94.95 94.95">
                                                     <use href="#employment"></use>
                                                 </svg>
-                                                <p class="">
+                                                <p>
                                                     <span>Employment and Development</span><br/>
                                                     primarily in local food and beverage distribution, building and contractor supply, and small scale manufacturing
                                                 </p>
                                             </div>
                                             <div class="typology-row lm-icon">
-                                                <svg class="typo-icon" viewBox="0 0 94.95 94.95">
+                                                <svg class="t-icon" viewBox="0 0 94.95 94.95">
                                                     <use href="#warehouse"></use>
                                                 </svg>
-                                                <p class="">
+                                                <p>
                                                     <span>Building Size and Distribution</span><br/>
                                                     often comprised of densely developed, smaller footprint warehouses and industrial facilities
                                                 </p>
                                             </div>
                                         </div>
                                         <div class="card row">
-                                            <div class="col-sm-6 typo-sq"><img src="/dev/tools/freight_story/images/LM_1.svg" alt="Image description" /></div>
-                                            <div class="col-sm-6 typo-sq"><img src="/dev/tools/freight_story/images/LM_2.svg" alt="Image description" /></div>
+                                            <div class="col-sm-6 t-sq t-lm"><img class="fc-detail" src="/dev/tools/freight_story/images/LM_1.svg" alt="Image description" /></div>
+                                            <div class="col-sm-6 t-sq t-lm"><img class="fc-detail" src="/dev/tools/freight_story/images/LM_2.svg" alt="Image description" /></div>
                                         </div>
                                     </div>  
                                                                         
