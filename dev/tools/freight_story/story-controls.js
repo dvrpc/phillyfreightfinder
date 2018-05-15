@@ -49,7 +49,7 @@ var scrollStory = $('#planning').scrollStory({
             $('.dotnav li.current').toggleClass('current');
             $('.dotnav li[data-story-nav="'+ item.index +'"]').toggleClass('current');
         } else {
-            console.log('shit needs to work reverse too!')
+            // console.log('shit needs to work reverse too!')
         }
         
         switch (item.data.section) {
@@ -124,7 +124,7 @@ var scrollStory = $('#planning').scrollStory({
 
             if(!map_called){
                 map_called = true;
-                console.log('called by focus', item.index);
+                // console.log('called by focus', item.index);
                 
                 $.getScript('dev/tools/freight_story/geo-distribution.js', function(){
                     freightMap.repaint(item.data.mode, item.data.section);
@@ -138,7 +138,8 @@ var scrollStory = $('#planning').scrollStory({
             }
         }
 
-        if ( 17 > item.index > 9 && item.data.section === 'distribution'){
+        if ( 17 > item.index && item.index > 9 && item.data.section === 'distribution'){
+            console.log('map should be fixed position')
             setGraphicPosition(distributionMap, 'fixed', 60);
         }
 
