@@ -22,10 +22,12 @@ setGraphicPosition = function(el, position, top, margin) {
 //DOM elements
 var employmentBubbles = document.getElementById('employment-bubble');
 var distributionMap = document.getElementById('distribution-map');
+var typologyMap = document.getElementById('typologies-map');
 
 // set the graphic DOM elements correctly
 setGraphicPosition(employmentBubbles, null, null, '0 0 -'+ BUBBLE_PARAMETERS.height +'px 0');
 setGraphicPosition(distributionMap, 'relative', -771, '0 0 -'+ BUBBLE_PARAMETERS.height +'px 0');
+setGraphicPosition(typologyMap, 'relative', -771, '0 0 -'+ BUBBLE_PARAMETERS.height +'px 0');
 document.getElementById("js-wage-desc").style.height = BUBBLE_PARAMETERS.height + "px";
 
 var employment_exists = false;
@@ -121,6 +123,7 @@ var scrollStory = $('#planning').scrollStory({
         if(item.index > 8 && item.data.section === 'distribution' && item.data.mode){
             //make sure employment is gone
             setGraphicPosition(employmentBubbles, 'relative', -BUBBLE_PARAMETERS.height, '0 0 -'+ (BUBBLE_PARAMETERS.height) +'px 0')
+            setGraphicPosition(typologyMap, 'relative', -771, '0 0 -'+ (BUBBLE_PARAMETERS.height) +'px 0')
 
             if(!map_called){
                 map_called = true;
@@ -141,6 +144,11 @@ var scrollStory = $('#planning').scrollStory({
         if ( 17 > item.index && item.index > 9 && item.data.section === 'distribution'){
             console.log('map should be fixed position')
             setGraphicPosition(distributionMap, 'fixed', 60);
+        }
+
+        if(item.index > 17 && item.data.section === 'typologies' && item.data.mode){
+            item.index > 18 ? setGraphicPosition(typologyMap, 'fixed', 60) : '';
+            freightMap.repaint(item.data.mode, item.data.section);
         }
 
     },
@@ -177,6 +185,11 @@ var scrollStory = $('#planning').scrollStory({
                     setGraphicPosition(distributionMap, 'relative', (distNarrative - BUBBLE_PARAMETERS.height), '0 0 -'+ BUBBLE_PARAMETERS.height +'px 0')
                 }
                 break;
+            case 17:
+                if(activeItem.index > 17){
+                    setGraphicPosition(typologyMap, 'relative', -771, '0 0 -'+ BUBBLE_PARAMETERS.height +'px 0')
+                }
+                break;
             default :
                 break;
 
@@ -194,6 +207,12 @@ var scrollStory = $('#planning').scrollStory({
             case 18:
                 if(activeItem.index < 18) {
                     setGraphicPosition(distributionMap, 'fixed', 60)
+                }
+                break;
+            case 17:
+                if(activeItem.index > 16) {
+                    console.log('unfix typo')
+                    setGraphicPosition(typologyMap, 'fixed', 60)
                 }
                 break;
             default :

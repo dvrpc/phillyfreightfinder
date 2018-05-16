@@ -17,8 +17,17 @@ var freightMap = {
         [7.45, '#312867']
     ],
 
+    fcColorStops : [
+		[1, '#f4bd48'],
+		[2, '#ef7e51'],
+		[3, '#ca4b66'],
+	    [4, '#883272'],
+        [5, '#312867']
+    ],
+
 	stylesheet : {
-	   "version": 8,
+       "version": 8,
+       "sprite": "https://a.michaelruane.com/styles/fc-styles/sprite",
 	   "sources": {
 	       "fq-data": {
 	           "type": "vector",
@@ -70,7 +79,9 @@ var freightMap = {
     	  ]
 	},
 
-	overlays: ['employment','establishment','industrial', 'landuse', 'facilities', 'fq'],
+    overlays: ['employment','establishment','industrial', 'landuse', 'facilities', 'fq'],
+    
+    fcTypes: ['blank', 'all', 'ig', 'hi', 'dc', 'ht', 'lm'],
 
 	makeIt: function(){
         $('#distribution-map').css('height', BUBBLE_PARAMETERS.height);
@@ -96,7 +107,33 @@ var freightMap = {
 			[-76.09405517578125, 39.49211914385648], [-74.32525634765625,40.614734298694216]
 		]);
 		return map;
-	},
+    },
+
+    fcMakeIt: function() {
+        $('#distribution-map').css('height', BUBBLE_PARAMETERS.height);
+			// lets build the map
+		var fcMap = new mapboxgl.Map({
+		    container: 'typologies-map', // container id
+		    style: this.stylesheet,
+		    center: [-75.2273, 40.071],
+		    zoom: 8.82, // starting zoom
+		    hash: false,
+		    scrollZoom: false,
+		    boxZoom: false,
+		    dragRotate: false,
+		    dragPan: false,
+		    keyboard: false,
+		    doubleClickZoom: false,
+		    touchZoomRotate: false
+
+		});
+
+		//make sure it all fits
+		fcMap.fitBounds([
+			[-76.09405517578125, 39.49211914385648], [-74.32525634765625,40.614734298694216]
+		]);
+		return fcMap;
+    },
 	
 	repaint: function(mode, section){
         if(section === 'distribution') {
@@ -110,11 +147,21 @@ var freightMap = {
                     map.setPaintProperty(this.overlays[i] +'-half-fill', 'fill-opacity', 0);
                 }
             }
-        } else {
-            for (i = 0; i < this.overlays.length; i++) {
-                map.setPaintProperty(this.overlays[i] +'-fill', 'fill-opacity', 0);
-                map.setPaintProperty(this.overlays[i] +'-half-fill', 'fill-opacity', 0);
-            }
+        } else if(section === 'typologies') {
+            switch (mode) {
+                case 'blank':
+                    fcMap.setPaintProperty('blank-fc-fill', 'fill-color', '#312867');
+                    fcMap.setPaintProperty('all-fc-fill', 'fill-opacity', 0);
+                    fcMap.setFilter('fc-icons', ['in', 'fc-icons', '']);
+                    break;
+                default:
+                    fcMap.setPaintProperty('blank-fc-fill', 'fill-color', '#a8a8a8');
+                    fcMap.setPaintProperty('all-fc-fill', 'fill-opacity', 1.0);
+                    var _fil = (mode === 'all') ? ["in", "fctyp",1,2,3,4,5] : ["in", "fctyp", mode];
+                    var _ico = (mode === 'all') ? ["in", "fctyp", ''] : ["in", "fctyp", mode];
+                    fcMap.setFilter('all-fc-fill', _fil);
+                    fcMap.setFilter('fc-icons', _ico);
+            }            
         }
         
     },
@@ -138,6 +185,7 @@ var freightMap = {
 mapboxgl.accessToken = 'pk.eyJ1IjoibXJ1YW5lIiwiYSI6ImNpZ3dnaGF1bjBzNGZ3N201bTQwN3h6YngifQ.pw1khldm3UDHd56okxc5bQ';
 
 var map = freightMap.makeIt();
+var fcMap = freightMap.fcMakeIt();
 
 map.on('load', function(){
     // Add a new source from our GeoJSON data 
@@ -390,4 +438,56 @@ map.on('load', function(){
     (map_mode !== 'none') ?  freightMap.repaint(map_mode, map_section) : '';
     map_exists = true;
 
+});
+
+fcMap.on("load", function(){
+    fcMap.addLayer({
+        "id": "blank-fc-fill",
+        "type": "fill",
+        "source": "fq-data",
+        'source-layer': 'freight-centers',
+        'paint': {
+            "fill-opacity": 1.0,
+            'fill-color': '#312867',
+        }
+    });
+
+    fcMap.addLayer({
+        "id": "all-fc-fill",
+        "type": "fill",
+        "source": "fq-data",
+        'source-layer': 'freight-centers',
+        'paint': {
+            "fill-opacity": 0,
+            'fill-color': {
+                property: 'fctyp',
+                stops: freightMap.fcColorStops
+            },
+        }
+    });
+
+    fcMap.addLayer({
+        "id": "fc-icons",
+        "type": "symbol",
+        "source": "fq-data",
+        'source-layer': 'freight-center-label',
+        "layout": {
+            "icon-image": "{fctyp}",
+            "icon-size": 0.65,
+            "icon-allow-overlap": true,
+            "icon-ignore-placement": true,
+            "text-allow-overlap": true,
+            "text-ignore-placement": true,
+            "icon-anchor": "bottom"
+        },
+        "paint": {
+            "icon-opacity": 1.0
+        },
+        "filter": [
+            '==', 
+            'fctyp', 
+            ''
+        ],
+          "interactive": true
+    });
 });
