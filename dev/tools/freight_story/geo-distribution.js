@@ -473,7 +473,7 @@ fcMap.on("load", function(){
         'source-layer': 'freight-center-label',
         "layout": {
             "icon-image": "{fctyp}",
-            "icon-size": 0.65,
+            "icon-size": 0.8,
             "icon-allow-overlap": true,
             "icon-ignore-placement": true,
             "text-allow-overlap": true,
