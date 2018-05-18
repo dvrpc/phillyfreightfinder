@@ -29,6 +29,7 @@ setGraphicPosition(employmentBubbles, null, null, '0 0 -'+ BUBBLE_PARAMETERS.hei
 setGraphicPosition(distributionMap, 'relative', -771, '0 0 -'+ BUBBLE_PARAMETERS.height +'px 0');
 setGraphicPosition(typologyMap, 'relative', -771, '0 0 -'+ BUBBLE_PARAMETERS.height +'px 0');
 document.getElementById("js-wage-desc").style.height = BUBBLE_PARAMETERS.height + "px";
+document.querySelector('.map-height').style.minHeight = BUBBLE_PARAMETERS.height + "px";
 
 var employment_exists = false;
 var map_exists = false;
