@@ -17,6 +17,14 @@ var freightMap = {
         [7.45, '#312867']
     ],
 
+    greyStops : [
+		[0.8, '#fafafa'],
+		[1.7, '#e6e6e6'],
+		[2.85, '#c9c9c9'],
+	    [4.4, '#a2a2a2'],
+        [7.45, '#848484']
+    ],
+
     fcColorStops : [
 		[1, '#f4bd48'],
 		[2, '#ef7e51'],
@@ -137,6 +145,12 @@ var freightMap = {
 	
 	repaint: function(mode, section){
         if(section === 'distribution') {
+            if(mode === 'fq-circles') {
+                map.setPaintProperty('grey-fill', 'fill-opacity', 0.65);
+                map.setPaintProperty('grey-half-fill', 'fill-opacity', 0.45);
+                map.setPaintProperty('fq-circles', 'line-opacity', 1.0);
+            }
+
             for (i = 0; i < this.overlays.length; i++) {
                 if(this.overlays[i] == mode){
                       map.setPaintProperty(mode +'-fill', 'fill-opacity', 0.65);
@@ -145,6 +159,7 @@ var freightMap = {
                 }else{ 
                     map.setPaintProperty(this.overlays[i] +'-fill', 'fill-opacity', 0);
                     map.setPaintProperty(this.overlays[i] +'-half-fill', 'fill-opacity', 0);
+                    
                 }
             }
         } else if(section === 'typologies') {
@@ -435,6 +450,56 @@ map.on('load', function(){
         ],
     });
 
+    map.addLayer({
+        "id": "grey-fill",
+        "type": "fill",
+        "source": "fq-data",
+        'source-layer': 'fq-analysis',
+        'paint': {
+            "fill-opacity": 0,
+            'fill-color': {
+                property: 'fq',
+                stops: freightMap.greyStops
+            },
+        },
+        'filter': 
+                    [
+            ">",
+            "fq",
+            2.85
+        ]
+    });
+
+    map.addLayer({
+        "id": "grey-half-fill",
+        "type": "fill",
+        "source": "fq-data",
+        'source-layer': 'fq-analysis',
+        'paint': {
+            "fill-opacity": 0,
+            'fill-color': {
+                property: 'fq',
+                stops: freightMap.greyStops
+            },
+        },
+        'filter': [
+            "<=",
+            "fq",
+            2.85
+        ]
+    });
+
+    map.addLayer({
+        "id": "fq-circles",
+        "type": "line",
+        "source": "fq-data",
+        'source-layer': 'eval-circles',
+        'paint': {
+            "line-opacity": 0,
+            'line-color': '#312867'
+        }
+    });
+
     (map_mode !== 'none') ?  freightMap.repaint(map_mode, map_section) : '';
     map_exists = true;
 
@@ -465,6 +530,7 @@ fcMap.on("load", function(){
             },
         }
     });
+    
 
     fcMap.addLayer({
         "id": "fc-icons",
