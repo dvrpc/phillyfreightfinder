@@ -149,6 +149,8 @@ var freightMap = {
                 map.setPaintProperty('grey-fill', 'fill-opacity', 0.65);
                 map.setPaintProperty('grey-half-fill', 'fill-opacity', 0.45);
                 map.setPaintProperty('fq-circles', 'line-opacity', 1.0);
+                map.setPaintProperty('fq-circles-fill', 'fill-opacity', 0.12);
+                
             }
 
             for (i = 0; i < this.overlays.length; i++) {
@@ -490,13 +492,42 @@ map.on('load', function(){
     });
 
     map.addLayer({
+        "id": "fq-circles-fill",
+        "type": "fill",
+        "source": "fq-data",
+        'source-layer': 'eval-circles',
+        'paint': {
+            "fill-opacity": 0,
+            'fill-color': '#396ab2'
+        },
+        'filter': [
+            '==',
+            'confirm',
+            'y'
+        ]
+    });
+
+    map.addLayer({
         "id": "fq-circles",
         "type": "line",
         "source": "fq-data",
         'source-layer': 'eval-circles',
         'paint': {
             "line-opacity": 0,
-            'line-color': '#312867'
+            'line-color': [
+                'match',
+                ['get', 'confirm'],
+                'y', '#396ab2',
+                'n', '#312867',
+                '#312867'
+            ],
+            'line-width': [
+                'match',
+                ['get', 'confirm'],
+                'y', 3.0,
+                'n', 1.0,
+                1.0
+            ]
         }
     });
 
