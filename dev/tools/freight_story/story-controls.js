@@ -16,7 +16,7 @@ setGraphicPosition = function(el, position, top, margin) {
     top !== null && top ?
         el.style.top = top+'px' : '';
     margin !== null && margin?
-        el.style.margin = margin : console.log('no margin change');
+        el.style.margin = margin : '';
 }
 
 //DOM elements
@@ -143,7 +143,6 @@ var scrollStory = $('#planning').scrollStory({
         }
 
         if ( 17 > item.index && item.index > 9 && item.data.section === 'distribution'){
-            console.log('map should be fixed position')
             setGraphicPosition(distributionMap, 'fixed', 60);
         }
 
@@ -212,7 +211,6 @@ var scrollStory = $('#planning').scrollStory({
                 break;
             case 17:
                 if(activeItem.index > 16) {
-                    console.log('unfix typo')
                     setGraphicPosition(typologyMap, 'fixed', 60)
                 }
                 break;
