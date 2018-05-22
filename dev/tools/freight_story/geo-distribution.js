@@ -149,8 +149,20 @@ var freightMap = {
                 map.setPaintProperty('grey-fill', 'fill-opacity', 0.65);
                 map.setPaintProperty('grey-half-fill', 'fill-opacity', 0.45);
                 map.setPaintProperty('fq-circles', 'line-opacity', 1.0);
-                map.setPaintProperty('fq-circles-fill', 'fill-opacity', 0.12);
-                
+                map.setPaintProperty('fq-circles-fill', 'fill-opacity', 0.12);  
+                map.setPaintProperty('fc-preview', 'line-opacity', 0);  
+            } else if(mode === 'fc-preview') {
+                map.setPaintProperty('grey-fill', 'fill-opacity', 0.65);
+                map.setPaintProperty('grey-half-fill', 'fill-opacity', 0.45);
+                map.setPaintProperty('fq-circles', 'line-opacity', 0.3);
+                map.setPaintProperty('fq-circles-fill', 'fill-opacity', 0);
+                map.setPaintProperty('fc-preview', 'line-opacity', 1.0);
+            } else {
+                map.setPaintProperty('grey-fill', 'fill-opacity', 0);
+                map.setPaintProperty('grey-half-fill', 'fill-opacity', 0);
+                map.setPaintProperty('fq-circles', 'line-opacity', 0);
+                map.setPaintProperty('fq-circles-fill', 'fill-opacity', 0);
+                map.setPaintProperty('fc-preview', 'line-opacity', 0);
             }
 
             for (i = 0; i < this.overlays.length; i++) {
@@ -528,6 +540,18 @@ map.on('load', function(){
                 'n', 1.0,
                 1.0
             ]
+        }
+    });
+
+    map.addLayer({
+        "id": "fc-preview",
+        "type": "line",
+        "source": "fq-data",
+        'source-layer': 'freight-centers',
+        'paint': {
+            "line-opacity": 0,
+            'line-color': '#312867',
+            'line-width': 1.0
         }
     });
 
