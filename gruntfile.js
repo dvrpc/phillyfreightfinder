@@ -44,7 +44,7 @@ module.exports = function(grunt){
 				src: [
 					'dev/vendor/scrollstory.min.js',
 		            'dev/vendor/d3-custom.min.js',
-		            'dev/tools/bubble_chart.js',
+		            'dev/tools/freight_story/bubble_chart.js',
 		            'dev/tools/freight_story/story-controls.js'
 				],
 				dest: 'lib/freight-story.js'
@@ -71,11 +71,11 @@ module.exports = function(grunt){
 			},
 			FC: {
 				src: 'lib/freight-story.js',
-		        dest: 'lib/tools/freight-story.min.js'
+		        dest: 'html/lib/tools/freight-story/freight-story.min.js'
 			},
 			geo: {
 				src: 'dev/tools/freight_story/geo-distribution.js',
-				dest: 'lib/tools/freight-story/geo-distribution.js'
+				dest: 'html/lib/tools/freight-story/geo-distribution.js'
 			}
 		},
 
@@ -95,7 +95,7 @@ module.exports = function(grunt){
 		  },
 		  FC: {
 			  files: {
-				'lib/tools/freight-story.min.css': [
+				'html/lib/tools/freight-story/freight-story.min.css': [
 					// 'dev/locals/bootstrap.min.css',
 					'dev/css/scss/freight-story.min.css'
 				]	
@@ -149,7 +149,12 @@ module.exports = function(grunt){
 				index: {
 					src: ['index.htm'],
 					dest: './html/'
+				},
+				FC: {
+					src: ['freight-center-story.html'],
+					dest: './html/'
 				}
+
 				
 
 			
@@ -174,7 +179,15 @@ module.exports = function(grunt){
       		coreUpdate: {
       			files: ['dev/core/*.js', 'dev/actions.js', 'dev/map.js'],
       			tasks: ['concat:build', 'uglify:build']
-      		}
+			  },
+			FCtool: {
+				files: ['dev/tools/freight_story/*'],
+				tasks: ['concat:FC', 'uglify:FC', 'cssmin:FC','copy:FC' ]
+			},
+			html: {
+				files: ['*.html'],
+				tasks: ['copy:FC']
+			}
 		},
 
 
