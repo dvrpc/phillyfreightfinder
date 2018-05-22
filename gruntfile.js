@@ -96,7 +96,7 @@ module.exports = function(grunt){
 		  FC: {
 			  files: {
 				'lib/tools/freight-story.min.css': [
-					'dev/locals/bootstrap.min.css',
+					// 'dev/locals/bootstrap.min.css',
 					'dev/css/scss/freight-story.min.css'
 				]	
 			  }
