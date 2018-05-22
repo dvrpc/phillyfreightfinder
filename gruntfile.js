@@ -39,7 +39,16 @@ module.exports = function(grunt){
 		            'dev/vendor/d3_2.7.0/circle_packer_movers.js' 
 		        ],
 		        dest: 'lib/d3.build.js',
-		    }
+			},
+			FC: {
+				src: [
+					'dev/vendor/scrollstory.min.js',
+		            'dev/vendor/d3-custom.min.js',
+		            'dev/tools/bubble_chart.js',
+		            'dev/tools/freight_story/story-controls.js'
+				],
+				dest: 'lib/freight-story.js'
+			}
 		},
 
 		uglify: {
@@ -59,7 +68,15 @@ module.exports = function(grunt){
 		    		dest: 'lib/tools/',
 		    		ext: '.js'
 		    	}]
-		    }
+			},
+			FC: {
+				src: 'lib/freight-story.js',
+		        dest: 'lib/tools/freight-story.min.js'
+			},
+			geo: {
+				src: 'dev/tools/freight_story/geo-distribution.js',
+				dest: 'lib/tools/freight-story/geo-distribution.js'
+			}
 		},
 
 		cssmin: {
@@ -75,6 +92,14 @@ module.exports = function(grunt){
 			         	'dev/css/style_auto.css'
 			         ]
 			    }
+		  },
+		  FC: {
+			  files: {
+				'lib/tools/freight-story.min.css': [
+					'dev/locals/bootstrap.min.css',
+					'dev/css/scss/freight-story.min.css'
+				]	
+			  }
 		  }
 		},
 

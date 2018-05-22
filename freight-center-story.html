@@ -7,11 +7,11 @@
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="description" content="">
         <meta name="author" content="Michael Ruane, Delaware Valley Regional Planning Commission, Office of Freight and Aviation Planning">
-        <title>PhillyFreightFinder 3.1.3  |  DVRPC</title>
+        <title>PhillyFreightFinder 3.1.3  |  DVRPC Freight Center Story</title>
 
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800' rel='stylesheet' type='text/css'>
-        <link href="dev/locals/bootstrap.min.css" rel="stylesheet" type="text/css">
-        <link href='dev/css/scss/freight-story.min.css' rel='stylesheet' type="text/css"/>
+        <!-- <link href="dev/locals/bootstrap.min.css" rel="stylesheet" type="text/css"> -->
+        <link href='lib/tools/freight-story/freight-story.min.css' rel='stylesheet' type="text/css"/>
 
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
@@ -33,7 +33,7 @@
                         </button>
                     <div class="navbar-brand ">
                         <a href="http://www.dvrpc.org/freight/" title="DVRPC Website" target="_blank" class="dvrpc-logo"><img src='lib/images/header_dvrpc.png' alt="DVRPC logo" height='50'/></a>
-                        <a href="#home" class="dvrpc-pff" title="PFF homepage"><img src='lib/images/header_pff.png' height='50' alt="PFF logo"/></a>
+                        <a href="../phillyfreightfinder/#home" class="dvrpc-pff" title="PFF homepage"><img src='lib/images/header_pff.png' height='50' alt="PFF logo"/></a>
                     </div>
                 </div>
             
@@ -47,24 +47,24 @@
                     </form>-->
                     <!-- Menu Items -->
                     <ul id='landing' class="nav navbar-nav">
-                        <li><a href="#home" data-toggle="collapse" data-target=".navbar-collapse.in"><i class="dynico dynico-home"></i>&nbsp;&nbsp;Home</a></li>
+                        <li><a href="../phillyfreightfinder/#home" data-toggle="collapse" data-target=".navbar-collapse.in"><i class="dynico dynico-home"></i>&nbsp;&nbsp;Home</a></li>
                         <li class="dropdown">
                             <a id="AboutDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"><i class="dynico dynico-dvrpc"></i>&nbsp;&nbsp;About <b class="caret"></b></a>
                                 <ul class="dropdown-menu" role="menu">
-                                    <li><a href="#planning" class='landingLink' data-toggle="collapse" data-target=".navbar-collapse.in">Freight Planning</a></li>
-                                    <li><a href="#data" class='landingLink' data-toggle="collapse" data-target=".navbar-collapse.in">Our Data</a></li>
-                                    <li><a href="#open-freight-app" class='landingLink' data-toggle="collapse" data-target=".navbar-collapse.in">Open Freight App</a></li>
+                                    <li><a href="../phillyfreightfinder/#planning" class='landingLink' data-toggle="collapse" data-target=".navbar-collapse.in">Freight Planning</a></li>
+                                    <li><a href="../phillyfreightfinder/#data" class='landingLink' data-toggle="collapse" data-target=".navbar-collapse.in">Our Data</a></li>
+                                    <li><a href="../phillyfreightfinder/#open-freight-app" class='landingLink' data-toggle="collapse" data-target=".navbar-collapse.in">Open Freight App</a></li>
                                 </ul>
                         </li>
                         <li class="dropdown">
                             <a id="ToolsDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"><i class="dynico dynico-compass"></i>&nbsp;&nbsp;Tools <b class="caret"></b></a>
                                 <ul class="dropdown-menu" role="menu">
-                                    <li><a href="#region" data-toggle="collapse" data-target=".navbar-collapse.in">County Profile Tool</a></li>
-                                    <li><a href="#maritime-indicators" class='landingLink' data-tab='maritime-indicators' data-toggle="collapse" data-target=".navbar-collapse.in">Maritime Indicators</a></li>
-                                    <li><a href="#highway-performance" class='landingLink' data-tab='highway-performance' data-toggle="collapse" data-target=".navbar-collapse.in">Highway Performance</a></li>
+                                    <li><a href="../phillyfreightfinder/#region" data-toggle="collapse" data-target=".navbar-collapse.in">County Profile Tool</a></li>
+                                    <li><a href="../phillyfreightfinder/#maritime-indicators" class='landingLink' data-tab='maritime-indicators' data-toggle="collapse" data-target=".navbar-collapse.in">Maritime Indicators</a></li>
+                                    <li><a href="../phillyfreightfinder/#highway-performance" class='landingLink' data-tab='highway-performance' data-toggle="collapse" data-target=".navbar-collapse.in">Highway Performance</a></li>
                                 </ul>
                         </li>
-                        <li id='maplink' class='landingUI'><a href="#map" data-tab='map' data-toggle="collapse" data-target=".navbar-collapse.in"><i class="dynico dynico-map"></i>&nbsp;&nbsp;View Map</a></li>
+                        <li id='maplink' class='landingUI'><a href="../phillyfreightfinder/#map" data-tab='map' data-toggle="collapse" data-target=".navbar-collapse.in"><i class="dynico dynico-map"></i>&nbsp;&nbsp;View Map</a></li>
                     </ul>
                 </div><!--/.navbar-collapse -->
             </div>
@@ -457,11 +457,11 @@
                                                 <h4>Typologies Overview</h4>
                                                 <p>An analysis of each of the freight centers, grouping them by economic, transportation, and development activity resulted in classification into five typologies:</p>
                                                 <div id="typologies-squares">
-                                                    <div class="t-sq t-ig"><img src="/dev/tools/freight_story/images/IG_1.svg" alt="Image description" /><figcaption>International <br>Gateway</figcaption></div>
-                                                    <div class="t-sq t-hi"><img src="/dev/tools/freight_story/images/HI_1.svg" alt="Image description" /><figcaption>Heavy <br>Industrial</figcaption></div>
-                                                    <div class="t-sq t-dc"><img src="/dev/tools/freight_story/images/DC_1.svg" alt="Image description" /><figcaption>Distribution & <br>Logistics</figcaption></div>
-                                                    <div class="t-sq t-ht"><img src="/dev/tools/freight_story/images/HT_2.svg" alt="Image description" /><figcaption>High Tech <br>Manufacturing</figcaption></div>
-                                                    <div class="t-sq t-lm"><img src="/dev/tools/freight_story/images/LM_1.svg" alt="Image description" /><figcaption>Local Manufacturing &<br> Distribution</figcaption></div>
+                                                    <div class="t-sq t-ig"><img src="./lib/tools/freight-story/images/IG_1.svg" alt="Image description" /><figcaption>International <br>Gateway</figcaption></div>
+                                                    <div class="t-sq t-hi"><img src="./lib/tools/freight-story/images/HI_1.svg" alt="Image description" /><figcaption>Heavy <br>Industrial</figcaption></div>
+                                                    <div class="t-sq t-dc"><img src="./lib/tools/freight-story/images/DC_1.svg" alt="Image description" /><figcaption>Distribution & <br>Logistics</figcaption></div>
+                                                    <div class="t-sq t-ht"><img src="./lib/tools/freight-story/images/HT_2.svg" alt="Image description" /><figcaption>High Tech <br>Manufacturing</figcaption></div>
+                                                    <div class="t-sq t-lm"><img src="./lib/tools/freight-story/images/LM_1.svg" alt="Image description" /><figcaption>Local Manufacturing &<br> Distribution</figcaption></div>
                                                 </div>
                                             </div>
                                             <div class="col-sm-12">
@@ -494,8 +494,8 @@
                                             </div>
                                         </div>
                                         <div class="card row">
-                                            <div class="col-sm-6 t-sq t-ig"><img class="fc-detail" src="/dev/tools/freight_story/images/IG_1.svg" alt="Image description" /></div>
-                                            <div class="col-sm-6 t-sq t-ig"><img class="fc-detail" src="/dev/tools/freight_story/images/IG_2.svg" alt="Image description" /></div>
+                                            <div class="col-sm-6 t-sq t-ig"><img class="fc-detail" src="./lib/tools/freight-story/images/IG_1.svg" alt="Image description" /></div>
+                                            <div class="col-sm-6 t-sq t-ig"><img class="fc-detail" src="./lib/tools/freight-story/images/IG_2.svg" alt="Image description" /></div>
                                         </div>
                                     </div> 
                                     <div class="story " data-section="typologies" data-mode="2">
@@ -524,8 +524,8 @@
                                             </div>
                                         </div>
                                         <div class="card row">
-                                            <div class="col-sm-6 t-sq t-hi"><img class="fc-detail" src="/dev/tools/freight_story/images/HI_1.svg" alt="Image description" /></div>
-                                            <div class="col-sm-6 t-sq t-hi"><img class="fc-detail" src="/dev/tools/freight_story/images/HI_2.svg" alt="Image description" /></div>
+                                            <div class="col-sm-6 t-sq t-hi"><img class="fc-detail" src="./lib/tools/freight-story/images/HI_1.svg" alt="Image description" /></div>
+                                            <div class="col-sm-6 t-sq t-hi"><img class="fc-detail" src="./lib/tools/freight-story/images/HI_2.svg" alt="Image description" /></div>
                                         </div>
                                     </div>  
                                     <div class="story " data-section="typologies" data-mode="3">
@@ -554,8 +554,8 @@
                                             </div>    
                                         </div>
                                         <div class="card row">
-                                            <div class="col-sm-6 t-sq t-dc"><img class="fc-detail" src="/dev/tools/freight_story/images/DC_1.svg" alt="Image description" /></div>
-                                            <div class="col-sm-6 t-sq t-dc"><img class="fc-detail" src="/dev/tools/freight_story/images/DC_2.svg" alt="Image description" /></div>
+                                            <div class="col-sm-6 t-sq t-dc"><img class="fc-detail" src="./lib/tools/freight-story/images/DC_1.svg" alt="Image description" /></div>
+                                            <div class="col-sm-6 t-sq t-dc"><img class="fc-detail" src="./lib/tools/freight-story/images/DC_2.svg" alt="Image description" /></div>
                                         </div>
                                     </div>    
                                     <div class="story " data-section="typologies" data-mode="4">
@@ -584,8 +584,8 @@
                                             </div>    
                                         </div>
                                         <div class="card row">
-                                            <div class="col-sm-6 t-sq t-ht"><img class="fc-detail" src="/dev/tools/freight_story/images/HT_1.svg" alt="Image description" /></div>
-                                            <div class="col-sm-6 t-sq t-ht"><img class="fc-detail" src="/dev/tools/freight_story/images/HT_2.svg" alt="Image description" /></div>
+                                            <div class="col-sm-6 t-sq t-ht"><img class="fc-detail" src="./lib/tools/freight-story/images/HT_1.svg" alt="Image description" /></div>
+                                            <div class="col-sm-6 t-sq t-ht"><img class="fc-detail" src="./lib/tools/freight-story/images/HT_2.svg" alt="Image description" /></div>
                                         </div>
                                     </div>  
                                     <div class="story " data-section="typologies" data-mode="5">
@@ -614,8 +614,8 @@
                                             </div>
                                         </div>
                                         <div class="card row">
-                                            <div class="col-sm-6 t-sq t-lm"><img class="fc-detail" src="/dev/tools/freight_story/images/LM_1.svg" alt="Image description" /></div>
-                                            <div class="col-sm-6 t-sq t-lm"><img class="fc-detail" src="/dev/tools/freight_story/images/LM_2.svg" alt="Image description" /></div>
+                                            <div class="col-sm-6 t-sq t-lm"><img class="fc-detail" src="./lib/tools/freight-story/images/LM_1.svg" alt="Image description" /></div>
+                                            <div class="col-sm-6 t-sq t-lm"><img class="fc-detail" src="./lib/tools/freight-story/images/LM_2.svg" alt="Image description" /></div>
                                         </div>
                                     </div>  
                                                                         
@@ -637,19 +637,19 @@
                         <div class="col-xs-12 col-sm-6">
                             <h4>About</h4>
                             <ul class="footer-links">
-                                <li><a href="#planning">DVRPC Freight Planning</a></li>
-                                <li><a href="#data">Our Data</a></li>
-                                <li><a href="#open-freight-app">Open Freight App</a></li>
+                                <li><a href="../phillyfreightfinder/#planning">DVRPC Freight Planning</a></li>
+                                <li><a href="../phillyfreightfinder/#data">Our Data</a></li>
+                                <li><a href="../phillyfreightfinder/#open-freight-app">Open Freight App</a></li>
                             </ul>
 
                         </div>
                         <div class="col-xs-12 col-sm-6">
                             <h4>Tools</h4>
                             <ul class="footer-links">
-                                <li><a href="#region">County Profiles</a></li>
-                                <li><a href="#maritime-indicators">Maritime Indicators</a></li>
-                                <li><a href="#highway-performance">Highway Performance</a></li>
-                                <li><a href="#map">Network Explorer</a></li>
+                                <li><a href="../phillyfreightfinder/#region">County Profiles</a></li>
+                                <li><a href="../phillyfreightfinder/#maritime-indicators">Maritime Indicators</a></li>
+                                <li><a href="../phillyfreightfinder/#highway-performance">Highway Performance</a></li>
+                                <li><a href="../phillyfreightfinder/#map">Network Explorer</a></li>
                             </ul>
                         </div>
                     </div>
@@ -660,7 +660,7 @@
                             
                         </div>
                         <div class="col-sm-6 col-md-12">
-                            <p style="padding-top:58px;"><a href="#disclaimer">Data Disclaimer</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#license">License</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://www.dvrpc.org/policies/" target="_blank">Policies&nbsp;&nbsp;<i class="glyphicon glyphicon-new-window"></i></a></p><p>&copy;&nbsp;2015 Delaware Valley Regional Planning Commission</p>
+                            <p style="padding-top:58px;"><a href="../phillyfreightfinder/#disclaimer">Data Disclaimer</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="../phillyfreightfinder/#license">License</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="https://www.dvrpc.org/policies/" target="_blank">Policies&nbsp;&nbsp;<i class="glyphicon glyphicon-new-window"></i></a></p><p>&copy;&nbsp;2015 Delaware Valley Regional Planning Commission</p>
                         </div>
                     </div>
                 </div>
@@ -681,7 +681,7 @@
         <script src="dev/vendor/d3-custom.min.js" defer></script>
         <script src="dev/tools/bubble_chart.js" defer></script>
         <script src="dev/tools/freight_story/story-controls.js" defer></script> -->
-        <script src="lib/tools/freight-story.min.js" defer></script>
+        <script src="lib/tools/freight-story/freight-story.min.js" defer></script>
         
         <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.43.0/mapbox-gl.js' defer></script>
         <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.43.0/mapbox-gl.css' rel='stylesheet'/>

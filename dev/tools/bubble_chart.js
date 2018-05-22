@@ -1203,7 +1203,7 @@ function ViewMode(button_id, width, height) {
 var myBubbleChart = createBubbleChart();
 
 // // Load data
-d3.csv("data/" + BUBBLE_PARAMETERS.data_file, function (error, data) {
+d3.csv("./data/" + BUBBLE_PARAMETERS.data_file, function (error, data) {
     // Once the data is loaded...
 
     if (error) { console.log(error); }
