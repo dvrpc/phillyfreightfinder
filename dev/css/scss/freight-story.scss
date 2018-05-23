@@ -4,6 +4,10 @@
 @import 'dyna-icon';
 @import 'footer';
 
+body {
+  overflow-x: hidden
+}
+
 #loading {
   position: absolute;
   width: 220px;
@@ -150,9 +154,13 @@
 }
 #source-span {
   position: absolute;
-  bottom: 0;
-  width: 60%;
+  padding-right: 20px;
+  bottom: 20px;
+  width: 100%;
   text-align: right;
+}
+.mapboxgl-ctrl-attrib.mapboxgl-compact {
+  display: none;
 }
 
 // ul#map-values {
@@ -184,7 +192,7 @@ ul#map-values > li {
   width: 240px;
   bottom: 0;
   position: absolute;
-  transform: translate(15%,-60%);
+  transform: translate(0%,-35%);
 }
 .chart-title h4 {
   font-weight: 100;
@@ -301,7 +309,7 @@ ul#map-values > li {
 
 #distribution-map, #typologies-map {
   position: relative;
-  top: -771px;
+  // top: -771px;
   height: 750px;
   width: 100%;
     /* transition: opacity 0.3s;

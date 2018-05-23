@@ -216,20 +216,6 @@ var freightMap = {
         
     },
     
-    fitRegion: function(div, aspect){
-        var mapCanvas = document.getElementsByClassName('mapboxgl-canvas')[0];
-        var mapDiv = document.getElementById(div);
-        var parent = mapDiv.parentNode.offsetWidth;
-        var height = (aspect) ? (parent * 0.83) + 'px' : BUBBLE_PARAMETERS.height + 'px';
-        mapDiv.style.width = parent+'px';
-        mapDiv.style.height = height;
-        mapCanvas.style.width = parent+'px';
-         mapCanvas.style.height = height;
-        map.resize();
-        map.fitBounds([
-			[-76.09405517578125, 39.49211914385648], [-74.32525634765625,40.614734298694216]
-		]);
-    }
 }
 
 mapboxgl.accessToken = 'pk.eyJ1IjoibXJ1YW5lIiwiYSI6ImNpZ3dnaGF1bjBzNGZ3N201bTQwN3h6YngifQ.pw1khldm3UDHd56okxc5bQ';
@@ -237,12 +223,22 @@ mapboxgl.accessToken = 'pk.eyJ1IjoibXJ1YW5lIiwiYSI6ImNpZ3dnaGF1bjBzNGZ3N201bTQwN
 var map = freightMap.makeIt();
 var fcMap = freightMap.fcMakeIt();
 
+var fitRegion = function(div, h, w){
+    var mapDiv = document.getElementById(div);
+    var mapCanvas = mapDiv.getElementsByClassName('mapboxgl-canvas')[0];
+    mapDiv.style.width = w +'px';
+    mapDiv.style.height = h + 'px';
+    mapCanvas.style.width = w +'px';
+    mapCanvas.style.height = h + 'px';
+    setTimeout(function(){ 
+        map.fitBounds([
+            [-76.09405517578125, 39.49211914385648], [-74.32525634765625,40.614734298694216]
+        ]);
+     }, 100);
+    
+}
+
 map.on('load', function(){
-    // Add a new source from our GeoJSON data 
-    // map.addSource("hex", {
-    //     type: "vector",
-    //     url: 'https://a.michaelruane.com/data/dvrpc-freight-fq-hexbins.json'
-    // });
 
     map.addLayer({
         "id": "employment-half-fill",

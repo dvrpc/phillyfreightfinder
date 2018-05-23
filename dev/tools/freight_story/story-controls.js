@@ -4,10 +4,27 @@ var getPageHeight = function() {
     return winHeight / 2;
 }
 
+var pageWidth = function() {
+    width = elHeight = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+    return width;
+}
+
 // update class list based on 12 columns
 function updateClass(element, cols) {
     var colOffset = 12 - cols;
     document.getElementById(element).className = 'col-lg-offset-'+ colOffset +' col-lg-'+ cols ;
+}
+
+updateSizes = function() {
+    var width = pageWidth();
+    var height = getHeight();
+    var mapCols = (width >= 1200) ? 0.66 : 0.58333;
+    //update map size
+    document.getElementById("distribution-map").style.width = ((width * mapCols) - 20) + "px";
+    //forces size of text equal to map
+    document.querySelector('.map-height').style.height = height + "px";
+
+    (map_exists) ? fitRegion('distribution-map', height, ((width * mapCols) - 20)) : '';
 }
 
 setGraphicPosition = function(el, position, top, margin) {
@@ -30,7 +47,12 @@ setGraphicPosition(employmentBubbles, null, null, '0 0 -'+ BUBBLE_PARAMETERS.hei
 setGraphicPosition(distributionMap, 'relative', -771, '0 0 -'+ BUBBLE_PARAMETERS.height +'px 0');
 setGraphicPosition(typologyMap, 'relative', -771, '0 0 -'+ BUBBLE_PARAMETERS.height +'px 0');
 document.getElementById("js-wage-desc").style.height = BUBBLE_PARAMETERS.height + "px";
-document.querySelector('.map-height').style.minHeight = BUBBLE_PARAMETERS.height + "px";
+
+updateSizes();
+
+window.onresize = function() {
+    updateSizes();
+}
 
 var employment_exists = false;
 var map_exists = false;
@@ -38,7 +60,7 @@ var activeItem = '';
 var map_called = false;
 var map_mode = 'none';
 var map_section = 'distribution';
-var distNarrative = document.getElementById('distribution-narrative').offsetHeight;
+var distNarrative = $('#distribution-narrative').height();
 
 // initialization and options for scroll story functionality
 var scrollStory = $('#planning').scrollStory({
@@ -185,6 +207,7 @@ var scrollStory = $('#planning').scrollStory({
                 break;
             case 18:
                 if(activeItem.index < 18){
+                    console.log('Narrative height: ', distNarrative)
                     setGraphicPosition(distributionMap, 'relative', (distNarrative - BUBBLE_PARAMETERS.height), '0 0 -'+ BUBBLE_PARAMETERS.height +'px 0')
                 }
                 break;
