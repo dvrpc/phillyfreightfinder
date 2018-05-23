@@ -91,6 +91,14 @@ var freightMap = {
     
     fcTypes: ['blank', 'all', 'ig', 'hi', 'dc', 'ht', 'lm'],
 
+    attribution: {
+        '10': 'Source: DVRPC Analysis of 2012 NETS Data',
+        '11': 'Source: DVRPC Analysis of 2012 NETS Data',
+        '12': 'Source: DVRPC 2015 Landuse',
+        '13': 'Source: DVRPC Analysis of 2016 CoStar Data',
+        '14': 'Source: DVRPC Freight Database'
+    },
+
 	makeIt: function(){
         $('#distribution-map').css('height', BUBBLE_PARAMETERS.height);
 			// lets build the map
@@ -143,7 +151,7 @@ var freightMap = {
 		return fcMap;
     },
 	
-	repaint: function(mode, section){
+	repaint: function(mode, section){    
         if(section === 'distribution') {
             if(mode === 'fq-circles') {
                 map.setPaintProperty('grey-fill', 'fill-opacity', 0.65);

@@ -611,6 +611,17 @@ function createBubbleChart() {
             .attr('transform','translate(-'+ circleThree +',-'+ (circleThree + 15) +')')
             .text('Circles sized by number of employees');
 
+        var source_bubble = inner_svg.append('g')
+            .attr("class", "size-legend-header")
+            .attr("opacity", 1)
+            .attr('transform', 'translate('+BUBBLE_PARAMETERS.width+','+height+')');
+        
+        source_bubble.append('text')
+            .attr('class', 'g-source')
+            .attr('text-anchor', 'end')
+            .attr('transform','translate(0,-30)')
+            .text('Source: DVRPC Analysis of 2012 National Establishment Time Series Data');
+
         var legendCircles = legend.append('g');
 
         legendCircles.append('circle')
@@ -675,6 +686,8 @@ function createBubbleChart() {
             .attr('opacity', 1)
             .attr('transform', 'translate(75,125)');
 
+        
+            
         // build horizontal wage circle legend
         var wage_legend = inner_svg.append("g")
             .attr("class", "g-legend wage-legend")

@@ -159,6 +159,17 @@ module.exports = function(grunt){
 
 			
 		},
+		sass: {
+			options: {
+				sourceMap: true,
+				outputStyle: 'compressed'
+			},
+			dist: {
+				files: {
+					'dev/css/scss/freight-story.min.css': 'dev/css/scss/freight-story.scss'
+				}
+			}
+		},
 
 		jshint: {
 			options: {
@@ -182,11 +193,15 @@ module.exports = function(grunt){
 			  },
 			FCtool: {
 				files: ['dev/tools/freight_story/*'],
-				tasks: ['concat:FC', 'uglify:FC', 'cssmin:FC','copy:FC' ]
+				tasks: ['concat:FC', 'uglify:FC', 'uglify:geo', 'cssmin:FC','copy:FC' ]
 			},
 			html: {
-				files: ['*.html'],
+				files: ['./*.html'],
 				tasks: ['copy:FC']
+			}, 
+			fcCss: {
+				files: ['dev/css/**/*.scss'],
+				tasks: ['sass', 'cssmin:FC']
 			}
 		},
 

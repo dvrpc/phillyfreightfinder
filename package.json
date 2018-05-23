@@ -23,6 +23,7 @@
     "grunt-contrib-watch": "^0.6.1",
     "grunt-htmlhint-plus": "^0.1.0",
     "grunt-postcss": "^0.7.1",
+    "grunt-sass": "^2.1.0",
     "http-server": "^0.9.0",
     "jshint-stylish": "^2.0.1",
     "matchdep": "^1.0.0"

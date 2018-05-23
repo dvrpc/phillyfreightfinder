@@ -144,6 +144,15 @@
   left: 30px;
 }
 
+.g-source {
+  font-size: 0.9em;
+}
+#source-span {
+  position: absolute;
+  bottom: 0;
+  width: 60%;
+  text-align: right;
+}
 .chart-title h4 {
   font-weight: 100;
   line-height: 1.25;

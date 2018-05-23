@@ -23,6 +23,7 @@ setGraphicPosition = function(el, position, top, margin) {
 var employmentBubbles = document.getElementById('employment-bubble');
 var distributionMap = document.getElementById('distribution-map');
 var typologyMap = document.getElementById('typologies-map');
+var mapSource = document.getElementById('source-span');
 
 // set the graphic DOM elements correctly
 setGraphicPosition(employmentBubbles, null, null, '0 0 -'+ BUBBLE_PARAMETERS.height +'px 0');
@@ -140,6 +141,8 @@ var scrollStory = $('#planning').scrollStory({
                 
                 freightMap.repaint(item.data.mode, item.data.section);
             }
+            //set the source 
+            mapSource.innerHTML = (freightMap.attribution[item.index]) ? freightMap.attribution[item.index] : '';
         }
 
         if ( 17 > item.index && item.index > 9 && item.data.section === 'distribution'){
