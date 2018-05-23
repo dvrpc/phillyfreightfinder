@@ -154,6 +154,38 @@
   width: 60%;
   text-align: right;
 }
+
+// ul#map-values {
+//   text-align: center;
+// }
+// ul#map-values li{
+//   float: left;
+//   margin: 40px;
+// }
+#map-leg-image {
+  padding-left: 20px;
+}
+#map-title {
+  text-align: center;
+  line-height: 1em;
+  padding: 10px 20px;
+}
+ul#map-values {
+  width: 240px;
+  display: table;
+  table-layout: fixed;
+  padding-left: 0px;
+}
+ul#map-values > li {
+  display: table-cell;
+  text-align: center
+}
+#map-legend {
+  width: 240px;
+  bottom: 0;
+  position: absolute;
+  transform: translate(15%,-60%);
+}
 .chart-title h4 {
   font-weight: 100;
   line-height: 1.25;

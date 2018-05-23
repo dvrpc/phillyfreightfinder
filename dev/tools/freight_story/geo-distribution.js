@@ -33,6 +33,16 @@ var freightMap = {
         [5, '#312867']
     ],
 
+    legends : {
+        'establishment' : ['Number of Establishments','map-legend-full.png','<li>0</li><li>15</li><li>40</li><li>90</li><li>275</li><li>550</li>'],
+        'employment': ['Number of Employees in Freight-intensive Sectors','map-legend-full.png','<li>0</li><li>150</li><li>550</li><li>1,250</li><li>4,000</li><li>10,250</li>'],
+        'landuse': ['Percent Coverage of Freight Related Land Use','map-legend-full.png','<li>0</li><li>5</li><li>15</li><li>33</li><li>50</li><li>100</li>'],
+        'industrial': ['Square Footage of Industrial Development (000s)','map-legend-full.png','<li>0</li><li>225</li><li>725</li><li>1,500</li><li>3,000</li><li>7,000</li>'],
+        'facilities': ['Proximity to Intermodal Facility (miles)','map-intermodal.png','<li></li><li>0</li><li></li><li>0.5</li><li></li><li>1</li>'],
+        'fq': ['Freight Quotient - Indicator of Freight Activity','map-legend-fq.png','<li>low</li><li></li><li></li><li></li><li></li><li>high</li>'],
+        
+    },
+
 	stylesheet : {
        "version": 8,
        "sprite": "https://a.michaelruane.com/styles/fc-styles/sprite",
@@ -183,6 +193,9 @@ var freightMap = {
                     map.setPaintProperty(this.overlays[i] +'-half-fill', 'fill-opacity', 0);
                     
                 }
+                document.getElementById('map-title').innerHTML = (this.legends[mode]) ? this.legends[mode][0] : '';
+                document.getElementById('map-values').innerHTML = (this.legends[mode]) ? this.legends[mode][2]: '';
+                document.getElementById('map-leg-image').src = (this.legends[mode]) ? './lib/tools/freight-story/images/'+ this.legends[mode][1]: ''; 
             }
         } else if(section === 'typologies') {
             switch (mode) {
