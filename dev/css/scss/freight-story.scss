@@ -460,6 +460,7 @@ body {
     /* make the text accessible to screen readers */
   cursor: pointer;
   position: absolute;
+  pointer-events: none;
 }
 
 .dotnav li a:focus {

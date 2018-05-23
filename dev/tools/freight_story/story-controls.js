@@ -52,6 +52,7 @@ updateSizes();
 
 window.onresize = function() {
     updateSizes();
+    updateChart();
 }
 
 var employment_exists = false;

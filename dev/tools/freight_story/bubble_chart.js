@@ -9,10 +9,12 @@ var getHeight = function() {
     return elHeight - 65;
 }
 
+
 var BUBBLE_PARAMETERS = {
     "data_file": "regional_employment_data.csv",
     "report_title": "DVRPC Employment",
     "footer_text": "Concept for PFF Freight Employment tool",
+    "current_state": '',
     "width": getWidth(),
     "height": getHeight(),
     "marginRight": 100,
@@ -947,6 +949,8 @@ function createBubbleChart() {
     };
 
     bubbleChart.switchMode = function (buttonID) {
+        BUBBLE_PARAMETERS.current_state = buttonID;
+        console.log(buttonID)
 
         /*
          * Externally accessible function (this is attached to the
@@ -970,9 +974,10 @@ function createBubbleChart() {
         if (currentMode.type == "color") {
             colorBubbles();
             return bubbleChart;
-        }
-         if (currentMode.buttonId == "all") {
+        } else if (currentMode.buttonId == "all") {
             unColorBubbles();
+        } else {
+            colorBubbles();
         }
 
         // SHOW LABELS 
@@ -1214,11 +1219,11 @@ function ViewMode(button_id, width, height) {
 
 // Create a new bubble chart instance
 var myBubbleChart = createBubbleChart();
-
+var bubbleData;
 // // Load data
 d3.csv("./data/" + BUBBLE_PARAMETERS.data_file, function (error, data) {
     // Once the data is loaded...
-
+    bubbleData = data;
     if (error) { console.log(error); }
 
     //     // Display bubble chart inside the #vis div.
@@ -1230,4 +1235,14 @@ d3.csv("./data/" + BUBBLE_PARAMETERS.data_file, function (error, data) {
 
 });
 
+var updateChart = function() {
+    if(employment_exists) {
+        d3.select('#g-employment-bubble').selectAll('svg').remove();
+        BUBBLE_PARAMETERS.width = getWidth();
+        BUBBLE_PARAMETERS.height = getHeight();
+        myBubbleChart('#g-employment-bubble', bubbleData);
+        myBubbleChart.switchMode(BUBBLE_PARAMETERS.current_state);
+    }
+       
+}
 
