@@ -620,7 +620,7 @@ function createBubbleChart() {
             .attr('class', 'g-source')
             .attr('text-anchor', 'end')
             .attr('transform','translate(0,-30)')
-            .text('Source: DVRPC Analysis of 2012 National Establishment Time Series Data');
+            .text('Source: DVRPC Analysis of 2012 NETS Data');
 
         var legendCircles = legend.append('g');
 
