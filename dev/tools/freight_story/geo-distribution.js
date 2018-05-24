@@ -628,4 +628,5 @@ fcMap.on("load", function(){
         ],
           "interactive": true
     });
+    (map_mode !== 'none') ?  freightMap.repaint(map_mode, map_section) : '';
 });

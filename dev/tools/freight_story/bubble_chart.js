@@ -950,7 +950,6 @@ function createBubbleChart() {
 
     bubbleChart.switchMode = function (buttonID) {
         BUBBLE_PARAMETERS.current_state = buttonID;
-        console.log(buttonID)
 
         /*
          * Externally accessible function (this is attached to the

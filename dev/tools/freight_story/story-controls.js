@@ -133,24 +133,27 @@ var scrollStory = $('#planning').scrollStory({
             }
         }
 
+        function mapStateChecker(index, mode, section){
+            if(!map_called){
+                map_called = true;
+                $.getScript('./lib/tools/freight-story/geo-distribution.js', function(){
+                    freightMap.repaint(mode, section);
+                });
+            }else if(!map_exists && map_called){
+                map_mode = mode;
+                map_section = section;
+            }else if (map_exists) {
+                mapSource.innerHTML = (freightMap.attribution[index]) ? freightMap.attribution[index] : '';
+                freightMap.repaint(mode, section);
+            }
+        }
+
         if(item.index > 8 && item.data.section === 'distribution' && item.data.mode){
             //make sure employment is gone
             setGraphicPosition(employmentBubbles, 'relative', -BUBBLE_PARAMETERS.height, '0 0 -'+ (BUBBLE_PARAMETERS.height) +'px 0')
             setGraphicPosition(typologyMap, 'relative', -771, '0 0 -'+ (BUBBLE_PARAMETERS.height) +'px 0')
 
-            if(!map_called){
-                map_called = true;
-                
-                $.getScript('./lib/tools/freight-story/geo-distribution.js', function(){
-                    freightMap.repaint(item.data.mode, item.data.section);
-                });
-            }else if(!map_exists && map_called){
-                map_mode = item.data.mode;
-                map_section = item.data.section;
-            }else if (map_exists) {
-                mapSource.innerHTML = (freightMap.attribution[item.index]) ? freightMap.attribution[item.index] : '';
-                freightMap.repaint(item.data.mode, item.data.section);
-            }
+            mapStateChecker(item.index, item.data.mode, item.data.section);
            
         }
 
@@ -159,8 +162,11 @@ var scrollStory = $('#planning').scrollStory({
         }
 
         if(item.index > 17 && item.data.section === 'typologies' && item.data.mode){
+            setGraphicPosition(distributionMap, 'relative', (distNarrative - BUBBLE_PARAMETERS.height), '0 0 -'+ BUBBLE_PARAMETERS.height +'px 0');
             item.index > 18 ? setGraphicPosition(typologyMap, 'fixed', 60) : '';
-            freightMap.repaint(item.data.mode, item.data.section);
+            
+            mapStateChecker(item.index, item.data.mode, item.data.section);
+            // freightMap.repaint(item.data.mode, item.data.section);
         }
 
     },
