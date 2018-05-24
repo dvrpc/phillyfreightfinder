@@ -317,6 +317,9 @@ ul#map-values > li {
     /* transition: opacity 0.3s;
      */;
 }
+#typologies-map {
+    z-index: 1;
+}
 
 body {
   height: auto;
@@ -635,6 +638,7 @@ body {
   text-align: center;
   width: 300px;
   z-index: 2;
+  cursor: pointer;
 }
 
 .two-column {
@@ -824,4 +828,8 @@ body {
 
 .lm-icon use {
   fill: #312867;
+}
+
+.content-footer{
+  z-index: 2
 }

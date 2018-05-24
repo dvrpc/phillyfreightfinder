@@ -23,7 +23,9 @@ updateSizes = function() {
     //update map size
     document.getElementById("distribution-map").style.width = ((width * mapCols) - 20) + "px";
     //forces size of text equal to map
-    document.querySelector('.map-height').style.height = height + "px";
+    mapHeightItems.forEach(function(el) {
+        el.style.height = height + "px";
+      });
     document.getElementById("js-wage-desc").style.height = height + "px";
 
     if (map_exists) {
@@ -47,6 +49,7 @@ var employmentBubbles = document.getElementById('employment-bubble');
 var distributionMap = document.getElementById('distribution-map');
 var typologyMap = document.getElementById('typologies-map');
 var mapSource = document.getElementById('source-span');
+var mapHeightItems = document.querySelectorAll('.map-height');
 
 // set the graphic DOM elements correctly
 setGraphicPosition(employmentBubbles, null, null, '0 0 -'+ BUBBLE_PARAMETERS.height +'px 0');
@@ -246,6 +249,10 @@ $('.dotnav li').on('click', function(e){
     scrollStory.index(storyIndex);
    
 })
+
+document.getElementById('scroll-hint').addEventListener('click', function(){
+    scrollStory.index(0);
+});
 
 window.addEventListener('scroll', function () {
     var fullElement = document.querySelector('.fc-color-full.inviewport') || document.querySelector('.inviewport .fc-color-full');
