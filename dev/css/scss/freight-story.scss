@@ -158,6 +158,7 @@ body {
   bottom: 20px;
   width: 100%;
   text-align: right;
+  z-index: 200;
 }
 .mapboxgl-ctrl-attrib.mapboxgl-compact {
   display: none;
@@ -193,6 +194,7 @@ ul#map-values > li {
   bottom: 0;
   position: absolute;
   transform: translate(0%,-35%);
+  z-index: 200;
 }
 .chart-title h4 {
   font-weight: 100;

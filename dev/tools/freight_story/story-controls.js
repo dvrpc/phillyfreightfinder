@@ -27,6 +27,8 @@ updateSizes = function() {
     document.getElementById("js-wage-desc").style.height = height + "px";
 
     (map_exists) ? fitRegion('distribution-map', height, ((width * mapCols) - 20)) : '';
+
+    
 }
 
 setGraphicPosition = function(el, position, top, margin) {
@@ -54,6 +56,7 @@ updateSizes();
 window.onresize = function() {
     updateSizes();
     updateChart();
+    scrollStory.updateTriggerOffset(getPageHeight())
 }
 
 var employment_exists = false;
@@ -244,10 +247,14 @@ var scrollStory = $('#planning').scrollStory({
                 break;
 
         }
-    }
+    },
+    triggeroffsetupdate: function() {
+        console.log('trigger updated')
+      }
 
 
 }).data('plugin_scrollStory');
+
 
 
 window.onbeforeunload = function () {
