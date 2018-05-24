@@ -18,11 +18,13 @@ function updateClass(element, cols) {
 updateSizes = function() {
     var width = pageWidth();
     var height = getHeight();
+    BUBBLE_PARAMETERS.height = height;
     var mapCols = (width >= 1200) ? 0.66 : 0.58333;
     //update map size
     document.getElementById("distribution-map").style.width = ((width * mapCols) - 20) + "px";
     //forces size of text equal to map
     document.querySelector('.map-height').style.height = height + "px";
+    document.getElementById("js-wage-desc").style.height = height + "px";
 
     (map_exists) ? fitRegion('distribution-map', height, ((width * mapCols) - 20)) : '';
 }
@@ -31,7 +33,7 @@ setGraphicPosition = function(el, position, top, margin) {
     position !== null && position?
         el.style.position = position : '';
     top !== null && top ?
-        el.style.top = top+'px' : '';
+        el.style.top = top +'px' : '';
     margin !== null && margin?
         el.style.margin = margin : '';
 }
@@ -46,7 +48,6 @@ var mapSource = document.getElementById('source-span');
 setGraphicPosition(employmentBubbles, null, null, '0 0 -'+ BUBBLE_PARAMETERS.height +'px 0');
 setGraphicPosition(distributionMap, 'relative', -771, '0 0 -'+ BUBBLE_PARAMETERS.height +'px 0');
 setGraphicPosition(typologyMap, 'relative', -771, '0 0 -'+ BUBBLE_PARAMETERS.height +'px 0');
-document.getElementById("js-wage-desc").style.height = BUBBLE_PARAMETERS.height + "px";
 
 updateSizes();
 
@@ -152,7 +153,6 @@ var scrollStory = $('#planning').scrollStory({
 
             if(!map_called){
                 map_called = true;
-                // console.log('called by focus', item.index);
                 
                 $.getScript('./lib/tools/freight-story/geo-distribution.js', function(){
                     freightMap.repaint(item.data.mode, item.data.section);
@@ -185,7 +185,6 @@ var scrollStory = $('#planning').scrollStory({
 
     },
     itementerviewport: function(ev, item) {
-        // this.updateOffsets();
         activeItem = this.getActiveItem();
         switch (item.index){
             // return the employment bubble chart to fixed position on reverse scroll
