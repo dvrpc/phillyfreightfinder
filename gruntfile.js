@@ -261,5 +261,6 @@ module.exports = function(grunt){
     grunt.registerTask('imageUpdates', ['imagemin']);
     grunt.registerTask('start', ['express', 'watch']);
     grunt.registerTask('copy-all', ['copy']);
-    grunt.registerTask('copy-noImages', ['copy:corefonts', 'copy:lib', 'copy:includes', 'copy:modals', 'copy:data', 'copy:index']);
+	grunt.registerTask('copy-noImages', ['copy:corefonts', 'copy:lib', 'copy:includes', 'copy:modals', 'copy:data', 'copy:index']);
+	grunt.registerTask('fc-story', ['sass', 'concat:FC', 'uglify:FC', 'uglify:geo', 'cssmin:FC','copy:FC' ]);
 };
