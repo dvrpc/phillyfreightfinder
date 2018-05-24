@@ -223,7 +223,7 @@ mapboxgl.accessToken = 'pk.eyJ1IjoibXJ1YW5lIiwiYSI6ImNpZ3dnaGF1bjBzNGZ3N201bTQwN
 var map = freightMap.makeIt();
 var fcMap = freightMap.fcMakeIt();
 
-var fitRegion = function(div, h, w){
+var fitRegion = function(div, h, w, name){
     var mapDiv = document.getElementById(div);
     var mapCanvas = mapDiv.getElementsByClassName('mapboxgl-canvas')[0];
     mapDiv.style.width = w +'px';
@@ -231,7 +231,7 @@ var fitRegion = function(div, h, w){
     mapCanvas.style.width = w +'px';
     mapCanvas.style.height = h + 'px';
     setTimeout(function(){ 
-        map.fitBounds([
+        window[name].fitBounds([
             [-76.09405517578125, 39.49211914385648], [-74.32525634765625,40.614734298694216]
         ]);
      }, 100);

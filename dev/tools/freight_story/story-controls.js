@@ -26,8 +26,10 @@ updateSizes = function() {
     document.querySelector('.map-height').style.height = height + "px";
     document.getElementById("js-wage-desc").style.height = height + "px";
 
-    (map_exists) ? fitRegion('distribution-map', height, ((width * mapCols) - 20)) : '';
-
+    if (map_exists) {
+        fitRegion('distribution-map', height, ((width * mapCols) - 20), 'map')
+        fitRegion('typologies-map', height, ((width * 0.5833) - 20), 'fcMap')
+    }
     
 }
 
@@ -57,6 +59,7 @@ window.onresize = function() {
     updateSizes();
     updateChart();
     scrollStory.updateTriggerOffset(getPageHeight())
+    
 }
 
 var employment_exists = false;
@@ -127,28 +130,6 @@ var scrollStory = $('#planning').scrollStory({
             }
         }
 
-        // if(item.data.section === 'typologies') {
-        //     document.getElementById('distribution-map').style.opacity = 1.0;
-        //     freightMap.repaint(item.data.mode, item.data.section);
-        //     switch (item.data.mode) {
-        //         case 'hide':
-        //             document.getElementById('distribution-map').style.opacity = 0;
-        //             updateClass('map-parent', 8);
-                    
-        //             freightMap.fitRegion('distribution-map', false);
-        //             break;
-        //         case 'all':
-        //             updateClass('map-parent', 7);
-        //             freightMap.fitRegion('distribution-map', true);
-        //             break;
-        //         default:
-        //             updateClass('map-parent', 7);
-        //             freightMap.fitRegion('distribution-map', true);
-        //             break;
-        //     }
-            
-        // }
-
         if(item.index > 8 && item.data.section === 'distribution' && item.data.mode){
             //make sure employment is gone
             setGraphicPosition(employmentBubbles, 'relative', -BUBBLE_PARAMETERS.height, '0 0 -'+ (BUBBLE_PARAMETERS.height) +'px 0')
@@ -164,11 +145,10 @@ var scrollStory = $('#planning').scrollStory({
                 map_mode = item.data.mode;
                 map_section = item.data.section;
             }else if (map_exists) {
-                
+                mapSource.innerHTML = (freightMap.attribution[item.index]) ? freightMap.attribution[item.index] : '';
                 freightMap.repaint(item.data.mode, item.data.section);
             }
-            //set the source 
-            mapSource.innerHTML = (freightMap.attribution[item.index]) ? freightMap.attribution[item.index] : '';
+           
         }
 
         if ( 17 > item.index && item.index > 9 && item.data.section === 'distribution'){
@@ -249,9 +229,7 @@ var scrollStory = $('#planning').scrollStory({
         }
     },
     triggeroffsetupdate: function() {
-        console.log('trigger updated')
-      }
-
+    }
 
 }).data('plugin_scrollStory');
 
