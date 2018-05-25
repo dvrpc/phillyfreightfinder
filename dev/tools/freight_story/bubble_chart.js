@@ -792,7 +792,7 @@ function createBubbleChart() {
         var wage_color_legend = inner_svg.append('g')
             .attr('class', 'g-legend wage-legend')
             .attr('opacity', 0)
-            .attr('transform',  'translate('+ (width * 0.05) +', '+ (height) +')');
+            .attr('transform',  'translate('+ (width * 0.0) +', '+ (height) +')');
 
         wage_color_legend.append('text')
             .attr('class','g-legend-title')
