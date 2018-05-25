@@ -38,7 +38,7 @@ var freightMap = {
         'employment': ['Number of Employees in Freight-intensive Sectors','map-legend-full.png','<li>0</li><li>150</li><li>550</li><li>1,250</li><li>4,000</li><li>10,250</li>'],
         'landuse': ['Percent Coverage of Freight Related Land Use','map-legend-full.png','<li>0</li><li>5</li><li>15</li><li>33</li><li>50</li><li>100</li>'],
         'industrial': ['Square Footage of Industrial Development (000s)','map-legend-full.png','<li>0</li><li>225</li><li>725</li><li>1,500</li><li>3,000</li><li>7,000</li>'],
-        'facilities': ['Proximity to Intermodal Facility (miles)','map-intermodal.png','<li></li><li>0</li><li></li><li>0.5</li><li></li><li>1</li>'],
+        'facilities': ['Proximity to Intermodal Facility (miles)','map-intermodal.png','<li></li><li>1</li><li></li><li>0.5</li><li></li><li>0</li>'],
         'fq': ['Freight Quotient - Indicator of Freight Activity','map-legend-fq.png','<li>low</li><li></li><li></li><li></li><li></li><li>high</li>'],
         
     },
