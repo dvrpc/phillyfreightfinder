@@ -25,7 +25,7 @@
             <div class="col-md-1 brand-leader hidden-xs hidden-sm hidden-md"></div>
             <div class="col-sm-12 col-md-12 col-lg-10 brand-left-offset" >
                 <div class="navbar-header">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" aria-label="Toggle navigation">
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
@@ -61,6 +61,7 @@
                                     <li><a href="../phillyfreightfinder/#region" data-toggle="collapse" data-target=".navbar-collapse.in">County Profile Tool</a></li>
                                     <li><a href="../phillyfreightfinder/#maritime-indicators" class='landingLink' data-tab='maritime-indicators' data-toggle="collapse" data-target=".navbar-collapse.in">Maritime Indicators</a></li>
                                     <li><a href="../phillyfreightfinder/#highway-performance" class='landingLink' data-tab='highway-performance' data-toggle="collapse" data-target=".navbar-collapse.in">Highway Performance</a></li>
+                                    <!-- <li><a href="../phillyfreightfinder/freight-center-story.html" class='landingLink' data-toggle="collapse" data-target=".navbar-collapse.in">Freight Center Story</a></li> -->
                                 </ul>
                         </li>
                         <li id='maplink' class='landingUI'><a href="../phillyfreightfinder/#map" data-tab='map' data-toggle="collapse" data-target=".navbar-collapse.in"><i class="dynico dynico-map"></i>&nbsp;&nbsp;View Map</a></li>
@@ -78,7 +79,7 @@
                     <li class="current" data-story-nav="0"><a href="#" >Overview</a></li>
                     <li class="new-section" data-story-nav="1"><a href="#">Defining Freight Employment</a></li>
                     <li data-story-nav="3"><a href="#">Sector Classifications</a></li>
-                    <li data-story-nav="8"><a href="#">Comparing Wages</a></li>
+                    <li data-story-nav="8"><a href="#">Average Wage by Sub-sector</a></li>
                     <li class="new-section" data-story-nav="9"><a href="#">Where is freight in the region?</a></li>
                     <li data-story-nav="10"><a href="#">Analysis Criteria</a></li>
                     <li data-story-nav="15"><a href="#">Freight Quotient</a></li>
@@ -147,13 +148,13 @@
                         <div class='story col-sm-12 fc-color-full' style="margin-bottom:100px;" data-legend="none">
                             <div class='center-block col-md-10 col-sm-12' style='float:none;'>
                                 <div class="col-sm-12">
-                                    <h3 style="color:#fff">Introduction to DVRPC Freight Centers</h3>
+                                    <h2 style="color:#fff">Introduction to DVRPC Freight Centers</h2>
                                     <div class="two-column">
                                         <p>The production and distribution of freight is an integral part of the region’s economy, requiring dedicated expanses of land in order to meet the needs of businesses and consumers. This land is an essential resource for a prosperous economy and an important source of tax revenues for many communities. The goal of the DVRPC Freight Centers inventory is to identify and categorize these key locations to enhance the planning necessary to concentrate growth, invest in appropriate transportation infrastructure, and minimize conflict with adjacent communities.</p>
                                     </div>
                                 </div>
                                 <div class='col-sm-6 col-lg-6'>
-                                    <h3 style="color:#fff">1. Defining Freight Employment</h3>
+                                    <h2 style="color:#fff">1. Defining Freight Employment</h2>
                                     <p>The Delaware Valley is home to over 430,000 business establishments employing over 3.1 million individuals. The story of freight centers starts with these employers. The role that each business plays in the regional economy influences the movement of goods and services and informs the patterns of freight related development.</p>
                                     <br/>
                                     <br/>
@@ -225,8 +226,10 @@
                                     <div class='clearfix'></div>
                                 </div>  
                                 <div class="story " data-section="employment" data-mode="extraction" data-legend="size,color">
+                                    
                                     <div class="card">
-                                       <h3>Extraction</h3>
+                                        <h3>Sector Classifications</h3>
+                                       <h4>Extraction</h4>
                                         <p>These industries are involved in the extraction of raw materials from the earth and/or the raising of animals and crops. These industries represent a small but important part of the regional economy.</p>
                                     </div>
                                     <div class="details">
@@ -235,7 +238,7 @@
                                 </div> 
                                 <div class="story " data-section="employment" data-mode="production" data-legend="size,color">
                                     <div class="card">
-                                        <h3>Production</h3>
+                                        <h4>Production</h4>
                                         <p>These industries are the makers of finished goods and consumer products. They are responsible for the production of the goods that allow for our way of life. Their operations have a critical reliance on freight transportation system to deliver the necessary inputs and get their outputs, or final products to market.</p>
                                     </div>
                                     <div class="details">
@@ -244,7 +247,7 @@
                                 </div>  
                                 <div class="story " data-section="employment" data-mode="distribution" data-legend="size,color">
                                     <div class="card">
-                                        <h3>Distribution</h3>
+                                        <h4>Distribution</h4>
                                         <p>These industries serve as the vital link between the various components of the supply chain. Their business is the conveyance and storage of freight.</p>
                                     </div>
                                     <div class="details">
@@ -253,7 +256,7 @@
                                 </div> 
                                 <div class="story" data-section="employment" data-mode="consumption" data-legend="size,color">
                                     <div class="card">
-                                        <h3>Consumption</h3>
+                                        <h4>Consumption</h4>
                                         <p>These industries are primarily consumers of finished goods. While they can be major attractors of freight they are not considered core to the development of freight centers. These industries are addressed through urban freight planning in commercial corridors and towns and rely heavily on goods and services provided by the other three sector groups.</p>
                                     </div>
                                     <div class="details">
@@ -353,7 +356,7 @@
                                     <span id="source-span"></span>
                                     <div id="map-legend">
                                         <div id="map-title"></div>
-                                        <img id="map-leg-image" src="">
+                                        <img id="map-leg-image" alt="Map legend" src="">
                                         <ul id="map-values">
                                             
                                         </ul>
@@ -367,6 +370,7 @@
                                 <div class='col-lg-4 col-sm-5' style="z-index:10;">
                                     <div class="story" data-section="distribution" data-mode="establishment">
                                         <div class="card">
+                                            <h3>Analysis Criteria</h3>
                                             <h4>Freight-intensive Establishments</h4>
                                             <p>The distribution of freight establishments in the region provides a starting point for cluster analysis. These highlight the location where there are many establishments located in proximity to each other.</p>
                                         </div>
@@ -464,7 +468,7 @@
                                     <div class="story" data-section="typologies" data-mode="all">
                                         <div class="card row">
                                             <div class="col-sm-5">
-                                                <h4>Typologies Overview</h4>
+                                                <h3>Typologies Overview</h3>
                                                 <p>An analysis of each of the freight centers, grouping them by economic, transportation, and development activity resulted in classification into five typologies:</p>
                                                 <div id="typologies-squares">
                                                     <figure class="t-sq t-ig"><img src="./lib/tools/freight-story/images/IG_1.svg" alt="Image description" /><figcaption>International <br>Gateway</figcaption></figure>
@@ -484,6 +488,7 @@
                                 <div class='col-sm-5' style="z-index:10;">
                                     <div class="story " data-section="typologies" data-mode="1">
                                         <div class="card">
+                                            <h3>Typology Profiles</h3>
                                             <h4>International Gateway</h4>
                                             <p>An International Gateway Freight Center is a core node in the regional and national goods movement system and serves as a connection to the global market. These centers are focused around a single or multiple maritime or air port facilities. </p>
                                         </div>
