@@ -46,6 +46,7 @@ var freightMap = {
 	stylesheet : {
        "version": 8,
        "sprite": "https://a.michaelruane.com/styles/fc-styles/sprite",
+       "glyphs": "mapbox://fonts/mapbox/{fontstack}/{range}.pbf",
 	   "sources": {
 	       "fq-data": {
 	           "type": "vector",
@@ -79,6 +80,16 @@ var freightMap = {
     	            'line-color': '#fff'
     	        }
     	    },
+            {
+    	        "id": "interstates",
+    	        "type": "line",
+    	        "source": "fq-data",
+    	        "source-layer": "interstates",
+    	        "paint": {
+    	            'line-width': 2.7,
+    	            'line-color': '#b0b0b0'
+    	        }
+    	    },
     	    {
     	        "id": "county-outline",
     	        "type": "line",
@@ -93,7 +104,27 @@ var freightMap = {
     	                "DVRPC_REG",
     	                "Yes"
     	            ]
-    	    }
+            },
+    	    {
+    	        "id": "county-label",
+    	        "type": "symbol",
+    	        "source": "fq-data",
+                "source-layer": "dvrpc-places",
+                "layout": {
+                    "text-field": "{NAME}",
+                    "text-font": [
+                        "Open Sans Semibold",
+                        "Arial Unicode MS Bold"
+                    ],
+                    "text-size": 16
+                },
+    	        "paint": {
+    	            "text-color": "#fff",
+                    "text-halo-color": "#c9c9c9",
+                    "text-halo-width": 2.5,
+                    "text-halo-blur": 0
+    	        }
+            }
     	  ]
 	},
 
@@ -169,13 +200,16 @@ var freightMap = {
                 map.setPaintProperty('fq-circles', 'line-opacity', 1.0);
                 map.setPaintProperty('fq-circles-fill', 'fill-opacity', 0.12);  
                 map.setPaintProperty('fc-preview', 'line-opacity', 0);  
+                map.setPaintProperty('county-label','text-opacity', 0);
             } else if(mode === 'fc-preview') {
                 map.setPaintProperty('grey-fill', 'fill-opacity', 0.65);
                 map.setPaintProperty('grey-half-fill', 'fill-opacity', 0.45);
                 map.setPaintProperty('fq-circles', 'line-opacity', 0.3);
                 map.setPaintProperty('fq-circles-fill', 'fill-opacity', 0);
-                map.setPaintProperty('fc-preview', 'line-opacity', 1.0);
+                map.setPaintProperty('fc-preview', 'line-opacity', 1.0); 
+                map.setPaintProperty('county-label','text-opacity', 0);
             } else {
+                map.setPaintProperty('county-label','text-opacity', 1.0);
                 map.setPaintProperty('grey-fill', 'fill-opacity', 0);
                 map.setPaintProperty('grey-half-fill', 'fill-opacity', 0);
                 map.setPaintProperty('fq-circles', 'line-opacity', 0);
@@ -186,8 +220,7 @@ var freightMap = {
             for (i = 0; i < this.overlays.length; i++) {
                 if(this.overlays[i] == mode){
                       map.setPaintProperty(mode +'-fill', 'fill-opacity', 0.65);
-                      map.setPaintProperty(mode +'-half-fill', 'fill-opacity', 0.45);
-                      
+                      map.setPaintProperty(mode +'-half-fill', 'fill-opacity', 0.45);    
                 }else{ 
                     map.setPaintProperty(this.overlays[i] +'-fill', 'fill-opacity', 0);
                     map.setPaintProperty(this.overlays[i] +'-half-fill', 'fill-opacity', 0);
@@ -195,7 +228,7 @@ var freightMap = {
                 }
                 document.getElementById('map-title').innerHTML = (this.legends[mode]) ? this.legends[mode][0] : '';
                 document.getElementById('map-values').innerHTML = (this.legends[mode]) ? this.legends[mode][2]: '';
-                document.getElementById('map-leg-image').src = (this.legends[mode]) ? './lib/tools/freight-story/images/'+ this.legends[mode][1]: ''; 
+                document.getElementById('map-leg-image').src = (this.legends[mode]) ? './lib/tools/freight-story/images/'+ this.legends[mode][1]: './lib/tools/freight-story/images/blank.gif'; 
             }
         } else if(section === 'typologies') {
             switch (mode) {
@@ -578,6 +611,8 @@ map.on('load', function(){
 });
 
 fcMap.on("load", function(){
+    fcMap.setPaintProperty('county-label','text-opacity', 0);
+    
     fcMap.addLayer({
         "id": "blank-fc-fill",
         "type": "fill",
