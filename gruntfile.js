@@ -153,6 +153,12 @@ module.exports = function(grunt){
 				FC: {
 					src: ['freight-center-story.html'],
 					dest: './html/'
+				},
+				bootstrap: {
+					expand: true,
+					cwd: './dev/tools/freight_story/',
+					src: 'bootstrap.min.js',
+					dest: './html/lib/tools/freight-story/'
 				}
 
 				
@@ -262,5 +268,5 @@ module.exports = function(grunt){
     grunt.registerTask('start', ['express', 'watch']);
     grunt.registerTask('copy-all', ['copy']);
 	grunt.registerTask('copy-noImages', ['copy:corefonts', 'copy:lib', 'copy:includes', 'copy:modals', 'copy:data', 'copy:index']);
-	grunt.registerTask('fc-story', ['sass', 'concat:FC', 'uglify:FC', 'uglify:geo', 'cssmin:FC','copy:FC' ]);
+	grunt.registerTask('fc-story', ['sass', 'concat:FC', 'uglify:FC', 'uglify:geo', 'cssmin:FC','copy:FC','copy:bootstrap' ]);
 };
