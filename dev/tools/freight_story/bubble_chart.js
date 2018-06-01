@@ -11,6 +11,7 @@ var getHeight = function() {
 
 
 var BUBBLE_PARAMETERS = {
+    "storyLegend": false,
     "data_file": "regional_employment_data.csv",
     "report_title": "DVRPC Employment",
     "footer_text": "Concept for PFF Freight Employment tool",
@@ -679,16 +680,19 @@ function createBubbleChart() {
 
         legend.attr('transform', 'translate('+legX+','+legY+')');
         
-        var legendCopy = legend.node().cloneNode(true);
-        $('#svg-story-legend').append(legendCopy);
+        if(!BUBBLE_PARAMETERS.storyLegend){
+            var legendCopy = legend.node().cloneNode(true);
+            
+            $('#svg-story-legend').append(legendCopy);
+            
+            var newLegend = d3.select('#svg-story-legend');
 
-        var newLegend = d3.select('#svg-story-legend');
+            newLegend.selectAll('.g-legend')
+                .attr('opacity', 1)
+                .attr('transform', 'translate(75,125)');
 
-        newLegend.selectAll('.g-legend')
-            .attr('opacity', 1)
-            .attr('transform', 'translate(75,125)');
-
-        
+            BUBBLE_PARAMETERS.storyLegend = true;
+        }         
             
         // build horizontal wage circle legend
         var wage_legend = inner_svg.append("g")
