@@ -544,16 +544,19 @@ function createBubbleChart() {
         // Add data from each node to the correct list
         
         function getRelatedIndustries(type) {
-            var _industries = '';
-            
+            var _industries = '<ol class="industry-ol">';
+            var n = 1;
+
             for(var i=0; i<nodes.length; i++) {
                 if (type === nodes[i].type){
-                    _industries += '<span class="industry-'+ nodes[i].id +'">' + nodes[i].SubSector + ';</span>&nbsp;&nbsp;';
+                    _industries += '<li><span class="industry-'+ nodes[i].id +'">'+ nodes[i].SubSector + '</span></li>';
+                    n++;
                 }
                 
             }
             //remove the last semicolon
-            _industries = _industries.slice(0, -13);
+            // _industries = _industries.slice(0, -13);
+            _industries += '</ol>'
 
             return _industries;
         }
