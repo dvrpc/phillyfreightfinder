@@ -39,7 +39,16 @@ module.exports = function(grunt){
 		            'dev/vendor/d3_2.7.0/circle_packer_movers.js' 
 		        ],
 		        dest: 'lib/d3.build.js',
-		    }
+			},
+			FC: {
+				src: [
+					'dev/vendor/scrollstory.min.js',
+		            'dev/vendor/d3-custom.min.js',
+		            'dev/tools/freight_story/bubble_chart.js',
+		            'dev/tools/freight_story/story-controls.js'
+				],
+				dest: 'lib/freight-story.js'
+			}
 		},
 
 		uglify: {
@@ -59,7 +68,15 @@ module.exports = function(grunt){
 		    		dest: 'lib/tools/',
 		    		ext: '.js'
 		    	}]
-		    }
+			},
+			FC: {
+				src: 'lib/freight-story.js',
+		        dest: 'html/lib/tools/freight-story/freight-story.min.js'
+			},
+			geo: {
+				src: 'dev/tools/freight_story/geo-distribution.js',
+				dest: 'html/lib/tools/freight-story/geo-distribution.js'
+			}
 		},
 
 		cssmin: {
@@ -75,6 +92,14 @@ module.exports = function(grunt){
 			         	'dev/css/style_auto.css'
 			         ]
 			    }
+		  },
+		  FC: {
+			  files: {
+				'html/lib/tools/freight-story/freight-story.min.css': [
+					// 'dev/locals/bootstrap.min.css',
+					'dev/css/scss/freight-story.min.css'
+				]	
+			  }
 		  }
 		},
 
@@ -124,10 +149,32 @@ module.exports = function(grunt){
 				index: {
 					src: ['index.htm'],
 					dest: './html/'
+				},
+				FC: {
+					src: ['freight-center-story.html'],
+					dest: './html/'
+				},
+				bootstrap: {
+					expand: true,
+					cwd: './dev/tools/freight_story/',
+					src: 'bootstrap.min.js',
+					dest: './html/lib/tools/freight-story/'
 				}
+
 				
 
 			
+		},
+		sass: {
+			options: {
+				sourceMap: true,
+				outputStyle: 'compressed'
+			},
+			dist: {
+				files: {
+					'dev/css/scss/freight-story.min.css': 'dev/css/scss/freight-story.scss'
+				}
+			}
 		},
 
 		jshint: {
@@ -149,7 +196,19 @@ module.exports = function(grunt){
       		coreUpdate: {
       			files: ['dev/core/*.js', 'dev/actions.js', 'dev/map.js'],
       			tasks: ['concat:build', 'uglify:build']
-      		}
+			  },
+			FCtool: {
+				files: ['dev/tools/freight_story/*'],
+				tasks: ['concat:FC', 'uglify:FC', 'uglify:geo', 'cssmin:FC','copy:FC' ]
+			},
+			html: {
+				files: ['./*.html'],
+				tasks: ['copy:FC']
+			}, 
+			fcCss: {
+				files: ['dev/css/**/*.scss'],
+				tasks: ['sass', 'cssmin:FC']
+			}
 		},
 
 
@@ -208,5 +267,6 @@ module.exports = function(grunt){
     grunt.registerTask('imageUpdates', ['imagemin']);
     grunt.registerTask('start', ['express', 'watch']);
     grunt.registerTask('copy-all', ['copy']);
-    grunt.registerTask('copy-noImages', ['copy:corefonts', 'copy:lib', 'copy:includes', 'copy:modals', 'copy:data', 'copy:index']);
+	grunt.registerTask('copy-noImages', ['copy:corefonts', 'copy:lib', 'copy:includes', 'copy:modals', 'copy:data', 'copy:index']);
+	grunt.registerTask('fc-story', ['sass', 'concat:FC', 'uglify:FC', 'uglify:geo', 'cssmin:FC','copy:FC','copy:bootstrap' ]);
 };
