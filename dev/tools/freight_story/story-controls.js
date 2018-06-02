@@ -72,6 +72,7 @@ var map_called = false;
 var map_mode = 'none';
 var map_section = 'distribution';
 var distNarrative = $('#distribution-narrative').height();
+var typNarrative = $('#typologies').height();
 
 // initialization and options for scroll story functionality
 var scrollStory = $('#planning').scrollStory({
@@ -107,6 +108,7 @@ var scrollStory = $('#planning').scrollStory({
             d3.selectAll('.bubble')  //here's how you get all the nodes
                 .attr('r', function(d) {return d.scaled_radius})
                 .attr('opacity', 1.0);
+            setGraphicPosition(typologyMap, 'relative', -771, '0 0 -'+ (BUBBLE_PARAMETERS.height) +'px 0')
         }
 
         //clears any annotations
@@ -117,8 +119,12 @@ var scrollStory = $('#planning').scrollStory({
             myBubbleChart.switchMode('color');
         } 
 
-        if(item.index > 0 && item.data.section === 'employment' && item.index != 8) {
-            $('#employment-bubble').css('position', 'fixed');
+        if(item.index > 0 && item.index < 8){
+            setGraphicPosition(employmentBubbles, 'fixed', 60)
+        }
+
+        if(item.index > 8) {
+            setGraphicPosition(employmentBubbles, 'relative', -BUBBLE_PARAMETERS.height, '0 0 -'+ (BUBBLE_PARAMETERS.height) +'px 0')
         }
 
         if(item.data.section === 'employment') {
@@ -166,7 +172,6 @@ var scrollStory = $('#planning').scrollStory({
             item.index > 18 ? setGraphicPosition(typologyMap, 'fixed', 60) : '';
             
             mapStateChecker(item.index, item.data.mode, item.data.section);
-            // freightMap.repaint(item.data.mode, item.data.section);
         }
 
     },
@@ -199,13 +204,17 @@ var scrollStory = $('#planning').scrollStory({
                 break;
             case 18:
                 if(activeItem.index < 18){
-                    console.log('Narrative height: ', distNarrative)
                     setGraphicPosition(distributionMap, 'relative', (distNarrative - BUBBLE_PARAMETERS.height), '0 0 -'+ BUBBLE_PARAMETERS.height +'px 0')
                 }
                 break;
             case 17:
                 if(activeItem.index > 17){
                     setGraphicPosition(typologyMap, 'relative', -771, '0 0 -'+ BUBBLE_PARAMETERS.height +'px 0')
+                }
+                break;
+            case 24:
+                if(activeItem.index == 25 ){
+                    setGraphicPosition(typologyMap, 'fixed', 60)
                 }
                 break;
             default :
@@ -230,6 +239,11 @@ var scrollStory = $('#planning').scrollStory({
             case 17:
                 if(activeItem.index > 16) {
                     setGraphicPosition(typologyMap, 'fixed', 60)
+                }
+                break;
+            case 24:
+                if(activeItem.index == 25 ){
+                    setGraphicPosition(typologyMap, 'relative', (typNarrative - BUBBLE_PARAMETERS.height), '0 0 -'+ BUBBLE_PARAMETERS.height +'px 0');
                 }
                 break;
             default :
