@@ -36,9 +36,9 @@ var freightMap = {
     legends : {
         'establishment' : ['Number of Establishments','map-legend-full.png','<li>0</li><li>15</li><li>40</li><li>90</li><li>275</li><li>550</li>'],
         'employment': ['Number of Employees in Freight-intensive Sectors','map-legend-full.png','<li>0</li><li>150</li><li>550</li><li>1,250</li><li>4,000</li><li>10,250</li>'],
-        'landuse': ['Percent Coverage of Freight Related Land Use','map-legend-full.png','<li>0</li><li>5</li><li>15</li><li>33</li><li>50</li><li>100</li>'],
+        'landuse': ['Percent Land Covered by Freight-related Use','map-legend-full.png','<li>0</li><li>5</li><li>15</li><li>33</li><li>50</li><li>100</li>'],
         'industrial': ['Square Footage of Industrial Development (000s)','map-legend-full.png','<li>0</li><li>225</li><li>725</li><li>1,500</li><li>3,000</li><li>7,000</li>'],
-        'facilities': ['Proximity to Intermodal Facility (miles)','map-intermodal.png','<li></li><li>1</li><li></li><li>0.5</li><li></li><li>0</li>'],
+        'facilities': ['Proximity to Intermodal Facility (miles)','map-intermodal.png','<li>0</li><li></li><li>0.5</li><li></li><li>1</li><li>&#8734;</li>'],
         'fq': ['Freight Quotient - Indicator of Freight Activity','map-legend-fq.png','<li>low</li><li></li><li></li><li></li><li></li><li>high</li>'],
         
     },
@@ -135,9 +135,12 @@ var freightMap = {
     attribution: {
         '10': 'Source: DVRPC Analysis of 2013 NETS Data',
         '11': 'Source: DVRPC Analysis of 2013 NETS Data',
-        '12': 'Source: DVRPC 2015 Landuse',
+        '12': 'Source: DVRPC 2015 Land Use',
         '13': 'Source: DVRPC Analysis of 2016 CoStar Data',
-        '14': 'Source: DVRPC Freight Database'
+        '14': 'Source: DVRPC PhillyFreightFinder, 2018',
+        '15': 'Source: DVRPC PhillyFreightFinder, 2018',
+        '16': 'Source: DVRPC PhillyFreightFinder, 2018',
+        '17': 'Source: DVRPC PhillyFreightFinder, 2018'
     },
 
 	makeIt: function(){

@@ -85,8 +85,8 @@
                 <ul>
                     <li class="current" data-story-nav="0"><a href="#" >Overview</a></li>
                     <li class="new-section" data-story-nav="1"><a href="#">Defining Freight Employment</a></li>
-                    <li data-story-nav="3"><a href="#">Sector Classifications</a></li>
-                    <li data-story-nav="8"><a href="#">Average Wage by Sub-sector</a></li>
+                    <li data-story-nav="3"><a href="#">Industry Classifications</a></li>
+                    <li data-story-nav="8"><a href="#">Average Wage by Subsector</a></li>
                     <li class="new-section" data-story-nav="9"><a href="#">Where is freight in the region?</a></li>
                     <li data-story-nav="10"><a href="#">Analysis Criteria</a></li>
                     <li data-story-nav="15"><a href="#">Freight Quotient</a></li>
@@ -120,27 +120,27 @@
 
                                 <div id="fc-splash-intro" class="row" style="text-align:center;">
                                     <div class="col-sm-4">
-                                        <div class='circle-multiline'>
+                                        <a href="#" data-story-nav="1" class='circle-multiline'>
                                             <div class="aligner">
                                             <span style='font-size: 1.1em'>identify regional <br>freight employment</span>
                                             </div>
-                                        </div>
+                                        </a>
                                         <p class="fc-splash-number">1</p>
                                     </div>
                                     <div class="col-sm-4" >
-                                        <div class='circle-multiline'>
+                                        <a href="#" data-story-nav="9" class='circle-multiline'>
                                             <div class="aligner">
                                             <span style='font-size: 1.1em'>locate distribution<br> of freight activity</span>
                                             </div> 
-                                        </div>
+                                        </a>
                                         <p class="fc-splash-number">2</p>
                                     </div>
                                     <div class="col-sm-4">
-                                        <div class='circle-multiline'>
+                                        <a href="#" data-story-nav="18" class='circle-multiline'>
                                             <div class="aligner">
                                             <span style='font-size: 1.1em'>establish typologies <br>to classify centers</span>
                                             </div>
-                                        </div>
+                                        </a>
                                         <p class="fc-splash-number">3</p>
                                     </div>
                                 </div>
@@ -179,7 +179,7 @@
                         <div class="row">
                             <div class='col-sm-5 col-lg-4' style="z-index:10;">
                                 <div class="story card" data-section="employment" data-mode="all" data-legend="none" style="margin-top:200px">
-                                    <p>The role of businesses can be better understood when grouped into industrial sectors that help to explain the type of economic activity in which each is involved. <span style="font-weight:800">To illustrate this we can portray each of the region’s 33 industrial sub-sectors as circles, scaled by it's regional employment.</span> </p>
+                                    <p>The role of businesses can be better understood when grouped into industrial subsectors that help to explain the type of economic activity in which each is involved. <span style="font-weight:800">To illustrate this we can portray each of the region’s 97 industrial subsectors as circles, scaled by it's regional employment.</span> </p>
                                     <svg id="svg-story-legend" width="300" height="200">
                                     </svg>
                                     <br/>
@@ -190,42 +190,41 @@
                                     <p>Not all of these industries rely on freight in equal degree. Our goal is simply to define if an industry is freight-intensive, meaning that it generates or attracts large amounts of freight trips or movements.</p>                               
                                 </div>  
                                 <div class="story card" data-section="employment" data-mode="full" data-legend="size">
-                                    <h4>Freight-intensive Industry Sectors</h4>
-                                    <p>Identifying freight intensive sectors is done by associating each industry sub-sector with a segment of the economy’s product lifecycle. We can break this lifecycle and the related sectors into four distinct components.</p>
+                                    <h4>Freight-intensive Industries</h4>
+                                    <p>Identifying freight-intensive subsectors is done by associating each with a segment of the economy’s product lifecycle. We can break this lifecycle and the related subsectors into four distinct groupings. Industry subsectors that are associated with extraction, production, or distribution are considered freight-intensive.</p>
                                     <br>
                                     <br>
                                     <div id="freight-intensive-box" class="row col-sm-12">
-                                        <h5>Freight Intensive Sectors</h5>
+                                        <h5>Freight-intensive</h5>
                                         <div class="col-sm-4">
                                             <div class='circle-multiline small extraction'>
                                                 <div class="aligner">
-                                                <span style='font-size: 1.1em'>extraction<br>industries</span>
+                                                <span style='font-size: 1.1em'>extraction</span>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-sm-4">
                                             <div class='circle-multiline small production'>
                                                 <div class="aligner">
-                                                <span style='font-size: 1.1em'>production<br>industries</span>
+                                                <span style='font-size: 1.1em'>production</span>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-sm-4">
                                             <div class='circle-multiline small distribution'>
                                                 <div class="aligner">
-                                                <span style='font-size: 1.1em'>distribution<br>industries</span>
+                                                <span style='font-size: 1.1em'>distribution</span>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row col-sm-12">
                                         <br>
-                                        <h5>Other Sectors</h5>
+                                        <!-- <h5>Other Sectors</h5> -->
                                         <div class="col-sm-4">
-
                                             <div class='circle-multiline small consumption'>
                                                 <div class="aligner">
-                                                <span style='font-size: 1.1em'>consumption<br>industries</span>
+                                                <span style='font-size: 1.1em'>consumption</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -235,7 +234,7 @@
                                 <div class="story " data-section="employment" data-mode="extraction" data-legend="size,color">
                                     
                                     <div class="card">
-                                        <h3>Sector Classifications</h3>
+                                        <h3>Industry Classifications</h3>
                                        <h4>Extraction</h4>
                                         <p>These industries are involved in the extraction of raw materials from the earth and/or the raising of animals and crops. These industries represent a small but important part of the regional economy.</p>
                                     </div>
@@ -295,11 +294,11 @@
                                 <span class="g-tip-metric-value"> </span>
                                 </div>
                                 <div class="g-tip-metric" data-name="employment">
-                                <span class="g-tip-metric-name">Employment</span>
+                                <span class="g-tip-metric-name">Employmees</span>
                                 <span class="g-tip-metric-value"> </span>
                                 </div>
                                 <div class="g-tip-metric" data-name="wages">
-                                <span class="g-tip-metric-name">Average Wage</span>
+                                <span class="g-tip-metric-name">Average Annual Wage</span>
                                 <span class="g-tip-metric-value"> </span>
                                 </div>
                                 </div>
@@ -327,14 +326,12 @@
                             </div>
                             <div id="g-employment-bubble">
                                 <div id="g-employment-title" class="chart-title b-title size-legend-header">
-                                    <h4>Employment by Industry Sub-sector</h4>
+                                    <h4>Employment by Industry Subsector</h4>
                                 </div>
                                 <div id="g-wage-title" class="chart-title w-title wage-legend-header" style="opacity:0">
-                                    <h4>Average Wage by Sub-sector</h4>
+                                    <h4>Average Wage by Subsector</h4>
                                 </div>
                             </div> 
-                            <!-- <div id="g-emp-bubble-source">Source: DVRPC Analysis of 2012 National Establishment Time Series</div> -->
-                        <!-- <div class='clearfix'></div>  -->
                         </div> 
                         <!-- </div> -->
                         <div class='clearfix'></div>
@@ -397,7 +394,7 @@
                                     <div class="story " data-section="distribution" data-mode="landuse">
                                         <div class="card">
                                             <h4>Freight Related Land Uses</h4>
-                                            <p>Evaluating the percent of each analysis zone that is dedicated to freight related land uses reveals additional locations in the region that may contribute to the freight economy thought no single employer is reported at that location.</p>
+                                            <p>Evaluating the percent of each analysis zone that is dedicated to freight related land uses reveals additional locations in the region that may contribute to the freight economy though no single employer is reported at that location.</p>
                                         </div>
                                         <div class="details">
                                             <p>Our key freight related land uses included industrial, mining, utility, and transportation. This helps us to identify valuable generators that may not have fixed employment or establishments assigned to them despite their potential to generate freight.</p>
@@ -612,7 +609,7 @@
                                     </div>  
                                     <div class="story " data-section="typologies" data-mode="5">
                                         <div class="card">
-                                            <h4>Local Manufacturing and Distribution Center</h4>
+                                            <h4>Local Manufacturing and Distribution</h4>
                                             <p>A Local Manufacturing and Distribution Center is a node focused around locally serving small manufacturing and distribution facilities. These are less dependent on prime location near interstate interchanges but are well served by smaller highway facilities and proximity to consumer populations.</p>
                                         </div>
                                         <div class="details">

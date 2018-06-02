@@ -256,6 +256,13 @@ $('.dotnav li').on('click', function(e){
    
 })
 
+$('#fc-splash-intro a').on('click', function(e){
+    var storyIndex = $(this).data('story-nav');
+
+    scrollStory.index(storyIndex);
+   
+})
+
 document.getElementById('scroll-hint').addEventListener('click', function(){
     scrollStory.index(0);
 });

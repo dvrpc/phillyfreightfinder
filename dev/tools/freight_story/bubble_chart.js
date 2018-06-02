@@ -626,7 +626,7 @@ function createBubbleChart() {
             .attr('class', 'g-source')
             .attr('text-anchor', 'end')
             .attr('transform','translate(0,-30)')
-            .text('Source: DVRPC Analysis of 2012 NETS Data');
+            .text('Source: DVRPC Analysis of 2013 NETS Data');
 
         var legendCircles = legend.append('g');
 
@@ -770,11 +770,11 @@ function createBubbleChart() {
         color_legend.append('text')
             .attr('class','g-legend-title')
             .attr('transform','translate(-10,0)')
-            .text('Color represents lifecycle ');
+            .text('Color represents classification');
         color_legend.append('text')
             .attr('class','g-legend-title')
             .attr('transform','translate(-10,15)')
-            .text('component of sub-sector');
+            .text('of industry subsector');
 
         var legend_colors = {'extraction': 'E', 'production':'P', 'distribution':'D', 'consumption':'C'};
 
