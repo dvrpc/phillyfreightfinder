@@ -260,6 +260,7 @@ var map = freightMap.makeIt();
 var fcMap = freightMap.fcMakeIt();
 
 var fitRegion = function(div, h, w, name){
+    console.log('region changed')
     var mapDiv = document.getElementById(div);
     var mapCanvas = mapDiv.getElementsByClassName('mapboxgl-canvas')[0];
     mapDiv.style.width = w +'px';
@@ -610,6 +611,7 @@ map.on('load', function(){
 
     (map_mode !== 'none') ?  freightMap.repaint(map_mode, map_section) : '';
     map_exists = true;
+    updateSizes();
 
 });
 
@@ -667,4 +669,5 @@ fcMap.on("load", function(){
           "interactive": true
     });
     (map_mode !== 'none') ?  freightMap.repaint(map_mode, map_section) : '';
+    updateSizes();
 });

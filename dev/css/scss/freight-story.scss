@@ -628,7 +628,7 @@ body {
 }
 
 .fc-splash-number {
-  margin-top: -195px;
+  margin-top: -185px;
   font-size: 3em;
   font-weight: 800;
   text-shadow: 0 2px 12px black;
@@ -858,4 +858,14 @@ a.circle-multiline {
   &:active {
     color: #fff;
   }
+}
+
+.map-logo {
+  position: absolute;
+  right: 20px;
+  bottom: 0;
+  width: 100px;
+  transform: translate(0,-51px);
+  opacity: 0.5;
+  z-index: 3;
 }
