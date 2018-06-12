@@ -260,13 +260,21 @@ var map = freightMap.makeIt();
 var fcMap = freightMap.fcMakeIt();
 
 var fitRegion = function(div, h, w, name){
-    console.log('region changed')
     var mapDiv = document.getElementById(div);
     var mapCanvas = mapDiv.getElementsByClassName('mapboxgl-canvas')[0];
     mapDiv.style.width = w +'px';
     mapDiv.style.height = h + 'px';
     mapCanvas.style.width = w +'px';
     mapCanvas.style.height = h + 'px';
+    if(name==='fcMap'){
+        var fc = document.getElementById(div);
+        console.log(fc)
+
+        var mc = fc.getElementsByClassName('mapboxgl-canvas')[0];
+        console.log(mc)
+        mc.width = w;
+        mc.height = h;
+    }
     setTimeout(function(){ 
         window[name].fitBounds([
             [-76.09405517578125, 39.49211914385648], [-74.32525634765625,40.614734298694216]

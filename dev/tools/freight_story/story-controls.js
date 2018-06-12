@@ -22,6 +22,7 @@ updateSizes = function() {
     var mapCols = (width >= 1200) ? 0.66 : 0.58333;
     //update map size
     document.getElementById("distribution-map").style.width = ((width * mapCols) - 20) + "px";
+    document.getElementById("distribution-map").style.width = ((width * 0.5833) - 20) + "px";
     //forces size of text equal to map
     mapHeightItems.forEach(function(el) {
         el.style.height = height + "px";
