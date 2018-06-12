@@ -170,7 +170,7 @@ var freightMap = {
     },
 
     fcMakeIt: function() {
-        $('#distribution-map').css('height', BUBBLE_PARAMETERS.height);
+        $('#typologies-map').css('height', BUBBLE_PARAMETERS.height);
 			// lets build the map
 		var fcMap = new mapboxgl.Map({
 		    container: 'typologies-map', // container id
@@ -266,15 +266,6 @@ var fitRegion = function(div, h, w, name){
     mapDiv.style.height = h + 'px';
     mapCanvas.style.width = w +'px';
     mapCanvas.style.height = h + 'px';
-    if(name==='fcMap'){
-        var fc = document.getElementById(div);
-        console.log(fc)
-
-        var mc = fc.getElementsByClassName('mapboxgl-canvas')[0];
-        console.log(mc)
-        mc.width = w;
-        mc.height = h;
-    }
     setTimeout(function(){ 
         window[name].fitBounds([
             [-76.09405517578125, 39.49211914385648], [-74.32525634765625,40.614734298694216]
@@ -619,7 +610,6 @@ map.on('load', function(){
 
     (map_mode !== 'none') ?  freightMap.repaint(map_mode, map_section) : '';
     map_exists = true;
-    updateSizes();
 
 });
 
@@ -677,5 +667,4 @@ fcMap.on("load", function(){
           "interactive": true
     });
     (map_mode !== 'none') ?  freightMap.repaint(map_mode, map_section) : '';
-    updateSizes();
 });

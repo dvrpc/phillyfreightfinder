@@ -5,8 +5,8 @@ var getPageHeight = function() {
 }
 
 var pageWidth = function() {
-    width = elHeight = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-    return width;
+    pw = elHeight = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+    return pw;
 }
 
 // update class list based on 12 columns
@@ -16,22 +16,22 @@ function updateClass(element, cols) {
 }
 
 updateSizes = function() {
-    var width = pageWidth();
-    var height = getHeight();
-    BUBBLE_PARAMETERS.height = height;
-    var mapCols = (width >= 1200) ? 0.66 : 0.58333;
+    var _sizeWidth = pageWidth();
+    var _sizeHeight = getHeight();
+    BUBBLE_PARAMETERS.height = _sizeHeight;
+    var mapCols = (_sizeWidth >= 1200) ? 0.66 : 0.58333;
     //update map size
-    document.getElementById("distribution-map").style.width = ((width * mapCols) - 20) + "px";
-    document.getElementById("distribution-map").style.width = ((width * 0.5833) - 20) + "px";
+    distributionMap.style.width = ((_sizeWidth * mapCols) - 20) + "px";
+    typologyMap.style.width = ((_sizeWidth * 0.5833) - 20) + "px";
     //forces size of text equal to map
     mapHeightItems.forEach(function(el) {
-        el.style.height = height + "px";
+        el.style.height = _sizeHeight + "px";
       });
-    document.getElementById("js-wage-desc").style.height = height + "px";
+    document.getElementById("js-wage-desc").style.height = _sizeHeight + "px";
 
     if (map_exists) {
-        fitRegion('distribution-map', height, ((width * mapCols) - 20), 'map')
-        fitRegion('typologies-map', height, ((width * 0.5833) - 20), 'fcMap')
+        fitRegion('distribution-map', _sizeHeight, ((_sizeWidth * mapCols) - 20), 'map')
+        fitRegion('typologies-map', _sizeHeight, ((_sizeWidth * 0.5833) - 20), 'fcMap')
     }
     
 }
@@ -152,6 +152,7 @@ var scrollStory = $('#planning').scrollStory({
             }else if (map_exists) {
                 mapSource.innerHTML = (freightMap.attribution[index]) ? freightMap.attribution[index] : '';
                 freightMap.repaint(mode, section);
+                updateSizes();
             }
         }
 
