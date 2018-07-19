@@ -797,6 +797,9 @@ function createBubbleChart() {
         var legend_colors = {'extraction': 'E', 'production':'P', 'distribution':'D', 'consumption':'C'};
 
         var legend_count = 2
+        function jsUcfirst(string) {
+            return string.charAt(0).toUpperCase() + string.slice(1);
+        }
         for(var key in legend_colors) {
             color_legend.append('circle')
                 .attr('r', 10)
@@ -808,7 +811,7 @@ function createBubbleChart() {
             
             color_legend.append('text')
                 .attr('transform', 'translate(20,'+ (legend_count * 25 + 4) +')')
-                .text(key);
+                .text(jsUcfirst(key));
             
             legend_count++;
         }
@@ -837,7 +840,7 @@ function createBubbleChart() {
             
             wage_color_legend.append('text')
                 .attr('transform', 'translate('+ (offset.x + 20) +','+ (offset.y + 4) +')')
-                .text(key);
+                .text(jsUcfirst(key));
             
             wage_count++;
         }
