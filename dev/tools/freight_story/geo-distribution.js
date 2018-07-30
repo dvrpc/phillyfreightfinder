@@ -45,12 +45,12 @@ var freightMap = {
 
 	stylesheet : {
        "version": 8,
-       "sprite": "https://a.michaelruane.com/styles/fc-styles/sprite",
+       "sprite": "https://tiles.dvrpc.org/data/styles/fc-styles/sprite",
        "glyphs": "mapbox://fonts/mapbox/{fontstack}/{range}.pbf",
 	   "sources": {
 	       "fq-data": {
 	           "type": "vector",
-	           "url": "https://a.michaelruane.com/data/dvrpc-freight-story.json"
+	           "url": "https://tiles.dvrpc.org/data/dvrpc-freight-story.json"
     	    }
     	},
 
