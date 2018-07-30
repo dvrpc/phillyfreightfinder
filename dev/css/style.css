@@ -3365,7 +3365,7 @@ svg.c-stat-icon .st0{
     background-color: rgba(49,40,103,.65);
     border-left: 2px solid #fff;
     padding: 10px 25px 5px 25px;
-    margin: 20px;
+    margin: 20px 0;
     color: #fff;
     font-size: 1.2em;
 }

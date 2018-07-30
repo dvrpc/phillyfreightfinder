@@ -9,15 +9,10 @@
         <meta name="author" content="Michael Ruane, Delaware Valley Regional Planning Commission, Office of Freight and Aviation Planning">
         <title>PhillyFreightFinder 3.1.3  |  DVRPC</title>
 
-        <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800' rel='stylesheet' type='text/css'>
         <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" type="text/css">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.css" rel="stylesheet" type="text/css">
-        <link href="http://dvrpcfreight.github.io/dynamic-icons/dyna.css" rel="stylesheet" type="text/css">
-
-        <!-- locals for development
-        <link href="dev/locals/bootstrap.min.css" rel="stylesheet" type="text/css">
-        <link href="dev/locals/leaflet.css" rel="stylesheet" type="text/css">
-        -->
+        <link href="https://dvrpcfreight.github.io/dynamic-icons/dyna.css" rel="stylesheet" type="text/css">
 
         <link href='lib/style.min.css' rel='stylesheet' type="text/css"/>
 
@@ -114,6 +109,13 @@
             <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.2/html5shiv.js"></script>
             <script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.2.0/respond.js"></script>
         <![endif]-->
+        <!-- Google Tag Manager -->
+        <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','GTM-WZP57HH');</script>
+        <!-- End Google Tag Manager -->
     </head>
 
     <body>
@@ -158,7 +160,7 @@
                                     <li><a href="#region" data-toggle="collapse" data-target=".navbar-collapse.in">County Profile Tool</a></li>
                                     <li><a href="#maritime-indicators" class='landingLink' data-tab='maritime-indicators' data-toggle="collapse" data-target=".navbar-collapse.in">Maritime Indicators</a></li>
                                     <li><a href="#highway-performance" class='landingLink' data-tab='highway-performance' data-toggle="collapse" data-target=".navbar-collapse.in">Highway Performance</a></li>
-                                    <!-- <li><a href="../phillyfreightfinder/freight-center-story.html" class='landingLink' data-toggle="collapse" data-target=".navbar-collapse.in">Freight Center Story</a></li> -->
+                                    <li><a href="../phillyfreightfinder/freight-center-story.html" class='landingLink' data-toggle="collapse" data-target=".navbar-collapse.in">Freight Center Story</a></li>
                                 </ul>
                         </li>
                         <li id='maplink' class='landingUI'><a href="#map" data-tab='map' data-toggle="collapse" data-target=".navbar-collapse.in"><i class="dynico dynico-map"></i>&nbsp;&nbsp;View Map</a></li>
@@ -194,11 +196,28 @@
                         </div>
                     </div>
                     <div class='center-block col-lg-10 col-md-12' style='float:none;'>
+                        <div class="col-sm-12">
+                                <div class="hp-tool-links" style="text-align:left">
+                                        <div class="row">
+                                            <div class="col-sm-8">
+                                                <a href="../phillyfreightfinder/freight-center-story.html"><h2><span class="label label-warning">New Tool</span>&nbsp;&nbsp;Freight Centers of Greater Philadelphia&nbsp;</h2></a>
+                                                <p style="min-height:0">Explore the freight economy and its impact on regional development and employment patterns</p>        
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <a href="../phillyfreightfinder/freight-center-story.html" ><button class="hp-tool-btn" style="margin-top:15px">Start Exploring</button></a>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                            
+                        </div>
+                    </div>
+                    <div class='center-block col-lg-10 col-md-12' style='float:none;'>
                         <div class='col-sm-6 col-md-4'>
                             <div class="hp-tool-links">
                                 <a href="#region" data-toggle="tab" ><h2>County Freight Profiles</h2></a>
                                 <p>The DVRPC region is comprised of nine counties, each with a unique freight profile of facilities, employment, and trade patterns. The County Profile Tool provides insights on these unique aspects.</p>
-                                <a href="#region" data-toggle="tab" ><button class="hp-tool-btn">Explore a county</button></a>
+                                <a href="#region" data-toggle="tab" ><button class="hp-tool-btn">Discover a county</button></a>
                             </div>
                         </div>
                         <div class='col-sm-6 col-md-4'>
@@ -233,8 +252,6 @@
                                 <p><i>PhillyFreightFinder</i> is the product of DVRPC’s continuing, comprehensive freight planning program. This program enables carriers and shippers to participate in the metropolitan planning process and identifies freight transportation trends and needs in the region.</p>
                                 <p><i>PhillyFreightFinder</i> represents a true public-private partnership made possible by the members and friends of DVRPC’s freight advisory committee, the <a href="http://www.dvrpc.org/Freight/DVGMTF.htm">Delaware Valley Goods Movement Task Force</a>. The Task Force’s Data Subcommittee has provided active oversight and guidance in designing and preparing the application.</p>
                                 <p>To learn more about the DVRPC's freight planning activities and freight advisory committee, please visit the <a href="http://www.dvrpc.org/Freight/">freight page of the DVRPC website</a>.</p>
-                                <p><i>PhillyFreightFinder </i>represents a highly collaborative undertaking made possible by the members and friends of the Delaware Valley Goods Movement Task Force. The Task Force is guided by three subcommittees: Planning, Shippers, and Data. The <i>PhillyFreightFinder</i> effort falls under the purview of the Data Subcommittee and represents a true <i>public-private partnership</i>.</p>
-                                
                             </div> 
                             <div class='col-md-5 col-lg-5'>
                                 <!--<div id=' '>
@@ -445,7 +462,13 @@
                             
                         </div>
                         <div class="col-sm-6 col-md-12">
-                            <p style="padding-top:58px;"><a href="#disclaimer">Data Disclaimer</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#license">License</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://www.dvrpc.org/policies/" target="_blank">Policies&nbsp;&nbsp;<i class="glyphicon glyphicon-new-window"></i></a></p><p>&copy;&nbsp;2015 Delaware Valley Regional Planning Commission</p>
+                            <p style="padding-top:58px;"><a href="#disclaimer">Data Disclaimer</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#license">License</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://www.dvrpc.org/policies/" target="_blank">Policies&nbsp;&nbsp;<i class="glyphicon glyphicon-new-window"></i></a></p><p>&copy;&nbsp;<script language="JavaScript" type="text/javascript">
+                                now = new Date
+                                theYear=now.getYear()
+                                if (theYear < 1900)
+                                theYear=theYear+1900
+                                document.write(theYear)
+                            </script> Delaware Valley Regional Planning Commission</p>
                         </div>
                     </div>
                 </div>
@@ -778,19 +801,7 @@
           </div><!-- /.modal-dialog -->
         </div><!-- /.modal --> 
 
-
-        <!-- prep external loaded elements -->
-
-        <!-- locals for offline dev--> 
-<!--
-        <script type="text/javascript" src="dev/locals/jquery-1.10.2.min.js"></script>
-        <script type="text/javascript" src="dev/locals/leaflet.js"></script>
-        <script type="text/javascript" src="dev/locals/jquery.bxslider.min.js"></script>
-        <script type="text/javascript" src="dev/locals/highcharts.js"></script>
-        <script type="text/javascript" src="dev/locals/jquery.nicescroll.js"></script>
-        <script type="text/javascript" src="dev/locals/bootstrap.min.js"></script>
- --> 
-        <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.js"></script>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
@@ -804,7 +815,7 @@
             });
         </script>
        
-        <script src="http://d3js.org/topojson.v1.min.js"></script>
+        <script src="https://d3js.org/topojson.v1.min.js"></script>
 
         <script src="lib/d3.build.min.js"></script>
         <script type="text/javascript" src="lib/build.min.js"></script>
@@ -859,9 +870,6 @@
               
             
         </script>
-<!--Google Analytics
-        <script type="text/javascript">var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));</script><script type="text/javascript">try {var pageTracker = _gat._getTracker("UA-9825778-1");pageTracker._trackPageview();} catch(err) {}</script>
-        
-        -->
+
     </body>
 </html>
