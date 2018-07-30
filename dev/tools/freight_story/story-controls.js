@@ -143,7 +143,7 @@ var scrollStory = $('#planning').scrollStory({
         function mapStateChecker(index, mode, section){
             if(!map_called){
                 map_called = true;
-                $.getScript('./lib/tools/freight-story/geo-distribution.js', function(){
+                $.getScript('./lib/tools/freight-story/geo-distribution.js?ver=1.0.1', function(){
                     freightMap.repaint(mode, section);
                 });
             }else if(!map_exists && map_called){
@@ -194,7 +194,7 @@ var scrollStory = $('#planning').scrollStory({
             case 8:
                 if(!map_exists && !map_called){
                     map_called = true;
-                    $.getScript('./lib/tools/freight-story/geo-distribution.js');
+                    $.getScript('./lib/tools/freight-story/geo-distribution.js?ver=1.0.1');
                 } else if (activeItem.index >= 9){
                     setGraphicPosition(distributionMap, 'relative', -771, '0 0 -'+ BUBBLE_PARAMETERS.height +'px 0')
                 }
