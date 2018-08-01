@@ -43,6 +43,16 @@ body {
   margin-bottom: 450px;
   font-size: 1.2em;
   opacity: 0.4;
+  @media only screen and (max-width: 768px) {
+    margin-bottom: 120px;
+  }
+}
+
+.story.card.first {
+  margin-top: 200px;
+  @media only screen and (max-width: 768px) {
+    margin-top: 0px;
+  }
 }
 
 .story.active {
@@ -297,6 +307,10 @@ ul#map-values > li {
     /*margin-top: -60px;
     */
   min-height: 760px;
+  @media only screen and (max-width: 768px) {
+    margin-bottom: 120px;
+    min-height: 0px;
+  }
 }
 
 .legend-bubble {
@@ -313,6 +327,9 @@ ul#map-values > li {
 .story.extra-tall {
   padding-bottom: 70vh;
   margin-bottom: 0;
+  @media only screen and (max-width: 768px) {
+    padding-bottom: 120px;
+  }
 }
 
 #distribution-map, #typologies-map {
@@ -658,6 +675,9 @@ body {
   column-gap: 30px;
   font-size: 1.2em;
   margin-bottom: 230px;
+  @media only screen and (max-width: 768px) {
+    margin-bottom: 120px;
+  }
 }
 
 .circle-multiline {

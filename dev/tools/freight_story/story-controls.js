@@ -27,7 +27,7 @@ updateSizes = function() {
     mapHeightItems.forEach(function(el) {
         el.style.height = _sizeHeight + "px";
       });
-    document.getElementById("js-wage-desc").style.height = _sizeHeight + "px";
+    document.getElementById("js-wage-desc").style.height = (_sizeWidth > 768) ? _sizeHeight + "px" : "auto";
 
     if (map_exists) {
         fitRegion('distribution-map', _sizeHeight, ((_sizeWidth * mapCols) - 20), 'map')

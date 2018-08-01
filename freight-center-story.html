@@ -90,7 +90,7 @@
         <section id='pFFlanding' class='landing fade in landtab-content landingUI' role='main'>
             
             <!-- dot navigation -->
-            <div class="dotnav hidden-sm">
+            <div class="dotnav hidden-sm hidden-xs">
                 <ul>
                     <li class="current" data-story-nav="0"><a href="#" >Introduction to DVRPC Freight Centers</a></li>
                     <li class="new-section" data-story-nav="1"><a href="#">Defining Freight Employment</a></li>
@@ -128,7 +128,7 @@
                                 </div>
 
                                 <div id="fc-splash-intro" class="row" style="text-align:center;">
-                                    <div class="col-sm-4">
+                                    <div class="col-xs-4">
                                         <a href="#" data-story-nav="1" class='circle-multiline'>
                                             <div class="aligner">
                                             <span style='font-size: 1.1em;transform: translateY(25%)'>identify<br>regional freight<br> employment</span>
@@ -136,7 +136,7 @@
                                         </a>
                                         <p class="fc-splash-number">1</p>
                                     </div>
-                                    <div class="col-sm-4" >
+                                    <div class="col-xs-4" >
                                         <a href="#" data-story-nav="9" class='circle-multiline'>
                                             <div class="aligner">
                                             <span style='font-size: 1.1em;transform: translateY(25%)'>locate<br>distribution of <br>freight activity</span>
@@ -144,7 +144,7 @@
                                         </a>
                                         <p class="fc-splash-number">2</p>
                                     </div>
-                                    <div class="col-sm-4">
+                                    <div class="col-xs-4">
                                         <a href="#" data-story-nav="18" class='circle-multiline'>
                                             <div class="aligner">
                                             <span style='font-size: 1.1em;transform: translateY(25%)'>classify<br>centers by<br>typology</span>
@@ -187,9 +187,9 @@
                     <section id="employment-chart" class='center-block col-md-10 col-sm-12' style='float:none;'>
                         <div class="row">
                             <div class='col-sm-5 col-lg-4' style="z-index:10;">
-                                <div class="story card" data-section="employment" data-mode="all" data-legend="none" style="margin-top:200px">
+                                <div class="story card first" data-section="employment" data-mode="all" data-legend="none" >
                                     <p>We can understand the role of businesses when they are grouped into industry subsectors based on the type of economic activity. <span style="font-weight:800">To illustrate this we can portray each of the region’s 97 industry subsectors as circles, scaled by it's regional employment.</span> </p>
-                                    <svg id="svg-story-legend" width="300" height="200">
+                                    <svg id="svg-story-legend" width="300" height="200" class="hidden-xs">
                                     </svg>
                                     <br/>
                                     <br/>
@@ -205,21 +205,21 @@
                                     <br>
                                     <div id="freight-intensive-box" class="row col-sm-12">
                                         <h5>Freight-intensive</h5>
-                                        <div class="col-sm-4">
+                                        <div class="col-xs-4">
                                             <div class='circle-multiline small extraction'>
                                                 <div class="aligner">
                                                 <span style='font-size: 1.1em'>Extraction</span>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-sm-4">
+                                        <div class="col-xs-4">
                                             <div class='circle-multiline small production'>
                                                 <div class="aligner">
                                                 <span style='font-size: 1.1em'>Production</span>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-sm-4">
+                                        <div class="col-xs-4">
                                             <div class='circle-multiline small distribution'>
                                                 <div class="aligner">
                                                 <span style='font-size: 1.1em'>Distribution</span>
@@ -290,7 +290,7 @@
                         </div>
                         <!-- chart column for bubble diagram -->
                         <!-- <div id="chart" class="col-lg-8 col-sm-12"> -->
-                        <div id="employment-bubble" >
+                        <div id="employment-bubble" class="hidden-xs" >
                             <div class="g-tip-up" style="width:250px;height:133px;display:none;">
                                 <div class="g-tip-shadow"></div>
                                 <svg class="g-tip-box" width="250" height="145">
@@ -364,7 +364,7 @@
                             <div class='clearfix'></div>
                         </div>
                         <div class='center-block col-sm-12' style='float:none;'>
-                            <div id="map-parent" class="col-sm-offset-5 col-sm-7 col-lg-8 col-lg-offset-4">
+                            <div id="map-parent" class="col-sm-offset-5 col-sm-7 col-lg-8 col-lg-offset-4 hidden-xs">
                                 <div id="distribution-map">
                                     <span id="source-span"></span>
                                     <div id="map-legend">
@@ -472,7 +472,7 @@
                             <div class='clearfix'></div>
                         </div>
                         <div class='center-block col-sm-12' style='float:none;'>
-                            <div id="" class="col-sm-offset-5 col-sm-7">
+                            <div id="" class="col-sm-offset-5 col-sm-7 hidden-xs">
                                 <div id="typologies-map">
                                     <img class="map-logo" src="./lib/tools/freight-story/images/dvrpc-logo.svg" alt="DVRPC Logo" />
                                 </div>
@@ -525,8 +525,8 @@
                                             </div>
                                         </div>
                                         <div class="card row">
-                                            <div class="col-sm-6 t-sq t-ig"><img class="fc-detail" src="./lib/tools/freight-story/images/IG_1.svg" alt="Image description" /></div>
-                                            <div class="col-sm-6 t-sq t-ig"><img class="fc-detail" src="./lib/tools/freight-story/images/IG_2.svg" alt="Image description" /></div>
+                                            <div class="col-xs-6 t-sq t-ig"><img class="fc-detail" src="./lib/tools/freight-story/images/IG_1.svg" alt="Image description" /></div>
+                                            <div class="col-xs-6 t-sq t-ig"><img class="fc-detail" src="./lib/tools/freight-story/images/IG_2.svg" alt="Image description" /></div>
                                         </div>
                                     </div> 
                                     <div class="story " data-section="typologies" data-mode="2">
@@ -555,8 +555,8 @@
                                             </div>
                                         </div>
                                         <div class="card row">
-                                            <div class="col-sm-6 t-sq t-hi"><img class="fc-detail" src="./lib/tools/freight-story/images/HI_1.svg" alt="Image description" /></div>
-                                            <div class="col-sm-6 t-sq t-hi"><img class="fc-detail" src="./lib/tools/freight-story/images/HI_2.svg" alt="Image description" /></div>
+                                            <div class="col-xs-6 t-sq t-hi"><img class="fc-detail" src="./lib/tools/freight-story/images/HI_1.svg" alt="Image description" /></div>
+                                            <div class="col-xs-6 t-sq t-hi"><img class="fc-detail" src="./lib/tools/freight-story/images/HI_2.svg" alt="Image description" /></div>
                                         </div>
                                     </div>  
                                     <div class="story " data-section="typologies" data-mode="3">
@@ -585,8 +585,8 @@
                                             </div>    
                                         </div>
                                         <div class="card row">
-                                            <div class="col-sm-6 t-sq t-dc"><img class="fc-detail" src="./lib/tools/freight-story/images/DC_1.svg" alt="Image description" /></div>
-                                            <div class="col-sm-6 t-sq t-dc"><img class="fc-detail" src="./lib/tools/freight-story/images/DC_2.svg" alt="Image description" /></div>
+                                            <div class="col-xs-6 t-sq t-dc"><img class="fc-detail" src="./lib/tools/freight-story/images/DC_1.svg" alt="Image description" /></div>
+                                            <div class="col-xs-6 t-sq t-dc"><img class="fc-detail" src="./lib/tools/freight-story/images/DC_2.svg" alt="Image description" /></div>
                                         </div>
                                     </div>    
                                     <div class="story " data-section="typologies" data-mode="4">
@@ -615,8 +615,8 @@
                                             </div>    
                                         </div>
                                         <div class="card row">
-                                            <div class="col-sm-6 t-sq t-ht"><img class="fc-detail" src="./lib/tools/freight-story/images/HT_1.svg" alt="Image description" /></div>
-                                            <div class="col-sm-6 t-sq t-ht"><img class="fc-detail" src="./lib/tools/freight-story/images/HT_2.svg" alt="Image description" /></div>
+                                            <div class="col-xs-6 t-sq t-ht"><img class="fc-detail" src="./lib/tools/freight-story/images/HT_1.svg" alt="Image description" /></div>
+                                            <div class="col-xs-6 t-sq t-ht"><img class="fc-detail" src="./lib/tools/freight-story/images/HT_2.svg" alt="Image description" /></div>
                                         </div>
                                     </div>  
                                     <div class="story " data-section="typologies" data-mode="5" style="margin-bottom:0px;padding-bottom:450px;">
@@ -645,8 +645,8 @@
                                             </div>
                                         </div>
                                         <div class="card row">
-                                            <div class="col-sm-6 t-sq t-lm"><img class="fc-detail" src="./lib/tools/freight-story/images/LM_1.svg" alt="Image description" /></div>
-                                            <div class="col-sm-6 t-sq t-lm"><img class="fc-detail" src="./lib/tools/freight-story/images/LM_2.svg" alt="Image description" /></div>
+                                            <div class="col-xs-6 t-sq t-lm"><img class="fc-detail" src="./lib/tools/freight-story/images/LM_1.svg" alt="Image description" /></div>
+                                            <div class="col-xs-6 t-sq t-lm"><img class="fc-detail" src="./lib/tools/freight-story/images/LM_2.svg" alt="Image description" /></div>
                                         </div>
                                     </div>  
                                                                         
