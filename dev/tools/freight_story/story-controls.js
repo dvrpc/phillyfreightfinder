@@ -36,6 +36,11 @@ updateSizes = function() {
         fitRegion('distribution-map', _sizeHeight, ((_sizeWidth * mapCols) - 20), 'map')
         fitRegion('typologies-map', _sizeHeight, ((_sizeWidth * typCols) - 20), 'fcMap')
     }
+
+    if (_sizeWidth > 768) {
+        $('#distribution-map').css('opacity', '1.0')
+        $('#typologies-map').css('opacity', '1.0')
+    }
     
 }
 
@@ -57,9 +62,10 @@ var mapHeightItems = document.querySelectorAll('.map-height');
 
 // set the graphic DOM elements correctly
 setGraphicPosition(employmentBubbles, null, null, '0 0 -'+ BUBBLE_PARAMETERS.height +'px 0');
-setGraphicPosition(distributionMap, 'relative', _mapHeightOffset, '0 0 -'+ BUBBLE_PARAMETERS.height +'px 0');
-setGraphicPosition(typologyMap, 'relative', _mapHeightOffset, '0 0 -'+ BUBBLE_PARAMETERS.height +'px 0');
-
+setGraphicPosition(distributionMap, 'relative', -771, '0 0 -'+ BUBBLE_PARAMETERS.height +'px 0');
+setGraphicPosition(typologyMap, 'relative', -771, '0 0 -'+ BUBBLE_PARAMETERS.height +'px 0');
+(_sizeWidth < 769) ? $('#distribution-map').css('opacity', '0') : '';
+(_sizeWidth < 769) ? $('#typologies-map').css('opacity', '0') : '';
 updateSizes();
 
 window.onresize = function() {
@@ -98,7 +104,7 @@ var scrollStory = $('#planning').scrollStory({
         switch (item.data.section) {
             case 'employment':
                 myBubbleChart.legendHandler(item.data.legend);
-                setGraphicPosition(distributionMap, 'relative', _mapHeightOffset, '0 0 -'+ BUBBLE_PARAMETERS.height +'px 0')
+                setGraphicPosition(distributionMap, 'relative', -771, '0 0 -'+ BUBBLE_PARAMETERS.height +'px 0')
                 break;
         }
 
@@ -113,7 +119,7 @@ var scrollStory = $('#planning').scrollStory({
             d3.selectAll('.bubble')  //here's how you get all the nodes
                 .attr('r', function(d) {return d.scaled_radius})
                 .attr('opacity', 1.0);
-            setGraphicPosition(typologyMap, 'relative', _mapHeightOffset, '0 0 -'+ (BUBBLE_PARAMETERS.height) +'px 0')
+            setGraphicPosition(typologyMap, 'relative', -771, '0 0 -'+ (BUBBLE_PARAMETERS.height) +'px 0')
         }
 
         //clears any annotations
@@ -127,9 +133,10 @@ var scrollStory = $('#planning').scrollStory({
         if(item.index > 0 && item.index < 8){
             setGraphicPosition(employmentBubbles, 'fixed', 60)
         }
-
-        if(item.index > 8) {
-            setGraphicPosition(employmentBubbles, 'relative', -BUBBLE_PARAMETERS.height, '0 0 -'+ (BUBBLE_PARAMETERS.height) +'px 0')
+        
+        if(item.index > 10) {
+            setGraphicPosition(employmentBubbles, 'relative', -BUBBLE_PARAMETERS.height, '0 0 -'+ (BUBBLE_PARAMETERS.height) +'px 0');
+            
         }
 
         if(item.data.section === 'employment') {
@@ -162,9 +169,9 @@ var scrollStory = $('#planning').scrollStory({
 
         if(item.index > 8 && item.data.section === 'distribution' && item.data.mode){
             //make sure employment is gone
-            setGraphicPosition(employmentBubbles, 'relative', -BUBBLE_PARAMETERS.height, '0 0 -'+ (BUBBLE_PARAMETERS.height) +'px 0')
-            setGraphicPosition(typologyMap, 'relative', _mapHeightOffset, '0 0 -'+ (BUBBLE_PARAMETERS.height) +'px 0')
-
+            setGraphicPosition(employmentBubbles, 'relative', -BUBBLE_PARAMETERS.height, '0 0 -'+ (BUBBLE_PARAMETERS.height) +'px 0');
+            setGraphicPosition(typologyMap, 'relative', -771, '0 0 -'+ (BUBBLE_PARAMETERS.height) +'px 0');
+           
             mapStateChecker(item.index, item.data.mode, item.data.section);
            
         }
@@ -178,6 +185,9 @@ var scrollStory = $('#planning').scrollStory({
             item.index > 18 ? setGraphicPosition(typologyMap, 'fixed', 60) : '';
             
             mapStateChecker(item.index, item.data.mode, item.data.section);
+        }
+        if(item.index > 19){
+            (_sizeWidth < 769) ? $('#typologies-map').css('opacity', '1.0') : '';
         }
 
     },
@@ -200,7 +210,8 @@ var scrollStory = $('#planning').scrollStory({
                     map_called = true;
                     $.getScript('./lib/tools/freight-story/geo-distribution.js?ver=1.0.1');
                 } else if (activeItem.index >= 9){
-                    setGraphicPosition(distributionMap, 'relative', _mapHeightOffset, '0 0 -'+ BUBBLE_PARAMETERS.height +'px 0')
+                    setGraphicPosition(distributionMap, 'relative', -771, '0 0 -'+ BUBBLE_PARAMETERS.height +'px 0');
+                    (_sizeWidth < 769) ? $('#distribution-map').css('opacity', '0') : '';
                 }
                 break;
             case 9: 
@@ -208,14 +219,22 @@ var scrollStory = $('#planning').scrollStory({
                     setGraphicPosition(employmentBubbles, 'relative', -BUBBLE_PARAMETERS.height, '0 0 -'+ (BUBBLE_PARAMETERS.height) +'px 0')
                 }
                 break;
+            case 10:
+                if(activeItem.index < 10){
+                    (_sizeWidth < 769) ? $('#distribution-map').css('opacity', '1.0') : '';
+                }
+                break;
             case 18:
                 if(activeItem.index < 18 && _sizeWidth > 768){
                     setGraphicPosition(distributionMap, 'relative', (distNarrative - BUBBLE_PARAMETERS.height), '0 0 -'+ BUBBLE_PARAMETERS.height +'px 0')
                 }
+                if(activeItem.index > 18){
+                    (_sizeWidth < 769) ? $('#typologies-map').css('opacity', '0') : '';
+                }
                 break;
             case 17:
                 if(activeItem.index > 17){
-                    setGraphicPosition(typologyMap, 'relative', _mapHeightOffset, '0 0 -'+ BUBBLE_PARAMETERS.height +'px 0')
+                    setGraphicPosition(typologyMap, 'relative', -771, '0 0 -'+ BUBBLE_PARAMETERS.height +'px 0')
                 }
                 break;
             case 24:
@@ -240,6 +259,9 @@ var scrollStory = $('#planning').scrollStory({
             case 18:
                 if(activeItem.index < 18) {
                     setGraphicPosition(distributionMap, 'fixed', 60)
+                }
+                if(activeItem.index > 18) {
+                    (_sizeWidth < 769) ? $('#typologies-map').css('opacity', '1.0') : '';
                 }
                 break;
             case 17:
