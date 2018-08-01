@@ -14,7 +14,8 @@ function updateClass(element, cols) {
     var colOffset = 12 - cols;
     document.getElementById(element).className = 'col-lg-offset-'+ colOffset +' col-lg-'+ cols ;
 }
-var _sizeWidth;
+var _sizeWidth = pageWidth();
+var _mapHeightOffset = (_sizeWidth < 769) ? -450 : -771;
 updateSizes = function() {
     _sizeWidth = pageWidth();
     var _sizeHeight = getHeight();
@@ -56,8 +57,8 @@ var mapHeightItems = document.querySelectorAll('.map-height');
 
 // set the graphic DOM elements correctly
 setGraphicPosition(employmentBubbles, null, null, '0 0 -'+ BUBBLE_PARAMETERS.height +'px 0');
-setGraphicPosition(distributionMap, 'relative', -771, '0 0 -'+ BUBBLE_PARAMETERS.height +'px 0');
-setGraphicPosition(typologyMap, 'relative', -771, '0 0 -'+ BUBBLE_PARAMETERS.height +'px 0');
+setGraphicPosition(distributionMap, 'relative', _mapHeightOffset, '0 0 -'+ BUBBLE_PARAMETERS.height +'px 0');
+setGraphicPosition(typologyMap, 'relative', _mapHeightOffset, '0 0 -'+ BUBBLE_PARAMETERS.height +'px 0');
 
 updateSizes();
 
@@ -76,6 +77,7 @@ var map_mode = 'none';
 var map_section = 'distribution';
 var distNarrative = $('#distribution-narrative').height();
 var typNarrative = $('#typologies').height();
+
 
 // initialization and options for scroll story functionality
 var scrollStory = $('#planning').scrollStory({
@@ -96,7 +98,7 @@ var scrollStory = $('#planning').scrollStory({
         switch (item.data.section) {
             case 'employment':
                 myBubbleChart.legendHandler(item.data.legend);
-                setGraphicPosition(distributionMap, 'relative', -771, '0 0 -'+ BUBBLE_PARAMETERS.height +'px 0')
+                setGraphicPosition(distributionMap, 'relative', _mapHeightOffset, '0 0 -'+ BUBBLE_PARAMETERS.height +'px 0')
                 break;
         }
 
@@ -111,7 +113,7 @@ var scrollStory = $('#planning').scrollStory({
             d3.selectAll('.bubble')  //here's how you get all the nodes
                 .attr('r', function(d) {return d.scaled_radius})
                 .attr('opacity', 1.0);
-            setGraphicPosition(typologyMap, 'relative', -771, '0 0 -'+ (BUBBLE_PARAMETERS.height) +'px 0')
+            setGraphicPosition(typologyMap, 'relative', _mapHeightOffset, '0 0 -'+ (BUBBLE_PARAMETERS.height) +'px 0')
         }
 
         //clears any annotations
@@ -161,7 +163,7 @@ var scrollStory = $('#planning').scrollStory({
         if(item.index > 8 && item.data.section === 'distribution' && item.data.mode){
             //make sure employment is gone
             setGraphicPosition(employmentBubbles, 'relative', -BUBBLE_PARAMETERS.height, '0 0 -'+ (BUBBLE_PARAMETERS.height) +'px 0')
-            setGraphicPosition(typologyMap, 'relative', -771, '0 0 -'+ (BUBBLE_PARAMETERS.height) +'px 0')
+            setGraphicPosition(typologyMap, 'relative', _mapHeightOffset, '0 0 -'+ (BUBBLE_PARAMETERS.height) +'px 0')
 
             mapStateChecker(item.index, item.data.mode, item.data.section);
            
@@ -198,7 +200,7 @@ var scrollStory = $('#planning').scrollStory({
                     map_called = true;
                     $.getScript('./lib/tools/freight-story/geo-distribution.js?ver=1.0.1');
                 } else if (activeItem.index >= 9){
-                    setGraphicPosition(distributionMap, 'relative', -771, '0 0 -'+ BUBBLE_PARAMETERS.height +'px 0')
+                    setGraphicPosition(distributionMap, 'relative', _mapHeightOffset, '0 0 -'+ BUBBLE_PARAMETERS.height +'px 0')
                 }
                 break;
             case 9: 
@@ -213,7 +215,7 @@ var scrollStory = $('#planning').scrollStory({
                 break;
             case 17:
                 if(activeItem.index > 17){
-                    setGraphicPosition(typologyMap, 'relative', -771, '0 0 -'+ BUBBLE_PARAMETERS.height +'px 0')
+                    setGraphicPosition(typologyMap, 'relative', _mapHeightOffset, '0 0 -'+ BUBBLE_PARAMETERS.height +'px 0')
                 }
                 break;
             case 24:
