@@ -127,7 +127,7 @@
                                     </div>
                                 </div>
 
-                                <div id="fc-splash-intro" class="row" style="text-align:center;">
+                                <div id="fc-splash-intro" class="row hidden-xs" style="text-align:center;">
                                     <div class="col-xs-4">
                                         <a href="#" data-story-nav="1" class='circle-multiline'>
                                             <div class="aligner">
@@ -189,6 +189,11 @@
                             <div class='col-sm-5 col-lg-4' style="z-index:10;">
                                 <div class="story card first" data-section="employment" data-mode="all" data-legend="none" >
                                     <p>We can understand the role of businesses when they are grouped into industry subsectors based on the type of economic activity. <span style="font-weight:800">To illustrate this we can portray each of the region’s 97 industry subsectors as circles, scaled by it's regional employment.</span> </p>
+                                    <div class="visible-xs">
+                                        <h4>Employment by Industry Subsector</h4>
+                                        <img style="width:100%" src="./lib/tools/freight-story/images/fc-mobile-bubbles.png" alt="DVRPC freight employment by as bubbles" />
+                                        <p class="g-source">Source: 2013 NETS and 2016 Bureau of Labor Statistics</p>
+                                    </div>
                                     <svg id="svg-story-legend" width="300" height="200" class="hidden-xs">
                                     </svg>
                                     <br/>
@@ -277,9 +282,15 @@
                                     <div class="details">
                                         <p>The region has approximately <b>2.4 million</b> employees working in 51 consumption subsectors.</p>
                                     </div>
+                                    
                                 </div> 
                                 <div class="story card extra-tall" data-section="employment" data-mode="full" data-action="reset-size" data-legend="size,color">
                                     <p>Together Extraction, Production, and Distribution industry groupings represent the primary freight-intensive industries of the region. The total employment across these industries is approximately <b>675,000</b> or <b>22% of regional employment</b>.</p>
+                                    <div class="visible-xs">
+                                        <h4>Employment by Industry Subsector</h4>
+                                        <img style="width:100%" src="./lib/tools/freight-story/images/fc-mobile-sectors.png" alt="DVRPC freight employment by sector" />
+                                        <p class="g-source">Source: 2013 NETS and 2016 Bureau of Labor Statistics</p>
+                                    </div>
                                     <p>While the share of employment in these freight-intensive industries is lower than consumption industries, average annual wage is often higher.</p>
                                 </div>        
                                   
@@ -287,6 +298,10 @@
                         </div>
                        <div id="js-wage-desc" class="story wage-chart pull-right col-sm-5 col-lg-4 no-mouse" data-section="employment" data-mode="wage" data-legend="wage">
                             <p>When charted by average annual wage we see that many freight-intensive industries have a higher average annual wage. Additionally, <b>these freight subsectors are often "family sustaining,"</b> having a average annual wage greater than the region’s living wage for a family of three.</p>
+                            <div class="visible-xs">
+                                <h4>Average Wage by Subsector</h4>
+                                <img style="width:100%" src="./lib/tools/freight-story/images/fc-mobile-wages.png" alt="DVRPC freight employment by wage and sector" />
+                            </div>
                         </div>
                         <!-- chart column for bubble diagram -->
                         <!-- <div id="chart" class="col-lg-8 col-sm-12"> -->
@@ -348,7 +363,7 @@
                     <div class='clearfix'></div>
                     <section id="geographic-distribution" style="padding-top:60px;">
                         <div class="story" data-section="distribution" data-mode="none">
-                            <div class='col-sm-12 fc-color-full'>
+                            <div class='col-sm-12 fc-color-full mobile-top'>
                                 <div class='center-block col-md-10 col-sm-12' style='float:none;'>
                                     <div class='col-sm-6'>
                                         <h2 style="color:#fff;">2. Where is freight activity in the region?</h2>
@@ -364,7 +379,7 @@
                             <div class='clearfix'></div>
                         </div>
                         <div class='center-block col-sm-12' style='float:none;'>
-                            <div id="map-parent" class="col-sm-offset-5 col-sm-7 col-lg-8 col-lg-offset-4 hidden-xs">
+                            <div id="map-parent" class="col-sm-offset-5 col-sm-7 col-lg-8 col-lg-offset-4">
                                 <div id="distribution-map">
                                     <span id="source-span"></span>
                                     <div id="map-legend">
@@ -382,7 +397,7 @@
                         <div id="distribution-narrative" class='center-block col-md-10 col-sm-12' style='float:none;'>
                             <div class="row">
                                 <div class='col-lg-4 col-sm-5' style="z-index:10;">
-                                    <div class="story" data-section="distribution" data-mode="establishment">
+                                    <div class="story mobile-map" data-section="distribution" data-mode="establishment">
                                         <div class="card">
                                             <h3>Analysis Criteria</h3>
                                             <h4>Freight-intensive Establishments</h4>
@@ -392,7 +407,7 @@
                                             <p>The distribution of freight employment using establishments can give unnecessary weight to a location with many small businesses that have relatively little freight activity associated with them.</p>
                                         </div>
                                     </div>  
-                                    <div class="story " data-section="distribution" data-mode="employment">
+                                    <div class="story mobile-map" data-section="distribution" data-mode="employment">
                                         <div class="card">
                                             <h4>Freight-intensive Employment</h4>
                                             <p>The distribution of freight employment using number of employees helps us to better understand the relative intensity of freight activity in each zone. More employees working in freight industries would indicate a higher probability for freight generating activities.</p>
@@ -401,7 +416,7 @@
                                             <p>Employment, measured as establishments or employees, is just one type of measure for understanding the freight economy in the built environment. These numbers may miss some key freight generators due to incomplete data or activity types. To fill these gaps we can look at the distribution of existing land uses, industrial buildings and intermodal freight facilities.</p>
                                         </div>
                                     </div> 
-                                    <div class="story " data-section="distribution" data-mode="landuse">
+                                    <div class="story mobile-map" data-section="distribution" data-mode="landuse">
                                         <div class="card">
                                             <h4>Freight-related Land Uses</h4>
                                             <p>Evaluating the percent of each analysis zone that is dedicated to freight-related land uses reveals additional locations in the region that may contribute to the freight economy though no single employer is reported at that location.</p>
@@ -410,7 +425,7 @@
                                             <p>Key freight-related land uses include industrial, mining, utility, and transportation. These land uses help us to identify locations of freight generators that may not have fixed employment or a business establishment assigned to that specific location.</p>
                                         </div>
                                     </div>  
-                                    <div class="story " data-section="distribution" data-mode="industrial">
+                                    <div class="story mobile-map" data-section="distribution" data-mode="industrial">
                                         <div class="card">
                                             <h4>Industrial Development</h4>
                                             <p>In addition to land use, the physical industrial structures both built and proposed in the region can be used to understand the potential for freight activity.</p>
@@ -419,7 +434,7 @@
                                             <p>Using commercial real estate data, the distribution of square footage of occupied and proposed industrial buildings throughout the region can be mapped.</p>
                                         </div>
                                     </div>    
-                                    <div class="story " data-section="distribution" data-mode="facilities">
+                                    <div class="story mobile-map" data-section="distribution" data-mode="facilities">
                                         <div class="card">
                                             <h4>Intermodal Freight Facilities</h4>
                                             <p>The final consideration in identifying freight generating activity was the inclusion and analysis of intermodal freight facilities. These freight facilities handle the transfer of goods from one mode to another and are significant components of the freight system.</p>
@@ -428,18 +443,18 @@
                                             <p>These facilities are not only responsible for the generation of freight trips but also serve to attract freight-related business development. Proximity to these locations was analyzed to understand their spatial distribution and potential impact on adjacent analysis zones.</p>
                                         </div>
                                     </div>  
-                                    <div class="story " data-section="distribution" data-mode="fq">
+                                    <div class="story mobile-map" data-section="distribution" data-mode="fq">
                                         <div class="card">
                                             <h3>Freight Quotient</h3>
                                             <p>Aggregate scores were created for each analysis bin using the evaluation criteria results, weighted by level of impact. These provided a quantitative predictor for freight activity across the region. This predictive measure, the Freight Quotient (FQ), provided a foundation for more detailed localized analysis.</p>
                                         </div>
                                     </div>  
-                                    <div class="story " data-section="distribution" data-mode="fq-circles">
+                                    <div class="story mobile-map" data-section="distribution" data-mode="fq-circles">
                                         <div class="card">
                                             <p>The FQ measures highlighted the hotspots in the region, shown as circles on the map, that required further analysis. Detailed evaluation was conducted at the parcel level to assess employment, development, and building characteristics. This allowed for the identification of clusters of parcels that met the necessary levels of activity to be potential freight centers, highlighted by the bold blue circles.</p>
                                         </div>
                                     </div>  
-                                    <div class="story map-height" data-section="distribution" data-mode="fc-preview" style="margin-bottom:0px;">
+                                    <div class="story map-height mobile-map fc-mobile-map" data-section="distribution" data-mode="fc-preview" style="">
                                         <div class="card">
                                             <h3>DVRPC Freight Centers</h3>
                                             <p>The final result of the FQ analysis and evaluation of the potential freight centers identified the final set of Freight Centers in the region.</p>
@@ -472,7 +487,7 @@
                             <div class='clearfix'></div>
                         </div>
                         <div class='center-block col-sm-12' style='float:none;'>
-                            <div id="" class="col-sm-offset-5 col-sm-7 hidden-xs">
+                            <div id="" class="col-sm-offset-5 col-sm-7 ">
                                 <div id="typologies-map">
                                     <img class="map-logo" src="./lib/tools/freight-story/images/dvrpc-logo.svg" alt="DVRPC Logo" />
                                 </div>
@@ -481,7 +496,7 @@
                         <div id="typologies-narrative" class='center-block col-md-10 col-sm-12' style='float:none;'>
                             <div class="row">
                                 <div class="col-sm-12">
-                                    <div class="story" data-section="typologies" data-mode="all">
+                                    <div class="story mobile-map" data-section="typologies" data-mode="all">
                                         <div class="card row">
                                             <div class="col-sm-5">
                                                 <h3>Typologies Overview</h3>
@@ -502,7 +517,7 @@
                                 </div>  
 
                                 <div class='col-sm-5' style="z-index:10;">
-                                    <div class="story " data-section="typologies" data-mode="1">
+                                    <div class="story mobile-map" data-section="typologies" data-mode="1">
                                         <div class="card">
                                             <h3>Typology Profiles</h3>
                                             <h4>International Gateway</h4>
@@ -529,7 +544,7 @@
                                             <div class="col-xs-6 t-sq t-ig"><img class="fc-detail" src="./lib/tools/freight-story/images/IG_2.svg" alt="Image description" /></div>
                                         </div>
                                     </div> 
-                                    <div class="story " data-section="typologies" data-mode="2">
+                                    <div class="story mobile-map" data-section="typologies" data-mode="2">
                                         <div class="card">
                                             <h4>Heavy Industrial</h4>
                                             <p>A Heavy Manufacturing Freight Center is a node focused around heavy industrial land uses involved in the manufacturing of goods. These centers are served by freight rail access and often have additional access to a port terminal allowing for the movement of bulk or break-bulk source materials.</p>
@@ -559,7 +574,7 @@
                                             <div class="col-xs-6 t-sq t-hi"><img class="fc-detail" src="./lib/tools/freight-story/images/HI_2.svg" alt="Image description" /></div>
                                         </div>
                                     </div>  
-                                    <div class="story " data-section="typologies" data-mode="3">
+                                    <div class="story mobile-map" data-section="typologies" data-mode="3">
                                         <div class="card">
                                             <h4>Distribution &amp; Logistics</h4>
                                             <p>A Distribution and Logistics Freight Center is a node with a high concentration of regional and national serving distribution and logistics businesses. These centers are often located around key highway interchanges with access to both port gateways and consumer markets.</p>
@@ -589,7 +604,7 @@
                                             <div class="col-xs-6 t-sq t-dc"><img class="fc-detail" src="./lib/tools/freight-story/images/DC_2.svg" alt="Image description" /></div>
                                         </div>
                                     </div>    
-                                    <div class="story " data-section="typologies" data-mode="4">
+                                    <div class="story mobile-map" data-section="typologies" data-mode="4">
                                         <div class="card">
                                             <h4>High Tech Manufacturing</h4>
                                             <p>A High Tech Manufacturing Freight Center is a node focused around advanced manufacturing land uses and businesses. These centers rely less on major freight rail and maritime facilities but are well located relative to highway facilities.</p>
@@ -619,7 +634,7 @@
                                             <div class="col-xs-6 t-sq t-ht"><img class="fc-detail" src="./lib/tools/freight-story/images/HT_2.svg" alt="Image description" /></div>
                                         </div>
                                     </div>  
-                                    <div class="story " data-section="typologies" data-mode="5" style="margin-bottom:0px;padding-bottom:450px;">
+                                    <div class="story mobile-map fc-manufacture" data-section="typologies" data-mode="5">
                                         <div class="card">
                                             <h4>Local Manufacturing and Distribution</h4>
                                             <p>A Local Manufacturing and Distribution Center is a node focused around locally serving small manufacturing and distribution facilities. These are less dependent on prime location near interstate interchanges, but are well served by smaller highway facilities and proximity to consumer populations.</p>
@@ -655,7 +670,7 @@
                         </div>
                     </section>
                     <section>
-                        <div class="story map-height" data-section="typologies" data-mode="all" style="margin-bottom:10px">
+                        <div class="story map-height fc-final-map" data-section="typologies" data-mode="all" >
                             <div class='col-sm-12 fc-color-full'>
                                 <div class='center-block col-md-10 col-sm-12' style='float:none;'>
                                     <div class='col-sm-5'>

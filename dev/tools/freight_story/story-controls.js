@@ -14,24 +14,26 @@ function updateClass(element, cols) {
     var colOffset = 12 - cols;
     document.getElementById(element).className = 'col-lg-offset-'+ colOffset +' col-lg-'+ cols ;
 }
-
+var _sizeWidth;
 updateSizes = function() {
-    var _sizeWidth = pageWidth();
+    _sizeWidth = pageWidth();
     var _sizeHeight = getHeight();
     BUBBLE_PARAMETERS.height = _sizeHeight;
     var mapCols = (_sizeWidth >= 1200) ? 0.66 : 0.58333;
+    (_sizeWidth < 769) ? mapCols = 0.97 : '';
+    var typCols = (_sizeWidth < 769) ? 0.97 : 0.5833;
     //update map size
     distributionMap.style.width = ((_sizeWidth * mapCols) - 20) + "px";
-    typologyMap.style.width = ((_sizeWidth * 0.5833) - 20) + "px";
+    typologyMap.style.width = ((_sizeWidth * typCols) - 20) + "px";
     //forces size of text equal to map
     mapHeightItems.forEach(function(el) {
-        el.style.height = _sizeHeight + "px";
+        el.style.height = (_sizeWidth > 768) ? _sizeHeight + "px" : "auto";
       });
     document.getElementById("js-wage-desc").style.height = (_sizeWidth > 768) ? _sizeHeight + "px" : "auto";
 
     if (map_exists) {
         fitRegion('distribution-map', _sizeHeight, ((_sizeWidth * mapCols) - 20), 'map')
-        fitRegion('typologies-map', _sizeHeight, ((_sizeWidth * 0.5833) - 20), 'fcMap')
+        fitRegion('typologies-map', _sizeHeight, ((_sizeWidth * typCols) - 20), 'fcMap')
     }
     
 }
@@ -205,7 +207,7 @@ var scrollStory = $('#planning').scrollStory({
                 }
                 break;
             case 18:
-                if(activeItem.index < 18){
+                if(activeItem.index < 18 && _sizeWidth > 768){
                     setGraphicPosition(distributionMap, 'relative', (distNarrative - BUBBLE_PARAMETERS.height), '0 0 -'+ BUBBLE_PARAMETERS.height +'px 0')
                 }
                 break;
@@ -244,7 +246,7 @@ var scrollStory = $('#planning').scrollStory({
                 }
                 break;
             case 24:
-                if(activeItem.index == 25 ){
+                if(activeItem.index == 25 && _sizeWidth > 768){
                     setGraphicPosition(typologyMap, 'relative', (typNarrative - BUBBLE_PARAMETERS.height), '0 0 -'+ BUBBLE_PARAMETERS.height +'px 0');
                 }
                 break;
