@@ -390,20 +390,27 @@ function clkriver(e) {
 function clkFreightCenter(e) {
     initializeHL(e);
     var fclass;
-    header = '<p>' + props.NAME + '</p>',
+    header = '<p>' + props.type + '</p>',
     content = "<div id='baseInfo'>"
-                        +"<div class='datafield'>" + props.CENTER_TYP + "</div><div class='labelfield'>Type</div>"
-                        +"<div class='datafield'>" + props.TOWNSHIP_S + "</div><div class='labelfield'>Municipality(ies): </div>"
+                        +"<div class='datafield'>" + props.townships + "</div><div class='labelfield'>Municipality(ies): </div>"
                         +"</div><!--close baseInfo-->"
                         +"<div class='infoDivider'></div>"
                         +"<div id='indactorInfo'>"
                         +"<ul class='nav nav-tabs'><!--tabs for indicators-->"
-                        +"<li class='active'><a href='#Cap' data-toggle='tab'>Capacity & Activity</a></li></ul></ul>"
+                        +"<li class='active'><a href='#Emp' data-toggle='tab'>Employment</a></li>"
+                        +"<li class='active'><a href='#Ind' data-toggle='tab'>Industrial Development</a></li></ul>"
                         +"<div id='indicator' class='tab-content'><!--tab panes-->"
-                        +"<div class='tab-pane active' id='Cap' style='padding-bottom: 12px;'>"
+                        +"<div class='tab-pane active' id='Emp' style='padding-bottom: 12px;'>"
                                 +"<table class='table table-hover'>"
-                                +"<tr class='active'><td><strong>Acres: </strong></td><td>" + numeral(props.ACRES_1).format('0,0.0') + "</td></tr>"
-                                +"<tr class='active'><td><strong>Output: </strong></td><td>not available</td></tr></table>"
+                                +"<tr class='active'><td></td><td><b>Freight</b></td><td><b>Non-freight</b></td></tr>"
+                                +"<tr class='active'><td><strong>Establishments: </strong></td><td>" + numeral(props.frght_est).format('0,0') + "</td><td>" + numeral(props.n_frght_es).format('0,0') + "</td></tr>"
+                                +"<tr class='active'><td><strong>Employees: </strong></td><td>" + numeral(props.frght_empl).format('0,0') + "</td><td>" + numeral(props.n_frght_em).format('0,0') + "</td></tr></table>"
+                        +"</div>"
+                        +"<div class='tab-pane' id='Ind' style='padding-bottom: 12px;'>"
+                                +"<table class='table table-hover'>"
+                                +"<tr class='active'><td><strong>Structures: </strong></td><td>" + numeral(props.str_count).format('0,0') + "</td></tr>"
+                                +"<tr class='active'><td><strong>Square Footage: </strong></td><td>" + numeral(props.sq_ft_area).format('0,0') + "</td></tr>"
+                                +"<tr class='active'><td><strong>Acres: </strong></td><td>" + numeral(props.land_area).format('0,0.0') + "</td></tr></table>"
                         +"</div></div>"
                         +"<div class='labelfield source'>Data Source: " + props.SOURCE + "</div></div>";
                         // +"<p>" + props.REPORT + "</p>";
@@ -413,9 +420,11 @@ function clkFreightCenter(e) {
             fclass = 'fcmajor';
     }else if (props.CENTER_TYP === 'Mega'){
             fclass = 'fcmega';
-    }else{}
+    }else{
+        fclass = 'fcmega';
+    }
 
-    featureName = '<p>Type: '+ props.CENTER_TYP +' Freight Center</p>',
+    featureName = '<p> Freight Center</p>',
     featureClass = ''+ fclass +'cl',
     featureIcon = ''+ fclass +'icon icon';
     contentPush(header,content,featureName,featureClass,featureIcon);
