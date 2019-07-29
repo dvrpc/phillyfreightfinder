@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en"> 
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="description" content="">
+        <meta name="author" content="Michael Ruane, Delaware Valley Regional Planning Commission, Office of Freight and Aviation Planning">
+        <title>PhillyFreightFinder 3.1.3  |  DVRPC</title>
+
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800' rel='stylesheet' type='text/css'>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.css" rel="stylesheet" type="text/css">
+        <link href="http://dvrpcfreight.github.io/dynamic-icons/dyna.css" rel="stylesheet" type="text/css">
+
+        <!-- locals for development
+        <link href="dev/locals/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="dev/locals/leaflet.css" rel="stylesheet" type="text/css">
+        -->
+
+        <link href='lib/style.min.css' rel='stylesheet' type="text/css"/>
+
+        <style>       
+        #loading {
+                position: absolute;
+                width: 220px;
+                height: 19px;
+                top: 50%;
+                left: 50%;
+                margin: -10px 0 0 -110px;
+                z-index: 1028;
+            }
+        .omodal{
+            position: absolute;
+            width: 220px;
+            height: 19px;
+            top: 50%;
+            left: 50%;
+            margin: -10px 0 0 -110px;
+            z-index: 1028;
+            display: none;
+            overflow: hidden;
+            outline: 0px none;
+        }
+        .navbar-form .form-control{
+            width:100%!important;
+        }
+
+        .story {
+            margin-bottom: 450px;
+            font-size: 1.2em;
+            opacity: 0.4;
+        }
+
+        .story.active{
+            opacity: 1;
+        }
+
+
+        /*.story.card {
+            background-color: #FFF;
+            border: 1px solid #B7B7B7;
+            text-align: left;
+            padding: 10px 20px 20px;
+            transition: all .3s ease-in-out;
+        }
+
+        .story.card.active {
+            box-shadow: 0 0 10px #b7b7b7;
+        }*/
+        #employment-bubble {
+            position: relative;
+            transition: all 1s ease-in-out;
+            top: 60px;
+            left: 8.333%;
+        }
+        
+        .wage-industry-axis {
+            stroke: #ccc;
+            stroke-dasharray: 1,1;
+        }
+        
+        .axis.x-wage-labels {
+            font-size: 1.2em;
+        }
+        .axis.x-wage-header {
+            font-weight: bold;
+        }
+        .text-lighter {
+            fill: #999;
+        }
+
+        .industry-list {
+            line-height: 1.6em;
+            font-size: 0.9em;
+        }
+        .industry-list span { 
+            border-bottom: 1px dotted #999;
+        }
+        .industry-list span:hover {
+            border-bottom-color: #312867;
+            color: #312867;
+            cursor: pointer;
+        }
+        #bubble_tooltip_list {
+            position: fixed;
+        }
+
+
+        /* tooltip */
+        .g-tip-up {
+            position: absolute;
+            pointer-events: none;
+        }
+        .g-tip-down {
+            position: absolute;
+            pointer-events: none;
+        }
+
+        .g-tip-down > .g-tip-shadow {
+            margin-top: 8px;
+        }
+
+        .g-tip-down > .g-tip-content {
+            padding-top: 15px;
+        }
+        .g-tip-shadow {
+            position: absolute;
+            box-shadow: 0 4px 8px rgba(0,0,0,.2);
+            width: 100%;
+            height: 100%;
+        }
+        .g-tip-box {
+            position: absolute;
+            fill: #fff;
+            stroke: #000;
+            stroke-width: .5px;
+            stroke-opacity: .2;
+        }
+        .g-tip-content {
+            position: absolute;
+            padding: 8px;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            width: 100%;
+            height: 100%;
+        }
+        .g-tip-title {
+            /*min-height: 20px;*/
+            margin-bottom: 8px;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+        .g-tip-title, .g-tip-metric-value {
+            font-weight: bold;
+        }
+
+        .g-tip-metric {
+            /*font-size: 0.8em;*/
+            clear: right;
+            padding: 2px 0;
+        }
+        .g-tip-metric-name {
+            color: #777;
+        }
+        .g-tip-metric-value {
+            float: right;
+        }
+        .g-tip-metric + .g-tip-metric {
+            border-top: solid 1px #eee;
+        }
+
+
+
+        body {
+            height: auto;
+        }
+
+        @media screen and (min-width: 768px) {
+                .modal-dialog {
+                    width:730px!important;
+                }
+            }
+            @media (max-width: 1270px) {
+                .navbar .navbar-brand {
+                    font-size: 18px;
+                    float: left;
+                }
+                .leaflet-control-attribution {
+                    display: none;
+                }
+                
+            }
+            @media (max-width: 1100px) {
+                .dvrpc-pff {
+                    width: 260px;
+                    overflow: hidden;
+                    margin-bottom:-20px;
+                }
+
+            }
+            @media (max-width: 992px){
+                .dl{
+                    margin-top:0px!important;
+                    margin-bottom:10px;
+                }
+                .right{float:left;}
+            }
+            @media (max-width: 885px){
+                .dvrpc-logo{display:none;}
+            }
+            @media (max-width: 768px){
+                .logo-container{
+                    padding:0px;
+                }
+                .navbar-nav .open .dropdown-menu{
+                    background-color:#fff;
+                }
+                #infobox_ {
+                    right:10px;
+                }
+                .page-title h1 {
+                    font-size: 18px;    
+                }
+            }
+
+            @media (max-width: 376px){
+
+                .infowrap{
+                    padding:20px;
+                    height:auto;
+                }
+                #infobox_ {
+                    display:none;
+                }
+            }
+            /* Print Handling */
+            
+        
+        </style> 
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.2/html5shiv.js"></script>
+            <script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.2.0/respond.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+        <header class="navbar navbar-inverse navbar-fixed-top pffheader">
+            <!-- Header logos and mobile menu button -->
+            <div class="col-md-1 brand-leader hidden-xs hidden-sm hidden-md"></div>
+            <div class="col-sm-12 col-md-12 col-lg-10 brand-left-offset" >
+                <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    <div class="navbar-brand ">
+                        <a href="http://www.dvrpc.org/freight/" title="DVRPC Website" target="_blank" class="dvrpc-logo"><img src='lib/images/header_dvrpc.png' alt="DVRPC logo" height='50'/></a>
+                        <a href="#home" class="dvrpc-pff" title="PFF homepage"><img src='lib/images/header_pff.png' height='50' alt="PFF logo"/></a>
+                    </div>
+                </div>
+            
+                <!-- Navigation links .navbar-collapse-->
+                <div id="navbar-links" class="navbar-collapse collapse">
+                    <!--<form id='nav_search' class="navbar-form navbar-right " >
+                            <div class="input-group search-container mapUI" style="display:none;">
+                                <input id="searchbox" type="text" class="form-control" placeholder="Search by facility/place name">
+                                <span class="input-group-addon"><i class="dynico dynico-search"></i></span>
+                            </div>
+                    </form>-->
+                    <!-- Menu Items -->
+                    <ul id='landing' class="nav navbar-nav">
+                        <li><a href="#home" data-toggle="collapse" data-target=".navbar-collapse.in"><i class="dynico dynico-home"></i>&nbsp;&nbsp;Home</a></li>
+                        <li class="dropdown">
+                            <a id="AboutDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"><i class="dynico dynico-dvrpc"></i>&nbsp;&nbsp;About <b class="caret"></b></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="#planning" class='landingLink' data-toggle="collapse" data-target=".navbar-collapse.in">Freight Planning</a></li>
+                                    <li><a href="#data" class='landingLink' data-toggle="collapse" data-target=".navbar-collapse.in">Our Data</a></li>
+                                    <li><a href="#open-freight-app" class='landingLink' data-toggle="collapse" data-target=".navbar-collapse.in">Open Freight App</a></li>
+                                </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a id="ToolsDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"><i class="dynico dynico-compass"></i>&nbsp;&nbsp;Tools <b class="caret"></b></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="#region" data-toggle="collapse" data-target=".navbar-collapse.in">County Profile Tool</a></li>
+                                    <li><a href="#maritime-indicators" class='landingLink' data-tab='maritime-indicators' data-toggle="collapse" data-target=".navbar-collapse.in">Maritime Indicators</a></li>
+                                    <li><a href="#highway-performance" class='landingLink' data-tab='highway-performance' data-toggle="collapse" data-target=".navbar-collapse.in">Highway Performance</a></li>
+                                </ul>
+                        </li>
+                        <li id='maplink' class='landingUI'><a href="#map" data-tab='map' data-toggle="collapse" data-target=".navbar-collapse.in"><i class="dynico dynico-map"></i>&nbsp;&nbsp;View Map</a></li>
+                        <li class='mapUI' style="display:none;"><a href="#map?search" data-toggle="collapse" data-target=".navbar-collapse.in" ><i class="glyphicon glyphicon-search"></i>&nbsp;&nbsp;Search</a></li>
+                    </ul>
+                </div><!--/.navbar-collapse -->
+            </div>
+        </header>
+    <!-- Search panel for map -->    
+        <div id="search-panel" class="col-lg-offset-1 col-xs-12 col-lg-10 " style="display:none;">
+            <div id="search-subpanel">
+                <form id='nav_search' class="navbar-form navbar-right " >
+                    <div class="input-group search-container mapUI" style="display:none;">
+                        <input id="searchbox" type="text" class="form-control" placeholder="Search by facility/place name">
+                        <span class="input-group-addon"><i class="dynico dynico-search"></i></span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    <!-- Core pages (non-map) -->
+        <section id='pFFlanding' class='landing fade in landtab-content landingUI'>
+           
+                <!--planning tab-->
+                <section id ='planning' class='landing-content'>
+                    <div class='page-title center-block col-lg-12'>
+                        <div class='center-block col-lg-10 col-sm-12' style='float:none;'>
+                            <h1>Freight Center Mock-up</h1>
+                        </div> 
+                    </div>
+                        
+                    <div class="story">
+                        <div class='clearfix'></div>
+                        <div class='col-md-12 hpbanner'>
+                            <div class='center-block col-lg-10 col-sm-12' style='float:none;'>
+                            <h4></h4>
+                                <div class='col-md-6 col-lg-6'>
+                                    <p>The Delaware Valley is home to over 430 thousand business establishments employing over 3.1 million individuals. The story of freight centers starts with these employers. The role that each business plays in the regional economy influences the movement of goods and services and informs the patterns of freight related development.</p>
+                                    <br/>
+                                    <br/>
+                                    <br/>
+                                    <br/>
+                                    <br/>
+                                    <br/>
+                                </div>
+                                <div class='col-md-6 col-lg-6'>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <section id="employment-chart" class='center-block col-lg-10 col-sm-12' style='float:none;'>
+                        <div class='col-lg-4 col-sm-12' style="z-index:10;">
+                            <div class="story card" data-section="employment" data-mode="all" style="margin-top:200px">
+                                <p>To understand these roles, we can group businesses into industrial sectors to better explain the type of economic activity in which each is involved. Here we visualize each of the region’s 33 industrial sub-sectors, scaling each by the size of its employment. </p>
+                                <h4>What is freight employment?</h4>
+                                <p>Not all of these industries rely on freight in equal degree. Our goal is simply to define if an industry is freight-intensive, meaning that it generates or attracts large amounts of freight trips or movements.</p>
+                            </div>  
+                            <div class="story card" data-section="employment" data-mode="color">
+                                <h4>Freight-intensive Industry Sectors</h4>
+                                <p>Identifying freight intensive sectors is done by associating each industry sub-sector with a segment of the economy’s product lifecycle. We can break this lifecycle and the related sectors into four distinct components.</p>
+                            </div>  
+                            <div class="story card" data-section="employment" data-mode="extraction">
+                                <h3>Extraction</h3>
+                                <p>These industries are involved in the extraction of raw materials from the earth and/or the raising of animals and crops. These industries represent a small but important part of the regional economy.</p>
+                                <p>The region has <b>12.6 thousand</b> employees working in extraction industries including: <div id="js-E-list" class="industry-list"></div></p>
+                            </div>  
+                            <div class="story card" data-section="employment" data-mode="production">
+                                <h3>Production</h3>
+                                <p>These industries are the makers. They are responsible for the production of the goods that allow for our way of life. Their operations have a critical reliance on freight transportation system to deliver the necessary inputs and get their outputs, or final products to market.</p>
+                                <p>The region has <b>450 thousand</b> employees working in production industries including: <div id="js-P-list" class="industry-list"></div></p>
+                            </div>  
+                            <div class="story card" data-section="employment" data-mode="distribution">
+                                <h3>Distribution</h3>
+                                <p>These industries serve as the vital link between the various components of the supply chain. Their business is the conveyance and storage of freight.</p>
+                                <p>The region has <b>210 thousand</b> employees working in distribution industries including: <div id="js-D-list" class="industry-list"></div></p>
+                            </div> 
+                            <div class="story card" data-section="employment" data-mode="consumption">
+                                <h3>Consumption</h3>
+                                <p>These industries are primarily consumers of finished goods. While they can be major attractors of freight they are not considered core to the development of freight centers. These industries are addressed through urban freight planning in commercial corridors and towns.</p>
+                                <p>The region has <b>2.4 million</b> employees working in 51 consumption industries.</p>
+                            </div> 
+                            <div class="story card" data-section="employment" data-mode="full" data-action="reset-size">
+                                <p>Together Extraction, Manufacturing, and Distribution industries represent the primary freight intensive industries of the region. The total employment across these industries is <b>675 thousand</b> or <b>22% of regional employment</b>.</p>
+                                <p>While the share of employment in each of these freight intensive industries is lower than consumption industries, average wage is often higher.</p>
+                                
+                            </div>        
+                              
+                        </div>
+
+                        <!-- chart column for bubble diagram -->
+                        <div id="chart" class="col-lg-8 col-sm-12">
+                            <div id="employment-bubble" >
+                                <div class="g-tip-up" style="width:250px;height:133px;display:none;">
+                                    <div class="g-tip-shadow"></div>
+                                    <svg class="g-tip-box" width="250" height="145">
+                                    <path transform="translate(125,152) scale(1.66667)" d="M0.5,-6.5l5,-5H74.5v-79H-74.5v79H-5Z"></path>
+                                    </svg>
+                                    <div class="g-tip-content">
+                                    <div class="g-tip-title"> </div>
+                                    <div class="g-tip-metric" data-name="establishments">
+                                    <span class="g-tip-metric-name">Establishments</span>
+                                    <span class="g-tip-metric-value"> </span>
+                                    </div>
+                                    <div class="g-tip-metric" data-name="employment">
+                                    <span class="g-tip-metric-name">Employment</span>
+                                    <span class="g-tip-metric-value"> </span>
+                                    </div>
+                                    <div class="g-tip-metric" data-name="wages">
+                                    <span class="g-tip-metric-name">Average Wage</span>
+                                    <span class="g-tip-metric-value"> </span>
+                                    </div>
+                                    </div>
+                                </div>
+                                <div class="g-tip-down" style="width:250px;height:133px;display:none;">
+                                    <div class="g-tip-shadow"></div>
+                                    <svg class="g-tip-box" width="250" height="145">
+                                    <path transform="translate(125,-10) scale(1.66667) rotate(180)" d="M0.5,-6.5l5,-5H74.5v-79H-74.5v79H-5Z"></path>
+                                    </svg>
+                                    <div class="g-tip-content">
+                                    <div class="g-tip-title"> </div>
+                                    <div class="g-tip-metric" data-name="establishments">
+                                    <span class="g-tip-metric-name">Establishments</span>
+                                    <span class="g-tip-metric-value"> </span>
+                                    </div>
+                                    <div class="g-tip-metric" data-name="employment">
+                                    <span class="g-tip-metric-name">Employment</span>
+                                    <span class="g-tip-metric-value"> </span>
+                                    </div>
+                                    <div class="g-tip-metric" data-name="wages">
+                                    <span class="g-tip-metric-name">Average Wage</span>
+                                    <span class="g-tip-metric-value"> </span>
+                                    </div>
+                                    </div>
+                                </div>
+                                <div id="g-employment-bubble">
+                                </div> 
+                            </div> 
+                              
+                        </div>
+                        <div class="story  col-lg-offset-8 col-lg-4 col-sm-12" data-section="employment" data-mode="wage">
+                                
+                            </div>
+                    </section>
+                    <div class='clearfix'></div>
+                </section>              
+              
+        </section>
+        <footer class="content-footer col-xs-12 landingUI" >
+            <div class="center-block col-lg-10 col-md-12" style="float:none;">
+                <div class="col-xs-12 col-sm-6 col-md-4">
+                    <a href="/"><img class="footer-logo" src="lib/images/dvrpclogotinywhite.png" alt="DVRPC"></a>
+                    <p>190 N. Independence Mall West, 8th Floor,<br>Philadelphia, PA 19106-1520<br>215.592.1800<br>Contact:&nbsp;&nbsp;<a id="contact-info" href="mailto:mruane@dvrpc.org">Michael Ruane</a></p>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-4">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6">
+                            <h4>About</h4>
+                            <ul class="footer-links">
+                                <li><a href="#planning">DVRPC Freight Planning</a></li>
+                                <li><a href="#data">Our Data</a></li>
+                                <li><a href="#open-freight-app">Open Freight App</a></li>
+                            </ul>
+
+                        </div>
+                        <div class="col-xs-12 col-sm-6">
+                            <h4>Tools</h4>
+                            <ul class="footer-links">
+                                <li><a href="#region">County Profiles</a></li>
+                                <li><a href="#maritime-indicators">Maritime Indicators</a></li>
+                                <li><a href="#highway-performance">Highway Performance</a></li>
+                                <li><a href="#map">Network Explorer</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-4">
+                    <div class="row">
+                        <div class="hidden-xs col-sm-6 col-md-12">
+                            
+                        </div>
+                        <div class="col-sm-6 col-md-12">
+                            <p style="padding-top:58px;"><a href="#disclaimer">Data Disclaimer</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#license">License</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://www.dvrpc.org/policies/" target="_blank">Policies&nbsp;&nbsp;<i class="glyphicon glyphicon-new-window"></i></a></p><p>&copy;&nbsp;2015 Delaware Valley Regional Planning Commission</p>
+                        </div>
+                    </div>
+                </div>
+                <!--<div class="col-xs-12 col-sm-6">
+                    <div class="row">
+                        
+                        <div class="col-xs-12 col-sm-3">
+                        </div>
+                    </div>
+                </div>-->
+            </div>
+        </footer> 
+   
+        
+
+        <!--Mobile InfoWindow Modal-->
+        <div class="modal fade" id="mobileInfo_modal">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div id="mobileMdHeader" class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" onClick='resetHighlight()'><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <div id="mobileheader"></div>
+              </div>
+              <div class='infowrap'>
+                <div id='mobileinfo'></div>
+                <div id='mobilefeatureName'></div>
+                </div>
+            </div><!-- /.modal-content -->
+          </div><!-- /.modal-dialog -->
+        </div><!-- /.modal --> 
+
+
+        <!-- prep external loaded elements -->
+
+        <!-- locals for offline dev--> 
+<!--
+        <script type="text/javascript" src="dev/locals/jquery-1.10.2.min.js"></script>
+        <script type="text/javascript" src="dev/locals/leaflet.js"></script>
+        <script type="text/javascript" src="dev/locals/jquery.bxslider.min.js"></script>
+        <script type="text/javascript" src="dev/locals/highcharts.js"></script>
+        <script type="text/javascript" src="dev/locals/jquery.nicescroll.js"></script>
+        <script type="text/javascript" src="dev/locals/bootstrap.min.js"></script>
+ --> 
+        <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+        <script type="text/javascript" src="dev/vendor/scrollstory.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/bootstrap.min.js"></script>
+        <script src="dev/vendor/d3v4.min.js"></script>
+        <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+        <script src="dev/tools/bubble_chart.js"></script>
+        <!-- <script type="text/javascript" src="lib/build.min.js"></script> -->
+
+        <script>
+        // helper function to adjust trigger to half of page height
+        var getPageHeight = function() {
+            winHeight = $(window).height();
+            return winHeight / 2;
+        }
+
+        var employment_exists = false;
+
+        // initialization and options for scroll story functionality
+        var fcStory = $('#planning').scrollStory({
+            scrollOffset: 75,
+            triggerOffset: getPageHeight(),
+            itemfocus: function(ev, item){
+                if(item.index === 0) {
+                   $('#employment-bubble').css('position', 'relative');
+                   //.html('');
+                }
+
+                if(item.data.action === 'reset-size') {
+                    // RETURN OPACITY AND SIZE TO NORMAL
+                    // if (currentMode.type !== "scatterplot" ) {
+                        d3.selectAll('.bubble')  //here's how you get all the nodes
+                            .attr('r', function(d) {return d.scaled_radius})
+                            .attr('opacity', 1.0);
+                    // }
+                }
+                // console.log(item);
+                //clears any annotations
+                $('.g-annotations').remove();
+
+                if(item.data.section === 'employment') {
+                    switch (item.data.mode){
+                        case 'all':
+                            $('#employment-bubble').css('position', 'fixed');
+                            if(!employment_exists){
+                                d3.csv("data/" + BUBBLE_PARAMETERS.data_file, function (error, data) {
+                                    // Once the data is loaded...
+                                    if (error) { console.log(error); }
+
+                                    // Display bubble chart inside the #vis div.
+                                    myBubbleChart('#g-employment-bubble', data);
+
+                                    // // Start the visualization with the first button
+                                    myBubbleChart.switchMode(BUBBLE_PARAMETERS.modes[0].button_id)
+
+                                });
+                            }
+                            employment_exists = true;
+
+                            break;
+                        case 'color':
+                            this.updateOffsets();
+                            myBubbleChart.switchMode(item.data.mode);
+                            break;
+                        default :
+                            myBubbleChart.switchMode(item.data.mode);
+                            break;       
+                    }
+
+                }
+                
+            },
+            updateoffsets: function() {
+               
+            }
+
+        });
+    
+
+
+        window.onbeforeunload = function () {
+            window.scrollTo(0, 0);
+        }
+
+        </script>
+        
+
+
+       
+<!--Google Analytics
+        <script type="text/javascript">var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));</script><script type="text/javascript">try {var pageTracker = _gat._getTracker("UA-9825778-1");pageTracker._trackPageview();} catch(err) {}</script>
+        
+        -->
+    </body>
+</html>

@@ -30,11 +30,6 @@
         <link href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.css" rel="stylesheet" type="text/css">
         <link href="https://dvrpcfreight.github.io/dynamic-icons/dyna.css" rel="stylesheet" type="text/css">
 
-        <!-- locals for development
-        <link href="dev/locals/bootstrap.min.css" rel="stylesheet" type="text/css">
-        <link href="dev/locals/leaflet.css" rel="stylesheet" type="text/css">
-        -->
-
         <link href='lib/style.min.css' rel='stylesheet' type="text/css"/>
 
         <style>       
@@ -133,6 +128,13 @@
             <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.2/html5shiv.js"></script>
             <script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.2.0/respond.js"></script>
         <![endif]-->
+        <!-- Google Tag Manager -->
+        <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','GTM-WZP57HH');</script>
+        <!-- End Google Tag Manager -->
     </head>
 
     <body>
@@ -183,6 +185,7 @@
                                     <li><a href="#region" data-toggle="collapse" data-target=".navbar-collapse.in">County Profile Tool</a></li>
                                     <li><a href="#maritime-indicators" class='landingLink' data-tab='maritime-indicators' data-toggle="collapse" data-target=".navbar-collapse.in">Maritime Indicators</a></li>
                                     <li><a href="#highway-performance" class='landingLink' data-tab='highway-performance' data-toggle="collapse" data-target=".navbar-collapse.in">Highway Performance</a></li>
+                                    <li><a href="../phillyfreightfinder/freight-center-story.html" class='landingLink' data-toggle="collapse" data-target=".navbar-collapse.in">Freight Center Story</a></li>
                                 </ul>
                         </li>
                         <li id='maplink' class='landingUI'><a href="#map" data-tab='map' data-toggle="collapse" data-target=".navbar-collapse.in"><i class="dynico dynico-map"></i>&nbsp;&nbsp;View Map</a></li>
@@ -218,11 +221,28 @@
                         </div>
                     </div>
                     <div class='center-block col-lg-10 col-md-12' style='float:none;'>
+                        <div class="col-sm-12">
+                                <div class="hp-tool-links" style="text-align:left">
+                                        <div class="row">
+                                            <div class="col-sm-8">
+                                                <a href="../phillyfreightfinder/freight-center-story.html"><h2><span class="label label-warning">New Tool</span>&nbsp;&nbsp;Freight Centers of Greater Philadelphia&nbsp;</h2></a>
+                                                <p style="min-height:0">Explore the freight economy and its impact on regional development and employment patterns</p>        
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <a href="../phillyfreightfinder/freight-center-story.html" ><button class="hp-tool-btn" style="margin-top:15px">Start Exploring</button></a>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                            
+                        </div>
+                    </div>
+                    <div class='center-block col-lg-10 col-md-12' style='float:none;'>
                         <div class='col-sm-6 col-md-4'>
                             <div class="hp-tool-links">
                                 <a href="#region" data-toggle="tab" ><h2>County Freight Profiles</h2></a>
                                 <p>The DVRPC region is comprised of nine counties, each with a unique freight profile of facilities, employment, and trade patterns. The County Profile Tool provides insights on these unique aspects.</p>
-                                <a href="#region" data-toggle="tab" ><button class="hp-tool-btn">Explore a county</button></a>
+                                <a href="#region" data-toggle="tab" ><button class="hp-tool-btn">Discover a county</button></a>
                             </div>
                         </div>
                         <div class='col-sm-6 col-md-4'>
@@ -255,6 +275,7 @@
                         <div class='center-block col-lg-10 col-sm-12' style='float:none;'>
                              <div class='col-md-7 col-lg-7'>
                                 <p><i>PhillyFreightFinder</i> is the product of DVRPC’s continuing, comprehensive freight planning program. This program enables carriers and shippers to participate in the metropolitan planning process and identifies freight transportation trends and needs in the region.</p>
+
                                 <p><i>PhillyFreightFinder</i> represents a true public-private partnership made possible by the members and friends of DVRPC’s freight advisory committee, the <a href="https://www.dvrpc.org/Freight/DVGMTF.htm">Delaware Valley Goods Movement Task Force</a>. The Task Force’s Data Subcommittee has provided active oversight and guidance in designing and preparing the application.</p>
                                 <p>To learn more about the DVRPC's freight planning activities and freight advisory committee, please visit the <a href="https://www.dvrpc.org/Freight/">freight page of the DVRPC website</a>.</p>
                                 
@@ -338,22 +359,35 @@
                     </div>
                     <div class='center-block col-lg-10 col-sm-12' style='float:none;'>
                         <div class="col-xs-12">
-                            <b>PhillyFreightFinder's code is licensed under the <a href="http://opensource.org/licenses/MIT">MIT License</a></b>
-                            <p>Copyright (c) 2014 Delaware Valley Regional Planning Commission</p>
-                            <p>Permission is hereby granted, free of charge, to any person obtaining a copy of
-                            this software and associated documentation files (the "Software"), to deal in
-                            the Software without restriction, including without limitation the rights to
-                            use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
-                            the Software, and to permit persons to whom the Software is furnished to do so,
-                            subject to the following conditions:</p>
-                            <p><b>The above copyright notice and this permission notice shall be included in all
-                            copies or substantial portions of the Software.</b></p>
-                            <p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR                    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS 
-                            FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
-                            COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
-                            IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
-                            CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
-                            <br>
+                            <article itemprop="text"><p>DVRPC waives copyright and related rights in the provided SOURCE CODE and APPLICATION worldwide through the CC0 1.0 Universal public domain dedication. This dedication does not apply to accompanying databases or third-party dependencies.</p>
+                                <h3>CC0 1.0 Universal Summary</h3>
+                                <p>This is a human-readable summary of the Legal Code (<a href="https://creativecommons.org/publicdomain/zero/1.0/legalcode" rel="nofollow">read the full text</a>).</p>
+                                <h4>No Copyright</h4>
+                                <p>This license is acceptable for Free Cultural Works. The person who associated a work with this deed has dedicated the work to the public domain by waiving all of his or her rights to the work worldwide under copyright law, including all related and neighboring rights, to the extent allowed by law.</p>
+                                <p>You can copy, modify, distribute and perform the work, even for commercial purposes, all without asking permission. See Other Information below.</p>
+                                <h4>Other Information</h4>
+                                <ul>
+                                    <li>In no way are the patent or trademark rights of any person affected by CC0, nor are the rights that other persons may have in the work or in how the work is used, such as publicity or privacy rights.</li>
+                                    <li>Unless expressly stated otherwise, the person who associated a work with this deed makes no warranties about the work, and disclaims liability for all uses of the work, to the fullest extent permitted by applicable law.</li>
+                                    <li>When using or citing the work, you should not imply endorsement by the author or the affirmer.</li>
+                                </ul>
+                                <h3>Exceptions</h3>
+                                <h4>Project dependencies</h4>
+                                <p>This project is built on third-party dependencies, all with varying licenses. For a detailed overview of each of these licenses and their dependencies, you can review the dependency_licenses.json file in the root directory of this project.</p>
+                                <h4>Database Disclaimer and License</h4>
+                                <p>The Delaware Valley Regional Planning Commission (DVRPC) makes no warranty, representation, or guarantee as to the content, sequence, accuracy, timeliness, or completeness of any of the spatial data or database information provided herein. DVRPC and partner state, local, and other agencies shall assume no liability for errors, omissions, or inaccuracies in the information provided regardless of how caused; or any decision made or action taken or not taken by any person relying on any information or data furnished within.</p>
+                                <p>Databases, data, and associated metadata are released under the <a href="https://opendatacommons.org/licenses/by/1.0/" rel="nofollow">ODC-BY 1.0 Attribution License</a> unless otherwise specified.</p>
+                                <p>You are free:</p>
+                                <ul>
+                                    <li>To Share: To copy, distribute and use the database.</li>
+                                    <li>To Create: To produce works from the database.</li>
+                                    <li>To Adapt: To modify, transform and build upon the database.</li>
+                                </ul>
+                                <p>As long as you:</p>
+                                <ul>
+                                    <li>Attribute: You must attribute any public use of the database, or works produced from the database, in the manner specified in the license. For any use or redistribution of the database, or works produced from it, you must make clear to others the license of the database and keep intact any notices on the original database.</li>
+                                </ul>  
+                            </article>
                             <h4>Additional Licenses</h4>
                             <p>PhillyFreightFinder includes elements of other software, their licenses are as follows:</p
                             >
@@ -460,7 +494,14 @@
                             
                         </div>
                         <div class="col-sm-6 col-md-12">
-                            <p style="padding-top:58px;"><a href="#disclaimer">Data Disclaimer</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#license">License</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="https://www.dvrpc.org/policies/" target="_blank">Policies&nbsp;&nbsp;<i class="glyphicon glyphicon-new-window"></i></a></p><p>&copy;&nbsp;2017 Delaware Valley Regional Planning Commission</p>
+
+                            <p style="padding-top:58px;"><a href="#disclaimer">Data Disclaimer</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#license">License</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://www.dvrpc.org/policies/" target="_blank">Policies&nbsp;&nbsp;<i class="glyphicon glyphicon-new-window"></i></a></p><p>&copy;&nbsp;<script language="JavaScript" type="text/javascript">
+                                now = new Date
+                                theYear=now.getYear()
+                                if (theYear < 1900)
+                                theYear=theYear+1900
+                                document.write(theYear)
+                            </script> Delaware Valley Regional Planning Commission</p>
                         </div>
                     </div>
                 </div>
@@ -793,18 +834,6 @@
           </div><!-- /.modal-dialog -->
         </div><!-- /.modal --> 
 
-
-        <!-- prep external loaded elements -->
-
-        <!-- locals for offline dev--> 
-<!--
-        <script type="text/javascript" src="dev/locals/jquery-1.10.2.min.js"></script>
-        <script type="text/javascript" src="dev/locals/leaflet.js"></script>
-        <script type="text/javascript" src="dev/locals/jquery.bxslider.min.js"></script>
-        <script type="text/javascript" src="dev/locals/highcharts.js"></script>
-        <script type="text/javascript" src="dev/locals/jquery.nicescroll.js"></script>
-        <script type="text/javascript" src="dev/locals/bootstrap.min.js"></script>
- --> 
         <script type="text/javascript" src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.js"></script>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/bootstrap.min.js"></script>
@@ -878,5 +907,6 @@
         
 <!--        <script type="text/javascript">var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "https://www.");document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));</script><script type="text/javascript">try {var pageTracker = _gat._getTracker("UA-9825778-1");pageTracker._trackPageview();} catch(err) {}</script>
 -->
+
     </body>
 </html>
