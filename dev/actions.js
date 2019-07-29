@@ -279,7 +279,7 @@ function clkRailRvrXing(e) {
 //Ports/Waterways Features
 //Ports
 function clkport(e) {
-    initializeHL(e);
+    initializeHL(e); 
     header = '<p>' + props.NAME + '</p>';
     var contentBulk = "<div id='baseInfo'>"
                         +"<div class='datafield'>" + props.OWNER + "</div><div class='labelfield'>Owner</div>"
@@ -398,7 +398,7 @@ function clkFreightCenter(e) {
                         +"<div id='indactorInfo'>"
                         +"<ul class='nav nav-tabs'><!--tabs for indicators-->"
                         +"<li class='active'><a href='#Emp' data-toggle='tab'>Employment</a></li>"
-                        +"<li class='active'><a href='#Ind' data-toggle='tab'>Industrial Development</a></li></ul>"
+                        +"<li class='updated'><a href='#Ind' data-toggle='tab'>Industrial Development</a></li></ul>"
                         +"<div id='indicator' class='tab-content'><!--tab panes-->"
                         +"<div class='tab-pane active' id='Emp' style='padding-bottom: 12px;'>"
                                 +"<table class='table table-hover'>"
