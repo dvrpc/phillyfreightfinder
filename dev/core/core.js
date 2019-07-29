@@ -44,7 +44,7 @@ function setMap(){
         });  
 }
 function loadScript(id){
-    $.getScript('lib/tools/'+ id + '.js');
+    $.getScript('lib/tools/'+ id + '.js?v=1.05');
 }
 
 //load content based on hash

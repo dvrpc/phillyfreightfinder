@@ -187,7 +187,7 @@ module.exports = function(grunt){
 		watch: {
 			toolscripts: {
       			files: ['dev/tools/*.js'],
-      			tasks: ['uglify:tools']
+      			tasks: ['uglify:tools', 'copy:lib']
       		},
       		cssUpdate: {
       			files: ['dev/css/*.css'],
@@ -196,12 +196,21 @@ module.exports = function(grunt){
       		coreUpdate: {
       			files: ['dev/core/*.js', 'dev/actions.js', 'dev/map.js'],
       			tasks: ['concat:build', 'uglify:build']
-			  },
+
+      		},
+      		html: {
+      			files: ['*.htm'],
+      			tasks: ['copy:index']
+      		},
+      		includes: {
+      			files: ['**/*.html'],
+      			tasks: ['copy:includes']
+      		},
 			FCtool: {
 				files: ['dev/tools/freight_story/*'],
 				tasks: ['concat:FC', 'uglify:FC', 'uglify:geo', 'cssmin:FC','copy:FC' ]
 			},
-			html: {
+			FChtml: {
 				files: ['./*.html'],
 				tasks: ['copy:FC']
 			}, 

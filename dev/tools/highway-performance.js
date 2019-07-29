@@ -151,7 +151,7 @@ function load_hp_tool(){
 			hp_map.attributionControl.addAttribution('<b>Performance Measures:</b> DVRPC analysis of NPMRDS truck prode data.');
 			// define starting layer based on hash location
 			var startLayer = L.esri.tiledMapLayer({
-			  url: 'http://arcgis.dvrpc.org/arcgis/rest/services/Freight/'+ hp_metric + hp_timing[hp_time] +'/MapServer',
+			  url: 'https://arcgis.dvrpc.org/arcgis/rest/services/Freight/'+ hp_metric + hp_timing[hp_time] +'/MapServer',
 			  maxZoom: 14
 			});
 			
@@ -190,7 +190,7 @@ function load_hp_tool(){
 			tg = ((tg === 2) ? 0 : tg + 1);
 
 			var newLayer = L.esri.tiledMapLayer({
-			  url: 'http://arcgis.dvrpc.org/arcgis/rest/services/Freight/'+ newTile +'/MapServer',
+			  url: 'https://arcgis.dvrpc.org/arcgis/rest/services/Freight/'+ newTile +'/MapServer',
 			  maxZoom: 14
 			});
 			
