@@ -191,11 +191,11 @@ module.exports = function(grunt){
       		},
       		cssUpdate: {
       			files: ['dev/css/*.css'],
-      			tasks: ['postcss', 'cssmin']
+      			tasks: ['postcss', 'cssmin', 'copy:lib']
       		},
       		coreUpdate: {
       			files: ['dev/core/*.js', 'dev/actions.js', 'dev/map.js'],
-      			tasks: ['concat:build', 'uglify:build']
+      			tasks: ['concat:build', 'uglify:build', 'copy:lib']
 
       		},
       		html: {

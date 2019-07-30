@@ -169,7 +169,6 @@ var PFFcustomIcon = L.Icon.extend({
 });
 var IconPresets = {markerSet: 'open-freight', mapMarker: 'circle-cm', legendMarker:'circle-md', iconSet: 'dynico'};
 
-
 var commicon = L.OpenFreightMarkers.icon({
         icon: 'airport', markerColor: 'forest', layer:'commGroup', title: 'Commercial Airport'}, IconPresets),
     relvicon = new L.OpenFreightMarkers.icon({
@@ -177,11 +176,15 @@ var commicon = L.OpenFreightMarkers.icon({
     helicon = L.OpenFreightMarkers.icon({
         icon: 'heliport', markerColor: 'ltgreen', layer:'heliport', title: 'Heliport'}, IconPresets),
     FCintericon = L.OpenFreightMarkers.icon({
-        icon: 'center', markerColor: 'peach', layer:'FCintergroup', title: 'Intermediate Center'}, IconPresets),
+        icon: 'center', markerColor: 'dkred', layer:'FCgatewaygroup', title: 'International Gateway'}, IconPresets),
     FCmajoricon = L.OpenFreightMarkers.icon({
-        icon: 'center', markerColor: 'orange', layer:'FCmajorgroup', title: 'Major Center'}, IconPresets),
+        icon: 'center', markerColor: 'clay', layer:'FCheavygroup', title: 'Heavy Industrial'}, IconPresets),
     FCmegaicon = L.OpenFreightMarkers.icon({
-        icon: 'center', markerColor: 'red', layer:'FCmegagroup', title: 'Mega Center'}, IconPresets),
+        icon: 'center', markerColor: 'rust', layer:'FCdistgroup', title: 'Distribution and Logistics'}, IconPresets),
+    FCmegaicon = L.OpenFreightMarkers.icon({
+        icon: 'center', markerColor: 'ltorange', layer:'FChightechgroup', title: 'High Tech Manufacturing'}, IconPresets),
+    FCmegaicon = L.OpenFreightMarkers.icon({
+        icon: 'center', markerColor: 'peach', layer:'FClocalgroup', title: 'Local Manufacturing and Distribution'}, IconPresets),
     hwyicon = L.OpenFreightMarkers.icon({
         icon: 'truck', markerColor: 'purple', layer:'freeway', title: 'Highway'}, IconPresets),
     trckprkicon = L.OpenFreightMarkers.icon({
@@ -313,8 +316,8 @@ var commicon = L.OpenFreightMarkers.icon({
     
 
     //define freight centers
-    //define intermediate centers
-    var FCinterpoly = new L.TopoJSON(null, {
+    //define local manufacturing freight centers
+    var FClocalpoly = new L.TopoJSON(null, {
         style: {
             fillColor: "#F9AB90",
             fillOpacity: 0.50,
@@ -327,9 +330,9 @@ var commicon = L.OpenFreightMarkers.icon({
                 click: clkFreightCenter,
                 dblclick: zoomToFeature
             });
-            FCinterSearch.push({
+            FClocalSearch.push({
                 name: layer.feature.properties.NAME,
-                source: "FCInter",
+                source: "FClocal",
                 id: L.stamp(layer),
                 bounds: layer.getBounds()
             });
@@ -337,10 +340,10 @@ var commicon = L.OpenFreightMarkers.icon({
     });
     
 
-    var FCinterpt = L.geoJson(null, {
+    var FClocalpt = L.geoJson(null, {
         pointToLayer: function(feature, latlng) {
             return L.marker(latlng, {
-                icon: FCintericon
+                icon: FClocalicon
             });
         },
         onEachFeature: function(feature, layer) {
@@ -352,10 +355,10 @@ var commicon = L.OpenFreightMarkers.icon({
     });
     
 
-    //define major centers
-    var FCmajorpoly = new L.TopoJSON(null, {
+    //define high tech man FCs
+    var FChightechpoly = new L.TopoJSON(null, {
         style: {
-            fillColor: "#F26122",
+            fillColor: "#ed7d53",
             fillOpacity: 0.50,
             weight: 1,
             color: "#E0E0E0 ",
@@ -366,9 +369,9 @@ var commicon = L.OpenFreightMarkers.icon({
                 click: clkFreightCenter,
                 dblclick: zoomToFeature
             });
-            FCmajorSearch.push({
+            FChightechSearch.push({
                 name: layer.feature.properties.NAME,
-                source: "FCmajor",
+                source: "FChightech",
                 id: L.stamp(layer),
                 bounds: layer.getBounds()
             });
@@ -380,7 +383,7 @@ var commicon = L.OpenFreightMarkers.icon({
     var FCmajorpt = L.geoJson(null, {
         pointToLayer: function(feature, latlng) {
             return L.marker(latlng, {
-                icon: FCmajoricon
+                icon: FChightechicon
             });
         },
         onEachFeature: function(feature, layer) {

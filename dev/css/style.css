@@ -1027,6 +1027,31 @@ ul.footer-links li{
         border-color: #0E76BC!important;
         background-color: #0E76BC!important;
         }
+.fcgatewaycl {
+        color:#fff!important;
+        border-color: #870000!important;
+        background-color: #870000!important;
+        }  
+.fcheavycl {
+        color:#fff!important;
+        border-color: #ae2f11!important;
+        background-color: #ae2f11!important;
+        }       
+.fcdistcl {
+        color:#fff!important;
+        border-color: #d1552c!important;
+        background-color: #d1552c!important;
+        }   
+.fchightechcl {
+        color:#fff!important;
+        border-color: #ed7d53!important;
+        background-color: #ed7d53!important;
+        }
+.fclocalcl {
+        color:#BB5D3B!important;
+        border-color: #F9AB90!important;
+        background-color: #F9AB90!important;
+        }    
 .fcintercl {
         color:#BB5D3B!important;
         border-color: #F9AB90!important;
@@ -1162,10 +1187,11 @@ label.fgnic {background: url('images/flat/community.png') no-repeat;}
     float: left;
     margin-right:8px;
 }
+
 .truckinfo{color:#894B9E;}
 .railinfo{color:#FBA919;}
 .portinfo{color:#0E76BC;}
-.fcinfo{color:#C2332C;}
+.fcinfo{color:#870000;}
 .airinfo{color:#216937;}
 .energyinfo{color:#EFD315;}
 .communityinfo{color:#54C4C8;}
@@ -1375,6 +1401,18 @@ Version: 1.0
 }
 .open-freight-icon-forest {
   background-position: -341px 0;
+}
+.open-freight-icon-dkred {
+    background-position: -375px 0;
+}
+.open-freight-icon-clay {
+    background-position: -409px 0;
+}
+.open-freight-icon-rust {
+    background-position: -443px 0;
+}
+.open-freight-icon-ltorange {
+    background-position: -477px 0;
 }
 
 .awesome-marker-icon-red {
