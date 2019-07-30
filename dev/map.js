@@ -175,15 +175,15 @@ var commicon = L.OpenFreightMarkers.icon({
         icon: 'airport', markerColor: 'green', layer:'relGroup', title: 'Reliever Airport'}, IconPresets),
     helicon = L.OpenFreightMarkers.icon({
         icon: 'heliport', markerColor: 'ltgreen', layer:'heliport', title: 'Heliport'}, IconPresets),
-    FCintericon = L.OpenFreightMarkers.icon({
+    FCgatewayicon = L.OpenFreightMarkers.icon({
         icon: 'center', markerColor: 'dkred', layer:'FCgatewaygroup', title: 'International Gateway'}, IconPresets),
-    FCmajoricon = L.OpenFreightMarkers.icon({
+    FCheavyicon = L.OpenFreightMarkers.icon({
         icon: 'center', markerColor: 'clay', layer:'FCheavygroup', title: 'Heavy Industrial'}, IconPresets),
-    FCmegaicon = L.OpenFreightMarkers.icon({
+    FCdisticon = L.OpenFreightMarkers.icon({
         icon: 'center', markerColor: 'rust', layer:'FCdistgroup', title: 'Distribution and Logistics'}, IconPresets),
-    FCmegaicon = L.OpenFreightMarkers.icon({
+    FChightechicon = L.OpenFreightMarkers.icon({
         icon: 'center', markerColor: 'ltorange', layer:'FChightechgroup', title: 'High Tech Manufacturing'}, IconPresets),
-    FCmegaicon = L.OpenFreightMarkers.icon({
+    FClocalicon = L.OpenFreightMarkers.icon({
         icon: 'center', markerColor: 'peach', layer:'FClocalgroup', title: 'Local Manufacturing and Distribution'}, IconPresets),
     hwyicon = L.OpenFreightMarkers.icon({
         icon: 'truck', markerColor: 'purple', layer:'freeway', title: 'Highway'}, IconPresets),
@@ -330,12 +330,6 @@ var commicon = L.OpenFreightMarkers.icon({
                 click: clkFreightCenter,
                 dblclick: zoomToFeature
             });
-            FClocalSearch.push({
-                name: layer.feature.properties.NAME,
-                source: "FClocal",
-                id: L.stamp(layer),
-                bounds: layer.getBounds()
-            });
         }
     });
     
@@ -369,18 +363,12 @@ var commicon = L.OpenFreightMarkers.icon({
                 click: clkFreightCenter,
                 dblclick: zoomToFeature
             });
-            FChightechSearch.push({
-                name: layer.feature.properties.NAME,
-                source: "FChightech",
-                id: L.stamp(layer),
-                bounds: layer.getBounds()
-            });
         }
     });
 
 
 
-    var FCmajorpt = L.geoJson(null, {
+    var FChightechpt = L.geoJson(null, {
         pointToLayer: function(feature, latlng) {
             return L.marker(latlng, {
                 icon: FChightechicon
@@ -395,8 +383,8 @@ var commicon = L.OpenFreightMarkers.icon({
     });
 
 
-    //define mega centers
-    var FCmegapoly = new L.TopoJSON(null, {
+    //define distribution freight centers
+    var FCdistpoly = new L.TopoJSON(null, {
         style: {
             fillColor: "#C1332B",
             fillOpacity: 0.50,
@@ -409,21 +397,76 @@ var commicon = L.OpenFreightMarkers.icon({
                 click: clkFreightCenter,
                 dblclick: zoomToFeature
             });
-            FCmegaSearch.push({
-                name: layer.feature.properties.NAME,
-                source: "FCmega",
-                id: L.stamp(layer),
-                bounds: layer.getBounds()
+        }
+    });
+    var FCdistpt = L.geoJson(null, {
+        pointToLayer: function(feature, latlng) {
+            return L.marker(latlng, {
+                icon: FCdisticon
+            });
+        },
+        onEachFeature: function(feature, layer) {
+            layer.on({
+                click: clkFreightCenter,
+                dblclick: zoomToFC
+            });
+        }
+    });
+
+    //define heavy industrial freight centers
+    var FCheavypoly = new L.TopoJSON(null, {
+        style: {
+            fillColor: "#C1332B",
+            fillOpacity: 0.50,
+            weight: 1,
+            color: "#E0E0E0 ",
+            opacity: 0.75
+        },
+        onEachFeature: function(feature, layer) {
+            layer.on({
+                click: clkFreightCenter,
+                dblclick: zoomToFeature
             });
         }
     });
 
 
-
-    var FCmegapt = L.geoJson(null, {
+    var FCheavypt = L.geoJson(null, {
         pointToLayer: function(feature, latlng) {
             return L.marker(latlng, {
-                icon: FCmegaicon
+                icon: FCheavyicon
+            });
+        },
+        onEachFeature: function(feature, layer) {
+            layer.on({
+                click: clkFreightCenter,
+                dblclick: zoomToFC
+            });
+        }
+    });
+
+    //define international gateway freight centers
+    var FCgatewaypoly = new L.TopoJSON(null, {
+        style: {
+            fillColor: "#C1332B",
+            fillOpacity: 0.50,
+            weight: 1,
+            color: "#E0E0E0 ",
+            opacity: 0.75
+        },
+        onEachFeature: function(feature, layer) {
+            layer.on({
+                click: clkFreightCenter,
+                dblclick: zoomToFeature
+            });
+        }
+    });
+
+
+    var FCgatewaypt = L.geoJson(null, {
+        pointToLayer: function(feature, latlng) {
+            return L.marker(latlng, {
+                icon: FCgatewayicon
             });
         },
         onEachFeature: function(feature, layer) {
@@ -901,13 +944,17 @@ var commicon = L.OpenFreightMarkers.icon({
     //countymap.addLayer(mcounty);
     
 
-    var FCintergroup = new L.FeatureGroup([FCinterpt, FCinterpoly]);
-    var FCmajorgroup = new L.FeatureGroup([FCmajorpt, FCmajorpoly]);
-    var FCmegagroup = new L.FeatureGroup([FCmegapt, FCmegapoly]);
+    var FCgatewaygroup = new L.FeatureGroup([FCgatewaypt, FCgatewaypoly]);
+    var FCheavygroup = new L.FeatureGroup([FCheavypt, FCheavypoly]);
+    var FCdistgroup = new L.FeatureGroup([FCdistpt, FCdistpoly]);
+    var FChightechgroup = new L.FeatureGroup([FChightechpt, FChightechpoly]);
+    var FClocalgroup = new L.FeatureGroup([FClocalpt, FClocalpoly]);
     var FCenters = {
-        "Mega Center": FCmegagroup,
-        "Major Center": FCmajorgroup,
-        "Intermediate Center": FCintergroup
+        "International Gateway": FCgatewaygroup,
+        "Heavy Manufacturing": FCheavygroup,
+        "Distribution and Logisitics": FCdistgroup,
+        "High Tech Manufacturing": FCdistgroup,
+        "Local Manufacturing and Distribution": FCdistgroup
     };
     var railyardgroup = new L.FeatureGroup([railyardpt, railyardpoly]);
     var intermodalgroup = new L.FeatureGroup([intermodalpt, intermodalpoly]);
@@ -1105,33 +1152,35 @@ var commicon = L.OpenFreightMarkers.icon({
             local: heliportSearch,
             limit: 10
         });
-        var interBH = new Bloodhound({
-            name: "FCinter",
-            datumTokenizer: function(d) {
-                return Bloodhound.tokenizers.whitespace(d.name);
-            },
-            queryTokenizer: Bloodhound.tokenizers.whitespace,
-            local: FCinterSearch,
-            limit: 10
-        });
-        var majorBH = new Bloodhound({
-            name: "FCmajor",
-            datumTokenizer: function(d) {
-                return Bloodhound.tokenizers.whitespace(d.name);
-            },
-            queryTokenizer: Bloodhound.tokenizers.whitespace,
-            local: FCmajorSearch,
-            limit: 10
-        });
-        var megaBH = new Bloodhound({
-            name: "FCmega",
-            datumTokenizer: function(d) {
-                return Bloodhound.tokenizers.whitespace(d.name);
-            },
-            queryTokenizer: Bloodhound.tokenizers.whitespace,
-            local: FCmegaSearch,
-            limit: 10
-        });
+
+        // @todo: remove or restore freight center search functions
+        // var interBH = new Bloodhound({
+        //     name: "FCinter",
+        //     datumTokenizer: function(d) {
+        //         return Bloodhound.tokenizers.whitespace(d.name);
+        //     },
+        //     queryTokenizer: Bloodhound.tokenizers.whitespace,
+        //     local: FCinterSearch,
+        //     limit: 10
+        // });
+        // var majorBH = new Bloodhound({
+        //     name: "FCmajor",
+        //     datumTokenizer: function(d) {
+        //         return Bloodhound.tokenizers.whitespace(d.name);
+        //     },
+        //     queryTokenizer: Bloodhound.tokenizers.whitespace,
+        //     local: FCmajorSearch,
+        //     limit: 10
+        // });
+        // var megaBH = new Bloodhound({
+        //     name: "FCmega",
+        //     datumTokenizer: function(d) {
+        //         return Bloodhound.tokenizers.whitespace(d.name);
+        //     },
+        //     queryTokenizer: Bloodhound.tokenizers.whitespace,
+        //     local: FCmegaSearch,
+        //     limit: 10
+        // });
 
         var geonamesBH = new Bloodhound({
             name: "GeoNames",
@@ -1179,9 +1228,9 @@ var commicon = L.OpenFreightMarkers.icon({
         commBH.initialize();
         releiverBH.initialize();
         heliBH.initialize();
-        interBH.initialize();
-        majorBH.initialize();
-        megaBH.initialize();
+        // interBH.initialize();
+        // majorBH.initialize();
+        // megaBH.initialize();
         geonamesBH.initialize();
 
         $([e1, e2]).typeahead({
@@ -1301,29 +1350,31 @@ var commicon = L.OpenFreightMarkers.icon({
             templates: {
                 header: "<h5 class='typeahead-header'><img src='lib/images/flat/heliport.png' class='searchico'>Heliports</h5>"
             }
-        }, {
-            name: "FCinter",
-            displayKey: "name",
-            source: interBH.ttAdapter(),
-            templates: {
-                header: "<h5 class='typeahead-header'><img src='lib/images/flat/17.png' class='searchico'>Intermediate Center</h5>"
-            }
-        }, {
-            name: "FCmajor",
-            displayKey: "name",
-            source: majorBH.ttAdapter(),
-            templates: {
-                header: "<h5 class='typeahead-header'><img src='lib/images/flat/18.png' class='searchico'>Major Center</h5>"
-            }
-        }, {
-            name: "FCmega",
-            displayKey: "name",
-            source: megaBH.ttAdapter(),
-            templates: {
-                header: "<h5 class='typeahead-header'><img src='lib/images/flat/19.png' class='searchico'>Mega Center</h5>"
-            }
+        },{
+        // @todo: restore or remove freight center search function
+        // }, {
+        //     name: "FCinter",
+        //     displayKey: "name",
+        //     source: interBH.ttAdapter(),
+        //     templates: {
+        //         header: "<h5 class='typeahead-header'><img src='lib/images/flat/17.png' class='searchico'>Intermediate Center</h5>"
+        //     }
+        // }, {
+        //     name: "FCmajor",
+        //     displayKey: "name",
+        //     source: majorBH.ttAdapter(),
+        //     templates: {
+        //         header: "<h5 class='typeahead-header'><img src='lib/images/flat/18.png' class='searchico'>Major Center</h5>"
+        //     }
+        // }, {
+        //     name: "FCmega",
+        //     displayKey: "name",
+        //     source: megaBH.ttAdapter(),
+        //     templates: {
+        //         header: "<h5 class='typeahead-header'><img src='lib/images/flat/19.png' class='searchico'>Mega Center</h5>"
+        //     }
 
-        }, {
+        // }, {
             name: "GeoNames",
             displayKey: "name",
             source: geonamesBH.ttAdapter(),
@@ -1494,36 +1545,38 @@ var commicon = L.OpenFreightMarkers.icon({
                     map._layers[datum.id].fire("click");
                 };
             };
-            if (datum.source === "FCinter") {
-                if (!map.hasLayer(FCintergroup)) {
-                    map.addLayer(FCintergroup);
-                    $("#FCintergroup").prop("checked", true);
-                };
-                map.fitBounds(datum.bounds);
-                if (map._layers[datum.id]) {
-                    map._layers[datum.id].fire("click");
-                };
-            };
-            if (datum.source === "FCmajor") {
-                if (!map.hasLayer(FCmajorgroup)) {
-                    map.addLayer(FCmajorgroup);
-                    $("#FCmajorgroup").prop("checked", true);
-                };
-                map.fitBounds(datum.bounds);
-                if (map._layers[datum.id]) {
-                    map._layers[datum.id].fire("click");
-                };
-            };
-            if (datum.source === "FCmega") {
-                if (!map.hasLayer(FCmegagroup)) {
-                    map.addLayer(FCmegagroup);
-                    $("#FCmegagroup").prop("checked", true);
-                };
-                map.fitBounds(datum.bounds);
-                if (map._layers[datum.id]) {
-                    map._layers[datum.id].fire("click");
-                };
-            };
+
+            // @todo: remove or restore Freight Center search functions 
+            // if (datum.source === "FCinter") {
+            //     if (!map.hasLayer(FCintergroup)) {
+            //         map.addLayer(FCintergroup);
+            //         $("#FCintergroup").prop("checked", true);
+            //     };
+            //     map.fitBounds(datum.bounds);
+            //     if (map._layers[datum.id]) {
+            //         map._layers[datum.id].fire("click");
+            //     };
+            // };
+            // if (datum.source === "FCmajor") {
+            //     if (!map.hasLayer(FCmajorgroup)) {
+            //         map.addLayer(FCmajorgroup);
+            //         $("#FCmajorgroup").prop("checked", true);
+            //     };
+            //     map.fitBounds(datum.bounds);
+            //     if (map._layers[datum.id]) {
+            //         map._layers[datum.id].fire("click");
+            //     };
+            // };
+            // if (datum.source === "FCmega") {
+            //     if (!map.hasLayer(FCmegagroup)) {
+            //         map.addLayer(FCmegagroup);
+            //         $("#FCmegagroup").prop("checked", true);
+            //     };
+            //     map.fitBounds(datum.bounds);
+            //     if (map._layers[datum.id]) {
+            //         map._layers[datum.id].fire("click");
+            //     };
+            // };
             if (datum.source === "GeoNames") {
                 map.setView([datum.lat, datum.lng], 14);
             };
@@ -1590,26 +1643,40 @@ function loadLayers (){
     var mapLoad = $('#mapLoad').val();
         if(mapLoad === 'false'){
         
-        $.getJSON("data/freight_center_Intermediate.js", function(data) {
-            FCinterpoly.addData(data);
-            var data_n = pointify_topo(data, 'freight_center_Intermediate');
-            FCinterpt.addData(data_n);
+        $.getJSON("data/International_Gateway.js", function(data) {
+            FCgatewaypoly.addData(data);
+            var data_n = pointify_topo(data, 'International_Gateway');
+            FCgatewaypt.addData(data_n);
         });
-        polyLayer.push('FCinterpoly');
+        polyLayer.push('FCgatewaypoly');
+
+        $.getJSON("data/Heavy_Industrial.js", function(data) {
+            FCheavypoly.addData(data);
+            var data_n = pointify_topo(data, 'Heavy_Industrial');
+            FCheavypt.addData(data_n);
+        });
+        polyLayer.push('FCheavypoly');
+
+        $.getJSON("data/Distribution_and_Logistics.js", function(data) {
+            FCdistpoly.addData(data);
+            var data_n = pointify_topo(data, 'Distribution_and_Logistics');
+            FCdistpt.addData(data_n);
+        });
+        polyLayer.push('FCdistpoly');
+
+        $.getJSON("data/High_Tech_Manufacturing.js", function(data) {
+            FChightechpoly.addData(data);
+            var data_n = pointify_topo(data, 'High_Tech_Manufacturing');
+            FChightechpt.addData(data_n);
+        });
+        polyLayer.push('FChightechpoly');
         
-       $.getJSON("data/freight_center_Major.js", function(data) {
-            FCmajorpoly.addData(data);
-             var data_n = pointify_topo(data, 'freight_center_Major');
-            FCmajorpt.addData(data_n);
+        $.getJSON("data/Local_Manufacturing_and_Distribution.js", function(data) {
+            FClocalpoly.addData(data);
+            var data_n = pointify_topo(data, 'Local_Manufacturing_and_Distribution');
+            FClocalpt.addData(data_n);
         });
-        polyLayer.push('FCmajorpoly');
-        
-        $.getJSON("data/freight_center_Mega.js", function(data) {
-            FCmegapoly.addData(data);
-             var data_n = pointify_topo(data, 'freight_center_Mega');
-            FCmegapt.addData(data_n);
-        });
-        polyLayer.push('FCmegapoly');
+        polyLayer.push('FClocalpoly');
        
         $.getJSON("data/airports_Commercial.js", function(data) {
             commairpoly.addData(data);
