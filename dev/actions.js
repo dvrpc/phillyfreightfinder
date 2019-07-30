@@ -390,7 +390,7 @@ function clkriver(e) {
 function clkFreightCenter(e) {
     initializeHL(e);
     var fclass;
-    header = '<p>' + props.type + '</p>',
+    header = '<p>' + props.Types + '</p>',
     content = "<div id='baseInfo'>"
                         +"<div class='datafield'>" + props.townships + "</div><div class='labelfield'>Municipality(ies): </div>"
                         +"</div><!--close baseInfo-->"
@@ -405,23 +405,29 @@ function clkFreightCenter(e) {
                                 +"<tr class='active'><td></td><td><b>Freight</b></td><td><b>Non-freight</b></td></tr>"
                                 +"<tr class='active'><td><strong>Establishments: </strong></td><td>" + numeral(props.frght_est).format('0,0') + "</td><td>" + numeral(props.n_frght_es).format('0,0') + "</td></tr>"
                                 +"<tr class='active'><td><strong>Employees: </strong></td><td>" + numeral(props.frght_empl).format('0,0') + "</td><td>" + numeral(props.n_frght_em).format('0,0') + "</td></tr></table>"
+                                +"<div class='labelfield source'>Data Source: NETS 2013" + "</div>"
                         +"</div>"
                         +"<div class='tab-pane' id='Ind' style='padding-bottom: 12px;'>"
                                 +"<table class='table table-hover'>"
                                 +"<tr class='active'><td><strong>Structures: </strong></td><td>" + numeral(props.str_count).format('0,0') + "</td></tr>"
                                 +"<tr class='active'><td><strong>Square Footage: </strong></td><td>" + numeral(props.sq_ft_area).format('0,0') + "</td></tr>"
-                                +"<tr class='active'><td><strong>Acres: </strong></td><td>" + numeral(props.land_area).format('0,0.0') + "</td></tr></table>"
+                                +"<tr class='active'><td><strong>Acres: </strong></td><td>" + numeral(props.land_area).format('0,0') + "</td></tr></table>"
+                                +"<div class='labelfield source'>Data Source: CoSTAR 2017" +  "</div>"
                         +"</div></div>"
-                        +"<div class='labelfield source'>Data Source: " + props.SOURCE + "</div></div>";
+                        //+"<div class='labelfield source'>Data Source: " + props.SOURCE + "</div></div>";
                         // +"<p>" + props.REPORT + "</p>";
-    if (props.CENTER_TYP === 'Intermediate'){
-            fclass = 'fcinter';
-    }else if(props.CENTER_TYP === 'Major'){
-            fclass = 'fcmajor';
-    }else if (props.CENTER_TYP === 'Mega'){
-            fclass = 'fcmega';
+    if (props.Types === 'International Gateway'){
+            fclass = 'fcgateway';
+    }else if(props.Types === 'Heavy Industrial'){
+            fclass = 'fcheavy';
+    }else if (props.Types === 'Distribution and Logistics'){
+            fclass = 'fcdist';
+    }else if (props.Types === 'High Tech Manufacturing'){
+            fclass = 'fchightech';
+    }else if (props.Types === 'Local Manufacturing and Distribution'){
+            fclass = 'fclocal';
     }else{
-        fclass = 'fcmega';
+        fclass = 'fclocal';
     }
 
     featureName = '<p> Freight Center</p>',
