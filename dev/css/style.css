@@ -1130,15 +1130,21 @@ ul.footer-links li{
 .anchicon{
         background-image:url('images/flat/anchor.png');
         }
-.fcintericon{
-        background-image:url('images/flat/17.png');
-        }
-.fcmajoricon{
-        background-image:url('images/flat/18.png');
-        }
-.fcmegaicon{
-        background-image:url('images/flat/19.png');
-        }
+.fcgatewayicon {
+    background-image:url('images/flat/gateway.png');
+} 
+.fcheavyicon {
+    background-image:url('images/flat/heavy.png');
+} 
+.fcdisticon {
+    background-image:url('images/flat/dist.png');
+} 
+.fchightechicon {
+    background-image:url('images/flat/hightech.png');
+} 
+.fclocalicon {
+    background-image:url('images/flat/local.png');
+}        
 .commicon{
         background-image:url('images/flat/airport1.png');
         }
