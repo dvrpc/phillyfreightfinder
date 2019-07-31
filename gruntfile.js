@@ -43,7 +43,7 @@ module.exports = function(grunt){
 			FC: {
 				src: [
 					'dev/vendor/scrollstory.min.js',
-		            'dev/vendor/d3-custom.min.js',
+		            'dev/vendor/d3v4/d3-custom.min.js',
 		            'dev/tools/freight_story/bubble_chart.js',
 		            'dev/tools/freight_story/story-controls.js'
 				],
