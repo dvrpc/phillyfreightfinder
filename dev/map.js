@@ -386,7 +386,7 @@ var commicon = L.OpenFreightMarkers.icon({
     //define distribution freight centers
     var FCdistpoly = new L.TopoJSON(null, {
         style: {
-            fillColor: "#C1332B",
+            fillColor: "#d1552c",
             fillOpacity: 0.50,
             weight: 1,
             color: "#E0E0E0 ",
@@ -416,7 +416,7 @@ var commicon = L.OpenFreightMarkers.icon({
     //define heavy industrial freight centers
     var FCheavypoly = new L.TopoJSON(null, {
         style: {
-            fillColor: "#C1332B",
+            fillColor: "#ae2f11",
             fillOpacity: 0.50,
             weight: 1,
             color: "#E0E0E0 ",
@@ -448,7 +448,7 @@ var commicon = L.OpenFreightMarkers.icon({
     //define international gateway freight centers
     var FCgatewaypoly = new L.TopoJSON(null, {
         style: {
-            fillColor: "#C1332B",
+            fillColor: "#870000",
             fillOpacity: 0.50,
             weight: 1,
             color: "#E0E0E0 ",
