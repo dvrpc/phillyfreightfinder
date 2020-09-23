@@ -280,11 +280,11 @@ function clkRailRvrXing(e) {
 //Ports
 function clkport(e) {
     initializeHL(e); 
-    header = '<p>' + props.NAME + '</p>';
+    header = '<p>' + props.name + '</p>';
     var contentBulk = "<div id='baseInfo'>"
-                        +"<div class='datafield'>" + props.OWNER + "</div><div class='labelfield'>Owner</div>"
-                        +"<div class='datafield'>" + props.OPERATOR + "</div><div class='labelfield'>Operator(s)</div>"
-                        +"<div class='datafield'>" + props.TOWNSHIP + "</div><div class='labelfield'>Municipal Location</div>"
+                        +"<div class='datafield'>" + props.owner + "</div><div class='labelfield'>Owner</div>"
+                        +"<div class='datafield'>" + props.operator + "</div><div class='labelfield'>Operator(s)</div>"
+                        +"<div class='datafield'>" + props.township + "</div><div class='labelfield'>Municipal Location</div>"
                         +"</div><!--close baseInfo-->"
                         +"<div class='infoDivider'></div>"
                         +"<div id='indactorInfo'>"
@@ -299,14 +299,14 @@ function clkport(e) {
                         +"</div>"
                         +"<div class='tab-pane' id='portAct' style='padding-bottom: 12px;height:72px;'>"
                                 +"<table class='table table-hover'>"
-                                +"<tr class='active'><td class='item'><strong>2012 Ship Arrivals: </strong></td><td>" + props.ACT_1 + "</td><td>o</td></tr>"
-                                +"<tr class='active'><td class='item'><strong>Cargo handled: </strong></td><td colspan='2' style='line-height:1!important;'>" + props.CARGO + "</td></tr></table>"
+                                +"<tr class='active'><td class='item'><strong>2012 Ship Arrivals: </strong></td><td>" + props.act_1 + "</td><td>o</td></tr>"
+                                +"<tr class='active'><td class='item'><strong>Cargo handled: </strong></td><td colspan='2' style='line-height:1!important;'>" + props.cargo + "</td></tr></table>"
                         +"</div></div>"
-                        +"<div class='labelfield source'>" + props.SOURCE + "</div></div>",
+                        +"<div class='labelfield source'>" + props.source + "</div></div>",
     contentGeneral ="<div id='baseInfo'>"
-                        +"<div class='datafield'>" + props.OWNER + "</div><div class='labelfield'>Owner</div>"
-                        +"<div class='datafield'>" + props.OPERATOR + "</div><div class='labelfield'>Operator(s)</div>"
-                        +"<div class='datafield'>" + props.TOWNSHIP + "</div><div class='labelfield'>Municipal Location</div>"
+                        +"<div class='datafield'>" + props.owner + "</div><div class='labelfield'>Owner</div>"
+                        +"<div class='datafield'>" + props.operator + "</div><div class='labelfield'>Operator(s)</div>"
+                        +"<div class='datafield'>" + props.township + "</div><div class='labelfield'>Municipal Location</div>"
                         +"</div><!--close baseInfo-->"
                         +"<div class='infoDivider'></div>"
                         +"<div id='indactorInfo'>"
@@ -316,20 +316,20 @@ function clkport(e) {
                         +"<div id='indicator' class='tab-content'><!--tab panes-->"
                         +"<div class='tab-pane active' id='portCap' style='padding-bottom: 12px;'>"
                                 +"<table class='table table-hover'>"
-                                +"<tr class='active'><td><strong>Qty of Berths: </strong></td><td>" + props.CAP_1 + "</td></tr>"
-                                +"<tr class='active'><td><strong>Total Berth Length: </strong></td><td>" + props.CAP_2 + " linear ft</td></tr>"
-                                +"<tr class='active'><td><strong>Berth Depth <span style='font-weight:normal;'><a title='Mean Low Water' data-toggle='infotooltip'>(MLW)</a></span>: </strong></td><td>" + props.CAP_3 + " feet</td></tr>"
-                                +"<tr class='active'><td><strong>Available Cranes: </strong></td><td><a title='" + props.CAP_4 + "' data-toggle='infotooltip'>" + props.CAP_6 + "</a></td></tr>"
-                                +"<tr class='active'><td><strong>Warehouse Space: </strong></td><td>" + props.CAP_5 + "</td></tr></table>"
+                                +"<tr class='active'><td><strong>Qty of Berths: </strong></td><td>" + props.cap_1 + "</td></tr>"
+                                +"<tr class='active'><td><strong>Total Berth Length: </strong></td><td>" + props.cap_2 + " linear ft</td></tr>"
+                                +"<tr class='active'><td><strong>Berth Depth <span style='font-weight:normal;'><a title='Mean Low Water' data-toggle='infotooltip'>(MLW)</a></span>: </strong></td><td>" + props.cap_3 + " feet</td></tr>"
+                                +"<tr class='active'><td><strong>Available Cranes: </strong></td><td><a title='" + props.cap_4 + "' data-toggle='infotooltip'>" + props.cap_6 + "</a></td></tr>"
+                                +"<tr class='active'><td><strong>Warehouse Space: </strong></td><td>" + props.cap_5 + "</td></tr></table>"
                         +"</div>"
                         +"<div class='tab-pane' id='portAct' style='padding-bottom: 12px;height:132px;'>"
                                 +"<table class='table table-hover'>"
-                                +"<tr class='active'><td class='item'><strong>2012 Ship Arrivals: </strong></td><td>" + props.ACT_1 + "</td><td>o</td></tr>"
-                                +"<tr class='active'><td class='item'><strong>Cargo handled: </strong></td><td colspan='2' style='line-height:1!important;'>" + props.CARGO + "</td></tr></table>"
+                                +"<tr class='active'><td class='item'><strong>2012 Ship Arrivals: </strong></td><td>" + props.act_1 + "</td><td>o</td></tr>"
+                                +"<tr class='active'><td class='item'><strong>Cargo handled: </strong></td><td colspan='2' style='line-height:1!important;'>" + props.cargo + "</td></tr></table>"
                         +"</div></div>"
-                        +"<div class='labelfield source'>" + props.SOURCE + "</div></div>";
-    if (props.TYPE == 'Bulk'){ content = contentBulk; } else {content = contentGeneral;}
-    featureName = '<p>Type: '+ props.TYPE + ' Terminal</p>',
+                        +"<div class='labelfield source'>" + props.source + "</div></div>";
+    if (props.type == 'Bulk'){ content = contentBulk; } else {content = contentGeneral;}
+    featureName = '<p>Type: '+ props.type + ' Terminal</p>',
     featureClass = 'portcl',
     featureIcon = 'porticon icon';
     contentPush(header,content,featureName,featureClass,featureIcon);

@@ -797,7 +797,7 @@ var commicon = L.OpenFreightMarkers.icon({
 
 
     //define ports
-    var portpoly = new L.TopoJSON(null, {
+    var portpoly = L.geoJson(null, {
         style: {
             fillColor: "#29A0CF",
             fillOpacity: 0.50,
@@ -811,7 +811,7 @@ var commicon = L.OpenFreightMarkers.icon({
                 dblclick: zoomToFeature
             });
             portSearch.push({
-                name: layer.feature.properties.NAME,
+                name: layer.feature.properties.name,
                 source: "PortTerminals",
                 id: L.stamp(layer),
                 bounds: layer.getBounds()
@@ -1621,7 +1621,7 @@ function pointify(data){
     var data_n = jQuery.extend(true, {}, data);
     for(var i = 0; i < data_n.features.length; i++){
         data_n.features[i].geometry.type = 'Point';
-        data_n.features[i].geometry.coordinates = [data_n.features[i].properties.LONG_, data_n.features[i].properties.LAT]
+        data_n.features[i].geometry.coordinates = [data_n.features[i].properties.long_, data_n.features[i].properties.lat]
     }
     return data_n
 }
@@ -1714,9 +1714,9 @@ function loadLayers (){
         });
         polyLayer.push('river');
 
-        $.getJSON("data/ports.js", function(data) {
+        $.getJSON("https://opendata.arcgis.com/datasets/6eac54ae8bc24073838fc7f34d678c7c_0.geojson", function(data) {
             portpoly.addData(data);
-            var data_n = pointify_topo(data, 'ports');
+            var data_n = pointify(data, 'ports');
             porticon.addData(data_n);
         });
         polyLayer.push('portpoly');
