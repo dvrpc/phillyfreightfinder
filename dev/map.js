@@ -1726,9 +1726,9 @@ function loadLayers (){
         });
         polyLayer.push('railines');
 
-        $.getJSON("data/rail_yards.js", function(data) {
+        $.getJSON("https://opendata.arcgis.com/datasets/6eac54ae8bc24073838fc7f34d678c7c_0.geojson", function(data) {
             railyardpoly.addData(data);
-            var data_n = pointify_topo(data, 'rail_yards');
+            var data_n = pointify(data, 'rail_yards');
             railyardpt.addData(data_n);
         });
         polyLayer.push('railyardpoly');
