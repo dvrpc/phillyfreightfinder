@@ -170,12 +170,12 @@ function clkRailline(e) {
 //rail yards
 function clkRailYard(e) {
     initializeHL(e);
-    header = '<p>' + props.NAME + '</p>',
+    header = '<p>' + props.name + '</p>',
     content = "<div id='baseInfo'>"
-                        +"<div class='datafield'>" + props.OWNER + "</div><div class='labelfield'>Owner</div>"
-                        +"<div class='datafield'>" + props.OPERATOR + "</div><div class='labelfield'>Operator(s)</div>"
-                        +"<div class='datafield'>" + findMatch(railines, props.RAIL_ID) + "</div><div class='labelfield'>Line Serving</div>"
-                        +"<div class='datafield'>" + props.TOWNSHIP + "</div><div class='labelfield'>Municipality(ies)</div>"
+                        +"<div class='datafield'>" + props.owner + "</div><div class='labelfield'>Owner</div>"
+                        +"<div class='datafield'>" + props.operator + "</div><div class='labelfield'>Operator(s)</div>"
+                        +"<div class='datafield'>" + findMatch(railines, props.rail_id) + "</div><div class='labelfield'>Line Serving</div>"
+                        +"<div class='datafield'>" + props.township + "</div><div class='labelfield'>Municipality(ies)</div>"
                         +"</div><!--close baseInfo-->"
                         +"<div class='infoDivider'></div>"
                         +"<div id='indactorInfo'>"
@@ -184,10 +184,10 @@ function clkRailYard(e) {
                         +"<div id='indicator' class='tab-content'><!--tab panes-->"
                         +"<div class='tab-pane active' id='IntermodalCap' style='padding-bottom: 12px;'>"
                                 +"<table class='table table-hover'>"
-                                +"<tr class='active'><td><strong>Acres: </strong></td><td>" + numeral(props.GIS_ACRES).format('0,0.0') + "</td></tr>"
+                                +"<tr class='active'><td><strong>Acres: </strong></td><td>" + numeral(props.gis_acres).format('0,0.0') + "</td></tr>"
                                 +"<tr class='active'><td><strong>Annual Car Count: </strong></td><td>n/a</td></tr></table>"
                         +"</div></div>"
-                        +"<div class='labelfield source'>Data Source: " + props.SOURCE + "</div></div>",
+                        +"<div class='labelfield source'>Data Source: " + props.source + "</div></div>",
                         //+"<div style='height:34px;'><a href='http://www.dvrpc.org/webmaps/PhillyFreightFinder/reports/FC/FC34.pdf' target='_blank' style='line-height:34px;float:left;'><div class='pdf'></div>Related Report: " + props.REPORT + "</a></span></div></div>" ;
     featureName = '<p>Type: Rail Yard</p>',
     featureClass = 'railcl',

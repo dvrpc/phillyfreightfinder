@@ -650,7 +650,7 @@ var commicon = L.OpenFreightMarkers.icon({
 
 
     //define rail yards
-    var railyardpoly = new L.TopoJSON(null, {
+    var railyardpoly = L.geoJson(null, {
         style: {
             fillColor: "#FBA919",
             fillOpacity: 0.50,
@@ -664,7 +664,7 @@ var commicon = L.OpenFreightMarkers.icon({
                 dblclick: zoomToFeature
             });
             railyardSearch.push({
-                name: layer.feature.properties.NAME,
+                name: layer.feature.properties.name,
                 source: "RailYards",
                 id: L.stamp(layer),
                 bounds: layer.getBounds()
