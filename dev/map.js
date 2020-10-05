@@ -1714,7 +1714,7 @@ function loadLayers (){
         });
         polyLayer.push('river');
 
-        $.getJSON("https://opendata.arcgis.com/datasets/6eac54ae8bc24073838fc7f34d678c7c_0.geojson", function(data) {
+        $.getJSON("https://arcgis.dvrpc.org/portal/rest/services/Freight/ports/FeatureServer/0/query?outFields=*&where=1%3D1&f=geojson", function(data) {
             portpoly.addData(data);
             var data_n = pointify(data, 'ports');
             porticon.addData(data_n);
@@ -1726,7 +1726,7 @@ function loadLayers (){
         });
         polyLayer.push('railines');
 
-        $.getJSON("https://opendata.arcgis.com/datasets/6eac54ae8bc24073838fc7f34d678c7c_0.geojson", function(data) {
+        $.getJSON("https://arcgis.dvrpc.org/portal/rest/services/Freight/rail_yards/FeatureServer/0/query?outFields=*&where=1%3D1&f=geojson", function(data) {
             railyardpoly.addData(data);
             var data_n = pointify(data, 'rail_yards');
             railyardpt.addData(data_n);
