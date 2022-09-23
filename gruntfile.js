@@ -43,7 +43,7 @@ module.exports = function(grunt){
 			FC: {
 				src: [
 					'dev/vendor/scrollstory.min.js',
-		            'dev/vendor/d3-custom.min.js',
+		            'dev/vendor/d3v4/d3-custom.min.js',
 		            'dev/tools/freight_story/bubble_chart.js',
 		            'dev/tools/freight_story/story-controls.js'
 				],
@@ -130,7 +130,7 @@ module.exports = function(grunt){
 				},
 				includes: {
 					expand: true,
-					cwd: 'includes/',
+					cwd: './includes/',
 					dest: './html/includes/',
 					src: ['**']
 				},
@@ -187,21 +187,30 @@ module.exports = function(grunt){
 		watch: {
 			toolscripts: {
       			files: ['dev/tools/*.js'],
-      			tasks: ['uglify:tools']
+      			tasks: ['uglify:tools', 'copy:lib']
       		},
       		cssUpdate: {
       			files: ['dev/css/*.css'],
-      			tasks: ['postcss', 'cssmin']
+      			tasks: ['postcss', 'cssmin', 'copy:lib']
       		},
       		coreUpdate: {
       			files: ['dev/core/*.js', 'dev/actions.js', 'dev/map.js'],
-      			tasks: ['concat:build', 'uglify:build']
-			  },
+      			tasks: ['concat:build', 'uglify:build', 'copy:lib']
+
+      		},
+      		html: {
+      			files: ['*.htm'],
+      			tasks: ['copy:index']
+      		},
+      		includes: {
+      			files: ['**/*.html'],
+      			tasks: ['copy:includes']
+      		},
 			FCtool: {
 				files: ['dev/tools/freight_story/*'],
 				tasks: ['concat:FC', 'uglify:FC', 'uglify:geo', 'cssmin:FC','copy:FC' ]
 			},
-			html: {
+			FChtml: {
 				files: ['./*.html'],
 				tasks: ['copy:FC']
 			}, 

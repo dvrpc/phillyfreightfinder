@@ -538,6 +538,24 @@ function createBubbleChart() {
             .attr("text-anchor", "end")
             .attr("dy", "0.4em")
             .text("Average Annual Wage");
+        
+        var tick_sizing = function (){
+            var _first = _nTickLocation(3),
+                _second = _nTickLocation(2);
+            
+            var _size = _first - _second;
+            
+            return _size + (_size * 0.25);
+        }
+
+        inner_svg.append("text")
+            .attr("class", "axis axis--x x-wage-source g-source")
+            .attr("style","font-size:0.85em")
+            .attr("transform", "translate(" + (_nTickLocation(5) + tick_sizing()) +", " + height * 0.85 + ")")
+            .attr("text-anchor", "end")
+            .attr("dy", "-1.0em")
+            .text("Source: 2013 NETS, 2016 BLS, and MIT Living Wage Project");
+        
     }
 
     function populateLists() {
@@ -626,7 +644,7 @@ function createBubbleChart() {
             .attr('class', 'g-source')
             .attr('text-anchor', 'end')
             .attr('transform','translate(0,-30)')
-            .text('Source: DVRPC Analysis of 2012 NETS Data');
+            .text('Source: 2013 NETS and 2016 Bureau of Labor Statistics');
 
         var legendCircles = legend.append('g');
 
@@ -770,15 +788,18 @@ function createBubbleChart() {
         color_legend.append('text')
             .attr('class','g-legend-title')
             .attr('transform','translate(-10,0)')
-            .text('Color represents lifecycle ');
+            .text('Classification of');
         color_legend.append('text')
             .attr('class','g-legend-title')
             .attr('transform','translate(-10,15)')
-            .text('component of sub-sector');
+            .text('industry subsector');
 
         var legend_colors = {'extraction': 'E', 'production':'P', 'distribution':'D', 'consumption':'C'};
 
         var legend_count = 2
+        function jsUcfirst(string) {
+            return string.charAt(0).toUpperCase() + string.slice(1);
+        }
         for(var key in legend_colors) {
             color_legend.append('circle')
                 .attr('r', 10)
@@ -790,7 +811,7 @@ function createBubbleChart() {
             
             color_legend.append('text')
                 .attr('transform', 'translate(20,'+ (legend_count * 25 + 4) +')')
-                .text(key);
+                .text(jsUcfirst(key));
             
             legend_count++;
         }
@@ -799,12 +820,12 @@ function createBubbleChart() {
         var wage_color_legend = inner_svg.append('g')
             .attr('class', 'g-legend wage-legend')
             .attr('opacity', 0)
-            .attr('transform',  'translate('+ (width * 0.0) +', '+ (height) +')');
+            .attr('transform',  'translate('+ (-20) +', '+ (height) +')');
 
         wage_color_legend.append('text')
             .attr('class','g-legend-title')
             .attr('transform','translate(-10,-'+ (smCircle3 + 15) +')')
-            .text('Color represents lifecycle component of sub-sector ');
+            .text('Classification of industry subsector');
 
         var wage_count = 0
         for(var key in legend_colors) {
@@ -819,11 +840,10 @@ function createBubbleChart() {
             
             wage_color_legend.append('text')
                 .attr('transform', 'translate('+ (offset.x + 20) +','+ (offset.y + 4) +')')
-                .text(key);
+                .text(jsUcfirst(key));
             
             wage_count++;
         }
-
     }
 
     function rightAlignLegend(){

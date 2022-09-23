@@ -170,12 +170,12 @@ function clkRailline(e) {
 //rail yards
 function clkRailYard(e) {
     initializeHL(e);
-    header = '<p>' + props.NAME + '</p>',
+    header = '<p>' + props.name + '</p>',
     content = "<div id='baseInfo'>"
-                        +"<div class='datafield'>" + props.OWNER + "</div><div class='labelfield'>Owner</div>"
-                        +"<div class='datafield'>" + props.OPERATOR + "</div><div class='labelfield'>Operator(s)</div>"
-                        +"<div class='datafield'>" + findMatch(railines, props.RAIL_ID) + "</div><div class='labelfield'>Line Serving</div>"
-                        +"<div class='datafield'>" + props.TOWNSHIP + "</div><div class='labelfield'>Municipality(ies)</div>"
+                        +"<div class='datafield'>" + props.owner + "</div><div class='labelfield'>Owner</div>"
+                        +"<div class='datafield'>" + props.operator + "</div><div class='labelfield'>Operator(s)</div>"
+                        +"<div class='datafield'>" + findMatch(railines, props.rail_id) + "</div><div class='labelfield'>Line Serving</div>"
+                        +"<div class='datafield'>" + props.township + "</div><div class='labelfield'>Municipality(ies)</div>"
                         +"</div><!--close baseInfo-->"
                         +"<div class='infoDivider'></div>"
                         +"<div id='indactorInfo'>"
@@ -184,10 +184,10 @@ function clkRailYard(e) {
                         +"<div id='indicator' class='tab-content'><!--tab panes-->"
                         +"<div class='tab-pane active' id='IntermodalCap' style='padding-bottom: 12px;'>"
                                 +"<table class='table table-hover'>"
-                                +"<tr class='active'><td><strong>Acres: </strong></td><td>" + numeral(props.GIS_ACRES).format('0,0.0') + "</td></tr>"
+                                +"<tr class='active'><td><strong>Acres: </strong></td><td>" + numeral(props.gis_acres).format('0,0.0') + "</td></tr>"
                                 +"<tr class='active'><td><strong>Annual Car Count: </strong></td><td>n/a</td></tr></table>"
                         +"</div></div>"
-                        +"<div class='labelfield source'>Data Source: " + props.SOURCE + "</div></div>",
+                        +"<div class='labelfield source'>Data Source: " + props.source + "</div></div>",
                         //+"<div style='height:34px;'><a href='http://www.dvrpc.org/webmaps/PhillyFreightFinder/reports/FC/FC34.pdf' target='_blank' style='line-height:34px;float:left;'><div class='pdf'></div>Related Report: " + props.REPORT + "</a></span></div></div>" ;
     featureName = '<p>Type: Rail Yard</p>',
     featureClass = 'railcl',
@@ -279,12 +279,12 @@ function clkRailRvrXing(e) {
 //Ports/Waterways Features
 //Ports
 function clkport(e) {
-    initializeHL(e);
-    header = '<p>' + props.NAME + '</p>';
+    initializeHL(e); 
+    header = '<p>' + props.name + '</p>';
     var contentBulk = "<div id='baseInfo'>"
-                        +"<div class='datafield'>" + props.OWNER + "</div><div class='labelfield'>Owner</div>"
-                        +"<div class='datafield'>" + props.OPERATOR + "</div><div class='labelfield'>Operator(s)</div>"
-                        +"<div class='datafield'>" + props.TOWNSHIP + "</div><div class='labelfield'>Municipal Location</div>"
+                        +"<div class='datafield'>" + props.owner + "</div><div class='labelfield'>Owner</div>"
+                        +"<div class='datafield'>" + props.operator + "</div><div class='labelfield'>Operator(s)</div>"
+                        +"<div class='datafield'>" + props.township + "</div><div class='labelfield'>Municipal Location</div>"
                         +"</div><!--close baseInfo-->"
                         +"<div class='infoDivider'></div>"
                         +"<div id='indactorInfo'>"
@@ -299,14 +299,14 @@ function clkport(e) {
                         +"</div>"
                         +"<div class='tab-pane' id='portAct' style='padding-bottom: 12px;height:72px;'>"
                                 +"<table class='table table-hover'>"
-                                +"<tr class='active'><td class='item'><strong>2012 Ship Arrivals: </strong></td><td>" + props.ACT_1 + "</td><td>o</td></tr>"
-                                +"<tr class='active'><td class='item'><strong>Cargo handled: </strong></td><td colspan='2' style='line-height:1!important;'>" + props.CARGO + "</td></tr></table>"
+                                +"<tr class='active'><td class='item'><strong>2012 Ship Arrivals: </strong></td><td>" + props.act_1 + "</td><td>o</td></tr>"
+                                +"<tr class='active'><td class='item'><strong>Cargo handled: </strong></td><td colspan='2' style='line-height:1!important;'>" + props.cargo + "</td></tr></table>"
                         +"</div></div>"
-                        +"<div class='labelfield source'>" + props.SOURCE + "</div></div>",
+                        +"<div class='labelfield source'>" + props.source + "</div></div>",
     contentGeneral ="<div id='baseInfo'>"
-                        +"<div class='datafield'>" + props.OWNER + "</div><div class='labelfield'>Owner</div>"
-                        +"<div class='datafield'>" + props.OPERATOR + "</div><div class='labelfield'>Operator(s)</div>"
-                        +"<div class='datafield'>" + props.TOWNSHIP + "</div><div class='labelfield'>Municipal Location</div>"
+                        +"<div class='datafield'>" + props.owner + "</div><div class='labelfield'>Owner</div>"
+                        +"<div class='datafield'>" + props.operator + "</div><div class='labelfield'>Operator(s)</div>"
+                        +"<div class='datafield'>" + props.township + "</div><div class='labelfield'>Municipal Location</div>"
                         +"</div><!--close baseInfo-->"
                         +"<div class='infoDivider'></div>"
                         +"<div id='indactorInfo'>"
@@ -316,20 +316,20 @@ function clkport(e) {
                         +"<div id='indicator' class='tab-content'><!--tab panes-->"
                         +"<div class='tab-pane active' id='portCap' style='padding-bottom: 12px;'>"
                                 +"<table class='table table-hover'>"
-                                +"<tr class='active'><td><strong>Qty of Berths: </strong></td><td>" + props.CAP_1 + "</td></tr>"
-                                +"<tr class='active'><td><strong>Total Berth Length: </strong></td><td>" + props.CAP_2 + " linear ft</td></tr>"
-                                +"<tr class='active'><td><strong>Berth Depth <span style='font-weight:normal;'><a title='Mean Low Water' data-toggle='infotooltip'>(MLW)</a></span>: </strong></td><td>" + props.CAP_3 + " feet</td></tr>"
-                                +"<tr class='active'><td><strong>Available Cranes: </strong></td><td><a title='" + props.CAP_4 + "' data-toggle='infotooltip'>" + props.CAP_6 + "</a></td></tr>"
-                                +"<tr class='active'><td><strong>Warehouse Space: </strong></td><td>" + props.CAP_5 + "</td></tr></table>"
+                                +"<tr class='active'><td><strong>Qty of Berths: </strong></td><td>" + props.cap_1 + "</td></tr>"
+                                +"<tr class='active'><td><strong>Total Berth Length: </strong></td><td>" + props.cap_2 + " linear ft</td></tr>"
+                                +"<tr class='active'><td><strong>Berth Depth <span style='font-weight:normal;'><a title='Mean Low Water' data-toggle='infotooltip'>(MLW)</a></span>: </strong></td><td>" + props.cap_3 + " feet</td></tr>"
+                                +"<tr class='active'><td><strong>Available Cranes: </strong></td><td><a title='" + props.cap_4 + "' data-toggle='infotooltip'>" + props.cap_6 + "</a></td></tr>"
+                                +"<tr class='active'><td><strong>Warehouse Space: </strong></td><td>" + props.cap_5 + "</td></tr></table>"
                         +"</div>"
                         +"<div class='tab-pane' id='portAct' style='padding-bottom: 12px;height:132px;'>"
                                 +"<table class='table table-hover'>"
-                                +"<tr class='active'><td class='item'><strong>2012 Ship Arrivals: </strong></td><td>" + props.ACT_1 + "</td><td>o</td></tr>"
-                                +"<tr class='active'><td class='item'><strong>Cargo handled: </strong></td><td colspan='2' style='line-height:1!important;'>" + props.CARGO + "</td></tr></table>"
+                                +"<tr class='active'><td class='item'><strong>2012 Ship Arrivals: </strong></td><td>" + props.act_1 + "</td><td>o</td></tr>"
+                                +"<tr class='active'><td class='item'><strong>Cargo handled: </strong></td><td colspan='2' style='line-height:1!important;'>" + props.cargo + "</td></tr></table>"
                         +"</div></div>"
-                        +"<div class='labelfield source'>" + props.SOURCE + "</div></div>";
-    if (props.TYPE == 'Bulk'){ content = contentBulk; } else {content = contentGeneral;}
-    featureName = '<p>Type: '+ props.TYPE + ' Terminal</p>',
+                        +"<div class='labelfield source'>" + props.source + "</div></div>";
+    if (props.type == 'Bulk'){ content = contentBulk; } else {content = contentGeneral;}
+    featureName = '<p>Type: '+ props.type + ' Terminal</p>',
     featureClass = 'portcl',
     featureIcon = 'porticon icon';
     contentPush(header,content,featureName,featureClass,featureIcon);
@@ -390,32 +390,47 @@ function clkriver(e) {
 function clkFreightCenter(e) {
     initializeHL(e);
     var fclass;
-    header = '<p>' + props.NAME + '</p>',
+    header = '<p>' + props.Types + '</p>',
     content = "<div id='baseInfo'>"
-                        +"<div class='datafield'>" + props.CENTER_TYP + "</div><div class='labelfield'>Type</div>"
-                        +"<div class='datafield'>" + props.TOWNSHIP_S + "</div><div class='labelfield'>Municipality(ies): </div>"
+                        +"<div class='datafield'>" + props.townships + "</div><div class='labelfield'>Municipality(ies): </div>"
                         +"</div><!--close baseInfo-->"
                         +"<div class='infoDivider'></div>"
                         +"<div id='indactorInfo'>"
                         +"<ul class='nav nav-tabs'><!--tabs for indicators-->"
-                        +"<li class='active'><a href='#Cap' data-toggle='tab'>Capacity & Activity</a></li></ul></ul>"
+                        +"<li class='active'><a href='#Emp' data-toggle='tab'>Employment</a></li>"
+                        +"<li class='updated'><a href='#Ind' data-toggle='tab'>Industrial Development</a></li></ul>"
                         +"<div id='indicator' class='tab-content'><!--tab panes-->"
-                        +"<div class='tab-pane active' id='Cap' style='padding-bottom: 12px;'>"
+                        +"<div class='tab-pane active' id='Emp' style='padding-bottom: 12px;'>"
                                 +"<table class='table table-hover'>"
-                                +"<tr class='active'><td><strong>Acres: </strong></td><td>" + numeral(props.ACRES_1).format('0,0.0') + "</td></tr>"
-                                +"<tr class='active'><td><strong>Output: </strong></td><td>not available</td></tr></table>"
+                                +"<tr class='active'><td></td><td><b>Freight</b></td><td><b>Non-freight</b></td></tr>"
+                                +"<tr class='active'><td><strong>Establishments: </strong></td><td>" + numeral(props.frght_est).format('0,0') + "</td><td>" + numeral(props.n_frght_es).format('0,0') + "</td></tr>"
+                                +"<tr class='active'><td><strong>Employees: </strong></td><td>" + numeral(props.frght_empl).format('0,0') + "</td><td>" + numeral(props.n_frght_em).format('0,0') + "</td></tr></table>"
+                                +"<div class='labelfield source'>Data Source: NETS 2013" + "</div>"
+                        +"</div>"
+                        +"<div class='tab-pane' id='Ind' style='padding-bottom: 12px;'>"
+                                +"<table class='table table-hover'>"
+                                +"<tr class='active'><td><strong>Structures: </strong></td><td>" + numeral(props.str_count).format('0,0') + "</td></tr>"
+                                +"<tr class='active'><td><strong>Square Footage: </strong></td><td>" + numeral(props.sq_ft_area).format('0,0') + "</td></tr>"
+                                +"<tr class='active'><td><strong>Acres: </strong></td><td>" + numeral(props.land_area).format('0,0') + "</td></tr></table>"
+                                +"<div class='labelfield source'>Data Source: CoSTAR 2017" +  "</div>"
                         +"</div></div>"
-                        +"<div class='labelfield source'>Data Source: " + props.SOURCE + "</div></div>";
+                        //+"<div class='labelfield source'>Data Source: " + props.SOURCE + "</div></div>";
                         // +"<p>" + props.REPORT + "</p>";
-    if (props.CENTER_TYP === 'Intermediate'){
-            fclass = 'fcinter';
-    }else if(props.CENTER_TYP === 'Major'){
-            fclass = 'fcmajor';
-    }else if (props.CENTER_TYP === 'Mega'){
-            fclass = 'fcmega';
-    }else{}
+    if (props.Types === 'International Gateway'){
+            fclass = 'fcgateway';
+    }else if(props.Types === 'Heavy Industrial'){
+            fclass = 'fcheavy';
+    }else if (props.Types === 'Distribution and Logistics'){
+            fclass = 'fcdist';
+    }else if (props.Types === 'High Tech Manufacturing'){
+            fclass = 'fchightech';
+    }else if (props.Types === 'Local Manufacturing and Distribution'){
+            fclass = 'fclocal';
+    }else{
+        fclass = 'fclocal';
+    }
 
-    featureName = '<p>Type: '+ props.CENTER_TYP +' Freight Center</p>',
+    featureName = '<p> Freight Center</p>',
     featureClass = ''+ fclass +'cl',
     featureIcon = ''+ fclass +'icon icon';
     contentPush(header,content,featureName,featureClass,featureIcon);

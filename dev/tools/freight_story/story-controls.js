@@ -5,8 +5,8 @@ var getPageHeight = function() {
 }
 
 var pageWidth = function() {
-    width = elHeight = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-    return width;
+    pw = elHeight = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+    return pw;
 }
 
 // update class list based on 12 columns
@@ -14,23 +14,32 @@ function updateClass(element, cols) {
     var colOffset = 12 - cols;
     document.getElementById(element).className = 'col-lg-offset-'+ colOffset +' col-lg-'+ cols ;
 }
-
+var _sizeWidth = pageWidth();
+var _mapHeightOffset = (_sizeWidth < 769) ? -450 : -771;
 updateSizes = function() {
-    var width = pageWidth();
-    var height = getHeight();
-    BUBBLE_PARAMETERS.height = height;
-    var mapCols = (width >= 1200) ? 0.66 : 0.58333;
+    _sizeWidth = pageWidth();
+    var _sizeHeight = getHeight();
+    BUBBLE_PARAMETERS.height = _sizeHeight;
+    var mapCols = (_sizeWidth >= 1200) ? 0.66 : 0.58333;
+    (_sizeWidth < 769) ? mapCols = 0.97 : '';
+    var typCols = (_sizeWidth < 769) ? 0.97 : 0.5833;
     //update map size
-    document.getElementById("distribution-map").style.width = ((width * mapCols) - 20) + "px";
+    distributionMap.style.width = ((_sizeWidth * mapCols) - 20) + "px";
+    typologyMap.style.width = ((_sizeWidth * typCols) - 20) + "px";
     //forces size of text equal to map
     mapHeightItems.forEach(function(el) {
-        el.style.height = height + "px";
+        el.style.height = (_sizeWidth > 768) ? _sizeHeight + "px" : "auto";
       });
-    document.getElementById("js-wage-desc").style.height = height + "px";
+    document.getElementById("js-wage-desc").style.height = (_sizeWidth > 768) ? _sizeHeight + "px" : "auto";
 
     if (map_exists) {
-        fitRegion('distribution-map', height, ((width * mapCols) - 20), 'map')
-        fitRegion('typologies-map', height, ((width * 0.5833) - 20), 'fcMap')
+        fitRegion('distribution-map', _sizeHeight, ((_sizeWidth * mapCols) - 20), 'map')
+        fitRegion('typologies-map', _sizeHeight, ((_sizeWidth * typCols) - 20), 'fcMap')
+    }
+
+    if (_sizeWidth > 768) {
+        $('#distribution-map').css('opacity', '1.0')
+        $('#typologies-map').css('opacity', '1.0')
     }
     
 }
@@ -55,7 +64,8 @@ var mapHeightItems = document.querySelectorAll('.map-height');
 setGraphicPosition(employmentBubbles, null, null, '0 0 -'+ BUBBLE_PARAMETERS.height +'px 0');
 setGraphicPosition(distributionMap, 'relative', -771, '0 0 -'+ BUBBLE_PARAMETERS.height +'px 0');
 setGraphicPosition(typologyMap, 'relative', -771, '0 0 -'+ BUBBLE_PARAMETERS.height +'px 0');
-
+(_sizeWidth < 769) ? $('#distribution-map').css('opacity', '0') : '';
+(_sizeWidth < 769) ? $('#typologies-map').css('opacity', '0') : '';
 updateSizes();
 
 window.onresize = function() {
@@ -72,6 +82,8 @@ var map_called = false;
 var map_mode = 'none';
 var map_section = 'distribution';
 var distNarrative = $('#distribution-narrative').height();
+var typNarrative = $('#typologies').height();
+
 
 // initialization and options for scroll story functionality
 var scrollStory = $('#planning').scrollStory({
@@ -107,6 +119,7 @@ var scrollStory = $('#planning').scrollStory({
             d3.selectAll('.bubble')  //here's how you get all the nodes
                 .attr('r', function(d) {return d.scaled_radius})
                 .attr('opacity', 1.0);
+            setGraphicPosition(typologyMap, 'relative', -771, '0 0 -'+ (BUBBLE_PARAMETERS.height) +'px 0')
         }
 
         //clears any annotations
@@ -117,8 +130,13 @@ var scrollStory = $('#planning').scrollStory({
             myBubbleChart.switchMode('color');
         } 
 
-        if(item.index > 0 && item.data.section === 'employment' && item.index != 8) {
-            $('#employment-bubble').css('position', 'fixed');
+        if(item.index > 0 && item.index < 8){
+            setGraphicPosition(employmentBubbles, 'fixed', 60)
+        }
+        
+        if(item.index > 10) {
+            setGraphicPosition(employmentBubbles, 'relative', -BUBBLE_PARAMETERS.height, '0 0 -'+ (BUBBLE_PARAMETERS.height) +'px 0');
+            
         }
 
         if(item.data.section === 'employment') {
@@ -136,7 +154,7 @@ var scrollStory = $('#planning').scrollStory({
         function mapStateChecker(index, mode, section){
             if(!map_called){
                 map_called = true;
-                $.getScript('./lib/tools/freight-story/geo-distribution.js', function(){
+                $.getScript('./lib/tools/freight-story/geo-distribution.js?ver=1.0.1', function(){
                     freightMap.repaint(mode, section);
                 });
             }else if(!map_exists && map_called){
@@ -145,14 +163,15 @@ var scrollStory = $('#planning').scrollStory({
             }else if (map_exists) {
                 mapSource.innerHTML = (freightMap.attribution[index]) ? freightMap.attribution[index] : '';
                 freightMap.repaint(mode, section);
+                updateSizes();
             }
         }
 
         if(item.index > 8 && item.data.section === 'distribution' && item.data.mode){
             //make sure employment is gone
-            setGraphicPosition(employmentBubbles, 'relative', -BUBBLE_PARAMETERS.height, '0 0 -'+ (BUBBLE_PARAMETERS.height) +'px 0')
-            setGraphicPosition(typologyMap, 'relative', -771, '0 0 -'+ (BUBBLE_PARAMETERS.height) +'px 0')
-
+            setGraphicPosition(employmentBubbles, 'relative', -BUBBLE_PARAMETERS.height, '0 0 -'+ (BUBBLE_PARAMETERS.height) +'px 0');
+            setGraphicPosition(typologyMap, 'relative', -771, '0 0 -'+ (BUBBLE_PARAMETERS.height) +'px 0');
+           
             mapStateChecker(item.index, item.data.mode, item.data.section);
            
         }
@@ -166,7 +185,9 @@ var scrollStory = $('#planning').scrollStory({
             item.index > 18 ? setGraphicPosition(typologyMap, 'fixed', 60) : '';
             
             mapStateChecker(item.index, item.data.mode, item.data.section);
-            // freightMap.repaint(item.data.mode, item.data.section);
+        }
+        if(item.index > 19){
+            (_sizeWidth < 769) ? $('#typologies-map').css('opacity', '1.0') : '';
         }
 
     },
@@ -187,9 +208,10 @@ var scrollStory = $('#planning').scrollStory({
             case 8:
                 if(!map_exists && !map_called){
                     map_called = true;
-                    $.getScript('./lib/tools/freight-story/geo-distribution.js');
+                    $.getScript('./lib/tools/freight-story/geo-distribution.js?ver=1.0.1');
                 } else if (activeItem.index >= 9){
-                    setGraphicPosition(distributionMap, 'relative', -771, '0 0 -'+ BUBBLE_PARAMETERS.height +'px 0')
+                    setGraphicPosition(distributionMap, 'relative', -771, '0 0 -'+ BUBBLE_PARAMETERS.height +'px 0');
+                    (_sizeWidth < 769) ? $('#distribution-map').css('opacity', '0') : '';
                 }
                 break;
             case 9: 
@@ -197,15 +219,27 @@ var scrollStory = $('#planning').scrollStory({
                     setGraphicPosition(employmentBubbles, 'relative', -BUBBLE_PARAMETERS.height, '0 0 -'+ (BUBBLE_PARAMETERS.height) +'px 0')
                 }
                 break;
+            case 10:
+                if(activeItem.index < 10){
+                    (_sizeWidth < 769) ? $('#distribution-map').css('opacity', '1.0') : '';
+                }
+                break;
             case 18:
-                if(activeItem.index < 18){
-                    console.log('Narrative height: ', distNarrative)
+                if(activeItem.index < 18 && _sizeWidth > 768){
                     setGraphicPosition(distributionMap, 'relative', (distNarrative - BUBBLE_PARAMETERS.height), '0 0 -'+ BUBBLE_PARAMETERS.height +'px 0')
+                }
+                if(activeItem.index > 18){
+                    (_sizeWidth < 769) ? $('#typologies-map').css('opacity', '0') : '';
                 }
                 break;
             case 17:
                 if(activeItem.index > 17){
                     setGraphicPosition(typologyMap, 'relative', -771, '0 0 -'+ BUBBLE_PARAMETERS.height +'px 0')
+                }
+                break;
+            case 24:
+                if(activeItem.index == 25 ){
+                    setGraphicPosition(typologyMap, 'fixed', 60)
                 }
                 break;
             default :
@@ -226,10 +260,18 @@ var scrollStory = $('#planning').scrollStory({
                 if(activeItem.index < 18) {
                     setGraphicPosition(distributionMap, 'fixed', 60)
                 }
+                if(activeItem.index > 18) {
+                    (_sizeWidth < 769) ? $('#typologies-map').css('opacity', '1.0') : '';
+                }
                 break;
             case 17:
                 if(activeItem.index > 16) {
                     setGraphicPosition(typologyMap, 'fixed', 60)
+                }
+                break;
+            case 24:
+                if(activeItem.index == 25 && _sizeWidth > 768){
+                    setGraphicPosition(typologyMap, 'relative', (typNarrative - BUBBLE_PARAMETERS.height), '0 0 -'+ BUBBLE_PARAMETERS.height +'px 0');
                 }
                 break;
             default :
@@ -250,6 +292,13 @@ window.onbeforeunload = function () {
 
 $('.dotnav li').on('click', function(e){
 
+    var storyIndex = $(this).data('story-nav');
+
+    scrollStory.index(storyIndex);
+   
+})
+
+$('#fc-splash-intro a').on('click', function(e){
     var storyIndex = $(this).data('story-nav');
 
     scrollStory.index(storyIndex);

@@ -43,6 +43,26 @@ body {
   margin-bottom: 450px;
   font-size: 1.2em;
   opacity: 0.4;
+  @media only screen and (max-width: 768px) {
+    margin-bottom: 60px;
+    opacity: 1.0;
+  }
+}
+
+.visible-xs h4 {
+  margin-top:30px;
+}
+
+.visible-xs .g-source {
+  font-size:0.8em;
+  margin-bottom: 30px;
+}
+
+.story.card.first {
+  margin-top: 200px;
+  @media only screen and (max-width: 768px) {
+    margin-top: 0px;
+  }
 }
 
 .story.active {
@@ -51,6 +71,13 @@ body {
 
 .details {
   font-size: 0.9em;
+}
+
+.visible-xs {
+  display:none;
+  @media only screen and (max-width: 768px) {
+    display:block;
+  }
 }
 
 .story > .card, .story.card {
@@ -63,6 +90,44 @@ body {
   padding: 10px 20px;
     /*transition: all .3s ease-in-out;
     */;
+}
+
+.story.mobile-map {
+  @media only screen and (max-width: 768px) {
+    padding-bottom:10px;
+    margin-bottom: 70vh;
+    background-color: rgba(239, 239, 239, 0.85);
+    margin-right: -20px;
+    padding-right: 20px;
+  }
+}
+.fc-final-map {
+  margin-bottom:10px;
+  @media only screen and (max-width: 768px) {
+    margin-bottom: 70vh;
+    padding-bottom: 10px;
+  }
+}
+.fc-manufacture {
+  margin-bottom:0px;
+  padding-bottom:450px;
+  @media only screen and (max-width: 768px) {
+    margin-bottom: 70vh;
+    padding-bottom: 10px;
+  }
+}
+
+.story.fc-mobile-map {
+  margin-bottom: 0px;
+  @media only screen and (max-width: 768px) {
+    margin-bottom: 90vh;
+  }
+}
+
+.fc-color-full {
+  @media only screen and (max-width: 768px) {
+    z-index: 4;
+  }
 }
 
 .story > .card {
@@ -297,6 +362,11 @@ ul#map-values > li {
     /*margin-top: -60px;
     */
   min-height: 760px;
+  @media only screen and (max-width: 768px) {
+    margin-bottom: 120px;
+    min-height: 0px;
+    padding-top:0px
+  }
 }
 
 .legend-bubble {
@@ -313,6 +383,9 @@ ul#map-values > li {
 .story.extra-tall {
   padding-bottom: 70vh;
   margin-bottom: 0;
+  @media only screen and (max-width: 768px) {
+    padding-bottom: 120px;
+  }
 }
 
 #distribution-map, #typologies-map {
@@ -326,6 +399,9 @@ ul#map-values > li {
 }
 #typologies-map {
     z-index: 1;
+    @media only screen and (max-width: 768px) {
+      z-index: 0;
+    }
 }
 
 body {
@@ -628,10 +704,11 @@ body {
 }
 
 .fc-splash-number {
-  margin-top: -195px;
+  margin-top: -185px;
   font-size: 3em;
   font-weight: 800;
-  text-shadow: none;
+  text-shadow: 0 2px 12px black;
+  pointer-events: none;
 }
 
 #scroll-hint {
@@ -657,6 +734,9 @@ body {
   column-gap: 30px;
   font-size: 1.2em;
   margin-bottom: 230px;
+  @media only screen and (max-width: 768px) {
+    margin-bottom: 120px;
+  }
 }
 
 .circle-multiline {
@@ -692,10 +772,6 @@ body {
   border-color: rgb(244, 179, 135);
 }
 
-.circle-multiline.consumption {
-  color: #221C48;
-}
-
 #freight-intensive-box {
   outline: 1px dotted;
   outline-offset: -19px;
@@ -707,7 +783,7 @@ body {
 #freight-intensive-box h5 {
   background-color: #efefef;
   position: relative;
-  width: 24ch;
+  width: 16ch;
   padding-bottom: 5px;
   margin-bottom: 5px;
 }
@@ -843,4 +919,32 @@ body {
 }
 .industry-ol li { 
   padding-left: 5px
+}
+
+@media (max-width: 1099px) {
+  .two-column {
+    column-count: 1;
+    -moz-column-count: 1;
+    -webkit-column-count: 1;
+  }
+}
+
+a.circle-multiline {
+  color: #fff;
+  &:hover {
+    color: #fff;
+  }
+  &:active {
+    color: #fff;
+  }
+}
+
+.map-logo {
+  position: absolute;
+  right: 20px;
+  bottom: 0;
+  width: 100px;
+  transform: translate(0,-51px);
+  opacity: 0.5;
+  z-index: 3;
 }
