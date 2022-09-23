@@ -130,7 +130,7 @@ module.exports = function(grunt){
 				},
 				includes: {
 					expand: true,
-					cwd: 'includes/',
+					cwd: './includes/',
 					dest: './html/includes/',
 					src: ['**']
 				},
