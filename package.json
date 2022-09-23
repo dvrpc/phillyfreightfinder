@@ -30,7 +30,7 @@
     "matchdep": "^1.0.0"
   },
   "dependencies": {
-    "bootstrap": "^3.2.0",
+    "bootstrap": "^3.4.1",
     "esri-leaflet": "^1.0.0",
     "jquery": "^1.11.1",
     "leaflet": "^0.7.7"
