@@ -2808,6 +2808,9 @@ h4.panel-title a i:hover{
 .hp_label{
     font-size:12px;
 }
+.hp_label.three-quarter {
+    width: 75%
+}
 .hp_filter{
    
     margin-top:10px;
