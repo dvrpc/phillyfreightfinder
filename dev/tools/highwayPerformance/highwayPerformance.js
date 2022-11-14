@@ -38,10 +38,11 @@ MAP_WRAPPER.style.height = hp_map_height + 'px';
 //register DOM elements
 const legend = document.getElementById('hp_legend');
 const icon = document.querySelectorAll('.icon');
-const speedControl = document.getElementById('speed-btns');
-const speeds = speedControl.querySelectorAll('button');
-const TIME_LABEL = document.getElementById('dat-time-label');
 const hp_title = document.getElementById('hp_title_metric');
+const hp_next = document.getElementById('hp_next');
+const hp_prev = document.getElementById('hp_prev');
+const pm_toggle = document.querySelectorAll('.toggle-pm');
+const play_btn = document.getElementById('hp_play');
 
 const clearActive = (items) => {
   items.forEach(item => {
@@ -49,100 +50,33 @@ const clearActive = (items) => {
   })
 }
 
-speeds.forEach(elem => {
-  elem.addEventListener('click', function (e) {
-    animation.speed = e.target.dataset.speed;
-    clearActive(speeds);
-    e.target.classList.add('active');
-  });
+
+pm_toggle.forEach(elem => {
+    elem.addEventListener('click', function (e) {
+        let pm = e.target.dataset.mode;
+        truckPerformance.type = pm;
+        truckPerformance.color();
+        legend.innerHTML = truckPerformance.htmlChunks[truckPerformance.type].legend;
+        hp_title.innerHTML = truckPerformance.htmlChunks[truckPerformance.type].title;
+    })
 })
 
-document.addEventListener('click', function(e) {
-    //toggle performance type
-    if (e.target.classList.contains('toggle-pm')) {
-      let pm = e.target.dataset.mode;
-      truckPerformance.type = pm;
-      truckPerformance.color();
-      legend.innerHTML = truckPerformance.htmlChunks[truckPerformance.type].legend;
-      hp_title.innerHTML = truckPerformance.htmlChunks[truckPerformance.type].title;
-    } else if (e.target.classList.contains('play')) {
-        e.preventDefault();
-        animation.playHandler(e.target);
-    } 
+play_btn.addEventListener('click', function (e) {
+    slider.playHandler(play_btn);
 })
 
+hp_next.addEventListener('click', function (e) {
+    clearInterval(slider.animate);
+    slider.advanceStep();
+})
+
+hp_prev.addEventListener('click', function (e) {
+    clearInterval(slider.animate);
+    slider.previousStep();
+})
 
 const playBtn = '<i class="glyphicon glyphicon-play"></i>&nbsp;&nbsp;Play';
 const pauseBtn = '<i class="glyphicon glyphicon-pause"></i>&nbsp;&nbsp;Pause';
-
-const animation = {
-    hour: 0,
-    mins: 0,
-    timePerFrame: 10,
-    speed: 1,
-    animate: '',
-    animatedLayers: 0,
-    
-    togglePanel: function(count) {
-        animation.animatedLayers += count;
-
-        if (animation.animatedLayers > 0) {
-            document.getElementById('time-panel').classList.remove('hidden');
-        } else {
-            document.getElementById('time-panel').classList.add('hidden');
-        }
-    },
-
-    start: function(time) {
-        this.animate = setInterval(function() {
-            animation.updateTime();
-            truckPerformance.color();
-            animation.minCounter();
-
-        }, 150);
-    },
-
-    stop: function() {
-        clearInterval(this.animate);
-    },
-
-    minCounter: function() {
-        animation.mins += ((animation.timePerFrame * animation.speed) / 60);
-    },
-
-    playHandler: function(btn) {
-        if (btn.classList.contains('playing')) {
-          animation.stop();
-          btn.innerHTML = playBtn;
-        } else {
-          animation.start();
-          btn.innerHTML = pauseBtn;  
-        }
-        btn.classList.toggle('playing')
-        return false;
-    },
-
-    updateTime: function() {
-
-        if (animation.mins >= 0.99 && animation.hour < 23) {
-            animation.mins = 0, animation.hour++;
-
-        } else if (animation.mins >= 0.99 && animation.hour == 23) {
-            animation.mins = 0, animation.hour = 0;
-        }
-        var suffix = (animation.hour >= 12) ? ' PM' : ' AM';
-        var twelveHour = (animation.hour <= 12) ? animation.hour : animation.hour - 12;
-        twelveHour = (twelveHour === 0) ? 12 : twelveHour;
-
-        var minutes = (animation.mins * 60).toLocaleString('en');
-
-        minutes = ('0' + minutes).slice(-2);
-        var hourString = twelveHour + ':' + minutes + suffix;
-
-      TIME_LABEL.innerHTML = hourString;
-    }
-    
-}
 
 const truckPerformance = {
     exists: false,
@@ -151,12 +85,22 @@ const truckPerformance = {
     dirs: ['B', 'T', 'F'],
     
     //map 24 hr periods to bins create from analysis
-    timeMap: ['00', '00', '00', '00', '00', '05', '05', '07', '07', '09', '09', '11', '11', '13', '13', '15', '15', '17', '17', '19', '19', '19', '19', '19'],
+    timeMap: {
+        0: '00',
+        5: '05',
+        7: '07',
+        9: '09',
+        11: '11',
+        13: '13',
+        15: '15',
+        17: '17',
+        19: '19',
+    },
 
     color: function(time) {
         var style = {
             'S': {
-                "property": this.type + this.timeMap[animation.hour],
+                "property": this.type + this.timeMap[slider.low],
                 "type": "categorical",
                 "stops": [
                     ['z', '#9c9c9c'],
@@ -170,7 +114,7 @@ const truckPerformance = {
                 ]
             },
             'T': {
-                "property": this.type + this.timeMap[animation.hour],
+                "property": this.type + this.timeMap[slider.low],
                 "type": "categorical",
                 "stops": [
                     ['z', '#9c9c9c'],
@@ -187,7 +131,7 @@ const truckPerformance = {
             map.setPaintProperty('tp-' + this.dirs[k], 'line-color', style[this.type]);
         }
 
-    },
+    }, 
 
     show: function() {
         truckPerformance.visible = true;
@@ -195,23 +139,9 @@ const truckPerformance = {
 
     },
 
-    hide: function() {
-        if (truckPerformance.visible === true) {
-            animation.togglePanel(-1);
-            truckPerformance.visible = false;
-        }
-        this.exists ? this.toggleMap(0.0) : '';
-    },
-
-    toggleMap: function(opacity) {
-        for (var k = 0; k < this.dirs.length; k++) {
-            truckPerformance.color();
-            map.setPaintProperty('tp-' + this.dirs[k], 'line-opacity', opacity);
-        }
-    },
     htmlChunks: {
       T: {
-        legend: '<div class="hp_label three-quarter">Travel Time Index Value</div>' +
+        legend: '<div class="hp_label three-quarter">Truck Travel Time Index Value</div>' +
         '<div id="tti_legend"><div class="hp_legend hp_z">no data</div>' +
         '<div class="hp_legend hp_g">< 1.1</div>' +
         '<div class="hp_legend hp_a">1.1 - 1.5</div>' +
@@ -221,7 +151,7 @@ const truckPerformance = {
         title: 'Truck Travel Time Index'
       },
       S: {
-        legend: '<div class="hp_label three-quarter">Average Speed (MPH)</div>' +
+        legend: '<div class="hp_label three-quarter">Average Truck Speed (MPH)</div>' +
         '<div id="speed_legend"><div class="hp_legend hp_z">no data</div>' +
         '<div class="hp_legend hp_k">< 10</div>' +
         '<div class="hp_legend hp_r">10 - 20</div>' +
@@ -230,12 +160,158 @@ const truckPerformance = {
         '<div class="hp_legend hp_y">40 - 50</div>' +
         '<div class="hp_legend hp_c">50 - 60</div>' +
         '<div class="hp_legend hp_g">> 60</div></div>',
-        title: 'Truck Average Speed'
+        title: 'Average Truck Speed'
       }
     }
 
 }
 
+const slider = {
+    elem: document.getElementById('hp_timing_slider'),
+    title: {
+        low: document.getElementById('hp-t1'),
+        high: document.getElementById('hp-t2')
+    },
+    low: 0,
+    high: 5,
+    playing: false,
+    animate: '',
+    config: {
+        start: [0, 5],
+			connect: true,
+			snap: true,
+			behaviour: "tap",
+			range: {
+				'min': 0,
+				'20%': 5,
+				'28%': 7,
+				'36%': 9,
+				'44%': 11,
+				'52%': 13,
+				'60%': 15,
+				'68%': 17,
+				'76%': 19,
+				'max': 24
+			},
+			pips: {
+				mode: 'range',
+				density: 4
+			}
+    },
+    label: {
+        5: '5 <span class="hp_tod">AM</span>',
+        7: '7 <span class="hp_tod">AM</span>',
+        9: '9 <span class="hp_tod">AM</span>',
+        11: '11 <span class="hp_tod">AM</span>',
+        13: '1 <span class="hp_tod">PM</span>',
+        15: '3 <span class="hp_tod">PM</span>',
+        17: '5 <span class="hp_tod">PM</span>',
+        19: '7 <span class="hp_tod">PM</span>',
+        0: '12 <span class="hp_tod">AM</span>', 
+        24: '12 <span class="hp_tod">AM</span>',
+    },
+
+    formatLabels: function (ticks) {
+        ticks.forEach(elem => {
+            let val = elem.innerHTML;
+            elem.innerHTML = slider.label[val]
+        })
+    },
+
+    setRange: function (values) {
+        let l = parseInt(values[0])
+        let h = parseInt(values[1])
+        slider.low = l;
+        slider.high = h;
+        slider.title.low.innerHTML = slider.label[l]
+        slider.title.high.innerHTML = slider.label[h]
+
+    },
+
+    play: function(time) {
+        this.animate = setInterval( function () {
+            slider.advanceStep()
+        }, 2000);
+    },
+
+    pause: function() {
+        clearInterval(this.animate);
+    },
+    
+    playHandler: function(btn) {
+        if (this.playing) {
+            this.playing = false;
+            this.pause();
+            btn.innerHTML = playBtn;
+            
+        } else {
+            this.playing = true;
+            this.play();
+            btn.innerHTML = pauseBtn;  
+        }
+        // btn.classList.toggle('playing')
+    },
+    advanceStep: function () {
+        let next = slider.high + 2;
+        if (next <= 19) {
+            slider.elem.noUiSlider.set([slider.high, next])
+        } else if(next > 19 && next < 24){
+            slider.elem.noUiSlider.set([19, 24]);
+        } else {
+            slider.elem.noUiSlider.set([0, 5]);
+        }
+    },
+    previousStep: function () {
+        let prev = slider.low - 2;
+        if (prev <= 19 && slider.low > 5) {
+            slider.elem.noUiSlider.set([prev, slider.low]);
+        } else if (slider.low === 0) {
+            slider.elem.noUiSlider.set([19, 24]);
+        } else {
+            slider.elem.noUiSlider.set([0, 5]);
+        }
+    }
+}
+
+
+// build noUIslider
+loadScript('lib/tools/assets/nouislider.js')
+    .then(d => {
+        noUiSlider.create(slider.elem, slider.config);
+        const ticks = document.querySelectorAll('.noUi-value.noUi-value-horizontal.noUi-value-large');
+        slider.formatLabels(ticks);
+
+        //slide events
+        slider.elem.noUiSlider.on('slide', (values) => {
+            let upper = parseInt(values[1])
+            let lower = parseInt(values[0])
+            
+            // set time bins as fixed interval
+            if (upper > slider.high || upper < slider.high) {
+				if(upper <= 5){
+					slider.elem.noUiSlider.set([0,5]);
+				}else if(upper > 5 && upper <= 19){
+					slider.elem.noUiSlider.set([(upper - 2),upper]);
+				}else{
+                    slider.elem.noUiSlider.set([19, 24]);
+				}	
+			}else if(lower < slider.low || lower > slider.low){
+				if(lower < 5){
+                    slider.elem.noUiSlider.set([0, 5]);
+				}else if(lower >= 5 && lower < 19){
+                    slider.elem.noUiSlider.set([lower, (lower + 2)]);
+				}else{
+					slider.elem.noUiSlider.set([19,24]);
+				}	
+			}
+        })
+
+        slider.elem.noUiSlider.on('set', (values) => {
+            slider.setRange(values)
+            truckPerformance.color()
+        })
+})
+    
 
 //entry point
 loadScript("https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.js")
@@ -253,6 +329,8 @@ loadScript("https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.js")
         // navigation control
         var nav = new mapboxgl.NavigationControl();
         map.addControl(nav, 'top-left');
+
+        // on map.load add truck pm source with attribution and render layers by direction attr
         map.on('load', function() {
             map.addSource("truck-pm", {
               "type": "vector",

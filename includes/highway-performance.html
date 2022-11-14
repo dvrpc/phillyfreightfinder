@@ -1,5 +1,4 @@
 <link rel="stylesheet" type="text/css" rel="noopener" target="_blank" href="https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.css">
-<!-- <script defer src="https://api.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.js"></script> -->
 <script defer src="lib/tools/highwayPerformance/highwayPerformance.js"></script>
 <style>
     .l-line {
@@ -50,7 +49,7 @@
         flex: 1 1 auto;
         padding: 1.25rem;
     }
-    #speed-btns, 
+    #hp_tabbing, 
     .play, 
     #hp_select {
         margin-bottom: 20px;
@@ -81,7 +80,6 @@
     }
     #hp_tabbing {
         padding-left: 15px;
-        margin: 0 
     }
     .hp_info {
         padding-left: 10px;
@@ -137,10 +135,6 @@
     #speed_legend .hp_legend{
         width: 10.5%
     }
-    .hp-time-bins {
-        display:none;
-    }
-
 </style>
 <div class='page-title center-block col-lg-12'>
     <div class='center-block col-lg-10 col-sm-12' style='float:none;'>
@@ -161,7 +155,7 @@
     <div class='center-block col-lg-10 col-sm-12' style='float:none;'>
         <div class="row">
             <div class="col-xs-12 col-md-5 hp_filter">
-                <div class="hp_label">Select performance measure:</div>
+                <div class="hp_label">Select truck performance measure:</div>
                 <div id="hp_select" class="btn-group" data-toggle="buttons">
                     <label for="t_speed" id="radio_t_speed" class="btn btn-sm btn-primary toggle-pm active" data-mode="S">
                         <input type="radio" id="t_speed" name="hp_measure" value="Speed">Average Speed</label>
@@ -176,86 +170,25 @@
                 </div>    
             </div>
             <div class="col-xs-12 col-md-7 hp_filter">
-                <div class="hp_label">Time period control:</div>
+                <div class="hp_label">Select time period:</div>
     
     
                 <button id="hp_play" class="btn btn-sm btn-primary play"><i
                         class="glyphicon glyphicon-play"></i>&nbsp;&nbsp;Play</button>
                 
-                <!-- speed control -->
-                <div id="speed-btns" class="btn-group btn-group-sm" role="group">
-                    <button type="button" class="btn btn-primary" data-speed="0.5">0.5x</button>
-                    <button type="button" class="btn btn-primary active" data-speed="1.0">1.0x</button>
-                    <button type="button" class="btn btn-primary" data-speed="2.0">2.0x</button>
-                    <button type="button" class="btn btn-primary" data-speed="3.0">3.0x</button>
-                </div>
-                <h1 id="dat-time-label" class="display-4"
-                    style="font-size:2.5em;line-height: 1.3;white-space:nowrap;font-weight:300;margin-top:10px;">12:00 AM
-                </h1>
-                <!-- manual tab of periods -->
-                <!-- <div id="hp_tabbing" class="btn-group hp_tab">
+                <div id="hp_tabbing" class="btn-group hp_tab">
                     <button id="hp_prev" class="btn btn-sm btn-primary hp_prev"><i
                             class="glyphicon glyphicon-chevron-left"></i></button>
                     <button id="hp_next" class="btn btn-sm btn-primary hp_next"><i
                             class="glyphicon glyphicon-chevron-right"></i></button>
-                </div> -->
-    
+                </div>
+
                 <div id="hp_timing_slider">
                     <!--slider control loads here-->
-                </div>
-    
-                <!--hidden timing inputs for layer control -->
-                <div id="hp_timing_select" style="display:none;" class="btn-group" data-toggle="buttons">
-                    <input type="radio" id="hp_0" name="timing_input" value="0" checked="checked" />
-                    <input type="radio" id="hp_5" name="timing_input" value="5" />
-                    <input type="radio" id="hp_7" name="timing_input" value="7" />
-                    <input type="radio" id="hp_9" name="timing_input" value="9" />
-                    <input type="radio" id="hp_11" name="timing_input" value="11" />
-                    <input type="radio" id="hp_13" name="timing_input" value="13" />
-                    <input type="radio" id="hp_15" name="timing_input" value="15" />
-                    <input type="radio" id="hp_17" name="timing_input" value="17" />
-                    <input type="radio" id="hp_19" name="timing_input" value="19" />
-                </div>
-    
+                </div>    
     
             </div>
         </div>
-    </div>
-
-
-    <div class='col-lg-12' style='float:none;'>
-        <div class="row">
-            <div id="time-panel" class="card text-white bg-dark mb-3"
-                style="position:absolute; left:20px; bottom:-50px; width:295px; display:none">
-                <div class="card-body">
-                    <button title="Animate Performance Measures" class="play"></button>
-                    <h1 id="dat-time-label" class="display-4"
-                        style="font-size:2.5em;line-height: 1.3;white-space:nowrap;font-weight:300;margin-top:10px;color:white;">12:00 AM</h1>
-                    <div id="speed-btns" class="btn-group btn-group-sm" role="group">
-                        <button type="button" class="btn btn-secondary" data-speed="0.5">0.5x</button>
-                        <button type="button" class="btn btn-secondary active" data-speed="1.0">1.0x</button>
-                        <button type="button" class="btn btn-secondary" data-speed="2.0">2.0x</button>
-                        <button type="button" class="btn btn-secondary" data-speed="3.0">3.0x</button>
-                    </div>
-                </div>
-            </div>
-            <!-- <div id="legend" style="width:600px">
-                <div class="hp_label">Select performance measure:</div>
-                <div id="hp_select" class="btn-group" data-toggle="buttons">
-                    <label for="t_speed" id="radio_t_speed" class="btn btn-sm btn-primary toggle-pm active" data-mode="S">
-                        <input type="radio" id="t_speed" name="hp_measure" value="Speed">Average Speed</label>
-                    <label for="t_tti" id="radio_t_tti" class="btn btn-sm btn-primary toggle-pm" data-mode="T">
-                        <input type="radio" id="t_tti" name="hp_measure" value="TTI">Travel Time Index</label>
-                    <a href="modals/hp-tool.html" class="hp_info" data-toggle="modal" data-target="#hpToolModal"><i
-                            class="dynico dynico-info"></i></a>
-                </div>
-                <div class="hp_label">Data legend:</div>
-                <div id="hp_legend" class="hp_legend_wrapper"> -->
-                    <!-- dynamic legend loads here-->
-                <!--</div>
-            </div> -->
-        
-        </div>   
     </div>
 </div>
 <div class='clearfix'></div>
