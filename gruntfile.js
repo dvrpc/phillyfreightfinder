@@ -104,7 +104,8 @@ module.exports = function(grunt){
 		},
 
 		clean: {
-			js: ['lib/*.js', '!lib/*.min.js']
+			js: ['lib/*.js', '!lib/*.min.js'],
+			css: ['dev/css/style_auto.css']
 		},
 
 		copy: {
@@ -186,12 +187,12 @@ module.exports = function(grunt){
 
 		watch: {
 			toolscripts: {
-      			files: ['dev/tools/*.js'],
+      			files: ['dev/tools/**/*.js'],
       			tasks: ['uglify:tools', 'copy:lib']
       		},
       		cssUpdate: {
-      			files: ['dev/css/*.css'],
-      			tasks: ['postcss', 'cssmin', 'copy:lib']
+      			files: ['dev/css/*.css', '!dev/css/style_auto.css'],
+      			tasks: ['postcss', 'cssmin', 'copy:lib', 'clean:css']
       		},
       		coreUpdate: {
       			files: ['dev/core/*.js', 'dev/actions.js', 'dev/map.js'],
@@ -272,7 +273,7 @@ module.exports = function(grunt){
     grunt.registerTask('publish', ['default', 'imagemin', 'copy-noImages']);
     grunt.registerTask('quickPublish', ['default', 'copy']);
     grunt.registerTask('updatecss', ['postcss', 'cssmin']);
-    grunt.registerTask('updatejs', ['concat', 'uglify', 'clean']);
+    grunt.registerTask('updatejs', ['concat', 'uglify', 'clean:js']);
     grunt.registerTask('imageUpdates', ['imagemin']);
     grunt.registerTask('start', ['express', 'watch']);
     grunt.registerTask('copy-all', ['copy']);
