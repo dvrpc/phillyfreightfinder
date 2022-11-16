@@ -32,7 +32,7 @@
   "dependencies": {
     "bootstrap": "^3.2.0",
     "esri-leaflet": "^1.0.0",
-    "jquery": "^1.11.1",
+    "jquery": "^3.5.0",
     "leaflet": "^0.7.7"
   }
 }
