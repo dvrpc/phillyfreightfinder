@@ -703,7 +703,7 @@ var commicon = L.OpenFreightMarkers.icon({
                 dblclick: zoomToFeature
             });
             intermodalSearch.push({
-                name: layer.feature.properties.NAME_1,
+                name: layer.feature.properties.NAME,
                 source: "Intermodal",
                 id: L.stamp(layer),
                 bounds: layer.getBounds()
@@ -1638,10 +1638,57 @@ function pointify_topo(data, layer){
     return data_n
 }
 
+const spatialData = [
+    {
+        src: "https://arcgis.dvrpc.org/portal/rest/services/Freight/ports/FeatureServer/0/query?outFields=*&where=1%3D1&f=geojson",
+        poly: [portpoly, "portpoly"],
+        pointify: porticon,
+    },
+    {
+        src: "https://arcgis.dvrpc.org/portal/rest/services/Freight/rail_yards/FeatureServer/0/query?outFields=*&where=1%3D1&f=geojson",
+        poly: [railyardpoly, "railyardpoly"],
+        pointify: railyardpt,
+    },
+    /// point only examples
+    // {
+    //     src: 'urlstr',
+    //     point: layerVar
+    // }
+    /// polygon only example
+    // {
+    //     src: 'urlstr',
+    //     poly: [layerVar, 'varNameasStr']
+    // }
+];
+
+async function fetchData(layer) {
+    const response = await fetch(layer.src);
+    const data = await response.json();
+
+    if (layer.poly) {
+        //add data to leaflet polygon layer
+        layer.poly[0].addData(data);
+
+        //register polygon layer to map inventory
+        polyLayer.push(layer.poly[1]);
+    }
+    if (layer.pointify) {
+        //pointify and add data to leaflet point layer
+        layer.pointify.addData(pointify(data));
+    }
+    if (layer.point) {
+        //add point only data
+        layer.point.addData(data);
+    }
+}
+
 
 function loadLayers (){
     var mapLoad = $('#mapLoad').val();
         if(mapLoad === 'false'){
+        
+        //
+        spatialData.map(fetchData)
         
         $.getJSON("data/International_Gateway.js", function(data) {
             FCgatewaypoly.addData(data);
@@ -1714,24 +1761,24 @@ function loadLayers (){
         });
         polyLayer.push('river');
 
-        $.getJSON("https://arcgis.dvrpc.org/portal/rest/services/Freight/ports/FeatureServer/0/query?outFields=*&where=1%3D1&f=geojson", function(data) {
-            portpoly.addData(data);
-            var data_n = pointify(data, 'ports');
-            porticon.addData(data_n);
-        });
-        polyLayer.push('portpoly');
+        // $.getJSON("https://arcgis.dvrpc.org/portal/rest/services/Freight/ports/FeatureServer/0/query?outFields=*&where=1%3D1&f=geojson", function(data) {
+        //     portpoly.addData(data);
+        //     var data_n = pointify(data, 'ports');
+        //     porticon.addData(data_n);
+        // });
+        // polyLayer.push('portpoly');
 
         $.getJSON("data/freight_rail.js", function(data) {
             railines.addData(data);
         });
         polyLayer.push('railines');
 
-        $.getJSON("https://arcgis.dvrpc.org/portal/rest/services/Freight/rail_yards/FeatureServer/0/query?outFields=*&where=1%3D1&f=geojson", function(data) {
-            railyardpoly.addData(data);
-            var data_n = pointify(data, 'rail_yards');
-            railyardpt.addData(data_n);
-        });
-        polyLayer.push('railyardpoly');
+        // $.getJSON("https://arcgis.dvrpc.org/portal/rest/services/Freight/rail_yards/FeatureServer/0/query?outFields=*&where=1%3D1&f=geojson", function(data) {
+        //     railyardpoly.addData(data);
+        //     var data_n = pointify(data, 'rail_yards');
+        //     railyardpt.addData(data_n);
+        // });
+        // polyLayer.push('railyardpoly');
        
         $.getJSON("data/intermodal.js", function(data) {
             intermodalpoly.addData(data);
