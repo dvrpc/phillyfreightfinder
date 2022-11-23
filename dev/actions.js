@@ -441,11 +441,11 @@ function clkFreightCenter(e) {
 function clkairport(e) {
     initializeHL(e);
     var aclass;
-    header = '<p>(' + props.PFF_ID + ') ' + props.NAME + '</p>',
+    header = '<p>(' + props.pff_id + ') ' + props.name + '</p>',
     content = "<div id='baseInfo'>"
-            +"<div class='datafield'>" + props.TYPE + "</div><div class='labelfield'>Type</div>"
-            +"<div class='datafield'>" + props.OWNER + "</div><div class='labelfield'>Owner</div>"
-            +"<div class='datafield'>" + props.TOWNSHIP + "</div><div class='labelfield'>Municipality(ies): </div>"
+            +"<div class='datafield'>" + props.type + "</div><div class='labelfield'>Type</div>"
+            +"<div class='datafield'>" + props.owner + "</div><div class='labelfield'>Owner</div>"
+            +"<div class='datafield'>" + props.township + "</div><div class='labelfield'>Municipality(ies): </div>"
             +"</div><!--close baseInfo-->"
             +"<div class='infoDivider'></div>"
             +"<div id='indactorInfo'>"
@@ -454,15 +454,15 @@ function clkairport(e) {
             +"<div id='indicator' class='tab-content'><!--tab panes-->"
             +"<div class='tab-pane active' id='Cap' style='padding-bottom: 12px;'>"
                     +"<table class='table table-hover'>"
-                    +"<tr class='active'><td><strong>Runway(s): </strong></td><td>" + props.CAP_1 + "</td></tr>"
-                    +"<tr class='active'><td><strong>Runway Length(s): </strong></td><td> " + props.CAP_2 + " </td></tr>"
-                    +"<tr class='active'><td><strong>Total Acreage: </strong></td><td>" + props.CAP_3 + "</td></tr>"
+                    +"<tr class='active'><td><strong>Runway(s): </strong></td><td>" + props.cap_1 + "</td></tr>"
+                    +"<tr class='active'><td><strong>Runway Length(s): </strong></td><td> " + props.cap_2 + " </td></tr>"
+                    +"<tr class='active'><td><strong>Total Acreage: </strong></td><td>" + props.cap_3 + "</td></tr>"
                     +"<tr class='active'><td><strong> <a title='Count of annual takeoffs and landings' data-toggle='infotooltip'>Annual Operations</a>: </strong></td><td> " + numeral(props.ACTIVITY_1).format('0,0') + " </td></tr></table>"
             +"</div></div>"
-            +"<div class='labelfield source'>Data Source: " + props.SOURCE + "</div></div>";
-    if (props.TYPE === 'Commercial'){
+            +"<div class='labelfield source'>Data Source: " + props.source + "</div></div>";
+    if (props.type === 'Commercial'){
             aclass = 'comm';
-    }else if(props.TYPE === 'Reliever'){
+    }else if(props.type === 'Reliever'){
             aclass = 'rel';
     } else{}
     featureName = '<p>Type: '+ props.TYPE +' Airport</p>',
@@ -473,10 +473,10 @@ function clkairport(e) {
 //heliports
 function clkheliport(e) {
     initializeHL(e);
-    header = '<p>(' + props.PFF_ID + ") " +props.FACILITY + '</p>',
+    header = '<p>(' + props.pff_id + ") " +props.facility + '</p>',
     content = "<div id='baseInfo'>"
-                +"<div class='datafield'>" + props.OWNER + "</div><div class='labelfield'>Owner</div>"
-                +"<div class='datafield'>" + props.CITY + "</div><div class='labelfield'>Municipality(ies): </div>"
+                +"<div class='datafield'>" + props.owner + "</div><div class='labelfield'>Owner</div>"
+                +"<div class='datafield'>" + props.city + "</div><div class='labelfield'>Municipality(ies): </div>"
                 +"</div><!--close baseInfo-->"
                 +"<div class='infoDivider'></div>"
                 +"<div id='indactorInfo'>"
@@ -485,7 +485,7 @@ function clkheliport(e) {
                 +"<div id='indicator' class='tab-content'><!--tab panes-->"
                 +"<div class='tab-pane active' id='Cap' style='padding-bottom: 12px;'>"
                         +"<table class='table table-hover'>"
-                        +"<tr class='active'><td><strong>Diameter: </strong></td><td>" + props.SIZE_ + " ft</td></tr>"
+                        +"<tr class='active'><td><strong>Diameter: </strong></td><td>" + props.size_ + " ft</td></tr>"
                         +"<tr class='active'><td><strong>Annual Operations: </strong></td><td>not available</td></tr></table>"
                 +"</div></div>"
                 +"<div class='labelfield source'>Data Source: 2013 DVRPC</div></div>",

@@ -216,7 +216,7 @@ var commicon = L.OpenFreightMarkers.icon({
    
     //define airport layers
     //define commercial airports
-    var commairpoly = new L.TopoJSON(null, {
+    var commairpoly = L.geoJson(null, {
         style: {
             fillColor: "#216937",
             fillOpacity: 0.50,
@@ -230,7 +230,7 @@ var commicon = L.OpenFreightMarkers.icon({
                 dblclick: zoomToFeature
             });
             commairSearch.push({
-                name: layer.feature.properties.NAME,
+                name: layer.feature.properties.name,
                 source: "CommAirports",
                 id: L.stamp(layer),
                 bounds: layer.getBounds()
@@ -305,7 +305,7 @@ var commicon = L.OpenFreightMarkers.icon({
                 dblclick: zoomToPoint
             });
             heliportSearch.push({
-                name: layer.feature.properties.FACILITY,
+                name: layer.feature.properties.facility,
                 source: "Heliports",
                 id: L.stamp(layer),
                 lat: layer.feature.geometry.coordinates[1],
@@ -1725,9 +1725,9 @@ function loadLayers (){
         });
         polyLayer.push('FClocalpoly');
        
-        $.getJSON("data/airports_Commercial.js", function(data) {
+        $.getJSON("https://arcgis.dvrpc.org/portal/rest/services/Freight/airports/FeatureServer/0/query?outFields=*&where=type%3D'Commercial'&f=geojson", function(data) {
             commairpoly.addData(data);
-             var data_n = pointify_topo(data, 'airports_Commercial');
+             var data_n = pointify(data, 'airports_Commercial');
             commairpt.addData(data_n);
         });
         polyLayer.push('commairpoly');
@@ -1741,7 +1741,7 @@ function loadLayers (){
         polyLayer.push('relairpoly');
 
     
-        $.getJSON("data/heliport.js", function(data) {
+        $.getJSON("https://arcgis.dvrpc.org/portal/rest/services/Freight/heliport/FeatureServer/0/query?outFields=*&where=1%3D1&f=geojson", function(data) {
             heliport.addData(data);
         });
 
