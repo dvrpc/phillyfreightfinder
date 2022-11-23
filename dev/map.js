@@ -255,7 +255,7 @@ var commicon = L.OpenFreightMarkers.icon({
    
 
     //define releiver airports
-    var relairpoly = new L.TopoJSON(null, {
+    var relairpoly = L.geoJson(null, {
         style: {
             fillColor: "#30B34C",
             fillOpacity: 0.50,
@@ -269,7 +269,7 @@ var commicon = L.OpenFreightMarkers.icon({
                 dblclick: zoomToFeature
             });
             relairSearch.push({
-                name: layer.feature.properties.NAME,
+                name: layer.feature.properties.name,
                 source: "ReleivAirports",
                 id: L.stamp(layer),
                 bounds: layer.getBounds()
@@ -317,7 +317,7 @@ var commicon = L.OpenFreightMarkers.icon({
 
     //define freight centers
     //define local manufacturing freight centers
-    var FClocalpoly = new L.TopoJSON(null, {
+    var FClocalpoly = L.geoJson(null, {
         style: {
             fillColor: "#F9AB90",
             fillOpacity: 0.50,
@@ -350,7 +350,7 @@ var commicon = L.OpenFreightMarkers.icon({
     
 
     //define high tech man FCs
-    var FChightechpoly = new L.TopoJSON(null, {
+    var FChightechpoly = L.geoJson(null, {
         style: {
             fillColor: "#ed7d53",
             fillOpacity: 0.50,
@@ -384,7 +384,7 @@ var commicon = L.OpenFreightMarkers.icon({
 
 
     //define distribution freight centers
-    var FCdistpoly = new L.TopoJSON(null, {
+    var FCdistpoly = L.geoJson(null, {
         style: {
             fillColor: "#d1552c",
             fillOpacity: 0.50,
@@ -414,7 +414,7 @@ var commicon = L.OpenFreightMarkers.icon({
     });
 
     //define heavy industrial freight centers
-    var FCheavypoly = new L.TopoJSON(null, {
+    var FCheavypoly = L.geoJson(null, {
         style: {
             fillColor: "#ae2f11",
             fillOpacity: 0.50,
@@ -446,7 +446,7 @@ var commicon = L.OpenFreightMarkers.icon({
     });
 
     //define international gateway freight centers
-    var FCgatewaypoly = new L.TopoJSON(null, {
+    var FCgatewaypoly = L.geoJson(null, {
         style: {
             fillColor: "#870000",
             fillOpacity: 0.50,
@@ -480,7 +480,7 @@ var commicon = L.OpenFreightMarkers.icon({
 
     //define highway layers      
     //define truck parking polygons
-    var truckparkpoly = new L.TopoJSON(null, {
+    var truckparkpoly = L.geoJson(null, {
         style: {
             fillColor: "#884C9E",
             fillOpacity: 0.50,
@@ -494,7 +494,7 @@ var commicon = L.OpenFreightMarkers.icon({
                 dblclick: zoomToFeature
             });
             truckParkSearch.push({
-                name: layer.feature.properties.NAME,
+                name: layer.feature.properties.name,
                 source: "TruckParking",
                 id: L.stamp(layer),
                 bounds: layer.getBounds()
@@ -530,7 +530,7 @@ var commicon = L.OpenFreightMarkers.icon({
                 dblclick: zoomToPoint
             });
             hwyBridgeSearch.push({
-                name: layer.feature.properties.NAME_1,
+                name: layer.feature.properties.name,
                 source: "HwyBridges",
                 id: L.stamp(layer),
                 lat: layer.feature.geometry.coordinates[1],
@@ -540,7 +540,7 @@ var commicon = L.OpenFreightMarkers.icon({
     }) 
 
     //define NHS polylines
-    var nhspoly = new L.TopoJSON(null, {
+    var nhspoly = L.geoJson(null, {
         style: {
             weight: 5,
             color: "#E8C3F5 ",
@@ -552,7 +552,7 @@ var commicon = L.OpenFreightMarkers.icon({
                 dblclick: zoomToFeature
             });
             nhsSearch.push({
-                name: layer.feature.properties.NAME,
+                name: layer.feature.properties.name,
                 source: "NHS",
                 id: L.stamp(layer),
                 bounds: layer.getBounds()
@@ -576,7 +576,7 @@ var commicon = L.OpenFreightMarkers.icon({
     });
 
     //define freeways
-    var freeway = new L.TopoJSON(null, {
+    var freeway = L.geoJson(null, {
         style: function style(feature) {
             switch (feature.properties.TYPE) {
                 case 'Limited Access Highway':
@@ -599,7 +599,7 @@ var commicon = L.OpenFreightMarkers.icon({
                 dblclick: zoomToFeature
             });
             highwaySearch.push({
-                name: layer.feature.properties.NAME,
+                name: layer.feature.properties.name,
                 source: "Highways",
                 id: L.stamp(layer),
                 bounds: layer.getBounds()
@@ -611,9 +611,9 @@ var commicon = L.OpenFreightMarkers.icon({
 
     //define rail layers
     //define rail lines
-    var railines = new L.TopoJSON(null, {
+    var railines = L.geoJson(null, {
         style: function style(feature) {
-            switch (feature.properties.TYPE) {
+            switch (feature.properties.type) {
                 case 'Industrial Track \/ Shortline':
                     return {
                         color: "#FDD195",
@@ -640,7 +640,7 @@ var commicon = L.OpenFreightMarkers.icon({
                 dblclick: zoomToFeature
             });
             railSearch.push({
-                name: layer.feature.properties.NAME,
+                name: layer.feature.properties.name,
                 source: "RailLines",
                 id: L.stamp(layer),
                 bounds: layer.getBounds()
@@ -689,7 +689,7 @@ var commicon = L.OpenFreightMarkers.icon({
     });
 
     //define intermodal
-    var intermodalpoly = new L.TopoJSON(null, {
+    var intermodalpoly = L.geoJson(null, {
         style: {
             fillColor: "#FBA919",
             fillOpacity: 0.50,
@@ -703,7 +703,7 @@ var commicon = L.OpenFreightMarkers.icon({
                 dblclick: zoomToFeature
             });
             intermodalSearch.push({
-                name: layer.feature.properties.NAME,
+                name: layer.feature.properties.name,
                 source: "Intermodal",
                 id: L.stamp(layer),
                 bounds: layer.getBounds()
@@ -738,7 +738,7 @@ var commicon = L.OpenFreightMarkers.icon({
                 dblclick: zoomToPoint
             });
             xingSearch.push({
-                name: layer.feature.properties.NAME,
+                name: layer.feature.properties.name,
                 source: "GradeCrossing",
                 id: L.stamp(layer),
                 lat: layer.feature.geometry.coordinates[1],
@@ -746,7 +746,7 @@ var commicon = L.OpenFreightMarkers.icon({
             });
         }
     });
-    $.getJSON("data/pff_grade_xings.js", function(data) {
+    $.getJSON("https://arcgis.dvrpc.org/portal/rest/services/Freight/pff_grade_xings/FeatureServer/0/query?outFields=*&where=1%3D1&f=geojson", function(data) {
         gradexing.addData(data);
     });
     //define rail bridge
@@ -762,7 +762,7 @@ var commicon = L.OpenFreightMarkers.icon({
                 dblclick: zoomToPoint
             });
             RailBridgeSearch.push({
-                name: layer.feature.properties.NAME,
+                name: layer.feature.properties.name,
                 source: "RailBridges",
                 id: L.stamp(layer),
                 lat: layer.feature.geometry.coordinates[1],
@@ -773,7 +773,7 @@ var commicon = L.OpenFreightMarkers.icon({
 
     //define maritime facilities
     //define river
-    var river = new L.TopoJSON(null, {
+    var river = L.geoJson(null, {
         style: {
             fillColor: "#55B8DF",
             fillOpacity: 0.50,
@@ -787,7 +787,7 @@ var commicon = L.OpenFreightMarkers.icon({
                 dblclick: zoomToFeature
             });
             riverSearch.push({
-                name: layer.feature.properties.NAME,
+                name: layer.feature.properties.name,
                 source: "Rivers",
                 id: L.stamp(layer),
                 bounds: layer.getBounds()
@@ -836,7 +836,7 @@ var commicon = L.OpenFreightMarkers.icon({
     });
 
     //define anchorages
-    var anchoragepoly = new L.TopoJSON(null, {
+    var anchoragepoly = L.geoJson(null, {
         style: {
             fillColor: "#0E76BC",
             fillOpacity: 0.50,
@@ -850,7 +850,7 @@ var commicon = L.OpenFreightMarkers.icon({
                 dblclick: zoomToFeature
             });
             anchSearch.push({
-                name: layer.feature.properties.NAME,
+                name: layer.feature.properties.name,
                 source: "Anchorages",
                 id: L.stamp(layer),
                 bounds: layer.getBounds()
@@ -1690,37 +1690,37 @@ function loadLayers (){
         //
         spatialData.map(fetchData)
         
-        $.getJSON("data/International_Gateway.js", function(data) {
+        $.getJSON("https://arcgis.dvrpc.org/portal/rest/services/Freight/freight_centers/FeatureServer/0/query?outFields=*&where=types%3D'International+Gateway'&f=geojson", function(data) {
             FCgatewaypoly.addData(data);
-            var data_n = pointify_topo(data, 'International_Gateway');
+            var data_n = pointify(data, 'International_Gateway');
             FCgatewaypt.addData(data_n);
         });
         polyLayer.push('FCgatewaypoly');
 
-        $.getJSON("data/Heavy_Industrial.js", function(data) {
+        $.getJSON("https://arcgis.dvrpc.org/portal/rest/services/Freight/freight_centers/FeatureServer/0/query?outFields=*&where=types%3D'Heavy+Industrial'&f=geojson", function(data) {
             FCheavypoly.addData(data);
-            var data_n = pointify_topo(data, 'Heavy_Industrial');
+            var data_n = pointify(data, 'Heavy_Industrial');
             FCheavypt.addData(data_n);
         });
         polyLayer.push('FCheavypoly');
 
-        $.getJSON("data/Distribution_and_Logistics.js", function(data) {
+        $.getJSON("https://arcgis.dvrpc.org/portal/rest/services/Freight/freight_centers/FeatureServer/0/query?outFields=*&where=types%3D'Distribution+and+Logistics'&f=geojson", function(data) {
             FCdistpoly.addData(data);
-            var data_n = pointify_topo(data, 'Distribution_and_Logistics');
+            var data_n = pointify(data, 'Distribution_and_Logistics');
             FCdistpt.addData(data_n);
         });
         polyLayer.push('FCdistpoly');
 
-        $.getJSON("data/High_Tech_Manufacturing.js", function(data) {
+        $.getJSON("https://arcgis.dvrpc.org/portal/rest/services/Freight/freight_centers/FeatureServer/0/query?outFields=*&where=types%3D'High+Tech+Manufacturing'&f=geojson", function(data) {
             FChightechpoly.addData(data);
-            var data_n = pointify_topo(data, 'High_Tech_Manufacturing');
+            var data_n = pointify(data, 'High_Tech_Manufacturing');
             FChightechpt.addData(data_n);
         });
         polyLayer.push('FChightechpoly');
         
-        $.getJSON("data/Local_Manufacturing_and_Distribution.js", function(data) {
+        $.getJSON("https://arcgis.dvrpc.org/portal/rest/services/Freight/freight_centers/FeatureServer/0/query?outFields=*&where=types%3D'International+Gateway'&f=geojson", function(data) {
             FClocalpoly.addData(data);
-            var data_n = pointify_topo(data, 'Local_Manufacturing_and_Distribution');
+            var data_n = pointify(data, 'Local_Manufacturing_and_Distribution');
             FClocalpt.addData(data_n);
         });
         polyLayer.push('FClocalpoly');
@@ -1733,9 +1733,9 @@ function loadLayers (){
         polyLayer.push('commairpoly');
 
 
-        $.getJSON("data/airports_Reliever.js", function(data) {
+        $.getJSON("https://arcgis.dvrpc.org/portal/rest/services/Freight/airports/FeatureServer/0/query?outFields=*&where=type%3D'Reliever'&f=geojson", function(data) {
             relairpoly.addData(data);
-            var data_n = pointify_topo(data, 'airports_Reliever');
+            var data_n = pointify(data, 'airports_Reliever');
             relvairpt.addData(data_n);
         });
         polyLayer.push('relairpoly');
@@ -1745,18 +1745,18 @@ function loadLayers (){
             heliport.addData(data);
         });
 
-        $.getJSON("data/truck_parking.js", function(data) {
+        $.getJSON("https://arcgis.dvrpc.org/portal/rest/services/Freight/truck_parking/FeatureServer/0/query?outFields=*&where=1%3D1&f=geojson", function(data) {
             truckparkpoly.addData(data);
-            var data_n = pointify_topo(data, 'truck_parking');
+            var data_n = pointify(data, 'truck_parking');
             tppoints.addData(data_n);
         });
         polyLayer.push('truckparkpoly');
         
-        $.getJSON("data/river_crossing_Highway.js", function(data) {
+        $.getJSON("https://arcgis.dvrpc.org/portal/rest/services/Freight/river_crossings/FeatureServer/0/query?outFields=*&where=use%3D'Highway'&f=geojson", function(data) {
             hwyrivcrossing.addData(data);
         });
 
-        $.getJSON("data/river.js", function(data) {
+        $.getJSON("https://arcgis.dvrpc.org/portal/rest/services/Freight/river/FeatureServer/0/query?outFields=*&where=1%3D1&f=geojson", function(data) {
             river.addData(data);
         });
         polyLayer.push('river');
@@ -1768,7 +1768,7 @@ function loadLayers (){
         // });
         // polyLayer.push('portpoly');
 
-        $.getJSON("data/freight_rail.js", function(data) {
+        $.getJSON("https://arcgis.dvrpc.org/portal/rest/services/Freight/freight_rail/FeatureServer/0/query?outFields=*&where=1%3D1&f=geojson", function(data) {
             railines.addData(data);
         });
         polyLayer.push('railines');
@@ -1780,34 +1780,34 @@ function loadLayers (){
         // });
         // polyLayer.push('railyardpoly');
        
-        $.getJSON("data/intermodal.js", function(data) {
+        $.getJSON("https://arcgis.dvrpc.org/portal/rest/services/Freight/intermodal/FeatureServer/0/query?outFields=*&where=1%3D1&f=geojson", function(data) {
             intermodalpoly.addData(data);
-            var data_n = pointify_topo(data, 'intermodal');
+            var data_n = pointify(data, 'intermodal');
             intermodalpt.addData(data_n);
         });
         polyLayer.push('intermodalpoly');
        
-        $.getJSON("data/river_crossing_Rail.js", function(data) {
+        $.getJSON("https://arcgis.dvrpc.org/portal/rest/services/Freight/river_crossings/FeatureServer/0/query?outFields=*&where=use%3D'Rail'&f=geojson", function(data) {
             railbridge.addData(data);
         });
         
-        $.getJSON("data/nhs_connectors.js", function(data) {
+        $.getJSON("https://arcgis.dvrpc.org/portal/rest/services/Freight/nhs_connectors/FeatureServer/0/query?outFields=*&where=1%3D1&f=geojson", function(data) {
             nhspoly.addData(data);
-            var data_n = pointify_topo(data, 'nhs_connectors');
+            var data_n = pointify(data, 'nhs_connectors');
             nhs.addData(data_n);
             
         });
 
         polyLayer.push('nhspoly');
 
-        $.getJSON("data/highways.js", function(data) {
+        $.getJSON("https://arcgis.dvrpc.org/portal/rest/services/Freight/highways/FeatureServer/0/query?outFields=*&where=1%3D1&f=geojson", function(data) {
             freeway.addData(data);
         });
         polyLayer.push('freeway');
 
-        $.getJSON("data/anchorages.js", function(data) {
+        $.getJSON("https://arcgis.dvrpc.org/portal/rest/services/Freight/anchorages/FeatureServer/0/query?outFields=*&where=1%3D1&f=geojson", function(data) {
             anchoragepoly.addData(data);
-            var data_n = pointify_topo(data, 'anchorages');
+            var data_n = pointify(data, 'anchorages');
             anchoricon.addData(data_n);
         });
         polyLayer.push('anchoragepoly');
@@ -1817,7 +1817,7 @@ function loadLayers (){
         });
         polyLayer.push('pipelines');
 
-        $.getJSON("data/good_neighbor_pts.js", function(data) {
+        $.getJSON("https://arcgis.dvrpc.org/portal/rest/services/Freight/good_neighbor_pts/FeatureServer/0/query?outFields=*&where=1%3D1&f=geojson", function(data) {
             fgneighbor.addData(data);
         });
         
