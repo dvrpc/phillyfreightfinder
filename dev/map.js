@@ -746,7 +746,7 @@ var commicon = L.OpenFreightMarkers.icon({
             });
         }
     });
-    $.getJSON("https://arcgis.dvrpc.org/portal/rest/services/Freight/pff_grade_xings/FeatureServer/0/query?outFields=*&where=1%3D1&f=geojson", function(data) {
+    $.getJSON("https://arcgis.dvrpc.org/portal/rest/services/Freight/pff_grade_xings/FeatureServer/0/query?outFields=*&where=1%3D1&geometryPrecision=5&f=geojson", function(data) {
         gradexing.addData(data);
     });
     //define rail bridge
@@ -1640,17 +1640,17 @@ function pointify_topo(data, layer){
 
 const spatialData = [
     {
-        src: "https://arcgis.dvrpc.org/portal/rest/services/Freight/ports/FeatureServer/0/query?outFields=*&where=1%3D1&f=geojson",
+        src: "https://arcgis.dvrpc.org/portal/rest/services/Freight/ports/FeatureServer/0/query?outFields=*&where=1%3D1&geometryPrecision=5&f=geojson",
         poly: [portpoly, "portpoly"],
         pointify: porticon,
     },
     {
-        src: "https://arcgis.dvrpc.org/portal/rest/services/Freight/rail_yards/FeatureServer/0/query?outFields=*&where=1%3D1&f=geojson",
+        src: "https://arcgis.dvrpc.org/portal/rest/services/Freight/rail_yards/FeatureServer/0/query?outFields=*&where=1%3D1&geometryPrecision=5&f=geojson",
         poly: [railyardpoly, "railyardpoly"],
         pointify: railyardpt,
     },
     {
-        src: "https://arcgis.dvrpc.org/portal/rest/services/Freight/freight_centers/FeatureServer/0/query?outFields=*&where=types%3D'International+Gateway'&f=geojson",
+        src: "https://arcgis.dvrpc.org/portal/rest/services/Freight/freight_centers/FeatureServer/0/query?outFields=*&where=types%3D'International+Gateway'&geometryPrecision=5&f=geojson",
         poly: [FCgatewaypoly, "FCgatewaypoly"],
         pointify: FCgatewaypt,
     },
@@ -1695,42 +1695,42 @@ function loadLayers (){
         //
         spatialData.map(fetchData)
         
-        // $.getJSON("https://arcgis.dvrpc.org/portal/rest/services/Freight/freight_centers/FeatureServer/0/query?outFields=*&where=types%3D'International+Gateway'&f=geojson", function(data) {
+        // $.getJSON("https://arcgis.dvrpc.org/portal/rest/services/Freight/freight_centers/FeatureServer/0/query?outFields=*&where=types%3D'International+Gateway'&geometryPrecision=5&f=geojson", function(data) {
         //     FCgatewaypoly.addData(data);
         //     var data_n = pointify(data, 'International_Gateway');
         //     FCgatewaypt.addData(data_n);
         // });
         // polyLayer.push('FCgatewaypoly');
 
-        $.getJSON("https://arcgis.dvrpc.org/portal/rest/services/Freight/freight_centers/FeatureServer/0/query?outFields=*&where=types%3D'Heavy+Industrial'&f=geojson", function(data) {
+        $.getJSON("https://arcgis.dvrpc.org/portal/rest/services/Freight/freight_centers/FeatureServer/0/query?outFields=*&where=types%3D'Heavy+Industrial'&geometryPrecision=5&f=geojson", function(data) {
             FCheavypoly.addData(data);
             var data_n = pointify(data, 'Heavy_Industrial');
             FCheavypt.addData(data_n);
         });
         polyLayer.push('FCheavypoly');
 
-        $.getJSON("https://arcgis.dvrpc.org/portal/rest/services/Freight/freight_centers/FeatureServer/0/query?outFields=*&where=types%3D'Distribution+and+Logistics'&f=geojson", function(data) {
+        $.getJSON("https://arcgis.dvrpc.org/portal/rest/services/Freight/freight_centers/FeatureServer/0/query?outFields=*&where=types%3D'Distribution+and+Logistics'&geometryPrecision=5&f=geojson", function(data) {
             FCdistpoly.addData(data);
             var data_n = pointify(data, 'Distribution_and_Logistics');
             FCdistpt.addData(data_n);
         });
         polyLayer.push('FCdistpoly');
 
-        $.getJSON("https://arcgis.dvrpc.org/portal/rest/services/Freight/freight_centers/FeatureServer/0/query?outFields=*&where=types%3D'High+Tech+Manufacturing'&f=geojson", function(data) {
+        $.getJSON("https://arcgis.dvrpc.org/portal/rest/services/Freight/freight_centers/FeatureServer/0/query?outFields=*&where=types%3D'High+Tech+Manufacturing'&geometryPrecision=5&f=geojson", function(data) {
             FChightechpoly.addData(data);
             var data_n = pointify(data, 'High_Tech_Manufacturing');
             FChightechpt.addData(data_n);
         });
         polyLayer.push('FChightechpoly');
         
-        $.getJSON("https://arcgis.dvrpc.org/portal/rest/services/Freight/freight_centers/FeatureServer/0/query?outFields=*&where=types%3D'Local+Manufacturing+and+Distribution'&f=geojson", function(data) {
+        $.getJSON("https://arcgis.dvrpc.org/portal/rest/services/Freight/freight_centers/FeatureServer/0/query?outFields=*&where=types%3D'Local+Manufacturing+and+Distribution'&geometryPrecision=5&f=geojson", function(data) {
             FClocalpoly.addData(data);
             var data_n = pointify(data, 'Local_Manufacturing_and_Distribution');
             FClocalpt.addData(data_n);
         });
         polyLayer.push('FClocalpoly');
        
-        $.getJSON("https://arcgis.dvrpc.org/portal/rest/services/Freight/airports/FeatureServer/0/query?outFields=*&where=type%3D'Commercial'&f=geojson", function(data) {
+        $.getJSON("https://arcgis.dvrpc.org/portal/rest/services/Freight/airports/FeatureServer/0/query?outFields=*&where=type%3D'Commercial'&geometryPrecision=5&f=geojson", function(data) {
             commairpoly.addData(data);
              var data_n = pointify(data, 'airports_Commercial');
             commairpt.addData(data_n);
@@ -1738,7 +1738,7 @@ function loadLayers (){
         polyLayer.push('commairpoly');
 
 
-        $.getJSON("https://arcgis.dvrpc.org/portal/rest/services/Freight/airports/FeatureServer/0/query?outFields=*&where=type%3D'Reliever'&f=geojson", function(data) {
+        $.getJSON("https://arcgis.dvrpc.org/portal/rest/services/Freight/airports/FeatureServer/0/query?outFields=*&where=type%3D'Reliever'&geometryPrecision=5&f=geojson", function(data) {
             relairpoly.addData(data);
             var data_n = pointify(data, 'airports_Reliever');
             relvairpt.addData(data_n);
@@ -1746,57 +1746,57 @@ function loadLayers (){
         polyLayer.push('relairpoly');
 
     
-        $.getJSON("https://arcgis.dvrpc.org/portal/rest/services/Freight/heliport/FeatureServer/0/query?outFields=*&where=1%3D1&f=geojson", function(data) {
+        $.getJSON("https://arcgis.dvrpc.org/portal/rest/services/Freight/heliport/FeatureServer/0/query?outFields=*&where=1%3D1&geometryPrecision=5&f=geojson", function(data) {
             heliport.addData(data);
         });
 
-        $.getJSON("https://arcgis.dvrpc.org/portal/rest/services/Freight/truck_parking/FeatureServer/0/query?outFields=*&where=1%3D1&f=geojson", function(data) {
+        $.getJSON("https://arcgis.dvrpc.org/portal/rest/services/Freight/truck_parking/FeatureServer/0/query?outFields=*&where=1%3D1&geometryPrecision=5&f=geojson", function(data) {
             truckparkpoly.addData(data);
             var data_n = pointify(data, 'truck_parking');
             tppoints.addData(data_n);
         });
         polyLayer.push('truckparkpoly');
         
-        $.getJSON("https://arcgis.dvrpc.org/portal/rest/services/Freight/river_crossings/FeatureServer/0/query?outFields=*&where=use%3D'Highway'&f=geojson", function(data) {
+        $.getJSON("https://arcgis.dvrpc.org/portal/rest/services/Freight/river_crossings/FeatureServer/0/query?outFields=*&where=use%3D'Highway'&geometryPrecision=5&f=geojson", function(data) {
             hwyrivcrossing.addData(data);
         });
 
-        $.getJSON("https://arcgis.dvrpc.org/portal/rest/services/Freight/river/FeatureServer/0/query?outFields=*&where=1%3D1&f=geojson", function(data) {
+        $.getJSON("https://arcgis.dvrpc.org/portal/rest/services/Freight/river/FeatureServer/0/query?outFields=*&where=1%3D1&geometryPrecision=5&f=geojson", function(data) {
             river.addData(data);
         });
         polyLayer.push('river');
 
-        // $.getJSON("https://arcgis.dvrpc.org/portal/rest/services/Freight/ports/FeatureServer/0/query?outFields=*&where=1%3D1&f=geojson", function(data) {
+        // $.getJSON("https://arcgis.dvrpc.org/portal/rest/services/Freight/ports/FeatureServer/0/query?outFields=*&where=1%3D1&geometryPrecision=5&f=geojson", function(data) {
         //     portpoly.addData(data);
         //     var data_n = pointify(data, 'ports');
         //     porticon.addData(data_n);
         // });
         // polyLayer.push('portpoly');
 
-        $.getJSON("https://arcgis.dvrpc.org/portal/rest/services/Freight/freight_rail/FeatureServer/0/query?outFields=*&where=type+not+like+%27%25ROW%25%27+AND+type+not+like+%27%25Inactive%25%27&f=geojson", function(data) {
+        $.getJSON("https://arcgis.dvrpc.org/portal/rest/services/Freight/freight_rail/FeatureServer/0/query?outFields=*&where=type+not+like+%27%25ROW%25%27+AND+type+not+like+%27%25Inactive%25%27&geometryPrecision=5&f=geojson", function(data) {
             railines.addData(data);
         });
         polyLayer.push('railines');
 
-        // $.getJSON("https://arcgis.dvrpc.org/portal/rest/services/Freight/rail_yards/FeatureServer/0/query?outFields=*&where=1%3D1&f=geojson", function(data) {
+        // $.getJSON("https://arcgis.dvrpc.org/portal/rest/services/Freight/rail_yards/FeatureServer/0/query?outFields=*&where=1%3D1&geometryPrecision=5&f=geojson", function(data) {
         //     railyardpoly.addData(data);
         //     var data_n = pointify(data, 'rail_yards');
         //     railyardpt.addData(data_n);
         // });
         // polyLayer.push('railyardpoly');
        
-        $.getJSON("https://arcgis.dvrpc.org/portal/rest/services/Freight/intermodal/FeatureServer/0/query?outFields=*&where=1%3D1&f=geojson", function(data) {
+        $.getJSON("https://arcgis.dvrpc.org/portal/rest/services/Freight/intermodal/FeatureServer/0/query?outFields=*&where=1%3D1&geometryPrecision=5&f=geojson", function(data) {
             intermodalpoly.addData(data);
             var data_n = pointify(data, 'intermodal');
             intermodalpt.addData(data_n);
         });
         polyLayer.push('intermodalpoly');
        
-        $.getJSON("https://arcgis.dvrpc.org/portal/rest/services/Freight/river_crossings/FeatureServer/0/query?outFields=*&where=use%3D'Rail'&f=geojson", function(data) {
+        $.getJSON("https://arcgis.dvrpc.org/portal/rest/services/Freight/river_crossings/FeatureServer/0/query?outFields=*&where=use%3D'Rail'&geometryPrecision=5&f=geojson", function(data) {
             railbridge.addData(data);
         });
         
-        $.getJSON("https://arcgis.dvrpc.org/portal/rest/services/Freight/nhs_connectors/FeatureServer/0/query?outFields=*&where=1%3D1&f=geojson", function(data) {
+        $.getJSON("https://arcgis.dvrpc.org/portal/rest/services/Freight/nhs_connectors/FeatureServer/0/query?outFields=*&where=1%3D1&geometryPrecision=5&f=geojson", function(data) {
             nhspoly.addData(data);
             var data_n = pointify(data, 'nhs_connectors');
             nhs.addData(data_n);
@@ -1805,12 +1805,12 @@ function loadLayers (){
 
         polyLayer.push('nhspoly');
 
-        $.getJSON("https://arcgis.dvrpc.org/portal/rest/services/Freight/highways/FeatureServer/0/query?outFields=*&where=1%3D1&f=geojson", function(data) {
+        $.getJSON("https://arcgis.dvrpc.org/portal/rest/services/Freight/highways/FeatureServer/0/query?outFields=*&where=1%3D1&geometryPrecision=5&f=geojson", function(data) {
             freeway.addData(data);
         });
         polyLayer.push('freeway');
 
-        $.getJSON("https://arcgis.dvrpc.org/portal/rest/services/Freight/anchorages/FeatureServer/0/query?outFields=*&where=1%3D1&f=geojson", function(data) {
+        $.getJSON("https://arcgis.dvrpc.org/portal/rest/services/Freight/anchorages/FeatureServer/0/query?outFields=*&where=1%3D1&geometryPrecision=5&f=geojson", function(data) {
             anchoragepoly.addData(data);
             var data_n = pointify(data, 'anchorages');
             anchoricon.addData(data_n);
@@ -1822,7 +1822,7 @@ function loadLayers (){
         });
         polyLayer.push('pipelines');
 
-        $.getJSON("https://arcgis.dvrpc.org/portal/rest/services/Freight/good_neighbor_pts/FeatureServer/0/query?outFields=*&where=1%3D1&f=geojson", function(data) {
+        $.getJSON("https://arcgis.dvrpc.org/portal/rest/services/Freight/good_neighbor_pts/FeatureServer/0/query?outFields=*&where=1%3D1&geometryPrecision=5&f=geojson", function(data) {
             fgneighbor.addData(data);
         });
         
