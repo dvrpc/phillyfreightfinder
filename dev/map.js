@@ -1773,7 +1773,7 @@ function loadLayers (){
         // });
         // polyLayer.push('portpoly');
 
-        $.getJSON("https://arcgis.dvrpc.org/portal/rest/services/Freight/freight_rail/FeatureServer/0/query?outFields=*&where=1%3D1&f=geojson", function(data) {
+        $.getJSON("https://arcgis.dvrpc.org/portal/rest/services/Freight/freight_rail/FeatureServer/0/query?outFields=*&where=type+not+like+%27%25ROW%25%27+AND+type+not+like+%27%25Inactive%25%27&f=geojson", function(data) {
             railines.addData(data);
         });
         polyLayer.push('railines');
