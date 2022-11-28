@@ -73,12 +73,13 @@ var custom_matches = {'CI-1': 'South Philadelphia Freight Complex', 'CI-2': 'Bro
 
 function findMatch(layer, id){
     var facility;
-    $.each(layer._layers, function(key, value) {
-        if(value.feature.properties.PFF_ID === id){
-            facility = value.feature.properties.NAME;
-        } 
 
-    });
+    for (const [key, value] of Object.entries(layer._layers)) {
+        if(value.feature.properties.pff_id === id){
+            facility = value.feature.properties.name;
+        }
+    }
+
     return facility
 }
 

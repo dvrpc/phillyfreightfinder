@@ -1618,7 +1618,7 @@ function renderLayers(){
 }
 
 function pointify(data){
-    var data_n = jQuery.extend(true, {}, data);
+    var data_n = JSON.parse(JSON.stringify(data));;
     for(var i = 0; i < data_n.features.length; i++){
         data_n.features[i].geometry.type = 'Point';
         data_n.features[i].geometry.coordinates = [data_n.features[i].properties.long_, data_n.features[i].properties.lat]
