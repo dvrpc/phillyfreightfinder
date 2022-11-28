@@ -1718,7 +1718,7 @@ function loadLayers (){
         });
         polyLayer.push('FChightechpoly');
         
-        $.getJSON("https://arcgis.dvrpc.org/portal/rest/services/Freight/freight_centers/FeatureServer/0/query?outFields=*&where=types%3D'International+Gateway'&f=geojson", function(data) {
+        $.getJSON("https://arcgis.dvrpc.org/portal/rest/services/Freight/freight_centers/FeatureServer/0/query?outFields=*&where=types%3D'Local+Manufacturing+and+Distribution'&f=geojson", function(data) {
             FClocalpoly.addData(data);
             var data_n = pointify(data, 'Local_Manufacturing_and_Distribution');
             FClocalpt.addData(data_n);
