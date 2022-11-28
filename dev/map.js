@@ -578,7 +578,7 @@ var commicon = L.OpenFreightMarkers.icon({
     //define freeways
     var freeway = L.geoJson(null, {
         style: function style(feature) {
-            switch (feature.properties.TYPE) {
+            switch (feature.properties.type) {
                 case 'Limited Access Highway':
                     return {
                         color: "#C57AE0",
