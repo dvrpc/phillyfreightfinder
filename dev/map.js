@@ -1649,6 +1649,11 @@ const spatialData = [
         poly: [railyardpoly, "railyardpoly"],
         pointify: railyardpt,
     },
+    {
+        src: "https://arcgis.dvrpc.org/portal/rest/services/Freight/freight_centers/FeatureServer/0/query?outFields=*&where=types%3D'International+Gateway'&f=geojson",
+        poly: [FCgatewaypoly, "FCgatewaypoly"],
+        pointify: FCgatewaypt,
+    },
     /// point only examples
     // {
     //     src: 'urlstr',
@@ -1690,12 +1695,12 @@ function loadLayers (){
         //
         spatialData.map(fetchData)
         
-        $.getJSON("https://arcgis.dvrpc.org/portal/rest/services/Freight/freight_centers/FeatureServer/0/query?outFields=*&where=types%3D'International+Gateway'&f=geojson", function(data) {
-            FCgatewaypoly.addData(data);
-            var data_n = pointify(data, 'International_Gateway');
-            FCgatewaypt.addData(data_n);
-        });
-        polyLayer.push('FCgatewaypoly');
+        // $.getJSON("https://arcgis.dvrpc.org/portal/rest/services/Freight/freight_centers/FeatureServer/0/query?outFields=*&where=types%3D'International+Gateway'&f=geojson", function(data) {
+        //     FCgatewaypoly.addData(data);
+        //     var data_n = pointify(data, 'International_Gateway');
+        //     FCgatewaypt.addData(data_n);
+        // });
+        // polyLayer.push('FCgatewaypoly');
 
         $.getJSON("https://arcgis.dvrpc.org/portal/rest/services/Freight/freight_centers/FeatureServer/0/query?outFields=*&where=types%3D'Heavy+Industrial'&f=geojson", function(data) {
             FCheavypoly.addData(data);
