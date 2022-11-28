@@ -416,15 +416,15 @@ function clkFreightCenter(e) {
                         +"</div></div>"
                         //+"<div class='labelfield source'>Data Source: " + props.SOURCE + "</div></div>";
                         // +"<p>" + props.REPORT + "</p>";
-    if (props.Types === 'International Gateway'){
+    if (props.types === 'International Gateway'){
             fclass = 'fcgateway';
-    }else if(props.Types === 'Heavy Industrial'){
+    }else if(props.types === 'Heavy Industrial'){
             fclass = 'fcheavy';
-    }else if (props.Types === 'Distribution and Logistics'){
+    }else if (props.types === 'Distribution and Logistics'){
             fclass = 'fcdist';
-    }else if (props.Types === 'High Tech Manufacturing'){
+    }else if (props.types === 'High Tech Manufacturing'){
             fclass = 'fchightech';
-    }else if (props.Types === 'Local Manufacturing and Distribution'){
+    }else if (props.types === 'Local Manufacturing and Distribution'){
             fclass = 'fclocal';
     }else{
         fclass = 'fclocal';
