@@ -895,8 +895,8 @@ var commicon = L.OpenFreightMarkers.icon({
     //////////////////////////////////////////////////////
 
     // Highlight search box text on click
-   $("#searchbox").click(function() {
-        $(this).select();
+   $("#searchbox").on('click', function() {
+        $(this).trigger('select');
     });
 
     // Typeahead search functionality

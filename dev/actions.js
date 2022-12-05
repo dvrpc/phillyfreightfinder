@@ -513,9 +513,9 @@ function clkfgneighbor(e) {
 };
 
 
-$(document).ready(function() {
+$(document).on('ready', function() {
 
-    $( 'a[href="#"]' ).click( function(e) {
+    $( 'a[href="#"]' ).on('click', function(e){
       e.preventDefault();
      });
 
