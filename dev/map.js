@@ -24,45 +24,6 @@ var map, map2, countySearch = [],
     FCmajorSearch = [],
     FCmegaSearch = [],
     mcountyPrint = [];
-//countyMap
-//county maps
-/*var Stamen_TonerBackground = L.tileLayer('http://{s}.tile.stamen.com/toner-background/{z}/{x}/{y}.png', {
-    attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
-    subdomains: 'abcd',
-    opacity: 0.0
-});
-countymap = L.map("map2", {
-    minZoom: 8,
-    maxZoom: 8,
-    dragging: false,
-    zoomControl: false,
-    boxZoom: false,
-    doubleClickZoom: false,
-    touchZoom: false,
-    layers: [Stamen_TonerBackground]
-});
-//countyregions
-var mcounty = L.geoJson(null, {
-    style: {
-        color: "#efefef",
-        weight: 4,
-        fillColor: "#396ab2",
-        opacity: 1,
-        fillOpacity: 1
-    },
-    onEachFeature: function(feature, layer) {
-        layer.on({
-            mouseover: displayCountyname,
-            mouseout: clearCountyname,
-            click: populateCounty
-        });
-    }
-});
-$.getJSON("data/county5k.js", function(data) {
-    mcounty.addData(data);
-}).complete(function() {
-    countymap.fitBounds(mcounty.getBounds());
-});*/
 
     //declare basemaps
     // Basemap Layers
@@ -124,33 +85,6 @@ $.getJSON("data/county5k.js", function(data) {
             addStreetLabels();
         }
     });
-    // Static DVRPC Layers
-   /* var counties = L.geoJson(null, {
-        style: function(feature) {
-            return {
-                color: "white",
-                fill: false,
-                opacity: 0.4,
-                clickable: false,
-            };
-        },
-        onEachFeature: function(feature, layer) {
-            countySearch.push({
-                name: layer.feature.properties.Co_Name,
-                source: "Counties",
-                id: L.stamp(layer),
-                bounds: layer.getBounds()
-            });
-        }
-    });
-    $.getJSON("data/counties.js", function(data) {
-        counties.addData(data);
-    }).complete(function() {
-        map.fitBounds(counties.getBounds());
-    });
-    (counties).addTo(map);
-    alert(counties.getBounds());*/
-
 
 ///////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////
@@ -1721,16 +1655,6 @@ const spatialData = [
         src: "https://arcgis.dvrpc.org/portal/rest/services/Freight/freight_rail/FeatureServer/0/query?outFields=*&where=type+not+like+%27%25ROW%25%27+AND+type+not+like+%27%25Inactive%25%27&geometryPrecision=5&f=geojson",
         poly: [railines, "railines"]
     },
-    /// point only examples
-    // {
-    //     src: 'urlstr',
-    //     point: layerVar
-    // }
-    /// polygon only example
-    // {
-    //     src: 'urlstr',
-    //     poly: [layerVar, 'varNameasStr']
-    // }
 ];
 
 async function fetchData(layer) {
