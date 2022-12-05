@@ -496,21 +496,6 @@ function clkheliport(e) {
     contentPush(header,content,featureName,featureClass,featureIcon);
 };
 
-//Energy-Utilities
-//pipelines
-function clkpipelines(e) {
-    initializeHL(e);
-    header = '<p>Pipeline</p>',
-    content = "<div id='baseInfo'>"
-            +"<div class='datafield'>" + props.TYPE + "</div><div class='labelfield'>Material Transported</div>"
-            +"<div class='datafield'>" + props.COUNTY + "</div><div class='labelfield'>County</div>"
-            +"<div class='labelfield source'>Data Source: " + props.SOURCE + "</div></div>",
-    featureName = '<p>Type: Pipeline</p>',
-    featureClass = 'energycl',
-    featureIcon = 'pipelineicon icon';
-    contentPush(header,content,featureName,featureClass,featureIcon);
-};
-
 //Community
 //Freight as Good Neighbor
 function clkfgneighbor(e) {
@@ -550,20 +535,3 @@ function modalLink(modal, tab){
         }, 0);
     }
 } 
-
-//topoJSON handling
-
-L.TopoJSON = L.GeoJSON.extend({  
-  addData: function(jsonData) {    
-    if (jsonData.type === "Topology") {
-      for (key in jsonData.objects) {
-        geojson = topojson.feature(jsonData, jsonData.objects[key]);
-        L.GeoJSON.prototype.addData.call(this, geojson);
-      }
-    }    
-    else {
-      L.GeoJSON.prototype.addData.call(this, jsonData);
-    }
-  }  
-});
-// Copyright (c) 2013 Ryan Clark

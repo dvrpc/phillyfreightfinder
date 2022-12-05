@@ -104,50 +104,69 @@ var PFFcustomIcon = L.Icon.extend({
 var IconPresets = {markerSet: 'open-freight', mapMarker: 'circle-cm', legendMarker:'circle-md', iconSet: 'dynico'};
 
 var commicon = L.OpenFreightMarkers.icon({
-        icon: 'airport', markerColor: 'forest', layer:'commGroup', title: 'Commercial Airport'}, IconPresets),
+    icon: 'airport', markerColor: 'forest', layer: 'commGroup', title: 'Commercial Airport'
+}, IconPresets),
     relvicon = new L.OpenFreightMarkers.icon({
-        icon: 'airport', markerColor: 'green', layer:'relGroup', title: 'Reliever Airport'}, IconPresets),
+        icon: 'airport', markerColor: 'green', layer: 'relGroup', title: 'Reliever Airport'
+    }, IconPresets),
     helicon = L.OpenFreightMarkers.icon({
-        icon: 'heliport', markerColor: 'ltgreen', layer:'heliport', title: 'Heliport'}, IconPresets),
+        icon: 'heliport', markerColor: 'ltgreen', layer: 'heliport', title: 'Heliport'
+    }, IconPresets),
     FCgatewayicon = L.OpenFreightMarkers.icon({
-        icon: 'center', markerColor: 'dkred', layer:'FCgatewaygroup', title: 'International Gateway'}, IconPresets),
+        icon: 'center', markerColor: 'dkred', layer: 'FCgatewaygroup', title: 'International Gateway'
+    }, IconPresets),
     FCheavyicon = L.OpenFreightMarkers.icon({
-        icon: 'center', markerColor: 'clay', layer:'FCheavygroup', title: 'Heavy Industrial'}, IconPresets),
+        icon: 'center', markerColor: 'clay', layer: 'FCheavygroup', title: 'Heavy Industrial'
+    }, IconPresets),
     FCdisticon = L.OpenFreightMarkers.icon({
-        icon: 'center', markerColor: 'rust', layer:'FCdistgroup', title: 'Distribution and Logistics'}, IconPresets),
+        icon: 'center', markerColor: 'rust', layer: 'FCdistgroup', title: 'Distribution and Logistics'
+    }, IconPresets),
     FChightechicon = L.OpenFreightMarkers.icon({
-        icon: 'center', markerColor: 'ltorange', layer:'FChightechgroup', title: 'High Tech Manufacturing'}, IconPresets),
+        icon: 'center', markerColor: 'ltorange', layer: 'FChightechgroup', title: 'High Tech Manufacturing'
+    }, IconPresets),
     FClocalicon = L.OpenFreightMarkers.icon({
-        icon: 'center', markerColor: 'peach', layer:'FClocalgroup', title: 'Local Manufacturing and Distribution'}, IconPresets),
+        icon: 'center', markerColor: 'peach', layer: 'FClocalgroup', title: 'Local Manufacturing and Distribution'
+    }, IconPresets),
     hwyicon = L.OpenFreightMarkers.icon({
-        icon: 'truck', markerColor: 'purple', layer:'freeway', title: 'Highway'}, IconPresets),
+        icon: 'truck', markerColor: 'purple', layer: 'freeway', title: 'Highway'
+    }, IconPresets),
     trckprkicon = L.OpenFreightMarkers.icon({
-        icon: 'parking', markerColor: 'purple', layer:'trkparkgroup', title: 'Truck Parking'}, IconPresets),
+        icon: 'parking', markerColor: 'purple', layer: 'trkparkgroup', title: 'Truck Parking'
+    }, IconPresets),
     hwybricon = L.OpenFreightMarkers.icon({
-        icon: 'bridge', markerColor: 'purple', layer:'hwyrivcrossing', title: 'Highway River Crossing'}, IconPresets),
+        icon: 'bridge', markerColor: 'purple', layer: 'hwyrivcrossing', title: 'Highway River Crossing'
+    }, IconPresets),
     NHSicon = L.OpenFreightMarkers.icon({
-        icon: 'nhs', markerColor: 'purple', layer:'nhsgroup', title: 'NHS Connector'}, IconPresets),
+        icon: 'nhs', markerColor: 'purple', layer: 'nhsgroup', title: 'NHS Connector'
+    }, IconPresets),
     railLineicon = L.OpenFreightMarkers.icon({
-        icon: 'rail', markerColor: 'gold', layer:'railines', title: 'Rail Line'}, IconPresets),
+        icon: 'rail', markerColor: 'gold', layer: 'railines', title: 'Rail Line'
+    }, IconPresets),
     ryicon = L.OpenFreightMarkers.icon({
-        icon: 'railyard', markerColor: 'gold', layer:'railyardgroup', title: 'Rail Yard'}, IconPresets),
+        icon: 'railyard', markerColor: 'gold', layer: 'railyardgroup', title: 'Rail Yard'
+    }, IconPresets),
     imicon = L.OpenFreightMarkers.icon({
-        icon: 'intermodal', markerColor: 'gold', layer:'intermodalgroup', title: 'Intermodal Yard'}, IconPresets),
+        icon: 'intermodal', markerColor: 'gold', layer: 'intermodalgroup', title: 'Intermodal Yard'
+    }, IconPresets),
     xingicon = L.OpenFreightMarkers.icon({
-        icon: 'railxing', markerColor: 'gold', layer:'gradexing', title: 'Class I Grade Crossing'}, IconPresets),
+        icon: 'railxing', markerColor: 'gold', layer: 'gradexing', title: 'Class I Grade Crossing'
+    }, IconPresets),
     rbicon = L.OpenFreightMarkers.icon({
-        icon: 'bridge', markerColor: 'gold', layer:'railbridge', title: 'Rail River Crossing'}, IconPresets),
+        icon: 'bridge', markerColor: 'gold', layer: 'railbridge', title: 'Rail River Crossing'
+    }, IconPresets),
     prticon = L.OpenFreightMarkers.icon({
-        icon: 'ship', markerColor: 'blue', layer:'portGroup', title: 'Port Terminal'}, IconPresets),
+        icon: 'ship', markerColor: 'blue', layer: 'portGroup', title: 'Port Terminal'
+    }, IconPresets),
     anchicon = L.OpenFreightMarkers.icon({
-        icon: 'anchor', markerColor: 'blue', layer:'anchorageGroup', title: 'Anchorage'}, IconPresets),
+        icon: 'anchor', markerColor: 'blue', layer: 'anchorageGroup', title: 'Anchorage'
+    }, IconPresets),
     riverIcon = L.OpenFreightMarkers.icon({
-        icon: 'river', markerColor: 'blue', layer:'river', title: 'Navigable River'}, IconPresets),
+        icon: 'river', markerColor: 'blue', layer: 'river', title: 'Navigable River'
+    }, IconPresets),
     fgnicon = L.OpenFreightMarkers.icon({
-        icon: 'community', markerColor: 'teal', layer:'fgneighbor', title: 'Freight as a Good Neighbor'}, IconPresets),
-    pipeIcon = L.OpenFreightMarkers.icon({
-        icon: 'pipeline', markerColor: 'yellow', layer:'pipelines', title: 'Pipeline', onLoad: false}, IconPresets);
-   
+        icon: 'community', markerColor: 'teal', layer: 'fgneighbor', title: 'Freight as a Good Neighbor'
+    }, IconPresets);
+    
     //define airport layers
     //define commercial airports
     var commairpoly = L.geoJson(null, {
@@ -804,49 +823,6 @@ var commicon = L.OpenFreightMarkers.icon({
                 click: clkanchorage,
                 dblclick: zoomToPoint
             });
-        }
-    });
-
-
-    //define energy layers
-    //define pipelines
-    var pipelines = new L.TopoJSON(null, {
-        style: {
-            color: "#EFD315",
-            weight: 3,
-            opacity: 0.90
-        },
-        onEachFeature: function(feature, layer) {
-            layer.on({
-                click: clkpipelines,
-                dblclick: zoomToFeature
-            });
-        }
-    });
-
-
-
-
-    //pipeline visibility hack
-    map.on('moveend', function() {
-        if (map.getZoom() > 14) {
-            $('#pipelabel').parent().addClass('disabled');
-            $('#pipelabel').closest('.panel').find('.checked_all').addClass('disabled');
-        }
-        if (map.getZoom() > 14 && map.hasLayer(pipelines) && $("#pipelines").is(':checked')) {
-            map.removeLayer(pipelines);
-            var pipelinelegend = document.getElementById('pipehidden');
-            pipelinelegend.innerHTML = "[not available at zoom level]";
-        }
-        if (map.getZoom() <= 14) {
-            $('#pipelabel').parent().removeClass('disabled');
-            $('#pipelabel').closest('.panel').find('.checked_all').removeClass('disabled');
-        }
-        if (map.getZoom() <= 14 && $("#pipelines").is(':checked')) {
-            map.addLayer(pipelines);
-            var pipelinelegend = document.getElementById('pipehidden');
-            pipelinelegend.innerHTML = "";
-            $('#pipelabel').parent().removeClass('disabled');
         }
     });
 
@@ -1684,11 +1660,6 @@ function loadLayers (){
         if(mapLoad === 'false'){
         
         spatialData.map(fetchData)
-
-        $.getJSON("data/pipelines.js", function(data) {
-            pipelines.addData(data);
-        });
-        polyLayer.push('pipelines');
         
         //set checkbox status
         $('.legPanel').each(function(){
