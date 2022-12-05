@@ -1525,18 +1525,6 @@ function pointify(data){
     return data_n
 }
 
-function pointify_topo(data, layer){
-    var data_n = jQuery.extend(true, {}, data['objects'][layer]);
-    data_n.features = data_n.geometries;
-    data_n.type = 'FeatureCollection';
-    data_n.geometries = [];
-    for(var i = 0; i < data_n.features.length; i++){
-        data_n.features[i].type = 'Feature'
-        data_n.features[i].geometry = {'type': 'Point','coordinates': [data_n.features[i].properties.LONG_, data_n.features[i].properties.LAT]};
-    }
-    return data_n
-}
-
 const spatialData = [
     {
         src: "https://arcgis.dvrpc.org/portal/rest/services/Freight/ports/FeatureServer/0/query?outFields=*&where=1%3D1&geometryPrecision=5&f=geojson",
