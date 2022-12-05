@@ -528,136 +528,14 @@ function clkfgneighbor(e) {
 };
 
 
-
-            /////////////////////////////////////////////////////
-            //////////////////////////////////////////////////
-            /////// Regional Highcharts graphs
-
-
 $(document).ready(function() {
-    
-    
 
     $( 'a[href="#"]' ).click( function(e) {
       e.preventDefault();
      });
-    
-    /*Highcharts.setOptions({
-        chart: {
-                type: 'pie',
-                backgroundColor: '#396AB2'
-
-            },
-        title: {
-                verticalAlign: 'middle',
-                align: 'center',
-                floating: true,
-                useHTML: true
-            },
-        yAxis: {
-                title: {
-                    text: ''
-                }
-            },
-        credits: {
-                enabled: false
-            },
-        plotOptions: {
-                pie: {
-                    shadow: false,
-                    dataLabels: {
-                        enabled: false},
-                    borderColor: '#335e9f',
-                    borderWidth: 0,
-                    colors: ['#8dd3c7','#ffffb3','#bebada','#fb8072','#80b1d3','#fdb462','#b3de69'],
-                }
-            },
-        series: [{ 
-                size: '230%',
-                innerSize: '130%', 
-            }]
-
-    });
-
-    $.getJSON('data/valueRegion.json', function(data) {
-                    var valueData = [], tonData=[], data1 = data.region, dataLen = data1.length;
-                    for (var i = 0; i < dataLen; i++){ 
-                        valueData.push({
-                            name: data1[i].type,
-                            y:  data1[i].value}),
-                        tonData.push({
-                            name: data1[i].type,
-                            y: data1[i].tons
-                        })
-                    }
-                    
-                    var ValChart = new Highcharts.Chart({
-                        chart: {
-                            renderTo: 'containerValue',
-                        },
-                        
-                        title: {
-                            text: '<div style="text-align:center;line-height: 0.8;"><span class="chartPrefix">by</span><br><span class="chartLabel">VALUE</span></div>',
-                            y: -55
-                        },
-                        tooltip: {
-                            formatter: function() {
-                                return '<b>' + this.key + '</b><br/><b>$'+ this.y + '</b> billion<br/>'+ Math.round(this.percentage*100)/100 +'%';
-                            }
-                        },
-                        plotOptions: {
-                            pie: {
-                                center: ['50%', '-15%'],
-                                colors: ['#8dd3c7','#ffffb3','#bebada','#fb8072','#80b1d3','#fdb462','#b3de69'],
-                                startAngle: 90,
-                                endAngle: 270
-
-                            }
-                        },
-                        series: [{
-                            id: 'Values',
-                            name: 'Value', 
-                            size: '230%',
-                            innerSize: '130%', 
-                            data: valueData
-                        }]
-                    });
-
-                    var tonChart = new Highcharts.Chart({
-                        chart: {
-                            renderTo: 'containerTon',
-                        },
-                        
-                        title: {
-                            text: '<div style="text-align:center;line-height: 0.8;"><span class="chartPrefix">by</span><br><span class="chartLabel">TONNAGE</span></div>',
-                            y: 55
-                        },
-                        tooltip: {
-                            formatter: function() {
-                                return '<b>' + this.key + '</b><br/><b>'+ this.y + '</b> tons<br/>'+ Math.round(this.percentage*100)/100 +'%';
-                            }
-                        },
-                        plotOptions: {
-                            pie: {
-                                center: ['50%', '120%'],
-                                colors: ['#8dd3c7','#ffffb3','#bebada','#fb8072','#80b1d3','#fdb462','#b3de69'],
-                                startAngle: -90,
-                                endAngle: 90
-
-                            }
-                        },
-                        series: [{
-                            id: 'Tons',
-                            name: 'Ton', 
-                            size: '230%',
-                            innerSize: '130%', 
-                            data: tonData
-                        }]
-                    });
-
-     });*/
 
 });
+
 function activateTooltip() {
     $("[data-toggle=infotooltip]").tooltip({ placement: 'left'});
 }
