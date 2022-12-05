@@ -12,7 +12,7 @@ This repo covers the front-end web components of the PhillyFreightFinder data pl
 
 To contribute to the project:
 
-1. clone the repo with `git clone https://github.com/DVRPCfreight/phillyfreightfinder.git`
+1. clone the repo with `git clone https://github.com/dvrpc/phillyfreightfinder.git`
 2. `npm install`
 
 Grunt watch will udpate build as changes are saved.
