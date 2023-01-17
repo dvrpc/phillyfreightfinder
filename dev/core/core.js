@@ -87,7 +87,7 @@ function getLocationHash () {
 }
 
 //create navigation of content based on hash changes for self contained app
-$(window).bind('hashchange', function() {
+$(window).on('hashchange', function() {
     var tab_id = getLocationHash();
         if(tab_id === 'map?search'){
             $('#search-panel').fadeIn('fast');
@@ -122,7 +122,7 @@ function executeOnLoad(node, func) {
     }
 
 //change sidebar based on screen size if screen resized
-$(window).resize(function () {
+$(window).on('resize', function () {
     $(".tt-dropdown-menu").css("max-height", $("#container").height() - $(".navbar").height() - 20);
     //sidebar handling if small screen
     if (document.body.clientWidth <= 767) {
@@ -148,10 +148,10 @@ if (navigator.appName == "Microsoft Internet Explorer") {
     $("input").each(function () {
         if ($(this).val() == "" && $(this).attr("placeholder") != "") {
             $(this).val($(this).attr("placeholder"));
-            $(this).focus(function () {
+            $(this).on('focus', function () {
                 if ($(this).val() == $(this).attr("placeholder")) $(this).val("");
             });
-            $(this).blur(function () {
+            $(this).on('blur', function () {
                 if ($(this).val() == "") $(this).val($(this).attr("placeholder"));
             });
         }
@@ -168,7 +168,7 @@ function sortByKey(array, key) {
 
    
 //Document Ready
-$(document).ready(function () {
+jQuery(function () {
     $('[data-toggle="tooltip"]').tooltip();
     if (document.body.clientWidth <= 767) {
         $("#mapDIV").css("class", "col-sm-12 col-lg-12");
@@ -176,19 +176,19 @@ $(document).ready(function () {
     }
     
     //layer group check all functionality
-    $('.checked_all').on("click", function (e) {
+    $('.checked_all').on('click', function (e) {
         var listPanel = $(this).parent().siblings('.panel-collapse').children('.panel-body').children('input.Chkd');
         var $element = $(this);
             if (listPanel.attr('value') == 'true') {
                 loadBar().done(function() {
                     $element.children().attr('class', 'chkicon dynico dynico-check-square-o');
-                    $(listPanel).siblings('.checkbox').children('input').prop('checked', true).change();
+                    $(listPanel).siblings('.checkbox').children('input').prop('checked', true).trigger('change');
                     $(listPanel).val('false');
                     $("#loadingtm").fadeOut(150);
                 });
             } else {
                 $element.children().attr('class', 'chkicon dynico dynico-square-o');
-                $(listPanel).siblings('.checkbox').children('input').prop('checked', false).change();
+                $(listPanel).siblings('.checkbox').children('input').prop('checked', false).trigger('change');
                 $(listPanel).val('true');
             } 
 
@@ -229,7 +229,7 @@ $('input:checkbox[name="LayerCont"]').on('change', function () {
     }
 });
 //update check all button on layer toggle
-$('.layer').change(function () {
+$('.layer').on('change', function () {
     var all = $(this).closest('.panel-body').find('input.layer').length;
     var checked = $(this).closest('.panel-body').find('input.layer:checked').length;
     if (all == checked) {
@@ -249,7 +249,7 @@ $('.layer').change(function () {
     }
 });
 //Sidebar Toggle button
-$("#toggle").click(function () {
+$("#toggle").on('click', function () {
     $("#toggle i").toggleClass("glyphicon-chevron-left glyphicon-th-list");
     $("#mapDIV").toggleClass("col-sm-8 col-lg-9 col-sm-12 col-lg-12");
     var sidebarViz = $("#sidebar").css("display");
@@ -286,7 +286,7 @@ function togglemin(e) {
     $('#infobox_').css('bottom', 0).removeClass('active');
 }
 
-$(".InfoTgl").click(function () {
+$(".InfoTgl").on('click', function () {
     if ($('#infobox_').hasClass('active')) {
         togglemin();
     } else {

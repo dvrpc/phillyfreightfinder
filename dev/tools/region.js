@@ -31,8 +31,6 @@ $(function() {
 
 	var	line_width = ((navigation_width / 2) * 3) + 18;
 
-console.log(line_width);
-
 function load_region(){
 	//****************************
 	// preset variables
@@ -293,13 +291,13 @@ function load_region(){
 		}
 	}
 
-	$( 'a[href="#"]' ).click( function(e) {
+	$( 'a[href="#"]' ).on('click', function(e) {
     	e.preventDefault();
    	} );
 
 	//****************************************************
 	//handle sub page navigation events in region tool
-   	$(window).bind('hashchange', function() {
+   	$(window).on('hashchange', function() {
    		if(getLocationHash() === 'region'){
    			var full_hash = window.location.hash.substring(1),
 			hash_elements = full_hash.split('/');
@@ -376,7 +374,7 @@ function load_region(){
 
 	//*****************************************************
 	// ripple effects on the navigation
-	$('#c-steps li a svg').bind('mouseenter', function(){
+	$('#c-steps li a svg').on('mouseenter', function(){
 		ripple_effect($(this).parent().find('svg.c-ripple').attr('id'));
 	});
 
@@ -691,8 +689,8 @@ function load_region(){
 			      .attr('val', function(d,i){ return d; });
 
 
-		$('.barTip').tipsy({ 
-	        gravity: 'n', 
+		$('.barTip').tooltip({ 
+					container: 'body',
 	        html: true, 
 	        title: function() {
 	          var a = this.getAttribute('val');
@@ -749,7 +747,7 @@ function load_region(){
 		// **********************************************
 		// commodity flow button controls
 
-		$('input[name=\'dir\']').change(function() {
+		$('input[name=\'dir\']').on('change', function() {
 			
 			currDir = $(this).val();
 			var dirName = ((currDir==='in') ? 'Inbound' : 'Outbound');
@@ -759,7 +757,7 @@ function load_region(){
 		});
 
 
-		$('input[name=\'measure\']').change(function() {
+		$('input[name=\'measure\']').on('change', function() {
 			
 			measure = $(this).val();
 			var measureName = ((measure==='ton') ? 'Volume' : 'Value');
@@ -768,17 +766,17 @@ function load_region(){
 			$('#tradeMeasure').html(measureName+ ' <span class=\'caret\'></span>');
 		});
 
-		$('input[name=\'mode\']').change(function() {
+		$('input[name=\'mode\']').on('change', function() {
 			mode = $(this).val();
 			sizeMetros(currCty, currDir, 'measure');
 		});
 		
-		$('input[name=\'tradeMeasure\']').change(function() {
+		$('input[name=\'tradeMeasure\']').on('change', function() {
 			measure = $(this).val();
 			$('#radio_'+measure).trigger('click');
 		});
 
-		$('input[name=\'tradeDirection\']').change(function() {
+		$('input[name=\'tradeDirection\']').on('change', function() {
 			currDir = $(this).val();
 			$('#radio_'+currDir).trigger('click');
 		});
@@ -923,11 +921,7 @@ function load_region(){
 				.classed('sel_related', false)
 				.classed('in', false)
 				.classed('out', false);
-			
-
-			
-			$('svg circle').unbind('mouseenter mouseleave');
-			
+						
 			// size primary metro
 			d3.select('#metro_' + metroId)
 				.attr('r', 15)
@@ -1006,8 +1000,8 @@ function load_region(){
 
 			// add tooltip and formatting
 
-			$('svg .sel_related circle').tipsy({ 
-		        gravity: 'n', 
+			$('svg .sel_related circle').tooltip({ 
+						container: 'body',
 		        html: true, 
 		        title: function() {
 		          var a = this.getAttribute('val'), n = this.getAttribute('name'); var ra = round(a,2);
