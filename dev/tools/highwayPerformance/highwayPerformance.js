@@ -1,4 +1,4 @@
-const loadScript = (FILE_URL, async = true, type = "text/javascript") => {
+const loadjs = (FILE_URL, async = true, type = "text/javascript") => {
     return new Promise((resolve, reject) => {
         try {
             const scriptEle = document.createElement("script");
@@ -26,7 +26,7 @@ const loadScript = (FILE_URL, async = true, type = "text/javascript") => {
     });
 };
 
-let map = {}
+let hpmap = {}
 
 //set map height
 const MAP_WRAPPER = document.getElementById('hp-map-wrapper');
@@ -128,7 +128,7 @@ const truckPerformance = {
             }
         };
         for (var k = 0; k < this.dirs.length; k++) {
-            map.setPaintProperty('tp-' + this.dirs[k], 'line-color', style[this.type]);
+            hpmap.setPaintProperty('tp-' + this.dirs[k], 'line-color', style[this.type]);
         }
 
     }, 
@@ -275,7 +275,7 @@ const slider = {
 
 
 // build noUIslider
-loadScript('lib/tools/assets/nouislider.js')
+loadjs('lib/tools/assets/nouislider.js')
     .then(d => {
         noUiSlider.create(slider.elem, slider.config);
         const ticks = document.querySelectorAll('.noUi-value.noUi-value-horizontal.noUi-value-large');
@@ -314,11 +314,11 @@ loadScript('lib/tools/assets/nouislider.js')
     
 
 //entry point
-loadScript("https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.js")
+loadjs("https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.js")
     .then(data => {
         mapboxgl.accessToken = 'pk.eyJ1IjoibXJ1YW5lIiwiYSI6ImNpZ3dnaGF1bjBzNGZ3N201bTQwN3h6YngifQ.pw1khldm3UDHd56okxc5bQ';
 
-        map = new mapboxgl.Map({
+        hpmap = new mapboxgl.Map({
             container: 'hp-map-wrapper',
             center: [-75.14, 39.95],
             zoom: 12,
@@ -328,11 +328,11 @@ loadScript("https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.js")
 
         // navigation control
         var nav = new mapboxgl.NavigationControl();
-        map.addControl(nav, 'top-left');
+        hpmap.addControl(nav, 'top-left');
 
         // on map.load add truck pm source with attribution and render layers by direction attr
-        map.on('load', function() {
-            map.addSource("truck-pm", {
+        hpmap.on('load', function() {
+            hpmap.addSource("truck-pm", {
               "type": "vector",
               "url": "https://tiles.dvrpc.org/data/dvrpc-pff-truck.json",
               "attribution": "<b>Performance Measures</b>: DVRPC analysis of 2015 NPMRDS probe data" 
@@ -341,7 +341,7 @@ loadScript("https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.js")
             for (var i = 0; i < truckPerformance.dirs.length; i++) {
                 var offset = (truckPerformance.dirs[i] === 'B') ? 1.3 : 0;
 
-                map.addLayer({
+                hpmap.addLayer({
                     "id": "tp-" + truckPerformance.dirs[i],
                     "source": "truck-pm",
                     "source-layer": "truck-pm",

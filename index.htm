@@ -26,7 +26,8 @@
         <!-- End Google Tag Manager -->
 
         <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800' rel='stylesheet' type='text/css'>
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+            integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.css" rel="stylesheet" type="text/css">
         <link href="https://dvrpcfreight.github.io/dynamic-icons/dyna.css" rel="stylesheet" type="text/css">
 
@@ -510,7 +511,7 @@
                                 theYear=theYear+1900
                                 document.write(theYear)
                             </script> Delaware Valley Regional Planning Commission<br>
-                            <small><i>PhillyFreightFinder v.3.1.4</i></small></p>
+                            <small><i>PhillyFreightFinder v.3.2.0</i></small></p>
                         </div>
                     </div>
                 </div>
@@ -659,26 +660,6 @@
                                         <input type="checkbox" name="LayerCont" id="FClocalgroup" class="layer dyna" z-index="13" >
 
                                         
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--Energy Utilities-->
-                        <div class="panel-group legend">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <a href="modals/pipe.html" data-toggle="modal" data-target="#pipeModal" ><div class="panelinfo legicon energyinfo" > </div></a>
-                                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion_" href="#energy-layers">
-                                        <div class="panellink energyinfo">
-                                            <span>Energy & Utilities</span>
-                                        </div>
-                                    </a>
-                                    <a class="checked_all togglebox"></a>
-                                </div> 
-                                <div id="energy-layers" class="panel-collapse collapse">
-                                    <div class="panel-body legPanel" style="padding: 0px;">
-                                       <input type="checkbox" name="LayerCont" id="pipelines" class="layer dyna" z-index="1">
-                                       
                                     </div>
                                 </div>
                             </div>
@@ -843,10 +824,12 @@
           </div><!-- /.modal-dialog -->
         </div><!-- /.modal --> 
 
-        <script type="text/javascript" src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.1.min.js"
+            integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.js"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/bootstrap.min.js"></script>
-
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
         
         <script type="text/javascript">
             // prep data tabs for loading of external resources
