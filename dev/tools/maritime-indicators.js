@@ -67,6 +67,11 @@ $(function() {
                         .data(json.features)
                         .enter().append("path")
                         .attr("d", river_path);
+                        
+                    var max_calls =  d3.max(port_data, function(d) { return +d.calls;} );
+
+                    const vessel_max = document.getElementById('mi-vessel-max');
+                    vessel_max.innerHTML= max_calls;
                    
                     function add_labels(pl){                       
                         for (var i = 0; i < pl.length; i++) {
