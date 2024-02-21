@@ -67,6 +67,11 @@ $(function() {
                         .data(json.features)
                         .enter().append("path")
                         .attr("d", river_path);
+                        
+                    var max_calls =  d3.max(port_data, function(d) { return +d.calls;} );
+
+                    const vessel_max = document.getElementById('mi-vessel-max');
+                    vessel_max.innerHTML= max_calls;
                    
                     function add_labels(pl){                       
                         for (var i = 0; i < pl.length; i++) {
@@ -183,7 +188,7 @@ $(function() {
 
                     function sizePorts(count_year) {
                         count_year = parseInt(count_year);
-                        if(count_year === 2003){
+                        if(count_year === 2004){
                             $('#mi-vessel-icon').hide();
                             $('#mi-shipChange-text').hide();
                             $('#mi-shipChange-nd').show();
@@ -468,14 +473,14 @@ $(function() {
                         miYear = maxDataYear;
                         
                         $('#mi-year-select').html(miYear + ' <span class="caret"></span>');
-                        for (var i = 2003; i <= maxDataYear; i++) {
+                        for (var i = 2004; i <= maxDataYear; i++) {
                             $('#maritime-year-dropdown').append('<li><input type="radio" id="m' + i + '" class="miYear" name="miYear" value="' + i + '"><label for="m' + i + '">' + i + '</label></li>');
                         }
 
                         $('#m' + (maxDataYear)).prop('checked', true);
 
                         completeData.map(function(d) {
-                            if (d.year > 2002) {
+                            if (d.year > 2003) {
                                 varNames.map(function(name) {
                                     series[name].values.push({
                                         label: parseDate(d[labelVar]),
@@ -537,13 +542,14 @@ $(function() {
                             .style("stroke", "white");
 
                         var line = d3.svg.line()
-                            .interpolate("cardinal")
+                            .interpolate("monotone")
                             .x(function(d) {
                                 return x(d.year);
                             })
                             .y(function(d) {
                                 return y0(d.value);
-                            });
+                            })
+                            .defined(function (d) { return d.value !== null; });;
 
                         svg.append("path")
                             .attr("d", line(containers))
@@ -749,7 +755,7 @@ $(function() {
                             $('#mi-export-graph').html('');
                             $('#mi-container-graph').html('');
                             $('.mi-activity-year').html(mYear);
-                            var yr = mYear - 2002;
+                            var yr = mYear - 2003;
 
                             if (data[yr].port_rank !== "") {
 
@@ -773,7 +779,7 @@ $(function() {
                                     foreignComparison = calcDifference(foreignChange, usForeignChange),
                                     //export indicators
                                     exportPercent = (parseInt(data[yr].swt_export) / (parseInt(data[yr].swt_export) + parseInt(data[yr].swt_import))) * 100,
-                                    exportArray = [exportPercent, 100 - exportPercent],
+                                    exportArray = [100 - exportPercent, exportPercent],
                                     prevExport = (parseInt(data[yr - 1].swt_export) / (parseInt(data[yr - 1].swt_export) + parseInt(data[yr - 1].swt_import))) * 100,
                                     exportChange = ((parseInt(data[yr].swt_export) - parseInt(data[yr - 1].swt_export)) / parseInt(data[yr - 1].swt_export)) * 100,
                                     usExportChange = ((parseInt(data[yr].us_export) - parseInt(data[yr - 1].us_export)) / parseInt(data[yr - 1].us_export)) * 100,
