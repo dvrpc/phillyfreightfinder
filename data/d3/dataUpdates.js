@@ -1,14 +1,72 @@
-[{"id":"01","name":"Highways","date":"04-2016","filename":"highways"},
-{"id":"02","name":"NHS Connectors","date":"07-2017","filename":"nhs_connectors"},
-{"id":"03","name":"Truck Parking","date":"04-2016","filename":"truck_parking"},
-{"id":"04","name":"Highway River Crossing","date":"04-2016","filename":"river_crossing_Highway"},
-{"id":"05","name":"Freight Rail Lines","date":"08-2017","filename":"freight_rail"},
-{"id":"06","name":"Rail Yards","date":"06-2016","filename":"rail_yards"},
-{"id":"07","name":"Intermodal Rail Yards","date":"06-2016","filename":"intermodal"},
-{"id":"08","name":"Class 1 Crossings","date":"07-2017","filename":"pff_grade_xings"},
-{"id":"09","name":"Railroad River Crossings","date":"06-2016","filename":"river_crossing_Rail"},
-{"id":"10","name":"Navigable River","date":"06-2017","filename":"river"},
-{"id":"11","name":"Anchorages","date":"06-2017","filename":"anchorages"},
-{"id":"12","name":"Port Terminals","date":"06-2017","filename":"ports"},
-{"id":"13","name":"Airports","date":"04-2016","filename":"airports"},
-{"id":"14","name":"Freight Centers","date":"06-2017","filename":"freight_centers"}]
+[
+    {
+        "id": "01",
+        "name": "Highways",
+        "ckan": "https://catalog.dvrpc.org/dataset/freight-highway-network"
+    },
+    {
+        "id": "02",
+        "name": "NHS Connectors",
+        "ckan": "https://catalog.dvrpc.org/dataset/freight-nhs-connectors"
+    },
+    {
+        "id": "03",
+        "name": "Truck Parking",
+        "ckan": "https://catalog.dvrpc.org/dataset/truck-parking"
+    },
+    {
+        "id": "04",
+        "name": "Highway River Crossing",
+        "ckan": "https://catalog.dvrpc.org/dataset/river-crossings"
+    },
+    {
+        "id": "05",
+        "name": "Freight Rail Lines",
+        "ckan": "https://catalog.dvrpc.org/dataset/freight-rail"
+    },
+    {
+        "id": "06",
+        "name": "Rail Yards",
+        "ckan": "https://catalog.dvrpc.org/dataset/rail-yards"
+    },
+    {
+        "id": "07",
+        "name": "Intermodal Rail Yards",
+        "ckan": "https://catalog.dvrpc.org/dataset/intermodal-rail-terminals"
+    },
+    {
+        "id": "08",
+        "name": "Class 1 Crossings",
+        "ckan": "https://catalog.dvrpc.org/dataset/significant-freight-grade-crossings"
+    },
+    {
+        "id": "09",
+        "name": "Railroad River Crossings",
+        "ckan": "https://catalog.dvrpc.org/dataset/river-crossings"
+    },
+    {
+        "id": "10",
+        "name": "Navigable River",
+        "ckan": "https://catalog.dvrpc.org/dataset/commercial-navigable-river"
+    },
+    {
+        "id": "11",
+        "name": "Anchorages",
+        "ckan": "https://catalog.dvrpc.org/dataset/anchorages"
+    },
+    {
+        "id": "12",
+        "name": "Port Terminals",
+        "ckan": "https://catalog.dvrpc.org/dataset/port-terminals"
+    },
+    {
+        "id": "13",
+        "name": "Airports",
+        "ckan": "https://catalog.dvrpc.org/dataset/freight-airports"
+    },
+    {
+        "id": "14",
+        "name": "Freight Centers",
+        "ckan": "https://catalog.dvrpc.org/dataset/freight-centers"
+    }
+]
