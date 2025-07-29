@@ -25,7 +25,24 @@
             <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.2/html5shiv.js"></script>
             <script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.2.0/respond.js"></script>
         <![endif]-->
+        <style>
+  #archive-banner {
+    background-color: #f8d7da;
+    color: #721c24;
+    text-align: center;
+    padding: 15px 10px;
+    font-size: 16px;
+    border-bottom: 2px solid #f5c6cb;
+    z-index: 9999;
+    margin-top: 60px;
+    margin-bottom: -61px;
+    position: relative;
+  }
 
+  #archive-banner p {
+    margin: 0;
+  }
+</style>
         <!-- Google Tag Manager -->
         <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
             new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -77,7 +94,6 @@
                                     <li><a href="../phillyfreightfinder/#region" data-toggle="collapse" data-target=".navbar-collapse.in">County Profile Tool</a></li>
                                     <li><a href="../phillyfreightfinder/#maritime-indicators" class='landingLink' data-tab='maritime-indicators' data-toggle="collapse" data-target=".navbar-collapse.in">Maritime Indicators</a></li>
                                     <li><a href="../phillyfreightfinder/#highway-performance" class='landingLink' data-tab='highway-performance' data-toggle="collapse" data-target=".navbar-collapse.in">Highway Performance</a></li>
-                                    <li><a href="../phillyfreightfinder/freight-center-story.html" class='landingLink' data-toggle="collapse" data-target=".navbar-collapse.in">Freight Center Story</a></li>
                                 </ul>
                         </li>
                         <li id='maplink' class='landingUI'><a href="../phillyfreightfinder/#map" data-tab='map' data-toggle="collapse" data-target=".navbar-collapse.in"><i class="dynico dynico-map"></i>&nbsp;&nbsp;View Map</a></li>
@@ -85,9 +101,14 @@
                 </div><!--/.navbar-collapse -->
             </div>
         </header>
-    
+       
     <!-- Core pages (non-map) -->
         <section id='pFFlanding' class='landing fade in landtab-content landingUI' role='main'>
+            
+     <div id="archive-banner">
+        <p><strong>Note:</strong> This tool is in <em>archive status</em> as the freight centers data method has been updated. For the most current information, please visit the <a href="../phillyfreightfinder/#map" >map explorer</a>.</p>
+        </div>
+        
             
             <!-- dot navigation -->
             <div class="dotnav hidden-sm hidden-xs">
